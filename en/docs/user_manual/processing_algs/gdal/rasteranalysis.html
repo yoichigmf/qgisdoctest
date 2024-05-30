@@ -1,0 +1,3447 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>28.2.1. Raster analysis &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="28.2.2. Raster conversion" href="rasterconversion.html" />
+    <link rel="prev" title="28.2. GDAL algorithm provider" href="index.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 28.2.1. Raster analysis">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../map_views/index.html">11. Visualizing Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">14. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">27. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">28. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../qgis/index.html">28.1. QGIS algorithm provider</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">28.2. GDAL algorithm provider</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">28.2.1. Raster analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterconversion.html">28.2.2. Raster conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterextraction.html">28.2.3. Raster extraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastermiscellaneous.html">28.2.4. Raster miscellaneous</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterprojections.html">28.2.5. Raster projections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorconversion.html">28.2.6. Vector conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeoprocessing.html">28.2.7. Vector geoprocessing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectormiscellaneous.html">28.2.8. Vector miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">28.3. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">QGIS User Guide</a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><span class="section-number">28. </span>Processing providers and algorithms</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">28.2. </span>GDAL algorithm provider</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">28.2.1. </span>Raster analysis</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/gdal/rasteranalysis.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="28.2. GDAL algorithm provider" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rasterconversion.html" class="btn btn-neutral float-right" title="28.2.2. Raster conversion" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="raster-analysis">
+<h1><span class="section-number">28.2.1. </span>Raster analysis<a class="headerlink" href="#raster-analysis" title="Link to this heading"></a></h1>
+<nav class="contents toc-columns local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#aspect" id="id91">Aspect</a></p></li>
+<li><p><a class="reference internal" href="#color-relief" id="id92">Color relief</a></p></li>
+<li><p><a class="reference internal" href="#fill-nodata" id="id93">Fill NoData</a></p></li>
+<li><p><a class="reference internal" href="#grid-data-metrics" id="id94">Grid (Data metrics)</a></p></li>
+<li><p><a class="reference internal" href="#grid-idw-with-nearest-neighbor-searching" id="id95">Grid (IDW with nearest neighbor searching)</a></p></li>
+<li><p><a class="reference internal" href="#grid-inverse-distance-to-a-power" id="id96">Grid (Inverse distance to a power)</a></p></li>
+<li><p><a class="reference internal" href="#grid-linear" id="id97">Grid (Linear)</a></p></li>
+<li><p><a class="reference internal" href="#grid-moving-average" id="id98">Grid (Moving average)</a></p></li>
+<li><p><a class="reference internal" href="#grid-nearest-neighbor" id="id99">Grid (Nearest neighbor)</a></p></li>
+<li><p><a class="reference internal" href="#hillshade" id="id100">Hillshade</a></p></li>
+<li><p><a class="reference internal" href="#near-black" id="id101">Near black</a></p></li>
+<li><p><a class="reference internal" href="#proximity-raster-distance" id="id102">Proximity (raster distance)</a></p></li>
+<li><p><a class="reference internal" href="#roughness" id="id103">Roughness</a></p></li>
+<li><p><a class="reference internal" href="#sieve" id="id104">Sieve</a></p></li>
+<li><p><a class="reference internal" href="#slope" id="id105">Slope</a></p></li>
+<li><p><a class="reference internal" href="#terrain-ruggedness-index-tri" id="id106">Terrain Ruggedness Index (TRI)</a></p></li>
+<li><p><a class="reference internal" href="#topographic-position-index-tpi" id="id107">Topographic Position Index (TPI)</a></p></li>
+</ul>
+</nav>
+<section id="aspect">
+<span id="gdalaspect"></span><h2><a class="toc-backref" href="#id91" role="doc-backlink"><span class="section-number">28.2.1.1. </span>Aspect</a><a class="headerlink" href="#aspect" title="Link to this heading"></a></h2>
+<p>Generates an aspect map from any GDAL-supported elevation raster.
+Aspect is the compass direction that a slope faces. The pixels will
+have a value from 0-360° measured in degrees from north indicating the
+azimuth.
+On the northern hemisphere, the north side of slopes is often shaded
+(small azimuth from 0°-90°), while the southern side receives more
+solar radiation (higher azimuth from 180°-270°).</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdaldem.html">GDAL DEM utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input elevation raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Band number</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code></p></td>
+<td><p>[raster band]</p>
+<p>Default: 1</p>
+</td>
+<td><p>The number of the band to use as elevation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Return trigonometric angle instead of azimuth</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRIG_ANGLE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Activating the trigonometric angle results in different
+categories: 0° (East), 90° (North), 180° (West), 270° (South).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Return 0 for flat instead of -9999</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ZERO_FLAT</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Activating this option will insert a 0-value for the value
+-9999 on flat areas.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Compute edges</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMPUTE_EDGES</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates edges from the elevation raster</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use Zevenbergen&amp;Thorne formula instead of the Horn’s one</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ZEVENBERGEN</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Activates Zevenbergen&amp;Thorne formula for smooth landscapes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Aspect</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Output raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="advanced-parameters">
+<h4>Advanced parameters<a class="headerlink" href="#advanced-parameters" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="outputs">
+<h3>Outputs<a class="headerlink" href="#outputs" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Aspect</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster with angle values in degrees</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-code">
+<h3>Python code<a class="headerlink" href="#python-code" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:aspect</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="color-relief">
+<span id="gdalcolorrelief"></span><h2><a class="toc-backref" href="#id92" role="doc-backlink"><span class="section-number">28.2.1.2. </span>Color relief</a><a class="headerlink" href="#color-relief" title="Link to this heading"></a></h2>
+<p>Generates a color relief map from any GDAL-supported elevation raster.
+Color reliefs can particularly be used to depict elevations.
+The Algorithm outputs a 4-band raster with values computed from the
+elevation and a text-based color configuration file.
+By default, the colors between the given elevation values are blended
+smoothly and the result is a nice colorized elevation raster.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdaldem.html">GDAL DEM utility</a>.</p>
+<section id="id2">
+<h3>Parameters<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input elevation raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Band number</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code></p></td>
+<td><p>[raster band]</p>
+<p>Default: 1</p>
+</td>
+<td><p>The number of the band to use as elevation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Compute edges</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMPUTE_EDGES</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates edges from the elevation raster</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Color configuration file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COLOR_TABLE</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>A text-based color configuration file</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Matching mode</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MATCH_MODE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 2</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — Use strict color matching</p></li>
+<li><p>1 — Use closest RGBA quadruples</p></li>
+<li><p>2 — Use smoothly blended colours</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Color relief</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Output raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3>Outputs<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Color relief</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A 4-band output raster</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h3>Python code<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:colorrelief</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="fill-nodata">
+<span id="gdalfillnodata"></span><h2><a class="toc-backref" href="#id93" role="doc-backlink"><span class="section-number">28.2.1.3. </span>Fill NoData</a><a class="headerlink" href="#fill-nodata" title="Link to this heading"></a></h2>
+<p>Fill raster regions with NoData values by interpolation from edges.
+The values for the NoData regions are calculated by the surrounding
+pixel values using inverse distance weighting.
+After the interpolation a smoothing of the results takes place.
+Input can be any GDAL-supported raster layer. This algorithm is
+generally suitable for interpolating missing regions of fairly
+continuously varying rasters (such as elevation models for instance).
+It is also suitable for filling small holes and cracks in more
+irregularly varying images (like airphotos).
+It is generally not so great for interpolating a raster from sparse
+point data.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdal_fillnodata.html">GDAL fillnodata utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<section id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="basic-parameters">
+<h4>Basic parameters<a class="headerlink" href="#basic-parameters" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input raster layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Band number</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code></p></td>
+<td><p>[raster band]</p>
+<p>Default: 1</p>
+</td>
+<td><p>The band to operate on. NoData values must be
+represented by the value 0.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Maximum distance (in pixels) to search out for values to interpolate</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISTANCE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 10</p>
+</td>
+<td><p>The number of pixels to search in all directions to find values
+to interpolate from</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Number of smoothing iterations to run after the interpolation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ITERATIONS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0</p>
+</td>
+<td><p>The number of 3x3 filter passes to run (0 or more) to smoothen
+the results of the interpolation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Do not use default validity mask for the input band</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NO_MASK</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Activates the user-defined validity mask</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Validity mask</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MASK_LAYER</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A raster layer that defines the areas to fill.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Filled</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h4>Advanced parameters<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id7">
+<h3>Outputs<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Filled</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3>Python code<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:fillnodata</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="grid-data-metrics">
+<span id="gdalgriddatametrics"></span><h2><a class="toc-backref" href="#id94" role="doc-backlink"><span class="section-number">28.2.1.4. </span>Grid (Data metrics)</a><a class="headerlink" href="#grid-data-metrics" title="Link to this heading"></a></h2>
+<p>Computes some data metrics using the specified window and output grid
+geometry.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdal_grid.html">GDAL grid utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://gdal.org/tutorials/gdal_grid_tut.html">GDAL grid tutorial</a></p>
+</div>
+<section id="id9">
+<h3>Parameters<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id10">
+<h4>Basic parameters<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Point layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Input point vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data metric to use</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">METRIC</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — Minimum, minimum value found in grid node search
+ellipse</p></li>
+<li><p>1 — Maximum, maximum value found in grid node search
+ellipse</p></li>
+<li><p>2 — Range, a difference between the minimum and maximum
+values found in grid node search ellipse</p></li>
+<li><p>3 — Count, a number of data points found in grid node
+search ellipse</p></li>
+<li><p>4 — Average distance, an average distance between the grid
+node (center of the search ellipse) and all of the data
+points found in grid node search ellipse</p></li>
+<li><p>5 — Average distance between points, an average distance
+between the data points found in grid node search ellipse.
+The distance between each pair of points within ellipse
+is calculated and average of all distances is set as a
+grid node value</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>The first radius of search ellipse</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS_1</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>The first radius (X axis if rotation angle is 0) of
+the search ellipse</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>The second radius of search ellipse</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS_2</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>The second radius (Y axis if rotation angle is 0)
+of the search ellipse</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Angle of search ellipse rotation in degrees (counter clockwise)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANGLE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Angle of ellipse rotation in degrees.
+Ellipse rotated counter clockwise.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Minimum number of data points to use</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIN_POINTS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Minimum number of data points to average.
+If less amount of points found the grid node
+considered empty and will be filled with
+NoData marker.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NoData</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NODATA</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>NoData marker to fill empty points</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Interpolated (data metrics)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer with interpolated values.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h4>Advanced parameters<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Z value from field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FIELD</span></code></p></td>
+<td><p>[tablefield: numeric]</p></td>
+<td><p>Field for the interpolation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output data type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DATA_TYPE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 5</p>
+</td>
+<td><p>Defines the data type of the output raster file.
+Options:</p>
+<ul class="simple">
+<li><p>0 — Byte        (Eight bit unsigned integer (quint8))</p></li>
+<li><p>1 — Int16       (Sixteen bit signed integer (qint16))</p></li>
+<li><p>2 — UInt16      (Sixteen bit unsigned integer (quint16))</p></li>
+<li><p>3 — UInt32      (Thirty two bit unsigned integer (quint32))</p></li>
+<li><p>4 — Int32       (Thirty two bit signed integer (qint32))</p></li>
+<li><p>5 — Float32     (Thirty two bit floating point (float))</p></li>
+<li><p>6 — Float64     (Sixty four bit floating point (double))</p></li>
+<li><p>7 — CInt16      (Complex Int16)</p></li>
+<li><p>8 — CInt32      (Complex Int32)</p></li>
+<li><p>9 — CFloat32    (Complex Float32)</p></li>
+<li><p>10 — CFloat64   (Complex Float64)</p></li>
+<li><p>11 — Int8       (Eight bit signed integer (qint8))</p></li>
+</ul>
+<p>Available options depend on the GDAL version built with QGIS
+(see <span class="menuselection">Help ► About</span> menu)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id12">
+<h3>Outputs<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Interpolated (data metrics)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster with interpolated values</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id13">
+<h3>Python code<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:griddatametrics</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="grid-idw-with-nearest-neighbor-searching">
+<span id="gdalgridinversedistancenearestneighbor"></span><h2><a class="toc-backref" href="#id95" role="doc-backlink"><span class="section-number">28.2.1.5. </span>Grid (IDW with nearest neighbor searching)</a><a class="headerlink" href="#grid-idw-with-nearest-neighbor-searching" title="Link to this heading"></a></h2>
+<p>Computes the Inverse Distance to a Power gridding combined to the
+nearest neighbor method.
+Ideal when a maximum number of data points to use is required.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdal_grid.html">GDAL grid utility</a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://gdal.org/tutorials/gdal_grid_tut.html">GDAL grid tutorial</a></p>
+</div>
+<section id="id16">
+<h3>Parameters<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Point layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Input point vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Weighting power</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POWER</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 2.0</p>
+</td>
+<td><p>Weighting power</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Smoothing</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SMOOTHING</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Smoothing parameter</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>The radius of the search circle</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>The radius of the search circle</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maximum number of data points to use</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MAX_POINTS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 12</p>
+</td>
+<td><p>Do not search for more points than this number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Minimum number of data points to use</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIN_POINTS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Minimum number of data points to average.
+If less amount of points found the grid node
+considered empty and will be filled with
+NoData marker.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NoData</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NODATA</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>NoData marker to fill empty points</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Interpolated (IDW with NN search)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer with interpolated values.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="id17">
+<h4>Advanced parameters<a class="headerlink" href="#id17" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Z value from field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FIELD</span></code></p></td>
+<td><p>[tablefield: numeric]</p></td>
+<td><p>Field for the interpolation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output data type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DATA_TYPE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 5</p>
+</td>
+<td><p>Defines the data type of the output raster file.
+Options:</p>
+<ul class="simple">
+<li><p>0 — Byte        (Eight bit unsigned integer (quint8))</p></li>
+<li><p>1 — Int16       (Sixteen bit signed integer (qint16))</p></li>
+<li><p>2 — UInt16      (Sixteen bit unsigned integer (quint16))</p></li>
+<li><p>3 — UInt32      (Thirty two bit unsigned integer (quint32))</p></li>
+<li><p>4 — Int32       (Thirty two bit signed integer (qint32))</p></li>
+<li><p>5 — Float32     (Thirty two bit floating point (float))</p></li>
+<li><p>6 — Float64     (Sixty four bit floating point (double))</p></li>
+<li><p>7 — CInt16      (Complex Int16)</p></li>
+<li><p>8 — CInt32      (Complex Int32)</p></li>
+<li><p>9 — CFloat32    (Complex Float32)</p></li>
+<li><p>10 — CFloat64   (Complex Float64)</p></li>
+<li><p>11 — Int8       (Eight bit signed integer (qint8))</p></li>
+</ul>
+<p>Available options depend on the GDAL version built with QGIS
+(see <span class="menuselection">Help ► About</span> menu)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id18">
+<h3>Outputs<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Interpolated (IDW with NN search)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster with interpolated values</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id19">
+<h3>Python code<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:gridinversedistancenearestneighbor</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="grid-inverse-distance-to-a-power">
+<span id="gdalgridinversedistance"></span><h2><a class="toc-backref" href="#id96" role="doc-backlink"><span class="section-number">28.2.1.6. </span>Grid (Inverse distance to a power)</a><a class="headerlink" href="#grid-inverse-distance-to-a-power" title="Link to this heading"></a></h2>
+<p>The Inverse Distance to a Power gridding method is a weighted average
+interpolator.</p>
+<p>You should supply the input arrays with the scattered data values
+including coordinates of every data point and output grid geometry.
+The function will compute interpolated value for the given position in output grid.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdal_grid.html">GDAL grid utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://gdal.org/tutorials/gdal_grid_tut.html">GDAL grid tutorial</a></p>
+</div>
+<section id="id22">
+<h3>Parameters<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<section id="id23">
+<h4>Basic parameters<a class="headerlink" href="#id23" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Point layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Input point vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Weighting power</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POWER</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 2.0</p>
+</td>
+<td><p>Weighting power</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Smothing</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SMOOTHING</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Smoothing parameter</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>The first radius of search ellipse</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS_1</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>The first radius (X axis if rotation angle is 0) of
+the search ellipse</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>The second radius of search ellipse</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS_2</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>The second radius (Y axis if rotation angle is 0)
+of the search ellipse</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Angle of search ellipse rotation in degrees (counter clockwise)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANGLE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Angle of ellipse rotation in degrees.
+Ellipse rotated counter clockwise.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maximum number of data points to use</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MAX_POINTS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Do not search for more points than this number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Minimum number of data points to use</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIN_POINTS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Minimum number of data points to average.
+If less amount of points found the grid node
+considered empty and will be filled with
+NoData marker.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NoData</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NODATA</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>NoData marker to fill empty points</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Interpolated (IDW)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer with interpolated values.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id24">
+<h4>Advanced parameters<a class="headerlink" href="#id24" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Z value from field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FIELD</span></code></p></td>
+<td><p>[tablefield: numeric]</p></td>
+<td><p>Field for the interpolation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output data type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DATA_TYPE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 5</p>
+</td>
+<td><p>Defines the data type of the output raster file.
+Options:</p>
+<ul class="simple">
+<li><p>0 — Byte        (Eight bit unsigned integer (quint8))</p></li>
+<li><p>1 — Int16       (Sixteen bit signed integer (qint16))</p></li>
+<li><p>2 — UInt16      (Sixteen bit unsigned integer (quint16))</p></li>
+<li><p>3 — UInt32      (Thirty two bit unsigned integer (quint32))</p></li>
+<li><p>4 — Int32       (Thirty two bit signed integer (qint32))</p></li>
+<li><p>5 — Float32     (Thirty two bit floating point (float))</p></li>
+<li><p>6 — Float64     (Sixty four bit floating point (double))</p></li>
+<li><p>7 — CInt16      (Complex Int16)</p></li>
+<li><p>8 — CInt32      (Complex Int32)</p></li>
+<li><p>9 — CFloat32    (Complex Float32)</p></li>
+<li><p>10 — CFloat64   (Complex Float64)</p></li>
+<li><p>11 — Int8       (Eight bit signed integer (qint8))</p></li>
+</ul>
+<p>Available options depend on the GDAL version built with QGIS
+(see <span class="menuselection">Help ► About</span> menu)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id25">
+<h3>Outputs<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Interpolated (IDW)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster with interpolated values</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id26">
+<h3>Python code<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:gridinversedistance</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="grid-linear">
+<span id="gdalgridlinear"></span><h2><a class="toc-backref" href="#id97" role="doc-backlink"><span class="section-number">28.2.1.7. </span>Grid (Linear)</a><a class="headerlink" href="#grid-linear" title="Link to this heading"></a></h2>
+<p>The Linear method perform linear interpolation by computing a Delaunay
+triangulation of the point cloud, finding in which triangle of the
+triangulation the point is, and by doing linear interpolation from its
+barycentric coordinates within the triangle.
+If the point is not in any triangle, depending on the radius, the
+algorithm will use the value of the nearest point or the NoData value.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdal_grid.html">GDAL grid utility</a>.</p>
+<section id="id28">
+<h3>Parameters<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
+<section id="id29">
+<h4>Basic parameters<a class="headerlink" href="#id29" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Point layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Input point vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Search distance</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: -1.0</p>
+</td>
+<td><p>In case the point to be interpolated does not fit into a
+triangle of the Delaunay triangulation, use that maximum
+distance to search a nearest neighbour, or use NoData
+otherwise.
+If set to <code class="docutils literal notranslate"><span class="pre">-1</span></code>, the search distance is infinite.
+If set to <code class="docutils literal notranslate"><span class="pre">0</span></code>, NoData value will be used.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NoData</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NODATA</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>NoData marker to fill empty points</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Interpolated (Linear)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer with interpolated values.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id30">
+<h4>Advanced parameters<a class="headerlink" href="#id30" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Z value from field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FIELD</span></code></p></td>
+<td><p>[tablefield: numeric]</p></td>
+<td><p>Field for the interpolation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output data type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DATA_TYPE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 5</p>
+</td>
+<td><p>Defines the data type of the output raster file.
+Options:</p>
+<ul class="simple">
+<li><p>0 — Byte        (Eight bit unsigned integer (quint8))</p></li>
+<li><p>1 — Int16       (Sixteen bit signed integer (qint16))</p></li>
+<li><p>2 — UInt16      (Sixteen bit unsigned integer (quint16))</p></li>
+<li><p>3 — UInt32      (Thirty two bit unsigned integer (quint32))</p></li>
+<li><p>4 — Int32       (Thirty two bit signed integer (qint32))</p></li>
+<li><p>5 — Float32     (Thirty two bit floating point (float))</p></li>
+<li><p>6 — Float64     (Sixty four bit floating point (double))</p></li>
+<li><p>7 — CInt16      (Complex Int16)</p></li>
+<li><p>8 — CInt32      (Complex Int32)</p></li>
+<li><p>9 — CFloat32    (Complex Float32)</p></li>
+<li><p>10 — CFloat64   (Complex Float64)</p></li>
+<li><p>11 — Int8       (Eight bit signed integer (qint8))</p></li>
+</ul>
+<p>Available options depend on the GDAL version built with QGIS
+(see <span class="menuselection">Help ► About</span> menu)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id31">
+<h3>Outputs<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Interpolated (Linear)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster with interpolated values</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id32">
+<h3>Python code<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:gridlinear</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="grid-moving-average">
+<span id="gdalgridaverage"></span><h2><a class="toc-backref" href="#id98" role="doc-backlink"><span class="section-number">28.2.1.8. </span>Grid (Moving average)</a><a class="headerlink" href="#grid-moving-average" title="Link to this heading"></a></h2>
+<p>The Moving Average is a simple data averaging algorithm.
+It uses a moving window of elliptic form to search values and averages
+all data points within the window.
+Search ellipse can be rotated by specified angle, the center of
+ellipse located at the grid node.
+Also the minimum number of data points to average can be set, if there
+are not enough points in window, the grid node considered empty and
+will be filled with specified NoData value.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdal_grid.html">GDAL grid utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://gdal.org/tutorials/gdal_grid_tut.html">GDAL grid tutorial</a></p>
+</div>
+<section id="id35">
+<h3>Parameters<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
+<section id="id36">
+<h4>Basic parameters<a class="headerlink" href="#id36" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Point layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Input point vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>The first radius of search ellipse</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS_1</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>The first radius (X axis if rotation angle is 0) of
+the search ellipse</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>The second radius of search ellipse</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS_2</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>The second radius (Y axis if rotation angle is 0)
+of the search ellipse</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Angle of search ellipse rotation in degrees (counter clockwise)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANGLE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Angle of ellipse rotation in degrees.
+Ellipse rotated counter clockwise.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Minimum number of data points to use</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIN_POINTS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Minimum number of data points to average.
+If less amount of points found the grid node
+considered empty and will be filled with
+NoData marker.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NoData</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NODATA</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>NoData marker to fill empty points</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Interpolated (moving average)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id37">
+<h4>Advanced parameters<a class="headerlink" href="#id37" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Z value from field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FIELD</span></code></p></td>
+<td><p>[tablefield: numeric]</p></td>
+<td><p>Field for the interpolation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output data type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DATA_TYPE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 5</p>
+</td>
+<td><p>Defines the data type of the output raster file.
+Options:</p>
+<ul class="simple">
+<li><p>0 — Byte        (Eight bit unsigned integer (quint8))</p></li>
+<li><p>1 — Int16       (Sixteen bit signed integer (qint16))</p></li>
+<li><p>2 — UInt16      (Sixteen bit unsigned integer (quint16))</p></li>
+<li><p>3 — UInt32      (Thirty two bit unsigned integer (quint32))</p></li>
+<li><p>4 — Int32       (Thirty two bit signed integer (qint32))</p></li>
+<li><p>5 — Float32     (Thirty two bit floating point (float))</p></li>
+<li><p>6 — Float64     (Sixty four bit floating point (double))</p></li>
+<li><p>7 — CInt16      (Complex Int16)</p></li>
+<li><p>8 — CInt32      (Complex Int32)</p></li>
+<li><p>9 — CFloat32    (Complex Float32)</p></li>
+<li><p>10 — CFloat64   (Complex Float64)</p></li>
+<li><p>11 — Int8       (Eight bit signed integer (qint8))</p></li>
+</ul>
+<p>Available options depend on the GDAL version built with QGIS
+(see <span class="menuselection">Help ► About</span> menu)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id38">
+<h3>Outputs<a class="headerlink" href="#id38" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Interpolated (moving average)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster with interpolated values</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id39">
+<h3>Python code<a class="headerlink" href="#id39" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:gridaverage</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="grid-nearest-neighbor">
+<span id="gdalgridnearestneighbor"></span><h2><a class="toc-backref" href="#id99" role="doc-backlink"><span class="section-number">28.2.1.9. </span>Grid (Nearest neighbor)</a><a class="headerlink" href="#grid-nearest-neighbor" title="Link to this heading"></a></h2>
+<p>The Nearest Neighbor method doesn’t perform any interpolation or
+smoothing, it just takes the value of nearest point found in grid node
+search ellipse and returns it as a result.
+If there are no points found, the specified NoData value will be
+returned.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdal_grid.html">GDAL grid utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://gdal.org/tutorials/gdal_grid_tut.html">GDAL grid tutorial</a></p>
+</div>
+<section id="id42">
+<h3>Parameters<a class="headerlink" href="#id42" title="Link to this heading"></a></h3>
+<section id="id43">
+<h4>Basic parameters<a class="headerlink" href="#id43" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Point layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Input point vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>The first radius of search ellipse</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS_1</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>The first radius (X axis if rotation angle is 0) of
+the search ellipse</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>The second radius of search ellipse</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS_2</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>The second radius (Y axis if rotation angle is 0)
+of the search ellipse</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Angle of search ellipse rotation in degrees (counter clockwise)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANGLE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Angle of ellipse rotation in degrees.
+Ellipse rotated counter clockwise.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NoData</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NODATA</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>NoData marker to fill empty points</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Interpolated (Nearest neighbour)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer with interpolated values.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id44">
+<h4>Advanced parameters<a class="headerlink" href="#id44" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Z value from field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FIELD</span></code></p></td>
+<td><p>[tablefield: numeric]</p></td>
+<td><p>Field for the interpolation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output data type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DATA_TYPE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 5</p>
+</td>
+<td><p>Defines the data type of the output raster file.
+Options:</p>
+<ul class="simple">
+<li><p>0 — Byte        (Eight bit unsigned integer (quint8))</p></li>
+<li><p>1 — Int16       (Sixteen bit signed integer (qint16))</p></li>
+<li><p>2 — UInt16      (Sixteen bit unsigned integer (quint16))</p></li>
+<li><p>3 — UInt32      (Thirty two bit unsigned integer (quint32))</p></li>
+<li><p>4 — Int32       (Thirty two bit signed integer (qint32))</p></li>
+<li><p>5 — Float32     (Thirty two bit floating point (float))</p></li>
+<li><p>6 — Float64     (Sixty four bit floating point (double))</p></li>
+<li><p>7 — CInt16      (Complex Int16)</p></li>
+<li><p>8 — CInt32      (Complex Int32)</p></li>
+<li><p>9 — CFloat32    (Complex Float32)</p></li>
+<li><p>10 — CFloat64   (Complex Float64)</p></li>
+<li><p>11 — Int8       (Eight bit signed integer (qint8))</p></li>
+</ul>
+<p>Available options depend on the GDAL version built with QGIS
+(see <span class="menuselection">Help ► About</span> menu)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id45">
+<h3>Outputs<a class="headerlink" href="#id45" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Interpolated (Nearest neighbour)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster with interpolated values</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id46">
+<h3>Python code<a class="headerlink" href="#id46" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:gridnearestneighbor</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="hillshade">
+<span id="gdalhillshade"></span><h2><a class="toc-backref" href="#id100" role="doc-backlink"><span class="section-number">28.2.1.10. </span>Hillshade</a><a class="headerlink" href="#hillshade" title="Link to this heading"></a></h2>
+<p>Outputs a raster with a nice shaded relief effect.
+It’s very useful for visualizing the terrain.
+You can optionally specify the azimuth and altitude of the light
+source, a vertical exaggeration factor and a scaling factor to account
+for differences between vertical and horizontal units.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdaldem.html">GDAL DEM utility</a> .</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<section id="id47">
+<h3>Parameters<a class="headerlink" href="#id47" title="Link to this heading"></a></h3>
+<section id="id48">
+<h4>Basic parameters<a class="headerlink" href="#id48" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input Elevation raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Band number</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code></p></td>
+<td><p>[raster band]</p>
+<p>Default: 1</p>
+</td>
+<td><p>Band containing the elevation information</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Z factor (vertical exaggeration)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FACTOR</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>The factor exaggerates the height of the output elevation
+raster</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Scale (ratio of vert. units to horiz.)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SCALE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>The ratio of vertical units to horizontal units</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Azimuth of the light</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AZIMUTH</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 315.0</p>
+</td>
+<td><p>Defines the azimuth of the light shining on the elevation
+raster in degrees.
+If it comes from the top of the raster the value is 0, if it
+comes from the east it is 90 a.s.o.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Altitude of the light</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ALTITUDE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 45.0</p>
+</td>
+<td><p>Defines the altitude of the light, in degrees.
+90 if the light comes from above the elevation raster, 0 if it
+is raking light.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Compute edges</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMPUTE_EDGES</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates edges from the elevation raster</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use Zevenbergen&amp;Thorne formula (instead of the Horn’s one)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ZEVENBERGEN</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Activates Zevenbergen&amp;Thorne formula for smooth landscapes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Combined shading</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMBINED</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Multidirectional shading</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MULTIDIRECTIONAL</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hillshade</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer with interpolated values.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id49">
+<h4>Advanced parameters<a class="headerlink" href="#id49" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id50">
+<h3>Outputs<a class="headerlink" href="#id50" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hillshade</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster with interpolated values</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id51">
+<h3>Python code<a class="headerlink" href="#id51" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:hillshade</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="near-black">
+<span id="gdalnearblack"></span><h2><a class="toc-backref" href="#id101" role="doc-backlink"><span class="section-number">28.2.1.11. </span>Near black</a><a class="headerlink" href="#near-black" title="Link to this heading"></a></h2>
+<p>Converts nearly black/white borders to black.</p>
+<p>This algorithm will scan an image and try to set all pixels that are
+nearly or exactly black, white or one or more custom colors around the
+collar to black or white.
+This is often used to “fix up” lossy compressed airphotos so that
+color pixels can be treated as transparent when mosaicking.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/nearblack.html">GDAL nearblack utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<section id="id52">
+<h3>Parameters<a class="headerlink" href="#id52" title="Link to this heading"></a></h3>
+<section id="id53">
+<h4>Basic parameters<a class="headerlink" href="#id53" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input Elevation raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>How far from black (white)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NEAR</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 15</p>
+</td>
+<td><p>Select how far from black, white or custom colors the pixel
+values can be and still considered near black, white or custom
+color.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Search for nearly white pixels instead of nearly black</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WHITE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Search for nearly white (255) pixels instead of nearly black
+pixels</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Nearblack</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id54">
+<h4>Advanced parameters<a class="headerlink" href="#id54" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id55">
+<h3>Outputs<a class="headerlink" href="#id55" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Nearblack</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id56">
+<h3>Python code<a class="headerlink" href="#id56" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:nearblack</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="proximity-raster-distance">
+<span id="gdalproximity"></span><h2><a class="toc-backref" href="#id102" role="doc-backlink"><span class="section-number">28.2.1.12. </span>Proximity (raster distance)</a><a class="headerlink" href="#proximity-raster-distance" title="Link to this heading"></a></h2>
+<p>Generates a raster proximity map indicating the distance from the
+center of each pixel to the center of the nearest pixel identified as
+a target pixel.
+Target pixels are those in the source raster for which the raster
+pixel value is in the set of target pixel values.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdal_proximity.html">GDAL proximity utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<section id="id57">
+<h3>Parameters<a class="headerlink" href="#id57" title="Link to this heading"></a></h3>
+<section id="id58">
+<h4>Basic parameters<a class="headerlink" href="#id58" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input Elevation raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Band number</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code></p></td>
+<td><p>[raster band]</p>
+<p>Default: 1</p>
+</td>
+<td><p>Band containing the elevation information</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>A list of pixel values in the source image to be considered target pixels</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VALUES</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>A list of target pixel values in the source image
+to be considered target pixels.
+If not specified, all non-zero pixels will be
+considered target pixels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Distance units</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UNITS</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 1</p>
+</td>
+<td><p>Indicate whether distances generated should be in pixel
+or georeferenced coordinates. One of:</p>
+<ul class="simple">
+<li><p>0 — Georeferenced coordinates</p></li>
+<li><p>1 — Pixel coordinates</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>The maximum distance to be generated</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MAX_DISTANCE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>The maximum distance to be generated.
+The NoData value will be used for pixels beyond
+this distance.
+If a NoData value is not provided, the output
+band will be queried for its NoData value.
+If the output band does not have a NoData value,
+then the value 65535 will be used.
+Distance is interpreted according to the value of
+<em>Distance units</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Value to be applied to all pixels that are within the maxdist of target pixels</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REPLACE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Specify a value to be applied to all pixels that
+are closer than the maximum distance from target
+pixels (including the target pixels) instead of
+a distance value.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NoData value to use for the destination proximity raster</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NODATA</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Specify the NoData value to use for the output raster</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Proximity map</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id59">
+<h4>Advanced parameters<a class="headerlink" href="#id59" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output data type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DATA_TYPE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 5</p>
+</td>
+<td><p>Defines the data type of the output raster file.
+Options:</p>
+<ul class="simple">
+<li><p>0 — Byte        (Eight bit unsigned integer (quint8))</p></li>
+<li><p>1 — Int16       (Sixteen bit signed integer (qint16))</p></li>
+<li><p>2 — UInt16      (Sixteen bit unsigned integer (quint16))</p></li>
+<li><p>3 — UInt32      (Thirty two bit unsigned integer (quint32))</p></li>
+<li><p>4 — Int32       (Thirty two bit signed integer (qint32))</p></li>
+<li><p>5 — Float32     (Thirty two bit floating point (float))</p></li>
+<li><p>6 — Float64     (Sixty four bit floating point (double))</p></li>
+<li><p>7 — CInt16      (Complex Int16)</p></li>
+<li><p>8 — CInt32      (Complex Int32)</p></li>
+<li><p>9 — CFloat32    (Complex Float32)</p></li>
+<li><p>10 — CFloat64   (Complex Float64)</p></li>
+<li><p>11 — Int8       (Eight bit signed integer (qint8))</p></li>
+</ul>
+<p>Available options depend on the GDAL version built with QGIS
+(see <span class="menuselection">Help ► About</span> menu)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id60">
+<h3>Outputs<a class="headerlink" href="#id60" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Proximity map</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id61">
+<h3>Python code<a class="headerlink" href="#id61" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:proximity</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="roughness">
+<span id="gdalroughness"></span><h2><a class="toc-backref" href="#id103" role="doc-backlink"><span class="section-number">28.2.1.13. </span>Roughness</a><a class="headerlink" href="#roughness" title="Link to this heading"></a></h2>
+<p>Outputs a single-band raster with values computed from the elevation.
+Roughness is the degree of irregularity of the surface.
+It’s calculated by the largest inter-cell difference of a central
+pixel and its surrounding cell.
+The determination of the roughness plays a role in the analysis of
+terrain elevation data, it’s useful for calculations of the river
+morphology, in climatology and physical geography in general.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdaldem.html">GDAL DEM utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<section id="id63">
+<h3>Parameters<a class="headerlink" href="#id63" title="Link to this heading"></a></h3>
+<section id="id64">
+<h4>Basic parameters<a class="headerlink" href="#id64" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input elevation raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Band number</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code></p></td>
+<td><p>[raster band]</p>
+<p>Default: 1</p>
+</td>
+<td><p>The number of the band to use as elevation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Compute edges</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMPUTE_EDGES</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates edges from the elevation raster</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Roughness</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id65">
+<h4>Advanced parameters<a class="headerlink" href="#id65" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id66">
+<h3>Outputs<a class="headerlink" href="#id66" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Roughness</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Single-band output roughness raster.
+The value -9999 is used as NoData value.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id67">
+<h3>Python code<a class="headerlink" href="#id67" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:roughness</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="sieve">
+<span id="gdalsieve"></span><h2><a class="toc-backref" href="#id104" role="doc-backlink"><span class="section-number">28.2.1.14. </span>Sieve</a><a class="headerlink" href="#sieve" title="Link to this heading"></a></h2>
+<p>Removes raster polygons smaller than a provided threshold size (in
+pixels) and replaces them with the pixel value of the largest
+neighbour polygon.
+It is useful if you have a large amount of small areas on your raster
+map.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdal_sieve.html">GDAL sieve utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<section id="id68">
+<h3>Parameters<a class="headerlink" href="#id68" title="Link to this heading"></a></h3>
+<section id="id69">
+<h4>Basic parameters<a class="headerlink" href="#id69" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input elevation raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Threshold</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">THRESHOLD</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 10</p>
+</td>
+<td><p>Only raster polygons smaller than this size
+will be removed</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Use 8-connectedness</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EIGHT_CONNECTEDNESS</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Use eight connectedness instead of four connectedness</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Do not use the default validity mask for the input band</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NO_MASK</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Validity mask</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MASK_LAYER</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Validity mask to use instead of the default</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Sieved</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id70">
+<h4>Advanced parameters<a class="headerlink" href="#id70" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id71">
+<h3>Outputs<a class="headerlink" href="#id71" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Sieved</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster layer.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id72">
+<h3>Python code<a class="headerlink" href="#id72" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:sieve</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="slope">
+<span id="gdalslope"></span><h2><a class="toc-backref" href="#id105" role="doc-backlink"><span class="section-number">28.2.1.15. </span>Slope</a><a class="headerlink" href="#slope" title="Link to this heading"></a></h2>
+<p>Generates a slope map from any GDAL-supported elevation raster.
+Slope is the angle of inclination to the horizontal.
+You have the option of specifying the type of slope value you want:
+degrees or percent slope.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdaldem.html">GDAL DEM utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<section id="id74">
+<h3>Parameters<a class="headerlink" href="#id74" title="Link to this heading"></a></h3>
+<section id="id75">
+<h4>Basic parameters<a class="headerlink" href="#id75" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input Elevation raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Band number</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code></p></td>
+<td><p>[raster band]</p>
+<p>Default: 1</p>
+</td>
+<td><p>Band containing the elevation information</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Ratio of vertical units to horizontal</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SCALE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>The ratio of vertical units to horizontal units</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Slope expressed as percent (instead of degrees)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AS_PERCENT</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Express slope as percent instead of degrees</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Compute edges</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMPUTE_EDGES</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates edges from the elevation raster</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use Zevenbergen&amp;Thorne formula (instead of the Horn’s one)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ZEVENBERGEN</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Activates Zevenbergen&amp;Thorne formula for smooth landscapes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slope</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id76">
+<h4>Advanced parameters<a class="headerlink" href="#id76" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id77">
+<h3>Outputs<a class="headerlink" href="#id77" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Slope</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id78">
+<h3>Python code<a class="headerlink" href="#id78" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:slope</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="terrain-ruggedness-index-tri">
+<span id="gdaltriterrainruggednessindex"></span><h2><a class="toc-backref" href="#id106" role="doc-backlink"><span class="section-number">28.2.1.16. </span>Terrain Ruggedness Index (TRI)</a><a class="headerlink" href="#terrain-ruggedness-index-tri" title="Link to this heading"></a></h2>
+<p>Outputs a single-band raster with values computed from the
+elevation.
+TRI stands for Terrain Ruggedness Index, which is defined
+as the mean difference between a central pixel and its
+surrounding cells.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdaldem.html">GDAL DEM utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<section id="id80">
+<h3>Parameters<a class="headerlink" href="#id80" title="Link to this heading"></a></h3>
+<section id="id81">
+<h4>Basic parameters<a class="headerlink" href="#id81" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input elevation raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Band number</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code></p></td>
+<td><p>[raster band]</p>
+<p>Default: 1</p>
+</td>
+<td><p>The number of the band to use as elevation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Compute edges</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMPUTE_EDGES</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates edges from the elevation raster</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Terrain Ruggedness Index</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id82">
+<h4>Advanced parameters<a class="headerlink" href="#id82" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id83">
+<h3>Outputs<a class="headerlink" href="#id83" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Terrain Ruggedness Index</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output ruggedness raster.
+The value -9999 is used as NoData value.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id84">
+<h3>Python code<a class="headerlink" href="#id84" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:triterrainruggednessindex</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="topographic-position-index-tpi">
+<span id="gdaltpitopographicpositionindex"></span><h2><a class="toc-backref" href="#id107" role="doc-backlink"><span class="section-number">28.2.1.17. </span>Topographic Position Index (TPI)</a><a class="headerlink" href="#topographic-position-index-tpi" title="Link to this heading"></a></h2>
+<p>Outputs a single-band raster with values computed from the elevation.
+TPI stands for Topographic Position Index, which is defined as the
+difference between a central pixel and the mean of its surrounding
+cells.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdaldem.html">GDAL DEM utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Analysis</span></p>
+<section id="id86">
+<h3>Parameters<a class="headerlink" href="#id86" title="Link to this heading"></a></h3>
+<section id="id87">
+<h4>Basic parameters<a class="headerlink" href="#id87" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input elevation raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Band number</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code></p></td>
+<td><p>[raster band]</p>
+<p>Default: 1</p>
+</td>
+<td><p>The number of the band to use for elevation values</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Compute edges</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMPUTE_EDGES</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates edges from the elevation raster</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Terrain Ruggedness Index</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id88">
+<h4>Advanced parameters<a class="headerlink" href="#id88" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>Batch Process and Model Designer: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id89">
+<h3>Outputs<a class="headerlink" href="#id89" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Terrain Ruggedness Index</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Output raster.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id90">
+<h3>Python code<a class="headerlink" href="#id90" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:tpitopographicpositionindex</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="28.2. GDAL algorithm provider" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rasterconversion.html" class="btn btn-neutral float-right" title="28.2.2. Raster conversion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/processing_algs/gdal/rasteranalysis.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/processing_algs/gdal/rasteranalysis.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/processing_algs/gdal/rasteranalysis.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/processing_algs/gdal/rasteranalysis.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/processing_algs/gdal/rasteranalysis.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/processing_algs/gdal/rasteranalysis.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/processing_algs/gdal/rasteranalysis.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/processing_algs/gdal/rasteranalysis.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/processing_algs/gdal/rasteranalysis.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/processing_algs/gdal/rasteranalysis.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/processing_algs/gdal/rasteranalysis.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/processing_algs/gdal/rasteranalysis.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/processing_algs/gdal/rasteranalysis.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/processing_algs/gdal/rasteranalysis.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/processing_algs/gdal/rasteranalysis.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/gdal/rasteranalysis.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/1fd7f6aea3bbc2be5a3ec9d68e7dee52" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

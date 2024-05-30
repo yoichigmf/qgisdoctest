@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>17.1. ラスタプロパティダイアログ &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_raster/raster_properties.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="17.2. ラスタ解析" href="raster_analysis.html" />
+    <link rel="prev" title="17. ラスタデータの操作" href="index.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 17.1. ラスタプロパティダイアログ">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. 序文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. 記述ルール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. 機能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. 最初のステップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. プロジェクトファイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGISのユーザインタフェース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. ブラウザパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGISの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. 投影法の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. 地図の可視化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. 一般ツール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. 式でレベルアップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. スタイルライブラリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. データソースの管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. ベクタデータの操作</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">17. ラスタデータの操作</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">17.1. ラスタプロパティダイアログ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#information-properties">17.1.1. 情報プロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-properties">17.1.2. ソースプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#symbology-properties">17.1.3. シンボロジプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transparency-properties">17.1.4. 透過性プロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#histogram-properties">17.1.5. ヒストグラムプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rendering-properties">17.1.6. レンダリングプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#temporal-properties">17.1.7. 時系列プロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyramids-properties">17.1.8. ピラミッドプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elevation-properties">17.1.9. 高さプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-properties">17.1.10. メタデータプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#legend-properties">17.1.11. 凡例プロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#display-properties">17.1.12. 表示名プロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qgis-server-properties">17.1.13. QGISサーバープロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raster-identify">17.1.14. Identify raster cells</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="raster_analysis.html">17.2. ラスタ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="georeferencer.html">17.3. ジオリファレンサ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. メッシュデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. ベクタタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. 点群の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. 3Dタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. 地図のレイアウト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. OGC / ISOプロトコルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. GPSデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. 認証システム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS の統合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS プロセシングフレームワーク</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. プロセシングプロバイダとアルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. ヘルプとサポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. 協力者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. 付録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. 文献とWeb参照</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGISユーザガイド</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">17. </span>ラスタデータの操作</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">17.1. </span>ラスタプロパティダイアログ</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/working_with_raster/raster_properties.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="17. ラスタデータの操作" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="raster_analysis.html" class="btn btn-neutral float-right" title="17.2. ラスタ解析" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 89.26% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="raster-properties-dialog">
+<span id="index-0"></span><span id="id1"></span><h1><span class="section-number">17.1. </span>ラスタプロパティダイアログ<a class="headerlink" href="#raster-properties-dialog" title="Link to this heading"></a></h1>
+<nav class="contents local" id="id2">
+<ul class="simple">
+<li><p><a class="reference internal" href="#information-properties" id="id26">情報プロパティ</a></p></li>
+<li><p><a class="reference internal" href="#source-properties" id="id27">ソースプロパティ</a></p></li>
+<li><p><a class="reference internal" href="#symbology-properties" id="id28">シンボロジプロパティ</a></p>
+<ul>
+<li><p><a class="reference internal" href="#band-rendering" id="id29">バンドレンダリング</a></p>
+<ul>
+<li><p><a class="reference internal" href="#multiband-color" id="id30">マルチバンドカラー</a></p></li>
+<li><p><a class="reference internal" href="#paletted-unique-values" id="id31">カテゴリ値パレット</a></p></li>
+<li><p><a class="reference internal" href="#singleband-gray" id="id32">単バンドグレー</a></p></li>
+<li><p><a class="reference internal" href="#singleband-pseudocolor" id="id33">単バンド疑似カラー</a></p></li>
+<li><p><a class="reference internal" href="#hillshade" id="id34">陰影図（hillshade）</a></p></li>
+<li><p><a class="reference internal" href="#contours" id="id35">等高線（Contours）</a></p></li>
+<li><p><a class="reference internal" href="#setting-the-min-and-max-values" id="id36">最小 / 最大値設定</a></p></li>
+<li><p><a class="reference internal" href="#color-ramp-shader-classification" id="id37">カラーランプシェーダの分類</a></p></li>
+<li><p><a class="reference internal" href="#customize-raster-legend" id="id38">ラスタの凡例のカスタマイズ</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#layer-rendering" id="id39">レイヤレンダリング</a></p></li>
+<li><p><a class="reference internal" href="#resampling" id="id40">リサンプリング</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#transparency-properties" id="id41">透過性プロパティ</a></p></li>
+<li><p><a class="reference internal" href="#histogram-properties" id="id42">ヒストグラムプロパティ</a></p></li>
+<li><p><a class="reference internal" href="#rendering-properties" id="id43">レンダリングプロパティ</a></p></li>
+<li><p><a class="reference internal" href="#temporal-properties" id="id44">時系列プロパティ</a></p></li>
+<li><p><a class="reference internal" href="#pyramids-properties" id="id45">ピラミッドプロパティ</a></p></li>
+<li><p><a class="reference internal" href="#elevation-properties" id="id46">高さプロパティ</a></p></li>
+<li><p><a class="reference internal" href="#metadata-properties" id="id47">メタデータプロパティ</a></p></li>
+<li><p><a class="reference internal" href="#legend-properties" id="id48">凡例プロパティ</a></p></li>
+<li><p><a class="reference internal" href="#display-properties" id="id49">表示名プロパティ</a></p></li>
+<li><p><a class="reference internal" href="#qgis-server-properties" id="id50">QGISサーバープロパティ</a></p></li>
+<li><p><a class="reference internal" href="#raster-identify" id="id51">Identify raster cells</a></p></li>
+</ul>
+</nav>
+<p>Raster data is made up of pixels (or cells), and each pixel has a value.
+It is commonly used to store various types of data, including:</p>
+<ul class="simple">
+<li><p>Imagery, such as satellite images, digital aerial photographs, scanned maps</p></li>
+<li><p>Elevation data, such as digital elevation models (DEMs), digital terrain models (DTMs)</p></li>
+<li><p>Other types of data, such as land cover, soil types, rainfall and many others.</p></li>
+</ul>
+<p>Raster data can be stored in several supported formats, including GeoTIFF,
+ERDAS Imagine, ArcInfo ASCII GRID, PostGIS Raster and others.
+See more at <a class="reference internal" href="../managing_data_source/opening_data.html#opening-data"><span class="std std-ref">データを開く</span></a>.</p>
+<p>ラスタレイヤのプロパティを表示・設定するには、マップ凡例のレイヤ名をダブルクリックするか、レイヤ名を右クリックして、コンテキストメニューから <span class="guilabel">プロパティ</span> を選択します。これにより <span class="guilabel">ラスタレイヤプロパティ</span> ダイアログが表示されます。</p>
+<p>このダイアログにはさまざまなタブがあります：</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/metadata.png"><img alt="metadata" src="../../../_images/metadata.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#raster-information"><span class="std std-ref">情報</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/system.png"><img alt="system" src="../../../_images/system.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#raster-sourcetab"><span class="std std-ref">ソース</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <a class="reference internal" href="#raster-symbology"><span class="std std-ref">シンボロジ</span></a><sup>[1]</sup></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/transparency.png"><img alt="transparency" src="../../../_images/transparency.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#raster-transparency"><span class="std std-ref">透明度</span></a><sup>[1]</sup></p></td>
+<td><p><a class="reference internal" href="../../../_images/rasterHistogram.png"><img alt="rasterHistogram" src="../../../_images/rasterHistogram.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#raster-histogram"><span class="std std-ref">ヒストグラム</span></a><sup>[1]</sup></p></td>
+<td><p><a class="reference internal" href="../../../_images/rendering.png"><img alt="rendering" src="../../../_images/rendering.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#raster-rendering"><span class="std std-ref">レンダリング</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/temporal.png"><img alt="temporal" src="../../../_images/temporal.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#raster-temporal"><span class="std std-ref">時系列</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/pyramids.png"><img alt="pyramids" src="../../../_images/pyramids.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#raster-pyramids"><span class="std std-ref">ピラミッド</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/elevationscale.png"><img alt="elevationscale" src="../../../_images/elevationscale.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#raster-elevation"><span class="std std-ref">標高</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/editmetadata.png"><img alt="editMetadata" src="../../../_images/editmetadata.png" style="width: 1.2em;" /></a> <a class="reference internal" href="#raster-metadata"><span class="std std-ref">メタデータ</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/legend.png"><img alt="legend" src="../../../_images/legend.png" style="width: 1.2em;" /></a> <a class="reference internal" href="#raster-server"><span class="std std-ref">凡例</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/display.png"><img alt="display" src="../../../_images/display.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#raster-display"><span class="std std-ref">Display</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/overlay.png"><img alt="overlay" src="../../../_images/overlay.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#raster-server"><span class="std std-ref">QGISサーバー</span></a></p></td>
+<td><p><a class="reference internal" href="../plugins/plugins.html#plugins"><span class="std std-ref">外部プラグイン</span></a><sup>[2]</sup> タブ</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><sup>[1]</sup> <a class="reference internal" href="../introduction/general_tools.html#layer-styling-panel"><span class="std std-ref">レイヤスタイルパネル</span></a> からも利用可能です</p>
+<p><sup>[2]</sup> インストールした <a class="reference internal" href="../plugins/plugins.html#plugins"><span class="std std-ref">外部プラグイン</span></a> は、任意でこのダイアログにタブを追加することがあります。これらについては、このドキュメントでは説明しません。外部プラグインのドキュメントを参照してください。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>ライブアップデートレンダリング</strong></p>
+<p><a class="reference internal" href="../introduction/general_tools.html#layer-styling-panel"><span class="std std-ref">レイヤスタイル設定パネル</span></a> はレイヤプロパティダイアログの一般的な機能のいくつかを提供しており、レイヤスタイルの設定を素早く行い、変更内容をマップキャンバス上で確認できる、優れたモードレスのウィジェットです。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>埋め込まれたレイヤ（ <a class="reference internal" href="../introduction/general_tools.html#nesting-projects"><span class="std std-ref">外部プロジェクトからのレイヤの埋め込み</span></a> を参照）のプロパティ（シンボロジ、ラベル、アクション、デフォルト値、フォーム...）は、元のプロジェクトファイルから引用されているため、この動作を壊す可能性のある変更を避けるために、埋め込まれたレイヤに対してはレイヤプロパティダイアログは利用できなくなっています。</p>
+</div>
+<section id="information-properties">
+<span id="raster-information"></span><h2><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">17.1.1. </span>情報プロパティ</a><a class="headerlink" href="#information-properties" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../../../_images/metadata.png"><img alt="metadata" src="../../../_images/metadata.png" style="width: 1.5em;" /></a> <span class="guilabel">情報</span> タブは読み取り専用で、現在のレイヤの要約された情報やメタデータをさっと掴むことができる興味深い場所です。提供される情報には、以下のものがあります：</p>
+<ul class="simple">
+<li><p>一般情報：プロジェクト内での名前、ソースへのパス、付随的なファイルのリスト、最終更新時刻、ファイルの大きさ、使用しているプロバイダ</p></li>
+<li><p>レイヤのプロバイダからの情報：領域、幅、高さ、データタイプ、GDALドライバ、バンドの統計情報</p></li>
+<li><p>空間参照システム（CRS）：CRSの名前、単位、投影法、精度、参照（静的か動的か）</p></li>
+<li><p>レイヤのプロパティから読み取った情報：データタイプ、領域、幅/高さ、圧縮、ピクセルの大きさ、バンドの統計量、バンド数、行・列の数、ラスタのNo-Data値...</p></li>
+<li><p><a class="reference internal" href="#raster-metadata"><span class="std std-ref">入力されたメタデータ</span></a> からの情報：アクセス、領域、リンク、連絡先、履歴など</p></li>
+</ul>
+</section>
+<section id="source-properties">
+<span id="raster-sourcetab"></span><h2><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">17.1.2. </span>ソースプロパティ</a><a class="headerlink" href="#source-properties" title="Link to this heading"></a></h2>
+<p><span class="guilabel">ソース</span> タブは、選択されたラスタに関する以下のような基本的な情報を表示します：</p>
+<ul class="simple">
+<li><p><span class="guilabel">レイヤパネル</span> で表示される <span class="guilabel">レイヤ名</span></p></li>
+<li><p><span class="guilabel">設定されたCRS</span> ：レイヤの <a class="reference internal" href="../working_with_projections/working_with_projections.html#layer-crs"><span class="std std-ref">座標参照系(CRS)</span></a> を表示します。最近使用したCRSをドロップダウンリストから選ぶか、 <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> <sup>CRSの選択</sup> ボタン（ <a class="reference internal" href="../working_with_projections/working_with_projections.html#crs-selector"><span class="std std-ref">座標参照系セレクタ</span></a> を参照）をクリックすることで、レイヤのCRSを変更できます。レイヤのCRSが間違っている場合か、CRSが何も設定されていない場合にのみ、この操作を行ってください。データを再投影したい場合には、プロセシングアルゴリズムのレイヤの再投影を使用するか、 <a class="reference internal" href="../managing_data_source/create_layers.html#general-saveas"><span class="std std-ref">新しいデータセットとして保存</span></a> してください。</p></li>
+</ul>
+<figure class="align-center" id="id5">
+<span id="figure-raster-properties"></span><img alt="../../../_images/rasterPropertiesDialog.png" src="../../../_images/rasterPropertiesDialog.png" />
+<figcaption>
+<p><span class="caption-number">図 17.1 </span><span class="caption-text">ラスタレイヤプロパティ - ソースダイアログ</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="symbology-properties">
+<span id="raster-symbology"></span><span id="index-1"></span><h2><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">17.1.3. </span>シンボロジプロパティ</a><a class="headerlink" href="#symbology-properties" title="Link to this heading"></a></h2>
+<p>ラスタレイヤのシンボロジタブは、3つの異なるセクションからなります：</p>
+<ul class="simple">
+<li><p><span class="guilabel">バンドレンダリング</span> ：使用するレンダラーの種類を操作できます</p></li>
+<li><p><span class="guilabel">レイヤレンダリング</span> ：レンダリングされるデータに効果を適用します</p></li>
+<li><p><span class="guilabel">リサンプリング</span> ：マップ上でのレンダリングを最適化するリサンプリング手法を設定します</p></li>
+</ul>
+<section id="band-rendering">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">17.1.3.1. </span>バンドレンダリング</a><a class="headerlink" href="#band-rendering" title="Link to this heading"></a></h3>
+<p>QGISには数多くの異なる <span class="guilabel">レンダリングタイプ</span> があります。データタイプと強調したい情報に応じてレンダラーを選択してください。</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#multiband-color"><span class="std std-ref">マルチバンドカラー</span></a> - ファイルに複数のバンドがある場合（例：マルチバンドの衛星画像）</p></li>
+<li><p><a class="reference internal" href="#paletted"><span class="std std-ref">カテゴリ値パレット</span></a> - インデックス付けされたパレットを持つ単バンドのファイル（例：デジタル地形図）や、ラスタレイヤをレンダリングするためのパレットの一般用途</p></li>
+<li><p><a class="reference internal" href="#singleband-gray"><span class="std std-ref">単バンドグレー</span></a> - 画像（の1バンド）をグレースケールでレンダリングします。ファイルがマルチバンドではなく、パレットも持たない場合には、QGISはこのレンダラを選択します（例：陰影起伏図など）</p></li>
+<li><p><a class="reference internal" href="#label-colormaptab"><span class="std std-ref">単バンド疑似カラー</span></a> - このレンダラーは連続値パレットやカラーマップのファイルに使用します（例：標高地図など）</p></li>
+<li><p><a class="reference internal" href="#hillshade-renderer"><span class="std std-ref">陰影図（hillshade）</span></a> - バンドの一つから陰影図を作成します。</p></li>
+<li><p><a class="reference internal" href="#raster-contours"><span class="std std-ref">等高線（Contours）</span></a> - ソースラスタバンドに対してオンザフライで等高線を生成します。</p></li>
+</ol>
+<section id="multiband-color">
+<span id="id3"></span><h4><a class="toc-backref" href="#id30" role="doc-backlink">マルチバンドカラー</a><a class="headerlink" href="#multiband-color" title="Link to this heading"></a></h4>
+<p>マルチバンドカラーレンダラーを選択した場合には、画像から選択した3つのバンドがカラー画像の赤、緑、青成分として使用されます。QGISはラスタの各バンドから自動的に <span class="guilabel">最小</span> と <span class="guilabel">最大</span> の値を取得し、色付けをこれに応じてスケーリングします。 <a class="reference internal" href="#minmaxvalues"><span class="std std-ref">最小/最大値設定</span></a> のセクションで値の範囲を制御することができます。</p>
+<p><span class="guilabel">コントラスト</span> は次の値をとります： 「強調しない」、「最小最大範囲に引き伸ばす」、「最小最大範囲に引き伸ばしカット」、「最小値から最大値までの範囲以外は無視」</p>
+<div class="admonition note" id="index-2">
+<p class="admonition-title">注釈</p>
+<p><strong>コントラスト</strong></p>
+<p>GRASSラスタを追加する場合、たとえQGISの一般オプションで他の値に設定したとしても、 <em>コントラスト</em> オプションは常に自動的に <em>最小最大範囲に引き伸ばす</em> に設定されます。</p>
+</div>
+<figure class="align-center" id="id6">
+<span id="figure-raster-multiband"></span><img alt="../../../_images/rasterMultibandColor.png" src="../../../_images/rasterMultibandColor.png" />
+<figcaption>
+<p><span class="caption-number">図 17.2 </span><span class="caption-text">ラスタシンボロジ - マルチバンドカラーレンダリング</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>マルチバンドラスタの単バンドを表示する</strong></p>
+<p>マルチバンド画像の単バンド（例えば赤）を表示したい場合、緑と青のバンドを <span class="guilabel">未設定</span> に設定すればよいと思うかもしれません。しかし、この場合に推奨される方法は、画像のレンダリングタイプを <a class="reference internal" href="#singleband-gray"><span class="std std-ref">単バンドグレー</span></a> に設定し、使用する <span class="guilabel">グレーバンド</span> に赤のバンドを選択することです。</p>
+</div>
+</section>
+<section id="paletted-unique-values">
+<span id="paletted"></span><h4><a class="toc-backref" href="#id31" role="doc-backlink">カテゴリ値パレット</a><a class="headerlink" href="#paletted-unique-values" title="Link to this heading"></a></h4>
+<p>これは、各ピクセル値にある特定の色が割り当てられたカラーテーブルを含んだ単バンドファイルに対する標準的なレンダラーオプションです。この場合、パレットは自動的にレンダリングされます。</p>
+<p>これはあらゆる種類のラスタバンドに使用することができ、ユニークなラスタ値それぞれに色を割り当てます。</p>
+<p>色を変更したい場合には、色をダブルクリックすると <span class="guilabel">色の選択</span> ダイアログが表示されます。</p>
+<p>色にラベルを割り当てることもできます。このラベルはラスタレイヤの凡例で表示されます。</p>
+<p>カラーテーブルの選択した行の上で右クリックすると、以下のコンテキストメニューが表示されます：</p>
+<ul class="simple">
+<li><p>選択した行の <span class="guilabel">色を変更...</span></p></li>
+<li><p>選択した行の <span class="guilabel">不透明度を変更...</span></p></li>
+<li><p>選択した行の <span class="guilabel">ラベルを変更...</span></p></li>
+</ul>
+<figure class="align-center" id="id7">
+<span id="figure-raster-paletted-unique"></span><img alt="../../../_images/rasterPalettedUniqueValue.png" src="../../../_images/rasterPalettedUniqueValue.png" />
+<figcaption>
+<p><span class="caption-number">図 17.3 </span><span class="caption-text">ラスタシンボロジ - カテゴリ値パレットレンダリング</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>カラーマップの下の右にある <span class="guilabel">...</span> （ <sup>詳細オプション</sup> ）ボタンをクリックして開くと表示されるプルダウンメニューには、カラーマップの読み込み（ <span class="guilabel">ファイルからカラーマップを読み込む...</span> と書き出し（ <span class="guilabel">ファイルへのカラーマップのエクスポート...</span> ）、クラスの読み込み（ <span class="guilabel">レイヤからクラスを読み込む</span> ）があります。</p>
+</section>
+<section id="singleband-gray">
+<span id="id4"></span><h4><a class="toc-backref" href="#id32" role="doc-backlink">単バンドグレー</a><a class="headerlink" href="#singleband-gray" title="Link to this heading"></a></h4>
+<p>このレンダラーは、ただ一つのバンドを <span class="guilabel">グラデーション</span> ：「黒から白」または「白から黒」を使用してレンダリングします。色付けする値の範囲（ <span class="guilabel">最小値（Min）</span> と <span class="guilabel">最大値（Max）</span> ）は、 <a class="reference internal" href="#minmaxvalues"><span class="std std-ref">最小/最大値設定</span></a> で変更できます。</p>
+<p><span class="guilabel">コントラスト</span> は次の値をとります： 「強調しない」、「最小最大範囲に引き伸ばす」、「最小最大範囲に引き伸ばしカット」、「最小値から最大値までの範囲以外は無視」</p>
+<figure class="align-center" id="id8">
+<span id="figure-raster-gray"></span><img alt="../../../_images/rasterSingleBandGray.png" src="../../../_images/rasterSingleBandGray.png" />
+<figcaption>
+<p><span class="caption-number">図 17.4 </span><span class="caption-text">ラスタシンボロジ - 単バンドグレーレンダリング</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>ピクセルには選択されたカラーグラデーションに基づいた色が割り当てられ、レイヤの凡例（ <span class="guilabel">レイヤ</span> パネルと印刷レイアウトの <a class="reference internal" href="../print_composer/composer_items/composer_legend.html#layout-legend-item"><span class="std std-ref">凡例アイテム</span></a> ）は連続カラーランプを使用して表示されます。凡例の設定を調整したい場合には、 <span class="guilabel">凡例の設定...</span> ボタンを押してください。詳細は <a class="reference internal" href="#raster-legend-settings"><span class="std std-ref">ラスタの凡例のカスタマイズ</span></a> を参照してください。</p>
+</section>
+<section id="singleband-pseudocolor">
+<span id="label-colormaptab"></span><span id="index-3"></span><h4><a class="toc-backref" href="#id33" role="doc-backlink">単バンド疑似カラー</a><a class="headerlink" href="#singleband-pseudocolor" title="Link to this heading"></a></h4>
+<p>これは連続的なパレットを持つ単バンドのファイルに対するレンダラーオプションです。マルチバンドラスタのバンドの一つに対するカラーマップを作成することもできます。</p>
+<figure class="align-center" id="id9">
+<span id="figure-raster-pseudocolor"></span><img alt="../../../_images/rasterSingleBandPseudocolor.png" src="../../../_images/rasterSingleBandPseudocolor.png" />
+<figcaption>
+<p><span class="caption-number">図 17.5 </span><span class="caption-text">ラスタシンボロジ - 単バンド疑似カラーレンダリング</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>レイヤの <span class="guilabel">バンド</span> と <a class="reference internal" href="#minmaxvalues"><span class="std std-ref">値の範囲</span></a> を使用して、 値の内挿方法とクラス内のピクセルの表現色の割り当てができます。詳細は <a class="reference internal" href="#color-ramp-shader"><span class="std std-ref">カラーランプシェーダの分類</span></a> を参照してください。</p>
+<p>ピクセルには選択されたカラーランプに基づいた色が割り当てられ、レイヤの凡例（ <span class="guilabel">レイヤ</span> パネルと印刷レイアウトの <a class="reference internal" href="../print_composer/composer_items/composer_legend.html#layout-legend-item"><span class="std std-ref">凡例アイテム</span></a> ）は連続カラーランプを使用して表示されます。凡例の設定を調整したり、代わりに個別クラス（と色）を使用した凡例を使いたい場合には、 <span class="guilabel">凡例の設定...</span> ボタンを押してください。詳細は <a class="reference internal" href="#raster-legend-settings"><span class="std std-ref">ラスタの凡例のカスタマイズ</span></a> を参照してください。</p>
+</section>
+<section id="hillshade">
+<span id="hillshade-renderer"></span><span id="index-4"></span><h4><a class="toc-backref" href="#id34" role="doc-backlink">陰影図（hillshade）</a><a class="headerlink" href="#hillshade" title="Link to this heading"></a></h4>
+<p>ラスタレイヤのバンドを陰影でレンダリングします。</p>
+<figure class="align-center" id="id10">
+<span id="figure-raster-hillshade"></span><img alt="../../../_images/rasterHillshade.png" src="../../../_images/rasterHillshade.png" />
+<figcaption>
+<p><span class="caption-number">図 17.6 </span><span class="caption-text">ラスタシンボロジ - 陰影図レンダリング</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>オプション:</p>
+<ul class="simple">
+<li><p><span class="guilabel">バンド</span> ：使用するラスタのバンド</p></li>
+<li><p><span class="guilabel">高度</span> ：光源の仰角（デフォルトは <code class="docutils literal notranslate"><span class="pre">45°</span></code> ）</p></li>
+<li><p><span class="guilabel">方位角（Azimuth）</span> ：光源の方位角（デフォルトは <code class="docutils literal notranslate"><span class="pre">315°</span></code> ）</p></li>
+<li><p><span class="guilabel">Z係数</span> ：ラスタバンドの値のスケーリング係数（デフォルトは <code class="docutils literal notranslate"><span class="pre">1</span></code> ）</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">多方向シェーディング</span> ：多方向のシェーディングを利用するかどうかの指定（デフォルトは <code class="docutils literal notranslate"><span class="pre">off</span></code> ）</p></li>
+</ul>
+</section>
+<section id="contours">
+<span id="raster-contours"></span><h4><a class="toc-backref" href="#id35" role="doc-backlink">等高線（Contours）</a><a class="headerlink" href="#contours" title="Link to this heading"></a></h4>
+<p>このレンダラーは、ソースラスタバンドからオンザフライで計算された等高線を描画します。</p>
+<figure class="align-center" id="id11">
+<span id="figure-raster-contours"></span><img alt="../../../_images/rasterContours.png" src="../../../_images/rasterContours.png" />
+<figcaption>
+<p><span class="caption-number">図 17.7 </span><span class="caption-text">ラスタシンボロジ - 等高線レンダリング</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>オプション:</p>
+<ul>
+<li><p><span class="guilabel">入力バンド</span> ：使用するラスタバンド</p></li>
+<li><p><span class="guilabel">等高線の間隔</span> ：連続する2つの等高線の間隔</p></li>
+<li><p><span class="guilabel">等高線シンボル</span> ：一般の等高線に適用する <a class="reference internal" href="../style_library/symbol_selector.html#vector-line-symbols"><span class="std std-ref">シンボル</span></a></p></li>
+<li><p><span class="guilabel">基準等高線の間隔</span> ：連続する2つの <strong>基準等高線</strong> の間隔。基準等高線は識別しやすいように目立たせて表示され、他の等高線よりも太い線で描かれ、線に沿って値のラベルが付いていることが一般的です。</p></li>
+<li><p><span class="guilabel">基準等高線シンボル</span> ：基準等高線に適用するシンボル</p></li>
+<li><p><span class="guilabel">入力値の乗数</span> ：レンダラーがデータプロバイダへのリクエストをどれだけスケールダウンするかを指定します（デフォルトは <code class="docutils literal notranslate"><span class="pre">4.0</span></code> ）。</p>
+<p>例えば、出力ラスタブロックと同じサイズで入力ラスタブロックの等高線を生成した場合、細かすぎる線が生成されるでしょう。この詳細度合いは、ソースラスタの解像度を下げるようにする「入力値の乗数」によって減らすことができます。1000x500のラスタブロックでダウンスケール10の場合、レンダラーはプロバイダに100x50のラスタを要求します。ダウンスケールを大きくすると、等高線がよりシンプルになります（ただし、詳細が失われます）。</p>
+</li>
+</ul>
+</section>
+<section id="setting-the-min-and-max-values">
+<span id="minmaxvalues"></span><h4><a class="toc-backref" href="#id36" role="doc-backlink">最小 / 最大値設定</a><a class="headerlink" href="#setting-the-min-and-max-values" title="Link to this heading"></a></h4>
+<p>デフォルトでは、QGISはラスタのバンドの <span class="guilabel">最小</span> 値と <span class="guilabel">最大</span> 値を報告します。ごく少数の非常に小さい値や非常に大きい値があると、ラスタのレンダリングに悪影響を及ぼすことがあります。 <span class="guilabel">最小/最大値設定</span> フレームはレンダリングの制御に役立ちます。</p>
+<figure class="align-center" id="id12">
+<span id="figure-raster-minmaxvalues"></span><img alt="../../../_images/rasterMinMaxValues.png" src="../../../_images/rasterMinMaxValues.png" />
+<figcaption>
+<p><span class="caption-number">図 17.8 </span><span class="caption-text">ラスタシンボロジ - 最小 / 最大値設定</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>利用可能なオプションは次のとおりです。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/radiobuttonoff.png"><img alt="radioButtonOff" src="../../../_images/radiobuttonoff.png" style="width: 1.5em;" /></a> <span class="guilabel">ユーザー定義</span> ：バンドのデフォルトの <span class="guilabel">最小</span> 値や <span class="guilabel">最大</span> 値を上書きできます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/radiobuttonoff.png"><img alt="radioButtonOff" src="../../../_images/radiobuttonoff.png" style="width: 1.5em;" /></a> <span class="guilabel">累積範囲</span> ：外れ値を除外します。標準の値の範囲は <code class="docutils literal notranslate"><span class="pre">2%</span></code> から <code class="docutils literal notranslate"><span class="pre">98%</span></code> の間ですが、手動で調整することもできます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a> <span class="guilabel">最小 / 最大</span> ：イメージバンドの値の範囲全体を使用します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/radiobuttonoff.png"><img alt="radioButtonOff" src="../../../_images/radiobuttonoff.png" style="width: 1.5em;" /></a> <span class="guilabel">平均 +/- 標準偏差 x</span> ：標準偏差の範囲内、もしくは標準偏差の倍数の範囲内の値のみを考慮したカラーテーブルを作成します。これは、ラスタレイヤ内に異常に大きな値を持ったセルが1つ2つあり、これがラスタのレンダリングに悪影響を与える場合において便利です。</p></li>
+</ul>
+<p>バンドの最小値・最大値の計算は以下に基づいて行われます：</p>
+<ul class="simple">
+<li><p><span class="guilabel">集計する範囲</span> ：これは <span class="guilabel">ラスタ全体</span> 、 <span class="guilabel">現在のキャンバス</span> または <span class="guilabel">更新されたキャンバス</span> の値をとります。 <span class="guilabel">更新されたキャンバス</span> は、レンダリングに使用する最小値/最大値がキャンバス範囲に応じて変わる（動的引き伸ばし）ことを意味します。</p></li>
+<li><p><span class="guilabel">精度</span> ： <span class="guilabel">推定値（高速）</span> または <span class="guilabel">実際の値（低速）</span> のどちらかを指定します。</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>一部の設定では、実際の最小値と最大値をウィジェット内に表示するためにレイヤプロパティダイアログの <span class="guilabel">適用</span> ボタンを押す必要があります。</p>
+</div>
+</section>
+<section id="color-ramp-shader-classification">
+<span id="color-ramp-shader"></span><h4><a class="toc-backref" href="#id37" role="doc-backlink">カラーランプシェーダの分類</a><a class="headerlink" href="#color-ramp-shader-classification" title="Link to this heading"></a></h4>
+<p>これは、スカラデータセット（ラスタやメッシュのコンター）をその値に基づいて分類し表現するために利用されます。 <a class="reference internal" href="../style_library/style_manager.html#color-ramp"><span class="std std-ref">カラーランプ</span></a> とクラス数が与えられると、このクラス数に対する中間的なカラーマップエントリが生成されます。値の範囲から補間された値と分類モードに応じた値で各色がマッピングされます。スカラデータセットの要素には、そのクラスに基づいて色が割り当てられます。</p>
+<figure class="align-center" id="id13">
+<span id="figure-raster-colorrampshader"></span><img alt="../../../_images/color_ramp_shader.png" src="../../../_images/color_ramp_shader.png" />
+<figcaption>
+<p><span class="caption-number">図 17.9 </span><span class="caption-text">カラーランプシェーダを使用したデータセットのクラス分類</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic">
+<li><p><span class="guilabel">最小値（Min）</span> と <span class="guilabel">最大値（Max）</span> が定義されている必要があり、これがクラス境界の内挿に使用されます。QGISはデフォルトでデータセットから最小値・最大値を検出しますが、修正することも可能です。</p></li>
+<li><p><span class="guilabel">内挿</span> エントリは、スカラー要素にどのように色に割り当てるかを定義します：</p>
+<ul class="simple">
+<li><p><span class="guilabel">離散値</span> （ <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> シンボルが <span class="guilabel">値</span> カラムのヘッダに表示されます）：ラスタの色には、その値以上で最も近いカラーマップのエントリを使用します</p></li>
+<li><p><span class="guilabel">線形</span> ：ラスタの色は、ピクセル値の上下のカラーマップエントリから線形に補間されます。これにより、データセットの各値には固有の色が対応します。</p></li>
+<li><p><span class="guilabel">正確な</span> （ <code class="docutils literal notranslate"><span class="pre">=</span></code> シンボルが <span class="guilabel">値</span> カラムのヘッダに表示されます）：カラーマップエントリの値に等しい値を持つピクセルだけに色が適用されます。その他の値のピクセルはレンダリングされません。</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">カラーランプ</span> ウィジェットによって、データセットに割り当てるカラーランプを選択できます。 <a class="reference internal" href="../introduction/general_tools.html#color-ramp-widget"><span class="std std-ref">このウィジェット</span></a> と同様に、新しいカラーランプを作成したり、現在選択されているカラーランプを編集したり保存したりすることができます。カラーランプの名前は設定に保存されます。</p></li>
+<li><p><span class="guilabel">ラベルの単位の接尾辞</span> は、凡例内で値の後ろにラベルを追加します。また、 <span class="guilabel">ラベルの精度</span> は表示する小数点以下の桁数を制御します。</p></li>
+<li><p>分類の <span class="guilabel">モード</span> は、クラス間でどのように値が分布するかを定義できます：</p>
+<ul class="simple">
+<li><p><span class="guilabel">等間隔分類</span> ： <span class="guilabel">クラス</span> の数を指定すると、全てのクラスの間隔が同じ大きさとなるように値が定義されます。</p></li>
+<li><p><span class="guilabel">連続的</span> ：クラス数と色はカラーランプのグラデーションストップから取得します。値はカラーランプのグラデーションストップの分布に応じて設定されます。</p></li>
+<li><p><span class="guilabel">等量分類</span> ： <span class="guilabel">クラス</span> の数を指定すると、クラスが同じ要素数となるように値が定義されます。これは <a class="reference internal" href="../working_with_mesh/mesh.html#mesh-symbology-contours"><span class="std std-ref">メッシュレイヤ</span></a> では利用できません。</p></li>
+</ul>
+</li>
+<li><p>次に、 <span class="guilabel">分類</span> ボタンを押すか、以下の方法でクラスを微調整します：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>手動で値を追加</sup> ボタンはテーブルに値を追加します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="symbologyRemove" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> <sup>選択した行を削除</sup> ボタンはテーブルから選択した値を削除します。</p></li>
+<li><p><span class="guilabel">値（Value）</span> カラムをダブルクリックするとクラス値を編集できます。</p></li>
+<li><p><span class="guilabel">色</span> カラムをダブルクリックすると <span class="guilabel">色の選択</span> ダイアログが開き、値に適用する色を選択できます。</p></li>
+<li><p><span class="guilabel">ラベル</span> カラムをダブルクリックするとクラスのラベルを編集できます。ただし、これは地物情報表示ツールを使用した場合には表示されません。</p></li>
+<li><p>色テーブルの選択した行で右クリックすると、選択行に対する <span class="guilabel">色を変更...</span> と <span class="guilabel">不透明度を変更...</span> のコンテキストメニューが表示されます。</p></li>
+</ul>
+<p><a class="reference internal" href="../../../_images/mActionFileOpen.png"><img alt="fileOpen" src="../../../_images/mActionFileOpen.png" style="width: 1.5em;" /></a> <sup>ファイルからカラーマップをロード</sup> ボタンや <a class="reference internal" href="../../../_images/mActionFileSaveAs.png"><img alt="fileSaveAs" src="../../../_images/mActionFileSaveAs.png" style="width: 1.5em;" /></a> <sup>カラーマップをファイルにエクスポート</sup> ボタンを使用して、既存のカラーテーブルを読み込んだり、後で使用するためにカラーテーブルを保存したりできます。</p>
+</li>
+<li><p><span class="guilabel">内挿</span> で「線形」オプションを選択した場合は、以下の設定もできます：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">範囲外の値を無視</span> ：デフォルトでは、線形内挿は <span class="guilabel">最小値</span> よりも小さいデータセットの値を最初のクラスの色（同様に <span class="guilabel">最大値</span> よりも大きな値を最後のクラスの色）に割り当てます。最小値・最大値より外の値をレンダリングしたくない場合には、この設定にチェックを入れてください。</p></li>
+<li><p><span class="guilabel">凡例の設定...</span> ： <span class="guilabel">レイヤ</span> パネルや印刷レイアウトの <a class="reference internal" href="../print_composer/composer_items/composer_legend.html#layout-legend-item"><span class="std std-ref">凡例アイテム</span></a> の表示のためのオプションです。詳細は <a class="reference internal" href="#raster-legend-settings"><span class="std std-ref">ラスタの凡例のカスタマイズ</span></a> を参照してください。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="customize-raster-legend">
+<span id="raster-legend-settings"></span><h4><a class="toc-backref" href="#id38" role="doc-backlink">ラスタの凡例のカスタマイズ</a><a class="headerlink" href="#customize-raster-legend" title="Link to this heading"></a></h4>
+<p>ラスタレイヤやメッシュレイヤにカラーランプを適用する場合、凡例をクラス分けして表示したいことがあります。デフォルトでは、QGISは <span class="guilabel">レイヤ</span> パネルや印刷レイアウトの <a class="reference internal" href="../print_composer/composer_items/composer_legend.html#layout-legend-item"><span class="std std-ref">凡例アイテム</span></a> には最大値・最小値付きの連続的なカラーランプを表示します。この凡例は、クラス分類ウィジェットの <span class="guilabel">凡例の設定...</span> ボタンを使用してカスタマイズすることができます。</p>
+<figure class="align-center" id="id14">
+<span id="figure-raster-legend-settings"></span><img alt="../../../_images/raster_legend_settings.png" src="../../../_images/raster_legend_settings.png" />
+<figcaption>
+<p><span class="caption-number">図 17.10 </span><span class="caption-text">ラスタの凡例の修正</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>このダイアログでは、 <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">表示に連動する凡例を使用する</span> かどうかを設定できます。チェックを外すと、凡例はさまざまな階級に対応して適用されるバラバラの色で表示されます。このオプションは、 <a class="reference internal" href="#singleband-gray"><span class="std std-ref">単バンドグレー</span></a> シンボロジのラスタでは利用できません。</p>
+<p><span class="guilabel">表示に連動する凡例を使用する</span> にチェックを入れると、凡例のラベル、レイアウトのプロパティの両方を設定できます。</p>
+<p><strong>ラベル</strong></p>
+<ul class="simple">
+<li><p>ラベルへの <span class="guilabel">接頭辞</span> や <span class="guilabel">単位文字</span> の追加</p></li>
+<li><p>凡例に表示する <span class="guilabel">最小値</span> や <span class="guilabel">最大</span> 値の修正</p></li>
+<li><p><span class="guilabel">数値フォーマット</span> の <a class="reference internal" href="../introduction/general_tools.html#number-formatting"><span class="std std-ref">カスタマイズ</span></a></p></li>
+<li><p>印刷レイアウトの凡例に使用する <span class="guilabel">テキストフォーマット</span> の <a class="reference internal" href="../style_library/label_settings.html#text-format"><span class="std std-ref">カスタマイズ</span></a></p></li>
+</ul>
+<p><strong>レイアウト</strong></p>
+<ul class="simple">
+<li><p>凡例カラーランプの <span class="guilabel">方向</span> の設定： <strong>垂直</strong> または <strong>水平</strong></p></li>
+<li><p>上記の方向に応じた、値の <span class="guilabel">方向</span> の設定</p>
+<ul>
+<li><p>方向が垂直の場合には、 <strong>上が最大</strong> または <strong>上が最小</strong></p></li>
+<li><p>方向が水平の場合には、 <strong>右が最大</strong> または <strong>右が最小</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="layer-rendering">
+<h3><a class="toc-backref" href="#id39" role="doc-backlink"><span class="section-number">17.1.3.2. </span>レイヤレンダリング</a><a class="headerlink" href="#layer-rendering" title="Link to this heading"></a></h3>
+<p>レイヤのバンドに適用するシンボロジタイプを設定できたら、ラスタファイル全体に適用される特別なレンダリング効果を与えましょう。</p>
+<ul class="simple">
+<li><p>混合モードのいずれかを使用する（ <a class="reference internal" href="../introduction/general_tools.html#blend-modes"><span class="std std-ref">混合モード</span></a> 参照）</p></li>
+<li><p>色の <span class="guilabel">輝度</span> 、 <span class="guilabel">彩度</span> 、 <span class="guilabel">ガンマ</span> 、 <span class="guilabel">コントラスト</span> をカスタマイズする</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">カラーを反転</span> を使用して、レイヤを反対色でレンダリングする。例えば、OpenStreetMapのタイルをダークモードにさっと切り替えるのに便利です。</p></li>
+<li><p>レイヤを <span class="guilabel">グレースケール</span> に変換する。オプションには「明度を使用」、「彩度を使用」、「平均を使用」があります。</p></li>
+<li><p><span class="guilabel">着色</span> を使用して、カラーテーブルの <span class="guilabel">色相</span> の <span class="guilabel">強調</span> を調整する</p></li>
+</ul>
+<p><span class="guilabel">リセット</span> ボタンを押すと、レイヤレンダリングのカスタム変更をすべて削除します。</p>
+<figure class="align-center" id="id15">
+<span id="figure-raster-resampling"></span><img alt="../../../_images/rasterRenderAndResampling.png" src="../../../_images/rasterRenderAndResampling.png" />
+<figcaption>
+<p><span class="caption-number">図 17.11 </span><span class="caption-text">ラスタシンボロジ - レイヤレンダリング設定およびリサンプリング設定</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="resampling">
+<h3><a class="toc-backref" href="#id40" role="doc-backlink"><span class="section-number">17.1.3.3. </span>リサンプリング</a><a class="headerlink" href="#resampling" title="Link to this heading"></a></h3>
+<p><span class="guilabel">リサンプリング</span> オプションは、画像の拡大・縮小時に影響を与えます。リサンプリングモードは地図の見た目を最適化することができます。これは、幾何学的変換によって新しいグレー値行列を計算します。</p>
+<p>When applying the 'Nearest neighbour' method, the map can get a
+pixelated structure when zooming in.
+This appearance can be improved by using the 'Bilinear (2x2 kernel)'
+or 'Cubic (4x4 kernel)' method, which cause sharp edges to be blurred.
+The effect is a smoother image.
+This method can be applied to for instance digital topographic raster maps.</p>
+<p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Early resampling</span>: ソースの解像度がわかっているプロバイダレベルでラスターレンダリングを計算することができ、QGISカスタムスタイルでのレンダリングでより良いズームが確保されます。ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>interpretation method <a href="#id3"><span class="problematic" id="id4">`</span></a>を使用して読み込まれたタイルラスターにとても便利です。</p>
+</section>
+</section>
+<section id="transparency-properties">
+<span id="raster-transparency"></span><span id="index-5"></span><h2><a class="toc-backref" href="#id41" role="doc-backlink"><span class="section-number">17.1.4. </span>透過性プロパティ</a><a class="headerlink" href="#transparency-properties" title="Link to this heading"></a></h2>
+<p>QGIS provides capabilities to set the <a class="reference internal" href="../../../_images/transparency.png"><img alt="transparency" src="../../../_images/transparency.png" style="width: 1.5em;" /></a> <span class="guilabel">Transparency</span> level
+of a raster layer.</p>
+<p><span class="guilabel">グローバルな不透明度</span> スライダーを使用すると、（もしあれば）現在のラスタレイヤの下にあるレイヤがどの程度見えるかを設定できます。これは、ラスタレイヤを重ね合わせる場合（例えば陰影図の上に分類されたラスタ地図を重ねるなど）に非常に便利です。これによって、地図がより立体的に見えるようになります。ラスタの不透明度はデータ定義とすることもでき、例えば他のレイヤの可視性や時間変数、地図帳のページの違いに応じて変化させることができます。</p>
+<figure class="align-center" id="id16">
+<span id="figure-raster-transparency"></span><img alt="../../../_images/rasterTransparency.png" src="../../../_images/rasterTransparency.png" />
+<figcaption>
+<p><span class="caption-number">図 17.12 </span><span class="caption-text">ラスタの「透過性」タブ</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">データなし（nodata）とする値</span> には、QGISが取得した元のソースのnodata値が（もし定義されていれば）表示されます。この値は、レンダリング時にデータなしと見なされます。さらに、 <span class="guilabel">追加のnodata値</span> として扱われるラスタ値を入力することもできます。 <span class="guilabel">no dataの代替表示</span> のカラーセレクタを使用すると、デフォルトの透明なレンダリングの代わりに、自分で設定した色をnodata値のピクセルに適用できます。</p>
+<p>さらに自由度の高い透過性のカスタマイズが <span class="guilabel">カスタム透過オプション</span> のセクションで利用可能です：</p>
+<ul>
+<li><p><span class="guilabel">透過設定するバンド</span> を使用して、バンド全体に不透明度を適用します。</p></li>
+<li><p>透過させるピクセルのリストを対応する透過率とともに指定します。</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>手動で値を追加</sup> ボタンをクリックします。新しい行がピクセルリストに表示されます。</p></li>
+<li><p><strong>赤</strong> 、 <strong>緑</strong> 、 <strong>青</strong> のピクセル値を入力し、適用する <strong>透過率</strong> を調整します。</p></li>
+<li><p>この代わりに、 <a class="reference internal" href="../../../_images/mActionContextHelp.png"><img alt="contextHelp" src="../../../_images/mActionContextHelp.png" style="width: 1.5em;" /></a> <sup>画面から値を追加</sup> ボタンを使用して、ラスタから直接ピクセル値を取得することもできます。透過率の値は入力してください。</p></li>
+<li><p>この手順を繰り返し、さらに多くの値のカスタム透過率を調整します。</p></li>
+<li><p><span class="guilabel">適用</span> ボタンを押して、地図を確認してみましょう。</p></li>
+</ol>
+<p>このように、カスタム透明度を設定するのはとても簡単ですが、かなりの手間がかかります。そのため、 <a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <sup>ファイルにエクスポート</sup> ボタンを使用して、透明度リストをファイルに保存できます。 <a class="reference internal" href="../../../_images/mActionFileOpen.png"><img alt="fileOpen" src="../../../_images/mActionFileOpen.png" style="width: 1.5em;" /></a> <sup>ファイルからインポート</sup> ボタンは、透明度の設定をロードして現在のラスタレイヤに適用します。</p>
+</li>
+</ul>
+</section>
+<section id="histogram-properties">
+<span id="raster-histogram"></span><span id="index-6"></span><h2><a class="toc-backref" href="#id42" role="doc-backlink"><span class="section-number">17.1.5. </span>ヒストグラムプロパティ</a><a class="headerlink" href="#histogram-properties" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../../../_images/rasterHistogram.png"><img alt="rasterHistogram" src="../../../_images/rasterHistogram.png" style="width: 1.5em;" /></a> <span class="guilabel">ヒストグラム</span> タブでは、ラスタ内の値の分布を確認できます。ヒストグラムは、 <span class="guilabel">ヒストグラムの計算</span> ボタンを押すと生成されます。既存のバンドは全て一緒に表示されます。ヒストグラムを画像として保存するには、 <a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> ボタンを使用します。</p>
+<p>ヒストグラムの下部では、ドロップダウンメニューのラスタバンドを選択して、 <span class="guilabel">最小/最大のスタイルを設定</span> することができます。 <a class="reference internal" href="../../../_images/mAction.png"><img alt="actionRun" src="../../../_images/mAction.png" style="width: 1.5em;" /></a> <span class="guilabel">設定/アクション</span> ドロップダウンメニューには、ヒストグラムをカスタマイズするための高度なオプションがあります。</p>
+<ul class="simple">
+<li><p><span class="guilabel">可視性</span> オプションを使用すると、個別バンドごとにヒストグラムを表示できます。これには <a class="reference internal" href="../../../_images/radiobuttonoff.png"><img alt="radioButtonOff" src="../../../_images/radiobuttonoff.png" style="width: 1.5em;" /></a> <span class="guilabel">選択したバンドを表示する</span> オプションを選択してください。</p></li>
+<li><p><span class="guilabel">最小/最大オプション</span> では、 「最小/最大マーカーを常時表示」、「最小/最大にズーム」、「最小/最大にスタイルを更新」の設定ができます。</p></li>
+<li><p><span class="guilabel">アクション</span> オプションでは、バンドの最大・最小値を変更した後で「リセット」や「ヒストグラムを再計算」することができます。</p></li>
+</ul>
+<figure class="align-center" id="id17">
+<span id="figure-raster-histogram"></span><img alt="../../../_images/rasterHistogram1.png" src="../../../_images/rasterHistogram1.png" />
+<figcaption>
+<p><span class="caption-number">図 17.13 </span><span class="caption-text">ラスタの「ヒス​​トグラム」タブ</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="rendering-properties">
+<span id="raster-rendering"></span><span id="index-7"></span><h2><a class="toc-backref" href="#id43" role="doc-backlink"><span class="section-number">17.1.6. </span>レンダリングプロパティ</a><a class="headerlink" href="#rendering-properties" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../../../_images/rendering.png"><img alt="rendering" src="../../../_images/rendering.png" style="width: 1.5em;" /></a> <span class="guilabel">レンダリング</span> タブでは、以下の設定が可能です：</p>
+<ul>
+<li><p>set <span class="guilabel">Scale dependent visibility</span> for the layer:
+You can set the <span class="guilabel">Maximum (inclusive)</span> and <span class="guilabel">Minimum (exclusive)</span> scales,
+defining a range of scales in which the layer will be visible.
+It will be hidden outside this range.
+The <a class="reference internal" href="../../../_images/mActionMapIdentification.png"><img alt="mapIdentification" src="../../../_images/mActionMapIdentification.png" style="width: 1.5em;" /></a> <sup>Set to current canvas scale</sup> button
+helps you use the current map canvas scale as a boundary.
+See <a class="reference internal" href="../introduction/general_tools.html#label-scaledepend"><span class="std std-ref">表示縮尺セレクタ</span></a> for more information.</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>レイヤの縮尺に応じた表示は、<span class="guilabel">レイヤ</span> パネルからも有効にすることもできます:　レイヤを右クリックし、コンテキストメニューから <span class="guilabel">レイヤの縮尺表示を設定</span> を選択します。</p>
+</div>
+</li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Refresh layer at interval</span>: controls whether and how regular a layer can be refreshed.
+Available <span class="guilabel">Configuration</span> options are:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Reload data</span>: the layer will be completely refreshed.
+Any cached data will be discarded and refetched from the provider.
+This mode may result in slower map refreshes.</p></li>
+<li><p><span class="guilabel">Redraw layer only</span>: this mode is useful for animation
+or when the layer's style will be updated at regular intervals.
+Canvas updates are deferred in order to avoid refreshing multiple times
+if more than one layer has an auto update interval set.</p>
+</li>
+</ul>
+<p>It is also possible to set the <span class="guilabel">Interval (seconds)</span> between consecutive refreshments.</p>
+</li>
+</ul>
+<figure class="align-center" id="id18">
+<span id="figure-raster-rendering"></span><img alt="../../../_images/rasterRendering.png" src="../../../_images/rasterRendering.png" />
+<figcaption>
+<p><span class="caption-number">図 17.14 </span><span class="caption-text">ラスタのレンダリングプロパティ</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="temporal-properties">
+<span id="raster-temporal"></span><span id="index-8"></span><h2><a class="toc-backref" href="#id44" role="doc-backlink"><span class="section-number">17.1.7. </span>時系列プロパティ</a><a class="headerlink" href="#temporal-properties" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../../../_images/temporal.png"><img alt="temporal" src="../../../_images/temporal.png" style="width: 1.5em;" /></a> <span class="guilabel">時系列</span> タブは、時間経過に伴うレイヤのレンダリングを制御するオプションを提供します。このような動的なレンダリングには、マップキャンバスで <a class="reference internal" href="../map_views/map_view.html#maptimecontrol"><span class="std std-ref">時系列ナビ</span></a> を有効にする必要があります。</p>
+<figure class="align-center" id="id19">
+<span id="figure-raster-temporal"></span><img alt="../../../_images/rasterTemporal.png" src="../../../_images/rasterTemporal.png" />
+<figcaption>
+<p><span class="caption-number">図 17.15 </span><span class="caption-text">ラスタの時系列プロパティ</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">動的時系列コントロール</span> オプションにチェックを入れ、レイヤの再描画をどのようにするか設定します：</p>
+<ul class="simple">
+<li><p><span class="guilabel">自動</span> ：元のデータプロバイダが時系列データの処理をサポートしている場合、レンダリングは元のデータプロバイダによって制御されます。この設定は例えば、WMS-Tレイヤや、PostGISラスタレイヤ等で利用できます。</p>
+</li>
+<li><p><span class="guilabel">固定時間範囲</span> ：アニメーション時刻が <span class="guilabel">開始時刻</span> と <span class="guilabel">終了時刻</span> の範囲内にある場合にのみ、このラスタレイヤを表示します。</p></li>
+<li><p><span class="guilabel">レイヤのみ再描画</span> ：レイヤは新しいアニメーションフレーム毎に再描画されます。これは、レンダラーの設定に時間ベースの式の値を使用しているレイヤ（例：レンダラーの透明度をデータによって定義することで、ラスタレイヤをフェードイン/アウトする）に便利です。</p></li>
+</ul>
+</section>
+<section id="pyramids-properties">
+<span id="raster-pyramids"></span><span id="index-9"></span><h2><a class="toc-backref" href="#id45" role="doc-backlink"><span class="section-number">17.1.8. </span>ピラミッドプロパティ</a><a class="headerlink" href="#pyramids-properties" title="Link to this heading"></a></h2>
+<p>QGISで高解像度のラスタレイヤを使用すると、操作が遅くなることがあります。データの低解像度のコピー（ピラミッド）を作成することで、QGISはズームレベルに応じて使用する最適な解像度を選択するため、パフォーマンスが大幅に向上します。</p>
+<p>ピラミッドを作成するには、オリジナル画像があるディレクトリへの書き込み権限を持っている必要があります。</p>
+<p><span class="guilabel">解像度</span> リストからクリックしてピラミッドレベルを作成したい解像度を選択します。</p>
+<p><span class="guilabel">全体図の形式</span> ドロップダウンメニューから <strong>内部（可能であれば）</strong> を選択すると、QGISは内部的にピラミッドを構築しようとします。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>ピラミッドの作成は元のデータファイルを変更する可能性があり、一度作成したピラミッドは削除することはできませんのでご注意ください。「ピラミッドのない」ラスタをとっておきたい場合には、ピラミッドを作成する前にバックアップコピーを作成してください。</p>
+</div>
+<p><strong>外部</strong> や <strong>外部（Erdas Imagine）</strong> を選択した場合には、ピラミッドは元のラスタと同じ場所に、同じ名前の <code class="file docutils literal notranslate"><span class="pre">.ovr</span></code> 拡張子で作成されます。</p>
+<p>ピラミッド作成にはいくつかの <span class="guilabel">リサンプリング方法</span> が使用可能です：</p>
+<ul class="simple">
+<li><p>最近傍</p></li>
+<li><p>平均</p></li>
+<li><p>ガウス</p></li>
+<li><p>キュービック</p></li>
+<li><p>キュービック・スプライン</p></li>
+<li><p>ランチョス法</p></li>
+<li><p>モード</p></li>
+<li><p>なし</p></li>
+</ul>
+<p>最後に <span class="guilabel">ピラミッドの構築</span> ボタンを押すと、処理を開始します。</p>
+<figure class="align-center" id="id20">
+<span id="figure-raster-pyramids"></span><img alt="../../../_images/rasterPyramids.png" src="../../../_images/rasterPyramids.png" />
+<figcaption>
+<p><span class="caption-number">図 17.16 </span><span class="caption-text">ラスタの「ピラミッド」タブ</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="elevation-properties">
+<span id="raster-elevation"></span><span id="index-10"></span><h2><a class="toc-backref" href="#id46" role="doc-backlink"><span class="section-number">17.1.9. </span>高さプロパティ</a><a class="headerlink" href="#elevation-properties" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../../../_images/elevationscale.png"><img alt="elevationscale" src="../../../_images/elevationscale.png" style="width: 1.5em;" /></a> <span class="guilabel">標高</span> タブには、 <a class="reference internal" href="../map_views/3d_map_view.html#label-3dmapview"><span class="std std-ref">3Dマップビュー</span></a> 内のレイヤの標高プロパティと、 <a class="reference internal" href="../map_views/elevation_profile.html#label-elevation-profile-view"><span class="std std-ref">profile tool charts</span></a> 内のレイヤの標高をコントロールするオプションがあります。具体的には次が設定できます:</p>
+<figure class="align-center" id="id21">
+<span id="figure-raster-elevation"></span><img alt="../../../_images/rasterElevation.png" src="../../../_images/rasterElevation.png" />
+<figcaption>
+<p><span class="caption-number">図 17.17 </span><span class="caption-text">ラスタ標高プロパティ</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a><span class="guilabel">標高サーフェスを表示</span>: ラスタレイヤが標高面（DEMなど）を表し、ピクセル値が標高として解釈されるかどうかを指定します。ラスタを <a class="reference internal" href="../map_views/elevation_profile.html#label-elevation-profile-view"><span class="std std-ref">標高断面図</span></a> で表示したい場合は、このオプションをチェックします。また、値を拾う <span class="guilabel">バンド</span> に入力する必要があり、 <span class="guilabel">スケール</span> 係数と <span class="guilabel">オフセット</span> を適用することができます。</p></li>
+<li><p><span class="guilabel">Profile Chart Appearance</span>: controls the rendering
+of the raster elevation data in the profile chart.
+The profile <span class="guilabel">Style</span> can be set as:</p>
+<ul>
+<li><p>特定の <a class="reference internal" href="../style_library/symbol_selector.html#vector-line-symbols"><span class="std std-ref">線のスタイル</span></a> を持った <span class="guilabel">線</span></p></li>
+<li><p>塗りつぶしシンボルを使って、標高曲線の上（<span class="guilabel">Fill above</span>）または下（<span class="guilabel">Fill below</span>）にレンダリングされた標高面。表面のシンボロジは以下のように表されます:</p>
+<ul>
+<li><p><a class="reference internal" href="../style_library/symbol_selector.html#vector-fill-symbols"><span class="std std-ref">塗りつぶしスタイル</span></a></p></li>
+<li><p>そして <span class="guilabel">上限</span>: 塗りつぶしサーフェスがどの高さになるかの最大値（または最小値）</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="metadata-properties">
+<span id="raster-metadata"></span><span id="index-11"></span><h2><a class="toc-backref" href="#id47" role="doc-backlink"><span class="section-number">17.1.10. </span>メタデータプロパティ</a><a class="headerlink" href="#metadata-properties" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../../../_images/editmetadata.png"><img alt="editMetadata" src="../../../_images/editmetadata.png" style="width: 1.2em;" /></a> <span class="guilabel">メタデータ</span> タブには、レイヤに関するメタデータレポートの作成・編集オプションがあります。詳細は <a class="reference internal" href="../introduction/general_tools.html#metadatamenu"><span class="std std-ref">メタデータ</span></a> を参照してください。</p>
+<figure class="align-center" id="id22">
+<span id="figure-raster-metadata"></span><img alt="../../../_images/rasterMetadata.png" src="../../../_images/rasterMetadata.png" />
+<figcaption>
+<p><span class="caption-number">図 17.18 </span><span class="caption-text">ラスタの「メタデータ」タブ</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="legend-properties">
+<span id="raster-legend"></span><span id="index-12"></span><h2><a class="toc-backref" href="#id48" role="doc-backlink"><span class="section-number">17.1.11. </span>凡例プロパティ</a><a class="headerlink" href="#legend-properties" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../../../_images/legend.png"><img alt="legend" src="../../../_images/legend.png" style="width: 1.2em;" /></a> <span class="guilabel">凡例</span> タブでは、 <a class="reference internal" href="../introduction/general_tools.html#label-legend"><span class="std std-ref">レイヤパネル</span></a> や <a class="reference internal" href="../print_composer/composer_items/composer_legend.html#layout-legend-item"><span class="std std-ref">印刷レイアウトの凡例</span></a> に関する高度な設定ができます。これらのオプションには以下のものがあります：</p>
+<ul>
+<li><p>レイヤに適用しているシンボロジにもよりますが、凡例に複数のエントリが表示されることで、必ずしも読みやすく便利な表示になるとは限りません。 <span class="guilabel">凡例の枠の画像 ` で代わりとなる :ref:`画像の選択 &lt;embedded_file_selector&gt;</span> を行うことができ、 <span class="guilabel">レイヤ</span> パネルや印刷レイアウトの凡例の両者で表示されます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/legend.png"><img alt="legend" src="../../../_images/legend.png" style="width: 1.2em;" /></a> <span class="guilabel">凡例の埋め込みウィジェット</span> は、レイヤパネル内のレイヤツリーに埋め込み可能なウィジェットのリストです。このアイディアは、レイヤで頻繁に使用するいくつかのアクション（不透明度の設定、フィルタ、選択、スタイルなど）に簡単にアクセスするための方法を提供することです。</p>
+<p>デフォルトではQGISは不透明度ウィジェットを提供していますが、これは独自ウィジェットを登録するプラグインによって拡張することが可能で、管理するレイヤにカスタムアクションを割り当てられます。</p>
+</li>
+</ul>
+<figure class="align-center" id="id23">
+<span id="figure-raster-legend"></span><img alt="../../../_images/rasterLegend.png" src="../../../_images/rasterLegend.png" />
+<figcaption>
+<p><span class="caption-number">図 17.19 </span><span class="caption-text">ラスタの「凡例」タブ</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="display-properties">
+<span id="raster-display"></span><span id="index-13"></span><h2><a class="toc-backref" href="#id49" role="doc-backlink"><span class="section-number">17.1.12. </span>表示名プロパティ</a><a class="headerlink" href="#display-properties" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../../../_images/display.png"><img alt="display" src="../../../_images/display.png" style="width: 1.5em;" /></a> <span class="guilabel">Display</span> tab helps you configure HTML map tips to use for
+pixels identification:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Tipsを有効化</span> は、レイヤの地図のTipsを表示するかどうかを制御します。</p></li>
+<li><p>The <span class="guilabel">HTML Map Tip</span> provides a complex and full HTML text editor for map tips,
+mixing QGIS expressions and html styles and tags (multiline, fonts, images, hyperlink, tables, ...).
+You can check the result of your code sample in the <span class="guilabel">Preview</span> frame.</p></li>
+</ul>
+<figure class="align-center" id="id24">
+<span id="figure-raster-display"></span><img alt="../../../_images/rasterDisplay.png" src="../../../_images/rasterDisplay.png" />
+<figcaption>
+<p><span class="caption-number">図 17.20 </span><span class="caption-text">Map tips with raster layer</span><a class="headerlink" href="#id24" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>地図のTipsを表示するには:</p>
+<ol class="arabic simple">
+<li><p>Select the menu option <span class="menuselection">View ► Show Map Tips</span>
+or click on the <a class="reference internal" href="../../../_images/mActionMapTips.png"><img alt="mapTips" src="../../../_images/mActionMapTips.png" style="width: 1.5em;" /></a> <sup>Show Map Tips</sup> icon of the <span class="guilabel">Attributes Toolbar</span>.</p></li>
+<li><p>Make sure that the layer you target is active
+and has the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable Map Tips</span> property checked.</p></li>
+<li><p>Move over a pixel, and the corresponding information will be displayed over.</p></li>
+</ol>
+<p>Map tip is a cross-layer feature meaning that once activated,
+it stays on and applies to any map tip enabled layer in the project until it is toggled off.</p>
+</section>
+<section id="qgis-server-properties">
+<span id="raster-server"></span><span id="index-14"></span><h2><a class="toc-backref" href="#id50" role="doc-backlink"><span class="section-number">17.1.13. </span>QGISサーバープロパティ</a><a class="headerlink" href="#qgis-server-properties" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../../../_images/overlay.png"><img alt="overlay" src="../../../_images/overlay.png" style="width: 1.5em;" /></a> <span class="guilabel">QGISサーバー</span> タブでは、 <a class="reference internal" href="../../server_manual/index.html#qgis-server-manual"><span class="std std-ref">QGISサーバー</span></a> で公開されるデータの設定を行うことができます。設定内容は以下の通りです：</p>
+<ul class="simple">
+<li><p><span class="guilabel">説明</span>: <span class="guilabel">短い名前</span>、<span class="guilabel">タイトル</span>、<span class="guilabel">要約</span>, <span class="guilabel">キーワード</span>, <span class="guilabel">形式</span> が <code class="docutils literal notranslate"><span class="pre">text/html</span></code>、<code class="docutils literal notranslate"><span class="pre">text/plain</span></code> または <code class="docutils literal notranslate"><span class="pre">application/pdf</span></code> である、<span class="guilabel">データURL</span> など、データを表す情報を提示します。</p></li>
+<li><p><span class="guilabel">帰属</span>: データの提供者を特定するための <span class="guilabel">タイトル</span> と <span class="guilabel">URL</span></p></li>
+<li><p><span class="guilabel">メタデータURL</span>: <code class="docutils literal notranslate"><span class="pre">FGDC</span></code> または <code class="docutils literal notranslate"><span class="pre">TC211</span></code> <span class="guilabel">データ型</span> で、 <code class="docutils literal notranslate"><span class="pre">text/plain</span></code> または <code class="docutils literal notranslate"><span class="pre">text/xml</span></code> <span class="guilabel">形式</span> であるメタデータの <span class="guilabel">URL</span> 一覧</p></li>
+<li><p><span class="guilabel">凡例URL</span>: 凡例の <span class="guilabel">URL</span> で、<code class="docutils literal notranslate"><span class="pre">image/png</span></code> または <code class="docutils literal notranslate"><span class="pre">image/jpeg</span></code> <span class="guilabel">形式</span> のいずれか</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>公開したいラスターレイヤーが既にWebサービスで提供されている場合、さらに <a class="reference internal" href="../working_with_ogc/ogc_client_support.html#wms-server-properties"><span class="std std-ref">properties</span></a> を設定することができます。</p>
+</div>
+<figure class="align-center" id="id25">
+<span id="figure-raster-server"></span><img alt="../../../_images/rasterServer.png" src="../../../_images/rasterServer.png" />
+<figcaption>
+<p><span class="caption-number">図 17.21 </span><span class="caption-text">ラスタプロパティの「QGISサーバー」タブ</span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="raster-identify">
+<span id="identify-raster-cells"></span><h2><a class="toc-backref" href="#id51" role="doc-backlink"><span class="section-number">17.1.14. </span>Identify raster cells</a><a class="headerlink" href="#raster-identify" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../introduction/general_tools.html#identify"><span class="std std-ref">identify features</span></a> tool allows you to get information about
+specific points in a raster layer.</p>
+<p>To use the <a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a><span class="guilabel">Identify features</span> tool:</p>
+<ol class="arabic simple">
+<li><p>Select the raster layer in the Layers panel.</p></li>
+<li><p>Click on the <span class="guilabel">Identify features</span> tool in the toolbar or press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">I</kbd></kbd>.</p></li>
+<li><p>Click on the point in the raster layer that you want to identify.</p></li>
+</ol>
+<p>The Identify Results panel will open in its default <code class="docutils literal notranslate"><span class="pre">Tree</span></code> view
+and display information about the clicked point.
+Below the name of the raster layer, you have on the left the band(s) of the clicked pixel,
+and on the right their respective value.
+These values can also be rendered (from the <span class="guilabel">View</span> menu located at the bottom of the panel) in:</p>
+<ul class="simple">
+<li><p>a <code class="docutils literal notranslate"><span class="pre">Table</span></code> view - organizes the information about the identified features
+and their values in a table.</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">Graph</span></code> view - organizes the information about the identified features
+and their values in a graph.</p></li>
+</ul>
+<p>Under the pixel attributes, you will find the <span class="guilabel">Derived</span> information,
+such as:</p>
+<ul class="simple">
+<li><p>クリックされた点の <code class="docutils literal notranslate"><span class="pre">X</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Y</span></code> 座標値</p></li>
+<li><p>Column and row of the point clicked (pixel)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="17. ラスタデータの操作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="raster_analysis.html" class="btn btn-neutral float-right" title="17.2. ラスタ解析" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/working_with_raster/raster_properties.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/working_with_raster/raster_properties.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/working_with_raster/raster_properties.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/working_with_raster/raster_properties.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/working_with_raster/raster_properties.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/working_with_raster/raster_properties.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/working_with_raster/raster_properties.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/working_with_raster/raster_properties.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/working_with_raster/raster_properties.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/working_with_raster/raster_properties.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/working_with_raster/raster_properties.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/working_with_raster/raster_properties.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/working_with_raster/raster_properties.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/working_with_raster/raster_properties.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/working_with_raster/raster_properties.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/working_with_raster/raster_properties.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/user_manual/working_with_raster/raster_properties.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/user_manual/working_with_raster/raster_properties.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/working_with_raster/raster_properties.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/user_manual/working_with_raster/raster_properties.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/user_manual/working_with_raster/raster_properties.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/user_manual/working_with_raster/raster_properties.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/user_manual/working_with_raster/raster_properties.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/user_manual/working_with_raster/raster_properties.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/user_manual/working_with_raster/raster_properties.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/working_with_raster/raster_properties.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/fc47ef0961ccea3e00ea17431d903b5d" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

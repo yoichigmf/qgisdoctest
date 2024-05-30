@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11.2. 3D Map View &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/map_views/3d_map_view.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="11.3. Elevation Profile View" href="elevation_profile.html" />
+    <link rel="prev" title="11.1. 2D Map View" href="map_view.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 11.2. 3D Map View">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">11. Visualizing Maps</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="map_view.html">11.1. 2D Map View</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">11.2. 3D Map View</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scene-configuration">11.2.1. Scene Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#navigation-options">11.2.2. Navigation options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-animation">11.2.3. Creating an animation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#d-vector-layers">11.2.4. 3D vector layers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="elevation_profile.html">11.3. Elevation Profile View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS User Guide</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">11. </span>Visualizing Maps</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">11.2. </span>3D Map View</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/map_views/3d_map_view.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="map_view.html" class="btn btn-neutral float-left" title="11.1. 2D Map View" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="elevation_profile.html" class="btn btn-neutral float-right" title="11.3. Elevation Profile View" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="d-map-view">
+<span id="label-3dmapview"></span><span id="index-0"></span><h1><span class="section-number">11.2. </span>3D Map View<a class="headerlink" href="#d-map-view" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#scene-configuration" id="id9">Scene Configuration</a></p>
+<ul>
+<li><p><a class="reference internal" href="#general" id="id10">General</a></p></li>
+<li><p><a class="reference internal" href="#terrain" id="id11">Terrain</a></p></li>
+<li><p><a class="reference internal" href="#lights" id="id12">Lights</a></p></li>
+<li><p><a class="reference internal" href="#shadow" id="id13">Shadow</a></p></li>
+<li><p><a class="reference internal" href="#camera-skybox" id="id14">Camera &amp; Skybox</a></p></li>
+<li><p><a class="reference internal" href="#advanced" id="id15">Advanced</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#navigation-options" id="id16">Navigation options</a></p></li>
+<li><p><a class="reference internal" href="#creating-an-animation" id="id17">Creating an animation</a></p></li>
+<li><p><a class="reference internal" href="#d-vector-layers" id="id18">3D vector layers</a></p></li>
+</ul>
+</nav>
+<p>3D visualization support is offered through the 3D map view.
+You can create, manage and open 3D map views via <span class="menuselection">View ► 3D Map Views ►</span> menu:</p>
+<ol class="arabic simple">
+<li><p>By clicking on <a class="reference internal" href="../../../_images/mActionNew3DMap.png"><img alt="new3DMap" src="../../../_images/mActionNew3DMap.png" style="width: 1.5em;" /></a> <span class="menuselection">New 3D Map View</span> you can create a new 3D map view.
+A floating and dockable QGIS panel will appear (see <a class="reference internal" href="#figure-3dmapview"><span class="std std-ref">The 3D Map View dialog</span></a>).
+It has the same extent and view as the 2D main map canvas
+and provides a set of navigation tools to turn the view into 3D.</p></li>
+<li><p>By clicking on <span class="menuselection">Manage 3D Map Views</span> you get in the 3D Map Views Manager.
+Here you get the ability to open, duplicate, remove and rename 3D map views.</p></li>
+<li><p>If you created one or more 3D map views, you see them listed in <span class="menuselection">3D Map Views</span>.
+You can turn them on and off by clicking on. They will be saved by saving the project, even if they are turned off.</p></li>
+</ol>
+<figure class="align-center" id="id2">
+<span id="figure-3dmapview"></span><img alt="../../../_images/3dmapview.png" src="../../../_images/3dmapview.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.23 </span><span class="caption-text">The 3D Map View dialog</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The following tools are provided at the top of the 3D map view panel:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionPan.png"><img alt="pan" src="../../../_images/mActionPan.png" style="width: 1.5em;" /></a> <sup>Camera Control</sup>: moves the view, keeping the same angle
+and direction of the camera</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionZoomFullExtent.png"><img alt="zoomFullExtent" src="../../../_images/mActionZoomFullExtent.png" style="width: 1.5em;" /></a> <sup>Zoom Full</sup>: resizes the view to the whole
+layers’ extent, or the <a class="reference internal" href="#scene-extent"><span class="std std-ref">reference extent</span></a> if set</p></li>
+<li><p><a class="reference internal" href="../../../_images/mAction3DNavigation.png"><img alt="3dNavigation" src="../../../_images/mAction3DNavigation.png" style="width: 1.3em;" /></a> <sup>Toggle On-Screen Notification</sup>: shows/hides the
+navigation widget (that is meant to ease controlling of the map view)</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <sup>Identify</sup>: returns information on the clicked point
+of the terrain or the clicked 3D feature(s) – More details at <a class="reference internal" href="../introduction/general_tools.html#identify"><span class="std std-ref">Identifying Features</span></a></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionMeasure.png"><img alt="measure" src="../../../_images/mActionMeasure.png" style="width: 1.5em;" /></a> <sup>Measurement Line</sup>: measures the horizontal distance between points</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionPlay.png"><img alt="play" src="../../../_images/mActionPlay.png" style="width: 1.5em;" /></a> <sup>Animations</sup>: shows/hides the <a class="reference internal" href="#create-animation"><span class="std std-ref">animation player</span></a> widget</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionSaveMapAsImage.png"><img alt="saveMapAsImage" src="../../../_images/mActionSaveMapAsImage.png" style="width: 1.5em;" /></a> <sup>Save as Image…</sup>: exports the current view to
+an image file format</p></li>
+<li><p><a class="reference internal" href="../../../_images/3d.png"><img alt="3d" src="../../../_images/3d.png" style="width: 1.5em;" /></a> <sup>Export 3D Scene</sup>: exports the current view as a 3D scene
+(<code class="file docutils literal notranslate"><span class="pre">.obj</span></code> file), allowing post-processing in applications like Blender…
+The terrain and vector features are exported as 3D objects.
+The export settings, overriding the layers <a class="reference internal" href="../working_with_vector/vector_properties.html#sec-3-d-view"><span class="std std-ref">properties</span></a>
+or map view <a class="reference internal" href="#scene-configuration"><span class="std std-ref">configuration</span></a>, include:</p>
+<ul>
+<li><p><span class="guilabel">Scene name</span> and destination <span class="guilabel">Folder</span></p></li>
+<li><p><span class="guilabel">Terrain resolution</span></p></li>
+<li><p><span class="guilabel">Terrain texture resolution</span></p></li>
+<li><p><span class="guilabel">Model scale</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Smooth edges</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Export normals</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Export textures</span></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../../../_images/mActionShowPresets.png"><img alt="showPresets" src="../../../_images/mActionShowPresets.png" style="width: 1.5em;" /></a> <sup>Set View Theme</sup>: Allows you to select the set of layers to
+display in the map view from predefined <a class="reference internal" href="../introduction/general_tools.html#map-themes"><span class="std std-ref">map themes</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <sup>Options</sup> menu provides shortcuts to:</p>
+<ul>
+<li><p>Add visual effects to the 3D rendering, such as showing <a class="reference internal" href="#shadows"><span class="std std-ref">shadows</span></a>,
+<a class="reference internal" href="#eye-dome-lighting"><span class="std std-ref">eye dome lighting</span></a> or <a class="reference internal" href="#ambient-occlusion"><span class="std std-ref">ambient occlusion</span></a></p></li>
+<li><p>Synchronize the views (<span class="guilabel">2D map view follows 3D camera</span> and/or
+<span class="guilabel">3D camera follows 2D Map view</span>)</p></li>
+<li><p><span class="guilabel">Show visible camera area in 2D map view</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <sup>Configure</sup> the 3D map view <a class="reference internal" href="#scene-configuration"><span class="std std-ref">settings</span></a>.</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../../../_images/dock.png"><img alt="dock" src="../../../_images/dock.png" style="width: 1.5em;" /></a> <sup>Dock 3D Map View</sup>: switch from docked widget to top level window</p></li>
+</ul>
+<section id="scene-configuration">
+<span id="id1"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">11.2.1. </span>Scene Configuration</a><a class="headerlink" href="#scene-configuration" title="Link to this heading"></a></h2>
+<p>The 3D map view opens with some default settings you can customize.
+To do so, expand the <a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <sup>Options</sup> menu at the top of
+the 3D canvas panel and press the <a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <span class="menuselection">Configure</span> button
+to open the <span class="guilabel">3D configuration</span> window.</p>
+<p>In the 3D Configuration window there are various options to
+fine-tune the 3D scene:</p>
+<section id="general">
+<span id="scene-extent"></span><h3><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">11.2.1.1. </span>General</a><a class="headerlink" href="#general" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id3">
+<span id="figure-3dmap-configgeneral"></span><img alt="../../../_images/3dmapconfiguration_general.png" src="../../../_images/3dmapconfiguration_general.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.24 </span><span class="caption-text">The 3D Map General Configuration dialog</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Under the <a class="reference internal" href="../../../_images/general.png"><img alt="general" src="../../../_images/general.png" style="width: 1.5em;" /></a> <span class="guilabel">General</span> tab, you can:</p>
+<ul>
+<li><p>Limit the 3D scene’s contents to a 2D map extent,
+using the <a class="reference internal" href="../introduction/general_tools.html#extent-selector"><span class="std std-ref">spatial extent selector</span></a>:
+terrain and features are clipped at the specified extent
+and only the parts falling within the extent are loaded in the scene.
+Elevation range of the terrain, mesh and pointcloud layers is also taken into account
+so that the camera is not positioned below the scene’s contents,
+particularly when using the terrain’s vertical scale setting to exaggerate the elevation differences.</p>
+<p>The set extent is also used as reference extent
+when pressing the <a class="reference internal" href="../../../_images/mActionZoomFullExtent.png"><img alt="zoomFullExtent" src="../../../_images/mActionZoomFullExtent.png" style="width: 1.5em;" /></a> <sup>Zoom full</sup> button in 3D map view.</p>
+</li>
+<li><p>Check <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show in 2D map view</span> to display in the main map canvas
+a rubberband corresponding to the current extent of the 3D scene.</p></li>
+</ul>
+</section>
+<section id="terrain">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">11.2.1.2. </span>Terrain</a><a class="headerlink" href="#terrain" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id4">
+<span id="figure-3dmap-configterrain"></span><img alt="../../../_images/3dmapconfiguration_terrain.png" src="../../../_images/3dmapconfiguration_terrain.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.25 </span><span class="caption-text">The 3D Map Terrain Configuration dialog</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p><span class="guilabel">Terrain</span>: Before diving into the details, it is worth
+noting that the terrain in a 3D view is represented by a hierarchy of
+terrain tiles and as the camera moves closer to the terrain,
+existing tiles that do not have sufficient details are replaced by
+smaller tiles with more details.
+Each tile has mesh geometry derived from the elevation raster layer
+and texture from 2D map layers.</p>
+<ul>
+<li><p>The elevation terrain <span class="guilabel">Type</span> can be:</p>
+<ul class="simple">
+<li><p>a <span class="guilabel">Flat terrain</span></p></li>
+<li><p>a loaded <span class="guilabel">DEM (Raster Layer)</span></p></li>
+<li><p>an <span class="guilabel">Online</span> service, loading <a class="reference external" href="http://s3.amazonaws.com/elevation-tiles-prod/">elevation tiles</a>
+produced by Mapzen tools – more details at <a class="reference external" href="https://registry.opendata.aws/terrain-tiles/">https://registry.opendata.aws/terrain-tiles/</a></p></li>
+<li><p>a loaded <span class="guilabel">Mesh</span> dataset</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Elevation</span>: Raster or mesh layer to be used for generation of
+the terrain.
+The raster layer must contain a band that represents elevation.
+For a mesh layer, the Z values of the vertices are used.</p></li>
+<li><p><span class="guilabel">Vertical scale</span>: Scale factor for vertical axis.
+Increasing the scale will exaggerate the height of the landforms.</p></li>
+<li><p><span class="guilabel">Tile resolution</span>: How many samples from the terrain
+raster layer to use for each tile.
+A value of 16px means that the geometry of each tile will consist
+of 16x16 elevation samples.
+Higher numbers create more detailed terrain tiles at the expense of
+increased rendering complexity.</p></li>
+<li><p><span class="guilabel">Skirt height</span>: Sometimes it is possible to see small
+cracks between tiles of the terrain.
+Raising this value will add vertical walls (“skirts”) around terrain
+tiles to hide the cracks.</p></li>
+<li><p><span class="guilabel">Offset</span>: moves the terrain up or down, e.g. to adjust its elevation
+with respect to the ground level of other objects in the scene.</p>
+<p>This can be useful when there is a discrepancy between the height of the terrain
+and the height of layers in your scene (e.g. point clouds which use a relative
+vertical height only). In this case adjusting the terrain elevation manually to
+coincide with the elevation of objects in your scene can improve the navigation
+experience.</p>
+</li>
+</ul>
+</li>
+<li><p>When a mesh layer is used as terrain, you can configure the
+<span class="guilabel">Triangles settings</span> (wireframe display, smooth triangles,
+level of detail) and the <span class="guilabel">Rendering colors settings</span> (as a uniform color
+or <a class="reference internal" href="../working_with_raster/raster_properties.html#color-ramp-shader"><span class="std std-ref">color ramp based</span></a>).
+More details in the <a class="reference internal" href="../working_with_mesh/mesh.html#mesh3dview"><span class="std std-ref">Mesh layer 3D properties</span></a> section.</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Terrain shading</span>: Allows you to choose how the
+terrain should be rendered:</p>
+<ul class="simple">
+<li><p>Shading disabled - terrain color is determined only from map texture</p></li>
+<li><p>Shading enabled - terrain color is determined using Phong’s shading
+model, taking into account map texture, the terrain normal vector,
+scene light(s) and the terrain material’s <span class="guilabel">Ambient</span> and
+<span class="guilabel">Specular</span> colors and <span class="guilabel">Shininess</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="lights">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">11.2.1.3. </span>Lights</a><a class="headerlink" href="#lights" title="Link to this heading"></a></h3>
+<p>From the <span class="guilabel">Lights</span> tab, press the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> menu to add</p>
+<ul class="simple">
+<li><p>up to eight <span class="guilabel">Point lights</span>: emits light in all directions, like a
+sphere of light filling an area. Objects closer to the light will be brighter,
+and objects further away will be darker. A point light has a set position
+(<span class="guilabel">X</span>, <span class="guilabel">Y</span> and <span class="guilabel">Z</span>), a <span class="guilabel">Color</span>,
+an <span class="guilabel">Intensity</span> and an <span class="guilabel">Attenuation</span></p></li>
+<li><p>up to four <span class="guilabel">Directional lights</span>: mimics the lighting that you would
+get from a giant flash light very far away from your objects, always centered
+and that never dies off (e.g. the sun). It emits parallel light rays in a
+single direction but the light reaches out into infinity.
+A directional light can be rotated given an  <span class="guilabel">Azimuth</span>, have an
+<span class="guilabel">Altitude</span>, a <span class="guilabel">Color</span> and an <span class="guilabel">Intensity</span>.</p></li>
+</ul>
+<figure class="align-center" id="id5">
+<span id="figure-3dmap-configlights"></span><img alt="../../../_images/3dmapconfiguration_lights.png" src="../../../_images/3dmapconfiguration_lights.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.26 </span><span class="caption-text">The 3D Map Lights Configuration dialog</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="shadow">
+<span id="shadows"></span><h3><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">11.2.1.4. </span>Shadow</a><a class="headerlink" href="#shadow" title="Link to this heading"></a></h3>
+<p>Check <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show shadows</span> to display shadows within your scene,
+given:</p>
+<ul class="simple">
+<li><p>a <span class="guilabel">Directional light</span></p></li>
+<li><p>a <span class="guilabel">Shadow rendering maximum distance</span>: to avoid rendering shadow
+of too distant objects, particularly when the camera looks up along the
+horizon</p></li>
+<li><p>a <span class="guilabel">Shadow bias</span>: to avoid self-shadowing effects that could make
+some areas darker than others, due to differences between map sizes.
+The lower the better</p></li>
+<li><p>a <span class="guilabel">Shadow map resolution</span>: to make shadows look sharper.
+It may result in less performance if the resolution parameter is too high.</p></li>
+</ul>
+</section>
+<section id="camera-skybox">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">11.2.1.5. </span>Camera &amp; Skybox</a><a class="headerlink" href="#camera-skybox" title="Link to this heading"></a></h3>
+<p>In this tab, you can control different parameters like camera, 3D axis, navigation
+synchronization and skybox.</p>
+<figure class="align-center" id="id6">
+<span id="figure-3dmap-config-camera"></span><img alt="../../../_images/3dmapconfiguration_camera.png" src="../../../_images/3dmapconfiguration_camera.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.27 </span><span class="caption-text">The 3D Map Camera Configuration dialog</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>The <span class="guilabel">Camera</span> parameter group overrides some <a class="reference internal" href="../introduction/qgis_configuration.html#d-options"><span class="std std-ref">default camera settings</span></a>
+made in the <span class="menuselection">Settings ► Options ► 3D</span> dialog.</p></li>
+<li><p>Check <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show 3D Axis</span> to enable 3D axis tool. This parameter
+group allows to set the axis type and its position.</p>
+<ul>
+<li><p>With the <span class="guilabel">Coordinate Reference System</span> type an orthogonal axis
+will be represented.</p></li>
+<li><p>With the <span class="guilabel">Cube</span> type, a 3D cube will be represented. The cube
+faces can be used to change the camera view: for example, click on the
+<span class="guilabel">north</span> face to set the camera to see from the north.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Right-click the 3D axis to quickly set its position and type, and the camera view.</p>
+<figure class="align-center" id="id7">
+<span id="figure-3dmap-config-3daxis-menu"></span><img alt="../../../_images/3dmapconfiguration_3daxis_menu.png" src="../../../_images/3dmapconfiguration_3daxis_menu.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.28 </span><span class="caption-text">The 3D Axis context menu</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>The <span class="guilabel">Navigation Synchronization</span> parameter group adds options to
+synchronize 2D view with 3D camera position or 3D camera position with
+2D view or bi directional synchronization. The last option displays the extent
+visible from the 3D camera over the 2D map view.</p></li>
+<li><p>Check <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show skybox</span> to enable skybox rendering
+in the scene. The skybox type can be:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Panoramic texture</span>, with a single file providing sight on 360°</p></li>
+<li><p><span class="guilabel">Distinct faces</span>, with a texture file for each of the six sides
+of a box containing the scene</p></li>
+</ul>
+<p>Texture image files of the skybox can be files on the disk, remote URLs or
+embedded in the project (<a class="reference internal" href="../introduction/general_tools.html#embedded-file-selector"><span class="std std-ref">more details</span></a>).</p>
+</li>
+</ul>
+</section>
+<section id="advanced">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">11.2.1.6. </span>Advanced</a><a class="headerlink" href="#advanced" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><span class="guilabel">Map tile resolution</span>: Width and height of the 2D map
+images used as textures for the terrain tiles.
+256px means that each tile will be rendered into an image of
+256x256 pixels.
+Higher numbers create more detailed terrain tiles at the expense of
+increased rendering complexity.</p></li>
+<li><p><span class="guilabel">Max. screen error</span>: Determines the threshold for swapping
+terrain tiles with more detailed ones (and vice versa) - i.e. how
+soon the 3D view will use higher quality tiles.
+Lower numbers mean more details in the scene at the expense of
+increased rendering complexity.</p></li>
+<li><p><span class="guilabel">Max. ground error</span>: The resolution of the terrain tiles at
+which dividing tiles into more detailed ones will stop (splitting
+them would not introduce any extra detail anyway).
+This value limits the depth of the hierarchy of tiles: lower values
+make the hierarchy deep, increasing rendering complexity.</p></li>
+<li><p><span class="guilabel">Zoom levels</span>: Shows the number of zoom levels (depends on
+the map tile resolution and max. ground error).</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show labels</span>: Toggles map labels on/off</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show map tile info</span>: Include border and tile
+numbers for the terrain tiles (useful for troubleshooting terrain issues)</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show bounding boxes</span>: Show 3D bounding boxes
+of the terrain tiles (useful for troubleshooting terrain issues)</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show camera’s view center</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show camera’s rotation center</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show light sources</span>: shows a sphere at light source origins,
+allowing easier repositioning and placement of light sources relative to the scene contents</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show frames per second (FPS)</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show debug overlay</span>: visual overlay which displays
+some useful debugging and profiling information.
+This allows in particular to quickly see the frame graph and the scene graph.</p></li>
+</ul>
+<ul class="simple" id="eye-dome-lighting">
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show Eye Dome Lighting</span> (EDL):
+a post processing effect which enhances depth perception.
+Each pixel’s depth (distance off the camera) is compared to its neighboring pixels’ depth
+and gets highlighted according to that depth difference, making the edges stand out.
+Affects the whole scene and can be combined with <a class="reference internal" href="#ambient-occlusion"><span class="std std-ref">Screen Space Ambient Occlusion</span></a>.
+Following parameters can be controlled:</p>
+<ul>
+<li><p><span class="guilabel">Lighting strength</span>: increases the contrast, allowing for better depth perception</p></li>
+<li><p><span class="guilabel">Lighting distance</span>: represents the distance of the used pixels off the center pixel
+and has the effect of making edges thicker.</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple" id="ambient-occlusion">
+<li><p>Add screen-space <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Ambient Occlusion</span> (SSAO):
+a post processing effect which also enhances depth perception
+by applying a darker shading to areas which are less exposed to ambient lighting.
+Affects the whole scene and can be combined with <a class="reference internal" href="#eye-dome-lighting"><span class="std std-ref">Eye dome Lighting</span></a>.
+Following parameters can be controlled:</p>
+<ul>
+<li><p><span class="guilabel">Radius</span>: how far we will reach to calculate ambient occlusion</p></li>
+<li><p><span class="guilabel">Intensity</span>: how strong the effect should be (higher values make things darker)</p></li>
+<li><p><span class="guilabel">Occlusion threshold</span>: how many neighboring points need to be occluded for the effect to appear
+(lower values than 50% will make the output darker, but possibly providing greater range of occlusion)</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id8">
+<span id="figure-3dmaps-edl-ssao"></span><img alt="../../../_images/3dmap_edl_ssao.png" src="../../../_images/3dmap_edl_ssao.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.29 </span><span class="caption-text">Rendering Point clouds in 3D map using Eye Dome Lighting (EDL) and/or Screen-Space Ambient Occlusion (SSAO)</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+<div class="legend">
+<p>From top, left to right: No effect – SSAO only – EDL only – SSAO and EDL</p>
+</div>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Debug Shadow Map</span>: renders the scene as a red-black image
+from the point of view of the light used for shadows (for troubleshooting).
+The widget is set with a proportional <span class="guilabel">Size</span> to the 3D map view’s,
+and docked in a <span class="guilabel">Corner</span>.</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Debug Depth Map</span>: renders the scene’s depth map as an  image
+with nearer pixels being darker (for troubleshooting).
+The widget is set with a proportional <span class="guilabel">Size</span> to the 3D map view’s,
+and docked in a <span class="guilabel">Corner</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="navigation-options">
+<span id="d-navigation"></span><h2><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">11.2.2. </span>Navigation options</a><a class="headerlink" href="#navigation-options" title="Link to this heading"></a></h2>
+<p>To explore the map view in 3D:</p>
+<ul class="simple">
+<li><p>Tilt the terrain (rotating it around a horizontal axis that
+goes through the center of the window)</p>
+<ul>
+<li><p>Press the <a class="reference internal" href="../../../_images/mActionTiltUp.png"><img alt="tiltUp" src="../../../_images/mActionTiltUp.png" style="width: 1.5em;" /></a> <sup>Tilt up</sup> and <a class="reference internal" href="../../../_images/mActionTiltDown.png"><img alt="tiltDown" src="../../../_images/mActionTiltDown.png" style="width: 1.5em;" /></a> <sup>Tilt down</sup> tools</p></li>
+<li><p>Press <kbd class="kbd docutils literal notranslate">Shift</kbd> and use the up/down keys</p></li>
+<li><p>Drag the mouse forward/backward with the middle mouse button pressed</p></li>
+<li><p>Press <kbd class="kbd docutils literal notranslate">Shift</kbd> and drag the mouse forward/backward
+with the left mouse button pressed</p></li>
+</ul>
+</li>
+<li><p>Rotate the terrain (around a vertical axis that goes through
+the center of the window)</p>
+<ul>
+<li><p>Turn the compass of the navigation widget to the watching direction</p></li>
+<li><p>Press <kbd class="kbd docutils literal notranslate">Shift</kbd> and use the left/right keys</p></li>
+<li><p>Drag the mouse right/left with the middle mouse button pressed</p></li>
+<li><p>Press <kbd class="kbd docutils literal notranslate">Shift</kbd> and drag the mouse right/left with the
+left mouse button pressed</p></li>
+</ul>
+</li>
+<li><p>Change the camera position (and the view center), moving it around
+in a horizontal plan</p>
+<ul>
+<li><p>Drag the mouse with the left mouse button pressed, and the <a class="reference internal" href="../../../_images/mActionPan.png"><img alt="pan" src="../../../_images/mActionPan.png" style="width: 1.5em;" /></a>
+<sup>Camera control</sup> button enabled</p></li>
+<li><p>Press the directional arrows of the navigation widget</p></li>
+<li><p>Use the up/down/left/right keys to move the
+camera forward, backward, right and left, respectively</p></li>
+</ul>
+</li>
+<li><p>Change the camera altitude: press the <kbd class="kbd docutils literal notranslate">Page Up</kbd>/<kbd class="kbd docutils literal notranslate">Page Down</kbd> keys</p></li>
+<li><p>Change the camera orientation (the camera is kept at its position but the
+view center point moves)</p>
+<ul>
+<li><p>Press <kbd class="kbd docutils literal notranslate">Ctrl</kbd> and use the arrow keys to turn
+the camera up, down, left and right</p></li>
+<li><p>Press <kbd class="kbd docutils literal notranslate">Ctrl</kbd> and drag the mouse with the left mouse
+button pressed</p></li>
+</ul>
+</li>
+<li><p>Zoom in and out</p>
+<ul>
+<li><p>Press the corresponding <a class="reference internal" href="../../../_images/mActionZoomIn.png"><img alt="zoomIn" src="../../../_images/mActionZoomIn.png" style="width: 1.5em;" /></a> <sup>Zoom In</sup> and <a class="reference internal" href="../../../_images/mActionZoomOut.png"><img alt="zoomOut" src="../../../_images/mActionZoomOut.png" style="width: 1.5em;" /></a>
+<sup>Zoom Out</sup> tools of the navigation widget</p></li>
+<li><p>Scroll the mouse wheel (keep <kbd class="kbd docutils literal notranslate">Ctrl</kbd> pressed results in finer zooms)</p></li>
+<li><p>Drag the mouse with the right mouse button pressed to
+zoom in (drag down) and out (drag up)</p></li>
+</ul>
+</li>
+</ul>
+<p>To reset the camera view, click the <a class="reference internal" href="../../../_images/mActionZoomFullExtent.png"><img alt="zoomFullExtent" src="../../../_images/mActionZoomFullExtent.png" style="width: 1.5em;" /></a> <sup>Zoom Full</sup>
+button on the top of the 3D canvas panel.</p>
+</section>
+<section id="creating-an-animation">
+<span id="create-animation"></span><h2><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">11.2.3. </span>Creating an animation</a><a class="headerlink" href="#creating-an-animation" title="Link to this heading"></a></h2>
+<p>An animation is based on a set of keyframes - camera positions at particular times.
+To create an animation:</p>
+<ol class="arabic">
+<li><p>Toggle on the <a class="reference internal" href="../../../_images/mActionPlay.png"><img alt="play" src="../../../_images/mActionPlay.png" style="width: 1.5em;" /></a> <sup>Animations</sup> tool, displaying the animation player
+widget</p></li>
+<li><p>Click the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add keyframe</sup> button and enter a <span class="guilabel">Keyframe
+time</span> in seconds. The <span class="guilabel">Keyframe</span> combo box now displays the time set.</p></li>
+<li><p>Using the navigation tools, move the camera to the position to associate with
+the current keyframe time.</p></li>
+<li><p>Repeat the previous steps to add as many keyframes (with time and position) as necessary.</p></li>
+<li><p>Click the <a class="reference internal" href="../../../_images/mActionPlay.png"><img alt="play" src="../../../_images/mActionPlay.png" style="width: 1.5em;" /></a> button to preview the animation. QGIS will generate scenes using
+the camera positions/rotations at set times, and interpolating them in between
+these keyframes. Various <span class="guilabel">Interpolation</span> modes for animations are
+available (eg, linear, inQuad, outQuad, inCirc… – more details at
+<a class="reference external" href="https://doc.qt.io/qt-5/qeasingcurve.html#EasingFunction-typedef">https://doc.qt.io/qt-5/qeasingcurve.html#EasingFunction-typedef</a>).</p>
+<p>The animation can also be previewed by moving the time slider.
+Keeping the <span class="guilabel">Loop</span> box checked will repeatedly run the
+animation while clicking <a class="reference internal" href="../../../_images/mActionPlay.png"><img alt="play" src="../../../_images/mActionPlay.png" style="width: 1.5em;" /></a> stops a running animation.</p>
+</li>
+</ol>
+<p>Click <a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <sup>Export animation frames</sup> to generate a series of images
+representing the scene. Other than the filename <span class="guilabel">Template</span> and the
+<span class="guilabel">Output directory</span>, you can set the number of <span class="guilabel">Frames per
+second</span>, the <span class="guilabel">Output width</span> and <span class="guilabel">Output height</span>.</p>
+</section>
+<section id="d-vector-layers">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">11.2.4. </span>3D vector layers</a><a class="headerlink" href="#d-vector-layers" title="Link to this heading"></a></h2>
+<p>A vector layer with elevation values can be shown in the 3D map
+view by checking <span class="guilabel">Enable 3D Renderer</span> in the
+<span class="guilabel">3D View</span> section of the vector layer properties.
+A number of options are available for controlling the rendering of
+the 3D vector layer.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="map_view.html" class="btn btn-neutral float-left" title="11.1. 2D Map View" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="elevation_profile.html" class="btn btn-neutral float-right" title="11.3. Elevation Profile View" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/map_views/3d_map_view.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/map_views/3d_map_view.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/map_views/3d_map_view.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/map_views/3d_map_view.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/map_views/3d_map_view.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/map_views/3d_map_view.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/map_views/3d_map_view.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/map_views/3d_map_view.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/map_views/3d_map_view.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/map_views/3d_map_view.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/map_views/3d_map_view.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/map_views/3d_map_view.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/map_views/3d_map_view.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/map_views/3d_map_view.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/map_views/3d_map_view.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/map_views/3d_map_view.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/map_views/3d_map_view.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/map_views/3d_map_view.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/map_views/3d_map_view.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/map_views/3d_map_view.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/map_views/3d_map_view.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/map_views/3d_map_view.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/map_views/3d_map_view.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/map_views/3d_map_view.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/map_views/3d_map_view.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/map_views/3d_map_view.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/7c5a246b38cf253326bd1e5e053bb94e" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

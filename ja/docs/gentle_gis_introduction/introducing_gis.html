@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. GIS入門 &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/introducing_gis.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="3. ベクタデータ" href="vector_data.html" />
+    <link rel="prev" title="1. はじめに" href="preamble.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 2. GIS入門">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">やさしい GIS 入門</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preamble.html">1. はじめに</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. GIS入門</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">2.1. 概説</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-about-gis">2.2. GISについてより詳しく</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-gis-software-a-gis-application">2.3. GIS ソフトウェア / アプリケーションとは何か?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-a-gis-application-for-your-own-computer-s">2.4. GISアプリケーションを入手してみよう</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gis-data">2.5. GISデータ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-have-we-learned">2.6. わかりましたか?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#now-you-try">2.7. やってみよう</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#something-to-think-about">2.8. 考えてみよう</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">2.9. より詳しく知りたい場合は</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-next">2.10. 次は？</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vector_data.html">3. ベクタデータ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_attribute_data.html">4. ベクタ属性データ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_capture.html">5. データの取り込み</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster_data.html">6. ラスタデータ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">7. トポロジ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordinate_reference_systems.html">8. 座標参照系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_production.html">9. 地図製作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_spatial_analysis_buffers.html">10. ベクタ空間分析（バッファ）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_analysis_interpolation.html">11. 空間分析（補間）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors_and_contributors.html">12. 著者とコントリビュータについて</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnu_free_documentation_license.html">13. GNUフリー文書利用許諾契約書</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">やさしい GIS 入門</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2. </span>GIS入門</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/gentle_gis_introduction/introducing_gis.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="preamble.html" class="btn btn-neutral float-left" title="1. はじめに" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vector_data.html" class="btn btn-neutral float-right" title="3. ベクタデータ" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="introducing-gis">
+<h1><span class="section-number">2. </span>GIS入門<a class="headerlink" href="#introducing-gis" title="Link to this heading"></a></h1>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="../../_images/gentlelogo.png"><img alt="gentleLogo" src="../../_images/gentlelogo.png" style="width: 3em;" /></a></p></td>
+<td><p>目的：</p></td>
+<td><p>GISとは何か、何ができるのかを理解する。</p></td>
+</tr>
+<tr class="row-even"><td><p>キーワード：</p></td>
+<td><p>GIS, コンピュータ, 地図, データ, 情報システム, 空間解析</p></td>
+</tr>
+</tbody>
+</table>
+<section id="overview">
+<h2><span class="section-number">2.1. </span>概説<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>ワープロを使用してコンピュータで文章を書いたり扱ったりできるのと同じように、 <strong>GIS アプリケーション</strong> を使用して <strong>空間情報</strong> を扱うことができます。 GIS とは <strong>地理情報システム （Geographical Information System）</strong> のことです。</p>
+<p>GIS は以下のものから構成されます。</p>
+<ul class="simple">
+<li><p><strong>デジタルデータ</strong> –--コンピュータのハードウェアとソフトウェアを使用して表示および分析する地理情報。</p></li>
+<li><p><strong>コンピュータハードウェア</strong> –-- データの保存や画面表示, データ処理などに使われるコンピュータ.</p></li>
+<li><p><strong>コンピュータソフトウェア</strong> –-- ハードウェア上でデジタルデータ処理を実行することのできるコンピュータプログラム。GISの一部を構成するプログラムはGISアプリケーションと呼ばれます。</p></li>
+</ul>
+<p>GISアプリケーションを使うとコンピュータ上のデジタル地図を開いたり, 新しい空間情報データを作成して地図に加えたり、必要に応じてカスタマイズした地図の印刷物を制作したり空間解析が出来ます。</p>
+<p>GISがどんなに便利なのかちょっと例を見てみましょう。あなたが医療従事者だとして、患者たちの診療日と自宅の位置を記録しているとします。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>経度</p></th>
+<th class="head"><p>緯度</p></th>
+<th class="head"><p>病気</p></th>
+<th class="head"><p>日付</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>26.870436</p></td>
+<td><p>-31.909519</p></td>
+<td><p>おたふく風邪</p></td>
+<td><p>2008年12月13日</p></td>
+</tr>
+<tr class="row-odd"><td><p>26.868682</p></td>
+<td><p>-31.909259</p></td>
+<td><p>おたふく風邪</p></td>
+<td><p>2008年12月24日</p></td>
+</tr>
+<tr class="row-even"><td><p>26.867707</p></td>
+<td><p>-31.910494</p></td>
+<td><p>おたふく風邪</p></td>
+<td><p>2009年01月22日</p></td>
+</tr>
+<tr class="row-odd"><td><p>26.854908</p></td>
+<td><p>-31.920759</p></td>
+<td><p>はしか</p></td>
+<td><p>2009年01月11日</p></td>
+</tr>
+<tr class="row-even"><td><p>26.855817</p></td>
+<td><p>-31.921929</p></td>
+<td><p>はしか</p></td>
+<td><p>2009年01月26日</p></td>
+</tr>
+<tr class="row-odd"><td><p>26.852764</p></td>
+<td><p>-31.921929</p></td>
+<td><p>はしか</p></td>
+<td><p>2009年02月10日</p></td>
+</tr>
+<tr class="row-even"><td><p>26.854778</p></td>
+<td><p>-31.925112</p></td>
+<td><p>はしか</p></td>
+<td><p>2009年02月22日</p></td>
+</tr>
+<tr class="row-odd"><td><p>26.869072</p></td>
+<td><p>-31.911988</p></td>
+<td><p>おたふく風邪</p></td>
+<td><p>2009年02月02日</p></td>
+</tr>
+<tr class="row-even"><td><p>26.863354</p></td>
+<td><p>-31.916406</p></td>
+<td><p>水疱瘡</p></td>
+<td><p>2009年02月26日</p></td>
+</tr>
+</tbody>
+</table>
+<p>上の表を見ると, 1月と2月には多くのはしかが発症していたことがわかります。医療従事者は、それぞれの患者の家の位置を緯度経度で表に記録していました。このデータを GIS アプリケーションで使えば、病気の規則性についてより多くのことを簡単に理解することができるようになります。</p>
+<figure class="align-center" id="id1">
+<span id="figure-gis-application"></span><a class="reference internal image-reference" href="../../_images/patterns_of_illness.png"><img alt="../../_images/patterns_of_illness.png" src="../../_images/patterns_of_illness.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.10 </span><span class="caption-text">こちらの例では GIS アプリケーションで様々な疾病記録を見せています。おたふく風邪患者同士が近くに居住していることが簡単に見て取れます。</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="more-about-gis">
+<h2><span class="section-number">2.2. </span>GISについてより詳しく<a class="headerlink" href="#more-about-gis" title="Link to this heading"></a></h2>
+<p>GIS は比較的新しい分野です。始まったのは1970年代です。かつてコンピュータによる GIS は、高価なコンピュータ設備のある企業や大学だけで用いられていました。近年では、デスクトップパソコンやノートパソコンを持っていれば、誰でも GIS ソフトウェアを使うことができるようになりました。以前は GIS アプリケーションを使うには多くのトレーニングが必要とされていましたが, 長い時間をかけて使いやすいものとなり、専門家以外でも簡単に始められるようになりました。以上のように GIS はただのソフトウェアではなく、様々な局面でデジタル地理情報データを処理し、扱うことができます。続いてのチュートリアルでは、 GIS ソフトウェアについて見ていきます。</p>
+</section>
+<section id="what-is-gis-software-a-gis-application">
+<h2><span class="section-number">2.3. </span>GIS ソフトウェア / アプリケーションとは何か?<a class="headerlink" href="#what-is-gis-software-a-gis-application" title="Link to this heading"></a></h2>
+<p><strong>GISアプリケーション</strong> がどのようなものか例をご覧ください <a class="reference internal" href="#figure-gis-application"><span class="std std-numref">図 2.10</span></a>。GISアプリケーションは通常、マウスとキーボードを使って操作できるグラフィカルユーザーインタフェースを持つプログラムです。アプリケーションにはウィンドウの上部に <strong>メニュー</strong> があり（<span class="guilabel">プロジェクト</span>、<span class="guilabel">編集</span> など）、マウスでクリックすると、<strong>アクション</strong> のパネルが表示されます。これらのアクションは、あなたがしたいことをGISアプリケーションに伝えるための方法です。例えば、メニューを使ってGISアプリケーションに新しいレイヤを表示出力に追加するように指示することができます。</p>
+<figure class="align-center" id="id2">
+<img alt="../../_images/menus.png" src="../../_images/menus.png" />
+<figcaption>
+<p><span class="caption-number">図 2.11 </span><span class="caption-text">アプリケーションのメニューは、マウスでクリックすると、開いて実行可能な操作の一覧が表示されます。</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>ツールバー</strong> (マウスでクリックできる小さなアイコンが並んでいるもの) は、通常メニューバーの下に配置され、よく使われる操作が簡単に選べるようになっています。</p>
+<figure class="align-center" id="id3">
+<img alt="../../_images/toolbars.png" src="../../_images/toolbars.png" />
+<figcaption>
+<p><span class="caption-number">図 2.12 </span><span class="caption-text">ツールバーでは、よく使う機能にすばやくアクセスできます。アイコンの上にマウスをかざすと、それをクリックしたときに何が起こるかが表示されます。</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>GIS アプリケーションの一般的な機能としては <strong>地図レイヤ</strong> の表示があります。地図レイヤはディスク上のファイルやデータベースのレコードとして保存されます。通常、それぞれの地図レイヤは現実世界の様々なものを表しています。たとえば、道路レイヤは道路ネットワークを表します。</p>
+<p>GISアプリケーションでレイヤを開くと、<strong>マップビュー</strong> に表示されます。マップビューには、レイヤを表すグラフィックが表示されます。マップビューに複数のレイヤを追加すると、レイヤは互いに重なり合って表示されます。<a class="reference internal" href="#figure-map-view-towns"><span class="std std-numref">図 2.13</span></a>、 <a class="reference internal" href="#figure-map-view-schools"><span class="std std-numref">図 2.14</span></a> 、 <a class="reference internal" href="#figure-map-view-railways"><span class="std std-numref">図 2.15</span></a> 、 <a class="reference internal" href="#figure-map-view-rivers"><span class="std std-numref">図 2.16</span></a> を見て、いくつかのレイヤが追加されているマップビューを見てみてください。マップビューの重要な機能は、拡大して大きくしたり、縮小してより広い範囲を見たり、地図内を移動（パン）したりすることができることです。</p>
+<figure class="align-center" id="id4">
+<span id="figure-map-view-towns"></span><a class="reference internal image-reference" href="../../_images/map_view_towns.png"><img alt="../../_images/map_view_towns.png" src="../../_images/map_view_towns.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.13 </span><span class="caption-text">複数のレイヤが読み込まれたマップビュー。町レイヤがマップビューに追加されている</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<span id="figure-map-view-schools"></span><a class="reference internal image-reference" href="../../_images/map_view_schools.png"><img alt="../../_images/map_view_schools.png" src="../../_images/map_view_schools.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.14 </span><span class="caption-text">複数のレイヤが読み込まれたマップビュー。学校レイヤがマップビューに追加されている</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
+<span id="figure-map-view-railways"></span><a class="reference internal image-reference" href="../../_images/map_view_railways.png"><img alt="../../_images/map_view_railways.png" src="../../_images/map_view_railways.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.15 </span><span class="caption-text">複数のレイヤが読み込まれたマップビュー。鉄道レイヤがマップビューに追加されている</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id7">
+<span id="figure-map-view-rivers"></span><a class="reference internal image-reference" href="../../_images/map_view_rivers.png"><img alt="../../_images/map_view_rivers.png" src="../../_images/map_view_rivers.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.16 </span><span class="caption-text">複数のレイヤが読み込まれたマップビュー。河川レイヤがマップビューに追加されている</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>GISアプリケーションのもう一つの一般的な機能は、<strong>マップ凡例</strong> です。マップ凡例は、GIS アプリケーションに読み込まれたレイヤのリストを提供します。紙の地図の凡例とは異なり、GIS アプリケーションのマップ凡例または「レイヤリスト」は、レイヤの順序変更、非表示、表示、およびグループ化を行う方法を提供します。レイヤの順序を変更するには、凡例内のレイヤをクリックし、マウスボタンを押したまま、レイヤを新しい位置までドラッグしてください。 <a class="reference internal" href="#figure-map-legend-before"><span class="std std-numref">図 2.18</span></a> と <a class="reference internal" href="#figure-map-legend-after"><span class="std std-numref">図 2.19</span></a> では、マップ凡例はGISアプリケーションウィンドウの左側の領域として表示されています。レイヤの順番を変更することで、レイヤの描画方法を調整することができます。この場合、河川は道路の上にではなく、その下に描画されるようになります。</p>
+<figure class="align-center" id="id8">
+<span id="figure-map-symbology"></span><a class="reference internal image-reference" href="../../_images/symbology1.png"><img alt="../../_images/symbology1.png" src="../../_images/symbology1.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.17 </span><span class="caption-text">GISソフトウェアによって簡単にシンボロジ --- 情報を表示する方法 が変更できます</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id9">
+<span id="figure-map-legend-before"></span><a class="reference internal image-reference" href="../../_images/map_legend_before.png"><img alt="../../_images/map_legend_before.png" src="../../_images/map_legend_before.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.18 </span><span class="caption-text">レイヤの順序を変更することで、レイヤの描画方法を調整することができます。レイヤの順序を変更する前は、河川が道路の上に描画されています</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id10">
+<span id="figure-map-legend-after"></span><a class="reference internal image-reference" href="../../_images/map_legend_after.png"><img alt="../../_images/map_legend_after.png" src="../../_images/map_legend_after.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.19 </span><span class="caption-text">レイヤの順序を変更することで、レイヤの描画方法を調整することができます。レイヤの順序を変更すると、河川が道路の下に描画されています</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="getting-a-gis-application-for-your-own-computer-s">
+<h2><span class="section-number">2.4. </span>GISアプリケーションを入手してみよう<a class="headerlink" href="#getting-a-gis-application-for-your-own-computer-s" title="Link to this heading"></a></h2>
+<p>たくさんの違ったGIS アプリケーションが入手できます。洗練された機能を持ち1ライセンス当たり7万円ほどかかるものもあります。一方で、無料で手に入れられるものもあります。どの GISアプリケーションを使うかは、どれだけのお金を出せるか、そして個人の好みの問題です。このチュートリアルでは QGIS アプリケーションを使います。 QGIS は完全にフリーなので、好きなだけ複製したり友人と共有することができます。もしあなたがこのチュートリアルを印刷物として手に入れたなら、QGIS の複製も一緒に手に入れていることでしょう。そうでなくても、インターネットにアクセスすることができれば、いつでもダウンロードページ <a class="reference external" href="https://www.qgis.org/">https://www.qgis.org/</a> にアクセスして無料で手に入れることができます。</p>
+</section>
+<section id="gis-data">
+<h2><span class="section-number">2.5. </span>GISデータ<a class="headerlink" href="#gis-data" title="Link to this heading"></a></h2>
+<p>それではGISとは何か、GISアプリケーションは何ができるのか解ってきたところで <strong>GISデータ</strong> について説明しましょう。データは <strong>情報</strong> と言い換えることもできます。GISで使われる情報というのは地理的な側面を持っています。前述の医療関係者の例を考えてみましょう。彼女は 症例を記録するために以下のような表を作りました:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>経度</p></th>
+<th class="head"><p>緯度</p></th>
+<th class="head"><p>病気</p></th>
+<th class="head"><p>日付</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>26.870436</p></td>
+<td><p>-31.909519</p></td>
+<td><p>おたふく風邪</p></td>
+<td><p>2008年12月13日</p></td>
+</tr>
+</tbody>
+</table>
+<p>経度と緯度の列は <strong>地理情報データ</strong> を持っています。病気と診療日の列は <strong>地理情報ではないデータ</strong> です。</p>
+<p>GISの一般的な機能は、情報（地理情報ではないデータ）を場所（地理情報データ）に関連付けることができることです。実際、GISアプリケーションは、それぞれの場所に関連付けられた多くの情報を保存すること－紙の地図があまり得意でないこと－ができます。例えば医療従事者たちは患者の年齢や性別といったデータを表に保存できます。GISアプリケーションがレイヤを描画するとき、性別に基づいたレイヤや病気の種類に基づいたレイヤなどを描画をするように指示することができます。このように、GISアプリケーションを使えば、場所に関連付けられた地理情報でないデータに基づいて地図の外観を簡単に変更することができるのです。</p>
+<p>GISシステムでは、さまざまな種類のデータを扱うことができます。<strong>ベクタデータ</strong> は、コンピュータのメモリ内にX、Yの座標ペアとして格納されています。ベクタデータは、点、線、面を表現するために使用されます。イラスト <a class="reference internal" href="#figure-vector-data"><span class="std std-numref">図 2.20</span></a> はGISアプリケーションで表示される様々な種類のベクタデータを表しています。この後のチュートリアルでは、ベクタデータについてより詳しく説明します。</p>
+<figure class="align-center" id="id11">
+<span id="figure-vector-data"></span><a class="reference internal image-reference" href="../../_images/vector_data.png"><img alt="../../_images/vector_data.png" src="../../_images/vector_data.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.20 </span><span class="caption-text">ベクタデータによる点 (町など) , 線 (河川など) , エリア (行政区) などの表示</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>ラスタデータ</strong> は、格子状の数値として保存されています。地球を周回する多くの人工衛星が撮影した写真は、GISで見ることのできるラスタデータの一種です。ラスタデータとベクタデータの重要な違いの一つは、ラスタ画像を拡大しすぎると「ブロック状」に見えてしまうことです（ <a class="reference internal" href="#figure-raster-data"><span class="std std-numref">図 2.21</span></a> および <a class="reference internal" href="#figure-raster-data-zoom"><span class="std std-numref">図 2.22</span></a> を参照）。実際には、これらのブロックは、ラスタ画像を構成するデータグリッドの個々のセルです。ラスタデータについては、後のチュートリアルでさらに詳しく見ていく予定です。</p>
+<figure class="align-center" id="id12">
+<span id="figure-raster-data"></span><a class="reference internal image-reference" href="../../_images/raster_data.png"><img alt="../../_images/raster_data.png" src="../../_images/raster_data.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.21 </span><span class="caption-text">衛星画像のラスタデータ.こちらは東ケープの山岳地帯です.</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id13">
+<span id="figure-raster-data-zoom"></span><a class="reference internal image-reference" href="../../_images/raster_data_zoomed.png"><img alt="../../_images/raster_data_zoomed.png" src="../../_images/raster_data_zoomed.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.22 </span><span class="caption-text">同じラスタデータを拡大したもの。データのグリッドの性質が判ります。</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="what-have-we-learned">
+<h2><span class="section-number">2.6. </span>わかりましたか?<a class="headerlink" href="#what-have-we-learned" title="Link to this heading"></a></h2>
+<p>ここでは以下のことを学びました:</p>
+<ul class="simple">
+<li><p><strong>GIS</strong> とはコンピュータ・ハードウェア, ソフトウェア, 地理情報のシステムです.</p></li>
+<li><p><strong>GISアプリケーション</strong> は地理情報データを見ることを可能にし, GISの重要な部分を占めます.</p></li>
+<li><p>GISアプリケーションは通常、 <strong>メニューバー</strong> 、 <strong>ツールバー</strong> 、 <strong>地図ビュー</strong> 、 <strong>凡例</strong> から構成されます.</p></li>
+<li><p>GISアプリケーションで使用される地理情報データには <strong>ベクタデータ</strong> と <strong>ラスタデータ</strong> があります。</p></li>
+<li><p><strong>地理情報</strong> データは <strong>地理情報ではない</strong> データと関連付けることができます。</p></li>
+</ul>
+</section>
+<section id="now-you-try">
+<h2><span class="section-number">2.7. </span>やってみよう<a class="headerlink" href="#now-you-try" title="Link to this heading"></a></h2>
+<p>ここでは学習者に教える際のアイデアいくつか述べていきます:</p>
+<ul class="simple">
+<li><p><strong>地理情報：</strong> このチュートリアルで示すように、GISのコンセプトを示す概念です. なぜ紙地図よりGISの方が便利なのか, GISを学習する人たちに3つ理由を考えさせてみて下さい. 以下にはいくつかの例を示します:</p>
+<ul>
+<li><p>GISアプリケーションを用いることで, 同じデータから様々なタイプの地図を作ることができます.</p></li>
+<li><p>GISはすばらしい可視化ツールで, データそのものやそれらが空間的にどのような関係性を持っているのか（例えば先ほど示した病気の拡大など）をしめすことができます.</p></li>
+<li><p>紙地図はファイルにして保管しなければならず, 見られるまでに時間がかかります. GISは非常に大きな量の地図データから興味のある地域を簡単に素早く探して見ることができます.</p></li>
+</ul>
+</li>
+<li><p><strong>地理学：</strong> あなたやあなたの生徒たちはどのように衛星データからラスタデータを活用できると思いますか？ここではいくつかアイデアを述べていきます：</p>
+<ul>
+<li><p>災害発生時, 対象地域を見るのにラスタデータは便利で, 最新の洪水発生時の衛星画像をにより人々がどのあたりで救助を必要としているのか見ることができます.</p></li>
+<li><p>人は植物や動物に害を及ぼす危険な化学薬品の廃棄などといった環境に悪影響をもたらす行為をすることがあります. こういった問題は, 衛星画像のようなラスタデータをつかって観測することができます.</p></li>
+<li><p>都市計画を行う人にとっては衛星画像といったラスタデータを使うことにより, どこに居住区域が存在するのかを把握し, インフラ計画に役立てることができます.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="something-to-think-about">
+<h2><span class="section-number">2.8. </span>考えてみよう<a class="headerlink" href="#something-to-think-about" title="Link to this heading"></a></h2>
+<p>もしコンピュータが利用できない場合でも、このチュートリアルの多くの項目は、OHPとシートを使って、レイヤ情報の重ね合わせを同様におこなうことで再現可能です。
+ですが、GISについて正しく理解する目的ならば、コンピュータを使って学ぶ方がよいでしょう。</p>
+</section>
+<section id="further-reading">
+<h2><span class="section-number">2.9. </span>より詳しく知りたい場合は<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h2>
+<p><strong>書籍:</strong> Desktop GIS: Mapping the Planet with Open Source Tools.（デスクトップGIS：オープンソースツールで地球を地図化する） <strong>著者:</strong> Gary Sherman. <strong>ISBN:</strong> 9781934356067</p>
+<p>QGISユーザーガイドでは, QGISについてより詳細な情報が含まれています.</p>
+</section>
+<section id="what-s-next">
+<h2><span class="section-number">2.10. </span>次は？<a class="headerlink" href="#what-s-next" title="Link to this heading"></a></h2>
+<p>この後のセクションではもっと詳しくどうやってGISアプリケーションを使うのか掘り下げていきます. すべてのチュートリアルはQGISで行われています. 次はベクタデータを見てみましょう!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="preamble.html" class="btn btn-neutral float-left" title="1. はじめに" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vector_data.html" class="btn btn-neutral float-right" title="3. ベクタデータ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/gentle_gis_introduction/introducing_gis.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/gentle_gis_introduction/introducing_gis.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/gentle_gis_introduction/introducing_gis.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/gentle_gis_introduction/introducing_gis.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/gentle_gis_introduction/introducing_gis.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/gentle_gis_introduction/introducing_gis.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/gentle_gis_introduction/introducing_gis.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/gentle_gis_introduction/introducing_gis.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/gentle_gis_introduction/introducing_gis.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/gentle_gis_introduction/introducing_gis.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/gentle_gis_introduction/introducing_gis.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/gentle_gis_introduction/introducing_gis.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/gentle_gis_introduction/introducing_gis.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/gentle_gis_introduction/introducing_gis.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/gentle_gis_introduction/introducing_gis.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/gentle_gis_introduction/introducing_gis.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/gentle_gis_introduction/introducing_gis.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/gentle_gis_introduction/introducing_gis.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/gentle_gis_introduction/introducing_gis.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/gentle_gis_introduction/introducing_gis.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/gentle_gis_introduction/introducing_gis.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/gentle_gis_introduction/introducing_gis.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/gentle_gis_introduction/introducing_gis.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/gentle_gis_introduction/introducing_gis.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/gentle_gis_introduction/introducing_gis.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/gentle_gis_introduction/introducing_gis.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/5551afe0ced91fc3aceaceb3499c6978" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

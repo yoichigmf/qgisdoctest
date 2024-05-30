@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>20. Working with Point Clouds &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_point_clouds/point_clouds.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="21. Working with 3D Tiles" href="../working_with_3d_tiles/3d_tiles.html" />
+    <link rel="prev" title="19. Working with Vector Tiles" href="../working_with_vector_tiles/vector_tiles.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 20. Working with Point Clouds">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. Visualizing Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">20. Working with Point Clouds</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction-to-point-clouds">20.1. Introduction to Point Clouds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#point-clouds-properties">20.2. Point Clouds Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#information-properties">20.2.1. Information Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-properties">20.2.2. Source Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#symbology-properties">20.2.3. Symbology Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#d-view-properties">20.2.4. 3D View Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rendering-properties">20.2.5. Rendering Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elevation-properties">20.2.6. Elevation Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-properties">20.2.7. Metadata Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#statistics-properties">20.2.8. Statistics Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#virtual-point-cloud">20.3. Virtual point cloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS User Guide</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">20. </span>Working with Point Clouds</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/working_with_point_clouds/point_clouds.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../working_with_vector_tiles/vector_tiles.html" class="btn btn-neutral float-left" title="19. Working with Vector Tiles" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_3d_tiles/3d_tiles.html" class="btn btn-neutral float-right" title="21. Working with 3D Tiles" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="working-with-point-clouds">
+<span id="index-0"></span><span id="id1"></span><h1><span class="section-number">20. </span>Working with Point Clouds<a class="headerlink" href="#working-with-point-clouds" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction-to-point-clouds" id="id18">Introduction to Point Clouds</a></p></li>
+<li><p><a class="reference internal" href="#point-clouds-properties" id="id19">Point Clouds Properties</a></p>
+<ul>
+<li><p><a class="reference internal" href="#information-properties" id="id20">Information Properties</a></p></li>
+<li><p><a class="reference internal" href="#source-properties" id="id21">Source Properties</a></p></li>
+<li><p><a class="reference internal" href="#symbology-properties" id="id22">Symbology Properties</a></p>
+<ul>
+<li><p><a class="reference internal" href="#feature-rendering-types" id="id23">Feature Rendering types</a></p>
+<ul>
+<li><p><a class="reference internal" href="#attribute-by-ramp-renderer" id="id24">Attribute by Ramp Renderer</a></p></li>
+<li><p><a class="reference internal" href="#rgb-renderer" id="id25">RGB Renderer</a></p></li>
+<li><p><a class="reference internal" href="#classification-renderer" id="id26">Classification Renderer</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#point-symbol" id="id27">Point Symbol</a></p></li>
+<li><p><a class="reference internal" href="#layer-rendering" id="id28">Layer Rendering</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#d-view-properties" id="id29">3D View Properties</a></p>
+<ul>
+<li><p><a class="reference internal" href="#d-rendering-modes" id="id30">3D Rendering modes</a></p></li>
+<li><p><a class="reference internal" href="#d-point-symbol" id="id31">3D Point Symbol</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#rendering-properties" id="id32">Rendering Properties</a></p></li>
+<li><p><a class="reference internal" href="#elevation-properties" id="id33">Elevation Properties</a></p></li>
+<li><p><a class="reference internal" href="#metadata-properties" id="id34">Metadata Properties</a></p></li>
+<li><p><a class="reference internal" href="#statistics-properties" id="id35">Statistics Properties</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#virtual-point-cloud" id="id36">Virtual point cloud</a></p></li>
+</ul>
+</nav>
+<section id="introduction-to-point-clouds">
+<span id="point-clouds-introduction"></span><h2><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">20.1. </span>Introduction to Point Clouds</a><a class="headerlink" href="#introduction-to-point-clouds" title="Link to this heading"></a></h2>
+<p><strong>What is A Point Cloud?</strong></p>
+<p>A point cloud is a three-dimensional image of a space made up of many
+individual of data points (up to billions, even trillions). Each of the
+points has an x, y and z coordinate. Depending on the capture method, point
+clouds usually also have additional attributes that came from the capture,
+such as color values or intensity. These attributes can be used, for
+instance, to display point clouds in different colors. In QGIS, a point
+cloud can be used to generate a three-dimensional image of the landscape
+(or of another space).</p>
+<p><strong>Supported Formats</strong></p>
+<p>QGIS supports the data formats Entwine Point Tile (EPT) and LAS/LAZ. To
+work with point clouds, QGIS always saves the data in EPT. EPT is a storage
+format that consists of several files stored in a common folder. To allow
+quick access to the data, EPT uses indexing. For more information on the EPT
+format, see <a class="reference external" href="https://entwine.io/entwine-point-tile.html">entwine homepage</a></p>
+<p>If the data is in LAS or LAZ format, QGIS will convert it to EPT when it is
+loaded for the first time. Depending on the size of the file, this may take
+some time. In this process, a subfolder is created in the folder in which
+the LAS/LAZ file is located according to the scheme
+<code class="file docutils literal notranslate"><span class="pre">ept_</span></code> + <code class="file docutils literal notranslate"><span class="pre">name_LAS/LAZ_file</span></code>. If such a subfolder already exists,
+QGIS loads the EPT immediately (which leads to a reduced loading time).</p>
+<p><strong>Worth Knowing</strong></p>
+<p>In QGIS it is not (yet) possible to edit point clouds. If you want to manipulate
+your point cloud, you can use <a class="reference external" href="https://www.cloudcompare.org/">CloudCompare</a>,
+an open source point cloud processing tool. Also the
+<a class="reference external" href="https://pdal.io/en/stable/">Point Data Abstraction Library</a> (PDAL - similar to GDAL)
+offers you options to edit point clouds (PDAL is command line only).</p>
+<p>Due to the large number of data points, it is not possible to display an
+attribute table of point clouds in QGIS. However, the <a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a>
+<a class="reference internal" href="../introduction/general_tools.html#identify"><span class="std std-ref">Identify tool</span></a> supports point clouds, so you can display all
+attributes, even of a single data point.</p>
+</section>
+<section id="point-clouds-properties">
+<span id="id2"></span><h2><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">20.2. </span>Point Clouds Properties</a><a class="headerlink" href="#point-clouds-properties" title="Link to this heading"></a></h2>
+<p>The <span class="guilabel">Layer Properties</span> dialog for a point cloud layer offers
+general settings for the layer and its rendering. It also provides
+information about the layer.</p>
+<p>To access the <span class="guilabel">Layer Properties</span> dialog:</p>
+<ul class="simple">
+<li><p>In the <span class="guilabel">Layers</span> panel, double-click the layer or right-click
+and select <span class="guilabel">Properties…</span> from the context menu;</p></li>
+<li><p>Go to <span class="menuselection">Layer ► Layer Properties…</span> menu when the layer
+is selected.</p></li>
+</ul>
+<p>The point cloud <span class="guilabel">Layer Properties</span> dialog provides the
+following sections:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/metadata.png"><img alt="metadata" src="../../../_images/metadata.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#point-clouds-information"><span class="std std-ref">Information</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/system.png"><img alt="system" src="../../../_images/system.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#point-clouds-source"><span class="std std-ref">Source</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <a class="reference internal" href="#point-clouds-symbology"><span class="std std-ref">Symbology</span></a><sup>[1]</sup></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/3d.png"><img alt="3d" src="../../../_images/3d.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#point-clouds-3d"><span class="std std-ref">3D View</span></a><sup>[1]</sup></p></td>
+<td><p><a class="reference internal" href="../../../_images/rendering.png"><img alt="rendering" src="../../../_images/rendering.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#point-clouds-rendering"><span class="std std-ref">Rendering</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/elevationscale.png"><img alt="elevationscale" src="../../../_images/elevationscale.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#point-clouds-elevation"><span class="std std-ref">Elevation</span></a><sup>[1]</sup></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/editmetadata.png"><img alt="editMetadata" src="../../../_images/editmetadata.png" style="width: 1.2em;" /></a> <a class="reference internal" href="#point-clouds-metadata"><span class="std std-ref">Metadata</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/mAlgorithmBasicStatistics.png"><img alt="basicStatistics" src="../../../_images/mAlgorithmBasicStatistics.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#point-clouds-statistics"><span class="std std-ref">Statistics</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><sup>[1]</sup> Also available in the <a class="reference internal" href="../introduction/general_tools.html#layer-styling-panel"><span class="std std-ref">Layer styling panel</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most of the properties of a point cloud layer can be saved
+to or loaded from a <code class="file docutils literal notranslate"><span class="pre">.qml</span></code> file using the <span class="guilabel">Style</span> menu
+at the bottom of the properties dialog. More details
+at <a class="reference internal" href="../introduction/general_tools.html#save-layer-property"><span class="std std-ref">Save and Share Layer Properties</span></a></p>
+</div>
+<section id="information-properties">
+<span id="point-clouds-information"></span><h3><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">20.2.1. </span>Information Properties</a><a class="headerlink" href="#information-properties" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="../../../_images/metadata.png"><img alt="metadata" src="../../../_images/metadata.png" style="width: 1.5em;" /></a> <span class="guilabel">Information</span> tab is read-only and represents an
+interesting place to quickly grab summarized information and metadata on
+the current layer. Provided information are:</p>
+<ul class="simple">
+<li><p>General such as name in the project, source path, last save time and size,
+the used provider</p></li>
+<li><p>Based on the provider of the layer: extent and number of points</p></li>
+<li><p>The Coordinate Reference System: name, units, method, accuracy, reference
+(i.e. whether it’s static or dynamic)</p></li>
+<li><p>Metadata delivered by the provider: creation date, version, data format,
+scale X/Y/Z, …</p></li>
+<li><p>Picked from the <a class="reference internal" href="../../../_images/editmetadata.png"><img alt="editMetadata" src="../../../_images/editmetadata.png" style="width: 1.2em;" /></a> <a class="reference internal" href="#point-clouds-metadata"><span class="std std-ref">Metadata</span></a> tab
+(where they can be edited): access, extents, links, contacts, history…</p></li>
+</ul>
+<figure class="align-center" id="id4">
+<span id="figure-point-cloud-information"></span><img alt="../../../_images/point_cloud_information.png" src="../../../_images/point_cloud_information.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.1 </span><span class="caption-text">Point cloud information tab</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="source-properties">
+<span id="point-clouds-source"></span><h3><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">20.2.2. </span>Source Properties</a><a class="headerlink" href="#source-properties" title="Link to this heading"></a></h3>
+<p>In the <a class="reference internal" href="../../../_images/system.png"><img alt="system" src="../../../_images/system.png" style="width: 1.5em;" /></a> <span class="guilabel">Source</span> tab you can see and edit basic
+information about the point cloud layer:</p>
+<figure class="align-center" id="id5">
+<span id="figure-point-cloud-source"></span><img alt="../../../_images/point_cloud_source.png" src="../../../_images/point_cloud_source.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.2 </span><span class="caption-text">Point cloud source tab</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><span class="guilabel">Settings</span>: Set a Layer name different from the layer
+filename that will be used to identify the layer in the project
+(in the Layers Panel, with expressions, in print layout legend,…)</p></li>
+<li><p><span class="guilabel">Assigned Coordinate Reference System (CRS)</span>: Here you
+can change the layer’s assigned
+<a class="reference internal" href="../working_with_projections/working_with_projections.html#layer-crs"><span class="std std-ref">Coordinate Reference System</span></a>, selecting a
+recently used one in the drop-down list or clicking on <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a>
+set Projection Select CRS button (see <a class="reference internal" href="../working_with_projections/working_with_projections.html#crs-selector"><span class="std std-ref">Coordinate Reference System Selector</span></a>). Use
+this process only if the CRS applied to the layer is a wrong
+one or if none was applied.</p></li>
+</ul>
+<ul id="pdal-querybuilder">
+<li><p><span class="guilabel">Provider Feature Filter</span>: allows to restrict data to use in the current project to a subset,
+using functions and expression at the PDAL data provider level.
+Press the <span class="guilabel">Query Builder</span> button at the bottom to start setting the filter.</p>
+<figure class="align-center" id="id6">
+<span id="figure-point-cloud-querybuilder"></span><img alt="../../../_images/point_cloud_querybuilder.png" src="../../../_images/point_cloud_querybuilder.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.3 </span><span class="caption-text">Filtering point cloud layer to buildings at specific altitude</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p id="pdal-expressions">In the bottom part of the dialog, you can type a <span class="guilabel">Provider specific filter expression</span>.
+Such an expression can be built thanks to:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Fields</span>: the list contains all the attributes of the point cloud layer.
+To add an attribute to the expression, double-click its name or just type it into the text box.</p></li>
+<li><p><span class="guilabel">Values</span>: frame lists values or statistics of the currently selected attribute, as a <code class="docutils literal notranslate"><span class="pre">key:value</span></code> pair.
+To add a value to the expression field, double click its name in the list:
+depending on the type of attribute, either the key or the value will be added to the expression.
+Or type the value in the expression text box.</p></li>
+<li><p><span class="guilabel">Operators</span>: this toolbar contains all usable operators.
+To add an operator to the expression field, click the appropriate button.
+Relational operators ( <code class="docutils literal notranslate"><span class="pre">=</span></code> , <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> , …) and logical operators (<code class="docutils literal notranslate"><span class="pre">AND</span></code>, <code class="docutils literal notranslate"><span class="pre">OR</span></code>, …) are available.</p></li>
+</ul>
+<p>The <span class="guilabel">Test</span> button helps you check the syntax of your query.
+Use the <span class="guilabel">Clear</span> button to wipe the query
+and revert the layer to its original state (i.e., fully load all the points in the layer).
+It is possible to <span class="guilabel">Save…</span> the query as a <code class="file docutils literal notranslate"><span class="pre">.QQF</span></code> file,
+or <span class="guilabel">Load…</span> the query from a file into the dialog.</p>
+<p>When a filter is applied, QGIS treats the resulting subset as if it were the entire layer.
+For example if you applied the <a class="reference internal" href="#figure-point-cloud-querybuilder"><span class="std std-ref">filter above</span></a> for filtering buildings,
+you can not e.g. display, query, save or edit points that are of vegetation classification
+because they are not part of the subset.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Filtered layers are indicated in the Layers Panel</strong></p>
+<p>In the <span class="guilabel">Layers</span> panel, a filtered layer is listed
+with a <a class="reference internal" href="../../../_images/mIndicatorFilter.png"><img alt="indicatorFilter" src="../../../_images/mIndicatorFilter.png" style="width: 1.5em;" /></a> <sup>Filter</sup> icon next to it
+indicating the query used when the mouse hovers over the icon.
+Double-click the icon to open the <span class="guilabel">Query Builder</span> dialog for edit.
+This can also be achieved through the <span class="menuselection">Layer ► Filter…</span> menu.</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="symbology-properties">
+<span id="point-clouds-symbology"></span><h3><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">20.2.3. </span>Symbology Properties</a><a class="headerlink" href="#symbology-properties" title="Link to this heading"></a></h3>
+<p>In the <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <span class="guilabel">Symbology</span> tab the settings for the
+rendering of the point cloud are made.
+In the upper part, the settings of the different feature renderers can be found.
+In the lower part, there are sections with which general settings
+for the entire layer can be made and which apply over feature renderers.</p>
+<section id="feature-rendering-types">
+<span id="point-clouds-rendering-types"></span><h4><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">20.2.3.1. </span>Feature Rendering types</a><a class="headerlink" href="#feature-rendering-types" title="Link to this heading"></a></h4>
+<p>There are different options for rendering point clouds that can be selected using the drop-down
+menu at the top of the <span class="guilabel">Symbology</span> tab
+(see <a class="reference internal" href="#figure-point-cloud-symbology-overview"><span class="std std-numref">Fig. 20.4</span></a>):</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/pointCloudExtent.png"><img alt="pointCloudExtent" src="../../../_images/pointCloudExtent.png" style="width: 1.5em;" /></a> <span class="guilabel">Extent Only</span>: Only a bounding box of the extent
+of the data is displayed; convenient for overviewing the data extent.
+As usual, the <span class="guilabel">Symbol</span> <a class="reference internal" href="../introduction/general_tools.html#symbol-widget-selector"><span class="std std-ref">widget</span></a> helps you configure
+any properties (color, stroke, opacity, sub-layers, …) you’d like for the box.</p></li>
+<li><p><a class="reference internal" href="../../../_images/singlebandPseudocolor.png"><img alt="singlebandPseudocolor" src="../../../_images/singlebandPseudocolor.png" style="width: 1.5em;" /></a> <span class="guilabel">Attribute by Ramp</span>: The data is drawn over
+a color gradient. See <a class="reference internal" href="#point-cloud-ramp"><span class="std std-ref">Attribute by Ramp Renderer</span></a></p></li>
+<li><p><a class="reference internal" href="../../../_images/multibandColor.png"><img alt="multibandColor" src="../../../_images/multibandColor.png" style="width: 1.5em;" /></a> <span class="guilabel">RGB</span>: Draw the data using red, green and blue
+color values. See <a class="reference internal" href="#point-cloud-rgb"><span class="std std-ref">RGB Renderer</span></a></p></li>
+<li><p><a class="reference internal" href="../../../_images/paletted.png"><img alt="paletted" src="../../../_images/paletted.png" style="width: 1.5em;" /></a> <span class="guilabel">Classification</span>: The data is drawn using different colors
+for different classes. See <a class="reference internal" href="#point-cloud-classification"><span class="std std-ref">Classification Renderer</span></a></p></li>
+</ul>
+<p>When a point cloud is loaded, QGIS follows a logic to select the best
+renderer:</p>
+<ul class="simple">
+<li><p>if the dataset contains color information (red, green, blue
+attributes), the RGB renderer will be used</p></li>
+<li><p>else if the dataset contains a <code class="docutils literal notranslate"><span class="pre">Classification</span></code> attribute, the
+classified renderer will be used</p></li>
+<li><p>else it will fall back to rendering based on Z attribute</p></li>
+</ul>
+<p>If you do not know the attributes of the point cloud, the <a class="reference internal" href="../../../_images/mAlgorithmBasicStatistics.png"><img alt="basicStatistics" src="../../../_images/mAlgorithmBasicStatistics.png" style="width: 1.5em;" /></a>
+<span class="guilabel">Statistics</span> <a class="reference internal" href="#point-clouds-statistics"><span class="std std-ref">tab</span></a> provides a good
+overview of which attributes are contained in the point cloud and in which
+ranges the values are located.</p>
+<figure class="align-center" id="id7">
+<span id="figure-point-cloud-symbology-overview"></span><img alt="../../../_images/point_cloud_symbology_overview.png" src="../../../_images/point_cloud_symbology_overview.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.4 </span><span class="caption-text">Point cloud symbology tab</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="attribute-by-ramp-renderer">
+<span id="point-cloud-ramp"></span><h5><a class="toc-backref" href="#id24" role="doc-backlink">Attribute by Ramp Renderer</a><a class="headerlink" href="#attribute-by-ramp-renderer" title="Link to this heading"></a></h5>
+<p>With <a class="reference internal" href="../../../_images/singlebandPseudocolor.png"><img alt="singlebandPseudocolor" src="../../../_images/singlebandPseudocolor.png" style="width: 1.5em;" /></a> <span class="guilabel">Attribute by Ramp</span>, the data can be
+displayed by numerical values over a color gradient. Such numerical values
+can be, for example, an existing intensity attribute or the Z-value. Depending
+on a minimum and a maximum value, the other values are spread to the color
+gradient via interpolation. The distinct values and their assignment to a
+certain color are called “color map” and are shown in the table. There are
+various setting options, which are described below the figure.</p>
+<figure class="align-center" id="id8">
+<span id="figure-point-cloud-attribute-by-ramp"></span><img alt="../../../_images/point_cloud_attribute_by_ramp.png" src="../../../_images/point_cloud_attribute_by_ramp.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.5 </span><span class="caption-text">Point cloud symbology tab: Attribute by Ramp</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><span class="guilabel">Min</span> and <span class="guilabel">Max</span> define the range that is applied to
+the color ramp: the <span class="guilabel">Min</span> value represents the left, the
+<span class="guilabel">Max</span> value the right end of the color ramp, the values in
+between are interpolated. By default QGIS detects the minimum and the
+maximum from the selected attribute but they can be modified. Once you
+have changed the values, you can restore the defaults by clicking on
+the <span class="guilabel">Load</span> button.</p></li>
+<li><p>The <span class="guilabel">Interpolation</span> entry defines how values are
+assigned their color:</p>
+<ul>
+<li><p><span class="guilabel">Discrete</span> (a <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> symbol appears in the header of the
+<span class="guilabel">Value</span> column): The color is taken from the closest color map
+entry with equal or higher value</p></li>
+<li><p><span class="guilabel">Linear</span> The color is linearly interpolated from the color map
+entries above and below the pixel value, meaning that to each dataset
+value corresponds a unique color</p></li>
+<li><p><span class="guilabel">Exact</span> (a <code class="docutils literal notranslate"><span class="pre">=</span></code> symbol appears in the header of the
+<span class="guilabel">Value</span> column): Only pixels with value equal to a color map
+entry are applied a color; others are not rendered.</p></li>
+</ul>
+</li>
+<li><p>The <span class="guilabel">Color ramp</span> widget helps you select the color ramp to assign
+to the dataset. As usual with <a class="reference internal" href="../introduction/general_tools.html#color-ramp-widget"><span class="std std-ref">this widget</span></a>,
+you can create a new one and edit or save the currently selected one.</p></li>
+<li><p>The <span class="guilabel">Label unit suffix</span> adds a label after the value in
+the legend, and the <span class="guilabel">Label precision</span> controls the number of
+decimals to display.</p></li>
+</ul>
+<p>The classification <span class="guilabel">Mode</span> helps you define how values are distributed
+across the classes:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Continuous</span>: Classes number and color are fetched from
+the color ramp stops; limits values are set following stops distribution
+in the color ramp (you can find more information on stops in <a class="reference internal" href="../style_library/style_manager.html#color-ramp"><span class="std std-ref">Setting a Color Ramp</span></a>).</p></li>
+<li><p><span class="guilabel">Equal interval</span>: The number of classes is set by the
+<span class="guilabel">Classes</span> field at the end of the line; limits values are defined
+so that the classes all have the same magnitude.</p></li>
+</ul>
+<p>The classes are determined automatically and shown in the color map table.
+But you can also edit these classes manually:</p>
+<ul class="simple">
+<li><p>Double clicking in a <span class="guilabel">Value</span> in the table lets you modify the class value</p></li>
+<li><p>Double clicking in the <span class="guilabel">Color</span> column opens the <a class="reference internal" href="../introduction/general_tools.html#color-selector"><span class="std std-ref">Color Selector</span></a> widget,
+where you can select a color to apply for that value</p></li>
+<li><p>Double clicking in the <span class="guilabel">Label</span> column to modify the label of the class</p></li>
+<li><p>Right-clicking over selected rows in the color table shows a contextual menu
+to <span class="guilabel">Change Color…</span> and <span class="guilabel">Change Opacity…</span> for the selection</p></li>
+</ul>
+<p>Below the table there are the options to restore the default classes with
+<span class="guilabel">Classify</span> or to manually <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add</sup> values or
+<a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="symbologyRemove" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> <sup>Delete</sup> selected values from the table.</p>
+<p>Since a customized color map can be very complex, there is also the option to
+<a class="reference internal" href="../../../_images/mActionFileOpen.png"><img alt="fileOpen" src="../../../_images/mActionFileOpen.png" style="width: 1.5em;" /></a> <sup>Load</sup> an existing color map or to <a class="reference internal" href="../../../_images/mActionFileSaveAs.png"><img alt="fileSaveAs" src="../../../_images/mActionFileSaveAs.png" style="width: 1.5em;" /></a> <sup>Save</sup> it for use in
+other layers (as a <code class="file docutils literal notranslate"><span class="pre">txt</span></code> file).</p>
+<p>If you have selected <span class="guilabel">Linear</span> for <span class="guilabel">Interpolation</span>, you can
+also configure:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Clip out of range values</span> By default, the linear
+method assigns the first class (respectively the last class) color to
+values in the dataset that are lower than the set <span class="guilabel">Min</span>
+(respectively greater than the set <span class="guilabel">Max</span>) value.
+Check this setting if you do not want to render those values.</p></li>
+<li><p><span class="guilabel">Legend settings</span>, for display in the <span class="guilabel">Layers</span>
+panel and in the <a class="reference internal" href="../print_composer/composer_items/composer_legend.html#layout-legend-item"><span class="std std-ref">layout legend</span></a>.
+Customization works the same way as with a raster layer
+(find more details at <a class="reference internal" href="../working_with_raster/raster_properties.html#raster-legend-settings"><span class="std std-ref">Customize raster legend</span></a>).</p></li>
+</ul>
+</section>
+<section id="rgb-renderer">
+<span id="point-cloud-rgb"></span><h5><a class="toc-backref" href="#id25" role="doc-backlink">RGB Renderer</a><a class="headerlink" href="#rgb-renderer" title="Link to this heading"></a></h5>
+<p>With the <a class="reference internal" href="../../../_images/multibandColor.png"><img alt="multibandColor" src="../../../_images/multibandColor.png" style="width: 1.5em;" /></a> <span class="guilabel">RGB</span> renderer, three selected attributes
+from the point cloud will be used as the red, green and blue component. If the
+attributes are named accordingly, QGIS selects them automatically and fetches
+<span class="guilabel">Min</span> and <span class="guilabel">Max</span> values for each band and scales the coloring
+accordingly. However, it is also possible to modify the values manually.</p>
+<p>A <span class="guilabel">Contrast enhancement</span> method can be applied to the values:
+<span class="guilabel">No Enhancement</span>, <span class="guilabel">Stretch to MinMax</span>,
+<span class="guilabel">Stretch and Clip to MinMax</span> and <span class="guilabel">Clip to MinMax</span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <span class="guilabel">Contrast enhancement</span> tool is still under development.
+If you have problems with it, you should use the default setting
+<span class="guilabel">Stretch to MinMax</span>.</p>
+</div>
+<figure class="align-center" id="id9">
+<span id="figure-point-cloud-rgb"></span><img alt="../../../_images/point_cloud_rgb.png" src="../../../_images/point_cloud_rgb.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.6 </span><span class="caption-text">The point cloud RGB renderer</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="classification-renderer">
+<span id="point-cloud-classification"></span><h5><a class="toc-backref" href="#id26" role="doc-backlink">Classification Renderer</a><a class="headerlink" href="#classification-renderer" title="Link to this heading"></a></h5>
+<p>In the <a class="reference internal" href="../../../_images/paletted.png"><img alt="paletted" src="../../../_images/paletted.png" style="width: 1.5em;" /></a> <span class="guilabel">Classification</span> rendering, the point cloud is shown
+differentiated by color on the basis of an attribute. Any type of attribute
+can be used (numeric, string, …). Point cloud data often includes a
+field called <code class="docutils literal notranslate"><span class="pre">Classification</span></code>. This usually contains data determined
+automatically by post-processing, e.g. about vegetation. With
+<span class="guilabel">Attribute</span> you can select the field from the attribute table that
+will be used for the classification. By default, QGIS uses the definitions of
+the LAS specification (see table ‘ASPRS Standard Point Classes’ in the PDF on
+<a class="reference external" href="https://www.asprs.org/divisions-committees/lidar-division/laser-las-file-format-exchange-activities">ASPRS home page</a>).
+However, the data may deviate from this schema; in case of doubt, you have to
+ask the person or institution from which you received the data for the
+definitions.</p>
+<figure class="align-center" id="id10">
+<span id="figure-point-cloud-classification"></span><img alt="../../../_images/point_cloud_classification.png" src="../../../_images/point_cloud_classification.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.7 </span><span class="caption-text">The point cloud classification renderer</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In the table all used values are displayed with the corresponding color and
+legend. At the beginning of each row there is a <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> check box; if it is
+unchecked, this value is no longer shown on the map. With double click in the
+table, the <span class="guilabel">Color</span>, the <span class="guilabel">Value</span> and the <span class="guilabel">Legend</span>
+can be modified (for the color, the <a class="reference internal" href="../introduction/general_tools.html#color-selector"><span class="std std-ref">Color Selector</span></a> widget opens).</p>
+<p>Below the table there are buttons with which you can change the default
+classes generated by QGIS:</p>
+<ul class="simple">
+<li><p>With the <span class="guilabel">Classify</span> button the data can be classified automatically:
+all values that occur in the attributes and are not yet present in the table
+are added</p></li>
+<li><p>With <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add</sup> and <a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="symbologyRemove" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> <sup>Delete</sup>,
+values can be added or removed manually</p></li>
+<li><p><span class="guilabel">Delete All</span> removes all values from the table</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>In the <span class="guilabel">Layers</span> panel, you can right-click over a class leaf entry of a layer
+to quickly configure visibility of the corresponding features.</p>
+</div>
+</section>
+</section>
+<section id="point-symbol">
+<h4><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">20.2.3.2. </span>Point Symbol</a><a class="headerlink" href="#point-symbol" title="Link to this heading"></a></h4>
+<p>Under <span class="guilabel">Point Symbol</span>, the size and the unit (e.g. millimeters,
+pixels, inches) with which each data point is displayed can be set.
+Either <span class="guilabel">Circle</span> or <span class="guilabel">Square</span> can be selected as the style for the points.</p>
+</section>
+<section id="layer-rendering">
+<h4><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">20.2.3.3. </span>Layer Rendering</a><a class="headerlink" href="#layer-rendering" title="Link to this heading"></a></h4>
+<p>In the <span class="guilabel">Layer Rendering</span> section you have the following options
+to modify the rendering of the layer:</p>
+<ul class="simple" id="point-cloud-draw-order">
+<li><p><span class="guilabel">Draw order</span>: allows to control whether point clouds rendering order on 2d map canvas
+should rely on their Z value.
+It is possible to render :</p>
+<ul>
+<li><p>with the <span class="guilabel">Default</span> order in which the points are stored in the layer,</p></li>
+<li><p>from <span class="guilabel">Bottom to top</span> (points with larger Z values cover lower points
+giving the looks of a true ortho photo),</p></li>
+<li><p>or from <span class="guilabel">Top to bottom</span> where the scene appears as viewed from below.</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple" id="point-clouds-symbology-maxerror">
+<li><p><span class="guilabel">Maximum error</span>: Point clouds usually contains more points than are needed for the display.
+By this option you set how dense or sparse the display of the point cloud will be
+(this can also be understood as ‘maximum allowed gap between points’).
+If you set a large number (e.g. 5 mm), there will be visible gaps between points.
+Low value (e.g. 0.1 mm) could force rendering of unnecessary amount of points,
+making rendering slower (different units can be selected).</p></li>
+<li><p><span class="guilabel">Opacity</span>: You can make the underlying layer in the map canvas visible with this tool.
+Use the slider to adapt the visibility of your layer to your needs.
+You can also make a precise definition of the percentage of visibility
+in the menu beside the slider.</p></li>
+<li><p><span class="guilabel">Blending mode</span>: You can achieve special rendering effects with this tool.
+The pixels of your overlaying and underlying layers are mixed through the settings
+described in <a class="reference internal" href="../introduction/general_tools.html#blend-modes"><span class="std std-ref">Blending Modes</span></a>.</p></li>
+<li><p><span class="guilabel">Eye dome lighting</span>: this applies shading effects to the map canvas for a better depth rendering.
+Rendering quality depends on the <a class="reference internal" href="#point-cloud-draw-order"><span class="std std-ref">draw order</span></a> property;
+the <span class="guilabel">Default</span> draw order may give sub-optimal results.
+Following parameters can be controlled:</p>
+<ul>
+<li><p><span class="guilabel">Strength</span>: increases the contrast, allowing for better depth perception</p></li>
+<li><p><span class="guilabel">Distance</span>: represents the distance of the used pixels off the center pixel
+and has the effect of making edges thicker.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="d-view-properties">
+<span id="point-clouds-3d"></span><h3><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">20.2.4. </span>3D View Properties</a><a class="headerlink" href="#d-view-properties" title="Link to this heading"></a></h3>
+<p>In the <a class="reference internal" href="../../../_images/3d.png"><img alt="3d" src="../../../_images/3d.png" style="width: 1.5em;" /></a> <span class="guilabel">3D View</span> tab you can make the settings for the rendering
+of the point cloud in 3D maps.</p>
+<section id="d-rendering-modes">
+<h4><a class="toc-backref" href="#id30" role="doc-backlink"><span class="section-number">20.2.4.1. </span>3D Rendering modes</a><a class="headerlink" href="#d-rendering-modes" title="Link to this heading"></a></h4>
+<p>Following options can be selected from the drop down menu at the top of the tab:</p>
+<ul class="simple">
+<li><p><span class="guilabel">No Rendering</span>: Data are not displayed</p></li>
+<li><p><span class="guilabel">Follow 2D Symbology</span>: Syncs features rendering in 3D
+with <a class="reference internal" href="#point-clouds-rendering-types"><span class="std std-ref">symbology assigned in 2D</span></a></p></li>
+<li><p><a class="reference internal" href="../../../_images/singleColor.png"><img alt="singleColor" src="../../../_images/singleColor.png" style="width: 1.5em;" /></a> <span class="guilabel">Single Color</span>: All points are displayed in the same
+<a class="reference internal" href="../introduction/general_tools.html#color-selector"><span class="std std-ref">color</span></a> regardless of attributes</p></li>
+<li><p><a class="reference internal" href="../../../_images/singlebandPseudocolor.png"><img alt="singlebandPseudocolor" src="../../../_images/singlebandPseudocolor.png" style="width: 1.5em;" /></a> <span class="guilabel">Attribute by Ramp</span>: Interpolates a given attribute
+over a color ramp and assigns to features their matching color.
+See <a class="reference internal" href="#point-cloud-ramp"><span class="std std-ref">Attribute by Ramp Renderer</span></a>.</p></li>
+<li><p><a class="reference internal" href="../../../_images/multibandColor.png"><img alt="multibandColor" src="../../../_images/multibandColor.png" style="width: 1.5em;" /></a> <span class="guilabel">RGB</span>: Use different attributes of the features
+to set the Red, Green and Blue color components to assign to them.
+See <a class="reference internal" href="#point-cloud-rgb"><span class="std std-ref">RGB Renderer</span></a>.</p></li>
+<li><p><a class="reference internal" href="../../../_images/paletted.png"><img alt="paletted" src="../../../_images/paletted.png" style="width: 1.5em;" /></a> <span class="guilabel">Classification</span>: differentiates points by color
+on the basis of an attribute. See <a class="reference internal" href="#point-cloud-classification"><span class="std std-ref">Classification Renderer</span></a>.</p></li>
+</ul>
+<figure class="align-center" id="id11">
+<span id="figure-point-cloud-3d-view"></span><img alt="../../../_images/point_cloud_3d_view.png" src="../../../_images/point_cloud_3d_view.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.8 </span><span class="caption-text">The point cloud 3D view tab with the classification renderer</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="d-point-symbol">
+<h4><a class="toc-backref" href="#id31" role="doc-backlink"><span class="section-number">20.2.4.2. </span>3D Point Symbol</a><a class="headerlink" href="#d-point-symbol" title="Link to this heading"></a></h4>
+<p>In the lower part of the <a class="reference internal" href="../../../_images/3d.png"><img alt="3d" src="../../../_images/3d.png" style="width: 1.5em;" /></a> <span class="guilabel">3D View</span> tab you can find the
+<span class="guilabel">Point Symbol</span> section. Here you can make general settings for the
+entire layer which are the same for all renderers. There are the following
+options:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Point size</span>: The size (in pixels) with which each data point is
+displayed can be set</p></li>
+<li><p><span class="guilabel">Maximum screen space error</span>: By this option you set how dense or
+sparse the display of the point cloud will be (in pixels). If you set a large
+number (e.g. 10), there will be visible gaps between points; low value
+(e.g. 0) could force rendering of unnecessary amount of points, making
+rendering slower (you can find more details at <span class="guilabel">Symbology</span>
+<a class="reference internal" href="#point-clouds-symbology-maxerror"><span class="std std-ref">Maximum error</span></a>).</p></li>
+<li><p><span class="guilabel">Point budget</span>: To avoid long rendering, you can set the maximum
+number of points that will be rendered</p></li>
+<li><p>Check <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Render as surface (Triangulate)</span> to render
+the point cloud layer in the 3D view with a solid surface obtained by triangulation.
+You can control dimensions of the computed triangles:</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Skip triangles longer than</span> a threshold value:
+sets in the horizontal plan, the maximum length of a side of the triangles to consider</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Skip triangles taller than</span> a threshold value:
+sets in the vertical plan, the maximum height of a side of the triangles to consider</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show bounding boxes</span>: Especially useful for debugging,
+shows bounding boxes of nodes in hierarchy</p></li>
+</ul>
+</section>
+</section>
+<section id="rendering-properties">
+<span id="point-clouds-rendering"></span><h3><a class="toc-backref" href="#id32" role="doc-backlink"><span class="section-number">20.2.5. </span>Rendering Properties</a><a class="headerlink" href="#rendering-properties" title="Link to this heading"></a></h3>
+<p>Under the <span class="guilabel">Scale dependent visibility</span> group box,
+you can set the <span class="guilabel">Maximum (inclusive)</span> and <span class="guilabel">Minimum
+(exclusive)</span> scale, defining a range of scale in which features will be
+visible. Out of this range, they are hidden. The <a class="reference internal" href="../../../_images/mActionMapIdentification.png"><img alt="mapIdentification" src="../../../_images/mActionMapIdentification.png" style="width: 1.5em;" /></a>
+<sup>Set to current canvas scale</sup> button helps you use the current map
+canvas scale as boundary of the range visibility.
+See <a class="reference internal" href="../introduction/general_tools.html#label-scaledepend"><span class="std std-ref">Visibility Scale Selector</span></a> for more information.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also activate scale dependent visibility on a layer from within
+the <span class="guilabel">Layers</span> panel: right-click on the layer and in the contextual menu,
+select <span class="guilabel">Set Layer Scale Visibility</span>.</p>
+</div>
+<figure class="align-center" id="id12">
+<span id="figure-point-cloud-rendering"></span><img alt="../../../_images/point_cloud_rendering.png" src="../../../_images/point_cloud_rendering.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.9 </span><span class="caption-text">The point cloud rendering tab</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="elevation-properties">
+<span id="point-clouds-elevation"></span><h3><a class="toc-backref" href="#id33" role="doc-backlink"><span class="section-number">20.2.6. </span>Elevation Properties</a><a class="headerlink" href="#elevation-properties" title="Link to this heading"></a></h3>
+<p>In the <a class="reference internal" href="../../../_images/elevationscale.png"><img alt="elevationscale" src="../../../_images/elevationscale.png" style="width: 1.5em;" /></a> <span class="guilabel">Elevation</span> tab, you can set corrections for
+the Z-values of the data. This may be necessary to adjust the elevation of
+the data in 3D maps and its appearance in the <a class="reference internal" href="../map_views/elevation_profile.html#label-elevation-profile-view"><span class="std std-ref">profile tool charts</span></a>.
+There are following options:</p>
+<ul class="simple">
+<li><p>Under <span class="guilabel">Elevation</span> group:</p>
+<ul>
+<li><p>You can set a <span class="guilabel">Scale</span>: If <code class="docutils literal notranslate"><span class="pre">10</span></code> is entered here, a point that has a
+value Z = <code class="docutils literal notranslate"><span class="pre">5</span></code> is displayed at a height of <code class="docutils literal notranslate"><span class="pre">50</span></code>.</p></li>
+<li><p>An <span class="guilabel">offset</span> to the z-level can be entered.
+This is useful to match different data sources in its height to each other.
+By default, the lowest z-value contained in the data is used as this value.
+This value can also be restored with the <a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a> <sup>Refresh</sup> button
+at the end of the line.</p></li>
+</ul>
+</li>
+<li><p>Under <span class="guilabel">Profile Chart Accuracy</span>, the <span class="guilabel">Maximum error</span>
+helps you control how dense or sparse the points will be rendered in the elevation profile.
+Larger values result in a faster generation with less points included.</p></li>
+<li><p>Under <span class="guilabel">Profile Chart Appearance</span>, you can control the point display:</p>
+<ul>
+<li><p><span class="guilabel">Point size</span>: the size to render the points with, in supported units
+(millimeters, map units, pixels, …)</p></li>
+<li><p><span class="guilabel">Style</span>: whether to render the points as <span class="guilabel">Circle</span> or <span class="guilabel">Square</span></p></li>
+<li><p>Apply a single <span class="guilabel">Color</span> to all the points visible in the profile view</p></li>
+<li><p>Check <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Respect layer’s coloring</span> to instead show the points
+with the color assigned via their <a class="reference internal" href="#point-clouds-symbology"><span class="std std-ref">2D symbology</span></a></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Apply opacity by distance from curve effect</span>,
+reducing the opacity of points which are further from the profile curve</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id13">
+<span id="figure-point-cloud-elevation"></span><img alt="../../../_images/point_cloud_elevation.png" src="../../../_images/point_cloud_elevation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.10 </span><span class="caption-text">The point cloud elevation tab</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="metadata-properties">
+<span id="point-clouds-metadata"></span><h3><a class="toc-backref" href="#id34" role="doc-backlink"><span class="section-number">20.2.7. </span>Metadata Properties</a><a class="headerlink" href="#metadata-properties" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="../../../_images/editmetadata.png"><img alt="editMetadata" src="../../../_images/editmetadata.png" style="width: 1.2em;" /></a> <span class="guilabel">Metadata</span> tab provides you with options
+to create and edit a metadata report on your layer.
+See <a class="reference internal" href="../introduction/general_tools.html#metadatamenu"><span class="std std-ref">Metadata</span></a> for more information.</p>
+</section>
+<section id="statistics-properties">
+<span id="point-clouds-statistics"></span><h3><a class="toc-backref" href="#id35" role="doc-backlink"><span class="section-number">20.2.8. </span>Statistics Properties</a><a class="headerlink" href="#statistics-properties" title="Link to this heading"></a></h3>
+<p>In the <a class="reference internal" href="../../../_images/mAlgorithmBasicStatistics.png"><img alt="basicStatistics" src="../../../_images/mAlgorithmBasicStatistics.png" style="width: 1.5em;" /></a> <span class="guilabel">Statistics</span> tab you can get an overview of
+the attributes of your point cloud and their distribution.</p>
+<p>At the top you will find the section <span class="guilabel">Attribute Statistics</span>. Here
+all attributes contained in the point cloud are listed, as well as some of
+their statistical values: <span class="guilabel">Minimum</span>, <span class="guilabel">Maximum</span>,
+<span class="guilabel">Mean</span>, <span class="guilabel">Standard Deviation</span></p>
+<p>If there is an attribute <span class="guilabel">Classification</span>, then there is another
+table in the lower section. Here all values contained in the attribute are
+listed, as well as their absolute <span class="guilabel">Count</span> and relative <span class="guilabel">%</span>
+abundance.</p>
+<figure class="align-center" id="id14">
+<span id="figure-point-cloud-statistics"></span><img alt="../../../_images/point_cloud_statistics.png" src="../../../_images/point_cloud_statistics.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.11 </span><span class="caption-text">The point cloud statistics tab</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="virtual-point-cloud">
+<span id="id3"></span><h2><a class="toc-backref" href="#id36" role="doc-backlink"><span class="section-number">20.3. </span>Virtual point cloud</a><a class="headerlink" href="#virtual-point-cloud" title="Link to this heading"></a></h2>
+<p>Lidar surveys of larger areas are often multi-terabyte datasets with many billions of points.
+Having such large datasets represented as a single point cloud file is not practical
+due to the difficulties of storage, transfer, display and analysis.
+Point cloud data are therefore typically stored and distributed split into square tiles (e.g. <code class="docutils literal notranslate"><span class="pre">1km</span> <span class="pre">x</span> <span class="pre">1km</span></code>),
+each tile having a more manageable file size (e.g. ~200 MB when compressed).</p>
+<p>Tiling of data solves the problems with size of data,
+but it introduces issues when processing or viewing an area of interest
+that does not fit entirely into a single tile.
+Users need to develop workflows that take into account multiple tiles
+and special care needs to be taken to deal with data near edges of tiles
+to avoid unwanted artefacts in outputs.
+Similarly, when viewing point cloud data, it becomes cumbersome to load many individual files
+and apply the same symbology.</p>
+<p>Here is an example of several point cloud tiles loaded in QGIS.
+Each tile is styled based on min/max Z values of the tile, creating visible artefacts on tile edges.
+The styling has to be adjusted for each layer separately:</p>
+<figure class="align-center" id="id15">
+<span id="figure-point-cloud-tiles"></span><img alt="../../../_images/point_cloud_individual_tiles.png" src="../../../_images/point_cloud_individual_tiles.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.12 </span><span class="caption-text">Individual point cloud tiles loaded, with artefacts on edges</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In the GIS world, many users are familiar with the concept of virtual rasters.
+A virtual raster is a file that simply references other raster files with actual data.
+In this way, GIS software then treats the whole dataset comprising many files as a single raster layer,
+making the display and analysis of all the rasters listed in the virtual file much easier.</p>
+<p>Borrowing the concept of virtual rasters from GDAL,
+<strong>virtual point cloud (VPC)</strong> is a file format that references other point cloud files.
+Software supporting virtual point clouds handles the whole tiled dataset as a single data source.</p>
+<figure class="align-center" id="id16">
+<span id="figure-point-cloud-vpc"></span><img alt="../../../_images/point_cloud_vpc.png" src="../../../_images/point_cloud_vpc.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.13 </span><span class="caption-text">The virtual point cloud</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Displaying and manipulating virtual point cloud is much more fluent and easy.</p>
+<figure class="align-center" id="id17">
+<span id="figure-point-cloud-vpc2d"></span><img alt="../../../_images/point_cloud_vpc_2d.gif" src="../../../_images/point_cloud_vpc_2d.gif" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.14 </span><span class="caption-text">The virtual point cloud output on 2D: displaying details when zooming in</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>At the core, a virtual point cloud file is a simple JSON file with <code class="file docutils literal notranslate"><span class="pre">.vpc</span></code> extension,
+containing references to actual data files (e.g. <code class="file docutils literal notranslate"><span class="pre">.LAS</span></code>, <code class="file docutils literal notranslate"><span class="pre">.LAZ</span></code> or <code class="file docutils literal notranslate"><span class="pre">.COPC</span></code> files)
+and additional metadata extracted from the files.
+Even though it is possible to write VPC files by hand,
+it is strongly recommended to create them using an automated tool, such as:</p>
+<ul class="simple">
+<li><p>The Processing <a class="reference internal" href="../processing_algs/qgis/pointclouddatamanagement.html#pdalvirtualpointcloud"><span class="std std-ref">Build virtual point cloud (VPC)</span></a> algorithm</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">build_vpc</span></code> command of <a class="reference external" href="https://github.com/PDAL/wrench">PDAL wrench</a> tool</p></li>
+</ul>
+<p>For more details, please refer to the <a class="reference external" href="https://github.com/PDAL/wrench/blob/main/vpc-spec.md">VPC specification</a>
+that also contains best practices and optional extensions (such as overviews).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../working_with_vector_tiles/vector_tiles.html" class="btn btn-neutral float-left" title="19. Working with Vector Tiles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_3d_tiles/3d_tiles.html" class="btn btn-neutral float-right" title="21. Working with 3D Tiles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/working_with_point_clouds/point_clouds.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/working_with_point_clouds/point_clouds.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/working_with_point_clouds/point_clouds.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/working_with_point_clouds/point_clouds.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/working_with_point_clouds/point_clouds.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/working_with_point_clouds/point_clouds.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/working_with_point_clouds/point_clouds.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/working_with_point_clouds/point_clouds.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/working_with_point_clouds/point_clouds.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/working_with_point_clouds/point_clouds.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/working_with_point_clouds/point_clouds.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/working_with_point_clouds/point_clouds.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/working_with_point_clouds/point_clouds.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/working_with_point_clouds/point_clouds.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/working_with_point_clouds/point_clouds.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/working_with_point_clouds/point_clouds.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/working_with_point_clouds/point_clouds.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_point_clouds/point_clouds.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/working_with_point_clouds/point_clouds.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/working_with_point_clouds/point_clouds.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/working_with_point_clouds/point_clouds.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/working_with_point_clouds/point_clouds.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/working_with_point_clouds/point_clouds.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/working_with_point_clouds/point_clouds.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/working_with_point_clouds/point_clouds.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/working_with_point_clouds/point_clouds.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/6af77e8a9ffb921187f5559df312803c" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

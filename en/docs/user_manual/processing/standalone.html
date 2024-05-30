@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>27.8. Using processing from the command line &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing/standalone.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="27.9. Writing new Processing algorithms as Python scripts" href="scripts.html" />
+    <link rel="prev" title="27.7. Using processing algorithms from the console" href="console.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 27.8. Using processing from the command line">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. Visualizing Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">27. QGIS processing framework</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">27.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">27.2. Configuring the Processing Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="toolbox.html">27.3. The Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="history.html">27.4. The history manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler.html">27.5. The model designer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch.html">27.6. The batch processing interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="console.html">27.7. Using processing algorithms from the console</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">27.8. Using processing from the command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scripts.html">27.9. Writing new Processing algorithms as Python scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html">27.10. Input and output types for Processing Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3rdParty.html">27.11. Configuring external applications</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS User Guide</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">27. </span>QGIS processing framework</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">27.8. </span>Using processing from the command line</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing/standalone.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="console.html" class="btn btn-neutral float-left" title="27.7. Using processing algorithms from the console" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="scripts.html" class="btn btn-neutral float-right" title="27.9. Writing new Processing algorithms as Python scripts" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="using-processing-from-the-command-line">
+<span id="processing-standalone"></span><h1><span class="section-number">27.8. </span>Using processing from the command line<a class="headerlink" href="#using-processing-from-the-command-line" title="Link to this heading"></a></h1>
+<p>QGIS comes with a tool called <code class="docutils literal notranslate"><span class="pre">QGIS</span> <span class="pre">Processing</span> <span class="pre">Executor</span></code> which allows you to run
+Processing algorithms and models (built-in or provided by plugins) directly
+from the command line without starting QGIS Desktop itself.</p>
+<p>From a command line tool, run <code class="docutils literal notranslate"><span class="pre">qgis_process</span></code> and you should get:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>QGIS<span class="w"> </span>Processing<span class="w"> </span>Executor<span class="w"> </span>-<span class="w"> </span><span class="m">3</span>.27.0-Master<span class="w"> </span><span class="s1">&#39;Master&#39;</span><span class="w"> </span><span class="o">(</span><span class="m">3</span>.27.0-Master<span class="o">)</span>
+Usage:<span class="w"> </span>C:<span class="se">\O</span>SGeo4W<span class="se">\a</span>pps<span class="se">\q</span>gis-dev<span class="se">\b</span>in<span class="se">\q</span>gis_process.exe<span class="w"> </span><span class="o">[</span>--help<span class="o">]</span><span class="w"> </span><span class="o">[</span>--version<span class="o">]</span><span class="w"> </span><span class="o">[</span>--json<span class="o">]</span><span class="w"> </span><span class="o">[</span>--verbose<span class="o">]</span><span class="w"> </span><span class="o">[</span>--no-python<span class="o">]</span><span class="w"> </span><span class="o">[</span>command<span class="o">]</span><span class="w"> </span><span class="o">[</span>algorithm<span class="w"> </span>id,<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>model<span class="w"> </span>file,<span class="w"> </span>or<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>Python<span class="w"> </span>script<span class="o">]</span><span class="w"> </span><span class="o">[</span>parameters<span class="o">]</span>
+
+Options:
+
+<span class="w">  </span>--help<span class="w"> </span>or<span class="w"> </span>-h<span class="w">      </span>Output<span class="w"> </span>the<span class="w"> </span><span class="nb">help</span>
+<span class="w">  </span>--version<span class="w"> </span>or<span class="w"> </span>-v<span class="w">   </span>Output<span class="w"> </span>all<span class="w"> </span>versions<span class="w"> </span>related<span class="w"> </span>to<span class="w"> </span>QGIS<span class="w"> </span>Process
+<span class="w">  </span>--json<span class="w">            </span>Output<span class="w"> </span>results<span class="w"> </span>as<span class="w"> </span>JSON<span class="w"> </span>objects
+<span class="w">  </span>--verbose<span class="w">         </span>Output<span class="w"> </span>verbose<span class="w"> </span>logs
+<span class="w">  </span>--no-python<span class="w">       </span>Disable<span class="w"> </span>Python<span class="w"> </span>support<span class="w"> </span><span class="o">(</span>results<span class="w"> </span><span class="k">in</span><span class="w"> </span>faster<span class="w"> </span>startup<span class="o">)</span>
+
+Available<span class="w"> </span>commands:
+
+<span class="w">  </span>plugins<span class="w">          </span>list<span class="w"> </span>available<span class="w"> </span>and<span class="w"> </span>active<span class="w"> </span>plugins
+<span class="w">  </span>plugins<span class="w"> </span><span class="nb">enable</span><span class="w">   </span>enables<span class="w"> </span>an<span class="w"> </span>installed<span class="w"> </span>plugin.<span class="w"> </span>The<span class="w"> </span>plugin<span class="w"> </span>name<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>specified,<span class="w"> </span>e.g.<span class="w"> </span><span class="s2">&quot;plugins enable cartography_tools&quot;</span>
+<span class="w">  </span>plugins<span class="w"> </span>disable<span class="w">  </span>disables<span class="w"> </span>an<span class="w"> </span>installed<span class="w"> </span>plugin.<span class="w"> </span>The<span class="w"> </span>plugin<span class="w"> </span>name<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>specified,<span class="w"> </span>e.g.<span class="w"> </span><span class="s2">&quot;plugins disable cartography_tools&quot;</span>
+<span class="w">  </span>list<span class="w">             </span>list<span class="w"> </span>all<span class="w"> </span>available<span class="w"> </span>processing<span class="w"> </span>algorithms
+<span class="w">  </span><span class="nb">help</span><span class="w">             </span>show<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>algorithm.<span class="w"> </span>The<span class="w"> </span>algorithm<span class="w"> </span>id<span class="w"> </span>or<span class="w"> </span>a<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>model<span class="w"> </span>file<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>specified.
+<span class="w">  </span>run<span class="w">              </span>runs<span class="w"> </span>an<span class="w"> </span>algorithm.<span class="w"> </span>The<span class="w"> </span>algorithm<span class="w"> </span>id<span class="w"> </span>or<span class="w"> </span>a<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>model<span class="w"> </span>file<span class="w"> </span>and<span class="w"> </span>parameter<span class="w"> </span>values<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>specified.
+<span class="w">                   </span>Parameter<span class="w"> </span>values<span class="w"> </span>are<span class="w"> </span>specified<span class="w"> </span>after<span class="w"> </span>--<span class="w"> </span>with<span class="w"> </span><span class="nv">PARAMETER</span><span class="o">=</span>VALUE<span class="w"> </span>syntax.
+<span class="w">                   </span>Ordered<span class="w"> </span>list<span class="w"> </span>values<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>parameter<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>created<span class="w"> </span>by<span class="w"> </span>specifying<span class="w"> </span>the<span class="w"> </span>parameter<span class="w"> </span>multiple<span class="w"> </span>times,
+<span class="w">                   </span>e.g.<span class="w"> </span>--LAYERS<span class="o">=</span>layer1.shp<span class="w"> </span>--LAYERS<span class="o">=</span>layer2.shp
+<span class="w">                   </span>Alternatively,<span class="w"> </span>a<span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="w"> </span>character<span class="w"> </span><span class="k">in</span><span class="w"> </span>place<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>parameters<span class="w"> </span>argument<span class="w"> </span>indicates<span class="w"> </span>that<span class="w"> </span>the<span class="w"> </span>parameters<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>STDIN<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>JSON<span class="w"> </span>object.
+<span class="w">                   </span>The<span class="w"> </span>JSON<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>structured<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>map<span class="w"> </span>containing<span class="w"> </span>at<span class="w"> </span>least<span class="w"> </span>the<span class="w"> </span><span class="s2">&quot;inputs&quot;</span><span class="w"> </span>key<span class="w"> </span>specifying<span class="w"> </span>a<span class="w"> </span>map<span class="w"> </span>of<span class="w"> </span>input<span class="w"> </span>parameter<span class="w"> </span>values.
+<span class="w">                   </span>This<span class="w"> </span>implies<span class="w"> </span>the<span class="w"> </span>--json<span class="w"> </span>option<span class="w"> </span><span class="k">for</span><span class="w"> </span>output<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>JSON<span class="w"> </span>object.
+<span class="w">                   </span>If<span class="w"> </span>required,<span class="w"> </span>the<span class="w"> </span>ellipsoid<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>distance<span class="w"> </span>and<span class="w"> </span>area<span class="w"> </span>calculations<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>specified<span class="w"> </span>via<span class="w"> </span>the<span class="w"> </span><span class="s2">&quot;--ELLIPSOID=name&quot;</span><span class="w"> </span>argument.
+<span class="w">                   </span>If<span class="w"> </span>required,<span class="w"> </span>an<span class="w"> </span>existing<span class="w"> </span>QGIS<span class="w"> </span>project<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>during<span class="w"> </span>the<span class="w"> </span>algorithm<span class="w"> </span>execution<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>specified<span class="w"> </span>via<span class="w"> </span>the<span class="w"> </span><span class="s2">&quot;--PROJECT_PATH=path&quot;</span><span class="w"> </span>argument.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only installed plugins that advertise <code class="docutils literal notranslate"><span class="pre">hasProcessingProvider=yes</span></code>
+in their <code class="file docutils literal notranslate"><span class="pre">metadata.txt</span></code> file are recognized and can be activated
+or loaded by qgis_process tool.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Before calling qgis_process on a system without window manager (e.g. a headless server),
+you should set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">QT_QPA_PLATFORM</span><span class="o">=</span><span class="n">offscreen</span>
+</pre></div>
+</div>
+</div>
+<p>The command <code class="docutils literal notranslate"><span class="pre">list</span></code> can be used to get a list of all available providers
+and algorithms.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qgis_process<span class="w"> </span>list
+</pre></div>
+</div>
+<p>The command <code class="docutils literal notranslate"><span class="pre">help</span></code> can be used to get further information about commands or algorithms.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qgis_process<span class="w"> </span><span class="nb">help</span><span class="w"> </span>qgis:regularpoints
+</pre></div>
+</div>
+<p>The command <code class="docutils literal notranslate"><span class="pre">run</span></code> can be used to run an algorithm or model.
+Specify the name of the algorithm or a path to a model as first parameter.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qgis_process<span class="w"> </span>run<span class="w"> </span>native:buffer<span class="w"> </span>--<span class="w"> </span><span class="nv">INPUT</span><span class="o">=</span>source.shp<span class="w"> </span><span class="nv">DISTANCE</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="nv">OUTPUT</span><span class="o">=</span>buffered.shp
+</pre></div>
+</div>
+<p>Where a parameter accepts a list of values, set the same variable multiple times.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qgis_process<span class="w"> </span>run<span class="w"> </span>native:mergevectorlayers<span class="w"> </span>--<span class="w"> </span><span class="nv">LAYERS</span><span class="o">=</span>input1.shp<span class="w"> </span><span class="nv">LAYERS</span><span class="o">=</span>input2.shp<span class="w"> </span><span class="nv">OUTPUT</span><span class="o">=</span>merged.shp
+</pre></div>
+</div>
+<p>While running an algorithm a text-based feedback bar is shown, and the operation
+can be cancelled via <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">CTRL</kbd>+<kbd class="kbd docutils literal notranslate">C</kbd></kbd>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">run</span></code> command also supports further parameters.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--json</span></code> will format stdout output in a JSON structured way.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--ellipsoid</span></code> will set the ellipsoid to the specified one.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--distance_units</span></code> will use the specified distance units.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--area_units</span></code> will use the specified area units.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--project_path</span></code> will load the specified project for running the algorithm.</p></li>
+</ul>
+<p>Complex input parameters, i.e. parameter types which are themselves specified
+as a dictionary type object for algorithms, are supported by qgis_process.
+To indicate that parameters will be specified via stdin,
+the qgis_process command must follow the format (with a trailing <code class="docutils literal notranslate"><span class="pre">-</span></code>
+in place of the usual arguments list).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qgis_process<span class="w"> </span>run<span class="w"> </span>algorithmId<span class="w"> </span>-
+</pre></div>
+</div>
+<p>The JSON object must contain an “inputs” key, which is a map of the input parameter values.
+E.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;{&#39;inputs&#39;: {&#39;INPUT&#39;: &#39;my_shape.shp&#39;, &#39;DISTANCE&#39;: 5}}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>qgis_process<span class="w"> </span>run<span class="w"> </span>native:buffer<span class="w"> </span>-
+</pre></div>
+</div>
+<p>Additionally, extra settings like the distance units, area units, ellipsoid
+and project path can be included in this JSON object:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+<span class="w"> </span><span class="s1">&#39;ellipsoid&#39;</span>:<span class="w"> </span><span class="s1">&#39;EPSG:7019&#39;</span>,
+<span class="w"> </span><span class="s1">&#39;distance_units&#39;</span>:<span class="w"> </span><span class="s1">&#39;feet&#39;</span>,
+<span class="w"> </span><span class="s1">&#39;area_units&#39;</span>:<span class="w"> </span><span class="s1">&#39;ha&#39;</span>,
+<span class="w"> </span><span class="s1">&#39;project_path&#39;</span>:<span class="w"> </span><span class="s1">&#39;C:/temp/my_project.qgs&#39;</span>
+<span class="w"> </span><span class="s1">&#39;inputs&#39;</span>:<span class="w"> </span><span class="o">{</span><span class="s1">&#39;DISTANCE&#39;</span>:<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="s1">&#39;SEGMENTS&#39;</span>:<span class="w"> </span><span class="m">8</span><span class="w"> </span>...<span class="w"> </span><span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Specifying input parameters via stdin implies automatically the <code class="file docutils literal notranslate"><span class="pre">JSON</span></code>
+output format for results.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="console.html" class="btn btn-neutral float-left" title="27.7. Using processing algorithms from the console" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="scripts.html" class="btn btn-neutral float-right" title="27.9. Writing new Processing algorithms as Python scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing/standalone.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/processing/standalone.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/processing/standalone.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/processing/standalone.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/processing/standalone.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/processing/standalone.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/processing/standalone.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/processing/standalone.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/processing/standalone.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/processing/standalone.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/processing/standalone.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/processing/standalone.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/processing/standalone.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/processing/standalone.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/processing/standalone.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/processing/standalone.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/standalone.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing/standalone.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing/standalone.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/processing/standalone.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/processing/standalone.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing/standalone.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing/standalone.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing/standalone.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing/standalone.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing/standalone.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/420831c23c5ffab67b92f36a83c74bae" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

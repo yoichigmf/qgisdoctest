@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8. ブラウザパネル &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/introduction/browser.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="9. QGISの設定" href="qgis_configuration.html" />
+    <link rel="prev" title="7. QGISのユーザインタフェース" href="qgis_gui.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 8. ブラウザパネル">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. 序文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. 記述ルール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. 機能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html">5. 最初のステップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project_files.html">6. プロジェクトファイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qgis_gui.html">7. QGISのユーザインタフェース</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8. ブラウザパネル</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#resources-that-can-be-opened-run-from-the-browser">8.1. ブラウザから開くことができる/実行できるリソース</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#browser-panel-top-level-entries">8.2. ブラウザパネルのトップレベルエントリ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#favorites">8.2.1. お気に入り</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spatial-bookmarks">8.2.2. 空間ブックマーク</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#project-home">8.2.3. プロジェクトホーム</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drives-and-file-system">8.2.4. ドライブとファイルシステム</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database-entries">8.2.5. データベースエントリ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tiles-and-web-services">8.2.6. タイルとWebサービス</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#resources">8.3. リソース</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qgis_configuration.html">9. QGISの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. 投影法の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. 地図の可視化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_tools.html">12. 一般ツール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. 式でレベルアップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. スタイルライブラリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. データソースの管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. ベクタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. ラスタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. メッシュデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. ベクタタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. 点群の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. 3Dタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. 地図のレイアウト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. OGC / ISOプロトコルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. GPSデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. 認証システム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS の統合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS プロセシングフレームワーク</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. プロセシングプロバイダとアルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. ヘルプとサポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. 協力者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. 付録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. 文献とWeb参照</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGISユーザガイド</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">8. </span>ブラウザパネル</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/introduction/browser.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="qgis_gui.html" class="btn btn-neutral float-left" title="7. QGISのユーザインタフェース" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qgis_configuration.html" class="btn btn-neutral float-right" title="9. QGISの設定" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="the-browser-panel">
+<span id="label-browserpanel"></span><span id="index-0"></span><h1><span class="section-number">8. </span>ブラウザパネル<a class="headerlink" href="#the-browser-panel" title="Link to this heading"></a></h1>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#resources-that-can-be-opened-run-from-the-browser" id="id7">ブラウザから開くことができる/実行できるリソース</a></p></li>
+<li><p><a class="reference internal" href="#browser-panel-top-level-entries" id="id8">ブラウザパネルのトップレベルエントリ</a></p>
+<ul>
+<li><p><a class="reference internal" href="#favorites" id="id9">お気に入り</a></p></li>
+<li><p><a class="reference internal" href="#spatial-bookmarks" id="id10">空間ブックマーク</a></p></li>
+<li><p><a class="reference internal" href="#project-home" id="id11">プロジェクトホーム</a></p></li>
+<li><p><a class="reference internal" href="#drives-and-file-system" id="id12">ドライブとファイルシステム</a></p></li>
+<li><p><a class="reference internal" href="#database-entries" id="id13">データベースエントリ</a></p></li>
+<li><p><a class="reference internal" href="#tiles-and-web-services" id="id14">タイルとWebサービス</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#resources" id="id15">リソース</a></p></li>
+</ul>
+</nav>
+<p>QGISブラウザパネルは、QGISリソースの閲覧や検索、 中身の確認、コピーや読み込みに最適なツールです。QGISが処理方法を認識しているリソースのみがブラウザパネルに表示されます。</p>
+<p><a class="reference internal" href="../managing_data_source/opening_data.html#browser-panel"><span class="std std-ref">ブラウザパネル</span></a> で説明されているように、ブラウザパネルを使用するとデータの検索や中身の確認、データの追加を行うことができます。さらに、ブラウザパネルはプロジェクトファイル、Pythonスクリプトやプロセシングスクリプト、プロセシングモデルなど、多くのQGISリソースのドラッグ＆ドロップをサポートしています。</p>
+<p>Pythonスクリプトやプロセシングスクリプト、プロセシングモデルは、編集するために外部エディタやグラフィカルモデラーで開くこともできます。</p>
+<p><span class="guilabel">レイヤ</span> パネルからレイヤを <span class="guilabel">ブラウザ</span> パネルの例えば GeoPackage や PostGIS データベースへドラッグ＆ドロップすることができます。</p>
+<figure class="align-center" id="id5">
+<span id="figure-browser-panel"></span><img alt="../../../_images/browser_panel1.png" src="../../../_images/browser_panel1.png" />
+<figcaption>
+<p><span class="caption-number">図 8.1 </span><span class="caption-text">ブラウザパネル</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>ブラウザパネル (<a class="reference internal" href="#figure-browser-panel"><span class="std std-numref">図 8.1</span></a>) は、いくつかの固定トップレベルエントリを持った展開可能な階層として系統的に整理されています。階層にはブラウザで扱われるリソースがまとめられています。ノードエントリは、エントリ名の左側にある <a class="reference internal" href="../../../_images/browser_expand.png"><img alt="browserExpand" src="../../../_images/browser_expand.png" style="width: 1.5em;" /></a> をクリックすることで展開されます。ブランチは <a class="reference internal" href="../../../_images/browser_collapse.png"><img alt="browserCollapse" src="../../../_images/browser_collapse.png" style="width: 1.5em;" /></a> をクリックすることで折りたたまれます。 <a class="reference internal" href="../../../_images/mActionCollapseTree.png"><img alt="collapseTree" src="../../../_images/mActionCollapseTree.png" style="width: 1.5em;" /></a> <sup>全て折りたたむ</sup> ボタンを押すと、すべてのトップレベルエントリが折りたたまれます。</p>
+<p><span class="menuselection">設定 ► インタフェースのカスタマイズ</span> では機能を無効化することができます。例えば、ブラウザにPythonスクリプトを表示したくない場合には <span class="menuselection">Browser ► py</span> エントリのチェックを外し、ブラウザ内のホームフォルダを消したい場合には <span class="menuselection">Browser ► special:Home</span> エントリのチェックを外します。</p>
+<p>フィルタ（ <a class="reference internal" href="../../../_images/mActionFilterMap.png"><img alt="filterMap" src="../../../_images/mActionFilterMap.png" style="width: 1.5em;" /></a> <sup>ブラウザのフィルタ</sup> ）を使用して、エントリ名（階層内のリーフエントリとノードエントリの両方）に基づいて検索できます。フィルタテキストフィールドの横にある <a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <sup>オプション</sup> プルダウンメニューを使用して、以下のことができます。</p>
+<ul class="simple">
+<li><p><span class="guilabel">大・小文字を区別</span> した検索の切り替え</p></li>
+<li><p><span class="guilabel">フィルタパターン文法</span> を次のいずれかに設定</p>
+<ul>
+<li><p><span class="guilabel">通常</span></p></li>
+<li><p><span class="guilabel">ワイルドカード</span></p></li>
+<li><p><span class="guilabel">正規表現</span></p></li>
+</ul>
+</li>
+</ul>
+<p><em>プロパティウィジェット</em> は、エントリ/リソースに関する有用な情報を表示します。 <a class="reference internal" href="../../../_images/metadata.png"><img alt="metadata" src="../../../_images/metadata.png" style="width: 1.5em;" /></a> <sup>プロパティウィジェットの有効化/無効化</sup> ボタンを押すことで有効化/無効化することができます。有効にすると、 <a class="reference internal" href="#figure-properties-widget"><span class="std std-numref">図 8.2</span></a> に示すようにブラウザパネルの下部にウィジェットが開きます。</p>
+<figure class="align-center" id="id6">
+<span id="figure-properties-widget"></span><img alt="../../../_images/browser_p_properties_w.png" src="../../../_images/browser_p_properties_w.png" />
+<figcaption>
+<p><span class="caption-number">図 8.2 </span><span class="caption-text">プロパティウィジェット</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><span class="menuselection">ビュー► パネル</span> 内の <span class="guilabel">ブラウザ (2)</span> パネルを有効にすることで、2つ目のブラウザパネルを開くことができます。ブラウザパネルが2つあると、異なるブラウザ階層の奥深くにあるリソース間でレイヤをコピーするときに便利です。</p>
+<section id="resources-that-can-be-opened-run-from-the-browser">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">8.1. </span>ブラウザから開くことができる/実行できるリソース</a><a class="headerlink" href="#resources-that-can-be-opened-run-from-the-browser" title="Link to this heading"></a></h2>
+<p>ブラウザパネルでは多くのことができます。</p>
+<ul class="simple">
+<li><p>ダブルクリック、マップキャンバス上へドラッグ、または（レイヤ選択後に） <a class="reference internal" href="../../../_images/mActionAddLayer.png"><img alt="addLayer" src="../../../_images/mActionAddLayer.png" style="width: 1.5em;" /></a> <sup>選択したレイヤの追加</sup> ボタンをクリックすることで、ベクタレイヤ、ラスタレイヤ、メッシュレイヤをマップに追加します。</p></li>
+<li><p>ダブルクリックもしくはマップキャンバスにドラッグして、Python スクリプト（プロセシングアルゴリズムを含む）を実行します。</p></li>
+<li><p>ダブルクリックもしくはマップキャンバスに上へドラッグして、プロセシングモデルを実行します。</p></li>
+<li><p>コンテキストメニューを使用して、QGISプロジェクトから <span class="guilabel">シンボルを抽出...</span> します。</p></li>
+<li><p>デフォルトのアプリケーションでファイルを開きます（ コンテキストメニューの <span class="guilabel">外部で &lt;file type&gt; を開く...</span> ）。例：HTMLファイル、スプレッドシート、画像、PDF、テキストファイル等</p></li>
+<li><p>エントリのコピーを行います。</p></li>
+<li><p>レイヤの名前の変更や、レイヤの削除（複数可）（コンテキストメニューの <span class="menuselection">管理 ►</span> ）</p></li>
+<li><p>ファイルエクスプローラを開き、そのファイルを直接選択する <span class="guilabel">ファイルに表示</span></p></li>
+</ul>
+<p>以下では、トップレベルのエントリ下で分類されたさまざまなリソースグループをリストしており、これに対するリソース固有のアクションを整理しています。</p>
+</section>
+<section id="browser-panel-top-level-entries">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">8.2. </span>ブラウザパネルのトップレベルエントリ</a><a class="headerlink" href="#browser-panel-top-level-entries" title="Link to this heading"></a></h2>
+<section id="favorites">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">8.2.1. </span>お気に入り</a><a class="headerlink" href="#favorites" title="Link to this heading"></a></h3>
+<p>よく使うファイルシステムの場所は、お気に入りとしてタグ付けすることができます。タグを付けたものはここに表示されます。</p>
+<p><em>ホーム</em> で説明する操作に加えて、コンテキストメニューでは <span class="guilabel">お気に入りの名前の変更...</span> と <span class="guilabel">お気に入りを削除</span> の操作を行うことができます。</p>
+</section>
+<section id="spatial-bookmarks">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">8.2.2. </span>空間ブックマーク</a><a class="headerlink" href="#spatial-bookmarks" title="Link to this heading"></a></h3>
+<p>ここには空間ブックマークがあり、 <span class="guilabel">プロジェクト・ブックマーク</span> と <span class="guilabel">ユーザー・ブックマーク</span> に整理されています。</p>
+<p>空間ブックマークのトップレベルのコンテキストメニューからは、ブックマークの作成（ <span class="guilabel">新規空間ブックマーク...</span> ） 、 <span class="guilabel">空間ブックマークマネージャを表示</span> 、 <span class="guilabel">空間ブックマークをインポート...</span> 、 <span class="guilabel">空間ブックマークをエクスポート...</span>  を行うことができます。</p>
+<p>ブックマークのグループエントリに対しては、 <span class="guilabel">空間ブックマークをエクスポート...</span> や、ブックマークの作成（ <span class="guilabel">新規空間ブックマーク...</span> ）、 <span class="guilabel">ブックマークグループ名を変更</span> 、 <span class="guilabel">ブックマークグループを削除</span> といった操作ができます。</p>
+<p>ブックマークのエントリに対しては、 <span class="guilabel">ブックマークにズーム</span> 、 <span class="guilabel">空間ブックマークを編集...</span> 、 <span class="guilabel">ブックマークを削除</span> の操作がコンテキストメニューから行えます。</p>
+</section>
+<section id="project-home">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">8.2.3. </span>プロジェクトホーム</a><a class="headerlink" href="#project-home" title="Link to this heading"></a></h3>
+<p>プロジェクトファイルが保存されると、 <span class="guilabel">プロジェクトホーム</span> のエントリが利用可能となります。これは、現在のプロジェクト内で使用されているデータやその他のコンテンツ（スクリプト、プロセシングモデル、テキスト等）を含むフォルダです。これは <span class="guilabel">ブラウザ</span> パネルに表示され、プロジェクトのデータやその他のファイルに素早くアクセスできるようになります。</p>
+<p>これはデフォルトではプロジェクトファイルのあるフォルダですが、 <span class="menuselection">プロジェクト ► プロパティ... ► 一般情報 ► プロジェクトのホーム</span> オプションや、ブラウザパネルの <span class="guilabel">プロジェクトホーム</span> アイテムを右クリックして <span class="guilabel">プロジェクトホームを設定...</span> から変更することができます。ホームフォルダのカスタマイズは、QGISのプロジェクトがデータセットと一緒に組織の「プロジェクト」のルートフォルダに保存されていないような場合に特に便利です。</p>
+</section>
+<section id="drives-and-file-system">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">8.2.4. </span>ドライブとファイルシステム</a><a class="headerlink" href="#drives-and-file-system" title="Link to this heading"></a></h3>
+<p>続く <span class="guilabel">ブラウザ</span> パネルのアイテムはお使いのOSによって異なり、ファイルシステムのトップレベルエントリに関係します。</p>
+<p>これらは主に、以下のとおりです：</p>
+<ul class="simple">
+<li><p><span class="guilabel">ホーム</span> フォルダ。現在のユーザーのホームフォルダを指します</p></li>
+<li><p>Unixベースのマシンは、ルートフォルダ <span class="guilabel">/</span></p></li>
+<li><p>接続されたローカルドライブやネットワークドライブ。OSに依存し、直接表示される（例：<code class="docutils literal notranslate"><span class="pre">C:\</span></code> 、 <code class="docutils literal notranslate"><span class="pre">D:\</span></code> ）場合もあれば、 <code class="docutils literal notranslate"><span class="pre">/Volumes</span></code> エントリを通じて表示される場合もあります。</p></li>
+</ul>
+<p>これらのフォルダやドライブのコンテキストメニューからは、以下の操作が行えます：</p>
+<ul class="simple">
+<li><p>コンテンツの再読み込み</p></li>
+<li><p><span class="menuselection">新規 ►</span> のサブアイテムから、 <span class="guilabel">ディレクトリ</span> 、 <span class="guilabel">GeoPackage</span> 、またはESRI <span class="guilabel">シェープファイル</span> 形式データセットの作成</p></li>
+<li><p>ディレクトリの非表示（ <span class="guilabel">ブラウザから隠す</span> ）</p></li>
+<li><p><span class="guilabel">色を設定</span> ：フォルダアイコンの色をカスタマイズすることで、複雑なフォルダ構造を素早くブラウズするのに役立ちます</p></li>
+<li><p><span class="guilabel">スキャン</span> の有効化：</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">変更を監視する</span> ：特定のディレクトリについて、モニタリングし自動更新するかどうかを手動で制御できます。この設定は、選択したディレクトリとそのサブディレクトリすべてに適用されます。これにより、ネットワークドライブに問題がないことが分かっている場合は監視を手動でオプトインしたり、その他の理由で監視したくない大きなディレクトリの監視を手動でオプトアウトしたりすることができます。デフォルトでは、リモートドライブやネットワークドライブは自動的には監視されません。</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">このディレクトリの高速スキャン</span></p></li>
+</ul>
+</li>
+<li><p>ディレクトリをファイルマネージャで開く（ <span class="guilabel">ディレクトリを開く...</span> ）</p></li>
+<li><p>ディレクトリをターミナルウィンドウで開く（ <span class="guilabel">ターミナルで開く...</span> ）</p></li>
+<li><p><span class="guilabel">プロパティ...</span> の確認や、親フォルダの <span class="guilabel">ディレクトリプロパティ...</span> の確認</p></li>
+</ul>
+</section>
+<section id="database-entries">
+<span id="id2"></span><h3><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">8.2.5. </span>データベースエントリ</a><a class="headerlink" href="#database-entries" title="Link to this heading"></a></h3>
+<p>ご利用のOSとインストールされているドライバによっては、QGISで利用できるデータベースの種類が異なる場合があります。以下は、データセットツリーの各レベルのコンテキストメニューのさまざまなエントリのリストです。</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>レベル</p></td>
+<td rowspan="2"><p>コンテキストメニュー</p></td>
+<td colspan="6"><p>データベースの種類</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mGeoPackage.png"><img alt="geoPackage" src="../../../_images/mGeoPackage.png" style="width: 1.5em;" /></a>
+GeoPackage
+(<a class="footnote-reference brackets" href="#id4" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p><a class="reference internal" href="../../../_images/mIconSpatialite.png"><img alt="spatialite" src="../../../_images/mIconSpatialite.png" style="width: 1.5em;" /></a>
+SpatiaLite</p></td>
+<td><p><a class="reference internal" href="../../../_images/mIconPostgis.png"><img alt="postgis" src="../../../_images/mIconPostgis.png" style="width: 1.5em;" /></a>
+PostGIS</p></td>
+<td><p><a class="reference internal" href="../../../_images/mIconHana.png"><img alt="hana" src="../../../_images/mIconHana.png" style="width: 1.5em;" /></a>
+SAP HANA</p></td>
+<td><p><a class="reference internal" href="../../../_images/mIconMssql.png"><img alt="mssql" src="../../../_images/mIconMssql.png" style="width: 1.5em;" /></a>
+MS SQL Server</p></td>
+<td><p><a class="reference internal" href="../../../_images/mIconOracle.png"><img alt="oracle" src="../../../_images/mIconOracle.png" style="width: 1.5em;" /></a>
+Oracle</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><p>トップメニュー</p></td>
+<td><p>既存のデータベースへの <span class="guilabel">新規接続…</span> の作成</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">データベースを作成…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ファイルに <span class="guilabel">接続を保存…</span></p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">接続を読み込む…</span></p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td rowspan="8"><p>接続 / データベース</p></td>
+<td><p>接続の <span class="guilabel">再読み込み</span></p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">接続の編集…</span></p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">接続を削除</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">&lt;database_name&gt; の削除</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">データベースの圧縮（VACUUM）</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">新規スキーマ…</span> の作成</p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">新規テーブル…</span> の作成</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">SQLを実行…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td rowspan="5"><p>スキーマ</p></td>
+<td><p>スキーマの <span class="guilabel">再読み込み</span></p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="menuselection">スキーマ操作 ► スキーマ名の変更…</span></p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="menuselection">スキーマ操作 ► スキーマを削除…</span></p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">新規テーブル…</span> の作成</p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">SQLを実行…</span></p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td rowspan="11"><p>テーブル / レイヤ</p></td>
+<td><p><span class="menuselection">テーブル操作 ► テーブルの名前を変更…</span></p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="menuselection">テーブル操作 ► テーブルを全行削除…</span></p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">SQLを実行…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="menuselection">レイヤエクスポート ► ファイルへ…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="menuselection">管理 ► &lt;layer_name&gt; のレイヤ名変更…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="menuselection">管理 ► レイヤ &lt;layer_name&gt; を削除する…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="menuselection">管理 ► 選択したレイヤを削除</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="menuselection">管理 ► レイヤをプロジェクトに追加する</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="menuselection">管理 ► 選択されたレイヤをプロジェクトに追加する</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">レイヤのプロパティ…</span> ダイアログを開く</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">ファイルのプロパティ…</span> ダイアログを開く</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>属性テーブル</p></td>
+<td><p><span class="guilabel">新規属性を追加…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>属性</p></td>
+<td><p><span class="guilabel">別名を設定…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">コメントを設定…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">属性を削除…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p>GDALがサポートしている <a class="reference external" href="https://gdal.org/drivers/vector/index.html">ベクタファイルフォーマット</a> （ESRI File Geodatabase、FlatGeobuf、GeoParquet、NetCDF、...など）についても、互換性があれば異なるエントリが利用できるかもしれません。</p>
+</aside>
+</aside>
+</section>
+<section id="tiles-and-web-services">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">8.2.6. </span>タイルとWebサービス</a><a class="headerlink" href="#tiles-and-web-services" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p>レベル</p></th>
+<th class="head" rowspan="2"><p>コンテキストメニュー</p></th>
+<th class="head" colspan="7"><p>サービスの種類</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p><a class="reference internal" href="../../../_images/mIconWms.png"><img alt="wms" src="../../../_images/mIconWms.png" style="width: 1.5em;" /></a>
+WMS / WMTS</p></th>
+<th class="head"><p><a class="reference internal" href="../../../_images/mIconVectorTileLayer.png"><img alt="vectorTileLayer" src="../../../_images/mIconVectorTileLayer.png" style="width: 1.5em;" /></a>
+Vector Tiles</p></th>
+<th class="head"><p><a class="reference internal" href="../../../_images/mIconXyz.png"><img alt="xyz" src="../../../_images/mIconXyz.png" style="width: 1.5em;" /></a>
+XYZ Tiles</p></th>
+<th class="head"><p><a class="reference internal" href="../../../_images/mIconWcs.png"><img alt="wcs" src="../../../_images/mIconWcs.png" style="width: 1.5em;" /></a>
+WCS</p></th>
+<th class="head"><p><a class="reference internal" href="../../../_images/mIconWfs.png"><img alt="wfs" src="../../../_images/mIconWfs.png" style="width: 1.5em;" /></a>
+WFS / OGC
+API - Features</p></th>
+<th class="head"><p><a class="reference internal" href="../../../_images/mIconAfs.png"><img alt="afs" src="../../../_images/mIconAfs.png" style="width: 1.5em;" /></a>
+ArcGIS REST
+Servers</p></th>
+<th class="head"><p><a class="reference internal" href="../../../_images/mIconTiledSceneLayer.png"><img alt="tiledSceneLayer" src="../../../_images/mIconTiledSceneLayer.png" style="width: 1.5em;" /></a>
+Scene</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td rowspan="5"><p>トップメニュー</p></td>
+<td><p><span class="guilabel">新規接続…</span> の作成</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">新規一般接続…</span> の作成</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">新規ArcGIS Vector Tile Service接続…</span> の作成</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ファイルに <span class="guilabel">接続を保存…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">接続を読み込む…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>接続</p></td>
+<td><p>接続の <span class="guilabel">再読み込み</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">接続の編集…</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">接続を削除</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ウェブブラウザで <span class="guilabel">サービス情報を見る</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>テーブル / レイヤ</p></td>
+<td><p><span class="menuselection">レイヤエクスポート ► ファイルへ...</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">レイヤをプロジェクトに追加する</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">レイヤのプロパティ…</span> ダイアログを開く</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ウェブブラウザで <span class="guilabel">サービス情報を見る</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="resources">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">8.3. </span>リソース</a><a class="headerlink" href="#resources" title="Link to this heading"></a></h2>
+<ul>
+<li><p>プロジェクトファイル：QGISプロジェクトのコンテキストメニューでは、以下の操作があります。</p>
+<ul class="simple">
+<li><p>開く（ <span class="guilabel">プロジェクトを開く</span> ）</p></li>
+<li><p>シンボルを抽出する（ <span class="guilabel">シンボルを抽出...</span> ） － スタイルマネージャを開き、シンボルをXMLファイルに追加したり、シンボルをデフォルトのスタイルに追加したり、PNGやSVGとしてエクスポートしたりすることができます。</p></li>
+<li><p>プロパティを調べる（ <span class="guilabel">ファイルプロパティ...</span> ）</p></li>
+</ul>
+<p>プロジェクトファイルを展開して、プロジェクトのレイヤを確認できます。レイヤのコンテキストメニューは、ブラウザ内の他のエントリのレイヤにおけるアクションと同じです。</p>
+</li>
+<li><p>QGIS レイヤ定義ファイル（QLR）：コンテキストメニューからは以下の操作が可能です。</p>
+<ul class="simple">
+<li><p>ファイルに保存する（ <span class="menuselection">レイヤエクスポート ► ファイルへ</span> ）</p></li>
+<li><p>プロジェクトへ追加する（ <span class="guilabel">レイヤをプロジェクトに追加する</span> ）</p></li>
+<li><p>プロパティを調べる（ <span class="guilabel">レイヤのプロパティ...</span> ）</p></li>
+</ul>
+</li>
+<li><p>プロセシングモデル（.model3）：コンテキストメニューからは以下の操作が可能です。</p>
+<ul class="simple">
+<li><p><span class="guilabel">モデルを実行...</span></p></li>
+<li><p><span class="guilabel">モデルの編集...</span></p></li>
+</ul>
+</li>
+<li><p>QGIS印刷レイアウトテンプレート（QPT）：コンテキストメニューからは以下の操作が可能です。</p>
+<ul class="simple">
+<li><p><span class="guilabel">テンプレートから新規作成</span></p></li>
+</ul>
+</li>
+<li><p>Pythonスクリプト（.py）：コンテキストメニューからは以下の操作が可能です。</p>
+<ul class="simple">
+<li><p><span class="guilabel">スクリプトの実行...</span></p></li>
+<li><p><span class="guilabel">外部エディタで開く</span></p></li>
+</ul>
+</li>
+<li><p>認識されるラスタ形式ファイル：コンテキストメニューからは以下の操作が可能です。</p>
+<ul class="simple">
+<li><p><span class="guilabel">&lt;dataset name&gt; を削除</span></p></li>
+<li><p>ファイルに保存する（ <span class="menuselection">レイヤエクスポート ► ファイルへ</span> ）</p></li>
+<li><p>プロジェクトへ追加する（ <span class="guilabel">レイヤをプロジェクトに追加する</span> ）</p></li>
+<li><p>プロパティを調べる（ <span class="guilabel">レイヤのプロパティ...</span> 、 <span class="guilabel">ファイルプロパティ...</span> ）</p></li>
+</ul>
+<p>一部の形式は、 <span class="guilabel">外部で &lt;file type&gt; を開く...</span> こともできます。</p>
+</li>
+<li><p>認識されるベクタ形式ファイル：コンテキストメニューからは以下の操作が可能です。</p>
+<ul class="simple">
+<li><p><span class="guilabel">&lt;dataset name&gt; を削除</span></p></li>
+<li><p>ファイルに保存する（ <span class="menuselection">レイヤエクスポート ► ファイルへ</span> ）</p></li>
+<li><p>プロジェクトへ追加する（ <span class="guilabel">レイヤをプロジェクトに追加する</span> ）</p></li>
+<li><p>プロパティを調べる（ <span class="guilabel">レイヤのプロパティ...</span> 、 <span class="guilabel">ファイルプロパティ...</span> ）</p></li>
+</ul>
+<p>一部の形式は、 <span class="guilabel">外部で &lt;file type&gt; を開く...</span> こともできます。</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qgis_gui.html" class="btn btn-neutral float-left" title="7. QGISのユーザインタフェース" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qgis_configuration.html" class="btn btn-neutral float-right" title="9. QGISの設定" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/introduction/browser.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/introduction/browser.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/introduction/browser.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/introduction/browser.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/introduction/browser.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/introduction/browser.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/introduction/browser.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/introduction/browser.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/introduction/browser.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/introduction/browser.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/introduction/browser.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/introduction/browser.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/introduction/browser.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/introduction/browser.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/introduction/browser.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/introduction/browser.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/user_manual/introduction/browser.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/user_manual/introduction/browser.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/introduction/browser.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/user_manual/introduction/browser.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/user_manual/introduction/browser.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/user_manual/introduction/browser.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/user_manual/introduction/browser.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/user_manual/introduction/browser.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/user_manual/introduction/browser.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/introduction/browser.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/64d89bd0a39eff374bba42644dac3cb9" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

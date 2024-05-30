@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11.1. 2D Map View &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/map_views/map_view.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="11.2. 3D Map View" href="3d_map_view.html" />
+    <link rel="prev" title="11. Visualizing Maps" href="index.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 11.1. 2D Map View">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">11. Visualizing Maps</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">11.1. 2D Map View</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exploring-the-map-view">11.1.1. Exploring the map view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controlling-map-rendering">11.1.2. Controlling map rendering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#time-based-control-on-the-map-canvas">11.1.3. Time-based control on the map canvas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bookmarking-extents-on-the-map">11.1.4. Bookmarking extents on the map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decorating-the-map">11.1.5. Decorating the map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#annotation-tools">11.1.6. Annotation Tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#measuring">11.1.7. Measuring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-additional-map-views">11.1.8. Setting additional map views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exporting-the-map-view">11.1.9. Exporting the map view</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="3d_map_view.html">11.2. 3D Map View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elevation_profile.html">11.3. Elevation Profile View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS User Guide</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">11. </span>Visualizing Maps</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">11.1. </span>2D Map View</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/map_views/map_view.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="11. Visualizing Maps" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3d_map_view.html" class="btn btn-neutral float-right" title="11.2. 3D Map View" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="d-map-view">
+<span id="label-mapview"></span><span id="index-0"></span><h1><span class="section-number">11.1. </span>2D Map View<a class="headerlink" href="#d-map-view" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#exploring-the-map-view" id="id28">Exploring the map view</a></p></li>
+<li><p><a class="reference internal" href="#controlling-map-rendering" id="id29">Controlling map rendering</a></p></li>
+<li><p><a class="reference internal" href="#time-based-control-on-the-map-canvas" id="id30">Time-based control on the map canvas</a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-temporal-controller-panel" id="id31">The temporal controller panel</a></p></li>
+<li><p><a class="reference internal" href="#animating-a-temporal-navigation" id="id32">Animating a temporal navigation</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#bookmarking-extents-on-the-map" id="id33">Bookmarking extents on the map</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-a-bookmark" id="id34">Creating a Bookmark</a></p></li>
+<li><p><a class="reference internal" href="#working-with-bookmarks" id="id35">Working with Bookmarks</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#decorating-the-map" id="id36">Decorating the map</a></p>
+<ul>
+<li><p><a class="reference internal" href="#grid" id="id37">Grid</a></p></li>
+<li><p><a class="reference internal" href="#title-label" id="id38">Title Label</a></p></li>
+<li><p><a class="reference internal" href="#copyright-label" id="id39">Copyright Label</a></p></li>
+<li><p><a class="reference internal" href="#image-decoration" id="id40">Image Decoration</a></p></li>
+<li><p><a class="reference internal" href="#north-arrow" id="id41">North Arrow</a></p></li>
+<li><p><a class="reference internal" href="#scale-bar" id="id42">Scale Bar</a></p></li>
+<li><p><a class="reference internal" href="#layout-extents" id="id43">Layout Extents</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#annotation-tools" id="id44">Annotation Tools</a></p>
+<ul>
+<li><p><a class="reference internal" href="#feature-annotations" id="id45">Feature Annotations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#layer-properties" id="id46">Layer Properties</a></p></li>
+<li><p><a class="reference internal" href="#interacting-with-features" id="id47">Interacting with features</a></p></li>
+<li><p><a class="reference internal" href="#feature-symbology" id="id48">Feature symbology</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#balloon-annotations" id="id49">Balloon annotations</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#measuring" id="id50">Measuring</a></p>
+<ul>
+<li><p><a class="reference internal" href="#general-information" id="id51">General information</a></p></li>
+<li><p><a class="reference internal" href="#measure-length-areas-bearings-and-angles-interactively" id="id52">Measure length, areas, bearings and angles interactively</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#setting-additional-map-views" id="id53">Setting additional map views</a></p></li>
+<li><p><a class="reference internal" href="#exporting-the-map-view" id="id54">Exporting the map view</a></p></li>
+</ul>
+</nav>
+<p>The 2D map view (also called <strong>Map canvas</strong>) is the central place where maps are displayed.
+QGIS opens by default with a single map view (called <code class="docutils literal notranslate"><span class="pre">main</span> <span class="pre">map</span></code>),
+showing layers in 2D, and tightly bound to the <span class="guilabel">Layers</span> panel.
+That window reflects the rendering (symbology, labeling, visibilities…)
+you applied to the loaded layers.</p>
+<figure class="align-center" id="id3">
+<span id="figure-startup-bis"></span><img alt="../../../_images/startup.png" src="../../../_images/startup.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.1 </span><span class="caption-text">QGIS GUI</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="exploring-the-map-view">
+<span id="zoom-pan"></span><span id="index-1"></span><h2><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">11.1.1. </span>Exploring the map view</a><a class="headerlink" href="#exploring-the-map-view" title="Link to this heading"></a></h2>
+<p>When you add a layer (see e.g. <a class="reference internal" href="../managing_data_source/opening_data.html#opening-data"><span class="std std-ref">Opening Data</span></a>), QGIS automatically
+looks for its CRS. If a different CRS is set by default for the project
+(see <a class="reference internal" href="../working_with_projections/working_with_projections.html#project-crs"><span class="std std-ref">Project Coordinate Reference Systems</span></a>) then the layer extent is “on-the-fly”
+translated to that CRS, and the map view is zoomed to that extent if
+you start with a blank QGIS project.
+If there are already layers in the project, no map canvas resize is
+performed, so only features falling within the current map canvas extent
+will be visible.</p>
+<p>Click on the map view and you should be able to interact with it,
+panning or zooming to different areas of the map.
+Dedicated tools are provided in the <span class="guilabel">Navigation Toolbar</span> and
+in the <span class="menuselection">View</span> menu, with handful shortcuts from the keyboard
+or the mouse buttons.</p>
+<table class="longtable docutils align-default" id="id4">
+<caption><span class="caption-number">Table 11.1 </span><span class="caption-text">Map canvas navigation tools</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 21.1%" />
+<col style="width: 78.9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionPan.png"><img alt="pan" src="../../../_images/mActionPan.png" style="width: 1.5em;" /></a> <sup>Pan Map</sup></p></td>
+<td><ul class="simple">
+<li><p>Single left click: the map is centered on the clicked point, at the same scale</p></li>
+<li><p>Hold down the left mouse button and drag the map canvas.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomIn.png"><img alt="zoomIn" src="../../../_images/mActionZoomIn.png" style="width: 1.5em;" /></a> <sup>Zoom In</sup></p></td>
+<td><ul class="simple">
+<li><p>Single left click: the map is centered on the clicked point,
+while the scale gets doubled</p></li>
+<li><p>Drag a rectangle on the map canvas with the left mouse button
+to zoom in to an area.</p></li>
+<li><p>Hold the <kbd class="kbd docutils literal notranslate">Alt</kbd> key to switch to the <a class="reference internal" href="../../../_images/mActionZoomOut.png"><img alt="zoomOut" src="../../../_images/mActionZoomOut.png" style="width: 1.5em;" /></a> <sup>Zoom Out</sup> tool.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionZoomOut.png"><img alt="zoomOut" src="../../../_images/mActionZoomOut.png" style="width: 1.5em;" /></a> <sup>Zoom Out</sup></p></td>
+<td><ul class="simple">
+<li><p>Single left click: the map is centered on the clicked point,
+while the scale gets halved</p></li>
+<li><p>Drag a rectangle on the map canvas with the left mouse button
+to zoom out from an area.</p></li>
+<li><p>Hold the <kbd class="kbd docutils literal notranslate">Alt</kbd> key to switch to the <a class="reference internal" href="../../../_images/mActionZoomIn.png"><img alt="zoomIn" src="../../../_images/mActionZoomIn.png" style="width: 1.5em;" /></a> <sup>Zoom In</sup> tool.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionPanToSelected.png"><img alt="panToSelected" src="../../../_images/mActionPanToSelected.png" style="width: 1.5em;" /></a> <sup>Pan Map to Selection</sup></p></td>
+<td><p>Pan the map to the selected features of all the selected layers in the
+<span class="guilabel">Layers</span> panel.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionZoomToSelected.png"><img alt="zoomToSelected" src="../../../_images/mActionZoomToSelected.png" style="width: 1.5em;" /></a> <sup>Zoom To Selection</sup></p></td>
+<td><p>Zoom to the selected features of all the selected layers in the
+<span class="guilabel">Layers</span> panel.</p>
+<p><em>Also available in the layer contextual menu</em></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomToLayer.png"><img alt="zoomToLayer" src="../../../_images/mActionZoomToLayer.png" style="width: 1.5em;" /></a> <sup>Zoom To Layer(s)</sup></p></td>
+<td><p>Zoom to the extent of all the selected layers in the
+<span class="guilabel">Layers</span> panel.</p>
+<p><em>Also available in the layer contextual menu</em></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionZoomFullExtent.png"><img alt="zoomFullExtent" src="../../../_images/mActionZoomFullExtent.png" style="width: 1.5em;" /></a> <sup>Zoom Full</sup></p></td>
+<td><p>Zoom to the extent of all the layers in the project
+or to the <a class="reference internal" href="../introduction/qgis_configuration.html#project-full-extent"><span class="std std-ref">project full extent</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomLast.png"><img alt="zoomLast" src="../../../_images/mActionZoomLast.png" style="width: 1.5em;" /></a> <sup>Zoom Last</sup></p></td>
+<td><p>Zoom the map to the previous extent in history.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionZoomNext.png"><img alt="zoomNext" src="../../../_images/mActionZoomNext.png" style="width: 1.5em;" /></a> <sup>Zoom Next</sup></p></td>
+<td><p>Zoom the map to the next extent in history.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomActual.png"><img alt="zoomActual" src="../../../_images/mActionZoomActual.png" style="width: 1.5em;" /></a> <sup>Zoom to Native Resolution</sup></p></td>
+<td><p>Zoom the map to a level where one pixel of the active raster layer covers
+one screen pixel.</p>
+<p><em>Also available in the layer contextual menu</em></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Mouse wheel</p></td>
+<td><ul class="simple">
+<li><p>Pan map: Hold and drag the mouse wheel.</p></li>
+<li><p>Zoom: Roll the mouse wheel to zoom in or zoom out.
+With <kbd class="kbd docutils literal notranslate">Ctrl</kbd> key pressed while rolling the mouse wheel
+results in a finer zoom.</p></li>
+<li><p>Press the back or forward button to browse the map canvas zoom history.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Keyboard</p></td>
+<td><ul class="simple">
+<li><p>Pan map: Hold down the <kbd class="kbd docutils literal notranslate">Space</kbd> key and move the mouse.
+Press the arrow keys to pan up, down, left and right.</p></li>
+<li><p>Zoom in: Press <kbd class="kbd docutils literal notranslate">PgUp</kbd> or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">+</kbd></kbd></p></li>
+<li><p>Zoom out: Press <kbd class="kbd docutils literal notranslate">PgDown</kbd> or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">-</kbd></kbd></p></li>
+<li><p>Zoom to area: When certain map tools are active (Identify, Measure…),
+hold down <kbd class="kbd docutils literal notranslate">Shift</kbd> and drag a rectangle on the map to zoom to that
+area. Not compatible with active selection or edit tools.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Right-click over the map and you should be able to <a class="reference internal" href="../../../_images/mActionEditCopy.png"><img alt="editCopy" src="../../../_images/mActionEditCopy.png" style="width: 1.5em;" /></a>
+<span class="guilabel">Copy coordinates</span> of the clicked point in the map CRS, in WGS84
+or in a custom CRS. The copied information can then be pasted in an expression,
+a script, text editor or spreadsheet…</p>
+</section>
+<section id="controlling-map-rendering">
+<span id="redraw-events"></span><span id="index-2"></span><h2><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">11.1.2. </span>Controlling map rendering</a><a class="headerlink" href="#controlling-map-rendering" title="Link to this heading"></a></h2>
+<p>By default, QGIS renders all visible layers whenever the map canvas is
+refreshed. The events that trigger a refresh of the map canvas include:</p>
+<ul class="simple">
+<li><p>changing the visibility of a layer</p></li>
+<li><p>modifying symbology of a visible layer</p></li>
+<li><p>adding a layer</p></li>
+<li><p>panning or zooming</p></li>
+<li><p>resizing the QGIS window</p></li>
+</ul>
+<p>QGIS allows you to control the rendering process in a number of ways.</p>
+<ul class="simple">
+<li><p>at the <a class="reference internal" href="../introduction/qgis_configuration.html#rendering-options"><span class="std std-ref">global level</span></a></p></li>
+<li><p>per layer, using e.g. the <a class="reference internal" href="../introduction/general_tools.html#label-scaledepend"><span class="std std-ref">scale dependent rendering</span></a></p></li>
+<li><p>or with dedicated tools in the GUI.</p></li>
+</ul>
+<p>To stop the map drawing, press the <kbd class="kbd docutils literal notranslate">Esc</kbd> key. This will halt the refresh of
+the map canvas and leave the map partially drawn. It may however take a bit of time
+after pressing <kbd class="kbd docutils literal notranslate">Esc</kbd> for the map drawing to halt.</p>
+<p>To suspend rendering, click the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Render</span> checkbox in the
+bottom-right corner of the status bar. When <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Render</span>
+is unchecked, QGIS does not redraw the canvas in response to any of
+the usual triggers mentioned earlier. Examples of when you
+might want to suspend rendering include:</p>
+<ul class="simple">
+<li><p>adding many layers and symbolizing them prior to drawing</p></li>
+<li><p>adding one or more large layers and setting scale dependency before drawing</p></li>
+<li><p>adding one or more large layers and zooming to a specific view before drawing</p></li>
+<li><p>any combination of the above</p></li>
+</ul>
+<p>Checking the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Render</span> checkbox enables rendering and
+causes an immediate refresh of the map canvas.</p>
+</section>
+<section id="time-based-control-on-the-map-canvas">
+<span id="maptimecontrol"></span><h2><a class="toc-backref" href="#id30" role="doc-backlink"><span class="section-number">11.1.3. </span>Time-based control on the map canvas</a><a class="headerlink" href="#time-based-control-on-the-map-canvas" title="Link to this heading"></a></h2>
+<p>QGIS can handle temporal control on loaded layers, i.e. modify the map canvas
+rendering based on a time variation. To achieve this, you need:</p>
+<ol class="arabic">
+<li><p>Layers that have dynamic temporal properties set.
+QGIS supports temporal control for different data providers, with custom settings.
+It’s mainly about setting the time range in which the layer would display:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../working_with_raster/raster_properties.html#raster-temporal"><span class="std std-ref">raster layers</span></a>: controls whether to display or
+not the layer.</p></li>
+<li><p><a class="reference internal" href="../working_with_ogc/ogc_client_support.html#wmts-temporal"><span class="std std-ref">WMTS layers</span></a>: controls whether the data should be rendered
+based on a static time range or following a dynamic temporal range</p></li>
+<li><p><a class="reference internal" href="../working_with_vector/vector_properties.html#vectortemporalmenu"><span class="std std-ref">vector layers</span></a>: features are filtered based
+on time values associated to their attributes</p></li>
+<li><p><a class="reference internal" href="../working_with_mesh/mesh.html#meshtemporal"><span class="std std-ref">mesh layers</span></a>: displays dynamically the active dataset
+groups values</p></li>
+</ul>
+<p>When dynamic temporal options are enabled for a layer, an <a class="reference internal" href="../../../_images/mIndicatorTemporal.png"><img alt="indicatorTemporal" src="../../../_images/mIndicatorTemporal.png" style="width: 1.5em;" /></a>
+icon is displayed next to the layer in the <span class="guilabel">Layers</span> panel to remind
+you that the layer is temporally controlled.
+Click the icon to update the temporal settings.</p>
+</li>
+<li><p>Enable the temporal navigation of the map canvas using the <a class="reference internal" href="#temporal-controller"><span class="std std-ref">Temporal
+controller panel</span></a>. The panel is activated:</p>
+<ul class="simple">
+<li><p>using the <a class="reference internal" href="../../../_images/temporal.png"><img alt="temporal" src="../../../_images/temporal.png" style="width: 1.5em;" /></a> <sup>Temporal controller panel</sup> icon located in the
+<span class="guilabel">Map Navigation</span> toolbar</p></li>
+<li><p>or from the <span class="menuselection">View ► Panels ► Temporal controller panel</span>
+menu</p></li>
+</ul>
+</li>
+</ol>
+<section id="the-temporal-controller-panel">
+<span id="temporal-controller"></span><h3><a class="toc-backref" href="#id31" role="doc-backlink"><span class="section-number">11.1.3.1. </span>The temporal controller panel</a><a class="headerlink" href="#the-temporal-controller-panel" title="Link to this heading"></a></h3>
+<p>The <span class="guilabel">Temporal controller</span> panel has the following modes:</p>
+<figure class="align-center" id="id5">
+<img alt="../../../_images/temporal_controller_panel.png" src="../../../_images/temporal_controller_panel.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.2 </span><span class="caption-text">Temporal Controller Panel in navigation mode</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mTemporalNavigationOff.png"><img alt="temporalNavigationOff" src="../../../_images/mTemporalNavigationOff.png" style="width: 1.5em;" /></a> <sup>Turn off temporal navigation</sup>: all the
+temporal settings are disabled and visible layers are rendered as usual</p></li>
+<li><p><a class="reference internal" href="../../../_images/mTemporalNavigationFixedRange.png"><img alt="temporalNavigationFixedRange" src="../../../_images/mTemporalNavigationFixedRange.png" style="width: 1.5em;" /></a> <sup>Fixed range temporal navigation</sup>:
+a time range is set and only layers (or features) whose temporal range
+overlaps with this range are displayed on the map.</p></li>
+<li><p><a class="reference internal" href="../../../_images/mTemporalNavigationAnimated.png"><img alt="temporalNavigationAnimated" src="../../../_images/mTemporalNavigationAnimated.png" style="width: 1.5em;" /></a> <sup>Animated temporal navigation</sup>:
+a time range is set, split into steps, and only layers (or features)
+whose temporal range overlaps with each frame are displayed on the map</p></li>
+<li><p><a class="reference internal" href="../../../_images/settings.png"><img alt="settings" src="../../../_images/settings.png" style="width: 1.5em;" /></a> <sup>Settings</sup> for general control of the animation</p>
+<ul>
+<li><p><span class="guilabel">Frames rate</span>: number of steps that are shown per second</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Cumulative range</span>: all animation frames will
+have the same start date-time but different end dates and times.
+This is useful if you wish to accumulate data in your temporal
+visualization instead of showing a ‘moving time window’ across your data.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="animating-a-temporal-navigation">
+<span id="create-temporal-animation"></span><h3><a class="toc-backref" href="#id32" role="doc-backlink"><span class="section-number">11.1.3.2. </span>Animating a temporal navigation</a><a class="headerlink" href="#animating-a-temporal-navigation" title="Link to this heading"></a></h3>
+<p>An animation is based on a varying set of visible layers at particular times
+within a time range.
+To create a temporal animation:</p>
+<ol class="arabic">
+<li><p>Toggle on the <a class="reference internal" href="../../../_images/mTemporalNavigationAnimated.png"><img alt="temporalNavigationAnimated" src="../../../_images/mTemporalNavigationAnimated.png" style="width: 1.5em;" /></a> <sup>Animated temporal
+navigation</sup>, displaying the animation player widget</p></li>
+<li><p>Enter the <span class="guilabel">Time range</span> to consider. Using the <a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a>
+button, this can be defined as:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Set to full range</span> of all the time enabled layers</p></li>
+<li><p><span class="guilabel">Set to preset project range</span> as defined in the <a class="reference internal" href="../introduction/qgis_configuration.html#project-temporal"><span class="std std-ref">project
+properties</span></a></p></li>
+<li><p><span class="guilabel">Set to single layer’s range</span> taken from a time-enabled layer</p></li>
+</ul>
+</li>
+<li><p>Fill in the time <span class="guilabel">Step</span> to split the time range.
+Different units are supported, from <code class="docutils literal notranslate"><span class="pre">seconds</span></code> to <code class="docutils literal notranslate"><span class="pre">centuries</span></code>.
+A <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">timestamps</span></code> option is also available as step: when selected,
+this causes the temporal navigation to step between all available time ranges
+from layers in the project. It’s useful when a project contains layers with
+non-contiguous available times, such as a WMS-T service which provides images
+that are available at irregular dates. This option will allow you to only step
+between time ranges where the next available image is shown.</p></li>
+<li><p>Click the <a class="reference internal" href="../../../_images/mActionPlay.png"><img alt="play" src="../../../_images/mActionPlay.png" style="width: 1.5em;" /></a> button to preview the animation.
+QGIS will generate scenes using the layers rendering at the set times.
+Layers display depends on whether they overlap any individual time frame.</p>
+<figure class="align-center" id="id6">
+<img alt="../../../_images/map_navigation.gif" src="../../../_images/map_navigation.gif" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.3 </span><span class="caption-text">Temporal navigation through a layer</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The animation can also be previewed by moving the time slider.
+Checking the <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Loop</span> checkbox will repeatedly run the
+animation while clicking <a class="reference internal" href="../../../_images/mActionPlay.png"><img alt="play" src="../../../_images/mActionPlay.png" style="width: 1.5em;" /></a> stops a running animation.
+A full set of video player buttons is available.</p>
+<p>Horizontal scrolling using the mouse wheel (where supported) with the
+cursor on the map canvas will also allow you to navigate, or “scrub”,
+the temporal navigation slider backwards and forwards.</p>
+</li>
+<li><p>Click the <a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <sup>Export animation</sup> button if you want to generate
+a series of images representing the scene. They can be later combined in a
+video editor software:</p>
+<figure class="align-center" id="id7">
+<img alt="../../../_images/saveTimeAnimation.png" src="../../../_images/saveTimeAnimation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.4 </span><span class="caption-text">Exporting map canvas animation scenes to images</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>The filename <span class="guilabel">Template</span>: the <code class="docutils literal notranslate"><span class="pre">####</span></code> are replaced with frame
+sequence number</p></li>
+<li><p>The <span class="guilabel">Output directory</span></p></li>
+<li><p>Under <span class="guilabel">Map settings</span>, you can:</p>
+<ul>
+<li><p>redefine the <a class="reference internal" href="../introduction/general_tools.html#extent-selector"><span class="std std-ref">spatial extent</span></a> to use</p></li>
+<li><p>control the <span class="guilabel">Resolution</span> of the image
+(<span class="guilabel">Output width</span> and <span class="guilabel">Output height</span>)</p></li>
+<li><p><span class="guilabel">Draw active decorations</span>: whether active <a class="reference internal" href="#decorations"><span class="std std-ref">decorations</span></a> should be kept in the output</p></li>
+</ul>
+</li>
+<li><p>Under <span class="guilabel">Temporal settings</span>, you can redefine:</p>
+<ul>
+<li><p>the time <span class="guilabel">Range</span> for the animation</p></li>
+<li><p>the <span class="guilabel">Step (frame length)</span> in the unit of your choice</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="bookmarking-extents-on-the-map">
+<span id="sec-bookmarks"></span><span id="index-3"></span><h2><a class="toc-backref" href="#id33" role="doc-backlink"><span class="section-number">11.1.4. </span>Bookmarking extents on the map</a><a class="headerlink" href="#bookmarking-extents-on-the-map" title="Link to this heading"></a></h2>
+<p>Spatial Bookmarks allow you to “bookmark” a geographic location and return to
+it later. By default, bookmarks are saved in the user’s profile (as <span class="guilabel">User
+Bookmarks</span>), meaning that they are available from any project the user opens.
+They can also be saved for a single project (named
+<span class="guilabel">Project Bookmarks</span>) and stored within the project file, which can
+be helpful if the project is to be shared with other users.</p>
+<section id="creating-a-bookmark">
+<h3><a class="toc-backref" href="#id34" role="doc-backlink"><span class="section-number">11.1.4.1. </span>Creating a Bookmark</a><a class="headerlink" href="#creating-a-bookmark" title="Link to this heading"></a></h3>
+<p>To create a bookmark:</p>
+<ol class="arabic">
+<li><p>Zoom and pan to the area of interest.</p></li>
+<li><p>Select the menu option <span class="menuselection">View ►</span> <a class="reference internal" href="../../../_images/mActionNewBookmark.png"><img alt="newBookmark" src="../../../_images/mActionNewBookmark.png" style="width: 1.5em;" /></a>
+<span class="menuselection">New Spatial Bookmark…</span>,
+press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">B</kbd></kbd> or right-click the <a class="reference internal" href="../../../_images/mActionShowBookmarks.png"><img alt="showBookmarks" src="../../../_images/mActionShowBookmarks.png" style="width: 1.5em;" /></a> <span class="guilabel">Spatial
+Bookmarks</span> entry in
+the <span class="guilabel">Browser</span> panel and select <span class="guilabel">New Spatial Bookmark</span>.
+The <span class="guilabel">Bookmark Editor</span> dialog opens.</p>
+<figure class="align-center" id="id8">
+<span id="figure-create-bookmarks"></span><img alt="../../../_images/bookmark_editor.png" src="../../../_images/bookmark_editor.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.5 </span><span class="caption-text">The Bookmark Editor Dialog</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Enter a descriptive name for the bookmark</p></li>
+<li><p>Enter or select a group name in which to store related bookmarks</p></li>
+<li><p>Select the extent of the area you wish to save, using the <a class="reference internal" href="../introduction/general_tools.html#extent-selector"><span class="std std-ref">extent selector</span></a> widget</p></li>
+<li><p>Change the map <span class="guilabel">Rotation</span></p></li>
+<li><p>Indicate the <span class="guilabel">CRS</span> to use for the extent</p></li>
+<li><p>Select whether the bookmark will be <span class="guilabel">Saved in</span> <span class="guilabel">User
+Bookmarks</span> or <span class="guilabel">Project Bookmarks</span> (by default, this drop-down list
+is set to <span class="guilabel">User Bookmarks</span>)</p></li>
+<li><p>Press <span class="guilabel">Save</span> to add the bookmark to the list</p></li>
+</ol>
+<p>Note that you can have multiple bookmarks with the same name.</p>
+</section>
+<section id="working-with-bookmarks">
+<h3><a class="toc-backref" href="#id35" role="doc-backlink"><span class="section-number">11.1.4.2. </span>Working with Bookmarks</a><a class="headerlink" href="#working-with-bookmarks" title="Link to this heading"></a></h3>
+<p>To use and manage bookmarks, you can either use the <span class="guilabel">Spatial Bookmarks</span>
+panel or <span class="guilabel">Browser</span>.</p>
+<p>Select <span class="menuselection">View ►</span> <a class="reference internal" href="../../../_images/mActionShowBookmarks.png"><img alt="showBookmarks" src="../../../_images/mActionShowBookmarks.png" style="width: 1.5em;" /></a> <span class="menuselection">Show Spatial
+Bookmark Manager</span> or press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">7</kbd></kbd>
+to open the <span class="guilabel">Spatial Bookmarks Manager</span> panel.
+Select <span class="menuselection">View ►</span> <a class="reference internal" href="../../../_images/mActionShowBookmarks.png"><img alt="showBookmarks" src="../../../_images/mActionShowBookmarks.png" style="width: 1.5em;" /></a> <span class="menuselection">Show Bookmarks</span>
+or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">B</kbd></kbd> to show
+the <a class="reference internal" href="../../../_images/mActionShowBookmarks.png"><img alt="showBookmarks" src="../../../_images/mActionShowBookmarks.png" style="width: 1.5em;" /></a> <span class="guilabel">Spatial Bookmarks</span> entry in the
+<span class="guilabel">Browser</span> panel.</p>
+<p>You can perform the following tasks:</p>
+<table class="longtable docutils align-default" id="id9">
+<caption><span class="caption-number">Table 11.2 </span><span class="caption-text">Managing bookmark actions</span><a class="headerlink" href="#id9" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Spatial Bookmark Manager</p></th>
+<th class="head"><p>Browser</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Zoom to a Bookmark</strong></p></td>
+<td><p>Double-click on it, or select the bookmark and press the
+<a class="reference internal" href="../../../_images/mActionZoomToBookmark.png"><img alt="zoomToBookmark" src="../../../_images/mActionZoomToBookmark.png" style="width: 1.5em;" /></a> <span class="guilabel">Zoom to bookmark</span> button.</p></td>
+<td><p>Double-click on it, drag and drop it to the map canvas, or right-click
+the bookmark and select <span class="guilabel">Zoom to Bookmark</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Delete a bookmark</strong></p></td>
+<td><p>Select the bookmark and click the <a class="reference internal" href="../../../_images/mActionDeleteSelected.png"><img alt="deleteSelected" src="../../../_images/mActionDeleteSelected.png" style="width: 1.5em;" /></a> <span class="guilabel">Delete bookmark</span> button.
+Confirm your choice.</p></td>
+<td><p>Right-click the bookmark and select <span class="guilabel">Delete Spatial Bookmark</span>.
+Confirm your choice.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Export bookmarks to XML</strong></p></td>
+<td><p>Click the <a class="reference internal" href="../../../_images/mActionSharing.png"><img alt="sharing" src="../../../_images/mActionSharing.png" style="width: 1.5em;" /></a> <span class="guilabel">Import/Export Bookmarks</span> button and select
+<a class="reference internal" href="../../../_images/mActionSharingExport.png"><img alt="sharingExport" src="../../../_images/mActionSharingExport.png" style="width: 1.5em;" /></a> <span class="guilabel">Export</span>.
+All the bookmarks (user or project) are saved in an xml file.</p></td>
+<td><p>Select one or more folders (user or project) or subfolders (groups),
+then right-click and select <a class="reference internal" href="../../../_images/mActionSharingExport.png"><img alt="sharingExport" src="../../../_images/mActionSharingExport.png" style="width: 1.5em;" /></a> <span class="guilabel">Export Spatial Bookmarks…</span>.
+The selected bookmark subset is saved.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Import bookmarks from XML</strong></p></td>
+<td><p>Click the <a class="reference internal" href="../../../_images/mActionSharing.png"><img alt="sharing" src="../../../_images/mActionSharing.png" style="width: 1.5em;" /></a> <span class="guilabel">Import/Export Bookmarks</span> button and
+select <a class="reference internal" href="../../../_images/mActionSharingImport.png"><img alt="sharingImport" src="../../../_images/mActionSharingImport.png" style="width: 1.5em;" /></a> <span class="guilabel">Import</span>.
+All bookmarks in the XML file are imported as user bookmarks.</p></td>
+<td><p>Right-click the <span class="guilabel">Spatial Bookmarks</span> entry or one of its folders (user or
+project) or subfolders (groups) to determine where to import the
+bookmarks, then select <a class="reference internal" href="../../../_images/mActionSharingImport.png"><img alt="sharingImport" src="../../../_images/mActionSharingImport.png" style="width: 1.5em;" /></a> <span class="guilabel">Import Spatial Bookmarks</span>.
+If performed on the <span class="guilabel">Spatial Bookmarks</span> entry, the bookmarks
+are added to <span class="guilabel">User Bookmarks</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Edit bookmark</strong></p></td>
+<td><p>You can change a bookmark by changing the values in the table. You can
+edit the name, the group, the extent and if it is stored in the project or
+not.</p></td>
+<td><p>Right-click the desired bookmark and select <span class="guilabel">Edit Spatial
+Bookmark…</span>.
+The <span class="guilabel">Bookmark Editor</span> will open, allowing you to redefine every
+aspect of the bookmark as if you were creating it for the first time.</p>
+<p>You can also drag and drop the bookmark between folders (user and
+project) and subfolders (groups).</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>You can manage bookmark actions by right-click on the desired bookmark in the
+<span class="guilabel">Spatial Bookmarks Manager</span>. You can also zoom to bookmarks by typing the
+bookmark name in the <a class="reference internal" href="../introduction/qgis_gui.html#label-statusbar"><span class="std std-ref">locator</span></a>.</p>
+</section>
+</section>
+<section id="decorating-the-map">
+<span id="decorations"></span><span id="index-4"></span><h2><a class="toc-backref" href="#id36" role="doc-backlink"><span class="section-number">11.1.5. </span>Decorating the map</a><a class="headerlink" href="#decorating-the-map" title="Link to this heading"></a></h2>
+<p>Decorations include Grid, Title Label, Copyright Label, Image, North Arrow, Scale Bar and Layout
+Extents. They are used to ‘decorate’ the map by adding cartographic elements.</p>
+<section id="grid">
+<span id="grid-decoration"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id37" role="doc-backlink"><span class="section-number">11.1.5.1. </span>Grid</a><a class="headerlink" href="#grid" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/add_grid.png"><img alt="addGrid" src="../../../_images/add_grid.png" style="width: 1.5em;" /></a> <span class="guilabel">Grid</span> allows you to add a coordinate grid and coordinate
+annotations to the map canvas.</p>
+<ol class="arabic">
+<li><p>Select menu option <span class="menuselection">View ► Decorations ► Grid…</span> to open the dialog.</p>
+<figure class="align-center" id="id10">
+<span id="figure-decorations-grid"></span><img alt="../../../_images/grid_dialog.png" src="../../../_images/grid_dialog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.6 </span><span class="caption-text">The Grid Dialog</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Tick <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable grid</span> and set grid
+definitions according to the layers loaded in the map canvas:</p>
+<ul class="simple">
+<li><p>The <span class="guilabel">Grid type</span>: it can be <span class="guilabel">Line</span> or <span class="guilabel">Marker</span></p></li>
+<li><p>The associated <a class="reference internal" href="../style_library/symbol_selector.html#vector-line-symbols"><span class="std std-ref">Line symbol</span></a> or <a class="reference internal" href="../style_library/symbol_selector.html#vector-marker-symbols"><span class="std std-ref">marker
+symbol</span></a> used to represent the grid marks</p></li>
+<li><p>The <span class="guilabel">Interval X</span> and <span class="guilabel">Interval Y</span> between the grid
+marks, in map units</p></li>
+<li><p>An <span class="guilabel">Offset X</span> and <span class="guilabel">Offset Y</span> distance of the grid
+marks from the bottom left corner of the map canvas, in map units</p></li>
+<li><p>The interval and offset parameters can be set based on the:</p>
+<ul>
+<li><p><span class="guilabel">Canvas Extents</span>: generates a grid with an interval that is
+approximatively 1/5 of the canvas width</p></li>
+<li><p><span class="guilabel">Active Raster Layer</span> resolution</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Tick <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Draw annotations</span> to display the coordinates of
+the grid marks and set:</p>
+<ul class="simple">
+<li><p>The <span class="guilabel">Annotation direction</span>, ie how the labels would be placed
+relative to their grid line. It can be:</p>
+<ul>
+<li><p><span class="guilabel">Horizontal</span> or <span class="guilabel">Vertical</span> for all the labels</p></li>
+<li><p><span class="guilabel">Horizontal and Vertical</span>, ie each label is parallel to the
+grid mark it refers to</p></li>
+<li><p><span class="guilabel">Boundary direction</span>, ie each label follows the canvas
+boundary, and is perpendicular to the grid mark it refers to</p></li>
+</ul>
+</li>
+<li><p>The <span class="guilabel">Annotation font</span> (text formatting, buffer, shadow…) using
+the <a class="reference internal" href="../introduction/general_tools.html#font-selector"><span class="std std-ref">font selector widget</span></a></p></li>
+<li><p>The <span class="guilabel">Distance to map frame</span>, margin between annotations and map
+canvas limits. Convenient when <a class="reference internal" href="#exportingmapcanvas"><span class="std std-ref">exporting the map canvas</span></a>
+eg to an image format or PDF, and avoid annotations to be on the “paper” limits.</p></li>
+<li><p>The <span class="guilabel">Coordinate precision</span></p></li>
+</ul>
+</li>
+<li><p>Click <span class="guilabel">Apply</span> to verify that it looks as expected or <span class="guilabel">OK</span>
+if you’re satisfied.</p></li>
+</ol>
+</section>
+<section id="title-label">
+<span id="titlelabel-decoration"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id38" role="doc-backlink"><span class="section-number">11.1.5.2. </span>Title Label</a><a class="headerlink" href="#title-label" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/title_label.png"><img alt="titleLabel" src="../../../_images/title_label.png" style="width: 1.5em;" /></a> <span class="guilabel">Title Label</span> allows you to decorate your map with a <strong>Title</strong>.</p>
+<p>To add a Title Label decoration:</p>
+<ol class="arabic">
+<li><p>Select menu option <span class="menuselection">View ► Decorations ► Title Label…</span>
+to open the dialog.</p>
+<figure class="align-center" id="id11">
+<span id="figure-decorations-title"></span><img alt="../../../_images/titleLabel.png" src="../../../_images/titleLabel.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.7 </span><span class="caption-text">The Title Decoration Dialog</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Make sure <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable Title Label</span> is checked</p></li>
+<li><p>Enter the title text you want to place on the map.
+You can make it dynamic using the <span class="guilabel">Insert or Edit an Expression…</span>
+button.</p></li>
+<li><p>Choose the <span class="guilabel">Font</span> for the label using the <a class="reference internal" href="../introduction/general_tools.html#font-selector"><span class="std std-ref">font selector
+widget</span></a> with full access to QGIS <a class="reference internal" href="../style_library/label_settings.html#text-format"><span class="std std-ref">text formatting</span></a> options. Quickly set the font color and opacity by clicking
+the black arrow to the right of the font combo box.</p></li>
+<li><p>Select the <a class="reference internal" href="../introduction/general_tools.html#color-selector"><span class="std std-ref">color</span></a> to apply to the title’s
+<span class="guilabel">Background bar color</span>.</p></li>
+<li><p>Choose the <span class="guilabel">Placement</span> of the label in the canvas: options are
+<span class="guilabel">Top left</span>, <span class="guilabel">Top Center</span> (default),
+<span class="guilabel">Top Right</span>, <span class="guilabel">Bottom left</span>, <span class="guilabel">Bottom Center</span>
+and <span class="guilabel">Bottom Right</span>.</p></li>
+<li><p>Refine the placement of the item by setting a horizontal and/or vertical
+<span class="guilabel">Margin from Edge</span>. These values can be in <strong>Millimeters</strong> or
+<strong>Pixels</strong> or set as a <strong>Percentage</strong> of the width or height of the map canvas.</p></li>
+<li><p>Click <span class="guilabel">Apply</span> to verify that it looks as expected or
+<span class="guilabel">OK</span> if you’re satisfied.</p></li>
+</ol>
+</section>
+<section id="copyright-label">
+<span id="copyright-decoration"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id39" role="doc-backlink"><span class="section-number">11.1.5.3. </span>Copyright Label</a><a class="headerlink" href="#copyright-label" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/copyright_label.png"><img alt="copyrightLabel" src="../../../_images/copyright_label.png" style="width: 1.5em;" /></a> <span class="guilabel">Copyright Label</span> can be used to decorate your
+map with a <strong>Copyright</strong> label.</p>
+<p>To add this decoration:</p>
+<ol class="arabic">
+<li><p>Select menu option <span class="menuselection">View ► Decorations ► Copyright Label…</span>
+to open the dialog.</p>
+<figure class="align-center" id="id12">
+<span id="figure-decorations-copyright"></span><img alt="../../../_images/copyright.png" src="../../../_images/copyright.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.8 </span><span class="caption-text">The Copyright Decoration Dialog</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Make sure <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable Copyright Label</span> is checked</p></li>
+<li><p>Enter the copyright text you want to place on the map.
+You can make it dynamic using the <span class="guilabel">Insert or Edit an Expression…</span>
+button.</p></li>
+<li><p>Choose the <span class="guilabel">Font</span> for the label using the <a class="reference internal" href="../introduction/general_tools.html#font-selector"><span class="std std-ref">font selector
+widget</span></a> with full access to QGIS <a class="reference internal" href="../style_library/label_settings.html#text-format"><span class="std std-ref">text formatting</span></a> options. Quickly set the font color and opacity by clicking
+the black arrow to the right of the font combo box.</p></li>
+<li><p>Choose the <span class="guilabel">Placement</span> of the label in the canvas: options are
+<span class="guilabel">Top left</span>, <span class="guilabel">Top Center</span>,
+<span class="guilabel">Top Right</span>, <span class="guilabel">Bottom left</span>, <span class="guilabel">Bottom Center</span>,
+and <span class="guilabel">Bottom Right</span> (default for Copyright decoration)</p></li>
+<li><p>Refine the placement of the item by setting a horizontal and/or vertical
+<span class="guilabel">Margin from Edge</span>. These values can be in <strong>Millimeters</strong> or
+<strong>Pixels</strong> or set as a <strong>Percentage</strong> of the width or height of the map canvas.</p></li>
+<li><p>Click <span class="guilabel">Apply</span> to verify that it looks as expected or
+<span class="guilabel">OK</span> if you’re satisfied.</p></li>
+</ol>
+</section>
+<section id="image-decoration">
+<span id="index-8"></span><span id="id1"></span><h3><a class="toc-backref" href="#id40" role="doc-backlink"><span class="section-number">11.1.5.4. </span>Image Decoration</a><a class="headerlink" href="#image-decoration" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/mActionAddImage.png"><img alt="addImage" src="../../../_images/mActionAddImage.png" style="width: 1.5em;" /></a> <span class="guilabel">Image</span> allows you to add an image (logo, legend, ..) on the map canvas.</p>
+<p>To add an image:</p>
+<ol class="arabic">
+<li><p>Select menu option <span class="menuselection">View ► Decorations ► Image…</span>
+to open the dialog.</p>
+<figure class="align-center" id="id13">
+<span id="figure-image-decoration"></span><img alt="../../../_images/image_decoration.png" src="../../../_images/image_decoration.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.9 </span><span class="caption-text">The Image Decoration Dialog</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Make sure <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable Image</span> is checked</p></li>
+<li><p>Select a bitmap (e.g. png or jpg) or SVG image using the
+<span class="guilabel">…</span> <sup>Browse</sup> button</p></li>
+<li><p>If you have chosen a parameter enabled SVG then you can also set
+a <span class="guilabel">Fill</span> or <span class="guilabel">Stroke</span> (outline) color.
+For bitmap images, the color settings are disabled.</p></li>
+<li><p>Set a <span class="guilabel">Size</span> of the image in mm. The width of selected image is used to
+resize it to given <span class="guilabel">Size</span>.</p></li>
+<li><p>Choose where you want to place the image on the map canvas with the
+<span class="guilabel">Placement</span> combo box. The default position is <span class="guilabel">Top Left</span>.</p></li>
+<li><p>Set the <span class="guilabel">Horizontal</span> and <span class="guilabel">Vertical Margin from (Canvas) Edge</span>.
+These values can be set in <strong>Millimeters</strong>, <strong>Pixels</strong> or as a <strong>Percentage</strong> of
+the width or height of the map canvas.</p></li>
+<li><p>Click <span class="guilabel">Apply</span> to verify that it looks as expected and <span class="guilabel">OK</span>
+if you’re satisfied.</p></li>
+</ol>
+</section>
+<section id="north-arrow">
+<span id="northarrow-decoration"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id41" role="doc-backlink"><span class="section-number">11.1.5.5. </span>North Arrow</a><a class="headerlink" href="#north-arrow" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/north_arrow.png"><img alt="northArrow" src="../../../_images/north_arrow.png" style="width: 1.5em;" /></a> <span class="guilabel">North Arrow</span> allows you to add a north arrow on the map canvas.</p>
+<p>To add a north arrow:</p>
+<ol class="arabic">
+<li><p>Select menu option <span class="menuselection">View ► Decorations ► North Arrow…</span>
+to open the dialog.</p>
+<figure class="align-center" id="id14">
+<span id="figure-decorations-north"></span><img alt="../../../_images/north_arrow_dialog.png" src="../../../_images/north_arrow_dialog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.10 </span><span class="caption-text">The North Arrow Dialog</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Make sure <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable north arrow</span> is checked</p></li>
+<li><p>Optionally change the color and size, or choose a custom SVG</p></li>
+<li><p>Optionally change the angle or choose <strong>Automatic</strong> to let QGIS determine the
+direction</p></li>
+<li><p>Optionally choose the placement from the Placement combo box</p></li>
+<li><p>Optionally refine the placement of the arrow by setting a horizontal and/or vertical
+<cite>Margin from (Canvas) Edge</cite>. These values can be in <strong>Millimeters</strong> or
+<strong>Pixels</strong> or set as a <strong>Percentage</strong> of the width or height of the map canvas.</p></li>
+<li><p>Click <span class="guilabel">Apply</span> to verify that it looks as expected and <span class="guilabel">OK</span> if you’re satisfied.</p></li>
+</ol>
+</section>
+<section id="scale-bar">
+<span id="scalebar-decoration"></span><span id="index-10"></span><h3><a class="toc-backref" href="#id42" role="doc-backlink"><span class="section-number">11.1.5.6. </span>Scale Bar</a><a class="headerlink" href="#scale-bar" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/mActionScaleBar.png"><img alt="scaleBar" src="../../../_images/mActionScaleBar.png" style="width: 1.5em;" /></a> <span class="guilabel">Scale Bar</span> adds a simple scale bar to the map canvas.
+You can control the style and placement, as well as the labelling of the bar.
+The scale bar respects the active <a class="reference internal" href="../introduction/qgis_configuration.html#measurements-ellipsoid"><span class="std std-ref">project’s distance unit</span></a>
+as defined in <span class="menuselection">Project properties ► General ► Units for distance measurement</span>.</p>
+<p>To add a scale bar:</p>
+<ol class="arabic">
+<li><p>Select menu option <span class="menuselection">View ► Decorations ► Scale Bar…</span>
+to open the dialog</p>
+<figure class="align-center" id="id15">
+<span id="figure-decorations-scale"></span><img alt="../../../_images/scale_bar_dialog.png" src="../../../_images/scale_bar_dialog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.11 </span><span class="caption-text">The Scale Bar Dialog</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Make sure <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable scale bar</span> is checked</p></li>
+<li><p>Choose a style from the <span class="guilabel">Scale bar style</span> <a class="reference internal" href="../../../_images/selectstring.png"><img alt="selectString" src="../../../_images/selectstring.png" style="width: 2.5em;" /></a> combo box</p></li>
+<li><p>Select the <span class="guilabel">Color of bar</span> <img alt="selectColor" src="../../../_images/selectcolor.png" /> by choosing
+a fill color (default: black) and an outline color (default: white). The scale
+bar fill and outline can be made opaque by clicking on the down arrow to the right
+of the color input.</p></li>
+<li><p>Select the font for the scale bar from the <span class="guilabel">Font of bar</span> <a class="reference internal" href="../../../_images/selectstring.png"><img alt="selectString" src="../../../_images/selectstring.png" style="width: 2.5em;" /></a> combo box</p></li>
+<li><p>Set the <span class="guilabel">Size of bar</span> in the active unit</p></li>
+<li><p>Optionally check <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Automatically snap to round number on resize</span>
+to display easy-to-read values</p></li>
+<li><p>Choose the placement from the <span class="guilabel">Placement</span> <a class="reference internal" href="../../../_images/selectstring.png"><img alt="selectString" src="../../../_images/selectstring.png" style="width: 2.5em;" /></a> combo box</p></li>
+<li><p>You can refine the placement of the item by setting a horizontal and/or vertical
+<cite>Margin from (Canvas) Edge</cite>. These values can be in <strong>Millimeters</strong> or
+<strong>Pixels</strong> or set as a <strong>Percentage</strong> of the width or height of the map canvas.</p></li>
+<li><p>Click <span class="guilabel">Apply</span> to verify that it looks as expected or <span class="guilabel">OK</span> if you’re satisfied.</p></li>
+</ol>
+</section>
+<section id="layout-extents">
+<span id="layoutextents-decoration"></span><span id="index-11"></span><h3><a class="toc-backref" href="#id43" role="doc-backlink"><span class="section-number">11.1.5.7. </span>Layout Extents</a><a class="headerlink" href="#layout-extents" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/mActionAddMap.png"><img alt="addMap" src="../../../_images/mActionAddMap.png" style="width: 1.5em;" /></a> <span class="guilabel">Layout Extents</span> adds the extents of <a class="reference internal" href="../print_composer/composer_items/composer_map.html#layout-map-item"><span class="std std-ref">map item(s)</span></a> in print
+layout(s) to the canvas. When enabled, the extents of all map items within all print layouts are
+shown using a lightly dotted border labeled with the name of the print layout and map item.
+You can control the style and labeling of the displayed layout extents.
+This decoration is useful when you are tweaking the positioning of map elements such as labels,
+and need to know the actual visible region of print layouts.</p>
+<figure class="align-center" id="id16">
+<span id="figure-decorations-layoutextents-example"></span><img alt="../../../_images/decoration_layoutextents_example.png" src="../../../_images/decoration_layoutextents_example.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.12 </span><span class="caption-text">Example of layout extents displayed in a QGIS project with two print layouts. The print
+layout named ‘Sights’ contains two map items, while the other print layout contains one
+map item.</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>To add layout extent(s):</p>
+<ol class="arabic">
+<li><p>Select <span class="menuselection">View ► Decorations ► Layout Extents</span> to open
+the dialog</p>
+<figure class="align-center" id="id17">
+<span id="figure-decorations-layoutextents"></span><img alt="../../../_images/decoration_layoutextents.png" src="../../../_images/decoration_layoutextents.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.13 </span><span class="caption-text">The Layout Extents Dialog</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Make sure <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show layout extents</span> is checked.</p></li>
+<li><p>Optionally change the symbol and labeling of the extents.</p></li>
+<li><p>Click <span class="guilabel">Apply</span> to verify that it looks as expected and <span class="guilabel">OK</span>
+if you’re satisfied.</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Decorations Settings</strong></p>
+<p>When you save a QGIS project file, any changes you have made to Grid,
+North Arrow, Scale Bar, Copyright and Layout Extents will be saved in the project and restored
+the next time you load the project.</p>
+</div>
+</section>
+</section>
+<section id="annotation-tools">
+<span id="sec-annotations"></span><span id="index-12"></span><h2><a class="toc-backref" href="#id44" role="doc-backlink"><span class="section-number">11.1.6. </span>Annotation Tools</a><a class="headerlink" href="#annotation-tools" title="Link to this heading"></a></h2>
+<p>Annotations are another type of elements added onto the map canvas to provide
+additional information that can not be depicted by the rendered layers.
+Unlike <a class="reference internal" href="../working_with_vector/vector_properties.html#vector-labels-tab"><span class="std std-ref">labels</span></a> that rely on attribute values stored
+in vector layers, annotations are independent details, stored within the project
+file itself.</p>
+<p>Two families of annotations are available in QGIS:</p>
+<ul class="simple">
+<li><p><strong>Feature annotations</strong>: they are actual georeferenced features of text, marker,
+line or polygon type stored within a special layer type called “annotation layer”.
+They are tied to a particular geographic location, meaning that moving your map,
+changing the scale or changing projection won’t cause your annotations to jump
+around the map. Rather, they’ll be locked in place to the location you’ve drawn them.</p></li>
+<li><p><strong>Balloon annotations</strong>: these are individuals annotations of text, form or image
+type placed inside a bubble. They can be associated to any layer for their visibility,
+are drawn on top of the map canvas. The size is dependent from the map canvas scale,
+and its position can be anchored.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Layout the map with annotations</strong></p>
+<p>You can print or export annotations with your map to various formats using:</p>
+<ul class="simple">
+<li><p>map canvas export tools available in the <span class="menuselection">Project</span> menu</p></li>
+<li><p><a class="reference internal" href="../print_composer/create_output.html#create-output"><span class="std std-ref">print layout</span></a>, in which case you need to check
+<span class="guilabel">Draw map canvas items</span> in the corresponding map item properties</p></li>
+</ul>
+</div>
+<p>The <span class="guilabel">Annotations Toolbar</span> provides a set of tools to create and interact
+with both families of annotations.</p>
+<table class="docutils align-default" id="id18">
+<caption><span class="caption-number">Table 11.3 </span><span class="caption-text">The Annotations Toolbar actions</span><a class="headerlink" href="#id18" title="Link to this table"></a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Tool</p></td>
+<td><p>Usage</p></td>
+<td><p>Scope</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionCreateAnnotationLayer.png"><img alt="createAnnotationLayer" src="../../../_images/mActionCreateAnnotationLayer.png" style="width: 1.5em;" /></a> <sup>New Annotation Layer</sup></p></td>
+<td><p>Create a new layer to store annotations</p></td>
+<td rowspan="8"><p>Feature annotations</p></td>
+</tr>
+<tr class="row-odd"><td><p><sup>Main Annotation Layer Properties</sup></p></td>
+<td><p>Control settings of the Main Annotation Layer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSelect.png"><img alt="select" src="../../../_images/mActionSelect.png" style="width: 1.5em;" /></a> <sup>Modify Annotations</sup></p></td>
+<td><p>Select, move, resize and modify symbology properties of annotations</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAddPolygon.png"><img alt="addPolygon" src="../../../_images/mActionAddPolygon.png" style="width: 1.5em;" /></a> <sup>Create Polygon Annotation</sup></p></td>
+<td><p>Create an annotation as a polygon feature</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAddPolyline.png"><img alt="addPolyline" src="../../../_images/mActionAddPolyline.png" style="width: 1.5em;" /></a> <sup>Create Line Annotation</sup></p></td>
+<td><p>Create an annotation as a polyline feature</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAddMarker.png"><img alt="addMarker" src="../../../_images/mActionAddMarker.png" style="width: 1.5em;" /></a> <sup>Create Marker Annotation</sup></p></td>
+<td><p>Create an annotation as a point feature</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionText.png"><img alt="actionText" src="../../../_images/mActionText.png" style="width: 1.5em;" /></a> <sup>Create Text Annotation at Point</sup></p></td>
+<td><p>Create an annotation as a text label</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionTextAlongLine.png"><img alt="textAlongLine" src="../../../_images/mActionTextAlongLine.png" style="width: 1.5em;" /></a> <sup>Create Text Annotation along
+Line</sup></p></td>
+<td><p>Create an annotation as a curved text along a linestring</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionTextAnnotation.png"><img alt="textAnnotation" src="../../../_images/mActionTextAnnotation.png" style="width: 1.5em;" /></a> <sup>Text Annotation</sup></p></td>
+<td><p>Select and create a text formatted annotation</p></td>
+<td rowspan="4"><p>Balloon annotations</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionHtmlAnnotation.png"><img alt="htmlAnnotation" src="../../../_images/mActionHtmlAnnotation.png" style="width: 1.5em;" /></a> <sup>HTML Annotation</sup></p></td>
+<td><p>Select and create annotation with an <code class="file docutils literal notranslate"><span class="pre">HTML</span></code> file’s content</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSvgAnnotation.png"><img alt="svgAnnotation" src="../../../_images/mActionSvgAnnotation.png" style="width: 1.5em;" /></a> <sup>SVG Annotation</sup></p></td>
+<td><p>Select and create annotation showing an <code class="file docutils literal notranslate"><span class="pre">SVG</span></code> file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionFormAnnotation.png"><img alt="formAnnotation" src="../../../_images/mActionFormAnnotation.png" style="width: 1.5em;" /></a> <sup>Form Annotation</sup></p></td>
+<td><p>Select and create annotation showing attributes of a vector layer
+in a custom form file</p></td>
+</tr>
+</tbody>
+</table>
+<section id="feature-annotations">
+<span id="annotation-layer"></span><h3><a class="toc-backref" href="#id45" role="doc-backlink"><span class="section-number">11.1.6.1. </span>Feature Annotations</a><a class="headerlink" href="#feature-annotations" title="Link to this heading"></a></h3>
+<p>Feature annotations are stored in <strong>annotation layers</strong>. Unlike conventional
+layers, an annotation layer is available only in the current project and can
+contain features of different types (text, marker, line, polygon).
+The layer has no attributes and no symbology associated, but instead each feature
+can be symbolized on an item-by-item basis, through <span class="guilabel">Layer Styling</span> panel.</p>
+<p>Two types of annotation layer are available in QGIS:</p>
+<ul class="simple">
+<li><p>A common <span class="guilabel">Annotation Layer</span>: you can create one using
+the <a class="reference internal" href="../../../_images/mActionCreateAnnotationLayer.png"><img alt="createAnnotationLayer" src="../../../_images/mActionCreateAnnotationLayer.png" style="width: 1.5em;" /></a> <sup>New Annotation Layer</sup> tool. It is listed
+in the <span class="guilabel">Layers</span> panel, allowing you to control its features’
+visibility, move it to show above or below particular layers in your map,
+like any common layer.
+Double-click the layer and you can access its properties.</p></li>
+<li><p>The <span class="guilabel">Main Annotation Layer</span>: By default, this is where annotations
+are stored when no annotation layer is available in the project or is selected
+at creation time. This layer is always drawn on the very top of your map and
+you won’t see it listed in the <span class="guilabel">Layers</span> panel alongside the other
+layers in your project, meaning that its features are always visible.
+The <span class="guilabel">Main Annotation Layer Properties</span> entry on
+the <span class="guilabel">Annotations</span> toolbar helps you open its properties dialog.</p></li>
+</ul>
+<section id="layer-properties">
+<h4><a class="toc-backref" href="#id46" role="doc-backlink">Layer Properties</a><a class="headerlink" href="#layer-properties" title="Link to this heading"></a></h4>
+<p>The properties dialog of an annotation layer provides the following tabs:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Information</span>: a read-only dialog representing an interesting
+place to quickly grab summarized information and metadata on the current layer.
+This may include the layer extent, count of items per annotation type and total count,
+CRS details, …</p></li>
+<li><p><span class="guilabel">Source</span>: defines general settings for the annotation layer. You can:</p>
+<ul>
+<li><p>Set a <span class="guilabel">Layer name</span> that will be used to identify the layer
+in the project (in the <span class="guilabel">Layers Panel</span>, with expressions, …)</p></li>
+<li><p>Display the layer’s <a class="reference internal" href="../working_with_projections/working_with_projections.html#layer-crs"><span class="std std-ref">Assigned Coordinate Reference System (CRS)</span></a>:
+you can change the layer’s CRS, selecting a recently used one
+in the drop-down list or clicking on <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> <sup>Select CRS</sup> button
+(see <a class="reference internal" href="../working_with_projections/working_with_projections.html#crs-selector"><span class="std std-ref">Coordinate Reference System Selector</span></a>). Use this process only if the CRS applied to the
+layer is a wrong one or if none was applied.</p></li>
+</ul>
+</li>
+</ul>
+<ul id="annotationslayer-rendering">
+<li><p><span class="guilabel">Rendering</span>:</p>
+<ul class="simple">
+<li><p>You can set the <span class="guilabel">Maximum (inclusive)</span> and <span class="guilabel">Minimum
+(exclusive)</span> scale, defining a range of scale in which features will be
+visible. Out of this range, they are hidden. The <a class="reference internal" href="../../../_images/mActionMapIdentification.png"><img alt="mapIdentification" src="../../../_images/mActionMapIdentification.png" style="width: 1.5em;" /></a>
+<sup>Set to current canvas scale</sup> button helps you use the current map
+canvas scale as boundary of the range visibility.
+See <a class="reference internal" href="../introduction/general_tools.html#label-scaledepend"><span class="std std-ref">Visibility Scale Selector</span></a> for more information.</p></li>
+<li><p><span class="guilabel">Opacity</span>: You can make the underlying layer in
+the map canvas visible with this tool. Use the slider to adapt the visibility
+of your vector layer to your needs. You can also make a precise definition of
+the percentage of visibility in the menu beside the slider.</p></li>
+<li><p><span class="guilabel">Blending mode</span> at the <span class="guilabel">Layer</span> level: You can achieve
+special rendering effects with these tools that you may previously only
+know from graphics programs. The pixels of your overlaying and underlying
+layers are mixed through the settings described in <a class="reference internal" href="../introduction/general_tools.html#blend-modes"><span class="std std-ref">Blending Modes</span></a>.</p></li>
+<li><p>Apply <a class="reference internal" href="../working_with_vector/vector_properties.html#draw-effects"><span class="std std-ref">paint effects</span></a> on all the layer features with the
+<span class="guilabel">Draw Effects</span> button.</p></li>
+</ul>
+<p>Some of these options are accessible from the feature annotation
+<span class="guilabel">Symbology</span> properties.</p>
+</li>
+</ul>
+</section>
+<section id="interacting-with-features">
+<h4><a class="toc-backref" href="#id47" role="doc-backlink">Interacting with features</a><a class="headerlink" href="#interacting-with-features" title="Link to this heading"></a></h4>
+<p>The Feature annotations have dedicated tools for creation depending on their type:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionAddPolygon.png"><img alt="addPolygon" src="../../../_images/mActionAddPolygon.png" style="width: 1.5em;" /></a> <sup>Create Polygon Annotation</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionAddPolyline.png"><img alt="addPolyline" src="../../../_images/mActionAddPolyline.png" style="width: 1.5em;" /></a> <sup>Create Line Annotation</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionAddMarker.png"><img alt="addMarker" src="../../../_images/mActionAddMarker.png" style="width: 1.5em;" /></a> <sup>Create Marker Annotation</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionText.png"><img alt="actionText" src="../../../_images/mActionText.png" style="width: 1.5em;" /></a> <sup>Create Text Annotation at Point</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionTextAlongLine.png"><img alt="textAlongLine" src="../../../_images/mActionTextAlongLine.png" style="width: 1.5em;" /></a> <sup>Create Text Annotation along Line</sup></p></li>
+</ul>
+<p>All the usual QGIS shortcuts for creating features apply when creating annotation
+items. A line or polygon annotation is drawn by left-clicking once for each vertex,
+with a final right mouse click to complete the shape. Snapping can be enabled
+while you draw, you can use the <span class="guilabel">Advanced Digitizing Tools</span> to precisely
+place vertices, and even switch the <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#drawing-methods"><span class="std std-ref">drawing tools</span></a>
+to the streaming mode for completely free-form shapes.</p>
+<p>Unlike common layers, an annotation layer does not need to be active before you
+select its features. Simply grab the <a class="reference internal" href="../../../_images/mActionSelect.png"><img alt="select" src="../../../_images/mActionSelect.png" style="width: 1.5em;" /></a> <sup>Modify Annotations</sup> tool and
+you will be able to interact with any feature annotation:</p>
+<ul class="simple">
+<li><p><strong>Selection</strong>: left-click on the annotation.
+By default, annotations are rendered in the order of creation,
+meaning that recent annotations will be placed on top of older.
+You may need to play with the Z-index property of features in order to select
+ones they would sit above.</p></li>
+<li><p><strong>Moving</strong>: Left click on a selected annotation item to start moving it.
+A right-click or pressing <kbd class="kbd docutils literal notranslate">Esc</kbd> key cancels the move, while a second
+left click will confirm the move.
+The displacement can also be controlled pressing the cursor keys:</p>
+<ul>
+<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">key</kbd></kbd> for big movement</p></li>
+<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Alt</kbd>+<kbd class="kbd docutils literal notranslate">key</kbd></kbd> for <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">px</span></code> movement</p></li>
+</ul>
+</li>
+<li><p><strong>Geometry modification</strong>: for line or polygon annotations, left-click on
+a vertex of the geometry, move and click again.
+Double-click a segment to add a new vertex.</p></li>
+<li><p><strong>Delete</strong>: Pressing the <kbd class="kbd docutils literal notranslate">Del</kbd> or <kbd class="kbd docutils literal notranslate">Backspace</kbd> key while
+an annotation is selected will delete that annotation</p></li>
+<li><p><a class="reference internal" href="#annotation-feature-symbology"><span class="std std-ref">Change feature symbology</span></a></p></li>
+</ul>
+</section>
+<section id="feature-symbology">
+<span id="annotation-feature-symbology"></span><h4><a class="toc-backref" href="#id48" role="doc-backlink">Feature symbology</a><a class="headerlink" href="#feature-symbology" title="Link to this heading"></a></h4>
+<p>A selected annotation will display its <span class="guilabel">Symbology</span> properties
+in the <span class="guilabel">Layer styling</span> panel. You can:</p>
+<ul class="simple">
+<li><p>Modify the appearance using full capabilities of:</p>
+<ul>
+<li><p>the <a class="reference internal" href="../style_library/symbol_selector.html#symbol-selector"><span class="std std-ref">symbol properties</span></a> for polygon, polyline and marker annotations</p></li>
+<li><p>the <a class="reference internal" href="../style_library/label_settings.html#text-format"><span class="std std-ref">text format properties</span></a> for text-based annotations.
+A text area allows you to construct the string to display using QGIS expression functions.
+It is also possible to set the <span class="guilabel">Alignment</span> for text annotation at point
+(left, center or right of the text point).</p></li>
+</ul>
+</li>
+<li><p>For text annotation at point, also configure whether it should <span class="guilabel">Ignore map rotation</span>
+or <span class="guilabel">Rotate with map</span>.
+In both cases, a custom <span class="guilabel">Angle</span> can be set for the feature orientation.</p></li>
+<li><p>For text annotation along a line, configure an <span class="guilabel">Offset from line</span> in the unit
+of your choice</p></li>
+<li><p>Configure a <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Reference scale</span>: indicates the map scale
+at which symbol or text sizes which uses paper-based units (such as millimeters or points) relate to.
+The sizes will be scaled accordingly whenever the map is viewed at a different scale.
+For instance, a line feature wide of 2mm at 1:2000 <span class="guilabel">Reference scale</span>
+will be rendered using 4mm when the map is viewed at 1:1000.</p></li>
+<li><p>Set a <span class="guilabel">Z-index</span>: a feature with a higher index is placed on top of
+features with lower index.
+A convenient setting for both feature display and selection.</p></li>
+<li><p>Modify some of the <a class="reference internal" href="#annotationslayer-rendering"><span class="std std-ref">Layer rendering</span></a> settings</p></li>
+</ul>
+</section>
+</section>
+<section id="balloon-annotations">
+<span id="id2"></span><h3><a class="toc-backref" href="#id49" role="doc-backlink"><span class="section-number">11.1.6.2. </span>Balloon annotations</a><a class="headerlink" href="#balloon-annotations" title="Link to this heading"></a></h3>
+<p>You can add balloon annotations through <span class="menuselection">Edit ► Add Annotation ►</span>
+menu or from the <span class="guilabel">Annotations Toolbar</span>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionTextAnnotation.png"><img alt="textAnnotation" src="../../../_images/mActionTextAnnotation.png" style="width: 1.5em;" /></a> <sup>Text Annotation</sup> for custom formatted text</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionHtmlAnnotation.png"><img alt="htmlAnnotation" src="../../../_images/mActionHtmlAnnotation.png" style="width: 1.5em;" /></a> <sup>HTML Annotation</sup> to place the content of an <code class="file docutils literal notranslate"><span class="pre">html</span></code> file</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionSvgAnnotation.png"><img alt="svgAnnotation" src="../../../_images/mActionSvgAnnotation.png" style="width: 1.5em;" /></a> <sup>SVG Annotation</sup> to add an <code class="file docutils literal notranslate"><span class="pre">SVG</span></code> symbol</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionFormAnnotation.png"><img alt="formAnnotation" src="../../../_images/mActionFormAnnotation.png" style="width: 1.5em;" /></a> <sup>Form Annotation</sup>: useful to display attributes
+of a vector layer in a customized <code class="file docutils literal notranslate"><span class="pre">ui</span></code> file (see <a class="reference internal" href="#figure-custom-annotation"><span class="std std-numref">Fig. 11.14</span></a>).
+This is similar to the <a class="reference internal" href="../working_with_vector/vector_properties.html#provide-ui-file"><span class="std std-ref">custom attribute forms</span></a>,
+but displayed in an annotation item. Also see this video
+<a class="reference external" href="https://www.youtube.com/watch?v=0pDBuSbQ02o&amp;feature=youtu.be&amp;t=2m25s">https://www.youtube.com/watch?v=0pDBuSbQ02o&amp;feature=youtu.be&amp;t=2m25s</a>
+from Tim Sutton for more information.</p></li>
+</ul>
+<p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/0pDBuSbQ02o?start=145" title="Working with annotations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p><figure class="align-center" id="id19">
+<span id="figure-custom-annotation"></span><img alt="../../../_images/custom_annotation.png" src="../../../_images/custom_annotation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.14 </span><span class="caption-text">Examples of balloon annotations</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>To add a balloon annotation, select the corresponding tool and click on the map canvas.
+An empty balloon is added. Double-click on it and a dialog opens with various
+options. This dialog is almost the same for all the annotation types:</p>
+<ul class="simple">
+<li><p>At the top, a file selector to fill with the path to an <code class="file docutils literal notranslate"><span class="pre">html</span></code>, <code class="file docutils literal notranslate"><span class="pre">svg</span></code>
+or <code class="file docutils literal notranslate"><span class="pre">ui</span></code> file depending on the type of annotation. For text annotation,
+you can enter your message in a text box and set its rendering with
+the normal font tools.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Fixed map position</span>: when unchecked, the balloon placement
+is based on a screen position (instead of the map), meaning that it’s always shown
+regardless the map canvas extent.</p></li>
+<li><p><span class="guilabel">Linked layer</span>: associates the annotation with a map layer, making it
+visible only when that layer is visible.</p></li>
+<li><p><span class="guilabel">Map marker</span>: using <a class="reference internal" href="../style_library/symbol_selector.html#symbol-selector"><span class="std std-ref">QGIS symbols</span></a>,
+sets the symbol to display at the balloon anchor position (shown only when
+<span class="guilabel">Fixed map position</span> is checked).</p></li>
+<li><p><span class="guilabel">Frame style</span>: sets the frame background color, transparency,
+stroke color or width of the balloon using QGIS symbols.</p></li>
+<li><p><span class="guilabel">Contents margins</span>: sets interior margins of the annotation frame.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Live update</span> allows you to live preview your changes.</p></li>
+</ul>
+<figure class="align-center" id="id20">
+<span id="figure-annotation"></span><img alt="../../../_images/annotation.png" src="../../../_images/annotation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.15 </span><span class="caption-text">A ballon annotation text dialog</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>When a balloon annotation tool is active, you can also:</p>
+<ul class="simple">
+<li><p>Select an annotation</p></li>
+<li><p>Resize an annotation</p></li>
+<li><p>Move an annotation by map position (by dragging the map marker) or by moving only the balloon.</p></li>
+<li><p>Delete an annotation: select it and either press the <kbd class="kbd docutils literal notranslate">Del</kbd> or <kbd class="kbd docutils literal notranslate">Backspace</kbd> button,
+or double-click it and press the <span class="guilabel">Delete</span> button in the properties dialog.</p></li>
+<li><p>Right-click and in the contextual menu:</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/mActionEditCopy.png"><img alt="editCopy" src="../../../_images/mActionEditCopy.png" style="width: 1.5em;" /></a> <span class="guilabel">Copy coordinate</span> of the annotation’s map marker in various CRS</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a> <span class="guilabel">Edit</span> properties of the annotation. Same as double-clicking the annotation.</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionDeleteSelected.png"><img alt="deleteSelected" src="../../../_images/mActionDeleteSelected.png" style="width: 1.5em;" /></a> <span class="guilabel">Delete</span> the annotation</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="measuring">
+<span id="sec-measure"></span><span id="index-13"></span><h2><a class="toc-backref" href="#id50" role="doc-backlink"><span class="section-number">11.1.7. </span>Measuring</a><a class="headerlink" href="#measuring" title="Link to this heading"></a></h2>
+<section id="general-information">
+<h3><a class="toc-backref" href="#id51" role="doc-backlink"><span class="section-number">11.1.7.1. </span>General information</a><a class="headerlink" href="#general-information" title="Link to this heading"></a></h3>
+<p>QGIS provides four means of measuring geometries:</p>
+<ul class="simple">
+<li><p>interactive measurement tools <a class="reference internal" href="../../../_images/mActionMeasure.png"><img alt="measure" src="../../../_images/mActionMeasure.png" style="width: 1.5em;" /></a></p></li>
+<li><p>measuring in the <a class="reference internal" href="../../../_images/mActionCalculateField.png"><img alt="calculateField" src="../../../_images/mActionCalculateField.png" style="width: 1.5em;" /></a> <sup>Field Calculator</sup></p></li>
+<li><p>derived measurements in the <a class="reference internal" href="../introduction/general_tools.html#identify"><span class="std std-ref">Identifying Features</span></a> tool</p></li>
+<li><p>the vector analysis tool: <span class="menuselection">Vector ► Geometry Tools ►
+Export/Add Geometry Columns</span></p></li>
+</ul>
+<p>Measuring works within projected coordinate systems (e.g., UTM) and unprojected
+data. The first three measuring tools behave equally to global project settings:</p>
+<ul class="simple">
+<li><p>Unlike most other GIS, the default measurement metric is
+ellipsoidal, using the ellipsoid defined in
+<span class="menuselection">Project ► Properties… ► General</span>. This is true both
+when geographic and projected coordinate systems are defined for the project.</p></li>
+<li><p>If you want to calculate the projected/planimetric area or distance using cartesian
+maths, the measurement ellipsoid has to be set to “None/Planimetric”
+(<span class="menuselection">Project ► Properties… ► General</span>). However,
+with a geographic (ie unprojected) CRS defined for the data and project, area and
+distance measurement will be ellipsoidal.</p></li>
+</ul>
+<p>However, neither the identify tool nor the field calculator will transform your
+data to the project CRS before measuring. If you want to achieve this, you have
+to use the vector analysis tool: <span class="menuselection">Vector ► Geometry Tools ►
+Add Geometry Attributes…</span>. Here, measurement is planimetric, unless
+you choose the ellipsoidal measurement.</p>
+</section>
+<section id="measure-length-areas-bearings-and-angles-interactively">
+<h3><a class="toc-backref" href="#id52" role="doc-backlink"><span class="section-number">11.1.7.2. </span>Measure length, areas, bearings and angles interactively</a><a class="headerlink" href="#measure-length-areas-bearings-and-angles-interactively" title="Link to this heading"></a></h3>
+<p>Click the <a class="reference internal" href="../../../_images/mActionMeasure.png"><img alt="measure" src="../../../_images/mActionMeasure.png" style="width: 1.5em;" /></a> icon in the Attribute toolbar to begin measurements.
+The down arrow near the icon switches between
+<a class="reference internal" href="../../../_images/mActionMeasure.png"><img alt="measure" src="../../../_images/mActionMeasure.png" style="width: 1.5em;" /></a> length, <a class="reference internal" href="../../../_images/mActionMeasureArea.png"><img alt="measureArea" src="../../../_images/mActionMeasureArea.png" style="width: 1.5em;" /></a> area, <a class="reference internal" href="../../../_images/mActionMeasureBearing.png"><img alt="measureBearing" src="../../../_images/mActionMeasureBearing.png" style="width: 1.5em;" /></a> bearing or <a class="reference internal" href="../../../_images/mActionMeasureAngle.png"><img alt="measureAngle" src="../../../_images/mActionMeasureAngle.png" style="width: 1.5em;" /></a> angle.
+The default unit used in the dialog is the one set in <span class="menuselection">Project ►
+Properties… ► General</span> menu.</p>
+<p>For the <span class="guilabel">Measure Line</span> and the <span class="guilabel">Measure Area</span> the
+measurements can be done in <a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a> <span class="guilabel">Cartesian</span> or
+<a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a> <span class="guilabel">Ellipsoidal</span> measure.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Configuring the measure tool</strong></p>
+<p>While measuring length or area, clicking the <span class="guilabel">Configuration</span> button
+at the bottom of the widget opens the <span class="menuselection">Settings ►
+Options ► Map Tools</span> menu, where you can select the rubberband color, the
+precision of the measurements and the unit behavior. You can also choose your
+preferred measurement or angle units, but keep in mind that those values are
+overridden in the current project by the selection made in the
+<span class="menuselection">Project ► Properties… ► General</span> menu, and by the
+selection made in the measurement widget.</p>
+</div>
+<p>All measuring modules use the snapping settings from the digitizing module
+(see section <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#snapping-tolerance"><span class="std std-ref">Setting the snapping tolerance and search radius</span></a>).
+So, if you want to measure exactly along a line feature, or around a polygon feature,
+first set its layer snapping tolerance.
+Now, when using the measuring tools, each mouse click (within the tolerance setting)
+will snap to that layer.</p>
+<p id="index-14">The <a class="reference internal" href="../../../_images/mActionMeasure.png"><img alt="measure" src="../../../_images/mActionMeasure.png" style="width: 1.5em;" /></a> <sup>Measure Line</sup> measures distances between given points.
+The tool then allows you to click points on the map.
+Each segment length, as well as the total, shows up in the measure window.
+In the measure window, you will see coordinates for all your points and distances.
+Keep in mind that the first row will contain only coordinates, as it represents your starting point.
+Now it is possible to copy all your line measurements at once to the clipboard
+using the <span class="guilabel">Copy</span> button. Clicking the <span class="guilabel">Configuration</span> button
+you will access to <span class="guilabel">Measure Tool Copy Settings</span> where you can set up
+<a class="reference internal" href="../introduction/qgis_configuration.html#measure-copy-settings"><span class="std std-ref">copy options</span></a>. To stop measuring, click the right
+mouse button.</p>
+<p>Note that you can use the drop-down list near the total
+to change the <a class="reference internal" href="../introduction/qgis_configuration.html#measurements-ellipsoid"><span class="std std-ref">measurement units</span></a>
+interactively while working with the measure tool.
+This unit is retained for the widget until a new project is created
+or another project is opened.</p>
+<p>The <span class="guilabel">Info</span> section in the dialog explains how calculations are made
+according to the CRS settings available.</p>
+<figure class="align-center" id="id21">
+<span id="figure-measure-length"></span><img alt="../../../_images/measure_line.png" src="../../../_images/measure_line.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.16 </span><span class="caption-text">Measure Distance</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../_images/mActionMeasureArea.png"><img alt="measureArea" src="../../../_images/mActionMeasureArea.png" style="width: 1.5em;" /></a> <sup>Measure Area</sup>: Areas can also be measured. In the
+measure window, the accumulated area size appears. Right-click to stop drawing.
+The Info section is also available as well as the ability to switch between
+different <a class="reference internal" href="../introduction/qgis_configuration.html#measurements-ellipsoid"><span class="std std-ref">area units</span></a>.</p>
+<figure class="align-center" id="id22">
+<span id="figure-measure-area"></span><img alt="../../../_images/measure_area.png" src="../../../_images/measure_area.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.17 </span><span class="caption-text">Measure Area</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../_images/mActionMeasureBearing.png"><img alt="measureBearing" src="../../../_images/mActionMeasureBearing.png" style="width: 1.5em;" /></a> <sup>Measure Bearing</sup>: You can also measure bearings.
+The cursor becomes cross-shaped.
+Click to draw the first point of the bearing,
+then move the cursor to draw the second point.
+The measurement is displayed in a pop-up dialog.</p>
+<figure class="align-center" id="id23">
+<span id="figure-measure-bearing"></span><img alt="../../../_images/measure_bearing.png" src="../../../_images/measure_bearing.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.18 </span><span class="caption-text">Measure Bearing</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../_images/mActionMeasureAngle.png"><img alt="measureAngle" src="../../../_images/mActionMeasureAngle.png" style="width: 1.5em;" /></a> <sup>Measure Angle</sup>: You can also measure angles.
+The cursor becomes cross-shaped.
+Click to draw the first segment of the angle you wish to measure,
+then move the cursor to draw the desired angle.
+The measurement is displayed in a pop-up dialog.</p>
+<figure class="align-center" id="id24">
+<span id="figure-measure-angle"></span><img alt="../../../_images/measure_angle.png" src="../../../_images/measure_angle.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.19 </span><span class="caption-text">Measure Angle</span><a class="headerlink" href="#id24" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="setting-additional-map-views">
+<span id="additional-map-views"></span><h2><a class="toc-backref" href="#id53" role="doc-backlink"><span class="section-number">11.1.8. </span>Setting additional map views</a><a class="headerlink" href="#setting-additional-map-views" title="Link to this heading"></a></h2>
+<p>It is also possible to open additional map views whose content could diverge
+from the <span class="guilabel">Layers</span> panel current state.
+To add a new map view, go to <span class="menuselection">View ►</span> <a class="reference internal" href="../../../_images/mActionNewMap.png"><img alt="newMap" src="../../../_images/mActionNewMap.png" style="width: 1.5em;" /></a>
+<span class="menuselection">New Map View</span>. A new floating widget, mimicking the main map
+view’s rendering, is added to QGIS. You can add as many map views as you need.
+They can be kept floating, placed side by side or stacked on top of each
+other.</p>
+<figure class="align-center" id="id25">
+<span id="figure-mapviews"></span><a class="reference internal image-reference" href="../../../_images/map_views.png"><img alt="../../../_images/map_views.png" src="../../../_images/map_views.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11.20 </span><span class="caption-text">Multiple map views with different settings</span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>At the top of an additional map canvas, there’s a toolbar with the following
+capabilities:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionZoomFullExtent.png"><img alt="zoomFullExtent" src="../../../_images/mActionZoomFullExtent.png" style="width: 1.5em;" /></a> <sup>Zoom Full</sup>, <a class="reference internal" href="../../../_images/mActionZoomToSelected.png"><img alt="zoomToSelected" src="../../../_images/mActionZoomToSelected.png" style="width: 1.5em;" /></a> <sup>Zoom to Selection</sup>
+and <a class="reference internal" href="../../../_images/mActionZoomToLayer.png"><img alt="zoomToLayer" src="../../../_images/mActionZoomToLayer.png" style="width: 1.5em;" /></a> <sup>Zoom to Layer(s)</sup> to navigate within the view</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionShowPresets.png"><img alt="showPresets" src="../../../_images/mActionShowPresets.png" style="width: 1.5em;" /></a> <sup>Set View Theme</sup> to select the <a class="reference internal" href="../introduction/general_tools.html#map-themes"><span class="std std-ref">map theme</span></a>
+to display in the map view. If set to <code class="docutils literal notranslate"><span class="pre">(none)</span></code>, the view will follow
+the <span class="guilabel">Layers</span> panel changes.</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <sup>View settings</sup> to configure the map view:</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a> <span class="guilabel">Synchronize view center with main map</span>:
+syncs the center of the map views without changing the scale.
+This allows you to have an overview style or magnified map which follows
+the main canvas center.</p></li>
+<li><p><a class="reference internal" href="../../../_images/radiobuttonoff.png"><img alt="radioButtonOff" src="../../../_images/radiobuttonoff.png" style="width: 1.5em;" /></a> <span class="guilabel">Synchronize view to selection</span>: same as
+zoom to selection</p></li>
+<li><p><span class="guilabel">Scale</span></p></li>
+<li><p><span class="guilabel">Rotation</span></p></li>
+<li><p><span class="guilabel">Magnification</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Synchronize scale</span> with the main map scale.
+A <span class="guilabel">Scale factor</span> can then be applied, allowing you to have
+a view which is e.g. always 2x the scale of the main canvas.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show annotations</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show cursor position</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Show main canvas extent</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show labels</span>: allows to hide labels regardless
+they are set in the displayed layers’ properties</p></li>
+<li><p><span class="guilabel">Change map CRS…</span></p></li>
+<li><p><span class="guilabel">Rename view…</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="exporting-the-map-view">
+<span id="exportingmapcanvas"></span><h2><a class="toc-backref" href="#id54" role="doc-backlink"><span class="section-number">11.1.9. </span>Exporting the map view</a><a class="headerlink" href="#exporting-the-map-view" title="Link to this heading"></a></h2>
+<p>Maps you make can be layout and exported to various formats using the
+advanced capabilities of the
+<a class="reference internal" href="../print_composer/index.html#label-printlayout"><span class="std std-ref">print layout or report</span></a>.
+It’s also possible to directly export the current rendering, without
+a layout.
+This quick “screenshot” of the map view has some convenient features.</p>
+<p>To export the map canvas with the current rendering:</p>
+<ol class="arabic simple">
+<li><p>Go to <span class="menuselection">Project ► Import/Export</span></p></li>
+<li><p>Depending on your output format, select either</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionSaveMapAsImage.png"><img alt="saveMapAsImage" src="../../../_images/mActionSaveMapAsImage.png" style="width: 1.5em;" /></a> <span class="guilabel">Export Map to Image…</span></p></li>
+<li><p>or <a class="reference internal" href="../../../_images/mActionSaveAsPDF.png"><img alt="saveAsPDF" src="../../../_images/mActionSaveAsPDF.png" style="width: 1.5em;" /></a> <span class="guilabel">Export Map to PDF…</span></p></li>
+</ul>
+</li>
+</ol>
+<p>The two tools provide you with a common set of options.
+In the dialog that opens:</p>
+<figure class="align-center" id="id26">
+<span id="figure-savemapimage"></span><img alt="../../../_images/saveMapAsImage.png" src="../../../_images/saveMapAsImage.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.21 </span><span class="caption-text">The Save Map as Image dialog</span><a class="headerlink" href="#id26" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic">
+<li><p>Choose the <span class="guilabel">Extent</span> to export: it can be the current
+view extent (the default), the extent of a layer or a custom extent
+drawn over the map canvas.
+Coordinates of the selected area are displayed and manually editable.</p></li>
+<li><p>Enter the <span class="guilabel">Scale</span> of the map or select it from the
+<a class="reference internal" href="../introduction/qgis_configuration.html#predefinedscales"><span class="std std-ref">predefined scales</span></a>: changing the scale will
+resize the extent to export (from the center).</p></li>
+<li><p>Set the <span class="guilabel">Resolution</span> of the output</p></li>
+<li><p>Control the <span class="guilabel">Output width</span> and <span class="guilabel">Output height</span>
+in pixels of the image: based by default on the current resolution
+and extent, they can be customized and will resize the map extent
+(from the center).
+The size ratio can be locked, which may be particularly convenient
+when drawing the extent on the canvas.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Draw active decorations</span>: in use
+<a class="reference internal" href="#decorations"><span class="std std-ref">decorations</span></a> (scale bar, title, grid, north
+arrow…) are exported with the map</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Draw annotations</span> to export any <a class="reference internal" href="#sec-annotations"><span class="std std-ref">annotation</span></a></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Append georeference information (embedded or
+via world file)</span>: depending on the output format, a world file of
+the same name (with extension <code class="docutils literal notranslate"><span class="pre">PNGW</span></code> for <code class="docutils literal notranslate"><span class="pre">PNG</span></code> images, <code class="docutils literal notranslate"><span class="pre">JPGW</span></code>
+for <code class="docutils literal notranslate"><span class="pre">JPG</span></code>, …) is saved in the same folder as your image.
+The <code class="docutils literal notranslate"><span class="pre">PDF</span></code> format embeds the information in the PDF file.</p></li>
+<li><p>When exporting to PDF, more options are available in the
+<span class="guilabel">Save map as PDF…</span> dialog:</p>
+<figure class="align-center" id="id27">
+<span id="figure-savemappdf"></span><img alt="../../../_images/saveMapAsPDF.png" src="../../../_images/saveMapAsPDF.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.22 </span><span class="caption-text">The Save Map as PDF dialog</span><a class="headerlink" href="#id27" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Export RDF metadata</span> of the document such
+as the title, author, date, description…</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Create Geospatial PDF (GeoPDF)</span>: Generate a
+<a class="reference external" href="https://gdal.org/drivers/raster/pdf.html">georeferenced PDF file</a>.
+You can:</p>
+<ul class="simple">
+<li><p>Choose the GeoPDF <span class="guilabel">Format</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Include vector feature information</span> in the
+GeoPDF file: will include all the geometry and attribute
+information from features visible within the map in the output
+GeoPDF file.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A GeoPDF file can also be used as a data source.
+For more on GeoPDF support in QGIS, see
+<a class="reference external" href="https://north-road.com/2019/09/03/qgis-3-10-loves-geopdf/">https://north-road.com/2019/09/03/qgis-3-10-loves-geopdf/</a>.</p>
+</div>
+</li>
+<li><p><span class="guilabel">Rasterize map</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Simplify geometries to reduce output file
+size</span>:
+Geometries will be simplified while exporting the map by removing
+vertices that are not discernibly different at the export
+resolution (e.g. if the export resolution is <code class="docutils literal notranslate"><span class="pre">300</span> <span class="pre">dpi</span></code>, vertices
+that are less than <code class="docutils literal notranslate"><span class="pre">1/600</span> <span class="pre">inch</span></code> apart will be removed).
+This can reduce the size and complexity of the export file (very
+large files can fail to load in other applications).</p></li>
+<li><p>Set the <span class="guilabel">Text export</span>: controls whether text labels are
+exported as proper text objects (<span class="guilabel">Always export texts
+as text objects</span>) or as paths only (<span class="guilabel">Always export texts
+as paths</span>).
+If they are exported as text objects then they can be edited in
+external applications (e.g. Inkscape) as normal text.
+BUT the side effect is that the rendering quality is decreased,
+AND there are issues with rendering when certain text settings
+like buffers are in place.
+That’s why exporting as paths is recommended.</p></li>
+</ul>
+</li>
+<li><p>Click <span class="guilabel">Save</span> to select file location, name and format.</p>
+<p>When exporting to image, it’s also possible to
+<span class="guilabel">Copy to clipboard</span> the expected result of the above
+settings and paste the map in another application such as
+LibreOffice, GIMP…</p>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="11. Visualizing Maps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3d_map_view.html" class="btn btn-neutral float-right" title="11.2. 3D Map View" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/map_views/map_view.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/map_views/map_view.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/map_views/map_view.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/map_views/map_view.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/map_views/map_view.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/map_views/map_view.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/map_views/map_view.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/map_views/map_view.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/map_views/map_view.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/map_views/map_view.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/map_views/map_view.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/map_views/map_view.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/map_views/map_view.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/map_views/map_view.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/map_views/map_view.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/map_views/map_view.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/map_views/map_view.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/map_views/map_view.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/map_views/map_view.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/map_views/map_view.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/map_views/map_view.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/map_views/map_view.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/map_views/map_view.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/map_views/map_view.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/map_views/map_view.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/map_views/map_view.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/76376a160d60d3b72c4618c9095ddea9" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

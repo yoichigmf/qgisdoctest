@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>18. Working with Mesh Data &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_mesh/mesh.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="19. Working with Vector Tiles" href="../working_with_vector_tiles/vector_tiles.html" />
+    <link rel="prev" title="17.3. Georeferencer" href="../working_with_raster/georeferencer.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 18. Working with Mesh Data">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. Visualizing Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">18. Working with Mesh Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-a-mesh">18.1. What’s a mesh?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-formats">18.2. Supported formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mesh-dataset-properties">18.3. Mesh Dataset Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#information-properties">18.3.1. Information Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-properties">18.3.2. Source Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#symbology-properties">18.3.3. Symbology Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#d-view-properties">18.3.4. 3D View Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rendering-properties">18.3.5. Rendering Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#temporal-properties">18.3.6. Temporal Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elevation-properties">18.3.7. Elevation Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-properties">18.3.8. Metadata Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-a-mesh-layer">18.4. Editing a mesh layer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview-of-the-mesh-digitizing-tools">18.4.1. Overview of the mesh digitizing tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exploring-the-z-value-assignment-logic">18.4.2. Exploring the Z value assignment logic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selecting-mesh-elements">18.4.3. Selecting mesh elements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modifying-mesh-elements">18.4.4. Modifying mesh elements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reindexing-meshes">18.4.5. Reindexing meshes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mesh-calculator">18.5. Mesh Calculator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS User Guide</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">18. </span>Working with Mesh Data</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/working_with_mesh/mesh.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../working_with_raster/georeferencer.html" class="btn btn-neutral float-left" title="17.3. Georeferencer" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_vector_tiles/vector_tiles.html" class="btn btn-neutral float-right" title="19. Working with Vector Tiles" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="working-with-mesh-data">
+<span id="label-meshdata"></span><h1><span class="section-number">18. </span>Working with Mesh Data<a class="headerlink" href="#working-with-mesh-data" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#what-s-a-mesh" id="id23">What’s a mesh?</a></p></li>
+<li><p><a class="reference internal" href="#supported-formats" id="id24">Supported formats</a></p></li>
+<li><p><a class="reference internal" href="#mesh-dataset-properties" id="id25">Mesh Dataset Properties</a></p>
+<ul>
+<li><p><a class="reference internal" href="#information-properties" id="id26">Information Properties</a></p></li>
+<li><p><a class="reference internal" href="#source-properties" id="id27">Source Properties</a></p></li>
+<li><p><a class="reference internal" href="#symbology-properties" id="id28">Symbology Properties</a></p>
+<ul>
+<li><p><a class="reference internal" href="#datasets" id="id29">Datasets</a></p></li>
+<li><p><a class="reference internal" href="#contours-symbology" id="id30">Contours Symbology</a></p></li>
+<li><p><a class="reference internal" href="#vectors-symbology" id="id31">Vectors Symbology</a></p></li>
+<li><p><a class="reference internal" href="#rendering" id="id32">Rendering</a></p></li>
+<li><p><a class="reference internal" href="#stacked-mesh-averaging-method" id="id33">Stacked mesh averaging method</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#d-view-properties" id="id34">3D View Properties</a></p></li>
+<li><p><a class="reference internal" href="#rendering-properties" id="id35">Rendering Properties</a></p></li>
+<li><p><a class="reference internal" href="#temporal-properties" id="id36">Temporal Properties</a></p></li>
+<li><p><a class="reference internal" href="#elevation-properties" id="id37">Elevation Properties</a></p></li>
+<li><p><a class="reference internal" href="#metadata-properties" id="id38">Metadata Properties</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#editing-a-mesh-layer" id="id39">Editing a mesh layer</a></p>
+<ul>
+<li><p><a class="reference internal" href="#overview-of-the-mesh-digitizing-tools" id="id40">Overview of the mesh digitizing tools</a></p></li>
+<li><p><a class="reference internal" href="#exploring-the-z-value-assignment-logic" id="id41">Exploring the Z value assignment logic</a></p>
+<ul>
+<li><p><a class="reference internal" href="#rules-of-assignment" id="id42">Rules of assignment</a></p></li>
+<li><p><a class="reference internal" href="#modifying-z-value-of-existing-vertices" id="id43">Modifying Z value of existing vertices</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#selecting-mesh-elements" id="id44">Selecting mesh elements</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-digitize-mesh-elements" id="id45">Using <span class="guilabel">Digitize Mesh Elements</span></a></p></li>
+<li><p><a class="reference internal" href="#using-select-mesh-elements-by-polygon" id="id46">Using <span class="guilabel">Select Mesh Elements by Polygon</span></a></p></li>
+<li><p><a class="reference internal" href="#using-select-mesh-elements-by-expression" id="id47">Using <span class="guilabel">Select Mesh Elements by Expression</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#modifying-mesh-elements" id="id48">Modifying mesh elements</a></p>
+<ul>
+<li><p><a class="reference internal" href="#adding-vertices" id="id49">Adding vertices</a></p></li>
+<li><p><a class="reference internal" href="#adding-faces" id="id50">Adding faces</a></p></li>
+<li><p><a class="reference internal" href="#removing-mesh-elements" id="id51">Removing mesh elements</a></p></li>
+<li><p><a class="reference internal" href="#moving-mesh-elements" id="id52">Moving mesh elements</a></p></li>
+<li><p><a class="reference internal" href="#transforming-mesh-vertices" id="id53">Transforming mesh vertices</a></p></li>
+<li><p><a class="reference internal" href="#reshaping-mesh-geometry" id="id54">Reshaping mesh geometry</a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-contextual-menu" id="id55">The contextual menu</a></p></li>
+<li><p><a class="reference internal" href="#the-edge-markers" id="id56">The edge markers</a></p></li>
+<li><p><a class="reference internal" href="#the-force-by-selected-geometries-tool" id="id57">The <span class="guilabel">Force by Selected Geometries</span> tool</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#reindexing-meshes" id="id58">Reindexing meshes</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#mesh-calculator" id="id59">Mesh Calculator</a></p></li>
+</ul>
+</nav>
+<section id="what-s-a-mesh">
+<h2><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">18.1. </span>What’s a mesh?</a><a class="headerlink" href="#what-s-a-mesh" title="Link to this heading"></a></h2>
+<p>A mesh is an unstructured grid usually with temporal and other components.
+The spatial component contains a collection of vertices, edges and/or faces,
+in 2D or 3D space:</p>
+<ul class="simple">
+<li><p><strong>vertices</strong> - XY(Z) points (in the layer’s coordinate reference system)</p></li>
+<li><p><strong>edges</strong> - connect pairs of vertices</p></li>
+<li><p><strong>faces</strong> - a face is a set of edges forming a closed shape - typically
+a triangle or a quadrilateral (quad), rarely polygons with more vertices</p></li>
+</ul>
+<p>Relying on the above, mesh layers can thus have different types of structure:</p>
+<ul class="simple">
+<li><p>1D Meshes: consist of vertices and edges. An edge connects two vertices and
+can have assigned data (scalars or vectors) on it. The 1D mesh network can
+be for example used for modelling of an urban drainage system.</p></li>
+<li><p>2D meshes: consist of faces with triangles, regular or unstructured quads.</p></li>
+<li><p>3D layered meshes: consist of multiple stacked 2D unstructured meshes each
+extruded in the vertical direction (levels) by means of a vertical coordinate.
+The vertices and faces have the same topology in each vertical level.
+The mesh definition (vertical level extrusion) could in general change in time.
+The data is usually defined in volume centres or by some parametric function.</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<span id="figure-mesh-grid-types"></span><img alt="../../../_images/mesh_grid_types.png" src="../../../_images/mesh_grid_types.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.1 </span><span class="caption-text">Different mesh types</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Mesh provides information about the spatial structure.
+In addition, the mesh can have datasets (groups) that assign a value to every vertex.
+For example, having a triangular mesh with numbered vertices as shown in the image below:</p>
+<figure class="align-center" id="id3">
+<span id="figure-triangual-grid-with-numered-vertices"></span><img alt="../../../_images/triangual_grid_with_numered_vertices.png" src="../../../_images/triangual_grid_with_numered_vertices.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.2 </span><span class="caption-text">Triangular grid with numbered vertices</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Each vertex can store different datasets (typically multiple quantities),
+and those datasets can also have a temporal dimension. Thus, a single file may
+contain multiple datasets.</p>
+<p>The following table gives an idea about the information that can be stored in mesh datasets.
+Table columns represent indices of mesh vertices, each row represents one dataset.
+Datasets can have different datatypes.
+In this case, it stores wind velocity at 10m at a particular moments in time
+(t1, t2, t3).</p>
+<p>In a similar way, the mesh dataset can also store vector values for each vertex.
+For example, wind direction vector at the given time stamps:</p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-number">Table 18.1 </span><span class="caption-text">Example of mesh dataset</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>10 metre wind</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>…</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>10 metre speed at time=t1</p></td>
+<td><p>17251</p></td>
+<td><p>24918</p></td>
+<td><p>32858</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>10 metre speed at time=t2</p></td>
+<td><p>19168</p></td>
+<td><p>23001</p></td>
+<td><p>36418</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>10 metre speed at time=t3</p></td>
+<td><p>21085</p></td>
+<td><p>30668</p></td>
+<td><p>17251</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>10m wind direction time=t1</p></td>
+<td><p>[20,2]</p></td>
+<td><p>[20,3]</p></td>
+<td><p>[20,4.5]</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>10m wind direction time=t2</p></td>
+<td><p>[21,3]</p></td>
+<td><p>[21,4]</p></td>
+<td><p>[21,5.5]</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>10m wind direction time=t3</p></td>
+<td><p>[22,4]</p></td>
+<td><p>[22,5]</p></td>
+<td><p>[22,6.5]</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+<p>We can visualize the data by assigning colors to values (similarly to how it is
+done with <a class="reference internal" href="../working_with_raster/raster_properties.html#label-colormaptab"><span class="std std-ref">Singleband pseudocolor</span></a> raster rendering)
+and interpolating data between vertices according to the mesh topology.
+It is common that some quantities are 2D vectors rather than being
+simple scalar values (e.g. wind direction).
+For such quantities it is desirable to display arrows indicating the directions.</p>
+<figure class="align-center" id="id5">
+<span id="figure-mesh-visualisation"></span><img alt="../../../_images/mesh_visualisation.png" src="../../../_images/mesh_visualisation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.3 </span><span class="caption-text">Possible visualisation of mesh data</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="supported-formats">
+<span id="mesh-supported-formats"></span><h2><a class="toc-backref" href="#id24" role="doc-backlink"><span class="section-number">18.2. </span>Supported formats</a><a class="headerlink" href="#supported-formats" title="Link to this heading"></a></h2>
+<p>QGIS accesses mesh data using the <a class="reference external" href="https://github.com/lutraconsulting/MDAL">MDAL drivers</a>,
+and natively supports a <a class="reference external" href="https://github.com/lutraconsulting/MDAL#supported-formats">variety of formats</a>.
+Whether QGIS can edit a mesh layer depends on the format and the mesh
+structure type.</p>
+<p>To load a mesh dataset into QGIS, use the <a class="reference internal" href="../../../_images/mActionAddMeshLayer.png"><img alt="addMeshLayer" src="../../../_images/mActionAddMeshLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">Mesh</span> tab
+in the <span class="guilabel">Data Source Manager</span> dialog. Read <a class="reference internal" href="../managing_data_source/opening_data.html#mesh-loading"><span class="std std-ref">Loading a mesh layer</span></a> for
+more details.</p>
+</section>
+<section id="mesh-dataset-properties">
+<span id="label-meshproperties"></span><h2><a class="toc-backref" href="#id25" role="doc-backlink"><span class="section-number">18.3. </span>Mesh Dataset Properties</a><a class="headerlink" href="#mesh-dataset-properties" title="Link to this heading"></a></h2>
+<p>The <span class="guilabel">Layer Properties</span> dialog for a mesh layer provides general
+settings to manage dataset groups of the layer and their rendering
+(active dataset groups, symbology, 2D and 3D rendering).
+It also provides information about the layer.</p>
+<p>To access the <span class="guilabel">Layer Properties</span> dialog:</p>
+<ul class="simple">
+<li><p>In the <span class="guilabel">Layers</span> panel, double-click the layer or right-click
+and select <span class="guilabel">Properties…</span> from the pop-up menu;</p></li>
+<li><p>Go to <span class="menuselection">Layer ► Layer Properties…</span> menu when the layer
+is selected.</p></li>
+</ul>
+<p>The mesh <span class="guilabel">Layer Properties</span> dialog provides the following sections:</p>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-number">Table 18.2 </span><span class="caption-text">Tabs of the Mesh Layer Properties</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/metadata.png"><img alt="metadata" src="../../../_images/metadata.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#meshinformation"><span class="std std-ref">Information</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/system.png"><img alt="system" src="../../../_images/system.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#meshsource"><span class="std std-ref">Source</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <a class="reference internal" href="#meshsymbology"><span class="std std-ref">Symbology</span></a><sup>[1]</sup></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/3d.png"><img alt="3d" src="../../../_images/3d.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#mesh3dview"><span class="std std-ref">3D View</span></a><sup>[1]</sup></p></td>
+<td><p><a class="reference internal" href="../../../_images/temporal.png"><img alt="temporal" src="../../../_images/temporal.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#meshtemporal"><span class="std std-ref">Temporal</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/elevationscale.png"><img alt="elevationscale" src="../../../_images/elevationscale.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#meshelevation"><span class="std std-ref">Elevation</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/rendering.png"><img alt="rendering" src="../../../_images/rendering.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#meshrendering"><span class="std std-ref">Rendering</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/editmetadata.png"><img alt="editMetadata" src="../../../_images/editmetadata.png" style="width: 1.2em;" /></a> <a class="reference internal" href="#meshmetadata"><span class="std std-ref">Metadata</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><sup>[1]</sup> Also available in the <a class="reference internal" href="../introduction/general_tools.html#layer-styling-panel"><span class="std std-ref">Layer styling panel</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most of the properties of a mesh layer can be saved to or loaded from
+a <code class="file docutils literal notranslate"><span class="pre">.qml</span></code> using the <span class="guilabel">Style</span> menu at the bottom of the dialog.
+More details at <a class="reference internal" href="../introduction/general_tools.html#manage-custom-style"><span class="std std-ref">Managing Custom Styles</span></a>.</p>
+</div>
+<section id="information-properties">
+<span id="meshinformation"></span><h3><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">18.3.1. </span>Information Properties</a><a class="headerlink" href="#information-properties" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id7">
+<span id="figure-mesh-info-properties"></span><img alt="../../../_images/mesh_info_properties.png" src="../../../_images/mesh_info_properties.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.4 </span><span class="caption-text">Mesh Layer Information Properties</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The <a class="reference internal" href="../../../_images/metadata.png"><img alt="metadata" src="../../../_images/metadata.png" style="width: 1.5em;" /></a> <span class="guilabel">Information</span> tab is read-only and represents an interesting
+place to quickly grab summarized information and metadata on the current layer.
+Provided information are:</p>
+<ul class="simple">
+<li><p>general such as  name in the project, source path, list of auxiliary files,
+last save time and size, the used provider</p></li>
+<li><p>based on the provider of the layer: extent, vertex, face, edges
+and/or dataset groups count</p></li>
+<li><p>the Coordinate Reference System: name, units, method, accuracy, reference
+(i.e. whether it’s static or dynamic)</p></li>
+<li><p>extracted from filled <a class="reference internal" href="#meshmetadata"><span class="std std-ref">metadata</span></a>: access, extents,
+links, contacts, history…</p></li>
+</ul>
+</section>
+<section id="source-properties">
+<span id="meshsource"></span><h3><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">18.3.2. </span>Source Properties</a><a class="headerlink" href="#source-properties" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="../../../_images/system.png"><img alt="system" src="../../../_images/system.png" style="width: 1.5em;" /></a> <span class="guilabel">Source</span> tab displays basic information about
+the selected mesh, including:</p>
+<figure class="align-center" id="id8">
+<span id="figure-mesh-source"></span><img alt="../../../_images/mesh_source.png" src="../../../_images/mesh_source.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.5 </span><span class="caption-text">Mesh Layer Source Properties</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>the layer name to display in the <span class="guilabel">Layers</span> panel</p></li>
+<li><p>setting the Coordinate Reference System: Displays the layer’s
+<a class="reference internal" href="../working_with_projections/working_with_projections.html#layer-crs"><span class="std std-ref">Assigned Coordinate Reference System (CRS)</span></a>. You can change
+the layer’s CRS by selecting a recently used one in the drop-down list or
+clicking on <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> <span class="guilabel">Select CRS</span> button (see <a class="reference internal" href="../working_with_projections/working_with_projections.html#crs-selector"><span class="std std-ref">Coordinate Reference System Selector</span></a>).
+Use this process only if the CRS applied to the layer is wrong or
+if none was applied.</p></li>
+<li><p>The <span class="guilabel">Available datasets</span> frame lists all the dataset groups (and
+subgroups) in the mesh layer, with their type and description in a tree view.
+Both regular datasets (i.e. their data is stored in the file) and virtual
+datasets (which are <a class="reference internal" href="#mesh-calculator"><span class="std std-ref">calculated on the fly</span></a>) are listed.</p>
+<ul>
+<li><p>Use the <a class="reference internal" href="../../../_images/mActionAdd.png"><img alt="add" src="../../../_images/mActionAdd.png" style="width: 1.5em;" /></a> <span class="guilabel">Assign extra dataset to mesh</span> button to add more
+groups to the current mesh layer.</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionCollapseTree.png"><img alt="collapseTree" src="../../../_images/mActionCollapseTree.png" style="width: 1.5em;" /></a> <span class="guilabel">Collapse all</span> and <a class="reference internal" href="../../../_images/mActionExpandTree.png"><img alt="expandTree" src="../../../_images/mActionExpandTree.png" style="width: 1.5em;" /></a> <span class="guilabel">Expand
+all</span> the dataset tree, in case of embedded groups</p></li>
+<li><p>If you are interested in few datasets, you can uncheck the others and
+make them unavailable in the project</p></li>
+<li><p>Double-click over a name and you can rename the dataset.</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a> <span class="guilabel">Reset to defaults</span>: checks all the groups and
+renames them back to their original name in the provider.</p></li>
+<li><p>Right-click over a virtual dataset group and you can:</p>
+<ul>
+<li><p><span class="guilabel">Remove dataset group</span> from the project</p></li>
+<li><p><span class="guilabel">Save dataset group as…</span> a file on disk, to any supported format.
+The new file is kept assigned to the current mesh layer in the project.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Checking the <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Treat as static dataset</span> group allows
+to ignore the <a class="reference internal" href="../map_views/map_view.html#maptimecontrol"><span class="std std-ref">map temporal navigation</span></a> properties
+while rendering the mesh layer.
+For each active dataset group (as selected in <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a>
+<span class="menuselection">Symbology ►</span> <a class="reference internal" href="../../../_images/general.png"><img alt="general" src="../../../_images/general.png" style="width: 1.5em;" /></a> <span class="guilabel">Datasets</span> tab), you can:</p>
+<ul>
+<li><p>set to <span class="guilabel">None</span>: the dataset group is not displayed at all</p></li>
+<li><p><span class="guilabel">Display dataset</span>: e.g., for the “bed elevation” dataset which is
+not time aware</p></li>
+<li><p>extract a particular date time: the dataset matching the provided time
+is rendered and stay fixed during map navigation.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="symbology-properties">
+<span id="meshsymbology"></span><h3><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">18.3.3. </span>Symbology Properties</a><a class="headerlink" href="#symbology-properties" title="Link to this heading"></a></h3>
+<p>Click the <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <span class="guilabel">Symbology</span> button to activate the dialog.
+Symbology properties are divided into several tabs:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mesh-symbology-datasets"><span class="std std-ref">Datasets</span></a></p></li>
+<li><p><a class="reference internal" href="#mesh-symbology-contours"><span class="std std-ref">Contours</span></a></p></li>
+<li><p><a class="reference internal" href="#mesh-symbology-vectors"><span class="std std-ref">Vectors</span></a></p></li>
+<li><p><a class="reference internal" href="#mesh-symbology-rendering"><span class="std std-ref">Rendering</span></a></p></li>
+<li><p><a class="reference internal" href="#mesh-stacked-averaging"><span class="std std-ref">Stacked mesh averaging method</span></a></p></li>
+</ul>
+<section id="datasets">
+<span id="mesh-symbology-datasets"></span><h4><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">18.3.3.1. </span>Datasets</a><a class="headerlink" href="#datasets" title="Link to this heading"></a></h4>
+<p>The tab <a class="reference internal" href="../../../_images/general.png"><img alt="general" src="../../../_images/general.png" style="width: 1.5em;" /></a> <sup>Datasets</sup> is the main place to control and set which
+datasets will be used for the layer. It presents the following items:</p>
+<ul>
+<li><p><span class="guilabel">Groups</span> available in the mesh dataset, with whether they provide:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/meshcontoursoff.png"><img alt="meshcontoursoff" src="../../../_images/meshcontoursoff.png" style="width: 1.5em;" /></a> scalar dataset</p></li>
+<li><p>or <a class="reference internal" href="../../../_images/meshvectorsoff.png"><img alt="meshvectorsoff" src="../../../_images/meshvectorsoff.png" style="width: 1.5em;" /></a> vector dataset: by default, each vector dataset has
+a scalar dataset representing its magnitude automatically generated.</p></li>
+</ul>
+<p>Click on the icon next to the dataset name to select the group and type of
+data to represent.</p>
+</li>
+<li><p><span class="guilabel">Selected dataset group(s) metadata</span>, with details on:</p>
+<ul class="simple">
+<li><p>the mesh type: edges or faces</p></li>
+<li><p>the data type: vertices, edges, faces or volume</p></li>
+<li><p>whether it’s of vector type or not</p></li>
+<li><p>the original name in the mesh layer</p></li>
+<li><p>the unit, if applicable</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../introduction/general_tools.html#blend-modes"><span class="std std-ref">blending mode</span></a> available for the selected datasets.</p></li>
+</ul>
+<figure class="align-center" id="id9">
+<span id="figure-mesh-symbology-datasets"></span><img alt="../../../_images/mesh_symbology_datasets.png" src="../../../_images/mesh_symbology_datasets.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.6 </span><span class="caption-text">Mesh Layer Datasets</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can apply symbology to the selected vector and/or scalar group using
+the next tabs.</p>
+</section>
+<section id="contours-symbology">
+<span id="mesh-symbology-contours"></span><h4><a class="toc-backref" href="#id30" role="doc-backlink"><span class="section-number">18.3.3.2. </span>Contours Symbology</a><a class="headerlink" href="#contours-symbology" title="Link to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="../../../_images/meshcontours.png"><img alt="meshcontours" src="../../../_images/meshcontours.png" style="width: 1.5em;" /></a> <sup>Contours</sup> tab can be activated only if a
+scalar dataset has been selected in the <a class="reference internal" href="../../../_images/general.png"><img alt="general" src="../../../_images/general.png" style="width: 1.5em;" /></a> <span class="guilabel">Datasets</span> tab.</p>
+</div>
+<p>In the <a class="reference internal" href="../../../_images/meshcontours.png"><img alt="meshcontours" src="../../../_images/meshcontours.png" style="width: 1.5em;" /></a> <sup>Contours</sup> tab you can see and change the current
+visualization options of contours for the selected group, as shown in
+<a class="reference internal" href="#figure-mesh-symbology-contours"><span class="std std-numref">Fig. 18.7</span></a> below:</p>
+<figure class="align-center" id="id10">
+<span id="figure-mesh-symbology-contours"></span><img alt="../../../_images/mesh_symbology_contours.png" src="../../../_images/mesh_symbology_contours.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.7 </span><span class="caption-text">Styling Contours in a Mesh Layer</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>For 1D mesh, set the <span class="guilabel">Stroke width</span> of the edges. This can be
+a fixed size for the whole dataset, or vary along the geometry (more details
+with the <a class="reference internal" href="../style_library/symbol_selector.html#interpolated-line-symbol"><span class="std std-ref">interpolated line renderer</span></a>)</p></li>
+<li><p>Use the slider or the spinbox to set the <span class="guilabel">Opacity</span> of the current
+group, if of a 2D mesh type.</p></li>
+<li><p>Enter the range of values you want to represent on the current group:
+use <a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a> <sup>Load</sup> to fetch the min and max values of the current group
+or enter custom values if you want to exclude some.</p></li>
+<li><p>For 2D/3D meshes, select the <span class="guilabel">Resampling method</span> to interpolate the
+values on the surrounding vertices to the faces (or from the surrounding faces
+to the vertices) using the <span class="guilabel">Neighbour average</span> method. Depending on
+whether the dataset is defined on the vertices (respectively on the faces),
+QGIS defaults this setting to <span class="guilabel">None</span> (respectively <span class="guilabel">Neighbour average</span>)
+method in order to use values on vertices and keep the default rendering smooth.</p></li>
+<li><p>Classify the dataset using the <a class="reference internal" href="../working_with_raster/raster_properties.html#color-ramp-shader"><span class="std std-ref">color ramp shader</span></a>
+classification.</p></li>
+</ul>
+</section>
+<section id="vectors-symbology">
+<span id="mesh-symbology-vectors"></span><h4><a class="toc-backref" href="#id31" role="doc-backlink"><span class="section-number">18.3.3.3. </span>Vectors Symbology</a><a class="headerlink" href="#vectors-symbology" title="Link to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="../../../_images/meshvectors.png"><img alt="meshvectors" src="../../../_images/meshvectors.png" style="width: 1.5em;" /></a> <sup>Vectors</sup> tab can be activated only if a
+vector dataset has been selected in the <a class="reference internal" href="../../../_images/general.png"><img alt="general" src="../../../_images/general.png" style="width: 1.5em;" /></a> <span class="guilabel">Datasets</span> tab.</p>
+</div>
+<p>In the <a class="reference internal" href="../../../_images/meshvectors.png"><img alt="meshvectors" src="../../../_images/meshvectors.png" style="width: 1.5em;" /></a> <sup>Vectors</sup> tab you can see and change the current
+visualization options of vectors for the selected group, as shown in
+<a class="reference internal" href="#figure-mesh-symbology-vectors"><span class="std std-numref">Fig. 18.8</span></a>:</p>
+<figure class="align-center" id="id11">
+<span id="figure-mesh-symbology-vectors"></span><img alt="../../../_images/mesh_symbology_vectors.png" src="../../../_images/mesh_symbology_vectors.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.8 </span><span class="caption-text">Styling Vectors in a Mesh Layer with arrows</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Mesh vector dataset can be styled using various types of <span class="guilabel">Symbology</span>:</p>
+<ul class="simple">
+<li><p><strong>Arrows</strong>: vectors are represented with arrows at the same place as they are
+defined in the raw dataset (i.e. on the nodes or center of elements) or on
+a user-defined grid (hence, they are evenly distributed).
+The arrow length is proportional to the magnitude of the arrow as defined
+in the raw data but can be scaled by various methods.</p></li>
+<li><p><strong>Streamlines</strong>: vectors are represented with streamlines seeded from start
+points. The seeding points can start from the vertices of the mesh, from
+a user grid or randomly.</p></li>
+<li><p><strong>Traces</strong>: a nicer animation of the streamlines, the kind of effect you get
+when you randomly throws sand in the water and see where the sand items flows.</p></li>
+</ul>
+<p>Available properties depend on the selected symbology as shown in the following table.</p>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-number">Table 18.3 </span><span class="caption-text">Availability and meaning of the vectors symbology properties</span><a class="headerlink" href="#id12" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Description and Properties</p></th>
+<th class="head"><p>Arrow</p></th>
+<th class="head"><p>Streamlines</p></th>
+<th class="head"><p>Traces</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">Line width</span></p></td>
+<td><p>Width of the vector representation</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Coloring method</span></p></td>
+<td><ul class="simple">
+<li><p>a <span class="guilabel">Single color</span> assigned to all vectors</p></li>
+<li><p>or a variable color based on vectors magnitude, using a
+<a class="reference internal" href="../working_with_raster/raster_properties.html#color-ramp-shader"><span class="std std-ref">Color ramp shader</span></a></p></li>
+</ul>
+</td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Filter by magnitude</span></p></td>
+<td><p>Only vectors whose length for the selected dataset falls between a <span class="guilabel">Min</span>
+and <span class="guilabel">Max</span> range are displayed</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Display on user grid</span></p></td>
+<td><p>Places the vector on a grid with custom <span class="guilabel">X spacing</span> and <span class="guilabel">Y spacing</span>
+and interpolates their length based on neighbours</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Head options</span></p></td>
+<td><p><span class="guilabel">Length</span> and <span class="guilabel">Width</span> of the arrow head, as a percentage of its shaft
+length</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Arrow length</span></p></td>
+<td><ul class="simple">
+<li><p><strong>Defined by Min and Max</strong>: You specify the minimum and maximum length for the arrows,
+QGIS will interpolate their size based on the underlying vector’s magnitude</p></li>
+<li><p><strong>Scale to magnitude</strong>: arrow length is proportional to their vector’s magnitude</p></li>
+<li><p><strong>Fixed</strong>: all the vectors are shown with the same length</p></li>
+</ul>
+</td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Streamlines seeding method</span></p></td>
+<td><ul class="simple">
+<li><p><strong>On mesh/grid</strong>: relies on the user grid to display the vectors</p></li>
+<li><p><strong>Randomly</strong>: vector placement is randomly done with respect to a certain density</p></li>
+</ul>
+</td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Particles count</span></p></td>
+<td><p>The amount of “sand” you want to throw into visualisation</p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Max tail length</span></p></td>
+<td><p>The time until the particle fades out</p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rendering">
+<span id="mesh-symbology-rendering"></span><h4><a class="toc-backref" href="#id32" role="doc-backlink"><span class="section-number">18.3.3.4. </span>Rendering</a><a class="headerlink" href="#rendering" title="Link to this heading"></a></h4>
+<p>In the tab <a class="reference internal" href="../../../_images/meshframe.png"><img alt="meshframe" src="../../../_images/meshframe.png" style="width: 1.5em;" /></a> <sup>Rendering</sup> tab, QGIS offers possibilities to
+display and customize the mesh structure. <span class="guilabel">Line width</span> and
+<span class="guilabel">Line color</span> can be set to represent:</p>
+<ul class="simple">
+<li><p>the edges for 1D meshes</p></li>
+<li><p>For 2D meshes:</p>
+<ul>
+<li><p><span class="guilabel">Native mesh rendering</span>: shows original faces and edges from the layer</p></li>
+<li><p><span class="guilabel">Triangular mesh rendering</span>: adds more edges and displays the faces as
+triangles</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id13">
+<span id="figure-mesh-symbology-grid"></span><img alt="../../../_images/mesh_symbology_grid.png" src="../../../_images/mesh_symbology_grid.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.9 </span><span class="caption-text">2D Mesh Rendering</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="stacked-mesh-averaging-method">
+<span id="mesh-stacked-averaging"></span><h4><a class="toc-backref" href="#id33" role="doc-backlink"><span class="section-number">18.3.3.5. </span>Stacked mesh averaging method</a><a class="headerlink" href="#stacked-mesh-averaging-method" title="Link to this heading"></a></h4>
+<p>3D layered meshes consist of multiple stacked 2D unstructured meshes each
+extruded in the vertical direction (<code class="docutils literal notranslate"><span class="pre">levels</span></code>) by means of a vertical
+coordinate. The vertices and faces have the same topology in each vertical level.
+Values are usually stored on the volumes that are regularly stacked over
+base 2d mesh. In order to visualise them on 2D canvas, you need to convert
+values on volumes (3d) to values on faces (2d) that can be shown in mesh layer.
+The <a class="reference internal" href="../../../_images/meshaveraging.png"><img alt="meshaveraging" src="../../../_images/meshaveraging.png" style="width: 1.5em;" /></a> <sup>Stacked mesh averaging method</sup> provides different
+averaging/interpolation methods to handle this.</p>
+<p>You can select the method to derive the 2D datasets and corresponding parameters
+(level index, depth or height values). For each method, an example of application
+is shown in the dialog but you can read more on the methods at
+<a class="reference external" href="https://fvwiki.tuflow.com/index.php?title=Depth_Averaging_Results">https://fvwiki.tuflow.com/index.php?title=Depth_Averaging_Results</a>.</p>
+</section>
+</section>
+<section id="d-view-properties">
+<span id="mesh3dview"></span><span id="index-0"></span><h3><a class="toc-backref" href="#id34" role="doc-backlink"><span class="section-number">18.3.4. </span>3D View Properties</a><a class="headerlink" href="#d-view-properties" title="Link to this heading"></a></h3>
+<p>Mesh layers can be used as <a class="reference internal" href="../map_views/3d_map_view.html#scene-configuration"><span class="std std-ref">terrain in a 3D map view</span></a>
+based on their vertices Z values. From the <a class="reference internal" href="../../../_images/3d.png"><img alt="3d" src="../../../_images/3d.png" style="width: 1.5em;" /></a> <span class="guilabel">3D View</span> properties tab,
+it’s also possible to render the mesh layer’s dataset in the same 3D view.
+Therefore, the vertical component of the vertices can be set equal to dataset
+values (for example, level of water surface) and the texture of the mesh can
+be set to render other dataset values with color shading (for example velocity).</p>
+<figure class="align-center" id="id14">
+<span id="figure-mesh-3d"></span><img alt="../../../_images/mesh_3d.png" src="../../../_images/mesh_3d.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.10 </span><span class="caption-text">Mesh dataset 3D properties</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Check <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable 3D Renderer</span> and you can edit following
+properties:</p>
+<ul>
+<li><p>Under <span class="guilabel">Triangle settings</span></p>
+<ul class="simple">
+<li><p><span class="guilabel">Smooth triangles</span>: Angles between consecutive triangles are
+smoothed for a better 3D rendering</p></li>
+<li><p><span class="guilabel">Show wireframe</span> whose you can set the <span class="guilabel">Line width</span>
+and <span class="guilabel">Color</span></p></li>
+</ul>
+<ul class="simple" id="levelofdetail">
+<li><p><span class="guilabel">Level of detail</span>: Controls how <a class="reference internal" href="#meshrendering"><span class="std std-ref">simplified</span></a>
+the mesh layer to render should be. On the far right, it is the base mesh,
+and the more you go left, the more the layer is simplified and is rendered
+with less details.
+This option is only available if the <span class="guilabel">Simplify mesh</span> option under
+the <span class="guilabel">Rendering</span> tab is activated.</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Vertical settings</span> to control behavior of the vertical component
+of vertices of rendered triangles:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Dataset group for vertical value</span>: the dataset group that will
+be used for the vertical component of the mesh</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a><span class="guilabel">Dataset value relative to vertices Z value</span>: whether
+to consider the dataset values as absolute Z coordinate or relative to
+the vertices native Z value</p></li>
+<li><p><span class="guilabel">Vertical scale</span>: the scale factor to apply to the dataset Z
+values</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Rendering color settings</span> with a <span class="guilabel">Rendering style</span>
+that can be based on the color ramp shader set in <a class="reference internal" href="#mesh-symbology-contours"><span class="std std-ref">Contours Symbology</span></a>
+(<span class="guilabel">2D contour color ramp shader</span>) or as a <span class="guilabel">Single color</span>
+with an associated <span class="guilabel">Mesh color</span></p></li>
+<li><p><span class="guilabel">Show arrows</span>: displays arrows on mesh layer dataset 3D entity,
+based on the same vector dataset group used in the <a class="reference internal" href="#mesh-symbology-vectors"><span class="std std-ref">vector 2D rendering</span></a>. They are displayed using the 2D color setting.
+It’s also possible to define the <span class="guilabel">Arrow spacing</span> and, if it’s of a
+<span class="guilabel">Fixed size</span> or scaled on magnitude. This spacing setting defines
+also the max size of arrows because arrows can’t overlap.</p></li>
+</ul>
+</section>
+<section id="rendering-properties">
+<span id="meshrendering"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id35" role="doc-backlink"><span class="section-number">18.3.5. </span>Rendering Properties</a><a class="headerlink" href="#rendering-properties" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id15">
+<span id="figure-mesh-rendering"></span><img alt="../../../_images/mesh_rendering.png" src="../../../_images/mesh_rendering.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.11 </span><span class="caption-text">Mesh rendering properties</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Under the <span class="guilabel">Scale dependent visibility</span> group box,
+you can set the <span class="guilabel">Maximum (inclusive)</span> and <span class="guilabel">Minimum
+(exclusive)</span> scale, defining a range of scale in which mesh elements will be
+visible. Out of this range, they are hidden. The <a class="reference internal" href="../../../_images/mActionMapIdentification.png"><img alt="mapIdentification" src="../../../_images/mActionMapIdentification.png" style="width: 1.5em;" /></a>
+<sup>Set to current canvas scale</sup> button helps you use the current map
+canvas scale as boundary of the range visibility.
+See <a class="reference internal" href="../introduction/general_tools.html#label-scaledepend"><span class="std std-ref">Visibility Scale Selector</span></a> for more information.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also activate scale dependent visibility on a layer from within
+the <span class="guilabel">Layers</span> panel: right-click on the layer and in the contextual menu,
+select <span class="guilabel">Set Layer Scale Visibility</span>.</p>
+</div>
+<p>As mesh layers can have millions of faces, their rendering can sometimes
+be very slow, especially when all the faces are displayed in the view
+whereas they are too small to be viewed.
+To speed up the rendering, you can simplify the mesh layer, resulting in one
+or more meshes representing different <a class="reference internal" href="#levelofdetail"><span class="std std-ref">levels of detail</span></a>
+and select at which level of detail you would like QGIS to render the mesh layer.
+Note that the simplify mesh contains only triangular faces.</p>
+<p>From the <a class="reference internal" href="../../../_images/rendering.png"><img alt="rendering" src="../../../_images/rendering.png" style="width: 1.5em;" /></a> <span class="guilabel">Rendering</span> tab, check <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a>
+<span class="guilabel">Simplify mesh</span> and set:</p>
+<ul class="simple">
+<li><p>a <span class="guilabel">Reduction factor</span>: Controls generation of successive levels of
+simplified meshes.
+For example, if the base mesh has 5M faces, and the reduction factor is 10,
+the first simplified mesh will have approximately 500 000 faces,
+the second 50 000 faces, the third 5000,…
+If a higher reduction factor leads quickly to simpler meshes (i.e. with triangles
+of bigger size), it produces also fewer levels of detail.</p></li>
+<li><p><span class="guilabel">Minimum triangle size</span>: the average size (in pixels)
+of the triangles that is permitted to display. If the average size of the
+mesh is lesser than this value, the rendering of a lower level of details
+mesh is triggered.</p></li>
+</ul>
+</section>
+<section id="temporal-properties">
+<span id="meshtemporal"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id36" role="doc-backlink"><span class="section-number">18.3.6. </span>Temporal Properties</a><a class="headerlink" href="#temporal-properties" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="../../../_images/temporal.png"><img alt="temporal" src="../../../_images/temporal.png" style="width: 1.5em;" /></a> <span class="guilabel">Temporal</span> tab provides options to control
+the rendering of the layer over time. It allows to dynamically display
+temporal values of the enabled dataset groups. Such a dynamic rendering
+requires the <a class="reference internal" href="../map_views/map_view.html#maptimecontrol"><span class="std std-ref">temporal navigation</span></a> to be enabled
+over the map canvas.</p>
+<figure class="align-center" id="id16">
+<span id="figure-mesh-temporal"></span><img alt="../../../_images/mesh_temporal.png" src="../../../_images/mesh_temporal.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.12 </span><span class="caption-text">Mesh Temporal properties</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Layer temporal settings</strong></p>
+<ul>
+<li><p><span class="guilabel">Reference time</span> of the dataset group, as an absolute date time.
+By default, QGIS parses the source layer and returns the first valid reference
+time in the layer’s dataset group.
+If unavailable, the value will be set by the project time range
+or fall back to the current date.
+The <span class="guilabel">Start time</span> and <span class="guilabel">End time</span> to  consider
+are then calculated based on the internal timestamp step of the dataset.</p>
+<p>It is possible to set a custom <span class="guilabel">Reference time</span> (and then the time range),
+and revert the changes using the <a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a> <sup>Reload from provider</sup> button.
+With <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Always take reference time from data source</span> checked,
+you ensure that the time properties are updated from the file
+each time the layer is reloaded or the project reopened.</p>
+</li>
+<li><p><span class="guilabel">Dataset matching method</span>: determines the dataset to display at the given time.
+Options are <span class="guilabel">Find closest dataset before requested time</span>
+or <span class="guilabel">Find closest dataset from requested time (after or before)</span>.</p></li>
+</ul>
+<p><strong>Provider time settings</strong></p>
+<ul class="simple">
+<li><p><span class="guilabel">Time unit</span> extracted from the raw data, or user defined.
+This can be used to align the speed of the mesh layer with other layers
+in the project during map time navigation.
+Supported units are <span class="guilabel">Seconds</span>, <span class="guilabel">Minutes</span>, <span class="guilabel">Hours</span>
+and <span class="guilabel">Days</span>.</p></li>
+</ul>
+</section>
+<section id="elevation-properties">
+<span id="meshelevation"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id37" role="doc-backlink"><span class="section-number">18.3.7. </span>Elevation Properties</a><a class="headerlink" href="#elevation-properties" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="../../../_images/elevationscale.png"><img alt="elevationscale" src="../../../_images/elevationscale.png" style="width: 1.5em;" /></a> <span class="guilabel">Elevation</span> tab provides options to control
+the layer elevation properties within a <a class="reference internal" href="../map_views/3d_map_view.html#label-3dmapview"><span class="std std-ref">3D map view</span></a>
+and its appearance in the <a class="reference internal" href="../map_views/elevation_profile.html#label-elevation-profile-view"><span class="std std-ref">profile tool charts</span></a>.
+Specifically, you can set:</p>
+<figure class="align-center" id="id17">
+<span id="figure-mesh-elevation"></span><img alt="../../../_images/mesh_elevation.png" src="../../../_images/mesh_elevation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.13 </span><span class="caption-text">Mesh Elevation properties</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><span class="guilabel">Elevation Surface</span>: how the mesh layer vertices Z values
+should be interpreted as terrain elevation.
+You can apply a <span class="guilabel">Scale</span> factor and an <span class="guilabel">Offset</span>.</p></li>
+<li><p><span class="guilabel">Profile Chart Appearance</span>: controls the rendering
+of the mesh elements elevation in the profile chart.
+The profile <span class="guilabel">Style</span> can be set as:</p>
+<ul>
+<li><p>a <span class="guilabel">Line</span> with a specific <a class="reference internal" href="../style_library/symbol_selector.html#vector-line-symbols"><span class="std std-ref">Line style</span></a></p></li>
+<li><p>an elevation surface rendered using a fill symbol either above (<span class="guilabel">Fill above</span>)
+or below (<span class="guilabel">Fill below</span>) the elevation curve line.
+The surface symbology is represented using:</p>
+<ul>
+<li><p>a <a class="reference internal" href="../style_library/symbol_selector.html#vector-fill-symbols"><span class="std std-ref">Fill style</span></a></p></li>
+<li><p>and a <span class="guilabel">Limit</span>: the maximum (respectively minimum) altitude
+determining how high the fill surface will be</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="metadata-properties">
+<span id="meshmetadata"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id38" role="doc-backlink"><span class="section-number">18.3.8. </span>Metadata Properties</a><a class="headerlink" href="#metadata-properties" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="../../../_images/editmetadata.png"><img alt="editMetadata" src="../../../_images/editmetadata.png" style="width: 1.2em;" /></a> <span class="guilabel">Metadata</span> tab provides you with options
+to create and edit a metadata report on your layer.
+See <a class="reference internal" href="../introduction/general_tools.html#metadatamenu"><span class="std std-ref">Metadata</span></a> for more information.</p>
+</section>
+</section>
+<section id="editing-a-mesh-layer">
+<span id="editing-mesh"></span><h2><a class="toc-backref" href="#id39" role="doc-backlink"><span class="section-number">18.4. </span>Editing a mesh layer</a><a class="headerlink" href="#editing-a-mesh-layer" title="Link to this heading"></a></h2>
+<p>QGIS allows to <a class="reference internal" href="../managing_data_source/create_layers.html#vector-create-mesh"><span class="std std-ref">create a mesh layer</span></a> from scratch
+or based on an existing one. You can create/modify the geometries of the new
+layer whom you can assign datasets afterwards.
+It’s also possible to edit an existing mesh layer. Because the editing
+operation requires a frames-only layer, you will be asked to either
+remove any associated datasets first (make sure you have them available
+if they still are necessary) or create a copy (only geometries) of the layer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>QGIS does not allow to digitize edges on mesh layers.
+Only vertices and faces are mesh elements that can be created.
+Also not all supported mesh formats can be edited in QGIS
+(see <a class="reference external" href="https://github.com/lutraconsulting/MDAL#supported-formats">permissions</a>).</p>
+</div>
+<section id="overview-of-the-mesh-digitizing-tools">
+<h3><a class="toc-backref" href="#id40" role="doc-backlink"><span class="section-number">18.4.1. </span>Overview of the mesh digitizing tools</a><a class="headerlink" href="#overview-of-the-mesh-digitizing-tools" title="Link to this heading"></a></h3>
+<p>To interact with or edit a base mesh layer element, following tools are available.</p>
+<table class="docutils align-default" id="id18">
+<caption><span class="caption-number">Table 18.4 </span><span class="caption-text">Tools for mesh digitizing</span><a class="headerlink" href="#id18" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAllEdits.png"><img alt="allEdits" src="../../../_images/mActionAllEdits.png" style="width: 1.5em;" /></a> <sup>Current Edits</sup></p></td>
+<td><p>Access to save, rollback or cancel changes in all or selected layers simultaneously</p></td>
+<td><p><span class="guilabel">Digitizing</span> toolbar</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a> <sup>Toggle to Edit</sup></p></td>
+<td><p>Turn on/off the layer in edit mode</p></td>
+<td><p><span class="guilabel">Digitizing</span> toolbar</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSaveEdits.png"><img alt="saveEdits" src="../../../_images/mActionSaveEdits.png" style="width: 1.5em;" /></a> <sup>Save Edits</sup></p></td>
+<td><p>Save changes done to the layer</p></td>
+<td><p><span class="guilabel">Digitizing</span> toolbar</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionUndo.png"><img alt="undo" src="../../../_images/mActionUndo.png" style="width: 1.5em;" /></a> <sup>Undo</sup></p></td>
+<td><p>Undo the last change(s) - <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Z</kbd></kbd></p></td>
+<td><p><span class="guilabel">Digitizing</span> toolbar</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionRedo.png"><img alt="redo" src="../../../_images/mActionRedo.png" style="width: 1.5em;" /></a> <sup>Redo</sup></p></td>
+<td><p>Redo the last undone action(s) - <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Z</kbd></kbd></p></td>
+<td><p><span class="guilabel">Digitizing</span> toolbar</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/cad.png"><img alt="cad" src="../../../_images/cad.png" style="width: 1.5em;" /></a> <sup>Enable Advanced Digitizing tools</sup></p></td>
+<td><p>Turn on/off the <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#advanced-digitizing-panel"><span class="std std-ref">Advanced Digitizing Panel</span></a></p></td>
+<td><p><span class="guilabel">Advanced Digitizing</span> toolbar</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionMeshReindex.png"><img alt="meshReindex" src="../../../_images/mActionMeshReindex.png" style="width: 1.5em;" /></a> <sup>Reindex Faces and Vertices</sup></p></td>
+<td><p>Recreate index and renumber the mesh elements for optimization</p></td>
+<td><p><span class="guilabel">Mesh</span> menu</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>Digitize Mesh Elements</sup></p></td>
+<td><p>Select/Create vertices and faces</p></td>
+<td><p><span class="guilabel">Mesh Digitizing</span> toolbar</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionMeshSelectPolygon.png"><img alt="meshSelectPolygon" src="../../../_images/mActionMeshSelectPolygon.png" style="width: 1.5em;" /></a> <sup>Select Mesh Elements by Polygon</sup></p></td>
+<td><p>Select vertices and faces overlapped by a drawn polygon</p></td>
+<td><p><span class="guilabel">Mesh Digitizing</span> toolbar</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionMeshSelectExpression.png"><img alt="meshSelectExpression" src="../../../_images/mActionMeshSelectExpression.png" style="width: 1.5em;" /></a> <sup>Select Mesh Elements by Expression</sup></p></td>
+<td><p>Select vertices and faces using an expression</p></td>
+<td><p><span class="guilabel">Mesh Digitizing</span> toolbar</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionMeshTransformByExpression.png"><img alt="meshTransformByExpression" src="../../../_images/mActionMeshTransformByExpression.png" style="width: 1.5em;" /></a> <sup>Transform Vertices Coordinates</sup></p></td>
+<td><p>Modify coordinates of a selection of vertices</p></td>
+<td><p><span class="guilabel">Mesh Digitizing</span> toolbar</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionMeshEditForceByVectorLines.png"><img alt="meshEditForceByVectorLines" src="../../../_images/mActionMeshEditForceByVectorLines.png" style="width: 1.5em;" /></a> <sup>Force by Selected Geometries</sup></p></td>
+<td><p>Split faces and constrain Z value using a linear geometry</p></td>
+<td><p><span class="guilabel">Mesh Digitizing</span> toolbar</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exploring-the-z-value-assignment-logic">
+<h3><a class="toc-backref" href="#id41" role="doc-backlink"><span class="section-number">18.4.2. </span>Exploring the Z value assignment logic</a><a class="headerlink" href="#exploring-the-z-value-assignment-logic" title="Link to this heading"></a></h3>
+<p>When a mesh layer is turned into edit mode, a <span class="guilabel">Vertex Z value</span> widget
+opens at the top right of the map canvas. By default, its value corresponds to
+the <span class="guilabel">Default Z value</span> set in <span class="menuselection">Settings ► Options ►
+Digitizing</span> tab. When there are selected vertices, the widget displays
+the average Z value of the selected vertices.</p>
+<p>During editing, the <span class="guilabel">Vertex Z value</span> is assigned to new vertices.
+It is also possible to set a custom value: edit the widget, press <kbd class="kbd docutils literal notranslate">Enter</kbd>
+and you will override the default value and make use of this new value in
+the digitizing process.
+Click the <a class="reference internal" href="../../../_images/mIconClearText.png"><img alt="clearText" src="../../../_images/mIconClearText.png" style="width: 1.5em;" /></a> icon in the widget to reset its value to the Options
+default value.</p>
+<section id="rules-of-assignment">
+<h4><a class="toc-backref" href="#id42" role="doc-backlink"><span class="section-number">18.4.2.1. </span>Rules of assignment</a><a class="headerlink" href="#rules-of-assignment" title="Link to this heading"></a></h4>
+<p>When <strong>creating</strong> a new vertex, its Z value definition may vary depending on
+the active selection in the mesh layer and its location.
+The following table displays the various combinations.</p>
+<table class="docutils align-default" id="id19">
+<caption><span class="caption-number">Table 18.5 </span><span class="caption-text">Matrix of Z value assignment to new vertex</span><a class="headerlink" href="#id19" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Vertex creation</p></th>
+<th class="head"><p>Are there selected
+vertices in mesh layer?</p></th>
+<th class="head"><p>Source of assigned value</p></th>
+<th class="head"><p>Assigned Z Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="3"><p>“Free” vertex, not connected to any
+face or edge of a face</p></td>
+<td rowspan="2"><p>No</p></td>
+<td><p><span class="guilabel">Vertex Z value</span></p></td>
+<td><p>Default or user defined</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Advanced
+Digitizing Panel</span> (if
+<span class="guilabel">z</span> widget is in
+<a class="reference internal" href="../../../_images/locked.png"><img alt="locked" src="../../../_images/locked.png" style="width: 1.5em;" /></a> <sup>Locked</sup> state)</p></td>
+<td><p><span class="guilabel">z</span> widget if in
+<a class="reference internal" href="../../../_images/locked.png"><img alt="locked" src="../../../_images/locked.png" style="width: 1.5em;" /></a> <sup>Locked</sup> state</p></td>
+</tr>
+<tr class="row-even"><td><p>Yes</p></td>
+<td><p><span class="guilabel">Vertex Z value</span></p></td>
+<td><p>Average of the selected vertices</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vertex on an edge</p></td>
+<td><p>—</p></td>
+<td><p>Mesh layer</p></td>
+<td><p>Interpolated from the edge’s vertices</p></td>
+</tr>
+<tr class="row-even"><td><p>Vertex on a face</p></td>
+<td><p>—</p></td>
+<td><p>Mesh layer</p></td>
+<td><p>Interpolated from the face’s vertices</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vertex snapped to a 2D vector feature</p></td>
+<td><p>—</p></td>
+<td><p><span class="guilabel">Vertex Z value</span></p></td>
+<td><p>Default or user defined</p></td>
+</tr>
+<tr class="row-even"><td><p>Vertex snapped to a 3D vector vertex</p></td>
+<td><p>—</p></td>
+<td><p>Vector layer</p></td>
+<td><p>Vertex</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vertex snapped to a 3D vector segment</p></td>
+<td><p>—</p></td>
+<td><p>Vector layer</p></td>
+<td><p>Interpolated along the vector segment</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <span class="guilabel">Vertex Z value</span> widget is deactivated if
+the <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#advanced-digitizing-panel"><span class="std std-ref">Advanced Digitizing Panel</span></a> is enabled
+and no mesh element is selected.
+The latter’s <span class="guilabel">z</span> widget then rules the Z value assignment.</p>
+</div>
+</section>
+<section id="modifying-z-value-of-existing-vertices">
+<h4><a class="toc-backref" href="#id43" role="doc-backlink"><span class="section-number">18.4.2.2. </span>Modifying Z value of existing vertices</a><a class="headerlink" href="#modifying-z-value-of-existing-vertices" title="Link to this heading"></a></h4>
+<p>To modify the Z value of vertices, the most straightforward way is:</p>
+<ol class="arabic simple">
+<li><p>Select one or many vertices. The <span class="guilabel">Vertex Z value</span> widget
+will display the average height of the selection.</p></li>
+<li><p>Change the value in the widget.</p></li>
+<li><p>Press <kbd class="kbd docutils literal notranslate">Enter</kbd>. The entered value is assigned to the vertices
+and becomes the default value of next vertices.</p></li>
+</ol>
+<p>Another way to change the Z value of a vertex is to move and snap it
+on a vector layer feature with the Z value capability.
+If more than one vertex are selected, the Z value can’t be changed in this way.</p>
+<p>The <a class="reference internal" href="#transform-meshvertices"><span class="std std-ref">Transform mesh vertices</span></a> dialog also provides
+means to modify the Z value of a selection of vertices (along with their X or Y
+coordinates).</p>
+</section>
+</section>
+<section id="selecting-mesh-elements">
+<span id="select-mesh-elements"></span><h3><a class="toc-backref" href="#id44" role="doc-backlink"><span class="section-number">18.4.3. </span>Selecting mesh elements</a><a class="headerlink" href="#selecting-mesh-elements" title="Link to this heading"></a></h3>
+<section id="using-digitize-mesh-elements">
+<h4><a class="toc-backref" href="#id45" role="doc-backlink"><span class="section-number">18.4.3.1. </span>Using <span class="guilabel">Digitize Mesh Elements</span></a><a class="headerlink" href="#using-digitize-mesh-elements" title="Link to this heading"></a></h4>
+<p>Activate the <a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>Digitize Mesh Elements</sup> tool.
+Hover over an element and it gets highlighted, allowing you to select it.</p>
+<ul class="simple">
+<li><p>Click on a vertex, and it is selected.</p></li>
+<li><p>Click on the small square at the center of a face or an edge,
+and it gets selected. Connected vertices are also selected.
+Conversely, selecting all the vertices of an edge or a face also
+selects that element.</p></li>
+<li><p>Drag a rectangle to select overlapping elements (a selected face comes with
+all their vertices).
+Press <kbd class="kbd docutils literal notranslate">Alt</kbd> key if you want to select only completely contained elements.</p></li>
+<li><p>To add elements to a selection, press <kbd class="kbd docutils literal notranslate">Shift</kbd> while selecting them.</p></li>
+<li><p>To remove an element from the selection, press <kbd class="kbd docutils literal notranslate">Ctrl</kbd> and reselect it.
+A deselected face will also deselect all their vertices.</p></li>
+</ul>
+</section>
+<section id="using-select-mesh-elements-by-polygon">
+<h4><a class="toc-backref" href="#id46" role="doc-backlink"><span class="section-number">18.4.3.2. </span>Using <span class="guilabel">Select Mesh Elements by Polygon</span></a><a class="headerlink" href="#using-select-mesh-elements-by-polygon" title="Link to this heading"></a></h4>
+<p>Activate the <a class="reference internal" href="../../../_images/mActionMeshSelectPolygon.png"><img alt="meshSelectPolygon" src="../../../_images/mActionMeshSelectPolygon.png" style="width: 1.5em;" /></a> <sup>Select Mesh Elements by Polygon</sup> tool and:</p>
+<ul class="simple">
+<li><p>Draw a polygon (left-click to add vertex, <kbd class="kbd docutils literal notranslate">Backspace</kbd> to undo last vertex,
+<kbd class="kbd docutils literal notranslate">Esc</kbd> to abort the polygon and right-click to validate it) over the
+mesh geometries. Any partially overlapping vertices and faces will get selected.
+Press <kbd class="kbd docutils literal notranslate">Alt</kbd> key while drawing if you want to select only completely
+contained elements.</p></li>
+<li><p>Right-click over the geometry of a vector layer’s feature, select it in
+the list that pops up and any partially overlapping vertices and faces of
+the mesh layer will get selected. Use <kbd class="kbd docutils literal notranslate">Alt</kbd> while drawing to select
+only completely contained elements.</p></li>
+<li><p>To add elements to a selection, press <kbd class="kbd docutils literal notranslate">Shift</kbd> while selecting them.</p></li>
+<li><p>To remove an element from the selection, press <kbd class="kbd docutils literal notranslate">Ctrl</kbd> while drawing
+over the selection polygon.</p></li>
+</ul>
+</section>
+<section id="using-select-mesh-elements-by-expression">
+<h4><a class="toc-backref" href="#id47" role="doc-backlink"><span class="section-number">18.4.3.3. </span>Using <span class="guilabel">Select Mesh Elements by Expression</span></a><a class="headerlink" href="#using-select-mesh-elements-by-expression" title="Link to this heading"></a></h4>
+<p>Another tool for mesh elements selection is <a class="reference internal" href="../../../_images/mActionMeshSelectExpression.png"><img alt="meshSelectExpression" src="../../../_images/mActionMeshSelectExpression.png" style="width: 1.5em;" /></a>
+<sup>Select Mesh Elements by Expression</sup>. When pressed, the tool opens the mesh
+<a class="reference internal" href="../expressions/expression.html#vector-expressions"><span class="std std-ref">expression selector dialog</span></a> from which you can:</p>
+<ol class="arabic simple">
+<li><p>Select the method of selection:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Select by vertices</span>: applies the entered expression to vertices,
+and returns matching ones and their eventually associated edges/faces</p></li>
+<li><p><span class="guilabel">Select by faces</span>: applies the entered expression to faces,
+and returns matching ones and their associated edges/vertices</p></li>
+</ul>
+</li>
+<li><p>Write the expression of selection. Depending on the selected method,
+available functions in the <a class="reference internal" href="../expressions/functions_list.html#expression-function-meshes"><span class="std std-ref">Meshes group</span></a>
+will be filtered accordingly.</p></li>
+<li><p>Run the query by setting how the selection should behave and pressing:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mIconExpressionSelect.png"><img alt="expressionSelect" src="../../../_images/mIconExpressionSelect.png" style="width: 1.5em;" /></a> <span class="guilabel">Select</span>: replaces any existing selection
+in the layer</p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconSelectAdd.png"><img alt="selectAdd" src="../../../_images/mIconSelectAdd.png" style="width: 1.5em;" /></a> <span class="guilabel">Add to current selection</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconSelectRemove.png"><img alt="selectRemove" src="../../../_images/mIconSelectRemove.png" style="width: 1.5em;" /></a> <span class="guilabel">Remove from current selection</span></p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="modifying-mesh-elements">
+<h3><a class="toc-backref" href="#id48" role="doc-backlink"><span class="section-number">18.4.4. </span>Modifying mesh elements</a><a class="headerlink" href="#modifying-mesh-elements" title="Link to this heading"></a></h3>
+<section id="adding-vertices">
+<h4><a class="toc-backref" href="#id49" role="doc-backlink"><span class="section-number">18.4.4.1. </span>Adding vertices</a><a class="headerlink" href="#adding-vertices" title="Link to this heading"></a></h4>
+<p>To add vertices to a mesh layer:</p>
+<ol class="arabic simple">
+<li><p>Press the <a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>Digitize mesh elements</sup> button</p></li>
+<li><p>A <span class="guilabel">Vertex Z value</span> widget appears on the top right corner of the map canvas.
+Set this value to the Z coordinate you would like to assign to the subsequent vertices</p></li>
+<li><p>Then double-click:</p>
+<ul class="simple">
+<li><p>outside a face: adds a “free vertex”, that is a vertex not linked to any face.
+This vertex is represented by a red dot when the layer is in editing mode.</p></li>
+<li><p>on the edge of existing face(s): adds a vertex on the edge,
+splits the touching face(s) into triangles connected to the new vertex.</p></li>
+<li><p>inside a face: splits the face into triangles whose edges connect
+the surrounding vertices to the new vertex.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="adding-faces">
+<h4><a class="toc-backref" href="#id50" role="doc-backlink"><span class="section-number">18.4.4.2. </span>Adding faces</a><a class="headerlink" href="#adding-faces" title="Link to this heading"></a></h4>
+<p>To add faces to a mesh layer:</p>
+<ol class="arabic simple">
+<li><p>Press the <a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>Digitize mesh elements</sup> button</p></li>
+<li><p>A <span class="guilabel">Vertex Z value</span> widget appears on the top right corner of the map canvas.
+Set this value to the Z coordinate you would like to assign to the subsequent vertices.</p></li>
+<li><p>Hover over a vertex and click the small triangle that appears next it.</p></li>
+<li><p>Move the cursor to the next vertex position;
+you can snap to existing vertex or left-click to add a new one.</p></li>
+<li><p>Proceed as above to add as many vertices you wish for the face.
+Press <kbd class="kbd docutils literal notranslate">Backspace</kbd> button to undo the last vertex.</p></li>
+<li><p>While moving the mouse, a rubberband showing the shape of the face is displayed.
+If it is shown in green, then the expected face is valid
+and you can right-click to add it to the mesh.
+If it is red, the face is not valid (e.g. because it self-intersects,
+overlaps an existing face or vertex, creates a hole, …) and can’t be added.
+You’d need to undo some vertices and fix the geometry.</p></li>
+<li><p>Press <kbd class="kbd docutils literal notranslate">Esc</kbd> to abort the face digitizing.</p></li>
+<li><p>Right-click to validate the face.</p></li>
+</ol>
+<figure class="align-center" id="id20">
+<span id="figure-invalid-mesh"></span><img alt="../../../_images/invalid_mesh.png" src="../../../_images/invalid_mesh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.14 </span><span class="caption-text">Examples of invalid mesh</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="removing-mesh-elements">
+<span id="remove-mesh-items"></span><h4><a class="toc-backref" href="#id51" role="doc-backlink"><span class="section-number">18.4.4.3. </span>Removing mesh elements</a><a class="headerlink" href="#removing-mesh-elements" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#select-mesh-elements"><span class="std std-ref">Select the target elements</span></a></p></li>
+<li><p>Enable the <a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>Digitize mesh elements</sup> tool</p></li>
+<li><p>Right-click and select:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Remove Selected Vertices and Fill Hole(s)</span>
+or press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Del</kbd></kbd>: removes vertices and linked faces and
+fills the hole(s) by triangulating from the neighbor vertices</p></li>
+<li><p><span class="guilabel">Remove Selected Vertices Without Filling Hole(s)</span>
+or press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Del</kbd></kbd>: removes vertices and linked faces
+and do not fill hole(s)</p></li>
+<li><p><span class="guilabel">Remove Selected Face(s)</span> or press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Del</kbd></kbd>:
+removes faces but keeps the vertices</p></li>
+</ul>
+</li>
+</ol>
+<p>These options are also accessible from the contextual menu when hovering over
+a single item without selecting.</p>
+</section>
+<section id="moving-mesh-elements">
+<h4><a class="toc-backref" href="#id52" role="doc-backlink"><span class="section-number">18.4.4.4. </span>Moving mesh elements</a><a class="headerlink" href="#moving-mesh-elements" title="Link to this heading"></a></h4>
+<p>To move vertices and faces of a mesh layer:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#select-mesh-elements"><span class="std std-ref">Select the target elements</span></a></p></li>
+<li><p>Enable the <a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>Digitize mesh elements</sup> tool</p></li>
+<li><p>To start moving the element, click on a vertex or the centroid of a face/edge</p></li>
+<li><p>Move the cursor to the target location (snapping to vector features is supported).</p></li>
+<li><p>If the new location does not generate an <a class="reference internal" href="#figure-invalid-mesh"><span class="std std-ref">invalid mesh</span></a>,
+the moved elements appear in green.
+Click again to release them at this location.
+Faces whose vertices are all selected are translated, their neighbors are reshaped accordingly.</p></li>
+</ol>
+</section>
+<section id="transforming-mesh-vertices">
+<span id="transform-meshvertices"></span><h4><a class="toc-backref" href="#id53" role="doc-backlink"><span class="section-number">18.4.4.5. </span>Transforming mesh vertices</a><a class="headerlink" href="#transforming-mesh-vertices" title="Link to this heading"></a></h4>
+<p>The <a class="reference internal" href="../../../_images/mActionMeshTransformByExpression.png"><img alt="meshTransformByExpression" src="../../../_images/mActionMeshTransformByExpression.png" style="width: 1.5em;" /></a> <sup>Transform Vertices Coordinates</sup> tool gives
+a more advanced way to move vertices, by editing their X, Y and/or Z coordinates
+thanks to expressions.</p>
+<ol class="arabic simple">
+<li><p>Select the vertices you want to edit the coordinates</p></li>
+<li><p>Press <a class="reference internal" href="../../../_images/mActionMeshTransformByExpression.png"><img alt="meshTransformByExpression" src="../../../_images/mActionMeshTransformByExpression.png" style="width: 1.5em;" /></a> <sup>Transform Vertices Coordinates</sup>.
+A dialog opens with a mention of the number of selected vertices.
+You can still add or remove vertices from the selection.</p></li>
+<li><p>Depending on the properties you want to modify, you need to check the
+<span class="guilabel">X coordinate</span>, <span class="guilabel">Y coordinate</span> and/or <span class="guilabel">Z value</span>.</p></li>
+<li><p>Then enter the target position in the box, either as a numeric value or
+an expression (using the <a class="reference internal" href="../../../_images/mIconExpression.png"><img alt="expression" src="../../../_images/mIconExpression.png" style="width: 1.5em;" /></a> <sup>Expression dialog</sup>)</p></li>
+<li><p>With the <a class="reference internal" href="../../../_images/mIconVertexCoordinates.png"><img alt="vertexCoordinates" src="../../../_images/mIconVertexCoordinates.png" style="width: 1.5em;" /></a> <sup>Import Coordinates of the Selected Vertex</sup>
+pressed, the X, Y and Z boxes are automatically filled with its coordinates
+whenever a single vertex is selected. A convenient and quick way to adjust
+vertices individually.</p></li>
+<li><p>Press <span class="guilabel">Preview Transform</span> to simulate the vertices new location
+and preview the mesh with transformation.</p>
+<ul class="simple">
+<li><p>If the preview is green, transformed mesh is valid and you can apply
+the transformation.</p></li>
+<li><p>If the preview is red, the transformed mesh is invalid and you can not
+apply the transformation until it is corrected.</p></li>
+</ul>
+</li>
+<li><p>Press <span class="guilabel">Apply Transform</span> to modify the selected coordinates
+for the set of vertices.</p></li>
+</ol>
+</section>
+<section id="reshaping-mesh-geometry">
+<h4><a class="toc-backref" href="#id54" role="doc-backlink"><span class="section-number">18.4.4.6. </span>Reshaping mesh geometry</a><a class="headerlink" href="#reshaping-mesh-geometry" title="Link to this heading"></a></h4>
+<section id="the-contextual-menu">
+<h5><a class="toc-backref" href="#id55" role="doc-backlink">The contextual menu</a><a class="headerlink" href="#the-contextual-menu" title="Link to this heading"></a></h5>
+<ol class="arabic simple">
+<li><p>Enable the <a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>Digitize mesh elements</sup></p></li>
+<li><p>Select mesh item(s), or not</p></li>
+<li><p>Hover over a mesh element, it gets highlighted.</p></li>
+<li><p>Right-click and you can:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#remove-mesh-items"><span class="std std-ref">remove the item(s)</span></a></p></li>
+<li><p><span class="guilabel">Split Selected Face(s)</span> (<span class="guilabel">Split Current Face</span>):
+splits the face you are hovering over or each selected quad mesh faces
+into two triangles</p></li>
+<li><p><span class="guilabel">Delaunay Triangulation with Selected vertices</span>:
+builds triangular faces using selected free vertices.</p></li>
+<li><p><span class="guilabel">Refine Selected Face(s)</span> (<span class="guilabel">Refine Current Face</span>):
+splits the face into four faces, based on vertices added at the middle of
+each edge (a triangle results into triangles, a quad into quads).
+Also triangulates adjacent faces connected to the new vertices.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="the-edge-markers">
+<h5><a class="toc-backref" href="#id56" role="doc-backlink">The edge markers</a><a class="headerlink" href="#the-edge-markers" title="Link to this heading"></a></h5>
+<p>When the <a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>Digitize mesh elements</sup> is active and you hover
+over an edge, the edge is highlighted and it is possible to interact with it.
+Depending on the context, following markers may be available:</p>
+<ul class="simple">
+<li><p>a <strong>square</strong>, at the center of the edge: click on it to select extremity vertices.</p></li>
+<li><p>a <strong>cross</strong> if the two faces on either side can be merged: click on it to delete
+the edge and merge the faces.</p></li>
+<li><p>a <strong>circle</strong> if the edge is between two triangles: Click on it to flip the edge,
+i.e. connect it instead to the two other “free” vertices of the faces</p></li>
+</ul>
+</section>
+<section id="the-force-by-selected-geometries-tool">
+<h5><a class="toc-backref" href="#id57" role="doc-backlink">The <span class="guilabel">Force by Selected Geometries</span> tool</a><a class="headerlink" href="#the-force-by-selected-geometries-tool" title="Link to this heading"></a></h5>
+<p>The <a class="reference internal" href="../../../_images/mActionMeshEditForceByVectorLines.png"><img alt="meshEditForceByVectorLines" src="../../../_images/mActionMeshEditForceByVectorLines.png" style="width: 1.5em;" /></a> <sup>Force by Selected Geometries</sup> tool
+provides advanced ways to apply break lines using lines geometry.
+A break line will force the mesh to have edges along the line. Note that
+the break line will not be considered persistent once the operation is done;
+resulting edges will not act as constraints anymore and can be modified like
+any other edge.
+This can be used for example to locally modify a mesh layer with accurate
+lines, as river banks or border of road embankments.</p>
+<ol class="arabic simple">
+<li><p>Enable the <a class="reference internal" href="../../../_images/mActionMeshEditForceByVectorLines.png"><img alt="meshEditForceByVectorLines" src="../../../_images/mActionMeshEditForceByVectorLines.png" style="width: 1.5em;" /></a> <sup>Force by Selected Geometries</sup> tool</p></li>
+<li><p>Indicate the geometry to use as “forcing line”; it can be:</p>
+<ul class="simple">
+<li><p>picked from a line or polygon feature in the map canvas: right-click over
+the vector feature and select it from the list in the contextual menu.</p></li>
+<li><p>a virtual line drawn over the mesh frame: left-click to add vertices,
+right-click for validation. Vertices Z value is set through the
+<span class="guilabel">Vertex Z value</span> widget or the <span class="guilabel">z</span> widget
+if the <span class="guilabel">Advanced Digitizing Panel</span> is on. If the line is snapped
+to a mesh vertex or a 3D vector feature’s vertex or segment,
+the new vertex takes the snapped element Z value.</p></li>
+</ul>
+</li>
+</ol>
+<p>Mesh faces that overlap the line geometry or the polygon’s boundary will be
+affected in a way that depends on options you can set from
+the <a class="reference internal" href="../../../_images/mActionMeshEditForceByVectorLines.png"><img alt="meshEditForceByVectorLines" src="../../../_images/mActionMeshEditForceByVectorLines.png" style="width: 1.5em;" /></a> <sup>Force by Selected
+Geometries</sup> tool drop-down menu:</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Add new vertex on intersecting edges</span>: with this option,
+a new vertex is added each time the forcing line intersect an edge. This option
+leads to split along the line each encountered faces.</p>
+<p>Without this option, encountered faces are removed and replaced by faces
+coming from a triangulation with only the existing vertices plus the vertices
+of the forcing lines (new vertices are also added on the boundary edge
+intersecting the forcing lines).</p>
+<figure class="align-center" id="id21">
+<span id="figure-force-mesh-geometry"></span><img alt="../../../_images/force_mesh_geometry.png" src="../../../_images/force_mesh_geometry.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.15 </span><span class="caption-text">Force Mesh using a line geometry - Results without (middle) and with (right)
+new vertex on edges intersection</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><span class="guilabel">Interpolate Z value from</span>: set how the new vertices Z value is
+calculated. It can be from:</p>
+<ul class="simple">
+<li><p>the <span class="guilabel">Mesh</span> itself: the new vertices Z value is interpolated from
+vertices of the face they fall within</p></li>
+<li><p>or the <span class="guilabel">Forcing line</span>: if the line is defined by a 3D vector
+feature or a drawn line then the new vertices Z value is derived from
+its geometry. In case of 2D line feature, the new vertices Z value is
+the <span class="guilabel">Vertex Z value</span>.</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Tolerance</span>: when an existing mesh vertex is closer to the line than
+the tolerance value, do not create new vertex on the line but use the existing
+vertex instead.
+The value can be set in <span class="guilabel">Meters at Scale</span> or in <span class="guilabel">Map Units</span>
+(more details at <a class="reference internal" href="../introduction/general_tools.html#unit-selector"><span class="std std-ref">Unit Selector</span></a>).</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="reindexing-meshes">
+<span id="reindex-mesh"></span><h3><a class="toc-backref" href="#id58" role="doc-backlink"><span class="section-number">18.4.5. </span>Reindexing meshes</a><a class="headerlink" href="#reindexing-meshes" title="Link to this heading"></a></h3>
+<p>During edit, and in order to allow quick undo/redo operations, QGIS keeps empty
+places for deleted elements, which may lead to growing memory use and
+inefficient mesh structuring.
+The <span class="menuselection">Mesh ►</span> <a class="reference internal" href="../../../_images/mActionMeshReindex.png"><img alt="meshReindex" src="../../../_images/mActionMeshReindex.png" style="width: 1.5em;" /></a> <span class="menuselection">Reindex Faces and
+Vertices</span> tool is designed to remove these holes and renumber the indices of
+faces and vertices so that they are continuous and somewhat reasonably ordered.
+This optimizes relation between faces and vertices and increases the efficiency
+of calculation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="../../../_images/mActionMeshReindex.png"><img alt="meshReindex" src="../../../_images/mActionMeshReindex.png" style="width: 1.5em;" /></a> <span class="guilabel">Reindex Faces and Vertices</span> tool saves
+the layer and clear the undo/redo stacks, disabling any rollback.</p>
+</div>
+</section>
+</section>
+<section id="mesh-calculator">
+<span id="id1"></span><h2><a class="toc-backref" href="#id59" role="doc-backlink"><span class="section-number">18.5. </span>Mesh Calculator</a><a class="headerlink" href="#mesh-calculator" title="Link to this heading"></a></h2>
+<p>The <span class="guilabel">Mesh Calculator</span> tool from the top <span class="menuselection">Mesh</span> menu
+allows you to perform arithmetic and logical calculations on existing dataset
+groups to generate a new dataset group (see <a class="reference internal" href="#figure-mesh-calculator"><span class="std std-numref">Fig. 18.16</span></a>).</p>
+<figure class="align-center" id="id22">
+<span id="figure-mesh-calculator"></span><img alt="../../../_images/mesh_calculator.png" src="../../../_images/mesh_calculator.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.16 </span><span class="caption-text">Mesh Calculator</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The <span class="guilabel">Datasets</span> list contains all dataset groups in the active mesh layer.
+To use a dataset group in an expression, double click its name in
+the list and it will be added to the <span class="guilabel">Mesh calculator expression</span> field.
+You can then use the operators to construct calculation expressions,
+or you can just type them into the box.</p>
+<p>The <span class="guilabel">Result Layer</span> helps you configure properties of the output layer:</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Create on-the-fly dataset group instead of writing layer
+to disk</span>:</p>
+<ul class="simple">
+<li><p>If unchecked, the output is stored on disk as a new plain file.
+An <span class="guilabel">Output File</span> path and an <span class="guilabel">Output Format</span> are required.</p></li>
+<li><p>If checked, a new dataset group will be added to the mesh layer.
+Values of the dataset group are not stored in memory but each dataset
+is calculated when needed with the formula entered in the mesh calculator.
+That virtual dataset group is saved with the project, and if needed,
+it can be removed or made persistent in file from the layer
+<span class="guilabel">Source</span> properties tab.</p></li>
+</ul>
+<p>In either case, you should provide a <span class="guilabel">Group Name</span> for the output
+dataset group.</p>
+</li>
+<li><p>The <span class="guilabel">Spatial extent</span> to consider for calculation can be:</p>
+<ul class="simple">
+<li><p>a <span class="guilabel">Custom extent</span>, manually filled with the <span class="guilabel">X min</span>,
+<span class="guilabel">X max</span>, <span class="guilabel">Y min</span> and <span class="guilabel">Y max</span> coordinate,
+or extracted from an existing dataset group (select it in the list and
+press <span class="guilabel">Use selected layer extent</span> to fill the abovementioned
+coordinate fields)</p></li>
+<li><p>defined by a polygon layer (<span class="guilabel">Mask layer</span>) of the project:
+the polygon features geometry are used to clip the mesh layer datasets</p></li>
+</ul>
+</li>
+<li><p>The <span class="guilabel">Temporal extent</span> to take into account for datasets can be set
+with the <span class="guilabel">Start time</span> and <span class="guilabel">End time</span> options, selected
+from the existing dataset groups timesteps. They can also be filled using the
+<span class="guilabel">Use all selected dataset times</span> button to take the whole range.</p></li>
+</ul>
+<p>The <span class="guilabel">Operators</span> section contains all available operators. To add an operator
+to the mesh calculator expression box, click the appropriate button. Mathematical
+calculations (<code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, … ) and statistical functions (<code class="docutils literal notranslate"><span class="pre">min</span></code>,
+<code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span> <span class="pre">(aggr)</span></code>, <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">(aggr)</span></code>, … ) are available.
+Conditional expressions (<code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">IF</span></code>, <code class="docutils literal notranslate"><span class="pre">AND</span></code>, <code class="docutils literal notranslate"><span class="pre">NOT</span></code>, … )
+return either 0 for false and 1 for true, and therefore can be used with other operators
+and functions. The <code class="docutils literal notranslate"><span class="pre">NODATA</span></code> value can also be used in the expressions.</p>
+<p>The <span class="guilabel">Mesh Calculator Expression</span> widget shows and lets you edit
+the expression to execute.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../working_with_raster/georeferencer.html" class="btn btn-neutral float-left" title="17.3. Georeferencer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_vector_tiles/vector_tiles.html" class="btn btn-neutral float-right" title="19. Working with Vector Tiles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/working_with_mesh/mesh.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/working_with_mesh/mesh.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/working_with_mesh/mesh.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/working_with_mesh/mesh.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/working_with_mesh/mesh.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/working_with_mesh/mesh.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/working_with_mesh/mesh.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/working_with_mesh/mesh.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/working_with_mesh/mesh.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/working_with_mesh/mesh.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/working_with_mesh/mesh.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/working_with_mesh/mesh.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/working_with_mesh/mesh.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/working_with_mesh/mesh.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/working_with_mesh/mesh.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/working_with_mesh/mesh.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/working_with_mesh/mesh.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_mesh/mesh.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/working_with_mesh/mesh.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/working_with_mesh/mesh.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/working_with_mesh/mesh.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/working_with_mesh/mesh.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/working_with_mesh/mesh.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/working_with_mesh/mesh.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/working_with_mesh/mesh.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/working_with_mesh/mesh.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/384811ce52be9f3282bb8a832d12dbf7" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

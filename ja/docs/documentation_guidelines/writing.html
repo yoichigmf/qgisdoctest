@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. 執筆のためのガイドライン &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/documentation_guidelines/writing.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="3. PyQGISクックブック中でコードを書く" href="cookbook_guidelines.html" />
+    <link rel="prev" title="1. 貢献のための一歩一歩" href="first_contribution.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 2. 執筆のためのガイドライン">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ドキュメント作成のガイドライン</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="first_contribution.html">1. 貢献のための一歩一歩</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. 執筆のためのガイドライン</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#writing-documentation">2.1. ドキュメントを書く</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#headlines">2.1.1. 見出し</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lists">2.1.2. リスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#indentation">2.1.3. 字下げ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inline-tags">2.1.4. 行内タグ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#labels-references">2.1.5. ラベル／参照</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#figures-and-images">2.1.6. 図と画像</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#index">2.1.7. 索引</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#special-comments">2.1.8. 特別なコメント</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#code-snippets">2.1.9. コードスニペット</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#footnotes">2.1.10. 脚注</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-screenshots">2.2. スクリーンショットを管理する</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-new-screenshots">2.2.1. 新しいスクリーンショットを追加</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#translated-screenshots">2.2.2. 翻訳されたスクリーンショット</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#documenting-processing-algorithms">2.3. プロセシングアルゴリズムのドキュメントを作成する</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook_guidelines.html">3. PyQGISクックブック中でコードを書く</a></li>
+<li class="toctree-l2"><a class="reference internal" href="do_translations.html">4. 翻訳ガイドライン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substitutions.html">5. 置換参照と定義</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">ドキュメント作成のガイドライン</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2. </span>執筆のためのガイドライン</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/documentation_guidelines/writing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="first_contribution.html" class="btn btn-neutral float-left" title="1. 貢献のための一歩一歩" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cookbook_guidelines.html" class="btn btn-neutral float-right" title="3. PyQGISクックブック中でコードを書く" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="writing-guidelines">
+<span id="writing-doc-guidelines"></span><h1><span class="section-number">2. </span>執筆のためのガイドライン<a class="headerlink" href="#writing-guidelines" title="Link to this heading"></a></h1>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#writing-documentation" id="id5">ドキュメントを書く</a></p>
+<ul>
+<li><p><a class="reference internal" href="#headlines" id="id6">見出し</a></p></li>
+<li><p><a class="reference internal" href="#lists" id="id7">リスト</a></p></li>
+<li><p><a class="reference internal" href="#indentation" id="id8">字下げ</a></p></li>
+<li><p><a class="reference internal" href="#inline-tags" id="id9">行内タグ</a></p></li>
+<li><p><a class="reference internal" href="#labels-references" id="id10">ラベル／参照</a></p></li>
+<li><p><a class="reference internal" href="#figures-and-images" id="id11">図と画像</a></p>
+<ul>
+<li><p><a class="reference internal" href="#pictures" id="id12">画像</a></p></li>
+<li><p><a class="reference internal" href="#replacement" id="id13">置換</a></p></li>
+<li><p><a class="reference internal" href="#figure" id="id14">図</a></p></li>
+<li><p><a class="reference internal" href="#tables" id="id15">表</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#index" id="id16">索引</a></p></li>
+<li><p><a class="reference internal" href="#special-comments" id="id17">特別なコメント</a></p></li>
+<li><p><a class="reference internal" href="#code-snippets" id="id18">コードスニペット</a></p></li>
+<li><p><a class="reference internal" href="#footnotes" id="id19">脚注</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#managing-screenshots" id="id20">スクリーンショットを管理する</a></p>
+<ul>
+<li><p><a class="reference internal" href="#add-new-screenshots" id="id21">新しいスクリーンショットを追加</a></p></li>
+<li><p><a class="reference internal" href="#translated-screenshots" id="id22">翻訳されたスクリーンショット</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#documenting-processing-algorithms" id="id23">プロセシングアルゴリズムのドキュメントを作成する</a></p></li>
+</ul>
+</nav>
+<p>総じて、QGISプロジェクトのためにreSTドキュメントを作成するときには、 <a class="reference external" href="https://devguide.python.org/documenting/">Python documentation style guidelines</a> に従ってください。簡便のために以下に、QGISドキュメントを書く際に依拠すべき一般的なルールを、一通り示します。</p>
+<section id="writing-documentation">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">2.1. </span>ドキュメントを書く</a><a class="headerlink" href="#writing-documentation" title="Link to this heading"></a></h2>
+<section id="headlines">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">2.1.1. </span>見出し</a><a class="headerlink" href="#headlines" title="Link to this heading"></a></h3>
+<p>ドキュメントのそれぞれのウェブページには、ひとつの <code class="docutils literal notranslate"><span class="pre">.rst</span></code> ファイルが対応しています。</p>
+<p>本文を構成するセクションは、そのタイトルに下線（及び第1レベルは上線）を引いて識別します。同じレベルのタイトルには下線の装飾に同じ文字を使う必要があります。QGISドキュメントでは、chapter、section、subsectionとminisecに対して以下のスタイルを使用します。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">********</span>
+<span class="gh">Chapter</span>
+<span class="gh">********</span>
+
+<span class="gh">Section</span>
+<span class="gh">=======</span>
+
+<span class="gh">Subsection</span>
+<span class="gh">----------</span>
+
+<span class="gh">Minisec</span>
+<span class="gh">.......</span>
+
+<span class="gh">Subminisec</span>
+<span class="gh">^^^^^^^^^^</span>
+</pre></div>
+</div>
+</section>
+<section id="lists">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">2.1.2. </span>リスト</a><a class="headerlink" href="#lists" title="Link to this heading"></a></h3>
+<p>リストはテキストを構造化するのに便利です。ここではすべてのリストに共通する簡単な規則を紹介します:</p>
+<ul class="simple">
+<li><p>すべての項目は大文字で始めてください</p></li>
+<li><p>単独の簡単な文のみを含むリスト項目の後には句読点を使わないでください</p></li>
+<li><p>複数の文または1つの複合文からなるリスト項目の句読点としてピリオド（ <code class="docutils literal notranslate"><span class="pre">.</span></code> ）を使ってください</p></li>
+</ul>
+</section>
+<section id="indentation">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">2.1.3. </span>字下げ</a><a class="headerlink" href="#indentation" title="Link to this heading"></a></h3>
+<p>ReStructuredTextの字下げは、リストまたはマークアップの <em>マーカー</em> に合わせます。また、字下げト付きのブロック引用符を作成することも可能です。<a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#indentation">仕様</a> を参照してください</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#. In a numbered list, there should be</span>
+   <span class="n">three</span> <span class="n">spaces</span> <span class="n">when</span> <span class="n">you</span> <span class="k">break</span> <span class="n">lines</span>
+<span class="c1">#. And next items directly follow</span>
+
+   <span class="o">*</span> <span class="n">Nested</span> <span class="n">lists</span>
+   <span class="o">*</span> <span class="n">Are</span> <span class="n">also</span> <span class="n">possible</span>
+   <span class="o">*</span> <span class="n">And</span> <span class="n">when</span> <span class="n">they</span> <span class="n">also</span> <span class="n">have</span>
+     <span class="n">a</span> <span class="n">line</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">too</span> <span class="n">long</span><span class="p">,</span>
+     <span class="n">the</span> <span class="n">text</span> <span class="n">should</span> <span class="n">be</span> <span class="n">naturally</span>
+     <span class="n">aligned</span>
+   <span class="o">*</span> <span class="ow">and</span> <span class="n">be</span> <span class="ow">in</span> <span class="n">their</span> <span class="n">own</span> <span class="n">paragraph</span>
+
+<span class="n">However</span><span class="p">,</span> <span class="k">if</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">unindented</span> <span class="n">paragraph</span><span class="p">,</span> <span class="n">this</span> <span class="n">will</span> <span class="n">reset</span> <span class="n">the</span> <span class="n">numbering</span><span class="p">:</span>
+
+<span class="c1">#. This item starts at 1 again</span>
+</pre></div>
+</div>
+</section>
+<section id="inline-tags">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">2.1.4. </span>行内タグ</a><a class="headerlink" href="#inline-tags" title="Link to this heading"></a></h3>
+<p>項目を強調するためにタグを使うことができます。</p>
+<ul>
+<li><p><strong>メニューGUI</strong> ：サブメニューを選択したり、特定の操作、またはこのような配列の何らかの部分配列を選択するなど、メニュー選択の完全な配列をマークします。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:menuselection:</span><span class="nv">`menu --&gt; submenu`</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>ダイアログとタブのタイトル</strong>： ウィンドウタイトル、タブのタイトル、ボタンやオプションのラベルなど、対話的なユーザーインタフェースの一部として表示されるラベル。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:guilabel:</span><span class="nv">`title`</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>ファイル名とディレクトリ</strong></p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:file:</span><span class="nv">`README.rst`</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>ポップアップテキスト付きアイコン</strong></p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>|icon| <span class="na">:sup:</span><span class="nv">`popup_text`</span>
+</pre></div>
+</div>
+<p>（ 以下の <a class="reference internal" href="#pictures">画像</a> を参照してください）。</p>
+</li>
+<li><p><strong>キーボードショートカット</strong></p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:kbd:</span><span class="nv">`Ctrl+B`</span>
+</pre></div>
+</div>
+<p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">B</kbd></kbd> が現れます</p>
+<p>キーボードショートカットを説明するときは、次の規則を使用してください：</p>
+<ul class="simple">
+<li><p>文字キーは大文字を使って表示します: <kbd class="kbd docutils literal notranslate">S</kbd></p></li>
+<li><p>特殊キーは最初の文字を大文字にして表示します: <kbd class="kbd docutils literal notranslate">Esc</kbd></p></li>
+<li><p>キーの組み合わせはキー同士の間に空白を入れずに <code class="docutils literal notranslate"><span class="pre">+</span></code> 記号を表示します: <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">R</kbd></kbd></p></li>
+</ul>
+</li>
+<li><p><strong>ユーザーテキスト</strong></p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="s">``label``</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>レイヤ名</strong> レイヤを参照するとき、インラインのコードで整形します:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="s">``layer name``</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="labels-references">
+<span id="my-anchor"></span><h3><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">2.1.5. </span>ラベル／参照</a><a class="headerlink" href="#labels-references" title="Link to this heading"></a></h3>
+<p>セクションやページへのハイパーリンクを作るのにテキスト内のアンカーを使うことができます。</p>
+<p>次の例は、セクションのアンカー（ラベル/参照タイトルなど）を作成します</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_my_anchor:</span>
+
+<span class="gh">Label/reference</span>
+<span class="gh">---------------</span>
+</pre></div>
+</div>
+<p><strong>同じページ</strong> 内の参照を呼び出すには次を使います</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>see my_anchor_ for more information.
+</pre></div>
+</div>
+<p>こうなります：</p>
+<p>see <a class="reference internal" href="#my-anchor">my_anchor</a> for more information.</p>
+<p>「アンカー」に従って行/物にジャンプすることに注目してください。アポストロフィを使う必要はありませんが、アンカーの後に空行が必要です。</p>
+<p><strong>ドキュメント内のどこからでも</strong> 同じ場所にジャンプする別の方法は、 <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> 役割を使うことです。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>see <span class="na">:ref:</span><span class="nv">`my_anchor`</span> for more information.
+</pre></div>
+</div>
+<p>これはキャプション（この場合はこのセクションのタイトル！）を含むリンクが作成されます：</p>
+<p>see <a class="reference internal" href="#my-anchor"><span class="std std-ref">ラベル／参照</span></a> for more information.</p>
+<p>つまり、参照1（<a class="reference internal" href="#my-anchor">my_anchor</a>）と参照2（<a class="reference internal" href="#my-anchor"><span class="std std-ref">ラベル／参照</span></a>）です。参照はしばしば完全なキャプションを表示するため、<em>section</em> という単語を使う必要はあまりありません。参照を説明するためにカスタムキャプションを使うこともできることに注意してください:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>see <span class="na">:ref:</span><span class="nv">`Label and reference &lt;my_anchor&gt;`</span> for more information.
+</pre></div>
+</div>
+<p>こうなります:</p>
+<p>see <a class="reference internal" href="#my-anchor"><span class="std std-ref">Label and reference</span></a> for more information.</p>
+</section>
+<section id="figures-and-images">
+<span id="image"></span><h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">2.1.6. </span>図と画像</a><a class="headerlink" href="#figures-and-images" title="Link to this heading"></a></h3>
+<section id="pictures">
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">画像</a><a class="headerlink" href="#pictures" title="Link to this heading"></a></h4>
+<p>画像を挿入するには、次を使います</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> /static/common/logo.png
+   <span class="nc">:width:</span> 10 em
+</pre></div>
+</div>
+<p>こうなります</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/logo.png"><img alt="../../_images/logo.png" src="../../_images/logo.png" style="width: 10em;" /></a>
+</figure>
+</section>
+<section id="replacement">
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">置換</a><a class="headerlink" href="#replacement" title="Link to this heading"></a></h4>
+<p>テキスト内には画像を置くか、どこでも使用される別名を追加できます。段落内で画像を使用するには、 最初に <code class="file docutils literal notranslate"><span class="pre">source/substitutions.txt</span></code> ファイル中に別名を作成します：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">|nice_logo|</span> <span class="ow">image</span><span class="p">::</span> /static/common/logo.png
+               <span class="nc">:width:</span> 1 em
+</pre></div>
+</div>
+<p>次に段落内でそれを呼び出します:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>My paragraph begins here with a nice logo |nice_logo|.
+</pre></div>
+</div>
+<p>これは例がどのように表示されるかを示します:</p>
+<p>My paragraph begins here with a nice logo <a class="reference internal" href="../../_images/logo.png"><img alt="nice_logo" src="../../_images/logo.png" style="width: 1em;" /></a>.</p>
+<p>GitHub で HTML レンダリングに近いプレビュー表示を行うには、変更したファイルの末尾に画像置換の呼び出しを追加することも必要です。これは <code class="file docutils literal notranslate"><span class="pre">substitutions.txt</span></code> からコピーペーストするか、 <code class="file docutils literal notranslate"><span class="pre">scripts/find_set_subst.py</span></code> スクリプトを実行することで行うことができます。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>現在、一貫性を確保し、QGISのアイコンの使用を助けるために、別名のリストが構築され、 <a class="reference internal" href="substitutions.html#substitutions"><span class="std std-ref">置換参照と定義</span></a> の章で利用できるようになっています。</p>
+</div>
+</section>
+<section id="figure">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">図</a><a class="headerlink" href="#figure" title="Link to this heading"></a></h4>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_figure_logo:</span>
+
+<span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> /static/common/logo.png
+   <span class="nc">:width:</span> 20 em
+   <span class="nc">:align:</span> center
+
+   A caption: A logo I like
+</pre></div>
+</div>
+<p>これの結果は次の通りです:</p>
+<figure class="align-center" id="id4">
+<span id="figure-logo"></span><a class="reference internal image-reference" href="../../_images/logo.png"><img alt="../../_images/logo.png" src="../../_images/logo.png" style="width: 20em;" /></a>
+<figcaption>
+<p><span class="caption-number">図 2.23 </span><span class="caption-text">A caption: A logo I like</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>他の参照との衝突を避けるため、図のアンカーは常に <code class="docutils literal notranslate"><span class="pre">_figure_</span></code> で始め、図のキャプションにつながりやすい用語を使用してください。画像は中央揃えのみが必須ですが、図には必要に応じて他のオプション（<code class="docutils literal notranslate"><span class="pre">width</span></code>、<code class="docutils literal notranslate"><span class="pre">height</span></code>、<code class="docutils literal notranslate"><span class="pre">scale</span></code> など）を自由に使ってください。</p>
+<p>スクリプトは、ドキュメントから生成されるHTML版とPDF版の図のキャプションの前に、自動的に生成された番号を挿入します。</p>
+<p>キャプションを使用するには（ <em>My caption</em> を参照）、図ブロックに空白行の後ろに字下げテキストを挿入します。</p>
+<p>図はこのような参照ラベルを使って参照付けできます:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>see <span class="na">:numref:</span><span class="nv">`figure_logo`</span>
+</pre></div>
+</div>
+<p>こう表示されます:</p>
+<p>see <a class="reference internal" href="#figure-logo"><span class="std std-numref">図 2.23</span></a></p>
+<p>これが図を参照する好ましい方法です。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p><code class="docutils literal notranslate"><span class="pre">:numref:</span></code> を機能させるには、 図に <strong>キャプションが必要です</strong> 。</p>
+</div>
+<p>参照には <code class="docutils literal notranslate"><span class="pre">:numref:</span></code> の代わりに <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> を使うことができますが、それは画像の完全なキャプションを返します。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>see <span class="na">:ref:</span><span class="nv">`figure_logo`</span>
+</pre></div>
+</div>
+<p>こう表示されます:</p>
+<p>see <a class="reference internal" href="#figure-logo"><span class="std std-ref">A caption: A logo I like</span></a></p>
+</section>
+<section id="tables">
+<h4><a class="toc-backref" href="#id15" role="doc-backlink">表</a><a class="headerlink" href="#tables" title="Link to this heading"></a></h4>
+<p>簡単な表は次のように符号化できます</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>=======  =======  =======
+x        y        z
+=======  =======  =======
+1        2        3
+4                 5
+=======  =======  =======
+</pre></div>
+</div>
+<p>このように表示されます:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+<th class="head"><p>z</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td></td>
+<td><p>5</p></td>
+</tr>
+</tbody>
+</table>
+<p>空を作るには <code class="docutils literal notranslate"><span class="pre">\</span></code> （バックスラッシュ）にひとつの空白を続けます。</p>
+<p>また、より複雑な表を作成して参照することもできます：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_my_drawn_table:</span>
+
++---------------+--------------------+
+<span class="o">|</span> Windows       | macOS              |
++---------------+--------------------+
+<span class="o">|</span> |win|         | |osx|              |
++---------------+--------------------+
+<span class="o">|</span> and of course not to forget |nix|  |
++------------------------------------+
+
+My drawn table, mind you this is unfortunately not regarded as a caption
+
+You can reference it like this: my_drawn_table_.
+</pre></div>
+</div>
+<p>結果：</p>
+<table class="docutils align-default" id="my-drawn-table">
+<tbody>
+<tr class="row-odd"><td><p>Windows</p></td>
+<td><p>macOS</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../_images/win.png"><img alt="win" src="../../_images/win.png" style="width: 1em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../_images/osx.png"><img alt="osx" src="../../_images/osx.png" style="width: 1em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>and of course not to forget <a class="reference internal" href="../../_images/nix.png"><img alt="nix" src="../../_images/nix.png" style="width: 1em;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>My drawn table, mind you this is unfortunately not regarded as a caption</p>
+<p>You can reference to it like this <a class="reference internal" href="#my-drawn-table">my_drawn_table</a>.</p>
+<p>もっと複雑な表には <code class="docutils literal notranslate"><span class="pre">list-table</span></code> を使うのが簡単です:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">list-table</span><span class="p">::</span>
+   <span class="nc">:header-rows:</span> 1
+   <span class="nc">:widths:</span> 20 20 20 40
+
+   <span class="m">*</span> - What
+     <span class="m">-</span> Purpose
+     <span class="m">-</span> Key word
+     <span class="m">-</span> Description
+   <span class="m">*</span> - <span class="gs">**Test**</span>
+     <span class="m">-</span> <span class="s">``Useful test``</span>
+     <span class="m">-</span> complexity
+     <span class="m">-</span> Geometry.  One of:
+
+       <span class="m">*</span> Point
+       <span class="m">*</span> Line
+</pre></div>
+</div>
+<p>結果：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>What</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Key word</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Test</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Useful</span> <span class="pre">test</span></code></p></td>
+<td><p>complexity</p></td>
+<td><p>Geometry.  One of:</p>
+<ul class="simple">
+<li><p>Point</p></li>
+<li><p>Line</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="index">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">2.1.7. </span>索引</a><a class="headerlink" href="#index" title="Link to this heading"></a></h3>
+<p>索引は読者がドキュメント内で必要な情報を見つけるのを手助けする手軽な方法です。QGISドキュメントは必須の索引項目のみを提供しています。本当に有用な（よく整理され、首尾一貫し、相互に関連づけられた）索引項目のセットのみを提供する助けとなるルールがいくつかあります。</p>
+<ul class="simple">
+<li><p>索引は、人間が読めるもの、理解できるもの、翻訳可能なものでなければなりません。索引は複数の単語から作ることができますが、それらを繋ぐ不要な <code class="docutils literal notranslate"><span class="pre">_</span></code> や <code class="docutils literal notranslate"><span class="pre">-</span></code> などは使用しないようにしてください。たとえば <code class="docutils literal notranslate"><span class="pre">loading_layers</span></code> や <code class="docutils literal notranslate"><span class="pre">loadingLayers</span></code> ではなく、 <code class="docutils literal notranslate"><span class="pre">Loading</span> <span class="pre">layers</span></code> としてください。</p></li>
+<li><p>特別な綴りを持つ単語でない限りは、索引語の最初の文字のみを大文字にします。たとえば、 <code class="docutils literal notranslate"><span class="pre">Loading</span> <span class="pre">layers</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Atlas</span> <span class="pre">generation</span></code> 、 <code class="docutils literal notranslate"><span class="pre">WMS</span></code> 、 <code class="docutils literal notranslate"><span class="pre">pgsql2shp</span></code> などとします。</p></li>
+<li><p>常に現在の <a class="reference external" href="https://docs.qgis.org/testing/en/genindex.html">索引語リスト</a> に注意を払うことで、より好適な表現を正しい綴りで再利用し、不要な重複は避けるようにしてください。</p></li>
+</ul>
+<p>RSTには索引用のタグがあります。行内タグ <code class="docutils literal notranslate"><span class="pre">:index:</span></code> は通常のテキスト中で次のように使います。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>QGIS can load several <span class="na">:index:</span><span class="nv">`Vector formats`</span> supported by GDAL ...
+</pre></div>
+</div>
+<p>ブロックレベルのマークアップの <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">index::</span></code> を使うこともできます。これは次の段落の始まりにリンクします。上記ルールにより、ブロックレベルタグの使用を推奨します。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">index</span><span class="p">::</span> WMS, WFS, Loading layers
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">single</span></code> 、 <code class="docutils literal notranslate"><span class="pre">pair</span></code> 、 <code class="docutils literal notranslate"><span class="pre">see</span></code> のような索引パラメータの使用も推奨します。これはより構造化され相互に関連した索引語テーブルを作るのに有用です。索引作成についてのより詳しい情報は <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#index-generating-markup">Index generating</a> を参照してください。</p>
+</section>
+<section id="special-comments">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">2.1.8. </span>特別なコメント</a><a class="headerlink" href="#special-comments" title="Link to this heading"></a></h3>
+<p>時には、説明のいくつかのポイントを強調して、ユーザーに警告したり、注意喚起したり、ヒントを与えたりしたいことがあります。QGIS文書では、reSTの特別なディレクティブである <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">warning::</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">seealso::</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">note::</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">tip::</span></code> を使っています。これらのディレクティブは、コメントを強調するフレームを生成します。詳しくは <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#paragraph-level-markup">段落レベルのマークアップ</a> をご覧ください。警告とヒントの両方には、明確で適切なタイトルが必要です。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">tip</span><span class="p">::</span> <span class="gs">**Always use a meaningful title for tips**</span>
+
+   Begin tips with a title that summarizes what it is about. This helps
+   users to quickly overview the message you want to give them, and
+   decide on its relevance.
+</pre></div>
+</div>
+</section>
+<section id="code-snippets">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">2.1.9. </span>コードスニペット</a><a class="headerlink" href="#code-snippets" title="Link to this heading"></a></h3>
+<p>また、例を示したり、コードスニペットを挿入したい場合もあります。この場合、<code class="docutils literal notranslate"><span class="pre">::</span></code> ディレクティブが挿入された行の下にコメントを記述します。 より良いレンダリング、特にコードに言語に合ったカラーハイライトを適用するには、code-blockディレクティブを使います（例：<cite>... code-block:: xml`</cite>. 詳細は、<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#showing-code-examples">Showing code</a> を参照してください。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>注意書き、ヒント、警告のフレーム内のテキストは翻訳可能ですが、コードブロックのフレームは翻訳できないので注意してください。そのため、コードに関係のないコメントは避け、コメントはできるだけ短くしてください。</p>
+</div>
+</section>
+<section id="footnotes">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">2.1.10. </span>脚注</a><a class="headerlink" href="#footnotes" title="Link to this heading"></a></h3>
+<p>注意：脚注はどのような翻訳ソフトでも認識されず、またpdfフォーマットにも適切に変換されません。そのため、可能であれば、文書内で脚注を使用しないでください。</p>
+<p>これは、脚注を作成するためのものです（例として示します <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> ）</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>blabla <span class="s">[1]_</span>
+</pre></div>
+</div>
+<p>これが指しているのは：</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>コアプラグインの更新</p>
+</aside>
+</aside>
+</section>
+</section>
+<section id="managing-screenshots">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">2.2. </span>スクリーンショットを管理する</a><a class="headerlink" href="#managing-screenshots" title="Link to this heading"></a></h2>
+<section id="add-new-screenshots">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">2.2.1. </span>新しいスクリーンショットを追加</a><a class="headerlink" href="#add-new-screenshots" title="Link to this heading"></a></h3>
+<p>以下は、新しいスクリーンショットを、見た目良く作成するためのヒントです。画像ファイルは、参照元の <code class="file docutils literal notranslate"><span class="pre">.rst</span></code> ファイルがあるフォルダの中の、画像フォルダ (<code class="file docutils literal notranslate"><span class="pre">img/</span></code>) に置きます。</p>
+<ul>
+<li><p>このリポジトリの <code class="file docutils literal notranslate"><span class="pre">./qgis-projects</span></code> フォルダには、スクリーンショットを作成するために用意されたQGISプロジェクトがいくつかあります。これにより、QGISの次のバージョンのスクリーンショットを簡単に再現することができます。これらのプロジェクトはQGIS <a class="reference external" href="https://github.com/qgis/QGIS-Sample-Data/archive/master.zip">Sample Data</a> （別名Alaskaデータセット）を使用しています。解凍してQGIS-Documentation Repositoryと同じフォルダに置く必要があります。</p></li>
+<li><p>ウィンドウは説明に必要な範囲で最小にします（小さなモーダルウィンドウのためだけに全画面表示をするのは過剰です）。</p></li>
+<li><p>ごちゃごちゃしていないほど良いです（すべてのツールバーをアクティブにする必要はありません）。</p></li>
+<li><p>画像編集ソフトでリサイズしないでください。サイズは必要であれば <code class="file docutils literal notranslate"><span class="pre">.rst</span></code> ファイル中で設定されます（解像度を適切に上げることなく大きさだけを縮小すると、画像が汚くなります）。</p></li>
+<li><p>背景はカットします。</p></li>
+<li><p>背景が白でない場合は上部の角を透明にします。</p></li>
+<li><p>印刷サイズ解像度を <code class="docutils literal notranslate"><span class="pre">135</span> <span class="pre">dpi</span></code> に設定します（たとえば Gimp で印刷解像度を設定するにはメニューで <span class="menuselection">Image ► Print size</span> を選択して保存します）。これによって、画像はHTMLではオリジナルサイズで、PDFでは印刷に適した解像度となります。ImageMagickのconvertコマンドを使えば、この処理を次のようにバッチ処理で行うこともできます。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>convert<span class="w"> </span>-units<span class="w"> </span>PixelsPerInch<span class="w"> </span>input.png<span class="w"> </span>-density<span class="w"> </span><span class="m">135</span><span class="w"> </span>output.png
+</pre></div>
+</div>
+</li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">.png</span></code> で保存します (<code class="file docutils literal notranslate"><span class="pre">.jpeg</span></code> は避けてください)。</p></li>
+<li><p>スクリーンショットはテキストの記載に従った内容を表示していなければなりません。</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ubuntuの場合、以下のコマンドでグローバルメニュー機能を取り除き、メニューを持った小さなアプリケーション画面を作ることができます:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>autoremove<span class="w"> </span>appmenu-gtk<span class="w"> </span>appmenu-gtk3<span class="w"> </span>appmenu-qt
+</pre></div>
+</div>
+</div>
+</section>
+<section id="translated-screenshots">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">2.2.2. </span>翻訳されたスクリーンショット</a><a class="headerlink" href="#translated-screenshots" title="Link to this heading"></a></h3>
+<p>翻訳されたユーザガイド用にスクリーンショットを作成したい人向けのヒントです。</p>
+<p>翻訳された画像は <code class="file docutils literal notranslate"><span class="pre">img/&lt;your_language&gt;/</span></code> フォルダに置きます。英語のオリジナルのスクリーンショットと同じファイル名を使用してください。</p>
+</section>
+</section>
+<section id="documenting-processing-algorithms">
+<h2><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">2.3. </span>プロセシングアルゴリズムのドキュメントを作成する</a><a class="headerlink" href="#documenting-processing-algorithms" title="Link to this heading"></a></h2>
+<p>プロセシングアルゴリズムのドキュメントを書きたいときは、以下のガイドラインを考慮してください。</p>
+<ul>
+<li><p>処理アルゴリズムのヘルプファイルは、QGISユーザーガイドの一部であるので、ユーザーガイドとその他の文書と同じフォーマットを使用します</p></li>
+<li><p>各アルゴリズムのドキュメントは対応する <strong>プロバイダ</strong> フォルダと <strong>グループ</strong> ファイル中に置いてください。アルゴリズム <cite>ボロノイポリゴン</cite> は <cite>QGIS</cite> プロバイダと <cite>vectorgeometry</cite> グループに属します。そのため、説明を追加する正しいファイルは <code class="file docutils literal notranslate"><span class="pre">source/docs/user_manual/processing_algs/qgis/vectorgeometry.rst</span></code> です。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>ガイドを書き始める前に、そのアルゴリズムの説明がないかどうかを確認してください。すでにある場合は、既存の説明を拡張できます。</p>
+</div>
+</li>
+<li><p>各アルゴリズムには、プロバイダ名＋アルゴリズム自身の固有名に対応した <em>アンカー</em> があることが <strong>極めて</strong> 重要です。これは、ヘルプボタンが正しいセクションのヘルプページを開くことを可能にします。アンカーはタイトルの <strong>上</strong> に配置する必要があります。例 （<a class="reference internal" href="#my-anchor"><span class="std std-ref">ラベル／参照</span></a> もご覧ください）:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">_qgisvoronoipolygons</span><span class="p">:</span>
+
+<span class="n">Voronoi</span> <span class="n">polygons</span>
+<span class="o">----------------</span>
+</pre></div>
+</div>
+<p>アルゴリズム名を調べるには、「プロセシング」ツールボックスのアルゴリズム上にマウスを置くだけです。</p>
+</li>
+<li><p>アルゴリズム説明の最初の一文に「このアルゴリズムは、これこれこういうことをします…」という表現は避けてください。次のような、より一般的な表現を使うようにしてください:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Takes</span> <span class="n">a</span> <span class="n">point</span> <span class="n">layer</span> <span class="ow">and</span> <span class="n">generates</span> <span class="n">a</span> <span class="n">polygon</span> <span class="n">layer</span> <span class="n">containing</span> <span class="n">the</span><span class="o">...</span>
+</pre></div>
+</div>
+</li>
+<li><p>アルゴリズムがすることをその名前を繰り返すことで説明するのは避け、また、パラメータの名前をパラメータの説明の中で繰り返さないようにしてください。例えば、アルゴリズムが <code class="docutils literal notranslate"><span class="pre">ボロノイポリゴン</span></code> の場合、<code class="docutils literal notranslate"><span class="pre">入力レイヤ</span></code> を <code class="docutils literal notranslate"><span class="pre">ポリゴンの計算に使用するレイヤ</span></code> と記述することを検討してください。</p></li>
+<li><p>説明中ではアルゴリズムにQGISのデフォルトショートカットがあるか​​、またはインプレース編集をサポートするのかを示します。</p></li>
+<li><p>画像を追加してください！画像は千の言葉に値します！<code class="file docutils literal notranslate"><span class="pre">.png</span></code> 形式を使用し、ドキュメントの一般的なガイドラインに従います（詳細は <a class="reference internal" href="#image"><span class="std std-ref">図と画像</span></a> セクションを参照してください）。画像ファイルは正しいフォルダ、つまり編集中の <code class="file docutils literal notranslate"><span class="pre">.rst</span></code> ファイルの隣にある <code class="file docutils literal notranslate"><span class="pre">img</span></code> フォルダに置いてください。</p></li>
+<li><p>必要に応じて、アルゴリズムに関する追加情報（例：出版物やウェブページ）を提供するリンクを「See Also」セクションに追加します。「 See also」セクションは、本当に見るべきものがある場合にのみ追加してください。グッドプラクティスとして、「See also」セクションは、類似のアルゴリズムへのリンクで埋めることができます。</p></li>
+<li><p>アルゴリズムのパラメータと出力について明確に説明してください。既存のアルゴリズムからヒントを得てください。</p></li>
+<li><p>アルゴリズムオプションの詳細な説明と重複しないようにします。この情報は、パラメータの説明に追加してください。</p></li>
+<li><p>アルゴリズムやパラメータの説明にベクタジオメトリの型に関する情報を追加することは避けてください。その情報はパラメータの説明で利用できます。</p></li>
+<li><p>パラメータのデフォルト値を追加する。例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* - **Number of points**
+  - ``NUMBER_OF_POINTS``
+  - [number]
+
+    Default: 1
+  - Number of points to create
+</pre></div>
+</div>
+</li>
+<li><p>サポートされている入力の <em>型</em> を説明してください。利用できる型がいくつかあり、次から選ぶことができます：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>パラメータ／出力型</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>視覚的な表示</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ポイントベクタレイヤ</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vector:</span> <span class="pre">point</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/mIconPointLayer.png"><img alt="pointLayer" src="../../_images/mIconPointLayer.png" style="width: 1.5em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ラインベクタレイヤ</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vector:</span> <span class="pre">line</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/mIconLineLayer.png"><img alt="lineLayer" src="../../_images/mIconLineLayer.png" style="width: 1.5em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ポリゴンベクタレイヤ</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vector:</span> <span class="pre">polygon</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/mIconPolygonLayer.png"><img alt="polygonLayer" src="../../_images/mIconPolygonLayer.png" style="width: 1.5em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>一般的なベクタレイヤ</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ベクタ:</span> <span class="pre">任意</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ベクタフィールド数値</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tablefield:</span> <span class="pre">numeric</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/mIconFieldFloat.png"><img alt="fieldFloat" src="../../_images/mIconFieldFloat.png" style="width: 1.5em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ベクタフィールド文字列</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tablefield:</span> <span class="pre">string</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/mIconFieldText.png"><img alt="fieldText" src="../../_images/mIconFieldText.png" style="width: 1.5em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ベクタフィールド一般</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tablefield:</span> <span class="pre">any</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ラスタレイヤ</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">raster</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/mIconRasterLayer.png"><img alt="rasterLayer" src="../../_images/mIconRasterLayer.png" style="width: 1.5em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ラスタバンド</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">raster</span> <span class="pre">band</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>HTMLファイル</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">html</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>テーブルレイヤ</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">table</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/mIconTableLayer.png"><img alt="tableLayer" src="../../_images/mIconTableLayer.png" style="width: 1.5em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>式</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">expression</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/mIconExpression.png"><img alt="expression" src="../../_images/mIconExpression.png" style="width: 1.5em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ポイントジオメトリ</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">coordinates</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>領域</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">extent</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CRS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">crs</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>列挙</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">enumeration</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/selectstring.png"><img alt="selectString" src="../../_images/selectstring.png" style="width: 2.5em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>リスト</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>数値</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">number</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/selectnumber.png"><img alt="selectNumber" src="../../_images/selectnumber.png" style="width: 2.8em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>文字列</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p><img alt="inputText" src="../../_images/inputtext.png" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>ブール値</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ブール値</span></code></p></td>
+<td><p><a class="reference internal" href="../../_images/checkbox.png"><img alt="checkbox" src="../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>フォルダパス</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">フォルダ</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ファイル</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">file</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>行列</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">matrix</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>レイヤ</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">layer</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>出力の型は入力の型と同じ</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">same</span> <span class="pre">as</span> <span class="pre">input</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>定義</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">definition</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Point</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">point</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>マルチレイヤ</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">multipleLayers</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>範囲</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">range</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>AuthConfig</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">authconfig</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>メッシュ</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mesh</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>レイアウト</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">layout</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>LayoutItem</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">layoutitem</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>色</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>縮尺</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scale</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>既存の、よく文書化されたアルゴリズムを研究し、有用なレイアウトをすべてコピーします。</p></li>
+<li><p>作業が終わったら、 <a class="reference internal" href="first_contribution.html#step-by-step"><span class="std std-ref">貢献のための一歩一歩</span></a> に記載されているガイドラインに従って、変更をコミットし、Pull Request を作成するだけです。</p></li>
+</ul>
+<p>こちらがレイアウトと説明の助けになる <a class="reference internal" href="../user_manual/processing_algs/qgis/vectoranalysis.html#qgiscountpointsinpolygon"><span class="std std-ref">既存アルゴリズム</span></a> の例です:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. _qgiscountpointsinpolygon:
+
+Count points in polygon
+-----------------------
+Takes a point and a polygon layer and counts the number of points from the
+point layer in each of the polygons of the polygon layer.
+A new polygon layer is generated, with the exact same content as the input
+polygon layer, but containing an additional field with the points count
+corresponding to each polygon.
+
+.. figure:: img/count_points_polygon.png
+  :align: center
+
+  The labels in the polygons show the point count
+
+An optional weight field can be used to assign weights to each point.
+Alternatively, a unique class field can be specified. If both options
+are used, the weight field will take precedence and the unique class field
+will be ignored.
+
+``Default menu``: :menuselection:`Vector --&gt; Analysis Tools`
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Polygons**
+     - ``POLYGONS``
+     - [vector: polygon]
+     - Polygon layer whose features are associated with the count of
+       points they contain
+   * - **Points**
+     - ``POINTS``
+     - [vector: point]
+     - Point layer with features to count
+   * - **Weight field**
+
+       Optional
+     - ``WEIGHT``
+     - [tablefield: numeric]
+     - A field from the point layer.
+       The count generated will be the sum of the weight field of the
+       points contained by the polygon.
+   * - **Class field**
+
+       Optional
+     - ``CLASSFIELD``
+     - [tablefield: any]
+     - Points are classified based on the selected attribute and if
+       several points with the same attribute value are within the
+       polygon, only one of them is counted.
+       The final count of the points in a polygon is, therefore, the
+       count of different classes that are found in it.
+   * - **Count field name**
+     - ``FIELD``
+     - [string]
+
+       Default: &#39;NUMPOINTS&#39;
+     - The name of the field to store the count of points
+   * - **Count**
+     - ``OUTPUT``
+     - [vector: polygon]
+
+       Default: [Create temporary layer]
+     - Specification of the output layer type (temporary, file,
+       GeoPackage or PostGIS table).
+       Encoding can also be specified.
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Count**
+     - ``OUTPUT``
+     - [vector: polygon]
+     - Resulting layer with the attribute table containing the
+       new column with the points count
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="first_contribution.html" class="btn btn-neutral float-left" title="1. 貢献のための一歩一歩" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cookbook_guidelines.html" class="btn btn-neutral float-right" title="3. PyQGISクックブック中でコードを書く" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/documentation_guidelines/writing.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/documentation_guidelines/writing.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/documentation_guidelines/writing.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/documentation_guidelines/writing.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/documentation_guidelines/writing.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/documentation_guidelines/writing.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/documentation_guidelines/writing.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/documentation_guidelines/writing.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/documentation_guidelines/writing.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/documentation_guidelines/writing.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/documentation_guidelines/writing.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/documentation_guidelines/writing.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/documentation_guidelines/writing.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/documentation_guidelines/writing.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/documentation_guidelines/writing.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/documentation_guidelines/writing.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/documentation_guidelines/writing.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/documentation_guidelines/writing.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/documentation_guidelines/writing.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/documentation_guidelines/writing.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/documentation_guidelines/writing.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/documentation_guidelines/writing.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/documentation_guidelines/writing.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/documentation_guidelines/writing.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/documentation_guidelines/writing.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/documentation_guidelines/writing.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/65e3818c0bb27b25e086976318244126" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

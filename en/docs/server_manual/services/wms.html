@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2. Web Map Service (WMS) &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.3. Web Feature Service (WFS)" href="wfs.html" />
+    <link rel="prev" title="3.1. Basics" href="basics.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 3.2. Web Map Service (WMS)">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Server Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../services.html">3. Services</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basics.html">3.1. Basics</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.2. Web Map Service (WMS)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getcapabilities">3.2.1. GetCapabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getmap">3.2.2. GetMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getfeatureinfo">3.2.3. GetFeatureInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getlegendgraphic">3.2.4. GetLegendGraphic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getstyle-s">3.2.5. GetStyle(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#describelayer">3.2.6. DescribeLayer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getprint">3.2.7. GetPrint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getprojectsettings">3.2.8. GetProjectSettings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getschemaextension">3.2.9. GetSchemaExtension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#external-wms-layers">3.2.10. External WMS layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#redlining">3.2.11. Redlining</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wfs.html">3.3. Web Feature Service (WFS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wcs.html">3.4. Web Coverage Service (WCS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmts.html">3.5. Web Map Tile Service (WMTS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ogcapif.html">3.6. OGC API Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../catalog.html">4. Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins.html">5. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config.html">6. Advanced configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development_server.html">7. Development Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containerized_deployment.html">8. Containerized deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html">9. Frequently Asked Question</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS Server Guide/Manual</a></li>
+          <li class="breadcrumb-item"><a href="../services.html"><span class="section-number">3. </span>Services</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2. </span>Web Map Service (WMS)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/server_manual/services/wms.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="basics.html" class="btn btn-neutral float-left" title="3.1. Basics" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wfs.html" class="btn btn-neutral float-right" title="3.3. Web Feature Service (WFS)" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="web-map-service-wms">
+<h1><span class="section-number">3.2. </span>Web Map Service (WMS)<a class="headerlink" href="#web-map-service-wms" title="Link to this heading"></a></h1>
+<p>The <strong>1.1.1</strong> and <strong>1.3.0</strong> WMS standards implemented in QGIS Server provide
+a HTTP interface to request map or legend images generated from a QGIS project.
+A typical WMS request defines the QGIS project to use, the layers to render as
+well as the image format to generate. Basic support is also available for
+<strong>Styled Layer Descriptor (SLD)</strong>.</p>
+<p>Specifications:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://portal.ogc.org/files/?artifact_id=1081&amp;amp;version=1&amp;amp;format=pdf">WMS 1.1.1</a></p></li>
+<li><p><a class="reference external" href="https://portal.ogc.org/files/?artifact_id=14416&amp;format=pdf">WMS 1.3.0</a></p></li>
+<li><p><a class="reference external" href="https://portal.ogc.org/files/?artifact_id=22364&amp;format=pdf">SLD 1.1.0 WMS profile</a></p></li>
+</ul>
+<p>Standard requests provided by QGIS Server:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Request</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getcapabilities"><span class="std std-ref">GetCapabilities</span></a></p></td>
+<td><p>Returns XML metadata with information about the server</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getmap"><span class="std std-ref">GetMap</span></a></p></td>
+<td><p>Returns a map</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getfeatureinfo"><span class="std std-ref">GetFeatureInfo</span></a></p></td>
+<td><p>Retrieves data (geometry and values) for a pixel location</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic"><span class="std std-ref">GetLegendGraphic</span></a></p></td>
+<td><p>Returns legend symbols</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getstyle"><span class="std std-ref">GetStyle(s)</span></a></p></td>
+<td><p>Returns XML document with style description in SLD</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-describelayer"><span class="std std-ref">DescribeLayer</span></a></p></td>
+<td><p>Returns information about WFS and WCS availability respectively for vector and raster layers</p></td>
+</tr>
+</tbody>
+</table>
+<p>Vendor requests provided by QGIS Server:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Request</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getprint"><span class="std std-ref">GetPrint</span></a></p></td>
+<td><p>Returns a QGIS layout</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getprojectsettings"><span class="std std-ref">GetProjectSettings</span></a></p></td>
+<td><p>Returns specific information about QGIS Server</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getschemaextension"><span class="std std-ref">GetSchemaExtension</span></a></p></td>
+<td><p>Returns XML metadata about optional extended capabilities</p></td>
+</tr>
+</tbody>
+</table>
+<section id="getcapabilities">
+<span id="wms-getcapabilities"></span><h2><span class="section-number">3.2.1. </span>GetCapabilities<a class="headerlink" href="#getcapabilities" title="Link to this heading"></a></h2>
+<p>Standard parameters for the <strong>GetCapabilities</strong> request according to the OGC
+WMS 1.1.1 and 1.3.0 specifications:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-service"><span class="std std-ref">SERVICE</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the service (<strong>WMS</strong>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="basics.html#services-basics-request"><span class="std std-ref">REQUEST</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the request (<strong>GetCapabilities</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-version"><span class="std std-ref">VERSION</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Version of the service</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>GetCapabilities</strong> request supports as well the following vendor
+parameters:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-map"><span class="std std-ref">MAP</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>QGIS project file</p></td>
+</tr>
+</tbody>
+</table>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetCapabilities
+</pre></div>
+</div>
+</section>
+<section id="getmap">
+<span id="wms-getmap"></span><h2><span class="section-number">3.2.2. </span>GetMap<a class="headerlink" href="#getmap" title="Link to this heading"></a></h2>
+<p>Standard parameters for the <strong>GetMap</strong> request according to the OGC
+WMS 1.1.1 and 1.3.0 specifications:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-service"><span class="std std-ref">SERVICE</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the service (<strong>WMS</strong>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="basics.html#services-basics-request"><span class="std std-ref">REQUEST</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the request (<strong>GetMap</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-version"><span class="std std-ref">VERSION</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Version of the service</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-layers"><span class="std std-ref">LAYERS</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layers to display</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-styles"><span class="std std-ref">STYLES</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layers’ style</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-srs"><span class="std std-ref">SRS / CRS</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Coordinate reference system</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-bbox"><span class="std std-ref">BBOX</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Map extent</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-width"><span class="std std-ref">WIDTH</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Width of the image in pixels</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-height"><span class="std std-ref">HEIGHT</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Height of the image in pixels</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getmap-format"><span class="std std-ref">FORMAT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Image format</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-transparent"><span class="std std-ref">TRANSPARENT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Transparent background</p></td>
+</tr>
+<tr class="row-odd"><td><p>SLD</p></td>
+<td><p>No</p></td>
+<td><p>URL of an SLD to be used for styling</p></td>
+</tr>
+<tr class="row-even"><td><p>SLD_BODY</p></td>
+<td><p>No</p></td>
+<td><p>In-line SLD (XML) to be used for styling</p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition to the standard ones, QGIS Server supports <a class="reference internal" href="#wms-redlining"><span class="std std-ref">redlining</span></a>, <a class="reference internal" href="#wms-external"><span class="std std-ref">external WMS layers</span></a>
+as well as the following extra parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21.1%" />
+<col style="width: 10.5%" />
+<col style="width: 68.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-map"><span class="std std-ref">MAP</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>QGIS project file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-bgcolor"><span class="std std-ref">BGCOLOR</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Specify the background color</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-dpi"><span class="std std-ref">DPI</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Specify the output resolution</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-imagequality"><span class="std std-ref">IMAGE_QUALITY</span></a></p></td>
+<td><p>No</p></td>
+<td><p>JPEG compression</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-opacities"><span class="std std-ref">OPACITIES</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Opacity for layer or group</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-filter"><span class="std std-ref">FILTER</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Subset of features</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-selection"><span class="std std-ref">SELECTION</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Highlight features</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILE_NAME</p></td>
+<td><p>No</p></td>
+<td><p>File name of the downloaded file</p>
+<p>Only for <code class="docutils literal notranslate"><span class="pre">FORMAT=application/dxf</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getmap-formatoptions"><span class="std std-ref">FORMAT_OPTIONS</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Options of the specified file format</p>
+<p>Only for <code class="docutils literal notranslate"><span class="pre">FORMAT=application/dxf</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-tiled"><span class="std std-ref">TILED</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Working in <em>tiled mode</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">MAP</span><span class="o">=</span>/home/qgis/projects/world.qgs
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>mylayer1,mylayer2,mylayer3
+<span class="p">&amp;</span><span class="nv">STYLES</span><span class="o">=</span>style1,default,style3
+<span class="p">&amp;</span><span class="nv">OPACITIES</span><span class="o">=</span><span class="m">125</span>,200,125
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">400</span>
+<span class="p">&amp;</span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">400</span>
+<span class="p">&amp;</span><span class="nv">FORMAT</span><span class="o">=</span>image/png
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">DPI</span><span class="o">=</span><span class="m">300</span>
+<span class="p">&amp;</span><span class="nv">TILED</span><span class="o">=</span>TRUE
+</pre></div>
+</div>
+<section id="version">
+<span id="wms-version"></span><h3>VERSION<a class="headerlink" href="#version" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the version of the service to use.
+Available values for the <code class="docutils literal notranslate"><span class="pre">VERSION</span></code> parameter are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1.1.1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1.3.0</span></code></p></li>
+</ul>
+<p>According to the version number, slight differences have to be expected
+as explained later for the next parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CRS</span></code> / <code class="docutils literal notranslate"><span class="pre">SRS</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BBOX</span></code></p></li>
+</ul>
+</section>
+<section id="layers">
+<span id="wms-layers"></span><h3>LAYERS<a class="headerlink" href="#layers" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the layers to display on the map.
+Names have to be separated by a comma.</p>
+<p>In addition, QGIS Server introduced some options to select layers by:</p>
+<ul class="simple">
+<li><p>the layer id: the project option allowing to select layers by their id
+is in <span class="menuselection">QGIS Server ► WMS</span> tab of the <span class="menuselection">Project ► Properties…</span> dialog.
+Check the <span class="guilabel">Use layer ids as names</span> checkbox to activate this option.</p></li>
+<li><p>a <a class="reference internal" href="basics.html#services-basics-short-name"><span class="std std-ref">short name</span></a></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>mylayerid1,mylayerid2
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+</section>
+<section id="styles">
+<span id="wms-styles"></span><h3>STYLES<a class="headerlink" href="#styles" title="Link to this heading"></a></h3>
+<p>This parameter can be used to specify a layer’s style for the
+rendering step.
+Styles have to be separated by a comma. The name of the default style
+is <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p>
+</section>
+<section id="srs-crs">
+<span id="wms-srs"></span><h3>SRS / CRS<a class="headerlink" href="#srs-crs" title="Link to this heading"></a></h3>
+<p>This parameter allows to indicate the map output Spatial Reference
+System in WMS <strong>1.1.1</strong> and has to be formed like <code class="docutils literal notranslate"><span class="pre">EPSG:XXXX</span></code>.
+Note that <code class="docutils literal notranslate"><span class="pre">CRS</span></code> is also supported if current version is <strong>1.1.1</strong>.</p>
+<p>For WMS <strong>1.3.0</strong>, <code class="docutils literal notranslate"><span class="pre">CRS</span></code> parameter is preferable but <code class="docutils literal notranslate"><span class="pre">SRS</span></code> is also
+supported.</p>
+<p>Note that if both <code class="docutils literal notranslate"><span class="pre">CRS</span></code> and <code class="docutils literal notranslate"><span class="pre">SRS</span></code> parameters are indicated in the
+request, then it’s the current version indicated in <code class="docutils literal notranslate"><span class="pre">VERSION</span></code>
+parameter which is decisive.</p>
+<p>In the next case, the <code class="docutils literal notranslate"><span class="pre">SRS</span></code> parameter is kept whatever the
+<code class="docutils literal notranslate"><span class="pre">VERSION</span></code> parameter because <code class="docutils literal notranslate"><span class="pre">CRS</span></code> is not indicated:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">SRS</span><span class="o">=</span>EPSG:2854
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+<p>In the next case, the <code class="docutils literal notranslate"><span class="pre">SRS</span></code> parameter is kept instead of <code class="docutils literal notranslate"><span class="pre">CRS</span></code>
+because of the <code class="docutils literal notranslate"><span class="pre">VERSION</span></code> parameter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.1.1
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">SRS</span><span class="o">=</span>EPSG:2854
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+<p>In the next case, the <code class="docutils literal notranslate"><span class="pre">CRS</span></code> parameter is kept instead of <code class="docutils literal notranslate"><span class="pre">SRS</span></code>
+because of the <code class="docutils literal notranslate"><span class="pre">VERSION</span></code> parameter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">SRS</span><span class="o">=</span>EPSG:2854
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+</section>
+<section id="bbox">
+<span id="wms-bbox"></span><h3>BBOX<a class="headerlink" href="#bbox" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the map extent with units according
+to the current CRS. Coordinates have to be separated by a comma.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">BBOX</span></code> parameter is formed like <code class="docutils literal notranslate"><span class="pre">min_a,min_b,max_a,max_b</span></code> but <code class="docutils literal notranslate"><span class="pre">a</span></code> and
+<code class="docutils literal notranslate"><span class="pre">b</span></code> axis definition is different according to the current <code class="docutils literal notranslate"><span class="pre">VERSION</span></code>
+parameter:</p>
+<ul class="simple">
+<li><p>in WMS <strong>1.1.1</strong>, the axis ordering is always east/north</p></li>
+<li><p>in WMS <strong>1.3.0</strong>, the axis ordering depends on the CRS authority</p></li>
+</ul>
+<p>For example in case of <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> and WMS <strong>1.1.1</strong>, <code class="docutils literal notranslate"><span class="pre">a</span></code> is the longitude
+(east) and <code class="docutils literal notranslate"><span class="pre">b</span></code> the latitude (north), leading to a request like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.1.1
+<span class="p">&amp;</span><span class="nv">SRS</span><span class="o">=</span>epsg:4326
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span>-180,-90,180,90
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+<p>But in case of WMS <strong>1.3.0</strong>, the axis ordering defined in the EPSG database is
+north/east so <code class="docutils literal notranslate"><span class="pre">a</span></code> is the latitude and <code class="docutils literal notranslate"><span class="pre">b</span></code> the longitude:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>epsg:4326
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span>-90,-180,90,180
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+</section>
+<section id="width">
+<span id="wms-width"></span><h3>WIDTH<a class="headerlink" href="#width" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the width in pixels of the output
+image.</p>
+</section>
+<section id="height">
+<span id="wms-height"></span><h3>HEIGHT<a class="headerlink" href="#height" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the height in pixels of the output
+image.</p>
+</section>
+<section id="format">
+<span id="wms-getmap-format"></span><h3>FORMAT<a class="headerlink" href="#format" title="Link to this heading"></a></h3>
+<p>This parameter may be used to specify the format of map image.
+Available values are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">jpg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jpeg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/jpeg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/png;</span> <span class="pre">mode=1bit</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/png;</span> <span class="pre">mode=8bit</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/png;</span> <span class="pre">mode=16bit</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/webp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">application/dxf</span></code>: only layers that have read access in the WFS service are
+exported in the DXF format</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">FORMAT</span><span class="o">=</span>application/dxf
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>Haltungen,Normschacht,Spezialbauwerke
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG%3A21781
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">696136</span>.28844801,245797.12108743,696318.91114315,245939.25832905
+<span class="p">&amp;</span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">1042</span>
+<span class="p">&amp;</span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">811</span>
+<span class="p">&amp;</span><span class="nv">FORMAT_OPTIONS</span><span class="o">=</span>MODE:SYMBOLLAYERSYMBOLOGY<span class="p">;</span>SCALE:250
+<span class="p">&amp;</span><span class="nv">FILE_NAME</span><span class="o">=</span>plan.dxf
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="transparent">
+<span id="wms-transparent"></span><h3>TRANSPARENT<a class="headerlink" href="#transparent" title="Link to this heading"></a></h3>
+<p>This boolean parameter can be used to specify the background
+transparency.
+Available values are (not case sensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code></p></li>
+</ul>
+<p>However, this parameter is ignored if the format of the image indicated with
+<code class="docutils literal notranslate"><span class="pre">FORMAT</span></code> is different from PNG.</p>
+</section>
+<section id="bgcolor">
+<span id="wms-bgcolor"></span><h3>BGCOLOR<a class="headerlink" href="#bgcolor" title="Link to this heading"></a></h3>
+<p>This parameter allows to indicate a background color for the map image.
+However it cannot be combined with <code class="docutils literal notranslate"><span class="pre">TRANSPARENT</span></code> parameter in case of
+PNG images (transparency takes priority). The colour may be literal or
+in hexadecimal notation.</p>
+<p>URL example with the literal notation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">BGCOLOR</span><span class="o">=</span>green
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+<p>URL example with the hexadecimal notation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">BGCOLOR</span><span class="o">=</span>0x00FF00
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+</section>
+<section id="dpi">
+<span id="wms-dpi"></span><h3>DPI<a class="headerlink" href="#dpi" title="Link to this heading"></a></h3>
+<p>This parameter can be used to specify the requested output resolution.</p>
+</section>
+<section id="image-quality">
+<span id="wms-imagequality"></span><h3>IMAGE_QUALITY<a class="headerlink" href="#image-quality" title="Link to this heading"></a></h3>
+<p>This parameter is only used for JPEG images. By default, the JPEG
+compression is <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+<p>You can change the default per QGIS project in the
+<span class="menuselection">OWS Server ► WMS capabilities</span> menu of the
+<span class="menuselection">Project ► Properties…</span> dialog.
+If you want to override it in a <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> request you can do it using
+the <code class="docutils literal notranslate"><span class="pre">IMAGE_QUALITY</span></code> parameter.</p>
+</section>
+<section id="opacities">
+<span id="wms-opacities"></span><h3>OPACITIES<a class="headerlink" href="#opacities" title="Link to this heading"></a></h3>
+<p>Comma separated list of opacity values.
+Opacity can be set on layer or group level. Allowed values range from
+<code class="docutils literal notranslate"><span class="pre">0</span></code> (fully transparent) to <code class="docutils literal notranslate"><span class="pre">255</span></code> (fully opaque).</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">400</span>
+<span class="p">&amp;</span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">200</span>
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries,places
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">42</span>,-6,52,15
+<span class="p">&amp;</span><span class="nv">OPACITIES</span><span class="o">=</span><span class="m">255</span>,0
+</pre></div>
+</div>
+<figure class="align-center" id="id7">
+<img alt="../../../_images/wms_getmap_opacities.png" src="../../../_images/wms_getmap_opacities.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">To the left <code class="docutils literal notranslate"><span class="pre">OPACITIES=255,0</span></code> and to the right <code class="docutils literal notranslate"><span class="pre">OPACITIES=255,255</span></code></span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="filter">
+<span id="wms-filter"></span><h3>FILTER<a class="headerlink" href="#filter" title="Link to this heading"></a></h3>
+<p>A subset of layers can be selected with the <code class="docutils literal notranslate"><span class="pre">FILTER</span></code> parameter.
+The syntax is basically the same as for the QGIS subset string.
+However, there are some restrictions to avoid SQL injections into
+databases via QGIS Server.
+If a dangerous string is found in the parameter, QGIS Server will
+return the next error:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;ServiceExceptionReport&gt;
+<span class="w">  </span>&lt;ServiceException<span class="w"> </span><span class="nv">code</span><span class="o">=</span><span class="s2">&quot;Security&quot;</span>&gt;The<span class="w"> </span>filter<span class="w"> </span>string<span class="w"> </span>XXXXXXXXX<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>rejected<span class="w"> </span>because<span class="w"> </span>of<span class="w"> </span>security<span class="w"> </span>reasons.
+<span class="w">  </span>Note:<span class="w"> </span>Text<span class="w"> </span>strings<span class="w"> </span>have<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>enclosed<span class="w"> </span><span class="k">in</span><span class="w"> </span>single<span class="w"> </span>or<span class="w"> </span>double<span class="w"> </span>quotes.<span class="w"> </span>A<span class="w"> </span>space<span class="w"> </span>between<span class="w"> </span>each<span class="w"> </span>word<span class="w"> </span>/<span class="w"> </span>special<span class="w"> </span>character<span class="w"> </span>is<span class="w"> </span>mandatory.
+<span class="w">  </span>Allowed<span class="w"> </span>Keywords<span class="w"> </span>and<span class="w"> </span>special<span class="w"> </span>characters<span class="w"> </span>are<span class="w"> </span>IS,NOT,NULL,AND,OR,IN,<span class="o">=</span>,&lt;,<span class="o">=</span>&lt;,&gt;,&gt;<span class="o">=</span>,!<span class="o">=</span>,<span class="s1">&#39;,&#39;</span>,<span class="o">(</span>,<span class="o">)</span>,DMETAPHONE,SOUNDEX.
+<span class="w">  </span>Not<span class="w"> </span>allowed<span class="w"> </span>are<span class="w"> </span>semicolons<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>filter<span class="w"> </span>expression.&lt;/ServiceException&gt;
+&lt;/ServiceExceptionReport&gt;
+</pre></div>
+</div>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">400</span>
+<span class="p">&amp;</span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">300</span>
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">41</span>,-6,52,10
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries_shapeburst,countries,places
+<span class="p">&amp;</span><span class="nv">FILTER</span><span class="o">=</span>countries_shapeburst,countries:<span class="s2">&quot;name&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;France&#39;</span><span class="p">;</span>places:<span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Paris&#39;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id8">
+<img alt="../../../_images/wms_getmap_filter.png" src="../../../_images/wms_getmap_filter.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Server response to a GetMap request with FILTER parameter</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In this example, the same filter <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span> <span class="pre">=</span> <span class="pre">'France'</span></code> is applied to layers
+<code class="docutils literal notranslate"><span class="pre">countries</span></code> and <code class="docutils literal notranslate"><span class="pre">countries_shapeburst</span></code>, while the filter <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span> <span class="pre">=</span>
+<span class="pre">'Paris'</span></code> is only applied to <code class="docutils literal notranslate"><span class="pre">places</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible to make attribute searches via GetFeatureInfo and omit
+the X/Y parameter if a FILTER is there. QGIS Server then returns info
+about the matching features and generates a combined bounding box in
+the XML output.</p>
+</div>
+</section>
+<section id="selection">
+<span id="wms-selection"></span><h3>SELECTION<a class="headerlink" href="#selection" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">SELECTION</span></code> parameter can highlight features from one or more
+layers.
+Vector features can be selected by passing comma separated lists with
+feature ids.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>mylayer1,mylayer2
+<span class="p">&amp;</span><span class="nv">SELECTION</span><span class="o">=</span>mylayer1:3,6,9<span class="p">;</span>mylayer2:1,5,6
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+<p>The following image presents the response from a GetMap request using
+the <code class="docutils literal notranslate"><span class="pre">SELECTION</span></code> option e.g.
+<code class="docutils literal notranslate"><span class="pre">http://myserver.com/...&amp;SELECTION=countries:171,65</span></code>.</p>
+<p>As those features id’s correspond in the source dataset to <strong>France</strong>
+and <strong>Romania</strong> they’re highlighted in yellow.</p>
+<figure class="align-center" id="id9">
+<span id="figure-server-selection"></span><img alt="../../../_images/server_selection_parameter.png" src="../../../_images/server_selection_parameter.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Server response to a GetMap request with SELECTION parameter</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="format-options">
+<span id="wms-getmap-formatoptions"></span><h3>FORMAT_OPTIONS<a class="headerlink" href="#format-options" title="Link to this heading"></a></h3>
+<p>This parameter can be used to specify options for the selected format.
+Only for <code class="docutils literal notranslate"><span class="pre">FORMAT=application/dxf</span></code> in GetMap request.
+Takes a list of key:value pairs separated by semicolon:</p>
+<ul class="simple">
+<li><p>SCALE: to be used for symbology rules, filters and styles (not
+actual scaling of the data - data remains in the original scale).</p></li>
+<li><p>MODE: corresponds to the export options offered in the QGIS
+Desktop DXF export dialog. Possible values are <code class="docutils literal notranslate"><span class="pre">NOSYMBOLOGY</span></code>,
+<code class="docutils literal notranslate"><span class="pre">FEATURESYMBOLOGY</span></code> and <code class="docutils literal notranslate"><span class="pre">SYMBOLLAYERSYMBOLOGY</span></code>.</p></li>
+<li><p>LAYERATTRIBUTES: specify a field or in case of many layers a comma separated list of fields
+that contains values for DXF layer names - if not specified, the original QGIS layer names are used.</p></li>
+<li><p>USE_TITLE_AS_LAYERNAME: if enabled, the title of the layer will
+be used as layer name.</p></li>
+<li><p>CODEC: specify a codec to be used for encoding. Default is <code class="docutils literal notranslate"><span class="pre">ISO-8859-1</span></code>
+check the QGIS desktop DXF export dialog for valid values.</p></li>
+<li><p>NO_MTEXT: Use TEXT instead of MTEXT for labels.</p></li>
+<li><p>FORCE_2D: Force 2D output. This is required for polyline width.</p></li>
+</ul>
+</section>
+<section id="tiled">
+<span id="wms-tiled"></span><h3>TILED<a class="headerlink" href="#tiled" title="Link to this heading"></a></h3>
+<p>For performance reasons, QGIS Server can be used in tiled mode.
+In this mode, the client requests several small fixed size tiles, and assembles
+them to form the whole map. Doing this, symbols at or near the
+boundary between two tiles may appeared cut, because they are only present in
+one of the tile.</p>
+<p>Set the <code class="docutils literal notranslate"><span class="pre">TILED</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> to tell QGIS Server to work in
+<em>tiled</em> mode, and to apply the <em>Tile buffer</em> configured in the QGIS
+project (see <a class="reference internal" href="../getting_started.html#creatingwmsfromproject"><span class="std std-ref">Configure your project</span></a>).</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">TILED</span></code> is <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> and when a non-zero Tile buffer is
+configured in the QGIS project, features outside the tile extent are
+drawn to avoid cut symbols at tile boundaries.</p>
+<p><code class="docutils literal notranslate"><span class="pre">TILED</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.</p>
+</section>
+</section>
+<section id="getfeatureinfo">
+<span id="wms-getfeatureinfo"></span><h2><span class="section-number">3.2.3. </span>GetFeatureInfo<a class="headerlink" href="#getfeatureinfo" title="Link to this heading"></a></h2>
+<p>Standard parameters for the <strong>GetFeatureInfo</strong> request according to
+the OGC WMS 1.1.1 and 1.3.0 specifications:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-service"><span class="std std-ref">SERVICE</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the service (<strong>WMS</strong>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="basics.html#services-basics-request"><span class="std std-ref">REQUEST</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the request (<strong>GetFeatureInfo</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-version"><span class="std std-ref">VERSION</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Version of the service</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-querylayers"><span class="std std-ref">QUERY_LAYERS</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Layers to query</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-layers"><span class="std std-ref">LAYERS</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Layers to display (identical to <cite>QUERY_LAYERS</cite>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-styles"><span class="std std-ref">STYLES</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layers’ style</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-srs"><span class="std std-ref">SRS / CRS</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Coordinate reference system</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-bbox"><span class="std std-ref">BBOX</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Map extent</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-width"><span class="std std-ref">WIDTH</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Width of the image in pixels</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-height"><span class="std std-ref">HEIGHT</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Height of the image in pixels</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-transparent"><span class="std std-ref">TRANSPARENT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Transparent background</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-infoformat"><span class="std std-ref">INFO_FORMAT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Output format</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-featurecount"><span class="std std-ref">FEATURE_COUNT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Maximum number of features to return</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-i"><span class="std std-ref">I</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Pixel column of the point to query</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-x"><span class="std std-ref">X</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Same as <cite>I</cite> parameter, but in WMS 1.1.1</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-j"><span class="std std-ref">J</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Pixel row of the point to query</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-y"><span class="std std-ref">Y</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Same as <cite>J</cite> parameter, but in WMS 1.1.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>WMS_PRECISION</p></td>
+<td><p>No</p></td>
+<td><p>The precision (number of digits) to be used
+when returning geometry (see <a class="reference internal" href="../getting_started.html#addgeometrytofeatureresponse"><span class="std std-ref">how to add geometry to feature response</span></a>).
+The default value is <code class="docutils literal notranslate"><span class="pre">-1</span></code> meaning that the precision defined in the project is used.</p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition to the standard ones, QGIS Server supports the following
+extra parameters:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-map"><span class="std std-ref">MAP</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>QGIS project file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-filter"><span class="std std-ref">FILTER</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Subset of features</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-fipointtolerance"><span class="std std-ref">FI_POINT_TOLERANCE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Tolerance in pixels for point layers</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-filinetolerance"><span class="std std-ref">FI_LINE_TOLERANCE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Tolerance in pixels for line layers</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-fipolygontolerance"><span class="std std-ref">FI_POLYGON_TOLERANCE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Tolerance in pixels for polygon layers</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-filtergeom"><span class="std std-ref">FILTER_GEOM</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Geometry filtering</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-withdisplayname"><span class="std std-ref">WITH_DISPLAY_NAME</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Add the feature display name to the output</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-withmaptip"><span class="std std-ref">WITH_MAPTIP</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Add map tips to the output</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-withgeometry"><span class="std std-ref">WITH_GEOMETRY</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Add geometry to the output</p></td>
+</tr>
+</tbody>
+</table>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">MAP</span><span class="o">=</span>/home/qgis/projects/world.qgs
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>mylayer1,mylayer2,mylayer3
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">400</span>
+<span class="p">&amp;</span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">400</span>
+<span class="p">&amp;</span><span class="nv">INFO_FORMAT</span><span class="o">=</span>text/xml
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">QUERY_LAYERS</span><span class="o">=</span>mylayer1
+<span class="p">&amp;</span><span class="nv">FEATURE_COUNT</span><span class="o">=</span><span class="m">3</span>
+<span class="p">&amp;</span><span class="nv">I</span><span class="o">=</span><span class="m">250</span>
+<span class="p">&amp;</span><span class="nv">J</span><span class="o">=</span><span class="m">250</span>
+</pre></div>
+</div>
+<section id="info-format">
+<span id="wms-infoformat"></span><h3>INFO_FORMAT<a class="headerlink" href="#info-format" title="Link to this heading"></a></h3>
+<p>This parameter may be used to specify the format of the result.
+Available values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">text/xml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text/html</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text/plain</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">application/vnd.ogc.gml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">application/json</span></code></p></li>
+</ul>
+</section>
+<section id="query-layers">
+<span id="wms-querylayers"></span><h3>QUERY_LAYERS<a class="headerlink" href="#query-layers" title="Link to this heading"></a></h3>
+<p>This parameter specifies the layers to display on the map.
+Names are separated by a comma.</p>
+<p>In addition, QGIS Server introduces options to select layers by:</p>
+<ul class="simple">
+<li><p>short name</p></li>
+<li><p>layer id</p></li>
+</ul>
+<p>See the <code class="docutils literal notranslate"><span class="pre">LAYERS</span></code> parameter defined in
+<a class="reference internal" href="#wms-layers"><span class="std std-ref">GetMap</span></a> for more information.</p>
+</section>
+<section id="feature-count">
+<span id="wms-featurecount"></span><h3>FEATURE_COUNT<a class="headerlink" href="#feature-count" title="Link to this heading"></a></h3>
+<p>This parameter specifies the maximum number of features per layer to
+return.
+For example if <code class="docutils literal notranslate"><span class="pre">QUERY_LAYERS</span></code> is set to <code class="docutils literal notranslate"><span class="pre">layer1,layer2</span></code> and
+<code class="docutils literal notranslate"><span class="pre">FEATURE_COUNT</span></code> is set to <code class="docutils literal notranslate"><span class="pre">3</span></code> then a maximum of 3 features from
+layer1 will be returned.
+Likewise a maximum of 3 features from layer2 will be returned.</p>
+<p>By default, only 1 feature per layer is returned.</p>
+</section>
+<section id="i">
+<span id="wms-i"></span><h3>I<a class="headerlink" href="#i" title="Link to this heading"></a></h3>
+<p>This parameter, defined in WMS 1.3.0, allows you to specify the pixel
+column of the query point.</p>
+</section>
+<section id="x">
+<span id="wms-x"></span><h3>X<a class="headerlink" href="#x" title="Link to this heading"></a></h3>
+<p>Same parameter as <code class="docutils literal notranslate"><span class="pre">I</span></code>, but defined in WMS 1.1.1.</p>
+</section>
+<section id="j">
+<span id="wms-j"></span><h3>J<a class="headerlink" href="#j" title="Link to this heading"></a></h3>
+<p>This parameter, defined in WMS 1.3.0, allows you to specify the pixel
+row of the query point.</p>
+</section>
+<section id="y">
+<span id="wms-y"></span><h3>Y<a class="headerlink" href="#y" title="Link to this heading"></a></h3>
+<p>Same parameter as <code class="docutils literal notranslate"><span class="pre">J</span></code>, but defined in WMS 1.1.1.</p>
+</section>
+<section id="fi-point-tolerance">
+<span id="wms-fipointtolerance"></span><h3>FI_POINT_TOLERANCE<a class="headerlink" href="#fi-point-tolerance" title="Link to this heading"></a></h3>
+<p>This parameter specifies the tolerance in pixels for point layers.</p>
+</section>
+<section id="fi-line-tolerance">
+<span id="wms-filinetolerance"></span><h3>FI_LINE_TOLERANCE<a class="headerlink" href="#fi-line-tolerance" title="Link to this heading"></a></h3>
+<p>This parameter specifies the tolerance in pixels for line layers.</p>
+</section>
+<section id="fi-polygon-tolerance">
+<span id="wms-fipolygontolerance"></span><h3>FI_POLYGON_TOLERANCE<a class="headerlink" href="#fi-polygon-tolerance" title="Link to this heading"></a></h3>
+<p>This parameter specifies the tolerance in pixels for polygon layers.</p>
+</section>
+<section id="filter-geom">
+<span id="wms-filtergeom"></span><h3>FILTER_GEOM<a class="headerlink" href="#filter-geom" title="Link to this heading"></a></h3>
+<p>This parameter specifies a WKT geometry with which features have to
+intersect.</p>
+</section>
+<section id="with-display-name">
+<span id="wms-withdisplayname"></span><h3>WITH_DISPLAY_NAME<a class="headerlink" href="#with-display-name" title="Link to this heading"></a></h3>
+<p>This parameter specifies whether to add feature display name to the output.</p>
+<p>Available values are (not case sensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code></p></li>
+</ul>
+</section>
+<section id="with-maptip">
+<span id="wms-withmaptip"></span><h3>WITH_MAPTIP<a class="headerlink" href="#with-maptip" title="Link to this heading"></a></h3>
+<p>This parameter specifies whether to add map tips to the output.</p>
+<p>Available values are (not case sensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code></p></li>
+</ul>
+</section>
+<section id="with-geometry">
+<span id="wms-withgeometry"></span><h3>WITH_GEOMETRY<a class="headerlink" href="#with-geometry" title="Link to this heading"></a></h3>
+<p>This parameter specifies whether to add geometries to the output. To use
+this feature you must first enable the <span class="guilabel">Add geometry to feature response</span>
+option in the QGIS project. See <a class="reference internal" href="../getting_started.html#creatingwmsfromproject"><span class="std std-ref">Configure your project</span></a>.</p>
+<p>Available values are (not case sensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="getlegendgraphic">
+<span id="wms-getlegendgraphic"></span><h2><span class="section-number">3.2.4. </span>GetLegendGraphic<a class="headerlink" href="#getlegendgraphic" title="Link to this heading"></a></h2>
+<p>Standard parameters for the <strong>GetLegendGraphic</strong> request according to the OGC
+WMS 1.1.1 and 1.3.0 specifications:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-service"><span class="std std-ref">SERVICE</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the service (<strong>WMS</strong>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="basics.html#services-basics-request"><span class="std std-ref">REQUEST</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the request (<strong>GetLegendGraphic</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-version"><span class="std std-ref">VERSION</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Version of the service</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-layers"><span class="std std-ref">LAYERS</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Layers to display</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-styles"><span class="std std-ref">STYLES</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layers’ style</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-srs"><span class="std std-ref">SRS / CRS</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Coordinate reference system</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-bbox"><span class="std std-ref">BBOX</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Map extent</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-width"><span class="std std-ref">WIDTH</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Width of the image in pixels</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-height"><span class="std std-ref">HEIGHT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Height of the image in pixels</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-format"><span class="std std-ref">FORMAT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Legend format</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-transparent"><span class="std std-ref">TRANSPARENT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Transparent background</p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition to the standard ones, QGIS Server supports extra parameters to
+change the size of the legend elements or the font properties for layer titles
+and item labels:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-map"><span class="std std-ref">MAP</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>QGIS project file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-srcwidth"><span class="std std-ref">SRCWIDTH</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Map width</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-srcheight"><span class="std std-ref">SRCHEIGHT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Map height</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-showfeaturecount"><span class="std std-ref">SHOWFEATURECOUNT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Add feature count of features</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-rule"><span class="std std-ref">RULE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Rule symbol to render</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-rulelabel"><span class="std std-ref">RULELABEL</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Item labels rendering</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-boxspace"><span class="std std-ref">BOXSPACE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Space between legend frame and content (mm)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-layerspace"><span class="std std-ref">LAYERSPACE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Vertical space between layers (mm)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-layertitlespace"><span class="std std-ref">LAYERTITLESPACE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Vertical space between layer title and items (mm)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-symbolspace"><span class="std std-ref">SYMBOLSPACE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Vertical space between symbol and items (mm)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-iconlabelspace"><span class="std std-ref">ICONLABELSPACE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Horizontal space between symbol and label (mm)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-symbolwidth"><span class="std std-ref">SYMBOLWIDTH</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Width of the symbol preview (mm)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-symbolheight"><span class="std std-ref">SYMBOLHEIGHT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Height of the symbol preview (mm)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-layertitle"><span class="std std-ref">LAYERTITLE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layer title rendering</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-layerfontfamily"><span class="std std-ref">LAYERFONTFAMILY</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layer font family</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-layerfontbold"><span class="std std-ref">LAYERFONTBOLD</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layer title bold rendering</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-layerfontsize"><span class="std std-ref">LAYERFONTSIZE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layer title font size (pt)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-layerfontitalic"><span class="std std-ref">LAYERFONTITALIC</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layer title italic rendering</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-layerfontcolor"><span class="std std-ref">LAYERFONTCOLOR</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layer title color</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-itemfontfamily"><span class="std std-ref">ITEMFONTFAMILY</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Item font family</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-itemfontbold"><span class="std std-ref">ITEMFONTBOLD</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Item label bold rendering</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-itemfontsize"><span class="std std-ref">ITEMFONTSIZE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Item label font size (pt)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-itemfontitalic"><span class="std std-ref">ITEMFONTITALIC</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Item label italic rendering</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getlegendgraphic-itemfontcolor"><span class="std std-ref">ITEMFONTCOLOR</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Item label color</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getlegendgraphic-addlayergroups"><span class="std std-ref">ADDLAYERGROUPS</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Adds the layer groups to JSON output</p></td>
+</tr>
+</tbody>
+</table>
+<section id="wms-getlegendgraphic-bbox">
+<span id="id1"></span><h3>BBOX<a class="headerlink" href="#wms-getlegendgraphic-bbox" title="Link to this heading"></a></h3>
+<p>This parameter can be used to specify the geographical area for which the
+legend should be built (its format is described <a class="reference internal" href="#wms-bbox"><span class="std std-ref">here</span></a>) but
+cannot be combined with the <code class="docutils literal notranslate"><span class="pre">RULE</span></code> parameter. The <code class="docutils literal notranslate"><span class="pre">SRS</span></code>/<code class="docutils literal notranslate"><span class="pre">CRS</span></code> parameter
+becomes mandatory when using the <code class="docutils literal notranslate"><span class="pre">BBOX</span></code> parameter.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries,airports
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When the <code class="docutils literal notranslate"><span class="pre">BBOX</span></code> parameter is defined, the legend is referred to as a
+<em>content based legend</em>.</p>
+</div>
+</section>
+<section id="wms-getlegendgraphic-width">
+<span id="id2"></span><h3>WIDTH<a class="headerlink" href="#wms-getlegendgraphic-width" title="Link to this heading"></a></h3>
+<p>This parameter is not used by default but becomes mandatory when the <code class="docutils literal notranslate"><span class="pre">RULE</span></code>
+parameter is set. In this case it allows to specify the width in pixels of the
+output image.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>getlegendgraphic
+<span class="p">&amp;</span><span class="nv">LAYER</span><span class="o">=</span>testlayer%20%C3%A8%C3%A9
+<span class="p">&amp;</span><span class="nv">RULE</span><span class="o">=</span>rule1
+<span class="p">&amp;</span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">30</span>
+<span class="p">&amp;</span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">30</span>
+</pre></div>
+</div>
+</section>
+<section id="wms-getlegendgraphic-height">
+<span id="id3"></span><h3>HEIGHT<a class="headerlink" href="#wms-getlegendgraphic-height" title="Link to this heading"></a></h3>
+<p>This parameter is not used by default but becomes mandatory when the <code class="docutils literal notranslate"><span class="pre">RULE</span></code>
+parameter is set. In this case it allows to specify the height in pixels of the
+output image.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYER</span><span class="o">=</span>testlayer%20%C3%A8%C3%A9
+<span class="p">&amp;</span><span class="nv">RULE</span><span class="o">=</span>rule1
+<span class="p">&amp;</span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">30</span>
+<span class="p">&amp;</span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">30</span>
+</pre></div>
+</div>
+</section>
+<section id="wms-getlegendgraphic-format">
+<span id="id4"></span><h3>FORMAT<a class="headerlink" href="#wms-getlegendgraphic-format" title="Link to this heading"></a></h3>
+<p>This parameter may be used to specify the format of legend image. Available
+values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image/jpeg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">application/json</span></code></p></li>
+</ul>
+<p>For JSON, symbols are encoded with Base64 and most other options related to
+layout or fonts are not taken into account because the legend must be built on
+the client side. The <code class="docutils literal notranslate"><span class="pre">RULE</span></code> parameter cannot be combined with this format.</p>
+<p>URL example with the corresponding JSON output:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS<span class="p">&amp;</span>
+<span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic<span class="p">&amp;</span>
+<span class="nv">LAYERS</span><span class="o">=</span>airports<span class="p">&amp;</span>
+<span class="nv">FORMAT</span><span class="o">=</span>application/json
+</pre></div>
+</div>
+<p>And the corresponding JSON output:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;nodes&quot;</span><span class="p">:[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="s2">&quot;&lt;base64 icon&gt;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;airports&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;layer&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="srcwidth">
+<span id="wms-getlegendgraphic-srcwidth"></span><h3>SRCWIDTH<a class="headerlink" href="#srcwidth" title="Link to this heading"></a></h3>
+<p>This parameter may de defined when the <code class="docutils literal notranslate"><span class="pre">RULE</span></code> parameter is set. In this case,
+the <code class="docutils literal notranslate"><span class="pre">SRCWIDTH</span></code> value is forwarded to the underlying <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> request as the
+<code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> parameter while the <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">GetLegendGraphic</span></code> is
+used for the image legend size.</p>
+</section>
+<section id="srcheight">
+<span id="wms-getlegendgraphic-srcheight"></span><h3>SRCHEIGHT<a class="headerlink" href="#srcheight" title="Link to this heading"></a></h3>
+<p>This parameter may de defined when the <code class="docutils literal notranslate"><span class="pre">RULE</span></code> parameter is set. In this case,
+the <code class="docutils literal notranslate"><span class="pre">SRCHEIGHT</span></code> value is forwarded to the underlying <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> request as
+the <code class="docutils literal notranslate"><span class="pre">HEIGHT</span></code> parameter while the <code class="docutils literal notranslate"><span class="pre">HEIGHT</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">GetLegendGraphic</span></code>
+is used for the image legend size.</p>
+</section>
+<section id="showfeaturecount">
+<span id="wms-getlegendgraphic-showfeaturecount"></span><h3>SHOWFEATURECOUNT<a class="headerlink" href="#showfeaturecount" title="Link to this heading"></a></h3>
+<p>This parameter can be used to activate feature count in the legend. Available
+values are (not case sensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code></p></li>
+</ul>
+<p>For example:</p>
+<figure class="align-center">
+<img alt="../../../_images/getfeaturecount_legend.png" src="../../../_images/getfeaturecount_legend.png" />
+</figure>
+</section>
+<section id="rule">
+<span id="wms-getlegendgraphic-rule"></span><h3>RULE<a class="headerlink" href="#rule" title="Link to this heading"></a></h3>
+<p>This parameter is available on layers with <span class="guilabel">Rule-based</span> rendering and
+allows to build a legend with only the named rule symbol. It cannot be combined
+with <code class="docutils literal notranslate"><span class="pre">BBOX</span></code> parameter nor the JSON format. <code class="docutils literal notranslate"><span class="pre">HEIGHT</span></code> and <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> must be
+specified.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>mylayer,
+<span class="p">&amp;</span><span class="nv">RULE</span><span class="o">=</span>myrulename,
+<span class="p">&amp;</span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">20</span>,
+<span class="p">&amp;</span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">20</span>
+</pre></div>
+</div>
+</section>
+<section id="rulelabel">
+<span id="wms-getlegendgraphic-rulelabel"></span><h3>RULELABEL<a class="headerlink" href="#rulelabel" title="Link to this heading"></a></h3>
+<p>This parameter allows to control the item label rendering. Available values are
+(not case sensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: display item label</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: hide item label</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AUTO</span></code>: hide item label for layers with <span class="guilabel">Single symbol</span> rendering</p></li>
+</ul>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries,airports
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">RULELABEL</span><span class="o">=</span>AUTO
+</pre></div>
+</div>
+<figure class="align-center" id="id10">
+<img alt="../../../_images/wms_getlegendgraphic_rulelabel.png" src="../../../_images/wms_getlegendgraphic_rulelabel.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Legend rendering without label for single symbol layers</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="boxspace">
+<span id="wms-getlegendgraphic-boxspace"></span><h3>BOXSPACE<a class="headerlink" href="#boxspace" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the space between legend frame and content in
+millimeters. By default, the space value is <code class="docutils literal notranslate"><span class="pre">2</span></code> mm.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>airports
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">BOXSPACE</span><span class="o">=</span><span class="m">0</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id11">
+<img alt="../../../_images/wms_getlegendgraphic_boxspace.png" src="../../../_images/wms_getlegendgraphic_boxspace.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.6 </span><span class="caption-text">To the left <code class="docutils literal notranslate"><span class="pre">BOXSPACE=0</span></code> and to the right <code class="docutils literal notranslate"><span class="pre">BOXSPACE=15</span></code></span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="layerspace">
+<span id="wms-getlegendgraphic-layerspace"></span><h3>LAYERSPACE<a class="headerlink" href="#layerspace" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the vertical space between layers in
+millimeters. By default, the space value is <code class="docutils literal notranslate"><span class="pre">3</span></code> mm.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>airports,places
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">LAYERSPACE</span><span class="o">=</span><span class="m">0</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id12">
+<img alt="../../../_images/wms_getlegendgraphic_layerspace.png" src="../../../_images/wms_getlegendgraphic_layerspace.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.7 </span><span class="caption-text">To the left <code class="docutils literal notranslate"><span class="pre">LAYERSPACE=0</span></code> and to the right <code class="docutils literal notranslate"><span class="pre">LAYERSPACE=10</span></code></span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="layertitlespace">
+<span id="wms-getlegendgraphic-layertitlespace"></span><h3>LAYERTITLESPACE<a class="headerlink" href="#layertitlespace" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the vertical space between layer title and
+items following in millimeters. By default the space value is <code class="docutils literal notranslate"><span class="pre">3</span></code> mm.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>airports,places
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">LAYERTITLESPACE</span><span class="o">=</span><span class="m">0</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id13">
+<img alt="../../../_images/wms_getlegendgraphic_layertitlespace.png" src="../../../_images/wms_getlegendgraphic_layertitlespace.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.8 </span><span class="caption-text">To the left <code class="docutils literal notranslate"><span class="pre">LAYERTITLESPACE=0</span></code> and to the right <code class="docutils literal notranslate"><span class="pre">LAYERTITLESPACE=10</span></code></span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="symbolspace">
+<span id="wms-getlegendgraphic-symbolspace"></span><h3>SYMBOLSPACE<a class="headerlink" href="#symbolspace" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the vertical space between symbol and item
+following in millimeters. By default the space value is <code class="docutils literal notranslate"><span class="pre">2</span></code> mm.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">SYMBOLSPACE</span><span class="o">=</span><span class="m">0</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id14">
+<img alt="../../../_images/wms_getlegendgraphic_symbolspace.png" src="../../../_images/wms_getlegendgraphic_symbolspace.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.9 </span><span class="caption-text">To the left <code class="docutils literal notranslate"><span class="pre">SYMBOLSPACE=0</span></code> and to the right <code class="docutils literal notranslate"><span class="pre">SYMBOLSPACE=5</span></code></span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="iconlabelspace">
+<span id="wms-getlegendgraphic-iconlabelspace"></span><h3>ICONLABELSPACE<a class="headerlink" href="#iconlabelspace" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the horizontal space between symbol and label
+text in millimeters. By default the space value is <code class="docutils literal notranslate"><span class="pre">2</span></code> mm.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>getlegendgraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries,
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">ICONLABELSPACE</span><span class="o">=</span><span class="m">0</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id15">
+<img alt="../../../_images/wms_getlegendgraphic_iconlabelspace.png" src="../../../_images/wms_getlegendgraphic_iconlabelspace.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.10 </span><span class="caption-text">To the left <code class="docutils literal notranslate"><span class="pre">ICONLABELSPACE=0</span></code> and to the right <code class="docutils literal notranslate"><span class="pre">ICONLABELSPACE=10</span></code></span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="symbolwidth">
+<span id="wms-getlegendgraphic-symbolwidth"></span><h3>SYMBOLWIDTH<a class="headerlink" href="#symbolwidth" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the width of the symbol preview in
+millimeters. By default the width value is <code class="docutils literal notranslate"><span class="pre">7</span></code> mm.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries,
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">SYMBOLWIDTH</span><span class="o">=</span><span class="m">2</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id16">
+<img alt="../../../_images/wms_getlegendgraphic_symbolwidth.png" src="../../../_images/wms_getlegendgraphic_symbolwidth.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.11 </span><span class="caption-text">To the left <code class="docutils literal notranslate"><span class="pre">SYMBOLWIDTH=2</span></code> and to the right <code class="docutils literal notranslate"><span class="pre">SYMBOLWIDTH=20</span></code></span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="symbolheight">
+<span id="wms-getlegendgraphic-symbolheight"></span><h3>SYMBOLHEIGHT<a class="headerlink" href="#symbolheight" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the height of the symbol preview in
+millimeters. By default the height value is <code class="docutils literal notranslate"><span class="pre">4</span></code> mm.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries,
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">SYMBOLHEIGHT</span><span class="o">=</span><span class="m">2</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id17">
+<img alt="../../../_images/wms_getlegendgraphic_symbolheight.png" src="../../../_images/wms_getlegendgraphic_symbolheight.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.12 </span><span class="caption-text">To the left <code class="docutils literal notranslate"><span class="pre">SYMBOLHEIGHT=2</span></code> and to the right <code class="docutils literal notranslate"><span class="pre">SYMBOLHEIGHT=6</span></code></span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="layertitle">
+<span id="wms-getlegendgraphic-layertitle"></span><h3>LAYERTITLE<a class="headerlink" href="#layertitle" title="Link to this heading"></a></h3>
+<p>This parameter specifies whether to render layer title.</p>
+<p>Available values are (not case sensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> (default value)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code></p></li>
+</ul>
+</section>
+<section id="layerfontfamily">
+<span id="wms-getlegendgraphic-layerfontfamily"></span><h3>LAYERFONTFAMILY<a class="headerlink" href="#layerfontfamily" title="Link to this heading"></a></h3>
+<p>This parameter specifies the font family to use for rendering layer title.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries
+<span class="p">&amp;</span><span class="nv">LAYERFONTFAMILY</span><span class="o">=</span>monospace
+</pre></div>
+</div>
+</section>
+<section id="layerfontbold">
+<span id="wms-getlegendgraphic-layerfontbold"></span><h3>LAYERFONTBOLD<a class="headerlink" href="#layerfontbold" title="Link to this heading"></a></h3>
+<p>This parameter specifies whether the layer title is rendered in bold. Available
+values are (not case sensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code></p></li>
+</ul>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>airports,places
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">LAYERFONTBOLD</span><span class="o">=</span>TRUE
+</pre></div>
+</div>
+<figure class="align-center" id="id18">
+<img alt="../../../_images/wms_getlegendgraphic_layerfontbold.png" src="../../../_images/wms_getlegendgraphic_layerfontbold.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.13 </span><span class="caption-text">Legend with <code class="docutils literal notranslate"><span class="pre">LAYERFONTBOLD=TRUE</span></code></span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="layerfontsize">
+<span id="wms-getlegendgraphic-layerfontsize"></span><h3>LAYERFONTSIZE<a class="headerlink" href="#layerfontsize" title="Link to this heading"></a></h3>
+<p>This parameter specifies the font size for rendering layer title in point.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>airports,places
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">LAYERFONTSIZE</span><span class="o">=</span><span class="m">20</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id19">
+<img alt="../../../_images/wms_getlegendgraphic_layerfontsize.png" src="../../../_images/wms_getlegendgraphic_layerfontsize.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.14 </span><span class="caption-text">Legend with <code class="docutils literal notranslate"><span class="pre">LAYERFONTSIZE=20</span></code></span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="layerfontitalic">
+<span id="wms-getlegendgraphic-layerfontitalic"></span><h3>LAYERFONTITALIC<a class="headerlink" href="#layerfontitalic" title="Link to this heading"></a></h3>
+<p>This parameter specifies whether the layer title is rendered in italic.
+Available values are (not case sensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code></p></li>
+</ul>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>airports,places
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">LAYERFONTITALIC</span><span class="o">=</span>TRUE
+</pre></div>
+</div>
+<figure class="align-center" id="id20">
+<img alt="../../../_images/wms_getlegendgraphic_layerfontitalic.png" src="../../../_images/wms_getlegendgraphic_layerfontitalic.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.15 </span><span class="caption-text">Legend with <code class="docutils literal notranslate"><span class="pre">LAYERFONTITALIC=TRUE</span></code></span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="layerfontcolor">
+<span id="wms-getlegendgraphic-layerfontcolor"></span><h3>LAYERFONTCOLOR<a class="headerlink" href="#layerfontcolor" title="Link to this heading"></a></h3>
+<p>This parameter specifies the layer title color. The color may be literal
+(<code class="docutils literal notranslate"><span class="pre">red</span></code>, <code class="docutils literal notranslate"><span class="pre">green</span></code>, ..) or in hexadecimal notation (<code class="docutils literal notranslate"><span class="pre">0xFF0000</span></code>,
+<code class="docutils literal notranslate"><span class="pre">0x00FF00</span></code>, …).</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>airports,places
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">LAYERFONTCOLOR</span><span class="o">=</span>0x5f9930
+</pre></div>
+</div>
+<figure class="align-center" id="id21">
+<img alt="../../../_images/wms_getlegendgraphic_layerfontcolor.png" src="../../../_images/wms_getlegendgraphic_layerfontcolor.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.16 </span><span class="caption-text">Legend with <code class="docutils literal notranslate"><span class="pre">LAYERFONTCOLOR=0x5f9930</span></code></span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="itemfontfamily">
+<span id="wms-getlegendgraphic-itemfontfamily"></span><h3>ITEMFONTFAMILY<a class="headerlink" href="#itemfontfamily" title="Link to this heading"></a></h3>
+<p>This parameter specifies the font family to use for rendering item label.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries
+<span class="p">&amp;</span><span class="nv">ITEMFONTFAMILY</span><span class="o">=</span>monospace
+</pre></div>
+</div>
+</section>
+<section id="itemfontbold">
+<span id="wms-getlegendgraphic-itemfontbold"></span><h3>ITEMFONTBOLD<a class="headerlink" href="#itemfontbold" title="Link to this heading"></a></h3>
+<p>This parameter specifies whether the item label is rendered in bold. Available
+values are (not case sensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code></p></li>
+</ul>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>airports,places
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">ITEMFONTBOLD</span><span class="o">=</span>TRUE
+</pre></div>
+</div>
+<figure class="align-center" id="id22">
+<img alt="../../../_images/wms_getlegendgraphic_itemfontbold.png" src="../../../_images/wms_getlegendgraphic_itemfontbold.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.17 </span><span class="caption-text">Legend with <code class="docutils literal notranslate"><span class="pre">ITEMFONTBOLD=TRUE</span></code></span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="itemfontsize">
+<span id="wms-getlegendgraphic-itemfontsize"></span><h3>ITEMFONTSIZE<a class="headerlink" href="#itemfontsize" title="Link to this heading"></a></h3>
+<p>This parameter specifies the font size for rendering layer title in point.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>airports,places
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">ITEMFONTSIZE</span><span class="o">=</span><span class="m">20</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id23">
+<img alt="../../../_images/wms_getlegendgraphic_itemfontsize.png" src="../../../_images/wms_getlegendgraphic_itemfontsize.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.18 </span><span class="caption-text">Legend with <code class="docutils literal notranslate"><span class="pre">ITEMFONTSIZE=30</span></code></span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="itemfontitalic">
+<span id="wms-getlegendgraphic-itemfontitalic"></span><h3>ITEMFONTITALIC<a class="headerlink" href="#itemfontitalic" title="Link to this heading"></a></h3>
+<p>This parameter specifies whether the item label is rendered in italic.
+Available values are (not case sensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code></p></li>
+</ul>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>airports,places
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">ITEMFONTITALIC</span><span class="o">=</span>TRUE
+</pre></div>
+</div>
+<figure class="align-center" id="id24">
+<img alt="../../../_images/wms_getlegendgraphic_itemfontitalic.png" src="../../../_images/wms_getlegendgraphic_itemfontitalic.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.19 </span><span class="caption-text">Legend with <code class="docutils literal notranslate"><span class="pre">ITEMFONTITALIC=TRUE</span></code></span><a class="headerlink" href="#id24" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="itemfontcolor">
+<span id="wms-getlegendgraphic-itemfontcolor"></span><h3>ITEMFONTCOLOR<a class="headerlink" href="#itemfontcolor" title="Link to this heading"></a></h3>
+<p>This parameter specifies the item label color. The color may be literal
+(<code class="docutils literal notranslate"><span class="pre">red</span></code>, <code class="docutils literal notranslate"><span class="pre">green</span></code>, ..) or in hexadecimal notation (<code class="docutils literal notranslate"><span class="pre">0xFF0000</span></code>,
+<code class="docutils literal notranslate"><span class="pre">0x00FF00</span></code>, …).</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetLegendGraphic
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>airports,places
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span><span class="m">43</span>.20,-2.93,49.35,8.32
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span>TRUE
+<span class="p">&amp;</span><span class="nv">ITEMFONTCOLOR</span><span class="o">=</span>0x5f9930
+</pre></div>
+</div>
+<figure class="align-center" id="id25">
+<img alt="../../../_images/wms_getlegendgraphic_itemfontcolor.png" src="../../../_images/wms_getlegendgraphic_itemfontcolor.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.20 </span><span class="caption-text">Legend with <code class="docutils literal notranslate"><span class="pre">ITEMFONTCOLOR=0x5f9930</span></code></span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="addlayergroups">
+<span id="wms-getlegendgraphic-addlayergroups"></span><h3>ADDLAYERGROUPS<a class="headerlink" href="#addlayergroups" title="Link to this heading"></a></h3>
+<p>This parameter specifies if the JSON output will also
+display the names of the layers groups (and subgroups) in the legend entry.
+Possible values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: display the groups labels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code> (default): hide the groups labels</p></li>
+</ul>
+<figure class="align-center" id="id26">
+<img alt="../../../_images/wms_getlegendgraphic_addlayergroups.png" src="../../../_images/wms_getlegendgraphic_addlayergroups.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.21 </span><span class="caption-text">Legend without (left) and with (right) layer groups labels display</span><a class="headerlink" href="#id26" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The corresponding JSON output showing groups name would look like:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span>
+<span class="w">  </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span>
+<span class="w">     </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="s2">&quot;iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAUklEQVQ4jWNgGAXDHzASUqCsrPwfmX/37l28evBKKisr/0+a7IMiNi93C15DcUpgM4wYQ5nwuZAcMIQNvHv3LuO83C0kG0hysoFZRrJNo2AYAQC87BpkGQj1fwAAAABJRU5ErkJggg==&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;layer_a&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;layer&quot;</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span>
+<span class="w">       </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="s2">&quot;iVBORw0KGgoAAAANSUhEUgAAABMAAAAUCAYAAABvVQZ0AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAHUlEQVQ4jWNgGAWjYCQDxh887r8G2hGjYBQMGAAA1x0CR0FzIkYAAAAASUVORK5CYII=&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;layer_b&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;layer&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="s2">&quot;iVBORw0KGgoAAAANSUhEUgAAABMAAAAUCAYAAABvVQZ0AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAHUlEQVQ4jWNgGAWjYCQDxtmzZ/8aaEeMglEwYAAAaIoCzTtn5XoAAAAASUVORK5CYII=&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;layer_c&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;layer&quot;</span>
+<span class="w">       </span><span class="p">}],</span>
+<span class="w">       </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;group&quot;</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="s2">&quot;iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAKklEQVQ4jWNUVlX/z0AlwMLAwMDAnXmQKoYxUcWUUcNGDRs1bNSwYWYYACXDAsvQaTuVAAAAAElFTkSuQmCC&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;layer_d&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;layer&quot;</span>
+<span class="w">     </span><span class="p">}],</span>
+<span class="w">     </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;top-level-group&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;group&quot;</span>
+<span class="w">  </span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="getstyle-s">
+<span id="wms-getstyle"></span><h2><span class="section-number">3.2.5. </span>GetStyle(s)<a class="headerlink" href="#getstyle-s" title="Link to this heading"></a></h2>
+<p>Standard parameters for the <strong>GetStyle</strong> (or <strong>GetStyles</strong>) request according
+to the OGC WMS 1.1.1 specifications:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-service"><span class="std std-ref">SERVICE</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the service (<strong>WMS</strong>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="basics.html#services-basics-request"><span class="std std-ref">REQUEST</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the request (<strong>GetStyle</strong> or <strong>GetStyles</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-layers"><span class="std std-ref">LAYERS</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Layers to query</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>GetStyle</strong> request supports as well the following vendor parameters:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-map"><span class="std std-ref">MAP</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>QGIS project file</p></td>
+</tr>
+</tbody>
+</table>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetStyles
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>mylayer1,mylayer2
+</pre></div>
+</div>
+</section>
+<section id="describelayer">
+<span id="wms-describelayer"></span><h2><span class="section-number">3.2.6. </span>DescribeLayer<a class="headerlink" href="#describelayer" title="Link to this heading"></a></h2>
+<p>Standard parameters for the <strong>DescribeLayer</strong> request according to the OGC WMS
+1.1.1 and 1.3.0 specifications:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-service"><span class="std std-ref">SERVICE</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the service (<strong>WMS</strong>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="basics.html#services-basics-request"><span class="std std-ref">REQUEST</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the request (<strong>DescribeLayer</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-layers"><span class="std std-ref">LAYERS</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Layers to describe</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-describelayer-sldversion"><span class="std std-ref">SLD_VERSION</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>SLD version</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>DescribeLayer</strong> request supports as well the following vendor
+parameters:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-map"><span class="std std-ref">MAP</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>QGIS project file</p></td>
+</tr>
+</tbody>
+</table>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>DescribeLayer
+<span class="p">&amp;</span><span class="nv">SLD_VERSION</span><span class="o">=</span><span class="m">1</span>.1.0
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>mylayer1
+</pre></div>
+</div>
+<p>The XML document looks like:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;DescribeLayerResponse</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows&quot;</span><span class="w"> </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span><span class="w"> </span><span class="na">xmlns:se=</span><span class="s">&quot;http://www.opengis.net/se&quot;</span><span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/DescribeLayer.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Version&gt;</span>1.1.0<span class="nt">&lt;/Version&gt;</span>
+<span class="w">    </span><span class="nt">&lt;LayerDescription&gt;</span>
+<span class="w">        </span><span class="nt">&lt;owsType&gt;</span>wfs<span class="nt">&lt;/owsType&gt;</span>
+<span class="w">        </span><span class="nt">&lt;se:OnlineResource</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://localhost/qgisserver&quot;</span><span class="w"> </span><span class="na">xlink:type=</span><span class="s">&quot;simple&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;TypeName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;se:FeatureTypeName&gt;</span>my_vector_layer<span class="nt">&lt;/se:FeatureTypeName&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/TypeName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/LayerDescription&gt;</span>
+<span class="w">    </span><span class="nt">&lt;LayerDescription&gt;</span>
+<span class="w">        </span><span class="nt">&lt;owsType&gt;</span>wcs<span class="nt">&lt;/owsType&gt;</span>
+<span class="w">        </span><span class="nt">&lt;se:OnlineResource</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://localhost/qgisserver&quot;</span><span class="w"> </span><span class="na">xlink:type=</span><span class="s">&quot;simple&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;TypeName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;se:FeatureTypeName&gt;</span>my_raster_layer<span class="nt">&lt;/se:FeatureTypeName&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/TypeName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/LayerDescription&gt;</span>
+<span class="nt">&lt;/DescribeLayerResponse&gt;</span>
+</pre></div>
+</div>
+<section id="sld-version">
+<span id="wms-describelayer-sldversion"></span><h3>SLD_VERSION<a class="headerlink" href="#sld-version" title="Link to this heading"></a></h3>
+<p>This parameter allows to specify the version of SLD. Only the value <code class="docutils literal notranslate"><span class="pre">1.1.0</span></code>
+is available.</p>
+</section>
+</section>
+<section id="getprint">
+<span id="wms-getprint"></span><h2><span class="section-number">3.2.7. </span>GetPrint<a class="headerlink" href="#getprint" title="Link to this heading"></a></h2>
+<p>QGIS Server has the capability to create print layout output in pdf or pixel format.
+Print layout windows in the published project are used as templates.
+In the <strong>GetPrint</strong> request, the client has the possibility to specify
+parameters of the contained layout maps and labels.</p>
+<p>The <strong>GetPrint</strong> request supports <a class="reference internal" href="#wms-redlining"><span class="std std-ref">redlining</span></a>,
+<a class="reference internal" href="#wms-external"><span class="std std-ref">external WMS layers</span></a> as well as the following
+parameters:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-map"><span class="std std-ref">MAP</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>QGIS project file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="basics.html#services-basics-service"><span class="std std-ref">SERVICE</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the service (<strong>WMS</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-request"><span class="std std-ref">REQUEST</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the request (<strong>GetPrint</strong>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-version"><span class="std std-ref">VERSION</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Version of the service</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-layers"><span class="std std-ref">LAYERS</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layers to display</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-template"><span class="std std-ref">TEMPLATE</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Layout template to use</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-srs"><span class="std std-ref">SRS / CRS</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Coordinate reference system</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-getprint-format"><span class="std std-ref">FORMAT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Output format</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-getprint-formatoptions"><span class="std std-ref">FORMAT_OPTIONS</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Options of the specified file format</p>
+<p>Only for <code class="docutils literal notranslate"><span class="pre">FORMAT=application/pdf</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-atlaspk"><span class="std std-ref">ATLAS_PK</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Atlas features</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-styles"><span class="std std-ref">STYLES</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layers’ style</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-transparent"><span class="std std-ref">TRANSPARENT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Transparent background</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-opacities"><span class="std std-ref">OPACITIES</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Opacity for layer or group</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-selection"><span class="std std-ref">SELECTION</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Highlight features</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-mapextent"><span class="std std-ref">mapX:EXTENT</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Extent of the map ‘X’</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-maplayers"><span class="std std-ref">mapX:LAYERS</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layers of the map ‘X’</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-mapstyles"><span class="std std-ref">mapX:STYLES</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layers’ style of the map ‘X’</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-mapscale"><span class="std std-ref">mapX:SCALE</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Layers’ scale of the map ‘X’</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-maprotation"><span class="std std-ref">mapX:ROTATION</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Rotation  of the map ‘X’</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wms-mapgridintervalx"><span class="std std-ref">mapX:GRID_INTERVAL_X</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Grid interval on x axis of the map ‘X’</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wms-mapgridintervaly"><span class="std std-ref">mapX:GRID_INTERVAL_Y</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Grid interval on y axis of the map ‘X’</p></td>
+</tr>
+</tbody>
+</table>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetPrint
+<span class="p">&amp;</span><span class="nv">MAP</span><span class="o">=</span>/home/qgis/projects/world.qgs
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">FORMAT</span><span class="o">=</span>png
+<span class="p">&amp;</span><span class="nv">TEMPLATE</span><span class="o">=</span>Layout%201
+<span class="p">&amp;</span>map0:EXTENT<span class="o">=</span>-180,-90,180,90
+<span class="p">&amp;</span>map0:LAYERS<span class="o">=</span>mylayer1,mylayer2,mylayer3
+<span class="p">&amp;</span>map0:OPACITIES<span class="o">=</span><span class="m">125</span>,200,125
+<span class="p">&amp;</span>map0:ROTATION<span class="o">=</span><span class="m">45</span>
+</pre></div>
+</div>
+<p>Note that the layout template may contain more than one map.
+In this way, if you want to configure a specific map, you have to use
+<code class="docutils literal notranslate"><span class="pre">mapX:</span></code> parameters where <code class="docutils literal notranslate"><span class="pre">X</span></code> is a positive number that you can
+retrieve thanks to the <strong>GetProjectSettings</strong> request.</p>
+<p>For example:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;WMS_Capabilities&gt;</span>
+...
+<span class="nt">&lt;ComposerTemplates</span><span class="w"> </span><span class="na">xsi:type=</span><span class="s">&quot;wms:_ExtendedCapabilities&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ComposerTemplate</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;297&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;210&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Druckzusammenstellung 1&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ComposerMap</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;171&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;133&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;map0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;ComposerMap</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;49&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;46&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;map1&quot;</span><span class="nt">/&gt;&lt;/ComposerTemplate&gt;</span>
+<span class="nt">&lt;/ComposerTemplates&gt;</span>
+...
+<span class="nt">&lt;/WMS_Capabilities&gt;</span>
+</pre></div>
+</div>
+<section id="template">
+<span id="wms-template"></span><h3>TEMPLATE<a class="headerlink" href="#template" title="Link to this heading"></a></h3>
+<p>This parameter can be used to specify the name of a layout template
+to use for printing.</p>
+</section>
+<section id="wms-getprint-format">
+<span id="id5"></span><h3>FORMAT<a class="headerlink" href="#wms-getprint-format" title="Link to this heading"></a></h3>
+<p>This parameter specifies the format of map image. Available values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">png</span></code> (default value)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jpg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jpeg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/jpeg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">svg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/svg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/svg+xml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">application/pdf</span></code></p></li>
+</ul>
+<p>If the <code class="docutils literal notranslate"><span class="pre">FORMAT</span></code> parameter is different from one of these values,
+then an exception is returned.</p>
+</section>
+<section id="wms-getprint-formatoptions">
+<span id="id6"></span><h3>FORMAT_OPTIONS<a class="headerlink" href="#wms-getprint-formatoptions" title="Link to this heading"></a></h3>
+<p>This parameter can be used to specify options for the selected format.
+Only for <code class="docutils literal notranslate"><span class="pre">FORMAT=application/pdf</span></code> in GetPrint requests.
+Takes a list of key:value pairs separated by semicolon:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RASTERIZE_WHOLE_IMAGE</span></code>: whether the whole pdf should be exported as an image. Default: false.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FORCE_VECTOR_OUTPUT</span></code>: whether pdf should be exported as vector. Default: false.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APPEND_GEOREFERENCE</span></code>: whether georeference info shall be added to the pdf. Default: true.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXPORT_METADATA</span></code>: whether metadata shall be added to the pdf. Default: true.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_RENDER_FORMAT</span></code>: sets the text render format for pdf export.
+It can be <code class="docutils literal notranslate"><span class="pre">AlwaysOutlines</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">AlwaysText</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIMPLIFY_GEOMETRY</span></code>: whether features geometries shall be simplified. Default: true.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WRITE_GEO_PDF</span></code>: whether a GeoPDF shall be exported. Default: false.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USE_ISO_32000_EXTENSION_FORMAT_GEOREFERENCING</span></code>: whether Iso32000 georeferencing shall be used. Default: false.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USE_OGC_BEST_PRACTICE_FORMAT_GEOREFERENCING</span></code>: whether OGC best practice georeferencing shall be used. Default: false.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXPORT_THEMES</span></code>: a comma separated list of map themes to use for a GeoPDF export</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PREDEFINED_MAP_SCALES</span></code>: a comma separated list of map scales to render the map</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOSSLESS_IMAGE_COMPRESSION</span></code>: whether images embedded in pdf must be compressed using a lossless algorithm. Default: false.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DISABLE_TILED_RASTER_RENDERING</span></code>: whether rasters shall be untiled in the pdf. Default: false.</p></li>
+</ul>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetPrint
+<span class="p">&amp;</span><span class="nv">MAP</span><span class="o">=</span>/home/qgis/projects/world.qgs
+<span class="p">&amp;</span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326
+<span class="p">&amp;</span><span class="nv">FORMAT</span><span class="o">=</span>pdf
+<span class="p">&amp;</span><span class="nv">TEMPLATE</span><span class="o">=</span>Layout%201
+<span class="p">&amp;</span><span class="nv">FORMAT_OPTIONS</span><span class="o">=</span>FORCE_VECTOR_OUTPUT:TRUE<span class="p">;</span>TEXT_RENDER_FORMAT:AlwaysOutlines<span class="p">;</span>PREDEFINED_MAP_SCALES:250
+</pre></div>
+</div>
+</section>
+<section id="atlas-pk">
+<span id="wms-atlaspk"></span><h3>ATLAS_PK<a class="headerlink" href="#atlas-pk" title="Link to this heading"></a></h3>
+<p>This parameter allows activation of Atlas rendering by indicating
+which features we want to print.
+In order to retrieve an atlas with all features, the <code class="docutils literal notranslate"><span class="pre">*</span></code> symbol may
+be used (according to the maximum number of features allowed in the
+project configuration).</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">FORMAT</span></code> is <code class="docutils literal notranslate"><span class="pre">pdf</span></code>, a single PDF document combining the feature
+pages is returned.
+For all other formats, a single page is returned.</p>
+</section>
+<section id="mapx-extent">
+<span id="wms-mapextent"></span><h3>mapX:EXTENT<a class="headerlink" href="#mapx-extent" title="Link to this heading"></a></h3>
+<p>This parameter specifies the extent for a layout map item as
+xmin,ymin,xmax,ymax.</p>
+</section>
+<section id="mapx-rotation">
+<span id="wms-maprotation"></span><h3>mapX:ROTATION<a class="headerlink" href="#mapx-rotation" title="Link to this heading"></a></h3>
+<p>This parameter specifies the map rotation in degrees.</p>
+</section>
+<section id="mapx-grid-interval-x">
+<span id="wms-mapgridintervalx"></span><h3>mapX:GRID_INTERVAL_X<a class="headerlink" href="#mapx-grid-interval-x" title="Link to this heading"></a></h3>
+<p>This parameter specifies the grid line density in the X direction.</p>
+</section>
+<section id="mapx-grid-interval-y">
+<span id="wms-mapgridintervaly"></span><h3>mapX:GRID_INTERVAL_Y<a class="headerlink" href="#mapx-grid-interval-y" title="Link to this heading"></a></h3>
+<p>This parameter specifies the grid line density in the Y direction.</p>
+</section>
+<section id="mapx-scale">
+<span id="wms-mapscale"></span><h3>mapX:SCALE<a class="headerlink" href="#mapx-scale" title="Link to this heading"></a></h3>
+<p>This parameter specifies the map scale for a layout map item.
+This is useful to ensure scale based visibility of layers and
+labels even if client and server may have different algorithms to
+calculate the scale denominator.</p>
+</section>
+<section id="mapx-layers">
+<span id="wms-maplayers"></span><h3>mapX:LAYERS<a class="headerlink" href="#mapx-layers" title="Link to this heading"></a></h3>
+<p>This parameter specifies the layers for a layout map item. See
+<a class="reference internal" href="#wms-layers"><span class="std std-ref">GetMap Layers</span></a> for more information on
+this parameter.</p>
+</section>
+<section id="mapx-styles">
+<span id="wms-mapstyles"></span><h3>mapX:STYLES<a class="headerlink" href="#mapx-styles" title="Link to this heading"></a></h3>
+<p>This parameter specifies the layers’ styles defined in a specific
+layout map item.
+See <a class="reference internal" href="#wms-styles"><span class="std std-ref">GetMap Styles</span></a> for more information on
+this parameter.</p>
+</section>
+</section>
+<section id="getprojectsettings">
+<span id="wms-getprojectsettings"></span><h2><span class="section-number">3.2.8. </span>GetProjectSettings<a class="headerlink" href="#getprojectsettings" title="Link to this heading"></a></h2>
+<p>This request type works similar to <a class="reference internal" href="#wms-getcapabilities"><span class="std std-ref">GetCapabilities</span></a>, but it is more specific to QGIS Server and allows a
+client to read additional information which are not available in the
+<a class="reference internal" href="#wms-getcapabilities"><span class="std std-ref">GetCapabilities</span></a> output:</p>
+<ul class="simple">
+<li><p>initial visibility of layers</p></li>
+<li><p>information about vector attributes and their edit types</p></li>
+<li><p>information about layer order and drawing order</p></li>
+<li><p>list of layers published in WFS</p></li>
+<li><p>show if a group in the layer tree is <a class="reference internal" href="../../user_manual/introduction/general_tools.html#group-layers-interact"><span class="std std-ref">mutually exclusive</span></a></p></li>
+</ul>
+<p>The <strong>GetProjectSettings</strong> request supports the following parameters:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-map"><span class="std std-ref">MAP</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>QGIS project file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="basics.html#services-basics-service"><span class="std std-ref">SERVICE</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the service (<strong>WMS</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-request"><span class="std std-ref">REQUEST</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the request (<strong>GetProjectSettings</strong>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="getschemaextension">
+<span id="wms-getschemaextension"></span><h2><span class="section-number">3.2.9. </span>GetSchemaExtension<a class="headerlink" href="#getschemaextension" title="Link to this heading"></a></h2>
+<p>The <strong>GetSchemaExtension</strong> request allows to retrieve optional extended
+capabilities and operations of the WMS service such as implemented by QGIS
+Server.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-map"><span class="std std-ref">MAP</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>QGIS project file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="basics.html#services-basics-service"><span class="std std-ref">SERVICE</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the service (<strong>WMS</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="basics.html#services-basics-request"><span class="std std-ref">REQUEST</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the request (<strong>GetSchemaExtension</strong>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetSchemaExtension
+</pre></div>
+</div>
+<p>The XML document looks like:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;schema</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="w"> </span><span class="na">xmlns:wms=</span><span class="s">&quot;http://www.opengis.net/wms&quot;</span><span class="w"> </span><span class="na">xmlns:qgs=</span><span class="s">&quot;http://www.qgis.org/wms&quot;</span><span class="w"> </span><span class="na">targetNamespace=</span><span class="s">&quot;http://www.qgis.org/wms&quot;</span><span class="w"> </span><span class="na">elementFormDefault=</span><span class="s">&quot;qualified&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;import</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;http://www.opengis.net/wms&quot;</span><span class="w"> </span><span class="na">schemaLocation=</span><span class="s">&quot;http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;GetPrint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;wms:OperationType&quot;</span><span class="w"> </span><span class="na">substitutionGroup=</span><span class="s">&quot;wms:_ExtendedOperation&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;GetStyles&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;wms:OperationType&quot;</span><span class="w"> </span><span class="na">substitutionGroup=</span><span class="s">&quot;wms:_ExtendedOperation&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/schema&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="external-wms-layers">
+<span id="wms-external"></span><h2><span class="section-number">3.2.10. </span>External WMS layers<a class="headerlink" href="#external-wms-layers" title="Link to this heading"></a></h2>
+<p>QGIS Server allows including layers from external WMS servers in WMS
+<a class="reference internal" href="#wms-getmap"><span class="std std-ref">GetMap</span></a> and WMS <a class="reference internal" href="#wms-getprint"><span class="std std-ref">GetPrint</span></a> requests.
+This is especially useful if a web client uses an external background layer in
+the web map.
+For performance reasons, such layers should be directly requested by the web
+client (not cascaded via QGIS server). For printing however, these layers
+should be cascaded via QGIS server in order to appear in the printed map.</p>
+<p>External layers can be added to the LAYERS parameter as
+EXTERNAL_WMS:&lt;layername&gt;.
+The parameters for the external WMS layers (e.g. url, format,
+dpiMode, crs, layers, styles) can later be given as service
+parameters &lt;layername&gt;:&lt;parameter&gt;.
+In a <a class="reference internal" href="#wms-getmap"><span class="std std-ref">GetMap</span></a> request, this might look like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>EXTERNAL_WMS:basemap,layer1,layer2
+<span class="p">&amp;</span><span class="nv">OPACITIES</span><span class="o">=</span><span class="m">100</span>,200,255
+<span class="p">&amp;</span><span class="nv">STYLES</span><span class="o">=</span>,,
+<span class="p">&amp;</span>basemap:url<span class="o">=</span>http://externalserver.com/wms.fcgi
+<span class="p">&amp;</span>basemap:format<span class="o">=</span>image/jpeg
+<span class="p">&amp;</span>basemap:dpiMode<span class="o">=</span><span class="m">7</span>
+<span class="p">&amp;</span>basemap:crs<span class="o">=</span>EPSG:2056
+<span class="p">&amp;</span>basemap:layers<span class="o">=</span>orthofoto
+<span class="p">&amp;</span>basemap:styles<span class="o">=</span>default
+</pre></div>
+</div>
+<p>Similarly, external layers can be used in <a class="reference internal" href="#wms-getprint"><span class="std std-ref">GetPrint</span></a>
+requests:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetPrint
+<span class="p">&amp;</span><span class="nv">TEMPLATE</span><span class="o">=</span>A4
+<span class="p">&amp;</span>map0:layers<span class="o">=</span>EXTERNAL_WMS:basemap,layer1,layer2
+<span class="p">&amp;</span>map0:EXTENT<span class="o">=</span>&lt;minx,miny,maxx,maxy&gt;
+<span class="p">&amp;</span><span class="nv">OPACITIES</span><span class="o">=</span><span class="m">100</span>,200,255
+<span class="p">&amp;</span>basemap:url<span class="o">=</span>http://externalserver.com/wms.fcgi
+<span class="p">&amp;</span>basemap:format<span class="o">=</span>image/jpeg
+<span class="p">&amp;</span>basemap:dpiMode<span class="o">=</span><span class="m">7</span>
+<span class="p">&amp;</span>basemap:crs<span class="o">=</span>EPSG:2056
+<span class="p">&amp;</span>basemap:layers<span class="o">=</span>orthofoto
+<span class="p">&amp;</span>basemap:styles<span class="o">=</span>default
+</pre></div>
+</div>
+</section>
+<section id="redlining">
+<span id="wms-redlining"></span><h2><span class="section-number">3.2.11. </span>Redlining<a class="headerlink" href="#redlining" title="Link to this heading"></a></h2>
+<p>This feature is available and can be used with <a class="reference internal" href="#wms-getmap"><span class="std std-ref">GetMap</span></a> and
+<a class="reference internal" href="#wms-getprint"><span class="std std-ref">GetPrint</span></a> requests.</p>
+<p>The redlining feature can be used to pass geometries and labels in the request
+which are overlapped by the server over the standard returned image (map). This
+permits the user to put emphasis or maybe add some comments (labels) to some
+areas, locations etc. that are not in the standard map.</p>
+<p>The <a class="reference internal" href="#wms-getmap"><span class="std std-ref">GetMap</span></a> request is in the format:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_GEOM</span><span class="o">=</span>POLYGON<span class="o">((</span><span class="m">590000</span><span class="w"> </span><span class="m">5647000</span>,<span class="w"> </span><span class="m">590000</span><span class="w"> </span><span class="m">6110620</span>,<span class="w"> </span><span class="m">2500000</span><span class="w"> </span><span class="m">6110620</span>,<span class="w"> </span><span class="m">2500000</span><span class="w"> </span><span class="m">5647000</span>,<span class="w"> </span><span class="m">590000</span><span class="w"> </span><span class="m">5647000</span><span class="o">))</span>
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_SYMBOL</span><span class="o">=</span>&lt;StyledLayerDescriptor&gt;&lt;UserStyle&gt;&lt;Name&gt;Highlight&lt;/Name&gt;&lt;FeatureTypeStyle&gt;&lt;Rule&gt;&lt;Name&gt;Symbol&lt;/Name&gt;&lt;LineSymbolizer&gt;&lt;Stroke&gt;&lt;SvgParameter<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;stroke&quot;</span>&gt;%23ea1173&lt;/SvgParameter&gt;&lt;SvgParameter<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;stroke-opacity&quot;</span>&gt;1&lt;/SvgParameter&gt;&lt;SvgParameter<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;stroke-width&quot;</span>&gt;1.6&lt;/SvgParameter&gt;&lt;/Stroke&gt;&lt;/LineSymbolizer&gt;&lt;/Rule&gt;&lt;/FeatureTypeStyle&gt;&lt;/UserStyle&gt;&lt;/StyledLayerDescriptor&gt;
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_LABELSTRING</span><span class="o">=</span>Write<span class="w"> </span>label<span class="w"> </span>here
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_LABELSIZE</span><span class="o">=</span><span class="m">16</span>
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_LABELCOLOR</span><span class="o">=</span>%23000000
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_LABELBUFFERCOLOR</span><span class="o">=</span>%23FFFFFF
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_LABELBUFFERSIZE</span><span class="o">=</span><span class="m">1</span>.5
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="#wms-getprint"><span class="std std-ref">GetPrint</span></a> equivalent is in the format (note that
+<code class="docutils literal notranslate"><span class="pre">mapX:</span></code> parameter is added to tell which map has redlining):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetPrint
+<span class="p">&amp;</span>map0:HIGHLIGHT_GEOM<span class="o">=</span>POLYGON<span class="o">((</span><span class="m">590000</span><span class="w"> </span><span class="m">5647000</span>,<span class="w"> </span><span class="m">590000</span><span class="w"> </span><span class="m">6110620</span>,<span class="w"> </span><span class="m">2500000</span><span class="w"> </span><span class="m">6110620</span>,<span class="w"> </span><span class="m">2500000</span><span class="w"> </span><span class="m">5647000</span>,<span class="w"> </span><span class="m">590000</span><span class="w"> </span><span class="m">5647000</span><span class="o">))</span>
+<span class="p">&amp;</span>map0:HIGHLIGHT_SYMBOL<span class="o">=</span>&lt;StyledLayerDescriptor&gt;&lt;UserStyle&gt;&lt;Name&gt;Highlight&lt;/Name&gt;&lt;FeatureTypeStyle&gt;&lt;Rule&gt;&lt;Name&gt;Symbol&lt;/Name&gt;&lt;LineSymbolizer&gt;&lt;Stroke&gt;&lt;SvgParameter<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;stroke&quot;</span>&gt;%23ea1173&lt;/SvgParameter&gt;&lt;SvgParameter<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;stroke-opacity&quot;</span>&gt;1&lt;/SvgParameter&gt;&lt;SvgParameter<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;stroke-width&quot;</span>&gt;1.6&lt;/SvgParameter&gt;&lt;/Stroke&gt;&lt;/LineSymbolizer&gt;&lt;/Rule&gt;&lt;/FeatureTypeStyle&gt;&lt;/UserStyle&gt;&lt;/StyledLayerDescriptor&gt;
+<span class="p">&amp;</span>map0:HIGHLIGHT_LABELSTRING<span class="o">=</span>Write<span class="w"> </span>label<span class="w"> </span>here
+<span class="p">&amp;</span>map0:HIGHLIGHT_LABELSIZE<span class="o">=</span><span class="m">16</span>
+<span class="p">&amp;</span>map0:HIGHLIGHT_LABELCOLOR<span class="o">=</span>%23000000
+<span class="p">&amp;</span>map0:HIGHLIGHT_LABELBUFFERCOLOR<span class="o">=</span>%23FFFFFF
+<span class="p">&amp;</span>map0:HIGHLIGHT_LABELBUFFERSIZE<span class="o">=</span><span class="m">1</span>.5
+</pre></div>
+</div>
+<p>Here is the image outputed by the above request in which a polygon and
+a label are drawn on top of the normal map:</p>
+<figure class="align-center" id="id27">
+<span id="figure-server-redlining"></span><img alt="../../../_images/server_redlining.png" src="../../../_images/server_redlining.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.22 </span><span class="caption-text">Server response to a GetMap request with redlining parameters</span><a class="headerlink" href="#id27" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can see there are several parameters in this request to control
+the redlining feature. The full list includes:</p>
+<ul class="simple">
+<li><p><strong>HIGHLIGHT_GEOM</strong>: You can add POINT, MULTILINESTRING, POLYGON etc.
+It supports multipart geometries. Here is an example:
+<code class="docutils literal notranslate"><span class="pre">HIGHLIGHT_GEOM=MULTILINESTRING((0</span> <span class="pre">0,</span> <span class="pre">0</span> <span class="pre">1,</span> <span class="pre">1</span> <span class="pre">1))</span></code>.
+The coordinates should be in the CRS of the GetMap/GetPrint request.</p></li>
+<li><p><strong>HIGHLIGHT_LABELBUFFERCOLOR</strong>: This parameter controls the label
+buffer color.</p></li>
+<li><p><strong>HIGHLIGHT_LABELBUFFERSIZE</strong>: This parameter controls the label
+buffer size.</p></li>
+<li><p><strong>HIGHLIGHT_LABELCOLOR</strong>: This parameter controls the label color.</p></li>
+<li><p><strong>HIGHLIGHT_LABEL_DISTANCE</strong>: controls the distance between feature
+(e.g. point or line) and the label in mm</p></li>
+<li><p><strong>HIGHLIGHT_LABELFONT</strong>: This parameter controls the font of the
+label (e.g. Arial)</p></li>
+<li><p><strong>HIGHLIGHT_LABEL_HORIZONTAL_ALIGNMENT</strong>: places the label horizontally
+on a point using the specified alignment (e.g. ‘left’, ‘center’, ‘right’)</p></li>
+<li><p><strong>HIGHLIGHT_LABEL_ROTATION</strong>: controls the label rotation in degrees</p></li>
+<li><p><strong>HIGHLIGHT_LABELSIZE</strong>: This parameter controls the size of the
+label.</p></li>
+<li><p><strong>HIGHLIGHT_LABELSTRING</strong>: You can pass your labeling text to this
+parameter.</p></li>
+<li><p><strong>HIGHLIGHT_LABEL_VERTICAL_ALIGNMENT</strong>: places the label vertically
+on a point using the specified alignment (e.g. ‘top’, ‘half’, ‘bottom’)</p></li>
+<li><p><strong>HIGHLIGHT_SYMBOL</strong>: This controls how the geometry is outlined and
+you can change the stroke width, color and opacity.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="basics.html" class="btn btn-neutral float-left" title="3.1. Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wfs.html" class="btn btn-neutral float-right" title="3.3. Web Feature Service (WFS)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/services/wms.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/server_manual/services/wms.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/server_manual/services/wms.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/server_manual/services/wms.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/server_manual/services/wms.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/server_manual/services/wms.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/server_manual/services/wms.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/server_manual/services/wms.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/server_manual/services/wms.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/server_manual/services/wms.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/server_manual/services/wms.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/server_manual/services/wms.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/server_manual/services/wms.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/server_manual/services/wms.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/server_manual/services/wms.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/server_manual/services/wms.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/server_manual/services/wms.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/services/wms.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/server_manual/services/wms.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/server_manual/services/wms.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/server_manual/services/wms.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/server_manual/services/wms.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/server_manual/services/wms.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/server_manual/services/wms.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/server_manual/services/wms.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/ed8e82d4450e3506db4e85b2614f2ef7" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

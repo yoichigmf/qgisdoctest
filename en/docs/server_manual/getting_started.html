@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Getting Started &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/server_manual/getting_started.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Services" href="services.html" />
+    <link rel="prev" title="1. Introduction" href="introduction.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 2. Getting Started">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">QGIS Server Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-on-debian-based-systems">2.1. Installation on Debian-based systems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apache-http-server">2.1.1. Apache HTTP Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nginx-http-server">2.1.2. NGINX HTTP Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xvfb">2.1.3. Xvfb</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-on-windows">2.2. Installation on Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serve-a-project">2.3. Serve a project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-your-project">2.4. Configure your project</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wms-capabilities">2.4.1. WMS capabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wmts-capabilities">2.4.2. WMTS capabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wfs-oapif-capabilities">2.4.3. WFS/OAPIF capabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wcs-capabilities">2.4.4. WCS capabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fine-tuning-your-ows">2.4.5. Fine tuning your OWS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#integration-with-third-parties">2.5. Integration with third parties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#integration-with-qgis-desktop">2.5.1. Integration with QGIS Desktop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integration-with-mapproxy">2.5.2. Integration with MapProxy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integration-with-qwc2">2.5.3. Integration with QWC2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services.html">3. Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="catalog.html">4. Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html">5. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">6. Advanced configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_server.html">7. Development Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="containerized_deployment.html">8. Containerized deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">9. Frequently Asked Question</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">QGIS Server Guide/Manual</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2. </span>Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/server_manual/getting_started.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="1. Introduction" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="services.html" class="btn btn-neutral float-right" title="3. Services" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="getting-started">
+<h1><span class="section-number">2. </span>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#installation-on-debian-based-systems" id="id10">Installation on Debian-based systems</a></p>
+<ul>
+<li><p><a class="reference internal" href="#apache-http-server" id="id11">Apache HTTP Server</a></p></li>
+<li><p><a class="reference internal" href="#nginx-http-server" id="id12">NGINX HTTP Server</a></p>
+<ul>
+<li><p><a class="reference internal" href="#nginx-configuration" id="id13">NGINX Configuration</a></p></li>
+<li><p><a class="reference internal" href="#fastcgi-wrappers" id="id14">FastCGI wrappers</a></p></li>
+<li><p><a class="reference internal" href="#systemd" id="id15">Systemd</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#xvfb" id="id16">Xvfb</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#installation-on-windows" id="id17">Installation on Windows</a></p></li>
+<li><p><a class="reference internal" href="#serve-a-project" id="id18">Serve a project</a></p></li>
+<li><p><a class="reference internal" href="#configure-your-project" id="id19">Configure your project</a></p>
+<ul>
+<li><p><a class="reference internal" href="#wms-capabilities" id="id20">WMS capabilities</a></p></li>
+<li><p><a class="reference internal" href="#wmts-capabilities" id="id21">WMTS capabilities</a></p></li>
+<li><p><a class="reference internal" href="#wfs-oapif-capabilities" id="id22">WFS/OAPIF capabilities</a></p></li>
+<li><p><a class="reference internal" href="#wcs-capabilities" id="id23">WCS capabilities</a></p></li>
+<li><p><a class="reference internal" href="#fine-tuning-your-ows" id="id24">Fine tuning your OWS</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#integration-with-third-parties" id="id25">Integration with third parties</a></p>
+<ul>
+<li><p><a class="reference internal" href="#integration-with-qgis-desktop" id="id26">Integration with QGIS Desktop</a></p></li>
+<li><p><a class="reference internal" href="#integration-with-mapproxy" id="id27">Integration with MapProxy</a></p></li>
+<li><p><a class="reference internal" href="#integration-with-qwc2" id="id28">Integration with QWC2</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="installation-on-debian-based-systems">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">2.1. </span>Installation on Debian-based systems</a><a class="headerlink" href="#installation-on-debian-based-systems" title="Link to this heading"></a></h2>
+<p id="index-0">We will give a short and simple installation how-to for
+a minimal working configuration on Debian based systems (including Ubuntu and derivatives). However, many other
+distributions and OSs provide packages for QGIS Server.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Ubuntu you can use your regular user, prepending <code class="docutils literal notranslate"><span class="pre">sudo</span></code> to
+commands requiring admin permissions. In Debian you can work as admin (<code class="docutils literal notranslate"><span class="pre">root</span></code>),
+without using <code class="docutils literal notranslate"><span class="pre">sudo</span></code>.</p>
+</div>
+<p>Requirements and steps to add official QGIS repositories to install QGIS Server on a Debian based system are
+provided in <a class="reference external" href="https://qgis.org/en/site/forusers/alldownloads.html">QGIS installers page</a>.
+You may want to install at least the latest Long Term Release.</p>
+<p>Once the target version repository is configured and QGIS Server installed,
+you can test the installation with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/usr/lib/cgi-bin/qgis_mapserv.fcgi
+</pre></div>
+</div>
+<p>If you get the following output, the server is correctly installed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on the version of QGIS, you might see slightly different output
+reported when you run <code class="docutils literal notranslate"><span class="pre">qgis_mapserv.fcgi</span></code>.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QFSFileEngine</span><span class="p">::</span><span class="nb">open</span><span class="p">:</span> <span class="n">No</span> <span class="n">file</span> <span class="n">name</span> <span class="n">specified</span>
+<span class="ne">Warning</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">driver</span> <span class="n">ECW</span> <span class="n">to</span> <span class="n">unload</span> <span class="kn">from</span> <span class="nn">GDAL_SKIP</span> <span class="n">environment</span> <span class="n">variable</span><span class="o">.</span>
+<span class="ne">Warning</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">driver</span> <span class="n">ECW</span> <span class="n">to</span> <span class="n">unload</span> <span class="kn">from</span> <span class="nn">GDAL_SKIP</span> <span class="n">environment</span> <span class="n">variable</span><span class="o">.</span>
+<span class="ne">Warning</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">driver</span> <span class="n">JP2ECW</span> <span class="n">to</span> <span class="n">unload</span> <span class="kn">from</span> <span class="nn">GDAL_SKIP</span> <span class="n">environment</span> <span class="n">variable</span><span class="o">.</span>
+<span class="ne">Warning</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">driver</span> <span class="n">ECW</span> <span class="n">to</span> <span class="n">unload</span> <span class="kn">from</span> <span class="nn">GDAL_SKIP</span> <span class="n">environment</span> <span class="n">variable</span><span class="o">.</span>
+<span class="ne">Warning</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">driver</span> <span class="n">JP2ECW</span> <span class="n">to</span> <span class="n">unload</span> <span class="kn">from</span> <span class="nn">GDAL_SKIP</span> <span class="n">environment</span> <span class="n">variable</span><span class="o">.</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">206</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="o">&lt;</span><span class="n">ServiceExceptionReport</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.3.0&quot;</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;https://www.opengis.net/ogc&quot;</span><span class="o">&gt;</span>
+ <span class="o">&lt;</span><span class="n">ServiceException</span> <span class="n">code</span><span class="o">=</span><span class="s2">&quot;Service configuration error&quot;</span><span class="o">&gt;</span><span class="n">Service</span> <span class="n">unknown</span> <span class="ow">or</span> <span class="n">unsupported</span><span class="o">&lt;/</span><span class="n">ServiceException</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">ServiceExceptionReport</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As seen below, QGIS reports a Status 400 code, which correctly
+identifies the request has failed because there is no active http session.
+This is not a bug and indicates the server is functioning properly.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Application</span> <span class="n">path</span> <span class="ow">not</span> <span class="n">initialized</span>
+<span class="n">Application</span> <span class="n">path</span> <span class="ow">not</span> <span class="n">initialized</span>
+<span class="ne">Warning</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">driver</span> <span class="n">ECW</span> <span class="n">to</span> <span class="n">unload</span> <span class="kn">from</span> <span class="nn">GDAL_SKIP</span> <span class="n">environment</span> <span class="n">variable</span><span class="o">.</span>
+<span class="ne">Warning</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">driver</span> <span class="n">ECW</span> <span class="n">to</span> <span class="n">unload</span> <span class="kn">from</span> <span class="nn">GDAL_SKIP</span> <span class="n">environment</span> <span class="n">variable</span><span class="o">.</span>
+<span class="ne">Warning</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">driver</span> <span class="n">JP2ECW</span> <span class="n">to</span> <span class="n">unload</span> <span class="kn">from</span> <span class="nn">GDAL_SKIP</span> <span class="n">environment</span> <span class="n">variable</span><span class="o">.</span>
+<span class="s2">&quot;Loading native module /usr/lib/qgis/server/libdummy.so&quot;</span>
+<span class="s2">&quot;Loading native module /usr/lib/qgis/server/liblandingpage.so&quot;</span>
+<span class="s2">&quot;Loading native module /usr/lib/qgis/server/libwcs.so&quot;</span>
+<span class="s2">&quot;Loading native module /usr/lib/qgis/server/libwfs.so&quot;</span>
+<span class="s2">&quot;Loading native module /usr/lib/qgis/server/libwfs3.so&quot;</span>
+<span class="s2">&quot;Loading native module /usr/lib/qgis/server/libwms.so&quot;</span>
+<span class="s2">&quot;Loading native module /usr/lib/qgis/server/libwmts.so&quot;</span>
+<span class="n">QFSFileEngine</span><span class="p">::</span><span class="nb">open</span><span class="p">:</span> <span class="n">No</span> <span class="n">file</span> <span class="n">name</span> <span class="n">specified</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">102</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Server</span><span class="p">:</span>  <span class="n">QGIS</span> <span class="n">FCGI</span> <span class="n">server</span> <span class="o">-</span> <span class="n">QGIS</span> <span class="n">version</span> <span class="mf">3.22.6</span><span class="o">-</span><span class="n">Białowieża</span>
+<span class="n">Status</span><span class="p">:</span>  <span class="mi">400</span>
+<span class="p">[{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span><span class="s2">&quot;Bad request error&quot;</span><span class="p">,</span><span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;Requested URI does not match any registered API handler&quot;</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>Let’s add a sample project. You can use your own, or one from
+<a class="reference external" href="https://github.com/qgis/QGIS-Training-Data/">Training demo data</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>/home/qgis/projects/
+<span class="nb">cd</span><span class="w"> </span>/home/qgis/projects/
+wget<span class="w"> </span>https://github.com/qgis/QGIS-Training-Data/archive/release_3.22.zip
+unzip<span class="w"> </span>release_3.22.zip
+mv<span class="w"> </span>QGIS-Training-Data-release_3.22/exercise_data/qgis-server-tutorial-data/world.qgs<span class="w"> </span>.
+mv<span class="w"> </span>QGIS-Training-Data-release_3.22/exercise_data/qgis-server-tutorial-data/naturalearth.sqlite<span class="w"> </span>.
+</pre></div>
+</div>
+<p>Of course, you can use your favorite GIS software to open this file and
+take a look at the configuration and available layers.</p>
+<p>To properly deploy QGIS server you need a HTTP server. Recommended choices are
+<a class="reference external" href="https://httpd.apache.org/docs/">Apache</a> or <a class="reference external" href="https://nginx.org/en/docs/">NGINX</a>.</p>
+<section id="apache-http-server">
+<span id="httpserver"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">2.1.1. </span>Apache HTTP Server</a><a class="headerlink" href="#apache-http-server" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the following, please replace <code class="docutils literal notranslate"><span class="pre">qgis.demo</span></code> with the name or IP address of your server.</p>
+</div>
+<ol class="arabic">
+<li><p>Install Apache and <a class="reference external" href="https://httpd.apache.org/mod_fcgid/mod/mod_fcgid.html">mod_fcgid</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt<span class="w"> </span>install<span class="w"> </span>apache2<span class="w"> </span>libapache2-mod-fcgid
+</pre></div>
+</div>
+</li>
+<li><p>You can run QGIS Server on your default website, but let’s configure a <a class="reference external" href="https://httpd.apache.org/docs/2.4/vhosts">virtualhost</a> specifically for this, as follows.</p>
+<ol class="arabic">
+<li><p>In the <code class="file docutils literal notranslate"><span class="pre">/etc/apache2/sites-available</span></code> directory, create a file
+called <code class="file docutils literal notranslate"><span class="pre">qgis.demo.conf</span></code>, with this content:</p>
+<div class="highlight-apacheconf notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">*:80</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nb">ServerAdmin</span><span class="w"> </span>webmaster@localhost
+<span class="w">  </span><span class="nb">ServerName</span><span class="w"> </span>qgis.demo
+
+<span class="w">  </span><span class="nb">DocumentRoot</span><span class="w"> </span><span class="sx">/var/www/html</span>
+
+<span class="w">  </span><span class="c"># Apache logs (different than QGIS Server log)</span>
+<span class="w">  </span><span class="nb">ErrorLog</span><span class="w"> </span>${APACHE_LOG_DIR}/qgis.demo.error.log
+<span class="w">  </span><span class="nb">CustomLog</span><span class="w"> </span>${APACHE_LOG_DIR}/qgis.demo.access.log<span class="w"> </span>combined
+
+<span class="w">  </span><span class="c"># Longer timeout for WPS... default = 40</span>
+<span class="w">  </span><span class="nb">FcgidIOTimeout</span><span class="w"> </span><span class="m">120</span>
+
+<span class="w">  </span><span class="nb">FcgidInitialEnv</span><span class="w"> </span>LC_ALL<span class="w"> </span><span class="s2">&quot;en_US.UTF-8&quot;</span>
+<span class="w">  </span><span class="nb">FcgidInitialEnv</span><span class="w"> </span>PYTHONIOENCODING<span class="w"> </span>UTF-8
+<span class="w">  </span><span class="nb">FcgidInitialEnv</span><span class="w"> </span>LANG<span class="w"> </span><span class="s2">&quot;en_US.UTF-8&quot;</span>
+
+<span class="w">  </span><span class="c"># QGIS log</span>
+<span class="w">  </span><span class="nb">FcgidInitialEnv</span><span class="w"> </span>QGIS_SERVER_LOG_STDERR<span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="nb">FcgidInitialEnv</span><span class="w"> </span>QGIS_SERVER_LOG_LEVEL<span class="w"> </span><span class="m">0</span>
+
+<span class="w">  </span><span class="c"># default QGIS project</span>
+<span class="w">  </span><span class="nb">SetEnv</span><span class="w"> </span>QGIS_PROJECT_FILE<span class="w"> </span><span class="sx">/home/qgis/projects/world.qgs</span>
+
+<span class="w">  </span><span class="c"># QGIS_AUTH_DB_DIR_PATH must lead to a directory writeable by the Server&#39;s FCGI process user</span>
+<span class="w">  </span><span class="nb">FcgidInitialEnv</span><span class="w"> </span>QGIS_AUTH_DB_DIR_PATH<span class="w"> </span><span class="s2">&quot;/home/qgis/qgisserverdb/&quot;</span>
+<span class="w">  </span><span class="nb">FcgidInitialEnv</span><span class="w"> </span>QGIS_AUTH_PASSWORD_FILE<span class="w"> </span><span class="s2">&quot;/home/qgis/qgisserverdb/qgis-auth.db&quot;</span>
+
+<span class="w">  </span><span class="c"># Set pg access via pg_service file</span>
+<span class="w">  </span><span class="nb">SetEnv</span><span class="w"> </span>PGSERVICEFILE<span class="w"> </span><span class="sx">/home/qgis/.pg_service.conf</span>
+<span class="w">  </span><span class="nb">FcgidInitialEnv</span><span class="w"> </span>PGPASSFILE<span class="w"> </span><span class="s2">&quot;/home/qgis/.pgpass&quot;</span>
+
+<span class="w">  </span><span class="c"># if qgis-server is installed from packages in debian based distros this is usually /usr/lib/cgi-bin/</span>
+<span class="w">  </span><span class="c"># run &quot;locate qgis_mapserv.fcgi&quot; if you don&#39;t know where qgis_mapserv.fcgi is</span>
+<span class="w">  </span><span class="nb">ScriptAlias</span><span class="w"> </span><span class="sx">/cgi-bin/</span><span class="w"> </span><span class="sx">/usr/lib/cgi-bin/</span>
+<span class="w">  </span><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/usr/lib/cgi-bin/&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">None</span>
+<span class="w">    </span><span class="nb">Options</span><span class="w"> </span>+ExecCGI<span class="w"> </span>-MultiViews<span class="w"> </span>-SymLinksIfOwnerMatch
+<span class="w">    </span><span class="nb">Require</span><span class="w"> </span><span class="k">all</span><span class="w"> </span>granted
+<span class="w">  </span><span class="nt">&lt;/Directory&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;IfModule</span><span class="w"> </span><span class="s">mod_fcgid.c</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nb">FcgidMaxRequestLen</span><span class="w"> </span><span class="m">26214400</span>
+<span class="w">  </span><span class="nb">FcgidConnectTimeout</span><span class="w"> </span><span class="m">60</span>
+<span class="w">  </span><span class="nt">&lt;/IfModule&gt;</span>
+
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some of the above configuration options are explained in the Server
+<a class="reference internal" href="config.html#server-env-variables"><span class="std std-ref">environment variables</span></a> and
+<a class="reference internal" href="../user_manual/managing_data_source/opening_data.html#pg-service-file"><span class="std std-ref">pg_service file</span></a> sections.</p>
+</div>
+</li>
+<li><p>Let’s now create the directories that will store the QGIS Server logs and
+the authentication database:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/log/qgis/
+chown<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/log/qgis
+mkdir<span class="w"> </span>-p<span class="w"> </span>/home/qgis/qgisserverdb
+chown<span class="w"> </span>www-data:www-data<span class="w"> </span>/home/qgis/qgisserverdb
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">www-data</span></code> is the Apache user on Debian based systems and we need Apache
+to have access to those locations or files.
+The <code class="docutils literal notranslate"><span class="pre">chown</span> <span class="pre">www-data...</span></code> commands change the owner of the respective directories
+and files to <code class="docutils literal notranslate"><span class="pre">www-data</span></code>.</p>
+</div>
+</li>
+</ol>
+</li>
+<li><p>We can now enable the virtual host and the <code class="docutils literal notranslate"><span class="pre">fcgid</span></code> mod if it’s not already done:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>a2enmod<span class="w"> </span>fcgid
+a2ensite<span class="w"> </span>qgis.demo
+</pre></div>
+</div>
+</li>
+<li><p>Now restart Apache for the new configuration to be taken into account:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2
+</pre></div>
+</div>
+</li>
+<li><p>Now that Apache knows that he should answer requests to <a class="reference external" href="http://qgis.demo">http://qgis.demo</a>
+we also need to setup the client system so that it knows who <code class="docutils literal notranslate"><span class="pre">qgis.demo</span></code>
+is. We do that by adding <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span> <span class="pre">qgis.demo</span></code> in the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Hosts_%28file%29">hosts</a> file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replace 127.0.0.1 with the IP of your server.</span>
+sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo &#39;127.0.0.1 qgis.demo&#39; &gt;&gt; /etc/hosts&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember that both the <code class="file docutils literal notranslate"><span class="pre">qgis.demo.conf</span></code> and <code class="file docutils literal notranslate"><span class="pre">/etc/hosts</span></code> files should
+be configured for your setup to work.
+You can also test the access to your QGIS Server from other clients on the
+network (e.g. Windows or macos machines) by going to their <code class="file docutils literal notranslate"><span class="pre">/etc/hosts</span></code>
+file and point the <code class="docutils literal notranslate"><span class="pre">qgis.demo</span></code> name to whatever IP the server machine has on the
+network (not <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> as it is the local IP, only accessible from the
+local machine).  On <code class="docutils literal notranslate"><span class="pre">*nix</span></code> machines the
+<code class="file docutils literal notranslate"><span class="pre">hosts</span></code> file is located in <code class="file docutils literal notranslate"><span class="pre">/etc</span></code>, while on Windows it’s under
+the <code class="file docutils literal notranslate"><span class="pre">C:\Windows\System32\drivers\etc</span></code> directory. Under Windows you
+need to start your text editor with administrator privileges before opening
+the hosts file.</p>
+</div>
+<p>QGIS Server is now available at <a class="reference external" href="http://qgis.demo">http://qgis.demo</a>. To check, type in a browser, as in the simple case:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://qgis.demo/cgi-bin/qgis_mapserv.fcgi?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetCapabilities
+</pre></div>
+</div>
+</section>
+<section id="nginx-http-server">
+<span id="index-2"></span><h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">2.1.2. </span>NGINX HTTP Server</a><a class="headerlink" href="#nginx-http-server" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the following, please replace <code class="docutils literal notranslate"><span class="pre">qgis.demo</span></code> with the name or IP address of your server.</p>
+</div>
+<p>You can also use QGIS Server with <a class="reference external" href="https://nginx.org/en/docs/">NGINX</a>. Unlike Apache,
+NGINX does not automatically spawn FastCGI processes. The FastCGI processes are
+to be started by something else.</p>
+<p>Install NGINX:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt<span class="w"> </span>install<span class="w"> </span>nginx
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>As a first option, you can use <strong>spawn-fcgi</strong> or <strong>fcgiwrap</strong> to start and manage the
+QGIS Server processes.
+Official Debian packages exist for both.
+When you have no X server running and you need, for example,
+printing, you can use <a class="reference internal" href="#xvfb"><span class="std std-ref">xvfb</span></a>.</p></li>
+<li><p>Another option is to rely on <strong>Systemd</strong>, the init system for GNU/Linux that most
+Linux distributions use today.
+One of the advantages of this method is that it requires no other components or
+processes.
+It’s meant to be simple, yet robust and efficient for production deployments.</p></li>
+</ul>
+<section id="nginx-configuration">
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">NGINX Configuration</a><a class="headerlink" href="#nginx-configuration" title="Link to this heading"></a></h4>
+<p>The <strong>include fastcgi_params;</strong> used in the previous configuration is important,
+as it adds the parameters from <code class="file docutils literal notranslate"><span class="pre">/etc/nginx/fastcgi_params</span></code>:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">fastcgi_param</span><span class="w">  </span><span class="s">QUERY_STRING</span><span class="w">       </span><span class="nv">$query_string</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">REQUEST_METHOD</span><span class="w">     </span><span class="nv">$request_method</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">CONTENT_TYPE</span><span class="w">       </span><span class="nv">$content_type</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">CONTENT_LENGTH</span><span class="w">     </span><span class="nv">$content_length</span><span class="p">;</span>
+
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">SCRIPT_NAME</span><span class="w">        </span><span class="nv">$fastcgi_script_name</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">REQUEST_URI</span><span class="w">        </span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">DOCUMENT_URI</span><span class="w">       </span><span class="nv">$document_uri</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">DOCUMENT_ROOT</span><span class="w">      </span><span class="nv">$document_root</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">SERVER_PROTOCOL</span><span class="w">    </span><span class="nv">$server_protocol</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">REQUEST_SCHEME</span><span class="w">     </span><span class="nv">$scheme</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">HTTPS</span><span class="w">              </span><span class="nv">$https</span><span class="w"> </span><span class="s">if_not_empty</span><span class="p">;</span>
+
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">GATEWAY_INTERFACE</span><span class="w">  </span><span class="s">CGI/1.1</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">SERVER_SOFTWARE</span><span class="w">    </span><span class="s">nginx/</span><span class="nv">$nginx_version</span><span class="p">;</span>
+
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">REMOTE_ADDR</span><span class="w">        </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">REMOTE_PORT</span><span class="w">        </span><span class="nv">$remote_port</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">SERVER_ADDR</span><span class="w">        </span><span class="nv">$server_addr</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">SERVER_PORT</span><span class="w">        </span><span class="nv">$server_port</span><span class="p">;</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">SERVER_NAME</span><span class="w">        </span><span class="nv">$server_name</span><span class="p">;</span>
+
+<span class="c1"># PHP only, required if PHP was built with --enable-force-cgi-redirect</span>
+<span class="k">fastcgi_param</span><span class="w">  </span><span class="s">REDIRECT_STATUS</span><span class="w">    </span><span class="mi">200</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Moreover, you can use some <a class="reference internal" href="config.html#qgis-server-envvar"><span class="std std-ref">Environment variables</span></a> to configure QGIS Server.
+In the NGINX configuration file, <code class="file docutils literal notranslate"><span class="pre">/etc/nginx/nginx.conf</span></code>, you have to use
+<code class="docutils literal notranslate"><span class="pre">fastcgi_param</span></code> instruction to define these variables as shown below:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">location</span><span class="w"> </span><span class="s">/qgisserver</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="kn">gzip</span><span class="w">           </span><span class="no">off</span><span class="p">;</span>
+<span class="w">     </span><span class="kn">include</span><span class="w">        </span><span class="s">fastcgi_params</span><span class="p">;</span>
+<span class="w">     </span><span class="kn">fastcgi_param</span><span class="w">  </span><span class="s">QGIS_SERVER_LOG_STDERR</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">     </span><span class="kn">fastcgi_param</span><span class="w">  </span><span class="s">QGIS_SERVER_LOG_LEVEL</span><span class="w">   </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">     </span><span class="kn">fastcgi_pass</span><span class="w">   </span><span class="s">unix:/var/run/qgisserver.socket</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="fastcgi-wrappers">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">FastCGI wrappers</a><a class="headerlink" href="#fastcgi-wrappers" title="Link to this heading"></a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>fcgiwrap</strong> is easier to set up than <strong>spawn-fcgi</strong>, because it’s already wrapped
+in a Systemd service. But it also leads to a solution that is much slower
+than using spawn-fcgi. With fcgiwrap, a new QGIS Server process is created
+on each request, meaning that the QGIS Server initialization process, which
+includes reading and parsing the QGIS project file, is done on each request.
+With spawn-fcgi, the QGIS Server process remains alive between requests,
+resulting in much better performance. For that reason, spawn-fcgi
+is recommended for production use.</p>
+</div>
+<section id="spawn-fcgi">
+<h5>spawn-fcgi<a class="headerlink" href="#spawn-fcgi" title="Link to this heading"></a></h5>
+<p>If you want to use <a class="reference external" href="https://redmine.lighttpd.net/projects/spawn-fcgi/wiki">spawn-fcgi</a>:</p>
+<ol class="arabic">
+<li><p>The first step is to install the package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt<span class="w"> </span>install<span class="w"> </span>spawn-fcgi
+</pre></div>
+</div>
+</li>
+<li><p>Then, introduce the following block in your NGINX server configuration:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">location</span><span class="w"> </span><span class="s">/qgisserver</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">gzip</span><span class="w">           </span><span class="no">off</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">include</span><span class="w">        </span><span class="s">fastcgi_params</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">fastcgi_pass</span><span class="w">   </span><span class="s">unix:/var/run/qgisserver.socket</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>And restart NGINX to take into account the new configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
+</pre></div>
+</div>
+</li>
+<li><p>Finally, considering that there is no default service file for spawn-fcgi,
+you have to manually start QGIS Server in your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spawn-fcgi<span class="w"> </span>-s<span class="w"> </span>/var/run/qgisserver.socket<span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>-U<span class="w"> </span>www-data<span class="w"> </span>-G<span class="w"> </span>www-data<span class="w"> </span>-n<span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>/usr/lib/cgi-bin/qgis_mapserv.fcgi
+</pre></div>
+</div>
+</li>
+</ol>
+<p>QGIS Server is now available at <a class="reference external" href="http://qgis.demo/qgisserver">http://qgis.demo/qgisserver</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using spawn-fcgi, you may directly define environment variables
+before running the server. For example:
+<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">QGIS_SERVER_LOG_STDERR=1</span></code></p>
+</div>
+<p>Of course, you can add an init script to start QGIS Server at boot time or whenever you want.
+For example with <strong>systemd</strong>:</p>
+<ol class="arabic">
+<li><p>Edit the file <code class="file docutils literal notranslate"><span class="pre">/etc/systemd/system/qgis-server.service</span></code> with this content:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">QGIS server</span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+
+<span class="k">[Service]</span>
+<span class="c1">;; set env var as needed</span>
+<span class="c1">;Environment=&quot;LANG=en_EN.UTF-8&quot;</span>
+<span class="c1">;Environment=&quot;QGIS_SERVER_PARALLEL_RENDERING=1&quot;</span>
+<span class="c1">;Environment=&quot;QGIS_SERVER_MAX_THREADS=12&quot;</span>
+<span class="c1">;Environment=&quot;QGIS_SERVER_LOG_LEVEL=0&quot;</span>
+<span class="c1">;Environment=&quot;QGIS_SERVER_LOG_STDERR=1&quot;</span>
+<span class="c1">;; or use a file:</span>
+<span class="c1">;EnvironmentFile=/etc/qgis-server/env</span>
+
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">spawn-fcgi -s /var/run/qgisserver.socket -U www-data -G www-data -n /usr/lib/cgi-bin/qgis_mapserv.fcgi</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</pre></div>
+</div>
+</li>
+<li><p>Then enable and start the service:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>qgis-server
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>With the above commands spawn-fcgi spawns only one QGIS Server process.</p>
+</div>
+</section>
+<section id="fcgiwrap">
+<h5>fcgiwrap<a class="headerlink" href="#fcgiwrap" title="Link to this heading"></a></h5>
+<p>Using <a class="reference external" href="https://www.nginx.com/resources/wiki/start/topics/examples/fcgiwrap/">fcgiwrap</a>
+is much easier to setup than <strong>spawn-fcgi</strong> but it’s much slower.</p>
+<ol class="arabic">
+<li><p>You first have to install the corresponding package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt<span class="w"> </span>install<span class="w"> </span>fcgiwrap
+</pre></div>
+</div>
+</li>
+<li><p>Then, introduce the following block in your NGINX server configuration:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="k">location</span><span class="w"> </span><span class="s">/qgisserver</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">     </span><span class="kn">gzip</span><span class="w">           </span><span class="no">off</span><span class="p">;</span>
+<span class="linenos">3</span><span class="w">     </span><span class="kn">include</span><span class="w">        </span><span class="s">fastcgi_params</span><span class="p">;</span>
+<span class="linenos">4</span><span class="w">     </span><span class="kn">fastcgi_pass</span><span class="w">   </span><span class="s">unix:/var/run/fcgiwrap.socket</span><span class="p">;</span>
+<span class="linenos">5</span><span class="w">     </span><span class="kn">fastcgi_param</span><span class="w">  </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="s">/usr/lib/cgi-bin/qgis_mapserv.fcgi</span><span class="p">;</span>
+<span class="linenos">6</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Finally, restart NGINX and <strong>fcgiwrap</strong> to take into account the new configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
+systemctl<span class="w"> </span>restart<span class="w"> </span>fcgiwrap
+</pre></div>
+</div>
+</li>
+</ol>
+<p>QGIS Server is now available at <a class="reference external" href="http://qgis.demo/qgisserver">http://qgis.demo/qgisserver</a>.</p>
+</section>
+</section>
+<section id="systemd">
+<h4><a class="toc-backref" href="#id15" role="doc-backlink">Systemd</a><a class="headerlink" href="#systemd" title="Link to this heading"></a></h4>
+<p>QGIS Server needs a running X Server to be fully usable, in particular for printing.
+In the case you already have a running X Server, you can use systemd services.</p>
+<p>This method, to deploy QGIS Server, relies on two Systemd units to configure:
+a <a class="reference external" href="https://www.freedesktop.org/software/systemd/man/systemd.socket.html">Socket unit</a>
+and a <a class="reference external" href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">Service unit</a>.</p>
+<ol class="arabic">
+<li><p>The <strong>QGIS Server Socket unit</strong> defines and creates a file system socket,
+used by NGINX to start and communicate with QGIS Server.
+The Socket unit has to be configured with <code class="docutils literal notranslate"><span class="pre">Accept=false</span></code>, meaning that the
+calls to the <code class="docutils literal notranslate"><span class="pre">accept()</span></code> system call are delegated to the process created by
+the Service unit.
+It is located in <code class="file docutils literal notranslate"><span class="pre">/etc/systemd/system/qgis-server&#64;.socket</span></code>, which is actually
+a template:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">QGIS Server Listen Socket (instance %i)</span>
+
+<span class="k">[Socket]</span>
+<span class="na">Accept</span><span class="o">=</span><span class="s">false</span>
+<span class="na">ListenStream</span><span class="o">=</span><span class="s">/var/run/qgis-server-%i.sock</span>
+<span class="na">SocketUser</span><span class="o">=</span><span class="s">www-data</span>
+<span class="na">SocketGroup</span><span class="o">=</span><span class="s">www-data</span>
+<span class="na">SocketMode</span><span class="o">=</span><span class="s">0600</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">sockets.target</span>
+</pre></div>
+</div>
+</li>
+<li><p>Now enable and start sockets:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>qgis-server@<span class="nv">$i</span>.socket<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+</li>
+<li><p>The <strong>QGIS Server Service unit</strong> defines and starts the QGIS Server process.
+The important part is that the Service process’ standard input is connected to
+the socket defined by the Socket unit.
+This has to be configured using <code class="docutils literal notranslate"><span class="pre">StandardInput=socket</span></code> in the Service unit
+configuration located in <code class="file docutils literal notranslate"><span class="pre">/etc/systemd/system/qgis-server&#64;.service</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">QGIS Server Service (instance %i)</span>
+
+<span class="k">[Service]</span>
+<span class="na">User</span><span class="o">=</span><span class="s">www-data</span>
+<span class="na">Group</span><span class="o">=</span><span class="s">www-data</span>
+<span class="na">StandardOutput</span><span class="o">=</span><span class="s">null</span>
+<span class="na">StandardError</span><span class="o">=</span><span class="s">journal</span>
+<span class="na">StandardInput</span><span class="o">=</span><span class="s">socket</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/lib/cgi-bin/qgis_mapserv.fcgi</span>
+<span class="na">EnvironmentFile</span><span class="o">=</span><span class="s">/etc/qgis-server/env</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The QGIS Server <a class="reference internal" href="config.html#qgis-server-envvar"><span class="std std-ref">environment variables</span></a>
+are defined in a separate file, <code class="file docutils literal notranslate"><span class="pre">/etc/qgis-server/env</span></code>.
+It could look like this:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">QGIS_PROJECT_FILE</span><span class="o">=</span>/etc/qgis/myproject.qgs
+<span class="nv">QGIS_SERVER_LOG_STDERR</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">QGIS_SERVER_LOG_LEVEL</span><span class="o">=</span><span class="m">3</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>Now start socket service:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>qgis-server@<span class="nv">$i</span>.service<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+</li>
+<li><p>Finally, for the NGINX HTTP server, let’s introduce the configuration for this setup:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">upstream</span><span class="w"> </span><span class="s">qgis-server_backend</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="kn">server</span><span class="w"> </span><span class="s">unix:/var/run/qgis-server-1.sock</span><span class="p">;</span>
+<span class="w">   </span><span class="kn">server</span><span class="w"> </span><span class="s">unix:/var/run/qgis-server-2.sock</span><span class="p">;</span>
+<span class="w">   </span><span class="kn">server</span><span class="w"> </span><span class="s">unix:/var/run/qgis-server-3.sock</span><span class="p">;</span>
+<span class="w">   </span><span class="kn">server</span><span class="w"> </span><span class="s">unix:/var/run/qgis-server-4.sock</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="kn">…</span>
+
+<span class="w">   </span><span class="s">location</span><span class="w"> </span><span class="s">/qgis-server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="kn">gzip</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<span class="w">       </span><span class="kn">include</span><span class="w"> </span><span class="s">fastcgi_params</span><span class="p">;</span>
+<span class="w">       </span><span class="kn">fastcgi_pass</span><span class="w"> </span><span class="s">qgis-server_backend</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Now restart NGINX for the new configuration to be taken into account:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Thanks to Oslandia for sharing <a class="reference external" href="https://oslandia.com/en/2018/11/23/deploying-qgis-server-with-systemd/">their tutorial</a>.</p>
+</section>
+</section>
+<section id="xvfb">
+<span id="id3"></span><h3><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">2.1.3. </span>Xvfb</a><a class="headerlink" href="#xvfb" title="Link to this heading"></a></h3>
+<p>QGIS Server needs a running X Server to be fully usable, in particular for printing.
+On servers it is usually recommended not to install it, so you may use <code class="docutils literal notranslate"><span class="pre">xvfb</span></code>
+to have a virtual X environment.</p>
+<p>If you’re running the Server in graphic/X11 environment then there is no need to install xvfb.
+More info at <a class="reference external" href="https://www.itopen.it/qgis-server-setup-notes/">https://www.itopen.it/qgis-server-setup-notes/</a>.</p>
+<ol class="arabic">
+<li><p>To install the package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt<span class="w"> </span>install<span class="w"> </span>xvfb
+</pre></div>
+</div>
+</li>
+<li><p>Create the service file, <code class="file docutils literal notranslate"><span class="pre">/etc/systemd/system/xvfb.service</span></code>, with this content:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">X Virtual Frame Buffer Service</span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+
+<span class="k">[Service]</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</pre></div>
+</div>
+</li>
+<li><p>Enable, start and check the status of the <code class="docutils literal notranslate"><span class="pre">xvfb.service</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>xvfb.service
+systemctl<span class="w"> </span>status<span class="w"> </span>xvfb.service
+</pre></div>
+</div>
+</li>
+<li><p>Then, according to your HTTP server, you should configure the <strong>DISPLAY</strong>
+parameter or directly use <strong>xvfb-run</strong>.</p>
+<ul>
+<li><p>Using Apache:</p>
+<ol class="arabic">
+<li><p>Add to your <em>Fcgid</em> configuration (see <a class="reference internal" href="#httpserver"><span class="std std-ref">Apache HTTP Server</span></a>):</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nb">FcgidInitialEnv</span><span class="w"> </span>DISPLAY<span class="w">       </span><span class="s2">&quot;:99&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Restart Apache for the new configuration to be taken into account:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p>Using NGINX</p>
+<ul>
+<li><p>With spawn-fcgi using <code class="docutils literal notranslate"><span class="pre">xvfb-run</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xvfb-run<span class="w"> </span>/usr/bin/spawn-fcgi<span class="w"> </span>-f<span class="w"> </span>/usr/lib/cgi-bin/qgis_mapserv.fcgi<span class="w"> </span><span class="se">\</span>
+<span class="w">                             </span>-s<span class="w"> </span>/tmp/qgisserver.socket<span class="w"> </span><span class="se">\</span>
+<span class="w">                             </span>-G<span class="w"> </span>www-data<span class="w"> </span>-U<span class="w"> </span>www-data<span class="w"> </span>-n
+</pre></div>
+</div>
+</li>
+<li><p>With the <strong>DISPLAY</strong> environment variable in the HTTP server configuration.</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">fastcgi_param</span><span class="w">  </span><span class="s">DISPLAY</span><span class="w">       </span><span class="s">&quot;:99&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="installation-on-windows">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">2.2. </span>Installation on Windows</a><a class="headerlink" href="#installation-on-windows" title="Link to this heading"></a></h2>
+<p id="index-3">QGIS Server can also be installed on Windows systems using the 64 bit version
+of the OSGeo4W network installer (<a class="reference external" href="https://qgis.org/en/site/forusers/download.html">https://qgis.org/en/site/forusers/download.html</a>).</p>
+<p>A simple procedure is the following:</p>
+<ol class="arabic">
+<li><p>Download and run the OSGeo4W installer</p></li>
+<li><p>Follow the “Advanced Install” and install the <strong>QGIS Desktop</strong>, <strong>QGIS Server</strong>
+<strong>apache</strong> and <strong>mod_fcgid</strong> packages.</p>
+<figure class="align-center">
+<img alt="../../_images/qgis_server_windows2.png" src="../../_images/qgis_server_windows2.png" />
+</figure>
+</li>
+<li><p>Apache is not directly installed as a service on Windows. You need to:</p>
+<ol class="arabic">
+<li><p>Right-click the <code class="file docutils literal notranslate"><span class="pre">OSGeo4W.bat</span></code> file at the root of the <code class="file docutils literal notranslate"><span class="pre">C:\OSGeo4W\</span></code>
+folder (if the default installation paths have been used) and select
+<span class="guilabel">Run as administrator</span></p></li>
+<li><p>In the console, run <code class="docutils literal notranslate"><span class="pre">apache-install.bat</span></code>, which will output</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>apache-install.bat
+Installing<span class="w"> </span>the<span class="w"> </span><span class="s1">&#39;Apache OSGeo4W Web Server&#39;</span><span class="w"> </span>service
+The<span class="w"> </span><span class="s1">&#39;Apache OSGeo4W Web Server&#39;</span><span class="w"> </span>service<span class="w"> </span>is<span class="w"> </span>successfully<span class="w"> </span>installed.
+Testing<span class="w"> </span>httpd.conf....
+Errors<span class="w"> </span>reported<span class="w"> </span>here<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>corrected<span class="w"> </span>before<span class="w"> </span>the<span class="w"> </span>service<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>started.
+...
+</pre></div>
+</div>
+<p>The service is started as you can notice in the report.
+But the server may fail to run due to missing custom configuration.</p>
+</li>
+</ol>
+</li>
+<li><p>Edit the <code class="file docutils literal notranslate"><span class="pre">C:\OSGeo4w\apps\apache\conf\httpd.conf</span></code> file
+with the following changes (various other combinations are possible):</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Purpose</p></th>
+<th class="head"><p>Existing config</p></th>
+<th class="head"><p>Replacement</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>(Optional) Customize the address to listen to using an IP and/or port,
+You can and add as many entries as you wish.</p></td>
+<td><div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nb">Listen</span><span class="w"> </span>${SRVPORT}
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nb">Listen</span><span class="w"> </span>localhost:8080
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Indicate where to find the script files</p></td>
+<td><div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nb">ScriptAlias</span><span class="w"> </span><span class="sx">/cgi-bin/</span><span class="w"> </span><span class="s2">&quot;${SRVROOT}/cgi-bin/&quot;</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nb">ScriptAlias</span><span class="w"> </span><span class="sx">/cgi-bin/</span><span class="w"> </span><span class="s2">&quot;C:/OSGeo4W/apps/qgis/bin/&quot;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Provide permissions on the script folder</p></td>
+<td><div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;${SRVROOT}/cgi-bin&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">None</span>
+<span class="w">    </span><span class="nb">Options</span><span class="w"> </span><span class="k">None</span>
+<span class="w">    </span><span class="nb">Require</span><span class="w"> </span><span class="k">all</span><span class="w"> </span>granted
+<span class="nt">&lt;/Directory&gt;</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;C:/OSGeo4W/apps/qgis/bin&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">SetHandler</span><span class="w"> </span>cgi-script
+<span class="w">    </span><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">None</span>
+<span class="w">    </span><span class="nb">Options</span><span class="w"> </span>ExecCGI
+<span class="w">    </span><span class="nb">Require</span><span class="w"> </span><span class="k">all</span><span class="w"> </span>granted
+<span class="nt">&lt;/Directory&gt;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Enable file extensions to use for script files. Uncomment and complete</p></td>
+<td><div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="c">#AddHandler cgi-script .cgi</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nb">AddHandler</span><span class="w"> </span>cgi-script<span class="w"> </span>.cgi<span class="w"> </span>.exe
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Add more OSGeo4W custom configuration variables</p></td>
+<td><div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="c"># parse OSGeo4W apache conf files</span>
+<span class="nb">IncludeOptional</span><span class="w"> </span><span class="s2">&quot;C:/OSGeo4W/httpd.d/httpd_*.conf&quot;</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="c"># parse OSGeo4W apache conf files</span>
+<span class="nb">IncludeOptional</span><span class="w"> </span><span class="s2">&quot;C:/OSGeo4W/httpd.d/httpd_*.conf&quot;</span>
+<span class="nb">SetEnv</span><span class="w"> </span>GDAL_DATA<span class="w"> </span><span class="s2">&quot;C:/OSGeo4W/share/gdal&quot;</span>
+<span class="nb">SetEnv</span><span class="w"> </span>QGIS_AUTH_DB_DIR_PATH<span class="w"> </span><span class="s2">&quot;C:/OSGeo4W/apps/qgis/resources&quot;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Restart the Apache web server</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">apache</span><span class="o">-</span><span class="n">restart</span><span class="o">.</span><span class="n">bat</span>
+</pre></div>
+</div>
+</li>
+<li><p>Open browser window to testing a GetCapabilities request to QGIS Server.
+Replace <code class="docutils literal notranslate"><span class="pre">localhost:8080</span></code> with the IP and port you set to listen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:8080/cgi-bin/qgis_mapserv.fcgi.exe?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetCapabilities
+</pre></div>
+</div>
+<p>A <code class="file docutils literal notranslate"><span class="pre">XML</span></code> file with the capabilities should be returned.
+Your server is ready to use.</p>
+</li>
+</ol>
+</section>
+<section id="serve-a-project">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">2.3. </span>Serve a project</a><a class="headerlink" href="#serve-a-project" title="Link to this heading"></a></h2>
+<p>Now that QGIS Server is installed and running, we just have to use it.</p>
+<p>Obviously, we need a QGIS project to work on. Of course, you can fully
+customize your project by defining contact information, precise some
+restrictions on CRS or even exclude some layers. Everything you need to know
+about that is described later in <a class="reference internal" href="#creatingwmsfromproject"><span class="std std-ref">Configure your project</span></a>.</p>
+<p>But for now, we are going to use a simple project already configured and
+previously downloaded in <code class="file docutils literal notranslate"><span class="pre">/home/qgis/projects/world.qgs</span></code>, as described above.</p>
+<p>By opening the project and taking a quick look on layers, we know that 4
+layers are currently available:</p>
+<ul class="simple">
+<li><p>airports</p></li>
+<li><p>places</p></li>
+<li><p>countries</p></li>
+<li><p>countries_shapeburst</p></li>
+</ul>
+<p>You don’t have to understand the full request for now but you may retrieve
+a map with some of the previous layers thanks to QGIS Server by doing something
+like this in your web browser to retrieve the <em>countries</em> layer:</p>
+<ul>
+<li><p>If you followed the above instructions to install an Apache HTTP Server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://qgis.demo/cgi-bin/qgis_mapserv.fcgi?
+<span class="w">  </span><span class="nv">MAP</span><span class="o">=</span>/home/qgis/projects/world.qgs<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">LAYERS</span><span class="o">=</span>countries<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">SERVICE</span><span class="o">=</span>WMS<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">REQUEST</span><span class="o">=</span>GetMap<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">400</span><span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">200</span><span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">BBOX</span><span class="o">=</span>-90,-180,90,180
+</pre></div>
+</div>
+</li>
+<li><p>If you followed the above instructions to install an NGINX HTTP Server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://qgis.demo/qgisserver?
+<span class="w">  </span><span class="nv">MAP</span><span class="o">=</span>/home/qgis/projects/world.qgs<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">LAYERS</span><span class="o">=</span>countries<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">SERVICE</span><span class="o">=</span>WMS<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">REQUEST</span><span class="o">=</span>GetMap<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">CRS</span><span class="o">=</span>EPSG:4326<span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">400</span><span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">200</span><span class="p">&amp;</span>
+<span class="w">  </span><span class="nv">BBOX</span><span class="o">=</span>-90,-180,90,180
+</pre></div>
+</div>
+</li>
+</ul>
+<p>If you obtain the next image, then QGIS Server is running correctly:</p>
+<figure class="align-center" id="id4">
+<img alt="../../_images/server_basic_getmap.png" src="../../_images/server_basic_getmap.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Server response to a basic GetMap request</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Note that you may define <strong>QGIS_PROJECT_FILE</strong> environment variable to use a project
+by default instead of giving a <strong>MAP</strong> parameter (see <a class="reference internal" href="config.html#qgis-server-envvar"><span class="std std-ref">Environment variables</span></a>).</p>
+<p>For example with spawn-fcgi:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">QGIS_PROJECT_FILE</span><span class="o">=</span>/home/qgis/projects/world.qgs
+spawn-fcgi<span class="w"> </span>-f<span class="w"> </span>/usr/lib/bin/cgi-bin/qgis_mapserv.fcgi<span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-s<span class="w"> </span>/var/run/qgisserver.socket<span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-U<span class="w"> </span>www-data<span class="w"> </span>-G<span class="w"> </span>www-data<span class="w"> </span>-n
+</pre></div>
+</div>
+</section>
+<section id="configure-your-project">
+<span id="creatingwmsfromproject"></span><h2><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">2.4. </span>Configure your project</a><a class="headerlink" href="#configure-your-project" title="Link to this heading"></a></h2>
+<p>To provide a new QGIS Server WMS, WFS, OAPIF or WCS, you have to create a QGIS project
+file with some data or use one of your current project. Define the colors and
+styles of the layers in QGIS and the project CRS, if not already defined.
+Then, go to the <span class="guilabel">QGIS Server</span> menu of the
+<span class="menuselection">Project ► Properties…</span> dialog and provide
+some information about the OWS in the <span class="guilabel">Service Capabilities</span> tab.</p>
+<figure class="align-center" id="id5">
+<span id="figure-server-definitions"></span><img alt="../../_images/ows_server_definition.png" src="../../_images/ows_server_definition.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Definitions for a QGIS Server WMS/WFS/WCS project</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>You have to <span class="guilabel">Enable Service Capabilities</span> first, if it is deactivated.
+This will appear in the GetCapabilities response of the WMS, WFS or WCS.
+If you don’t check <a class="reference internal" href="../../_images/checkbox.png"><img alt="checkbox" src="../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable Service capabilities</span>,
+QGIS Server will use the information given in the <code class="file docutils literal notranslate"><span class="pre">wms_metadata.xml</span></code> file
+located in the <code class="file docutils literal notranslate"><span class="pre">cgi-bin</span></code> folder.</p>
+<section id="wms-capabilities">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">2.4.1. </span>WMS capabilities</a><a class="headerlink" href="#wms-capabilities" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id6">
+<span id="figure-wms-definitions"></span><img alt="../../_images/ows_server_wms.png" src="../../_images/ows_server_wms.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Definitions in the WMS tab</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In the <span class="guilabel">WMS capabilities</span> tab, check <span class="guilabel">Advertised extent</span>
+to define the extent advertised in the WMS GetCapabilities response.
+The <a class="reference internal" href="../user_manual/introduction/general_tools.html#extent-selector"><span class="std std-ref">spatial extent selector</span></a> widget helps you enter the extent
+as a <code class="docutils literal notranslate"><span class="pre">xmin,</span> <span class="pre">xmax,</span> <span class="pre">ymin,</span> <span class="pre">ymax</span></code> text or pick it from the map canvas, layers, bookmarks…</p>
+<p>By checking <a class="reference internal" href="../../_images/checkbox.png"><img alt="checkbox" src="../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">CRS restrictions</span>, you can restrict
+in which coordinate reference systems (CRS) QGIS Server will offer
+to render maps. It is recommended that you restrict the offered CRS as this
+reduces the size of the WMS GetCapabilities response.
+Use the <a class="reference internal" href="../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> button below to select those CRSs
+from the Coordinate Reference System Selector, or click <span class="guilabel">Used</span>
+to add the CRSs used in the QGIS project to the list.</p>
+<p>If you have print layouts defined in your project, they will be listed in the
+<code class="docutils literal notranslate"><span class="pre">GetProjectSettings</span></code> response, and they can be used by the GetPrint request to
+create prints, using one of the print layouts as a template.
+This is a QGIS-specific extension to the WMS 1.3.0 specification.
+If you want to exclude any print layout from being published by the WMS,
+check <a class="reference internal" href="../../_images/checkbox.png"><img alt="checkbox" src="../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Exclude layouts</span> and click the
+<a class="reference internal" href="../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> button below.
+Then, select a print layout from the <span class="guilabel">Select print layout</span> dialog
+in order to add it to the excluded layouts list.</p>
+<p>If you want to exclude any layer or layer group from being published by the
+WMS, check <a class="reference internal" href="../../_images/checkbox.png"><img alt="checkbox" src="../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Exclude Layers</span> and click the
+<a class="reference internal" href="../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> button below.
+This opens the <span class="guilabel">Select restricted layers and groups</span> dialog, which
+allows you to choose the layers and groups that you don’t want to be published.
+Use the <kbd class="kbd docutils literal notranslate">Shift</kbd> or <kbd class="kbd docutils literal notranslate">Ctrl</kbd> key if you want to select multiple entries.
+It is recommended that you exclude from publishing the layers that you don’t
+need as this reduces the size of the WMS GetCapabilities response which leads
+to faster loading times on the client side.</p>
+<p>If you check <a class="reference internal" href="../../_images/checkbox.png"><img alt="checkbox" src="../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Use layer ids as name</span>, layer ids will be
+used to reference layers in the <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> response or <code class="docutils literal notranslate"><span class="pre">GetMap</span> <span class="pre">LAYERS</span></code>
+parameter. If not, layer name or short name if defined (see <a class="reference internal" href="../user_manual/working_with_vector/vector_properties.html#vectorservermenu"><span class="std std-ref">QGIS Server Properties</span></a>)
+is used.</p>
+<p>You can receive requested GetFeatureInfo as plain text, XML and GML. The default is XML.</p>
+<p id="addgeometrytofeatureresponse">If you wish, you can check <a class="reference internal" href="../../_images/checkbox.png"><img alt="checkbox" src="../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Add geometry to feature response</span>.
+This will include the bounding box for each feature in the GetFeatureInfo response.
+See also the <a class="reference internal" href="services/wms.html#wms-getfeatureinfo"><span class="std std-ref">WITH_GEOMETRY</span></a> parameter.</p>
+<p>As many web clients can’t display circular arcs in geometries you have the option
+to segmentize the geometry before sending it to the client in a GetFeatureInfo
+response. This allows such clients to still display a feature’s geometry
+(e.g. for highlighting the feature). You need to check the
+<a class="reference internal" href="../../_images/checkbox.png"><img alt="checkbox" src="../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Segmentize feature info geometry</span> to activate the option.</p>
+<p>When a layer group is passed to <code class="docutils literal notranslate"><span class="pre">GetLegendGraphic</span></code> request,
+all of its leaf layers are added to the legend picture (however without the groups’ labels).
+Check the <a class="reference internal" href="../../_images/checkbox.png"><img alt="checkbox" src="../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Add layer groups in GetLegendGraphic</span> option
+if you want to also insert the layer groups (and subgroups) names
+into the layer tree, just like in QGIS Desktop legend.</p>
+<p>You can also use the <span class="guilabel">GetFeatureInfo geometry precision</span> option to
+set the precision of the GetFeatureInfo geometry. This enables you to save
+bandwidth when you don’t need the full precision.</p>
+<p>If you want QGIS Server to advertise specific request URLs
+in the WMS GetCapabilities response, enter the corresponding URL in the
+<span class="guilabel">Advertised URL</span> field.</p>
+<p>Furthermore, you can restrict the maximum size of the maps returned by the
+GetMap request by entering the maximum width and height into the respective
+fields under <span class="guilabel">Maximums for GetMap request</span>.</p>
+<p>You can change the <span class="guilabel">Quality for JPEG images</span> factor. The quality factor must be
+in the range 0 to 100. Specify 0 for maximum compression, 100 for no compression.</p>
+<p>You can change the limit for atlas features to be printed in one request by setting the
+<span class="guilabel">Maximum features for Atlas print requests</span> field.</p>
+<p>When QGIS Server is used in tiled mode (see <a class="reference internal" href="services/wms.html#wms-tiled"><span class="std std-ref">TILED parameter</span></a>), you can set the
+<span class="guilabel">Tile buffer in pixels</span>. The recommended value is the size of the largest
+symbol or line width in your QGIS project.</p>
+<p>If one of your layers uses the <a class="reference internal" href="../user_manual/working_with_vector/vector_properties.html#maptips"><span class="std std-ref">Map Tip display</span></a> (i.e. to show text using
+expressions) this will be listed inside the GetFeatureInfo output. If the
+layer uses a Value Map for one of its attributes, this information will also
+be shown in the GetFeatureInfo output.</p>
+</section>
+<section id="wmts-capabilities">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">2.4.2. </span>WMTS capabilities</a><a class="headerlink" href="#wmts-capabilities" title="Link to this heading"></a></h3>
+<p>In the <span class="guilabel">WMTS capabilities</span> tab you can select the layers you
+want to publish as WMTS and specify if you want to publish as PNG or JPEG.</p>
+<figure class="align-center" id="id7">
+<span id="figure-wmts-definitions"></span><img alt="../../_images/ows_server_wmts.png" src="../../_images/ows_server_wmts.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Definitions in the WMTS tab</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>If you enter a URL in the <span class="guilabel">Advertised URL</span> field of the
+<span class="guilabel">WMTS capabilities</span> section, QGIS Server will advertise this specific
+URL in the WMTS GetCapabilities response.</p>
+</section>
+<section id="wfs-oapif-capabilities">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">2.4.3. </span>WFS/OAPIF capabilities</a><a class="headerlink" href="#wfs-oapif-capabilities" title="Link to this heading"></a></h3>
+<p>In the <span class="guilabel">WFS/OAPIF capabilities</span> tab, you can select the layers you
+want to publish as WFS or OAPIF, and specify if they will allow update, insert and
+delete operations.</p>
+<figure class="align-center" id="id8">
+<span id="figure-wfs-definitions"></span><img alt="../../_images/ows_server_wfs.png" src="../../_images/ows_server_wfs.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Definitions in the WFS/OAPIF tab</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>If you enter a URL in the <span class="guilabel">Advertised URL</span> field of the
+<span class="guilabel">WFS capabilities</span> section, QGIS Server will advertise this specific
+URL in the WFS GetCapabilities response.</p>
+</section>
+<section id="wcs-capabilities">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">2.4.4. </span>WCS capabilities</a><a class="headerlink" href="#wcs-capabilities" title="Link to this heading"></a></h3>
+<p>In the <span class="guilabel">WCS capabilities</span> tab, you can select the layers that you
+want to publish as WCS.</p>
+<figure class="align-center" id="id9">
+<span id="figure-wcs-definitions"></span><img alt="../../_images/ows_server_wcs.png" src="../../_images/ows_server_wcs.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Definitions in the WCS tab</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>If you enter a URL in the <span class="guilabel">Advertised URL</span>
+field of the <span class="guilabel">WCS capabilities</span> section, QGIS Server will advertise
+this specific URL in the WCS GetCapabilities response.</p>
+</section>
+<section id="fine-tuning-your-ows">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink"><span class="section-number">2.4.5. </span>Fine tuning your OWS</a><a class="headerlink" href="#fine-tuning-your-ows" title="Link to this heading"></a></h3>
+<p>For vector layers, the <span class="guilabel">Fields</span> menu of the <span class="menuselection">Layer ►
+Layer Properties</span> dialog allows you to define for each
+attribute if it will be published or not.
+By default, all the attributes are published by your WMS and WFS.
+If you don’t want a specific attribute to be published, uncheck the corresponding
+checkbox in the <span class="guilabel">WMS</span> or <span class="guilabel">WFS</span> column.</p>
+<p>You can overlay watermarks over the maps produced by your WMS by adding text
+annotations or SVG annotations to the project file.
+See the <a class="reference internal" href="../user_manual/map_views/map_view.html#sec-annotations"><span class="std std-ref">Annotation Tools</span></a> section for instructions on
+creating annotations. For annotations to be displayed as watermarks on the WMS
+output, the <span class="guilabel">Fixed map position</span> checkbox in the
+<span class="guilabel">Annotation text</span> dialog must be unchecked.
+This can be accessed by double clicking the annotation while one of the
+annotation tools is active.
+For SVG annotations, you will need either to set the project to save absolute
+paths (in the <span class="guilabel">General</span> menu of the
+<span class="menuselection">Project ► Properties…</span> dialog) or to manually modify
+the path to the SVG image so that it represents a valid relative path.</p>
+</section>
+</section>
+<section id="integration-with-third-parties">
+<h2><a class="toc-backref" href="#id25" role="doc-backlink"><span class="section-number">2.5. </span>Integration with third parties</a><a class="headerlink" href="#integration-with-third-parties" title="Link to this heading"></a></h2>
+<p>QGIS Server provides standard OGC web services like <a class="reference external" href="https://www.ogc.org/docs/is">WMS, WFS, etc.</a>
+thus it can be used by a wide variety of end user tools.</p>
+<section id="integration-with-qgis-desktop">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">2.5.1. </span>Integration with QGIS Desktop</a><a class="headerlink" href="#integration-with-qgis-desktop" title="Link to this heading"></a></h3>
+<p>QGIS Desktop is the map designer where QGIS Server is the map server. The maps or
+QGIS projects will be served by the QGIS Server to provide OGC standards. These QGIS
+projects can either be files or entries in a database (by using
+<span class="menuselection">Project ► Save to ► PostgreSQL</span> in QGIS Desktop).</p>
+<p>Furthermore, dedicated update workflow must be established to refresh a project used
+by a QGIS Server (ie. copy project files into server location and restart QGIS
+Server). For now, automated processes (as server reloading over message queue
+service) are not implemented yet.</p>
+</section>
+<section id="integration-with-mapproxy">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">2.5.2. </span>Integration with MapProxy</a><a class="headerlink" href="#integration-with-mapproxy" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://mapproxy.org/">MapProxy</a> is a tile cache server and as it can read and
+serve any WMS/WMTS map server, it can be directly connected to QGIS server web
+services and improve end user experience.</p>
+</section>
+<section id="integration-with-qwc2">
+<h3><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">2.5.3. </span>Integration with QWC2</a><a class="headerlink" href="#integration-with-qwc2" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://github.com/qgis/qwc2">QWC2</a> is a responsive web application dedicated to
+QGIS Server. It helps you to build a highly customized map viewer with layer
+selection, feature info, etc.. Also many plugins are available like authentication or
+print service, the full list is available in this <a class="reference external" href="https://github.com/qwc-services">repository</a>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="1. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="services.html" class="btn btn-neutral float-right" title="3. Services" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/getting_started.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/server_manual/getting_started.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/server_manual/getting_started.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/server_manual/getting_started.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/server_manual/getting_started.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/server_manual/getting_started.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/server_manual/getting_started.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/server_manual/getting_started.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/server_manual/getting_started.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/server_manual/getting_started.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/server_manual/getting_started.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/server_manual/getting_started.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/server_manual/getting_started.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/server_manual/getting_started.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/server_manual/getting_started.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/server_manual/getting_started.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/server_manual/getting_started.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/server_manual/getting_started.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/getting_started.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/server_manual/getting_started.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/server_manual/getting_started.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/server_manual/getting_started.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/server_manual/getting_started.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/server_manual/getting_started.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/server_manual/getting_started.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/server_manual/getting_started.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/bc6b110a94418e670554ae54fec0ec1e" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

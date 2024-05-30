@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14.4. Creating 3D Symbols &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/style_library/3d_symbols.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="15. Managing Data Source" href="../managing_data_source/index.html" />
+    <link rel="prev" title="14.3. Setting a label" href="label_settings.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 14.4. Creating 3D Symbols">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. Visualizing Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">14. The Style Library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="style_manager.html">14.1. The Style Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbol_selector.html">14.2. The Symbol Selector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="label_settings.html">14.3. Setting a label</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">14.4. Creating 3D Symbols</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#point-layers">14.4.1. Point Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#line-layers">14.4.2. Line layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polygon-layers">14.4.3. Polygon Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shading-the-texture">14.4.4. Shading the texture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-example">14.4.5. Application example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS User Guide</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">14. </span>The Style Library</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">14.4. </span>Creating 3D Symbols</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/style_library/3d_symbols.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="label_settings.html" class="btn btn-neutral float-left" title="14.3. Setting a label" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../managing_data_source/index.html" class="btn btn-neutral float-right" title="15. Managing Data Source" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="creating-3d-symbols">
+<span id="dsymbols"></span><h1><span class="section-number">14.4. </span>Creating 3D Symbols<a class="headerlink" href="#creating-3d-symbols" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#point-layers" id="id5">Point Layers</a></p></li>
+<li><p><a class="reference internal" href="#line-layers" id="id6">Line layers</a></p></li>
+<li><p><a class="reference internal" href="#polygon-layers" id="id7">Polygon Layers</a></p></li>
+<li><p><a class="reference internal" href="#shading-the-texture" id="id8">Shading the texture</a></p></li>
+<li><p><a class="reference internal" href="#application-example" id="id9">Application example</a></p></li>
+</ul>
+</nav>
+<p>The <span class="guilabel">Style Manager</span> helps you create and store 3D symbols for every geometry type
+to render in the <a class="reference internal" href="../map_views/3d_map_view.html#label-3dmapview"><span class="std std-ref">3D map view</span></a>.</p>
+<p>As of the other items, enable the <a class="reference internal" href="../../../_images/3d.png"><img alt="3d" src="../../../_images/3d.png" style="width: 1.5em;" /></a> <span class="guilabel">3D Symbols</span> tab and expand the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a>
+button menu to create:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#d-pointlayers"><span class="std std-ref">3D point symbols</span></a></p></li>
+<li><p><a class="reference internal" href="#d-linelayers"><span class="std std-ref">3D line symbols</span></a></p></li>
+<li><p><a class="reference internal" href="#d-polygonlayers"><span class="std std-ref">3D polygon symbols</span></a></p></li>
+</ul>
+<section id="point-layers">
+<span id="d-pointlayers"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">14.4.1. </span>Point Layers</a><a class="headerlink" href="#point-layers" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id1">
+<span id="figure-3d-point-symbol"></span><img alt="../../../_images/3d_point_symbol.png" src="../../../_images/3d_point_symbol.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.35 </span><span class="caption-text">Properties of a 3D point symbol</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>You can define different types of 3D <span class="guilabel">Shape</span> to use for point symbols.
+They are mainly defined by their dimensions whose unit refers to the CRS of the
+project. Available types are:</p>
+<ul>
+<li><p><span class="guilabel">Sphere</span> defined by a <span class="guilabel">Radius</span></p></li>
+<li><p><span class="guilabel">Cylinder</span> defined by a <span class="guilabel">Radius</span> and <span class="guilabel">Length</span></p></li>
+<li><p><span class="guilabel">Cube</span> defined by a <span class="guilabel">Size</span></p></li>
+<li><p><span class="guilabel">Cone</span> defined by a <span class="guilabel">Top radius</span>, a <span class="guilabel">Bottom radius</span>
+and a <span class="guilabel">Length</span></p></li>
+<li><p><span class="guilabel">Plane</span> defined by a <span class="guilabel">Size</span></p></li>
+<li><p><span class="guilabel">Torus</span> defined by a <span class="guilabel">Radius</span> and a <span class="guilabel">Minor radius</span></p></li>
+<li><p><span class="guilabel">3D Model</span>, using a 3D model file: supported formats include
+wavefront <code class="file docutils literal notranslate"><span class="pre">.obj</span></code>, <code class="file docutils literal notranslate"><span class="pre">.glTF</span></code> and <code class="file docutils literal notranslate"><span class="pre">.fbx</span></code>.
+Models can be a file on disk, a remote URL or <a class="reference internal" href="../introduction/general_tools.html#embedded-file-selector"><span class="std std-ref">embedded in the project</span></a>. Community-created models are shared on the QGIS Hub
+at <a class="reference external" href="https://plugins.qgis.org/wavefronts">https://plugins.qgis.org/wavefronts</a>.</p></li>
+<li><p><span class="guilabel">Billboard</span>, defined by the <span class="guilabel">Billboard height</span> and
+the <span class="guilabel">Billboard symbol</span> (usually based on a <a class="reference internal" href="symbol_selector.html#vector-marker-symbols"><span class="std std-ref">marker symbol</span></a>). The symbol will have a stable size.
+Convenient for visualizing 3D point clouds Shapes.</p></li>
+</ul>
+</li>
+<li><p>The <span class="guilabel">Altitude clamping</span> can be set to <span class="guilabel">Absolute</span>,
+<span class="guilabel">Relative</span> or <span class="guilabel">Terrain</span>. The <span class="guilabel">Absolute</span> setting
+can be used when height values of the 3d vectors are provided as absolute
+measures from 0. <span class="guilabel">Relative</span> and <span class="guilabel">Terrain</span> add given
+elevation values to the underlying terrain elevation.</p></li>
+<li><p>The <a class="reference internal" href="#shading-texture"><span class="std std-ref">shading</span></a> properties can be defined.</p></li>
+<li><p>Under the <span class="guilabel">Transformations</span> frame, you can apply affine transformation
+to the symbol:</p>
+<ul>
+<li><p><span class="guilabel">Translation</span> to move objects in x, y and z axis.</p></li>
+<li><p><span class="guilabel">Scale</span> to resize the 3D shapes</p></li>
+<li><p><span class="guilabel">Rotation</span> around the x-, y- and z-axis.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="line-layers">
+<span id="d-linelayers"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">14.4.2. </span>Line layers</a><a class="headerlink" href="#line-layers" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id2">
+<span id="figure-3d-line-symbol"></span><img alt="../../../_images/3d_line_symbol.png" src="../../../_images/3d_line_symbol.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.36 </span><span class="caption-text">Properties of a 3D line symbol</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Beneath the <span class="guilabel">Width</span> and <span class="guilabel">Height</span> settings you can
+define the <span class="guilabel">Extrusion</span> of the vector lines. If the lines do not have
+z-values, you can define the 3d volumes with this setting.</p></li>
+<li><p>With the <span class="guilabel">Altitude clamping</span> you define the position of the
+3D lines relative to the underlying terrain surface, if you have included
+raster elevation data or other 3D vectors.</p></li>
+<li><p>The <span class="guilabel">Altitude binding</span> defines how the feature is clamped to the
+terrain. Either every <span class="guilabel">Vertex</span> of the feature will be clamped
+to the terrain or this will be done by the <span class="guilabel">Centroid</span>.</p></li>
+<li><p>It is possible to <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">Render as simple 3D lines</span>.</p></li>
+<li><p>The <a class="reference internal" href="#shading-texture"><span class="std std-ref">shading</span></a> properties can be defined.</p></li>
+</ul>
+</section>
+<section id="polygon-layers">
+<span id="d-polygonlayers"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">14.4.3. </span>Polygon Layers</a><a class="headerlink" href="#polygon-layers" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id3">
+<span id="figure-3d-polygon-symbol"></span><img alt="../../../_images/3d_polygon_symbol.png" src="../../../_images/3d_polygon_symbol.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.37 </span><span class="caption-text">Properties of a 3D polygon symbol</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>As for the other ones, <span class="guilabel">Height</span> can be defined in CRS units. You can
+also use the <a class="reference internal" href="../../../_images/mIconDataDefine.png"><img alt="dataDefine" src="../../../_images/mIconDataDefine.png" style="width: 1.5em;" /></a> button to overwrite the value with a custom
+expression, a variable or an entry of the attribute table</p></li>
+<li><p>Again, <span class="guilabel">Extrusion</span> is possible for missing z-values. Also for the
+extrusion you can use the <a class="reference internal" href="../../../_images/mIconDataDefine.png"><img alt="dataDefine" src="../../../_images/mIconDataDefine.png" style="width: 1.5em;" /></a> button in order to use the values of
+the vector layer and have different results for each polygon:</p>
+<figure class="align-center" id="id4">
+<img alt="../../../_images/3d_extrusion.png" src="../../../_images/3d_extrusion.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.38 </span><span class="caption-text">Data Defined Extrusion</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>The <span class="guilabel">Altitude clamping</span>, <span class="guilabel">Altitude binding</span> can be defined
+as explained above.</p></li>
+<li><p>The <span class="guilabel">Culling mode</span> to apply to the symbol; it can be:</p>
+<ul class="simple">
+<li><p><span class="guilabel">No Culling</span>: this can help to avoid seemingly missing surfaces
+when polygonZ/multipatch data do not have consistent ordering of vertices
+(e.g. all clock-wise or counter clock-wise)</p></li>
+<li><p><span class="guilabel">Front</span></p></li>
+<li><p>or <span class="guilabel">Back</span></p></li>
+</ul>
+</li>
+<li><p>The <span class="guilabel">Rendered facade</span> determines the faces to display. Possible values
+are <span class="guilabel">No facades</span>, <span class="guilabel">Walls</span>, <span class="guilabel">Roofs</span>, or
+<span class="guilabel">Walls and roofs</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Add back faces</span>: for each triangle, creates both front and
+back face with correct normals - at the expense of increased number of vertex data.
+This option can be used to fix shading issues (e.g., due to data with inconsistent
+order of vertices).</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Invert normals (experimental)</span>: can be useful for fixing
+clockwise/counter-clockwise face vertex orders</p></li>
+<li><p>The <a class="reference internal" href="#shading-texture"><span class="std std-ref">shading</span></a> properties can be defined.</p></li>
+<li><p>Display of the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Edges</span> of the symbols can be enabled
+and assigned a <span class="guilabel">Width</span> and <span class="guilabel">Color</span>.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><strong>Combination for best rendering of 3D data</strong></p>
+<p><span class="guilabel">Culling mode</span>, <span class="guilabel">Add back faces</span> and <span class="guilabel">Invert normals</span>
+are all meant to fix the look of 3D data if it does not look right.
+Typically when loading some data, it is best to first try <code class="docutils literal notranslate"><span class="pre">culling</span> <span class="pre">mode=back</span></code>
+and <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">back</span> <span class="pre">faces=disabled</span></code> - it is the most efficient.
+If the rendering does not look correct, try <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">back</span> <span class="pre">faces=enabled</span></code> and
+keep <code class="docutils literal notranslate"><span class="pre">culling</span> <span class="pre">mode=no</span> <span class="pre">culling</span></code>. Other combinations are more advanced and
+useful only in some scenarios based on how mixed up is the input dataset.</p>
+</div>
+</section>
+<section id="shading-the-texture">
+<span id="shading-texture"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">14.4.4. </span>Shading the texture</a><a class="headerlink" href="#shading-the-texture" title="Link to this heading"></a></h2>
+<p>Shading helps you reveal 3d details of objects which may otherwise be hidden
+due to the scene’s lighting. Ultimately, it’s an easier material to work with
+as you don’t need to worry about setting up appropriate scene lighting
+in order to visualise features.</p>
+<p>Various techniques of shading are used in QGIS and their availability depends
+on the geometry type of the symbol:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Realistic (Phong)</span>: describes the way a surface reflects light as
+a combination of the <span class="guilabel">Diffuse</span> reflection of rough surfaces with
+the <span class="guilabel">Specular</span> reflection of shiny surfaces (<span class="guilabel">Shininess</span>).
+It also includes an <span class="guilabel">Ambient</span> option to account for the small amount
+of light that is scattered about the entire scene.
+Use the <span class="guilabel">Opacity</span> slider to render semi-transparent objects in 3D.
+Read more at <a class="reference external" href="https://en.wikipedia.org/wiki/Phong_reflection_model#Description">https://en.wikipedia.org/wiki/Phong_reflection_model#Description</a></p></li>
+<li><p><span class="guilabel">Realistic Textured (Phong)</span>: same as the <span class="guilabel">Realistic (Phong)</span>
+except that an image is used as <span class="guilabel">Diffuse Texture</span>.
+The image can be a file on disk, a remote URL or <a class="reference internal" href="../introduction/general_tools.html#embedded-file-selector"><span class="std std-ref">embedded in the project</span></a>.
+The <span class="guilabel">Texture scale</span> and <span class="guilabel">Texture rotation</span> are required.
+Use the <span class="guilabel">Opacity</span> slider to render semi-transparent objects in 3D.</p></li>
+<li><p><span class="guilabel">CAD (Gooch)</span>: this technique allows shading to occur only in mid-tones
+so that edge lines and highlights remain visually prominent. Along with the
+<span class="guilabel">Diffuse</span>, <span class="guilabel">Specular</span>, <span class="guilabel">Shininess</span> options,
+you need to provide a <span class="guilabel">Warm</span> color (for surface facing toward the light)
+and a <span class="guilabel">Cool</span> color (for the ones facing away).
+Also, the relative contributions to the cool and warm colors by the diffuse color
+are controlled by <span class="guilabel">Alpha</span> and <span class="guilabel">Beta</span> properties respectively.
+See also <a class="reference external" href="https://en.wikipedia.org/wiki/Gooch_shading">https://en.wikipedia.org/wiki/Gooch_shading</a></p></li>
+<li><p><span class="guilabel">Embedded Textures</span> with 3D models shape</p></li>
+</ul>
+</section>
+<section id="application-example">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">14.4.5. </span>Application example</a><a class="headerlink" href="#application-example" title="Link to this heading"></a></h2>
+<p>To go through the settings explained above you can have a look at
+<a class="reference external" href="https://app.merginmaps.com/projects/saber/luxembourg/tree">https://app.merginmaps.com/projects/saber/luxembourg/tree</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="label_settings.html" class="btn btn-neutral float-left" title="14.3. Setting a label" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../managing_data_source/index.html" class="btn btn-neutral float-right" title="15. Managing Data Source" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/style_library/3d_symbols.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/style_library/3d_symbols.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/style_library/3d_symbols.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/style_library/3d_symbols.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/style_library/3d_symbols.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/style_library/3d_symbols.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/style_library/3d_symbols.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/style_library/3d_symbols.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/style_library/3d_symbols.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/style_library/3d_symbols.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/style_library/3d_symbols.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/style_library/3d_symbols.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/style_library/3d_symbols.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/style_library/3d_symbols.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/style_library/3d_symbols.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/style_library/3d_symbols.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/style_library/3d_symbols.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/style_library/3d_symbols.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/style_library/3d_symbols.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/style_library/3d_symbols.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/style_library/3d_symbols.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/style_library/3d_symbols.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/style_library/3d_symbols.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/style_library/3d_symbols.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/style_library/3d_symbols.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/style_library/3d_symbols.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/72e642137e9ef587cd39ab6d701756a4" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

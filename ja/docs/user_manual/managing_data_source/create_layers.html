@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15.2. レイヤを作成する &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/managing_data_source/create_layers.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="15.3. データ形式とフィールドを探究する" href="supported_data.html" />
+    <link rel="prev" title="15.1. データを開く" href="opening_data.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 15.2. レイヤを作成する">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. 序文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. 記述ルール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. 機能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. 最初のステップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. プロジェクトファイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGISのユーザインタフェース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. ブラウザパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGISの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. 投影法の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. 地図の可視化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. 一般ツール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. 式でレベルアップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. スタイルライブラリ</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">15. データソースの管理</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="opening_data.html">15.1. データを開く</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">15.2. レイヤを作成する</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-new-vector-layers">15.2.1. 新しいベクタレイヤを作成する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-new-layers-from-an-existing-layer">15.2.2. 既存のレイヤから新しいレイヤを作成する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-new-dxf-files">15.2.3. 新しいDXFファイルを作成する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-new-layers-from-the-clipboard">15.2.4. クリップボードから新しいレイヤを作成する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-virtual-layers">15.2.5. 仮想レイヤを作成する</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="supported_data.html">15.3. データ形式とフィールドを探究する</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. ベクタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. ラスタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. メッシュデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. ベクタタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. 点群の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. 3Dタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. 地図のレイアウト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. OGC / ISOプロトコルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. GPSデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. 認証システム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS の統合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS プロセシングフレームワーク</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. プロセシングプロバイダとアルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. ヘルプとサポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. 協力者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. 付録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. 文献とWeb参照</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGISユーザガイド</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">15. </span>データソースの管理</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">15.2. </span>レイヤを作成する</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/managing_data_source/create_layers.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="opening_data.html" class="btn btn-neutral float-left" title="15.1. データを開く" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="supported_data.html" class="btn btn-neutral float-right" title="15.3. データ形式とフィールドを探究する" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="creating-layers">
+<span id="id1"></span><h1><span class="section-number">15.2. </span>レイヤを作成する<a class="headerlink" href="#creating-layers" title="Link to this heading"></a></h1>
+<nav class="contents local" id="id2">
+<ul class="simple">
+<li><p><a class="reference internal" href="#creating-new-vector-layers" id="id12">新しいベクタレイヤを作成する</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-a-new-geopackage-layer" id="id13">新しいGeoPackageレイヤを作成する</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-shapefile-layer" id="id14">新しいシェープファイルレイヤを作成する</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-spatialite-layer" id="id15">新しいSpatiaLiteレイヤを作成する</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-mesh-layer" id="id16">新しいメッシュレイヤを作成する</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-gpx-layer" id="id17">新しいGPXレイヤを作成する</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-temporary-scratch-layer" id="id18">新しい一時スクラッチレイヤを作成する</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-new-layers-from-an-existing-layer" id="id19">既存のレイヤから新しいレイヤを作成する</a></p>
+<ul>
+<li><p><a class="reference internal" href="#common-parameters" id="id20">共通のパラメータ</a></p></li>
+<li><p><a class="reference internal" href="#raster-specific-parameters" id="id21">ラスタに固有のパラメータ</a></p></li>
+<li><p><a class="reference internal" href="#vector-specific-parameters" id="id22">ベクタに固有のパラメータ</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-new-dxf-files" id="id23">新しいDXFファイルを作成する</a></p></li>
+<li><p><a class="reference internal" href="#creating-new-layers-from-the-clipboard" id="id24">クリップボードから新しいレイヤを作成する</a></p></li>
+<li><p><a class="reference internal" href="#creating-virtual-layers" id="id25">仮想レイヤを作成する</a></p>
+<ul>
+<li><p><a class="reference internal" href="#embedding-layers-for-use-in-queries" id="id26">クエリで使用するためのレイヤの埋め込み</a></p></li>
+<li><p><a class="reference internal" href="#supported-query-language" id="id27">サポートされているクエリ言語</a></p></li>
+<li><p><a class="reference internal" href="#performance-issues" id="id28">パフォーマンスの問題</a></p></li>
+<li><p><a class="reference internal" href="#special-comments" id="id29">特別なコメント</a></p></li>
+<li><p><a class="reference internal" href="#use-of-indexes" id="id30">インデックスの使用</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>レイヤは下記も含め、さまざまな方法で作成することができます。</p>
+<ul class="simple">
+<li><p>ゼロから空のレイヤを作成する</p></li>
+<li><p>既存のレイヤからレイヤを作成する</p></li>
+<li><p>クリップボードからレイヤを作成する</p></li>
+<li><p>一つもしくは多数のレイヤに基づいたSQLライクなクエリの結果としてレイヤを作成する（ <a class="reference internal" href="#vector-virtual-layers"><span class="std std-ref">仮想レイヤ</span></a> を参照）</p></li>
+</ul>
+<p>また、QGISは様々なフォーマットからインポートしたり、様々なフォーマットへエクスポートするためのツールも提供しています。</p>
+<section id="creating-new-vector-layers">
+<span id="sec-create-vector"></span><span id="index-1"></span><span id="index-0"></span><h2><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">15.2.1. </span>新しいベクタレイヤを作成する</a><a class="headerlink" href="#creating-new-vector-layers" title="Link to this heading"></a></h2>
+<p>QGISでは、さまざまな形式で新しいレイヤを作成できます。QGISにはGeoPackage、シェープファイル、SpatiaLite、GPX形式、および一時スクラッチレイヤ（別名メモリレイヤ）を作成するためのツールがあります。 <a class="reference internal" href="../grass_integration/grass_integration.html#creating-new-grass-vectors"><span class="std std-ref">新規GRASSレイヤ</span></a> の作成はGRASSプラグインでサポートされています。</p>
+<section id="creating-a-new-geopackage-layer">
+<span id="vector-create-geopackage"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">15.2.1.1. </span>新しいGeoPackageレイヤを作成する</a><a class="headerlink" href="#creating-a-new-geopackage-layer" title="Link to this heading"></a></h3>
+<p>新しいGeoPackageレイヤを作成するには、 <span class="menuselection">レイヤ ► レイヤの作成 ►</span> メニューもしくは <span class="guilabel">データソースマネージャ</span> ツールバーの <a class="reference internal" href="../../../_images/mActionNewGeoPackageLayer.png"><img alt="newGeoPackageLayer" src="../../../_images/mActionNewGeoPackageLayer.png" style="width: 1.5em;" /></a> <span class="menuselection">新規GeoPackageレイヤ...</span> ボタンを押します。 <a class="reference internal" href="#figure-create-geopackage"><span class="std std-numref">図 15.22</span></a> に示すように、 <span class="guilabel">新規GeoPackageレイヤ</span> ダイアログが表示されます。</p>
+<figure class="align-center" id="id3">
+<span id="figure-create-geopackage"></span><img alt="../../../_images/editNewGeoPackage.png" src="../../../_images/editNewGeoPackage.png" />
+<figcaption>
+<p><span class="caption-number">図 15.22 </span><span class="caption-text">新規GeoPackageレイヤの作成ダイアログ</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>最初のステップは、データベースファイルの場所を指定することです。 <span class="guilabel">データベース</span> フィールドの右にある <span class="guilabel">...</span> ボタンを押して、既存のGeoPackageファイルを選択するか、新しいGeoPackageファイルを作成します。QGISは、指定した名前に適切な拡張子を自動的に追加します。</p></li>
+<li><p>新しいレイヤ / テーブルの名前を付けます（ <span class="guilabel">テーブル名</span> ）</p></li>
+<li><p><span class="guilabel">ジオメトリ型</span> を定義します。 ジオメトリなしのレイヤではない場合には、 <span class="guilabel">Z次元を含む</span> や <span class="guilabel">M値を含む</span> を指定できます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> ボタンを使用し、座標参照系を指定します</p></li>
+</ol>
+<p>作成するレイヤにフィールドを追加するには、</p>
+<ol class="arabic simple">
+<li><p>フィールドの <span class="guilabel">名前</span> を入力します</p></li>
+<li><p>データの <span class="guilabel">型</span> を選択します。サポートされているタイプは、 <span class="guilabel">テキストデータ</span> 、 <span class="guilabel">整数値</span> （integer と integer64）、 <span class="guilabel">小数点付き数値</span> 、 <span class="guilabel">日付</span> と <span class="guilabel">日付時間</span> 、 <span class="guilabel">バイナリ（BLOB）</span> そして <span class="guilabel">ブール値</span> です。</p></li>
+<li><p>選択したデータ型にもよりますが、値の <span class="guilabel">最大長さ</span> を入力します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionNewAttribute.png"><img alt="newAttribute" src="../../../_images/mActionNewAttribute.png" style="width: 1.5em;" /></a> <span class="guilabel">属性リストに追加</span> ボタンをクリックします</p></li>
+<li><p>追加する必要のある各属性について、上記の手順を繰り返します</p></li>
+<li><p>属性の設定に満足したら、 <span class="guilabel">OK</span> をクリックします。QGISが新しいレイヤを凡例に追加し、 <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#sec-edit-existing-layer"><span class="std std-ref">既存レイヤのデジタイズ</span></a> セクションで説明するように編集することができます。</p></li>
+</ol>
+<p>デフォルトでは、GeoPackageレイヤを作成する際にQGISは <code class="docutils literal notranslate"><span class="pre">fid</span></code> という名前の <span class="guilabel">地物IDカラム</span> を作成します。このカラムはレイヤの主キーとして機能します。この名前は変更することが可能です。ジオメトリフィールドがある場合には <code class="docutils literal notranslate"><span class="pre">geometry</span></code> という名前になり、これに対して <span class="guilabel">空間インデックスを作成する</span> かを選択することができます。 これらのオプションは <span class="guilabel">高度なオプション</span> の下にあり、この他に <span class="guilabel">レイヤ識別子</span> （人間が読める短いレイヤ名）と <span class="guilabel">レイヤの説明</span> フィールドがあります。</p>
+<p>GeoPackageレイヤのさらなる管理は、 <a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DBマネージャ</span></a> で行うことができます。</p>
+</section>
+<section id="creating-a-new-shapefile-layer">
+<span id="vector-create-shapefile"></span><h3><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">15.2.1.2. </span>新しいシェープファイルレイヤを作成する</a><a class="headerlink" href="#creating-a-new-shapefile-layer" title="Link to this heading"></a></h3>
+<p>新しいESRIシェープファイル形式のレイヤを作成するには、 <span class="menuselection">レイヤ ► レイヤの作成 ►</span> メニューもしくは <span class="guilabel">データソースマネージャ</span> ツールバーの <a class="reference internal" href="../../../_images/mActionNewVectorLayer.png"><img alt="newVectorLayer" src="../../../_images/mActionNewVectorLayer.png" style="width: 1.5em;" /></a> <span class="menuselection">新規シェープファイルレイヤ...</span> ボタンを押します。 <a class="reference internal" href="#figure-create-shapefile"><span class="std std-numref">図 15.23</span></a> に示すように、 <span class="guilabel">新規シェープファイルレイヤ</span> ダイアログが表示されます。</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">ファイル名</span> の隣にある <span class="guilabel">...</span> ボタンを使用し、ファイルパスとファイル名を指定します。QGISは、指定した名前に適切な拡張子を自動的に追加します。</p></li>
+<li><p>次に、データの <span class="guilabel">ファイルエンコーディング</span> を指定します</p></li>
+<li><p>レイヤの <span class="guilabel">ジオメトリ型</span> を選択します：ジオメトリなし（ <code class="file docutils literal notranslate"><span class="pre">.DBF</span></code> 形式ファイルのみ）、ポイント、マルチポイント、ライン、ポリゴン</p></li>
+<li><p>ジオメトリが追加次元を持っているかを指定します： <span class="guilabel">なし</span> 、 <span class="guilabel">Z値（＋M値）</span> 、 <span class="guilabel">M値</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> ボタンを使用し、座標参照系を指定します</p></li>
+</ol>
+<figure class="align-center" id="id4">
+<span id="figure-create-shapefile"></span><img alt="../../../_images/editNewVector.png" src="../../../_images/editNewVector.png" />
+<figcaption>
+<p><span class="caption-number">図 15.23 </span><span class="caption-text">新規シェープファイルレイヤ作成ダイアログ</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>作成するレイヤにフィールドを追加するには、</p>
+<ol class="arabic simple">
+<li><p>フィールドの <span class="guilabel">名前</span> を入力します</p></li>
+<li><p>データの <span class="guilabel">型</span> を選択します。 <span class="guilabel">小数点付き数値</span> 、 <span class="guilabel">整数値</span> 、 <span class="guilabel">テキストデータ</span> 、 <span class="guilabel">日付</span> 属性のみをサポートしています。</p></li>
+<li><p>選択したデータ形式に応じて、 <span class="guilabel">長さ</span> と <span class="guilabel">精度</span> を入力します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionNewAttribute.png"><img alt="newAttribute" src="../../../_images/mActionNewAttribute.png" style="width: 1.5em;" /></a> <span class="guilabel">属性リストに追加</span> ボタンをクリックします</p></li>
+<li><p>追加する必要のある各属性について、上記の手順を繰り返します</p></li>
+<li><p>属性の設定に満足したら、 <span class="guilabel">OK</span> をクリックします。QGISが新しいレイヤを凡例に追加し、 <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#sec-edit-existing-layer"><span class="std std-ref">既存レイヤのデジタイズ</span></a> セクションで説明するように編集することができます。</p></li>
+</ol>
+<p>デフォルトでは、最初に整数値タイプの <code class="docutils literal notranslate"><span class="pre">id</span></code> カラムが追加されますが、これは削除できます。</p>
+</section>
+<section id="creating-a-new-spatialite-layer">
+<span id="vector-create-spatialite"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">15.2.1.3. </span>新しいSpatiaLiteレイヤを作成する</a><a class="headerlink" href="#creating-a-new-spatialite-layer" title="Link to this heading"></a></h3>
+<p>新しいSpatiaLiteレイヤを作成するには、 <span class="menuselection">レイヤ ► レイヤの作成 ►</span> メニューもしくは <span class="guilabel">データソースマネージャ</span> ツールバーの <a class="reference internal" href="../../../_images/mActionNewSpatiaLiteLayer.png"><img alt="newSpatiaLiteLayer" src="../../../_images/mActionNewSpatiaLiteLayer.png" style="width: 1.5em;" /></a> <span class="menuselection">新規SpatiaLiteレイヤ...</span> ボタンを押します。 <a class="reference internal" href="#figure-create-spatialite"><span class="std std-numref">図 15.24</span></a> に示すように、 <span class="guilabel">新しいSpatiaLite レイヤ</span> ダイアログが表示されます。</p>
+<figure class="align-center" id="id5">
+<span id="figure-create-spatialite"></span><img alt="../../../_images/editNewSpatialite.png" src="../../../_images/editNewSpatialite.png" />
+<figcaption>
+<p><span class="caption-number">図 15.24 </span><span class="caption-text">新規SpatiaLiteレイヤの作成ダイアログ</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>最初のステップは、データベースファイルの場所を指定することです。 <span class="guilabel">データベース</span> フィールドの右にある <span class="guilabel">...</span> ボタンを押して、既存のSpatiaLiteファイルを選択するか、新しいSpatiaLiteファイルを作成します。QGISは、指定した名前に適切な拡張子を自動的に追加します。</p></li>
+<li><p>新しいレイヤの名前（ <span class="guilabel">レイヤ名</span> ） を指定します</p></li>
+<li><p><span class="guilabel">ジオメトリ型</span> を定義します。 ジオメトリなしのレイヤではない場合には、 <span class="guilabel">Z次元を含む</span> や <span class="guilabel">M値を含む</span> を指定できます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> ボタンを使用し、座標参照系を指定します</p></li>
+</ol>
+<p>作成するレイヤにフィールドを追加するには、</p>
+<ol class="arabic simple">
+<li><p>フィールドの <span class="guilabel">名前</span> を入力します</p></li>
+<li><p><span class="guilabel">データ型</span> を選択します。サポートしている型は、 <span class="guilabel">テキストデータ</span> 、 <span class="guilabel">整数値</span> 、 <span class="guilabel">小数点付き数値</span> 、 <span class="guilabel">日付</span> および <span class="guilabel">日付時刻</span> です。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionNewAttribute.png"><img alt="newAttribute" src="../../../_images/mActionNewAttribute.png" style="width: 1.5em;" /></a> <span class="guilabel">属性リストに追加</span> ボタンをクリックします</p></li>
+<li><p>追加する必要のある各属性について、上記の手順を繰り返します</p></li>
+<li><p>属性の設定に満足したら、 <span class="guilabel">OK</span> をクリックします。QGISが新しいレイヤを凡例に追加し、 <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#sec-edit-existing-layer"><span class="std std-ref">既存レイヤのデジタイズ</span></a> セクションで説明するように編集することができます。</p></li>
+</ol>
+<p>必要に応じて、 <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">詳細オプション</span> セクション下にある <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">自動インクリメントするプライマリキーを作成する</span> を選択することができます。また、 <span class="guilabel">ジオメトリカラム</span> の名前（デフォルトは <code class="docutils literal notranslate"><span class="pre">geometry</span></code> ）を変えることもできます。</p>
+<p>SpatiaLiteレイヤのさらなる管理は、 <a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DBマネージャ</span></a> で行うことができます。</p>
+</section>
+<section id="creating-a-new-mesh-layer">
+<span id="vector-create-mesh"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">15.2.1.4. </span>新しいメッシュレイヤを作成する</a><a class="headerlink" href="#creating-a-new-mesh-layer" title="Link to this heading"></a></h3>
+<p>新しいメッシュレイヤを作成するには、 <span class="menuselection">レイヤ ► レイヤを作成 ►</span> メニューもしくは <span class="guilabel">データソースマネージャ</span> ツールバーの <a class="reference internal" href="../../../_images/mActionNewMeshLayer.png"><img alt="newMeshLayer" src="../../../_images/mActionNewMeshLayer.png" style="width: 1.5em;" /></a> <span class="menuselection">新規メッシュレイヤ...</span> ボタンを押します。 <a class="reference internal" href="#figure-create-mesh"><span class="std std-numref">図 15.25</span></a> に示すように、 <span class="guilabel">新規メッシュレイヤ</span> ダイアログが表示されます。</p>
+<figure class="align-center" id="id6">
+<span id="figure-create-mesh"></span><img alt="../../../_images/editNewMesh.png" src="../../../_images/editNewMesh.png" />
+<figcaption>
+<p><span class="caption-number">図 15.25 </span><span class="caption-text">新規メッシュレイヤの作成ダイアログ</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic">
+<li><p>最初のステップは、メッシュファイルの場所を指定することです。 <span class="guilabel">ファイル名</span> フィールドの右にある <span class="guilabel">...</span> ボタンを押して、既存のメッシュファイルを選択するか、新しいメッシュファイルを作成します。</p></li>
+<li><p>名前（ <span class="guilabel">レイヤ名</span> ）、つまりは <span class="guilabel">レイヤ</span> パネルに表示されるレイヤの名前を指定します。</p></li>
+<li><p><span class="guilabel">ファイル形式</span> を選択します。現在のところサポートしているメッシュファイル形式は、 <code class="docutils literal notranslate"><span class="pre">2DM</span> <span class="pre">Mesh</span> <span class="pre">File</span> <span class="pre">(*.2dm)</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Selafin</span> <span class="pre">File</span> <span class="pre">(*.slf)</span></code> および <code class="docutils literal notranslate"><span class="pre">UGRID</span> <span class="pre">(*.nc)</span></code> です。</p></li>
+<li><p>データセットに割り当てる <a class="reference internal" href="../working_with_projections/working_with_projections.html#crs-selector"><span class="std std-ref">座標参照系</span></a> を指定します。</p></li>
+<li><p>上記のステップによって空のレイヤが生成され、その後、頂点をデジタイズしたりデータセットグループを追加できます。一方で、既存のメッシュレイヤを使用して初期化する、つまり、新しいレイヤに既存のレイヤの頂点や面を取り込むことも可能です。これを行うためには、次のようにします：</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">メッシュ初期化の方法</span> にチェックを入れます</p></li>
+<li><p><span class="guilabel">現在のプロジェクトのメッシュ</span> または <span class="guilabel">ファイルから</span> を選択します。確認のために、選択したメッシュファイルの情報が表示されます。</p></li>
+</ol>
+<p>新規メッシュレイヤにコピーされるのは、メッシュレイヤのフレームのみであることに注意してください。データセットはコピーされません。</p>
+</li>
+</ol>
+</section>
+<section id="creating-a-new-gpx-layer">
+<span id="vector-create-gpx"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">15.2.1.5. </span>新しいGPXレイヤを作成する</a><a class="headerlink" href="#creating-a-new-gpx-layer" title="Link to this heading"></a></h3>
+<p>新しいGPXファイルを作成するには：</p>
+<ol class="arabic simple">
+<li><p><span class="menuselection">レイヤ</span> メニューから <span class="menuselection">レイヤを作成 ►</span> <a class="reference internal" href="../../../_images/mActionNewGpx.png"><img alt="newGpx" src="../../../_images/mActionNewGpx.png" style="width: 1.5em;" /></a> <span class="menuselection">新規GPXレイヤ...</span> を選択します。</p></li>
+<li><p>ダイアログで新しいファイルを保存する場所を選択し、ファイル名を指定して <span class="guilabel">保存</span> ボタンを押します。</p></li>
+<li><p><span class="guilabel">レイヤパネル</span> に新しく3つのレイヤが追加されます。</p>
+<ul class="simple">
+<li><p>位置をデジタイズするポイントレイヤ（ <code class="docutils literal notranslate"><span class="pre">waypoints</span></code> ）。 name、elevation、comment、description、source、url、url name を保存するフィールドを持ちます。</p></li>
+<li><p>計画されたルートを構成する、一連の位置をデジタイズするラインレイヤ（ <code class="docutils literal notranslate"><span class="pre">routes</span></code> ）。name、symbol、number、comment、description、source、url、url name を保存するフィールドを持ちます。</p></li>
+<li><p>受信機の時間的な動きをたどるラインレイヤ（ <code class="docutils literal notranslate"><span class="pre">tracks</span></code> ）。name、symbol、number、comment、description、source、url、url name を保存するフィールドを持ちます。</p></li>
+</ul>
+</li>
+<li><p>これらのレイヤのいずれも、 <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#sec-edit-existing-layer"><span class="std std-ref">既存レイヤのデジタイズ</span></a> のセクションで説明されている方法で編集できます。</p></li>
+</ol>
+</section>
+<section id="creating-a-new-temporary-scratch-layer">
+<span id="vector-new-scratch-layer"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">15.2.1.6. </span>新しい一時スクラッチレイヤを作成する</a><a class="headerlink" href="#creating-a-new-temporary-scratch-layer" title="Link to this heading"></a></h3>
+<p>一時スクラッチレイヤはインメモリレイヤであり、ディスク上には保存されておらず、QGISを終了する時に破棄されます。これは一時的に必要な地物を保持したり、ジオプロセシング操作中の中間レイヤとして使用する場合に便利です。</p>
+<p>新しい一時スクラッチレイヤを作成するには、 <span class="menuselection">レイヤ ► レイヤの作成 ►</span> メニューもしくは <span class="guilabel">データソースマネージャ</span> ツールバーの <a class="reference internal" href="../../../_images/mActionCreateMemory.png"><img alt="createMemory" src="../../../_images/mActionCreateMemory.png" style="width: 1.5em;" /></a> <span class="menuselection">新しい一時スクラッチレイヤ...</span> エントリを選択します。 <a class="reference internal" href="#figure-create-temporary"><span class="std std-numref">図 15.26</span></a> に示すように、 <span class="guilabel">新規一時スクラッチレイヤ</span> ダイアログが表示されます。その後、次の手順で操作します：</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">レイヤ名</span> を指定します</p></li>
+<li><p><span class="guilabel">ジオメトリタイプ</span> を選択します。下記タイプのレイヤを作成できます：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ジオメトリなし</span></code> タイプのレイヤは、シンプルなテーブルです</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ポイント</span></code> または <code class="docutils literal notranslate"><span class="pre">マルチポイント</span></code> レイヤ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ラインストリング</span> <span class="pre">/</span> <span class="pre">複合曲線</span></code> または <code class="docutils literal notranslate"><span class="pre">マルチラインストリング</span> <span class="pre">/</span> <span class="pre">マルチカーブ</span></code> レイヤ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ポリゴン</span> <span class="pre">/</span> <span class="pre">カーブポリゴン</span></code> または <code class="docutils literal notranslate"><span class="pre">マルチポリゴン</span> <span class="pre">/</span> <span class="pre">マルチサーフェス</span></code> レイヤ</p></li>
+</ul>
+</li>
+<li><p>ジオメトリタイプについて、データセットの次元を定義します： <span class="guilabel">Z次元を含む</span> かつ/または <span class="guilabel">M値を含める</span> かどうかをチェックボックスで設定します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> ボタンを使用し、座標参照系を指定します</p></li>
+<li><p>レイヤにフィールドを追加します。他の多くの形式とは異なり、一時スクラッチレイヤはフィールドなしでも作成できることに注意してください。従ってこのステップは任意です。</p>
+<ol class="arabic simple">
+<li><p>フィールドの <span class="guilabel">名前</span> を入力します</p></li>
+<li><p>データの <span class="guilabel">型</span> を選択します： <span class="guilabel">テキスト</span> 、 <span class="guilabel">整数値</span> 、 <span class="guilabel">小数点付き数値（decimal）</span> 、 <span class="guilabel">ブール値（boolean）</span> 、 <span class="guilabel">日付（Date）</span> 、 <span class="guilabel">時刻（Time）</span> 、 <span class="guilabel">日付時刻（Datetime）</span> そして <span class="guilabel">バイナリ（BLOB）</span> 型をサポートしています。</p></li>
+<li><p>選択したデータ型に応じて、 <span class="guilabel">長さ</span> や <span class="guilabel">精度</span> を入力します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionNewAttribute.png"><img alt="newAttribute" src="../../../_images/mActionNewAttribute.png" style="width: 1.5em;" /></a> <span class="guilabel">属性リストに追加</span> ボタンをクリックします</p></li>
+<li><p>追加する必要のある各フィールドについて、上記の手順を繰り返します</p></li>
+</ol>
+</li>
+<li><p>設定に満足したら、 <span class="guilabel">OK</span> をクリックします。QGISは新しいレイヤを <span class="guilabel">レイヤ</span> パネルに追加し、 <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#sec-edit-existing-layer"><span class="std std-ref">既存レイヤのデジタイズ</span></a> のセクションで説明するように編集することができます。</p></li>
+</ol>
+<figure class="align-center" id="id7">
+<span id="figure-create-temporary"></span><img alt="../../../_images/editNewTemporaryLayer.png" src="../../../_images/editNewTemporaryLayer.png" />
+<figcaption>
+<p><span class="caption-number">図 15.26 </span><span class="caption-text">新しい一時スクラッチレイヤの作成ダイアログ</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>また、フィールド入力済みの一時レイヤを作成する方法には、例えば、クリップボードを使用して（ <a class="reference internal" href="#paste-into-layer"><span class="std std-ref">クリップボードから新しいレイヤを作成する</span></a> ）や、 <a class="reference internal" href="../processing_algs/index.html#processing-algs"><span class="std std-ref">プロセシングアルゴリズム</span></a> の出力結果などもあります。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>メモリレイヤをディスク上に永続的に保存する</strong></p>
+<p>プロジェクトを閉じたときに一時スクラッチレイヤのデータが失われないようにするために、これらのレイヤを次の方法でQGISがサポートする任意のベクタ形式に保存することができます：</p>
+<ul class="simple">
+<li><p>レイヤの横にある <a class="reference internal" href="../../../_images/mIndicatorMemory.png"><img alt="indicatorMemory" src="../../../_images/mIndicatorMemory.png" style="width: 1.5em;" /></a> 表示アイコンをクリックする</p></li>
+<li><p>レイヤのコンテキストメニューの <span class="guilabel">保存...</span> エントリを選択する</p></li>
+<li><p>レイヤのコンテキストメニューの <span class="menuselection">エクスポート ►</span> エントリ、または <span class="menuselection">レイヤ ► 名前を付けて保存...</span> メニューを使用する</p></li>
+</ul>
+<p>これらのコマンドはいずれも、 <a class="reference internal" href="#general-saveas"><span class="std std-ref">既存のレイヤから新しいレイヤを作成する</span></a> セクションで説明する <span class="guilabel">ベクタレイヤを名前を付けて保存...</span> ダイアログを開きます。保存されたファイルは <span class="guilabel">レイヤ</span> パネルの一時スクラッチレイヤを置き換えます。</p>
+</div>
+</section>
+</section>
+<section id="creating-new-layers-from-an-existing-layer">
+<span id="general-saveas"></span><span id="index-7"></span><h2><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">15.2.2. </span>既存のレイヤから新しいレイヤを作成する</a><a class="headerlink" href="#creating-new-layers-from-an-existing-layer" title="Link to this heading"></a></h2>
+<p>ラスタレイヤ、ベクタレイヤともに、異なる形式で保存したり、異なる座標参照系（CRS）に再投影することができます。これには、 <span class="menuselection">レイヤ ► 名前をつけて保存...</span> メニューを使用するか、 <span class="guilabel">レイヤパネル</span> のレイヤを右クリックして次のいずれかを選択します：</p>
+<ul class="simple">
+<li><p>ラスタレイヤの場合は <span class="menuselection">エクスポート ► 名前を付けて保存...</span></p></li>
+<li><p>ベクタレイヤの場合は <span class="menuselection">エクスポート ► 地物の保存...</span> または <span class="menuselection">エクスポート ► 選択地物の保存...</span></p></li>
+<li><p>レイヤツリーからレイヤを <span class="guilabel">ブラウザパネル</span> のPostGISエントリへとドラッグ＆ドロップします。 <span class="guilabel">ブラウザパネル</span> でPostGISへの接続が必要であることに注意してください。</p></li>
+</ul>
+<section id="common-parameters">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">15.2.2.1. </span>共通のパラメータ</a><a class="headerlink" href="#common-parameters" title="Link to this heading"></a></h3>
+<p><span class="guilabel">名前を付けて保存...</span> ダイアログには、レイヤを保存する際の動作を変更するパラメータがいくつかあります。ラスタとベクタで共通のパラメータは次のとおりです：</p>
+<ul class="simple">
+<li><p><span class="guilabel">ファイル名</span> ：ディスク上のファイルの場所です。これは出力レイヤ、またはレイヤを格納するコンテナ（例えばGeoPackageやSpatiaLite、Open Document Spreadsheetsといったデータベースライクな形式）を参照できます。</p></li>
+<li><p><span class="guilabel">CRS</span> ：変更して、データを再投影することができます。</p></li>
+<li><p><span class="guilabel">領域</span> ： <a class="reference internal" href="../introduction/general_tools.html#extent-selector"><span class="std std-ref">範囲セレクタ</span></a> ウィジェットを使用して、エクスポートされる入力の範囲を制限します</p></li>
+<li><p><span class="guilabel">保存されたファイルを地図に追加する</span> ：新しいレイヤをマップキャンバスに追加します。</p></li>
+</ul>
+<p>一方、ラスタ形式とベクタ形式で固有のパラメータもあります：</p>
+</section>
+<section id="raster-specific-parameters">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">15.2.2.2. </span>ラスタに固有のパラメータ</a><a class="headerlink" href="#raster-specific-parameters" title="Link to this heading"></a></h3>
+<p>エクスポートの形式によっては、これらのオプションが利用できない場合があります：</p>
+<ul class="simple">
+<li><p><span class="guilabel">出力モード</span> （ <strong>生データ</strong> または <strong>画像</strong> ）</p></li>
+<li><p><span class="guilabel">形式</span> ：GeoTiff、GeoPackage、MBTiles、Geospatial PDF、SAGA GIS Binary Grid、Intergraph Raster、ESRI .hdr Labelled など、GDALが書き出せる任意のラスタ形式にエクスポートします。</p></li>
+<li><p><span class="guilabel">解像度</span></p></li>
+<li><p><span class="guilabel">作成オプション</span> ：ファイルを生成する際に、出力フォーマットに関連した <a class="reference internal" href="../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">既定の作成プロファイル</span></a> を使用するか、各パラメータを設定することで高度なオプション（ファイル圧縮、ブロックサイズ、測色など）を使用します。</p></li>
+<li><p><span class="guilabel">ピラミッド</span> 作成</p></li>
+<li><p><span class="guilabel">VRTタイル</span> ： <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">VRT作成</span> にチェックを入れた場合</p></li>
+<li><p><span class="guilabel">nodata値</span></p></li>
+</ul>
+<figure class="align-center" id="id8">
+<span id="figure-save-raster"></span><img alt="../../../_images/saveasraster.png" src="../../../_images/saveasraster.png" />
+<figcaption>
+<p><span class="caption-number">図 15.27 </span><span class="caption-text">新しいラスタレイヤとして保存する</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="vector-specific-parameters">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">15.2.2.3. </span>ベクタに固有のパラメータ</a><a class="headerlink" href="#vector-specific-parameters" title="Link to this heading"></a></h3>
+<p>エクスポートの形式によりますが、これらのオプションが利用できます：</p>
+<ul class="simple">
+<li><p><span class="guilabel">形式</span> ：GeoPackage、GML、ESRI Shapefile、AutoCAD DXF、ESRI FileGDB、Mapinfo TABやMapinfo MIF、SpatiaLite、CSV、KML、ODS など、GDALが書き出せる任意のベクタ形式にエクスポートします。</p></li>
+<li><p><span class="guilabel">レイヤ名</span> ： <span class="guilabel">ファイル名</span> がコンテナライクな形式を参照している場合には、このエントリは出力レイヤの名前を表します。</p></li>
+<li><p><span class="guilabel">文字コード</span></p></li>
+<li><p><span class="guilabel">選択地物のみ保存</span></p></li>
+<li><p><span class="guilabel">エクスポートするフィールドとエクスポートオプションを選択</span>: カスタム名と <a class="reference internal" href="../working_with_vector/vector_properties.html#configure-field"><span class="std std-ref">フォームウィジェット</span></a> 設定を持つフィールドをエクスポートする手段を提供します：</p>
+<ul>
+<li><p><span class="guilabel">名前</span> カラムの下の行をチェックして、出力レイヤに残すフィールドを選択するか、 <span class="guilabel">すべて選択</span> または <span class="guilabel">すべての選択を解除</span> ボタンを押します</p></li>
+<li><p><span class="guilabel">エクスポート名にエイリアスを使う</span> チェックボックスを切り替えると、 <span class="guilabel">エクスポート名</span> カラムに対応するフィールドのエイリアスが入力されるか、元のフィールド名にリセットされます。セルをダブルクリックすると名前の編集もできます。</p></li>
+<li><p>属性フォームカスタムウィジェットが使用されているかどうかによって、<span class="guilabel">選択したすべてのRawフィールド値を表示値で置き換える</span> ことができます。例えば、<code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">map</span></code> ウィジェットがフィールドに適用されている場合、出力レイヤは元の値の代わりに説明の値を含みます。置換はフィールドごとに <span class="guilabel">表示の値で置き換える</span> カラムで行うこともできます。</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">レイヤメタデータを保持</span> ：ソースレイヤに存在する、レイヤの任意の <a class="reference internal" href="../working_with_vector/vector_properties.html#vectormetadatamenu"><span class="std std-ref">メタデータ</span></a> がコピーして保存されます</p>
+<ul>
+<li><p>出力がGeoPackage形式の場合は、新規に作成されるレイヤ内に保存されます</p></li>
+<li><p>その他の形式の場合は、出力レイヤとともに <code class="file docutils literal notranslate"><span class="pre">.qmd</span></code> ファイルとして保存されます。複数のデータセットをサポートするファイルベースの形式（例：SpatiaLite、DXF 等）の場合には、意図しない動作をすることがあることに注意してください。</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">シンボロジのエクスポート</span> ：主にDXFのエクスポートに使われますが、DXF、KML、tabファイル形式など、OGR Feature Styles（下記注を参照）を扱うことのできるすべてのファイル形式で使用できます。</p>
+<ul>
+<li><p><strong>シンボロジなし</strong> ：データ読み込むアプリケーションのデフォルトのスタイル</p></li>
+<li><p><strong>地物シンボロジ</strong> ：OGR Feature Styles によるスタイルの保存（下記を参照）</p></li>
+<li><p><strong>シンボルレイヤシンボロジ</strong> ：OGR Feature Styles で保存（下記の注を参照）しますが、レイヤがマルチシンボロジのシンボルを使用している場合、同じジオメトリを複数回エクスポートします</p></li>
+<li><p><strong>縮尺</strong> の値は、現在のキャンバス縮尺値を設定することができます。</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note" id="ogr-features-note">
+<p class="admonition-title">注釈</p>
+<p><em>OGR Feature Styles</em> は、スタイルを隠し属性としてデータ内に直接保存する方法です。この種の情報を扱うことができるのは一部のファイル形式だけです。KML、DXF、TABファイル形式がそのような形式です。さらなる詳細については、 <a class="reference external" href="https://gdal.org/user/ogr_feature_style.html">OGR Feature Styles specification</a> ドキュメントを参照してください。</p>
+</div>
+<ul class="simple">
+<li><p><span class="guilabel">ジオメトリ</span> ：出力レイヤのジオメトリ機能を設定できます</p>
+<ul>
+<li><p><span class="guilabel">ジオメトリタイプ</span> ： <strong>自動</strong> に設定されている場合には地物のオリジナルのジオメトリを保持し、そうでない場合には削除または任意のジオメトリタイプで上書きします。属性テーブルに空のジオメトリカラムを追加し、空間レイヤのジオメトリカラムを削除することもできます。</p></li>
+<li><p><span class="guilabel">マルチタイプにする</span> ：レイヤにマルチジオメトリ地物を強制的に作成します。</p></li>
+<li><p><span class="guilabel">Z次元を含める</span> ：ジオメトリにZ次元を含めます。</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>レイヤのジオメトリタイプを上書きすることで、ジオメトリを持たないテーブル（例えば <code class="file docutils literal notranslate"><span class="pre">.csv</span></code> ファイル）を任意のタイプのジオメトリ（ポイント、ライン、ポリゴン）を持ったシェープファイルに保存して、  <a class="reference internal" href="../../../_images/mActionAddPart.png"><img alt="addPart" src="../../../_images/mActionAddPart.png" style="width: 1.5em;" /></a> <sup>部分の追加</sup> ツールを使用してジオメトリを手動で行に追加できるようになります。</p>
+</div>
+<ul class="simple">
+<li><p><span class="guilabel">データソースオプション</span> 、 <span class="guilabel">レイヤオプション</span> 、 <span class="guilabel">カスタムオプション</span> では、出力形式に応じて高度なパラメータ設定を行えます。一部は <a class="reference internal" href="supported_data.html#supported-format"><span class="std std-ref">データ形式とフィールドを探究する</span></a> で説明されていますが、完全な詳細は <a class="reference external" href="https://gdal.org">GDAL</a> のドライバドキュメントを参照してください。ファイル形式ごとににそれぞれ独自のカスタムパラメータを持っています。例えば、 <code class="docutils literal notranslate"><span class="pre">GeoJSON</span></code> 形式については、 <a class="reference external" href="https://gdal.org/drivers/vector/geojson.html#layer-creation-options">GDAL GeoJSON</a> のドキュメントを参照してください。</p></li>
+</ul>
+<figure class="align-center" id="id9">
+<span id="figure-save-vector"></span><img alt="../../../_images/saveasvector.png" src="../../../_images/saveasvector.png" />
+<figcaption>
+<p><span class="caption-number">図 15.28 </span><span class="caption-text">新しいベクタレイヤとして保存する</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p id="index-8">ベクタレイヤを既存のファイルに保存する場合、出力形式（GeoPackage、SpatiaLite、FileGDB等）の機能に応じて、ユーザーは下記操作を行うかどうかを決めることができます：</p>
+<ul class="simple">
+<li><p>ファイル全体を上書きする</p></li>
+<li><p>ターゲットレイヤだけを上書きする（レイヤ名は設定可能です）</p></li>
+<li><p>既存のターゲットレイヤに地物を追加する</p></li>
+<li><p>地物を追加し、新しいフィールドがあれば追加する</p></li>
+</ul>
+<p>ESRIシェープファイル、MapInfo .TAB 等の形式は、地物の追加も可能です。</p>
+</section>
+</section>
+<section id="creating-new-dxf-files">
+<span id="create-dxf-files"></span><span id="index-9"></span><h2><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">15.2.3. </span>新しいDXFファイルを作成する</a><a class="headerlink" href="#creating-new-dxf-files" title="Link to this heading"></a></h2>
+<p>単一のレイヤを <code class="file docutils literal notranslate"><span class="pre">*.DXF</span></code> を含む別の形式にエクスポートするオプションを提供する <span class="guilabel">名前を付けて保存...</span> ダイアログの他に、QGISは複数のレイヤを単一のDXFレイヤとしてエクスポートするための別のツールを提供しています。これは <span class="menuselection">プロジェクト ► インポートとエクスポート ► プロジェクトをDXFにエクスポート...</span> メニューからアクセスできます。</p>
+<p><span class="guilabel">DXFエクスポート</span> ダイアログで以下の設定を行います：</p>
+<ol class="arabic">
+<li><p>保存先のファイルを指定します。</p></li>
+<li><p>該当する場合は、シンボロジーモードとシンボルの縮尺を選択します（ <a class="reference internal" href="#ogr-features-note"><span class="std std-ref">OGR Feature Styles</span></a> の注釈参照）。</p></li>
+<li><p>データの <span class="guilabel">文字コード</span> を選択します。</p></li>
+<li><p>適用する <span class="guilabel">CRS</span> を選択します。選択したレイヤは指定したCRSに再投影されます。</p></li>
+<li><p>DXFファイルに含めるレイヤを、テーブルウィジェットでチェックを付けるか、既存の <a class="reference internal" href="../introduction/general_tools.html#map-themes"><span class="std std-ref">地図のテーマ</span></a> からの自動抽出で選択します。 <span class="guilabel">すべて選択</span> ボタンと <span class="guilabel">すべての選択を解除</span> ボタンは、エクスポートするデータを素早く設定するのに役立ちます。</p>
+<p>各レイヤについて、DXF出力時に全ての地物を単一のDXFレイヤにエクスポートするか、もしくはフィールドの値に依存してして地物をレイヤに分割するかを選択できます。</p>
+</li>
+</ol>
+<p>下記オプションを選択することもできます：</p>
+<ul class="simple">
+<li><p>レイヤ名自体の代わりに、 <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">設定されている場合はレイヤタイトルを名前として使う</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">現在の地図領域に交差する地物をエクスポートする</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">2D出力を強制する（例えばポリライン幅をサポートするため）</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ラベルをMTEXT要素としてエクスポートする</span> ：チェックなしではTEXT要素です。</p></li>
+</ul>
+<figure class="align-center" id="id10">
+<span id="figure-create-dxf"></span><img alt="../../../_images/export_dxf.png" src="../../../_images/export_dxf.png" />
+<figcaption>
+<p><span class="caption-number">図 15.29 </span><span class="caption-text">プロジェクトをDXFにエクスポートダイアログ</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="creating-new-layers-from-the-clipboard">
+<span id="paste-into-layer"></span><h2><a class="toc-backref" href="#id24" role="doc-backlink"><span class="section-number">15.2.4. </span>クリップボードから新しいレイヤを作成する</a><a class="headerlink" href="#creating-new-layers-from-the-clipboard" title="Link to this heading"></a></h2>
+<p>クリップボードにある地物は新しいレイヤに貼り付けできます。これを行うには、いくつかの地物を選択してクリップボードにコピーし、 <span class="menuselection">編集 ► 新規レイヤへの地物貼り付け ►</span> で以下のどちらかを選択することで、新しいレイヤに地物を貼り付けます。</p>
+<ul class="simple">
+<li><p><span class="guilabel">新規ベクタレイヤ...</span> ： <span class="guilabel">ベクタレイヤを名前を付けて保存...</span> ダイアログが現れます（パラメータについては <a class="reference internal" href="#general-saveas"><span class="std std-ref">既存のレイヤから新しいレイヤを作成する</span></a> を参照）</p></li>
+<li><p><span class="guilabel">一時スクラッチレイヤ...</span> ：レイヤ名を指定する必要があります</p></li>
+</ul>
+<p>選択した地物とその属性を持った新しいレイヤが作成され（そしてマップキャンバスに追加され）ます。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>クリップボードからのレイヤ作成は、well-known text（WKT）を使用してジオメトリが定義されていれば、QGIS内で選択してコピーした地物でも、ほかのアプリケーションの地物でも可能です。</p>
+</div>
+</section>
+<section id="creating-virtual-layers">
+<span id="vector-virtual-layers"></span><span id="index-10"></span><h2><a class="toc-backref" href="#id25" role="doc-backlink"><span class="section-number">15.2.5. </span>仮想レイヤを作成する</a><a class="headerlink" href="#creating-virtual-layers" title="Link to this heading"></a></h2>
+<p>仮想レイヤは特別な種類のベクタレイヤです。これは、QGISが開くことができる任意の数の他のベクタレイヤに関するSQLクエリの結果としてレイヤを定義します。仮想レイヤは、それ自体はデータを保持しておらず、ビューと見なすことができます。</p>
+<p>仮想レイヤを作成するためには、下記の方法で仮想レイヤの作成ダイアログを開きます：</p>
+<ul class="simple">
+<li><p><span class="menuselection">レイヤ ► レイヤの追加 ►</span> メニュー内の <a class="reference internal" href="../../../_images/mActionAddVirtualLayer.png"><img alt="addVirtualLayer" src="../../../_images/mActionAddVirtualLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">仮想レイヤの追加 / 編集</span> エントリを選択する</p></li>
+<li><p><span class="guilabel">データソースマネージャ</span> ダイアログ内で <a class="reference internal" href="../../../_images/mActionAddVirtualLayer.png"><img alt="addVirtualLayer" src="../../../_images/mActionAddVirtualLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">仮想レイヤ</span> タブを有効にする</p></li>
+<li><p><span class="guilabel">DBマネージャ</span> ダイアログのツリーを使用する</p></li>
+</ul>
+<p>ダイアログでは、 <span class="guilabel">レイヤ名</span> とSQL <span class="guilabel">クエリ</span> を指定します。クエリでは、読み込まれたベクタレイヤの名前（またはid）をテーブルとして、フィールド名をカラムとして使用することができます。</p>
+<p>例えば、 <code class="docutils literal notranslate"><span class="pre">airports</span></code> という名前のレイヤがある場合、 <code class="docutils literal notranslate"><span class="pre">public_airports</span></code> という名前の新しい仮想レイヤを次のようなSQLクエリで作成できます。</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">airports</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">USE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Civilian/Public&quot;</span>
+</pre></div>
+</div>
+<p>このSQLクエリは <code class="docutils literal notranslate"><span class="pre">airports</span></code> レイヤの元のプロバイダが直接にはSQLクエリをサポートしていなくとも、プロバイダに関係なく実行されます。</p>
+<figure class="align-center" id="id11">
+<img alt="../../../_images/create_virtual_layers.png" src="../../../_images/create_virtual_layers.png" />
+<figcaption>
+<p><span class="caption-number">図 15.30 </span><span class="caption-text">仮想レイヤの作成ダイアログ</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>結合（JOIN）や、複雑なクエリを使用して作成することもできます。例えば、 airports と country の情報を結合するには、次のようにします：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">airports</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">country</span><span class="p">.</span><span class="n">population</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">airports</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">country</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">airports</span><span class="p">.</span><span class="n">country</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">country</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p><a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DBマネージャプラグイン</span></a> のSQLウィンドウを使用して仮想レイヤを作成することもできます。</p>
+</div>
+<section id="embedding-layers-for-use-in-queries">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">15.2.5.1. </span>クエリで使用するためのレイヤの埋め込み</a><a class="headerlink" href="#embedding-layers-for-use-in-queries" title="Link to this heading"></a></h3>
+<p>マップキャンバスで利用できるベクタレイヤの他に、 <span class="guilabel">埋め込みレイヤ</span> リストにレイヤを追加することができます。埋め込みレイヤは、マップキャンバスやレイヤパネルに表示することなくクエリ内で使用することができます。</p>
+<p>レイヤを埋め込むには、 <span class="guilabel">追加</span> をクリックし <span class="guilabel">ローカル名</span> 、 <span class="guilabel">プロバイダ</span> 、 <span class="guilabel">エンコーディング</span> および <span class="guilabel">ソース</span> へのパスを指定します。</p>
+<p><span class="guilabel">インポート</span> ボタンを押すと、マップキャンバスのレイヤを埋め込みレイヤリストに追加できます。そのレイヤは既存のクエリを壊すことなくレイヤパネルから削除できます。</p>
+</section>
+<section id="supported-query-language">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">15.2.5.2. </span>サポートされているクエリ言語</a><a class="headerlink" href="#supported-query-language" title="Link to this heading"></a></h3>
+<p>クエリ操作の基本エンジンはSQLiteとSpatiaLiteを使用しています。</p>
+<p>これはすなわち、ローカルインストールのSQLiteが理解できるSQLはすべて使用できることを意味します。</p>
+<p>SQLiteの関数や SpatiaLiteの空間関数も仮想レイヤのクエリで使用できます。例えば、属性のみのレイヤからポイントレイヤを作成するには、次のようなクエリを使用します：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">MakePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">4326</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">geometry</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">coordinates</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../expressions/functions_list.html#functions-list"><span class="std std-ref">QGIS式の関数</span></a> も仮想レイヤのクエリ内で使用できます。</p>
+<p>レイヤのジオメトリ列を参照するため、名前 <code class="docutils literal notranslate"><span class="pre">geometry</span></code> を使用します。</p>
+<p>純粋なSQLクエリとは違い、仮想レイヤのクエリのフィールドには全て名前を付けなければなりません。計算や関数呼び出しの結果としてカラムに名前を付ける場合には、 <code class="docutils literal notranslate"><span class="pre">as</span></code> キーワードを使用することを忘れないでください。</p>
+</section>
+<section id="performance-issues">
+<h3><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">15.2.5.3. </span>パフォーマンスの問題</a><a class="headerlink" href="#performance-issues" title="Link to this heading"></a></h3>
+<p>デフォルトのパラメータを使用すると、仮想レイヤのエンジンは、クエリのさまざまなカラムの型を検出するために最善を尽くそうとします。もしある場合には、ジオメトリカラムも含め型検出を行います。</p>
+<p>型検出は、可能な場合にはクエリをイントロスペクトするか、最後の手段としてクエリの最初の行（LIMIT 1）をフェッチすることで行われます。レイヤを作成するためだけに結果の最初の行をフェッチするのは、パフォーマンス上好ましくないかもしれません。</p>
+<p>作成ダイアログのパラメータには以下のものがあります：</p>
+<ul class="simple">
+<li><p><span class="guilabel">ユニークな識別子カラム</span> ：QGISが行の識別子として使用可能なユニークな整数値を表すクエリのフィールドを指定します。デフォルトでは、自動的インクリメントの整数値が使用されます。ユニークな識別子カラムを定義すると、IDによる行の選択を高速化します。</p></li>
+<li><p><span class="guilabel">ジオメトリなし</span> ：仮想レイヤのジオメトリフィールドを強制的に無視します。結果として得られるレイヤは属性のみのレイヤとなります。</p></li>
+<li><p><span class="guilabel">ジオメトリカラム</span> ： ジオメトリカラムの名前を指定します。</p></li>
+<li><p><span class="guilabel">タイプ</span> ：ジオメトリの種類を指定します。</p></li>
+<li><p><span class="guilabel">CRS</span> ：仮想レイヤの座標参照系を指定します。</p></li>
+</ul>
+</section>
+<section id="special-comments">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">15.2.5.4. </span>特別なコメント</a><a class="headerlink" href="#special-comments" title="Link to this heading"></a></h3>
+<p>仮想レイヤエンジンは、クエリの各列の型を決定しようとします。それが失敗した場合、列の型を決定するためにクエリの最初の行をフェッチします。</p>
+<p>いくつかの特別なコメントを使用することで、特定の列の型をクエリ内で直接指定できます。</p>
+<p>構文は、 <code class="docutils literal notranslate"><span class="pre">/*:type*/</span></code> のようになります。これはカラム名の直後に記述しなければなりません。 <code class="docutils literal notranslate"><span class="pre">type</span></code> は、整数の場合は <code class="docutils literal notranslate"><span class="pre">int</span></code> 、浮動小数点数の場合は <code class="docutils literal notranslate"><span class="pre">real</span></code> 、テキストの場合は <code class="docutils literal notranslate"><span class="pre">text</span></code> です。</p>
+<p>例：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">nid</span><span class="w"> </span><span class="cm">/*:int*/</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table</span>
+</pre></div>
+</div>
+<p>ジオメトリカラムの型と座標参照系は、構文  <code class="docutils literal notranslate"><span class="pre">/*:gtype:srid*/</span></code> 形式の特別なコメントで設定できます。ここで、 <code class="docutils literal notranslate"><span class="pre">gtype</span></code> はジオメトリタイプ（ <code class="docutils literal notranslate"><span class="pre">point</span></code> 、 <code class="docutils literal notranslate"><span class="pre">linestring</span></code> 、 <code class="docutils literal notranslate"><span class="pre">polygon</span></code> 、 <code class="docutils literal notranslate"><span class="pre">multipoint</span></code> 、 <code class="docutils literal notranslate"><span class="pre">multilinestring</span></code> 、 <code class="docutils literal notranslate"><span class="pre">multipolygon</span></code> ）、 <code class="docutils literal notranslate"><span class="pre">srid</span></code> は座標参照系のEPSGコードを表す整数です。</p>
+</section>
+<section id="use-of-indexes">
+<h3><a class="toc-backref" href="#id30" role="doc-backlink"><span class="section-number">15.2.5.5. </span>インデックスの使用</a><a class="headerlink" href="#use-of-indexes" title="Link to this heading"></a></h3>
+<p>仮想レイヤを介してレイヤをリクエストする場合、ソースレイヤのインデックスは以下の方法で使用されます：</p>
+<ul class="simple">
+<li><p>レイヤの主キーカラムに <code class="docutils literal notranslate"><span class="pre">=</span></code> 述語が使用されている場合、元のデータプロバイダには、特定のID（FilterFid）が要求されます。</p></li>
+<li><p>他の述語（ <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> 、 <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> 、 <code class="docutils literal notranslate"><span class="pre">!=</span></code> など）や、主キーのないカラムについては、元のベクタデータプロバイダへのリクエストには、式から構築されたリクエストが使用されます。これは、データベースプロバイダにインデックスがある場合には、インデックスが使用される可能性があることを意味します。</p></li>
+</ul>
+<p>リクエスト内の空間的述語を処理し、空間インデックスの使用をトリガーするための特定の構文が存在します： <code class="docutils literal notranslate"><span class="pre">_search_frame_</span></code> という名前の隠しカラムが各仮想レイヤーに対して存在します。このカラムは、バウンディングボックスに等しいかどうかを比較できます。例：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">vtab</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">_search_frame_</span><span class="o">=</span><span class="n">BuildMbr</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">10</span><span class="p">,</span><span class="mi">49</span><span class="p">.</span><span class="mi">38</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">3</span><span class="p">,</span><span class="mi">49</span><span class="p">.</span><span class="mi">99</span><span class="p">,</span><span class="mi">4326</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ST_Intersects</span></code> のような空間二項述語は、この空間インデックス構文と組み合わせて使用すると、大幅に高速化されます。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="opening_data.html" class="btn btn-neutral float-left" title="15.1. データを開く" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="supported_data.html" class="btn btn-neutral float-right" title="15.3. データ形式とフィールドを探究する" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/managing_data_source/create_layers.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/managing_data_source/create_layers.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/managing_data_source/create_layers.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/managing_data_source/create_layers.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/managing_data_source/create_layers.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/managing_data_source/create_layers.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/managing_data_source/create_layers.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/managing_data_source/create_layers.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/managing_data_source/create_layers.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/managing_data_source/create_layers.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/managing_data_source/create_layers.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/managing_data_source/create_layers.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/managing_data_source/create_layers.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/managing_data_source/create_layers.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/managing_data_source/create_layers.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/managing_data_source/create_layers.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/user_manual/managing_data_source/create_layers.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/user_manual/managing_data_source/create_layers.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/managing_data_source/create_layers.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/user_manual/managing_data_source/create_layers.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/user_manual/managing_data_source/create_layers.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/user_manual/managing_data_source/create_layers.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/user_manual/managing_data_source/create_layers.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/user_manual/managing_data_source/create_layers.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/user_manual/managing_data_source/create_layers.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/managing_data_source/create_layers.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/16d6f2d6b0304525bd6ba91b009a873b" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

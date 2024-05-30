@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. QGIS コーディング基準 &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/developers_guide/codingstandards.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="2. HIG（ヒューマンインターフェイスガイドライン）" href="hig.html" />
+    <link rel="prev" title="QGIS開発者ガイド" href="index.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 1. QGIS コーディング基準">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">開発者ガイド</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. QGIS コーディング基準</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classes">1.1. クラス</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#names">1.1.1. 名前</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#members">1.1.2. メンバー</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessor-functions">1.1.3. アクセサ関数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">1.1.4. 関数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#function-arguments">1.1.5. 関数の引数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#function-return-values">1.1.6. 関数の戻り値</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api-documentation">1.2. APIドキュメント</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#methods">1.2.1. メソッド</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#members-variables">1.2.2. メンバ変数</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#qt-designer">1.3. Qt デザイナ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#generated-classes">1.3.1. 生成されたクラス</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dialogs">1.3.2. ダイアログ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#c-files">1.4. C ++ファイル</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.4.1. 名前</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-header-and-license">1.4.2. 標準ヘッダとライセンス</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-names">1.5. 変数名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enumerated-types">1.6. 列挙型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-constants-macros">1.7. グローバル定数＆マクロ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">1.8. コメント</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qt-signals-and-slots">1.9. Qt のシグナルとスロット</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing">1.10. 編集</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tabs">1.10.1. タブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#indentation">1.10.2. 字下げ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#braces">1.10.3. 中括弧</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api-compatibility">1.11. API の互換性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sip-bindings">1.12. SIP バインド</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#header-pre-processing">1.12.1. ヘッダの前処理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-the-sip-file">1.12.2. SIP ファイルを生成する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#improving-sipify-script">1.12.3. sipify スクリプトを改善する</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#settings">1.13. 設定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coding-style">1.14. コーディングスタイル</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#where-ever-possible-generalize-code">1.14.1. 可能なかぎりコードを一般化しましょう</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prefer-having-constants-first-in-predicates">1.14.2. 述語中で定数は最初にしましょう</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#whitespace-can-be-your-friend">1.14.3. 空白は友達になりえます</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#put-commands-on-separate-lines">1.14.4. コマンドは別々の行に入れましょう</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#indent-access-modifiers">1.14.5. アクセス修飾子を字下げしましょう</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#book-recommendations">1.14.6. お奨めの読み物</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#credits-for-contributions">1.15. 貢献のためのクレジット</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hig.html">2. HIG（ヒューマンインターフェイスガイドライン）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html">3. 開発プロセス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qtcreator.html">4. QtCreatorとQGISで起動および実行する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="localization.html">5. ローカライズ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unittesting.html">6. ユニットテスト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processingtesting.html">7. プロセシングアルゴリズムをテストする</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ogcconformancetesting.html">8. OGC適合性試験</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">QGIS開発者ガイド</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1. </span>QGIS コーディング基準</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/developers_guide/codingstandards.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="QGIS開発者ガイド" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hig.html" class="btn btn-neutral float-right" title="2. HIG（ヒューマンインターフェイスガイドライン）" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="qgis-coding-standards">
+<span id="coding-standards"></span><h1><span class="section-number">1. </span>QGIS コーディング基準<a class="headerlink" href="#qgis-coding-standards" title="Link to this heading"></a></h1>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#classes" id="id3">クラス</a></p>
+<ul>
+<li><p><a class="reference internal" href="#names" id="id4">名前</a></p></li>
+<li><p><a class="reference internal" href="#members" id="id5">メンバー</a></p></li>
+<li><p><a class="reference internal" href="#accessor-functions" id="id6">アクセサ関数</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id7">関数</a></p></li>
+<li><p><a class="reference internal" href="#function-arguments" id="id8">関数の引数</a></p></li>
+<li><p><a class="reference internal" href="#function-return-values" id="id9">関数の戻り値</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#api-documentation" id="id10">APIドキュメント</a></p>
+<ul>
+<li><p><a class="reference internal" href="#methods" id="id11">メソッド</a></p></li>
+<li><p><a class="reference internal" href="#members-variables" id="id12">メンバ変数</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#qt-designer" id="id13">Qt デザイナ</a></p>
+<ul>
+<li><p><a class="reference internal" href="#generated-classes" id="id14">生成されたクラス</a></p></li>
+<li><p><a class="reference internal" href="#dialogs" id="id15">ダイアログ</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#c-files" id="id16">C ++ファイル</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id17">名前</a></p></li>
+<li><p><a class="reference internal" href="#standard-header-and-license" id="id18">標準ヘッダとライセンス</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#variable-names" id="id19">変数名</a></p></li>
+<li><p><a class="reference internal" href="#enumerated-types" id="id20">列挙型</a></p></li>
+<li><p><a class="reference internal" href="#global-constants-macros" id="id21">グローバル定数＆マクロ</a></p></li>
+<li><p><a class="reference internal" href="#comments" id="id22">コメント</a></p></li>
+<li><p><a class="reference internal" href="#qt-signals-and-slots" id="id23">Qt のシグナルとスロット</a></p></li>
+<li><p><a class="reference internal" href="#editing" id="id24">編集</a></p>
+<ul>
+<li><p><a class="reference internal" href="#tabs" id="id25">タブ</a></p></li>
+<li><p><a class="reference internal" href="#indentation" id="id26">字下げ</a></p></li>
+<li><p><a class="reference internal" href="#braces" id="id27">中括弧</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#api-compatibility" id="id28">API の互換性</a></p></li>
+<li><p><a class="reference internal" href="#sip-bindings" id="id29">SIP バインド</a></p>
+<ul>
+<li><p><a class="reference internal" href="#header-pre-processing" id="id30">ヘッダの前処理</a></p></li>
+<li><p><a class="reference internal" href="#generating-the-sip-file" id="id31">SIP ファイルを生成する</a></p></li>
+<li><p><a class="reference internal" href="#improving-sipify-script" id="id32">sipify スクリプトを改善する</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#settings" id="id33">設定</a></p></li>
+<li><p><a class="reference internal" href="#coding-style" id="id34">コーディングスタイル</a></p>
+<ul>
+<li><p><a class="reference internal" href="#where-ever-possible-generalize-code" id="id35">可能なかぎりコードを一般化しましょう</a></p></li>
+<li><p><a class="reference internal" href="#prefer-having-constants-first-in-predicates" id="id36">述語中で定数は最初にしましょう</a></p></li>
+<li><p><a class="reference internal" href="#whitespace-can-be-your-friend" id="id37">空白は友達になりえます</a></p></li>
+<li><p><a class="reference internal" href="#put-commands-on-separate-lines" id="id38">コマンドは別々の行に入れましょう</a></p></li>
+<li><p><a class="reference internal" href="#indent-access-modifiers" id="id39">アクセス修飾子を字下げしましょう</a></p></li>
+<li><p><a class="reference internal" href="#book-recommendations" id="id40">お奨めの読み物</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#credits-for-contributions" id="id41">貢献のためのクレジット</a></p></li>
+</ul>
+</nav>
+<p>これらの基準は、すべての QGIS 開発者が守るべきです。</p>
+<section id="classes">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">1.1. </span>クラス</a><a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<section id="names">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">1.1.1. </span>名前</a><a class="headerlink" href="#names" title="Link to this heading"></a></h3>
+<p>QGISのクラスは、Qgsで始まり、キャメルケースを使用して形成します。</p>
+<p>例:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsPoint</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsMapCanvas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsRasterLayer</span></code></p></li>
+</ul>
+</section>
+<section id="members">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">1.1.2. </span>メンバー</a><a class="headerlink" href="#members" title="Link to this heading"></a></h3>
+<p>クラスメンバー名は小文字のmで始まり、大文字と小文字を使用して形成されています。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mMapCanvas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mCurrentExtent</span></code></p></li>
+</ul>
+<p>すべてのクラスメンバはprivateにしましょう。publicクラスメンバは極力避けるようにしてください。protectedメンバは Python バインディングから使用できないため、メンバが Python のサブクラスからアクセスする必要がある場合は、protectedメンバを使用しないでください。</p>
+<p>静的メンバの命名は、変数の場合は小文字の &quot;s&quot; で始め、定数の場合はすべての文字を大文字としてください。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sRefCounter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_QUEUE_SIZE</span></code></p></li>
+</ul>
+</section>
+<section id="accessor-functions">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">1.1.3. </span>アクセサ関数</a><a class="headerlink" href="#accessor-functions" title="Link to this heading"></a></h3>
+<p>クラスのメンバ値はアクセサ関数を通じて取得しましょう。関数は、 get 接頭辞なしの名前を付ける必要があります。上記2つの私的メンバのためのアクセサ関数は次のようになります。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapCanvas()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">currentExtent()</span></code></p></li>
+</ul>
+<p>アクセサが正しく <code class="docutils literal notranslate"><span class="pre">const</span></code> でマークされていることを確認してください。適切な場合には、これはキャッシュされた値型のメンバー変数が <code class="docutils literal notranslate"><span class="pre">mutable</span></code> でマークされていることを要求することができます。</p>
+</section>
+<section id="functions">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">1.1.4. </span>関数</a><a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<p>関数名は小文字で始まり、大文字と小文字を使用して形成されています。関数名は、その関数の目的について何かを伝える必要があります。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">updateMapExtent()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setUserOptions()</span></code></p></li>
+</ul>
+<p>既存の QGIS の API と Qt の API との一貫性を保つために、略語は避けましょう。例えば <code class="docutils literal notranslate"><span class="pre">setDestSize</span></code> でなく <code class="docutils literal notranslate"><span class="pre">setDestinationSize</span></code> 、 <code class="docutils literal notranslate"><span class="pre">setMaxVal</span></code> でなく <code class="docutils literal notranslate"><span class="pre">setMaximumValue</span></code> といった形で書くようにしてください。</p>
+<p>頭字語についても同様に、一貫性を保つためにキャメルケースにする必要があります。例えば、  <code class="docutils literal notranslate"><span class="pre">setXML</span></code> でなく <code class="docutils literal notranslate"><span class="pre">setXml</span></code> と書くようにしてください 。</p>
+</section>
+<section id="function-arguments">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">1.1.5. </span>関数の引数</a><a class="headerlink" href="#function-arguments" title="Link to this heading"></a></h3>
+<p>関数の引数は説明的な名前を使用してください。1文字の引数名を使用しないでください (例：<a href="#id1"><span class="problematic" id="id2">``</span></a>setColor( const QColor&amp; c )``ではなく、<a href="#id3"><span class="problematic" id="id4">``</span></a>setColor( const QColor&amp; color )``とする)。</p>
+<p>引数を参照渡しするべき場合に注意してください。オブジェクトの引数は小さくてコピーが簡単なもの (QPoint オブジェクトなど) でない限り、 const 参照で渡しましょう。 Qt の API との一貫性を保つために、暗黙的に共有されるオブジェクトは const 参照によって渡されます。 (例えば、 <code class="docutils literal notranslate"><span class="pre">setTitle(</span> <span class="pre">QString</span> <span class="pre">title</span> <span class="pre">)</span></code> ではなく <code class="docutils literal notranslate"><span class="pre">setTitle(</span> <span class="pre">const</span> <span class="pre">QString&amp;</span> <span class="pre">title</span> <span class="pre">)</span></code>)。</p>
+</section>
+<section id="function-return-values">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">1.1.6. </span>関数の戻り値</a><a class="headerlink" href="#function-return-values" title="Link to this heading"></a></h3>
+<p>小さくコピーが簡単なオブジェクトは値として返してください。より大きなオブジェクトは const 参照で返しましょう。この例外の一つは暗黙的に共有されるオブジェクトで、常に値で返します。 <code class="docutils literal notranslate"><span class="pre">QObject</span></code> またはそのサブクラスは、ポインタとして返してください。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">maximumValue()</span> <span class="pre">const</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">LayerSet&amp;</span> <span class="pre">layers()</span> <span class="pre">const</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QString</span> <span class="pre">title()</span> <span class="pre">const</span></code> (<code class="docutils literal notranslate"><span class="pre">QString</span></code> は暗黙的に共有される)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QList&lt;</span> <span class="pre">QgsMapLayer*</span> <span class="pre">&gt;</span> <span class="pre">layers()</span> <span class="pre">const</span></code> (<code class="docutils literal notranslate"><span class="pre">QList</span></code> は暗黙的に共有される)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsVectorLayer</span> <span class="pre">*layer()</span> <span class="pre">const;</span></code> (<code class="docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code> は <code class="docutils literal notranslate"><span class="pre">QObject</span></code> を継承)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsAbstractGeometry</span> <span class="pre">*geometry()</span> <span class="pre">const;</span></code> (<code class="docutils literal notranslate"><span class="pre">QgsAbstractGeometry</span></code> は抽象クラスであり、おそらくキャストする必要がある)</p></li>
+</ul>
+</section>
+</section>
+<section id="api-documentation">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">1.2. </span>APIドキュメント</a><a class="headerlink" href="#api-documentation" title="Link to this heading"></a></h2>
+<p>公開 API で利用可能なすべてのクラス、メソッド、列挙型などのコードについては、 API ドキュメントを書く必要があります。</p>
+<p>QGISはドキュメントに <a class="reference external" href="https://www.doxygen.nl/index.html">Doxygen</a> を使用しています。読者に何を期待するか、エッジケースで何が起こるかの情報や、読者が探しているかもしれない他のインターフェース、ベストプラクティス、コードサンプルについてのヒントを与える、説明的で意味のあるコメントを書いてください。</p>
+<section id="methods">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">1.2.1. </span>メソッド</a><a class="headerlink" href="#methods" title="Link to this heading"></a></h3>
+<p>メソッドの説明は三人称を使用した説明的な形で書いてください。メソッドにはいつ導入されたかを定義する <code class="docutils literal notranslate"><span class="pre">\since</span></code> タグが必要です。導入以降に重要な変更が行われたものについては、追加の <code class="docutils literal notranslate"><span class="pre">\since</span></code> タグを追加してください。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Cleans the laundry by using water and fast rotation.</span>
+<span class="cm"> * It will use the provided \a detergent during the washing programme.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \returns True if everything was successful. If false is returned, use</span>
+<span class="cm"> * \link error() \endlink to get more information.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \note Make sure to manually call dry() after this method.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \since QGIS 3.0</span>
+<span class="cm"> * \see dry()</span>
+<span class="cm"> */</span>
+</pre></div>
+</div>
+</section>
+<section id="members-variables">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">1.2.2. </span>メンバ変数</a><a class="headerlink" href="#members-variables" title="Link to this heading"></a></h3>
+<p>メンバ変数はふつう <code class="docutils literal notranslate"><span class="pre">private</span></code> セクションに入れ、ゲッタやセッタを利用できるようにしてください。エラー報告などのためのデータコンテナはこの例外です。このような場合はメンバに <code class="docutils literal notranslate"><span class="pre">m</span></code> の接頭辞を付けないでください。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \ingroup core</span>
+<span class="cm"> * Represents points on the way along the journey to a destination.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \since QGIS 2.20</span>
+<span class="cm"> */</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QgsWaypoint</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Holds information about results of an operation on a QgsWaypoint.</span>
+<span class="cm">   *</span>
+<span class="cm">   * \since QGIS 3.0</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">OperationResult</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">QgsWaypoint</span><span class="o">::</span><span class="n">ResultCode</span><span class="w"> </span><span class="n">resultCode</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; Indicates if the operation completed successfully.</span>
+<span class="w">    </span><span class="n">QString</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; A human readable localized error message. Only set if the resultCode is not QgsWaypoint::Success.</span>
+<span class="w">    </span><span class="n">QVariant</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; The result of the operation. The content depends on the method that returned it. \since QGIS 3.2</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="qt-designer">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">1.3. </span>Qt デザイナ</a><a class="headerlink" href="#qt-designer" title="Link to this heading"></a></h2>
+<section id="generated-classes">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">1.3.1. </span>生成されたクラス</a><a class="headerlink" href="#generated-classes" title="Link to this heading"></a></h3>
+<p>Qt デザイナ（UI）ファイルから生成される QGIS クラスは Base という接尾辞を持つ必要があります。これは、そのクラスを生成された基本クラスとして識別します。</p>
+<p>例:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsPluginManagerBase</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsUserOptionsBase</span></code></p></li>
+</ul>
+</section>
+<section id="dialogs">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">1.3.2. </span>ダイアログ</a><a class="headerlink" href="#dialogs" title="Link to this heading"></a></h3>
+<p>すべてのダイアログには、すべてのツールバーアイコンおよびその他の関連するウィジェットのツールチップヘルプを実装する必要があります。ツールチップは、新規および経験豊富なユーザーのために機能の見つけやすさを大きく追加します。</p>
+<p>ウィジェットのタブ順序は、ダイアログの変更のたびレイアウトを更新していることを確認します。</p>
+</section>
+</section>
+<section id="c-files">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">1.4. </span>C ++ファイル</a><a class="headerlink" href="#c-files" title="Link to this heading"></a></h2>
+<section id="id2">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">1.4.1. </span>名前</a><a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>C ++の実装とヘッダーファイルは、それぞれ拡張子.cppと.hを持つ必要があります。ファイル名はすべて小文字で、クラスの場合、クラス名と一致する必要があります。</p>
+<p>例: クラス <code class="docutils literal notranslate"><span class="pre">QgsFeatureAttribute</span></code> ソースファイルは <code class="file docutils literal notranslate"><span class="pre">qgsfeatureattribute.cpp</span></code> と <code class="file docutils literal notranslate"><span class="pre">qgsfeatureattribute.h</span></code> に置く</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>上記の文が暗黙的に意味していることをより明確にいえば、ファイル名をクラス名と一致させるために、それぞれのクラスはそのクラス固有のファイルで宣言され、実装されねばならないということです。これによって、あるクラスに関連したコードがどこにあるのかを探すのが、新規参加者にとってもはるかに容易になります。</p>
+</div>
+</section>
+<section id="standard-header-and-license">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">1.4.2. </span>標準ヘッダとライセンス</a><a class="headerlink" href="#standard-header-and-license" title="Link to this heading"></a></h3>
+<p>各ソースファイルには以下の例に従ってパターン化されたヘッダセクションがあるようにしてください:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/***************************************************************************</span>
+<span class="cm">  qgsfield.cpp - Describes a field in a layer or table</span>
+<span class="cm">  --------------------------------------</span>
+<span class="cm">  Date : 01-Jan-2004</span>
+<span class="cm">  Copyright: (C) 2004 by Gary E.Sherman</span>
+<span class="cm">  Email: sherman at mrcc.com</span>
+<span class="cm">/***************************************************************************</span>
+<span class="cm"> *</span>
+<span class="cm"> * This program is free software; you can redistribute it and/or modify</span>
+<span class="cm"> * it under the terms of the GNU General Public License as published by</span>
+<span class="cm"> * the Free Software Foundation; either version 2 of the License, or</span>
+<span class="cm"> * (at your option) any later version.</span>
+<span class="cm"> *</span>
+<span class="cm"> ***************************************************************************/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>gitリポジトリにはQt Creatorのためのテンプレートがあります。それを使用するには、 それを <a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/editors/QtCreator/qt_creator_license_template">qt_creator_license_template</a> からローカルの場所にコピーし、メールアドレスと（必要ならば）名前を修正し、それを使用するようにQtCreatorを設定します: <span class="menuselection">ツール ► オプション ► C++ ► ファイル命名</span> 。</p>
+</div>
+</section>
+</section>
+<section id="variable-names">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">1.5. </span>変数名</a><a class="headerlink" href="#variable-names" title="Link to this heading"></a></h2>
+<p>ローカル変数名は小文字で始まり、大文字と小文字を使用して形成されています。<code class="docutils literal notranslate"><span class="pre">my</span></code> あるいは <code class="docutils literal notranslate"><span class="pre">the</span></code> といった文字列を前に付けないでください。</p>
+<p>例:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapCanvas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">currentExtent</span></code></p></li>
+</ul>
+</section>
+<section id="enumerated-types">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">1.6. </span>列挙型</a><a class="headerlink" href="#enumerated-types" title="Link to this heading"></a></h2>
+<p>列挙型は、最初が大文字のキャメルケースで命名する必要があります、例えば：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="nc">UnitType</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">Meters</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Feet</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Degrees</span><span class="p">,</span>
+<span class="w">  </span><span class="n">UnknownUnit</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>他のタイプと競合するジェネリック型の名前を使用しないでください。例えば <code class="docutils literal notranslate"><span class="pre">Unknown</span></code> よりむしろ <code class="docutils literal notranslate"><span class="pre">UnkownUnit</span></code> を使用してください</p>
+</section>
+<section id="global-constants-macros">
+<h2><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">1.7. </span>グローバル定数＆マクロ</a><a class="headerlink" href="#global-constants-macros" title="Link to this heading"></a></h2>
+<p>グローバル定数とマクロは大文字のアンダースコア区切りなどで書かれる必要があります。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">GEOCRS_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3344</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="comments">
+<h2><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">1.8. </span>コメント</a><a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<p>クラスのメソッドのコメントには、命令形ではなく三人称の終止形を使用してください。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Creates a new QgsFeatureFilterModel, optionally specifying a \a parent.</span>
+<span class="cm"> */</span>
+<span class="k">explicit</span><span class="w"> </span><span class="n">QgsFeatureFilterModel</span><span class="p">(</span><span class="w"> </span><span class="n">QObject</span><span class="w"> </span><span class="o">*</span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="p">);</span>
+<span class="o">~</span><span class="n">QgsFeatureFilterModel</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="qt-signals-and-slots">
+<h2><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">1.9. </span>Qt のシグナルとスロット</a><a class="headerlink" href="#qt-signals-and-slots" title="Link to this heading"></a></h2>
+<p>すべてのシグナルとスロットの接続は、Qt5から利用可能になった「新しいスタイル」の接続を使用して行われるべきです。この要件についてのより詳しい情報は、 <a class="reference external" href="https://github.com/qgis/QGIS-Enhancement-Proposals/issues/77">QEP #77</a> で読むことができます。</p>
+<p>Qt自動接続スロット（すなわち <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">on_mSpinBox_valueChanged</span></code> と名前付けされたもの）の使用を避けてください。自動接続スロットはダイアログがリファクタリングされている場合は、警告なしに破損し、脆弱となりやすいです。</p>
+</section>
+<section id="editing">
+<h2><a class="toc-backref" href="#id24" role="doc-backlink"><span class="section-number">1.10. </span>編集</a><a class="headerlink" href="#editing" title="Link to this heading"></a></h2>
+<p>任意のテキストエディタ/IDEは、次の要件が満たされているとすれば、QGISコードを編集するために使用できます。</p>
+<section id="tabs">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink"><span class="section-number">1.10.1. </span>タブ</a><a class="headerlink" href="#tabs" title="Link to this heading"></a></h3>
+<p>スペースでタブを代替するようにエディタを設定します。タブ間隔はスペース2つに設定する必要があります。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>vim では、 <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">expandtab</span> <span class="pre">ts=2</span></code> でこれを実行できます</p>
+</div>
+</section>
+<section id="indentation">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">1.10.2. </span>字下げ</a><a class="headerlink" href="#indentation" title="Link to this heading"></a></h3>
+<p>ソースコードは読みやすくするために字下げされるべきです。変更されたファイルを検索し、 astyle を使用してそれらを字下げし直す <a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/scripts/prepare_commit.sh">prepare_commit.sh</a> ファイルがあります。これは、コミットする前に実行すべきです。また、個々のファイルを字下げするために <a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/scripts/astyle.sh">astyle.sh</a> を使用できます。</p>
+<p>astyle字下げのより新しいバージョンは、ソースコード全体を字下げし直す時に使用するバージョンとは異なっているので、スクリプトでは古いastyleバージョンを使用しており、これをリポジトリに含めています（これを含めるにはビルドの際にcmakeで <code class="docutils literal notranslate"><span class="pre">WITH_ASTYLE</span></code> を有効にします）。</p>
+</section>
+<section id="braces">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">1.10.3. </span>中括弧</a><a class="headerlink" href="#braces" title="Link to this heading"></a></h3>
+<p>中括弧は式の次の行で始めてください。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="c1">// do stuff</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="c1">// do something else</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="api-compatibility">
+<h2><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">1.11. </span>API の互換性</a><a class="headerlink" href="#api-compatibility" title="Link to this heading"></a></h2>
+<p>C++用の <a class="reference external" href="https://api.qgis.org/api/3.34/">API documentation</a> があります。</p>
+<p>私たちは、APIを安定させ、後方互換性を保つように努めています。APIのクリーンアップは、Qtのソースコードと同じような方法で行ってください。例</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Foo</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * This method will be deprecated, you are encouraged to use</span>
+<span class="cm">     * doSomethingBetter() rather.</span>
+<span class="cm">     * \deprecated use doSomethingBetter()</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="n">Q_DECL_DEPRECATED</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">doSomething</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Does something a better way.</span>
+<span class="cm">     * \note added in 1.1</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">doSomethingBetter</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nl">signals</span><span class="p">:</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * This signal will be deprecated, you are encouraged to</span>
+<span class="cm">     * connect to somethingHappenedBetter() rather.</span>
+<span class="cm">     * \deprecated use somethingHappenedBetter()</span>
+<span class="cm">     */</span>
+<span class="cp">#ifndef Q_MOC_RUN</span>
+<span class="w">    </span><span class="n">Q_DECL_DEPRECATED</span>
+<span class="cp">#endif</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">somethingHappened</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Something happened</span>
+<span class="cm">     * \note added in 1.1</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">somethingHappenedBetter</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="sip-bindings">
+<h2><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">1.12. </span>SIP バインド</a><a class="headerlink" href="#sip-bindings" title="Link to this heading"></a></h2>
+<p>SIP ファイルの一部は、特定のスクリプトを使用して自動的に生成されます。</p>
+<section id="header-pre-processing">
+<h3><a class="toc-backref" href="#id30" role="doc-backlink"><span class="section-number">1.12.1. </span>ヘッダの前処理</a><a class="headerlink" href="#header-pre-processing" title="Link to this heading"></a></h3>
+<p>正しく SIP を構築するためのすべての情報は C++ のヘッダファイル内になければなりません。そのような定義のためにいくつかのマクロを利用することができます。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">SIP_RUN</span></code> で SIP ファイル内でのみ使用するコードを生成し、 <code class="docutils literal notranslate"><span class="pre">#ifndef</span> <span class="pre">SIP_RUN</span></code> で C++ コード内でのみ使用するコードを生成してください。 <code class="docutils literal notranslate"><span class="pre">#else</span></code> 文を使えばこの両方を扱うことができます。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_SKIP</span></code> を使用すると、行が無効になります。</p></li>
+<li><p>以下の表記法を扱うことができます。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_FACTORY</span></code>: <code class="docutils literal notranslate"><span class="pre">/Factory/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_OUT</span></code>: <code class="docutils literal notranslate"><span class="pre">/Out/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_INOUT</span></code>: <code class="docutils literal notranslate"><span class="pre">/In,Out/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_TRANSFER</span></code>: <code class="docutils literal notranslate"><span class="pre">/Transfer/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_PYNAME(name)</span></code>: <code class="docutils literal notranslate"><span class="pre">/PyName=name/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_KEEPREFERENCE</span></code>: <code class="docutils literal notranslate"><span class="pre">/KeepReference/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_TRANSFERTHIS</span></code>: <code class="docutils literal notranslate"><span class="pre">/TransferThis/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_TRANSFERBACK</span></code>: <code class="docutils literal notranslate"><span class="pre">/TransferBack/</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">private</span></code> セクションは、ブロック内で <code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">SIP_RUN</span></code> 文を使用した場合を除いて表示されません。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_PYDEFAULTVALUE(value)</span></code> は、Pythonのメソッドのための別のデフォルト値を定義するために使用することができます。デフォルト値がコンマ <code class="docutils literal notranslate"><span class="pre">,</span></code> を含む場合は、値はシングルクォート <code class="docutils literal notranslate"><span class="pre">'</span></code> で囲まなければなりません。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_PYTYPE(type)</span></code>  は、Pythonのメソッドの引数のための別の型を定義するために使用することができます。型がコンマ <code class="docutils literal notranslate"><span class="pre">,</span></code> を含む場合は、型はシングルクォート <code class="docutils literal notranslate"><span class="pre">'</span></code> で囲まなければなりません。</p></li>
+</ul>
+<p>デモファイル、<a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/tests/code_layout/sipify/sipifyheader.h">sipifyheader.h</a> も利用できます。</p>
+</section>
+<section id="generating-the-sip-file">
+<h3><a class="toc-backref" href="#id31" role="doc-backlink"><span class="section-number">1.12.2. </span>SIP ファイルを生成する</a><a class="headerlink" href="#generating-the-sip-file" title="Link to this heading"></a></h3>
+<p>SIP ファイルはそのための専用スクリプトを使って生成することができます。例えば次のようにします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scripts</span><span class="o">/</span><span class="n">sipify</span><span class="o">.</span><span class="n">pl</span> <span class="n">src</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">qgsvectorlayer</span><span class="o">.</span><span class="n">h</span> <span class="o">&gt;</span> <span class="n">python</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">qgsvectorlayer</span><span class="o">.</span><span class="n">sip</span>
+</pre></div>
+</div>
+<p>新しく追加されたC++ファイルのSIPファイルを自動生成するには、 <a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/scripts/sip_include.sh">sip_include.sh</a> を実行する必要があります。</p>
+<p>SIP ファイルがソースファイル (<a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/python/core/core_auto.sip">core_auto.sip</a>, <a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/python/gui/gui_auto.sip">gui_auto.sip</a> または <a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/python/analysis_auto.sip">analysis_auto.sip</a>) のいずれかに追加されると同時に自動的に生成されたと見なされます。テストオンは、このファイルが対応するヘッダと更新されたことを確認します。</p>
+<p>SIPファイルを強制的に再生成するためには、 <a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/scripts/sipify_all.sh">sipify_all.sh</a> を実行しなければなりません。</p>
+</section>
+<section id="improving-sipify-script">
+<h3><a class="toc-backref" href="#id32" role="doc-backlink"><span class="section-number">1.12.3. </span>sipify スクリプトを改善する</a><a class="headerlink" href="#improving-sipify-script" title="Link to this heading"></a></h3>
+<p>もし、sipifyスクリプトに何らかの改良が必要であれば、デモファイルに足りない部分を追加してください <a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/tests/code_layout/sipify/sipifyheader.h">sipifyheader.h</a> そして、期待されるヘッダー <a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/tests/code_layout/sipify/sipifyheader.expected.sip">sipifyheader.expected.sip</a> を作成します。これは、スクリプト自体のユニットテストとしても自動的にテストされることになります。</p>
+</section>
+</section>
+<section id="settings">
+<h2><a class="toc-backref" href="#id33" role="doc-backlink"><span class="section-number">1.13. </span>設定</a><a class="headerlink" href="#settings" title="Link to this heading"></a></h2>
+<p>QGISのコードベースには、設定を宣言、登録、利用するための仕組みが用意されています。</p>
+<ul class="simple">
+<li><p>設定は、利用可能な実装（<a class="reference external" href="https://api.qgis.org/api/3.34/classQgsSettingsEntryString.html">QgsSettingsEntryString</a>, <a class="reference external" href="https://api.qgis.org/api/3.34/classQgsSettingsEntryInteger.html">QgsSettingsEntryInteger</a>, ...)のいずれかを使用して定義しなければいけません。</p></li>
+<li><p>設定は、設定ツリー(<a class="reference external" href="https://api.qgis.org/api/3.34/classQgsSettingsTree.html">QgsSettingsTree</a>)に統合されなければなりません。これは親ノード(<a class="reference external" href="https://api.qgis.org/api/3.34/classQgsSettingsTreeNode.html">QgsSettingsTreeNode</a>)を持つコンストラクタを使う時に自動的に行われます。</p></li>
+<li><p>それらは、専用のクラスかレジストリ（core、gui、app、...）で直接 <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">static</span></code> として宣言されます。</p></li>
+<li><p>設定キーは、<code class="docutils literal notranslate"><span class="pre">kebab-case</span></code> を使用する必要があります。</p></li>
+</ul>
+</section>
+<section id="coding-style">
+<h2><a class="toc-backref" href="#id34" role="doc-backlink"><span class="section-number">1.14. </span>コーディングスタイル</a><a class="headerlink" href="#coding-style" title="Link to this heading"></a></h2>
+<p>ここでは、うまくいけばエラーや開発時間、メンテナンスを減らすことが期待できる、プログラミングのヒントやコツを説明します。</p>
+<section id="where-ever-possible-generalize-code">
+<h3><a class="toc-backref" href="#id35" role="doc-backlink"><span class="section-number">1.14.1. </span>可能なかぎりコードを一般化しましょう</a><a class="headerlink" href="#where-ever-possible-generalize-code" title="Link to this heading"></a></h3>
+<p>コードをカット＆ペーストしている、あるいは複数回同じことを書いている場合は、単一の関数にコードを統合することを検討してください。</p>
+<p>これにより：</p>
+<ul class="simple">
+<li><p>変更は複数の場所ではなく一箇所で行うことを可能にします</p></li>
+<li><p>コードの膨張を防ぐのを助けます</p></li>
+<li><p>複数のコピーが時間につれて違いを進化させること、したがって他人が理解して維持管理するのを難しくすること、がより起こりにくくします</p></li>
+</ul>
+</section>
+<section id="prefer-having-constants-first-in-predicates">
+<h3><a class="toc-backref" href="#id36" role="doc-backlink"><span class="section-number">1.14.2. </span>述語中で定数は最初にしましょう</a><a class="headerlink" href="#prefer-having-constants-first-in-predicates" title="Link to this heading"></a></h3>
+<p>述語中では最初に定数を置くことを好みます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">==</span> <span class="pre">0</span></code> の代わりに <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">==</span> <span class="pre">value</span></code></p>
+<p>これにより、プログラマが <code class="docutils literal notranslate"><span class="pre">==</span></code> を使用するつもりで誤って <code class="docutils literal notranslate"><span class="pre">=</span></code> を使用することを防げます、それは非常に微妙な論理的バグになる。比較のための <code class="docutils literal notranslate"><span class="pre">==</span></code> の代わりに誤って <code class="docutils literal notranslate"><span class="pre">=</span></code> を使用している場合、 定数には本質的に値を割り当てできませんから、コンパイラでエラーが発生します。</p>
+</section>
+<section id="whitespace-can-be-your-friend">
+<h3><a class="toc-backref" href="#id37" role="doc-backlink"><span class="section-number">1.14.3. </span>空白は友達になりえます</a><a class="headerlink" href="#whitespace-can-be-your-friend" title="Link to this heading"></a></h3>
+<p>演算子、ステートメント、および関数の間にスペースを追加すると、人間がコードを簡単に解析できるようになります。</p>
+<p>より読みやすいのは、こちら:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">a</span><span class="o">&amp;&amp;</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>またはこちら：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p><a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/scripts/prepare_commit.sh">prepare_commit.sh</a> スクリプトがこの処理を行います。</p>
+</div>
+</section>
+<section id="put-commands-on-separate-lines">
+<h3><a class="toc-backref" href="#id38" role="doc-backlink"><span class="section-number">1.14.4. </span>コマンドは別々の行に入れましょう</a><a class="headerlink" href="#put-commands-on-separate-lines" title="Link to this heading"></a></h3>
+<p>コードを読み取るとき、行の先頭にない場合は、コマンドを見逃しやすくなります。すぐにコードを読むとき、それらは最初の数文字で探しているもののように見えない場合、行を読み飛ばすのが一般的です。 <code class="docutils literal notranslate"><span class="pre">if</span></code> のような条件の後にコマンドを期待することも一般的です。</p>
+<p>考えてみましょう：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="p">)</span><span class="w"> </span><span class="n">bar</span><span class="p">();</span>
+
+<span class="n">baz</span><span class="p">();</span><span class="w"> </span><span class="n">bar</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>制御のどのような流れの一部を見逃すのは非常に簡単です。代わりに使用します</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="w">  </span><span class="n">bar</span><span class="p">();</span>
+
+<span class="n">baz</span><span class="p">();</span>
+<span class="n">bar</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="indent-access-modifiers">
+<h3><a class="toc-backref" href="#id39" role="doc-backlink"><span class="section-number">1.14.5. </span>アクセス修飾子を字下げしましょう</a><a class="headerlink" href="#indent-access-modifiers" title="Link to this heading"></a></h3>
+<p>アクセス修飾子は、公開API、保護されたAPIとプライベートAPIのセクションにクラスを構造化します。アクセス修飾子自体はこのような構造にコードをグループ化します。アクセス修飾子と宣言を字下げしてください。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">QgsStructure</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Constructor</span>
+<span class="cm">     */</span>
+<span class="w">     </span><span class="k">explicit</span><span class="w"> </span><span class="n">QgsStructure</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="book-recommendations">
+<h3><a class="toc-backref" href="#id40" role="doc-backlink"><span class="section-number">1.14.6. </span>お奨めの読み物</a><a class="headerlink" href="#book-recommendations" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.oreilly.com/library/view/effective-modern-c/9781491908419/">Effective Modern C++</a>, Scott Meyers</p></li>
+<li><p><a class="reference external" href="https://www.informit.com/store/more-effective-c-plus-plus-35-new-ways-to-improve-your-9780201633719">More Effective C++</a>, Scott Meyers</p></li>
+<li><p><a class="reference external" href="https://www.informit.com/store/effective-stl-50-specific-ways-to-improve-your-use-9780201749625">Effective STL</a>, Scott Meyers</p></li>
+<li><p><a class="reference external" href="https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612">Design Patterns</a>, GoF</p></li>
+</ul>
+<p>Qt Quarterly の記事 <a class="reference external" href="https://doc.qt.io/archives/qq/qq13-apis.html">designing Qt style (APIs)</a> も絶対に読むべきです。</p>
+</section>
+</section>
+<section id="credits-for-contributions">
+<h2><a class="toc-backref" href="#id41" role="doc-backlink"><span class="section-number">1.15. </span>貢献のためのクレジット</a><a class="headerlink" href="#credits-for-contributions" title="Link to this heading"></a></h2>
+<p>新機能の貢献者は、以下の手段によりその貢献について人々に知らせることをお勧めします：</p>
+<ul>
+<li><p>コードが組み込まれた最初のバージョンの更新履歴にメモを追加すること、以下のタイプで:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">feature</span> <span class="n">was</span> <span class="n">funded</span> <span class="n">by</span><span class="p">:</span> <span class="n">Olmiomland</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">olmiomland</span><span class="o">.</span><span class="n">ol</span>
+<span class="n">This</span> <span class="n">feature</span> <span class="n">was</span> <span class="n">developed</span> <span class="n">by</span><span class="p">:</span> <span class="n">Chuck</span> <span class="n">Norris</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">chucknorris</span><span class="o">.</span><span class="n">kr</span>
+</pre></div>
+</div>
+</li>
+<li><p>新機能についてのブログ記事を執筆し、それを QGIS planet <a class="reference external" href="https://plugins.qgis.org/planet/">https://plugins.qgis.org/planet/</a> に追加してください。</p></li>
+<li><p>以下に自分の名前を追加すること：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/doc/CONTRIBUTORS">https://github.com/qgis/QGIS/blob/release-3_34/doc/CONTRIBUTORS</a></p></li>
+<li><p><a class="reference external" href="https://github.com/qgis/QGIS/blob/release-3_34/doc/AUTHORS">https://github.com/qgis/QGIS/blob/release-3_34/doc/AUTHORS</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="QGIS開発者ガイド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hig.html" class="btn btn-neutral float-right" title="2. HIG（ヒューマンインターフェイスガイドライン）" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/developers_guide/codingstandards.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/developers_guide/codingstandards.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/developers_guide/codingstandards.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/developers_guide/codingstandards.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/developers_guide/codingstandards.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/developers_guide/codingstandards.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/developers_guide/codingstandards.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/developers_guide/codingstandards.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/developers_guide/codingstandards.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/developers_guide/codingstandards.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/developers_guide/codingstandards.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/developers_guide/codingstandards.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/developers_guide/codingstandards.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/developers_guide/codingstandards.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/developers_guide/codingstandards.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/developers_guide/codingstandards.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/developers_guide/codingstandards.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/developers_guide/codingstandards.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/developers_guide/codingstandards.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/developers_guide/codingstandards.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/developers_guide/codingstandards.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/developers_guide/codingstandards.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/developers_guide/codingstandards.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/developers_guide/codingstandards.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/developers_guide/codingstandards.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/developers_guide/codingstandards.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/ddb6507b0839b45a9efaf2f3f4a8a370" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

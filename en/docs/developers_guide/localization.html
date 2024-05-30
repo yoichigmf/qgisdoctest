@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Localization &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/developers_guide/localization.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. Unit Testing" href="unittesting.html" />
+    <link rel="prev" title="4. Getting up and running with QtCreator and QGIS" href="qtcreator.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 5. Localization">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Developers Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="codingstandards.html">1. QGIS Coding Standards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hig.html">2. HIG (Human Interface Guidelines)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html">3. Development Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qtcreator.html">4. Getting up and running with QtCreator and QGIS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Localization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#converting-numbers-to-strings">5.1. Converting numbers to strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-user-input-strings-to-numbers">5.2. Converting user input strings to numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="unittesting.html">6. Unit Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processingtesting.html">7. Processing Algorithms Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ogcconformancetesting.html">8. OGC Conformance Testing</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Developers Guide for QGIS</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5. </span>Localization</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/developers_guide/localization.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="qtcreator.html" class="btn btn-neutral float-left" title="4. Getting up and running with QtCreator and QGIS" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="unittesting.html" class="btn btn-neutral float-right" title="6. Unit Testing" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="localization">
+<h1><span class="section-number">5. </span>Localization<a class="headerlink" href="#localization" title="Link to this heading"></a></h1>
+<p>QGIS user interface is available in multiple languages.</p>
+<p>A global option in the settings allows to override the
+user interface language which was automatically detected
+from the operating system.</p>
+<p>The representation of numbers, currency and dates varies
+according to the country and it is also overrideable in
+the settings.</p>
+<p>Another option in the settings allows to define if the
+numeric thousands separator has to be used.</p>
+<p>All these features are implemented through the
+<a class="reference external" href="https://doc.qt.io/qt-5/qlocale.html">QLocale</a>
+QT class which provides a very complete support for numeric
+and date types representation.</p>
+<p>In order to make this system work a few rules need to be
+carefully followed when displaying numeric values in the
+QGIS user interface and when converting user input to
+integral or floating point variables.</p>
+<section id="converting-numbers-to-strings">
+<h2><span class="section-number">5.1. </span>Converting numbers to strings<a class="headerlink" href="#converting-numbers-to-strings" title="Link to this heading"></a></h2>
+<p>For strings that are printed on the screen and visible to the users
+do not use <code class="docutils literal notranslate"><span class="pre">QString::number()</span></code> because it does not take locale
+options into consideration and it always uses <code class="docutils literal notranslate"><span class="pre">C</span></code> locale.</p>
+<p>Also do not use string interpolation unless you use the <code class="docutils literal notranslate"><span class="pre">L</span></code> suffix as explained in
+<a class="reference external" href="https://doc.qt.io/qt-5/qstring.html#arg-5">QString documentation</a>.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">QLocale().toString()</span></code> instead.</p>
+<p>Example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">QString</span><span class="w"> </span><span class="n">localizedNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QLocale</span><span class="p">().</span><span class="n">toString</span><span class="p">(</span><span class="w"> </span><span class="mf">1234.56</span><span class="w"> </span><span class="p">);</span>
+<span class="c1">// localizedNumber will be:  1,234.56 using english or &quot;C&quot; locale</span>
+<span class="c1">//                           1.234,56 using italian locale</span>
+<span class="c1">//                            1234.56 using english or &quot;C&quot; locale without thousands separator</span>
+<span class="c1">//                            1234,56 using italian locale without thousands separator</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A notable exception to this rule is the generation of strings that will be passed to
+external applications or scripts that expect <code class="docutils literal notranslate"><span class="pre">C</span></code> number representation (dot
+as decimal separator and no thousands separator). <code class="docutils literal notranslate"><span class="pre">QString::number()</span></code> must be
+used in this situation.</p>
+</div>
+</section>
+<section id="converting-user-input-strings-to-numbers">
+<h2><span class="section-number">5.2. </span>Converting user input strings to numbers<a class="headerlink" href="#converting-user-input-strings-to-numbers" title="Link to this heading"></a></h2>
+<p>When converting strings from user input to numbers do not use
+<code class="docutils literal notranslate"><span class="pre">QVariant::toDouble()</span></code>, <code class="docutils literal notranslate"><span class="pre">QString::toDouble()</span></code> or other <code class="docutils literal notranslate"><span class="pre">::toDouble()</span></code>
+methods available in QT classes because these methods ignore locale settings.
+The same consideration applies to integral types and <code class="docutils literal notranslate"><span class="pre">::toInt()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">::toLongLong()</span></code> methods.</p>
+<p><code class="docutils literal notranslate"><span class="pre">QLocale().toDouble()</span></code> or <code class="docutils literal notranslate"><span class="pre">QLocale().toInt()</span></code> and the others <code class="docutils literal notranslate"><span class="pre">QLocale()</span></code>
+conversion methods can be used in this situation.</p>
+<p>As a better alternative, QGIS API provides a few classes that
+should be used for floating point numeric user input:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/3.34/gui/QgsDoubleSpinBox.html#qgis.gui.QgsDoubleSpinBox" title="(in QGIS Python API v3.34)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDoubleSpinBox</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/3.34/gui/QgsDoubleValidator.html#qgis.gui.QgsDoubleValidator" title="(in QGIS Python API v3.34)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDoubleValidator</span></code></a></p></li>
+</ul>
+<p><a class="reference external" href="https://qgis.org/pyqgis/3.34/gui/QgsDoubleSpinBox.html#qgis.gui.QgsDoubleSpinBox" title="(in QGIS Python API v3.34)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDoubleSpinBox</span></code></a> displays the
+number according to user locale and settings and it validates the user
+input using <a class="reference external" href="https://qgis.org/pyqgis/3.34/gui/QgsDoubleValidator.html#qgis.gui.QgsDoubleValidator" title="(in QGIS Python API v3.34)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDoubleValidator</span></code></a>.</p>
+<p>The validator class is tolerant and it will try to interpret the input
+checking first for the user locale and falling back to <code class="docutils literal notranslate"><span class="pre">C</span></code> locale if
+there is no match.</p>
+<p>The general recommendation is to use <a class="reference external" href="https://qgis.org/pyqgis/3.34/gui/QgsDoubleSpinBox.html#qgis.gui.QgsDoubleSpinBox" title="(in QGIS Python API v3.34)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDoubleSpinBox</span></code></a>
+for all floating point types I/O whenever it is possible because it is very well tested and
+it validates the input correctly. As an alternative it is possible
+to use the <a class="reference external" href="https://qgis.org/pyqgis/3.34/gui/QgsDoubleValidator.html#qgis.gui.QgsDoubleValidator" title="(in QGIS Python API v3.34)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDoubleValidator</span></code></a> class
+independently on a string obtained from another widget (e.g. a simple
+<code class="docutils literal notranslate"><span class="pre">QLineEdit</span></code> widget).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qtcreator.html" class="btn btn-neutral float-left" title="4. Getting up and running with QtCreator and QGIS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="unittesting.html" class="btn btn-neutral float-right" title="6. Unit Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/developers_guide/localization.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/developers_guide/localization.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/developers_guide/localization.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/developers_guide/localization.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/developers_guide/localization.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/developers_guide/localization.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/developers_guide/localization.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/developers_guide/localization.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/developers_guide/localization.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/developers_guide/localization.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/developers_guide/localization.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/developers_guide/localization.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/developers_guide/localization.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/developers_guide/localization.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/developers_guide/localization.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/developers_guide/localization.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/developers_guide/localization.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/developers_guide/localization.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/developers_guide/localization.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/developers_guide/localization.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/developers_guide/localization.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/developers_guide/localization.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/developers_guide/localization.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/developers_guide/localization.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/developers_guide/localization.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/developers_guide/localization.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/a36439f9b6794099bdc3e9f1b8f150fa" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

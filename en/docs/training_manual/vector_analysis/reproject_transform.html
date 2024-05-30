@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.1. Lesson: Reprojecting and Transforming Data &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/vector_analysis/reproject_transform.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6.2. Lesson: Vector Analysis" href="basic_analysis.html" />
+    <link rel="prev" title="6. Module: Vector Analysis" href="index.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 6.1. Lesson: Reprojecting and Transforming Data">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6. Module: Vector Analysis</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.1. Lesson: Reprojecting and Transforming Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#follow-along-projections">6.1.1. <abbr title="Basic level">★☆☆</abbr> Follow Along: Projections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#follow-along-on-the-fly-reprojection">6.1.2. <abbr title="Basic level">★☆☆</abbr> Follow Along: “On the Fly” Reprojection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#follow-along-saving-a-dataset-to-another-crs">6.1.3. <abbr title="Moderate level">★★☆</abbr> Follow Along: Saving a Dataset to Another CRS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#follow-along-creating-your-own-projection">6.1.4. <abbr title="Advanced level">★★★</abbr> Follow Along: Creating Your Own Projection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#in-conclusion">6.1.5. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#further-reading">6.1.6. Further Reading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-s-next">6.1.7. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="basic_analysis.html">6.2. Lesson: Vector Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_analysis.html">6.3. Lesson: Network Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_statistics.html">6.4. Lesson: Spatial Statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS Training Manual</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">6. </span>Module: Vector Analysis</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.1. </span>Lesson: Reprojecting and Transforming Data</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/vector_analysis/reproject_transform.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="6. Module: Vector Analysis" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="basic_analysis.html" class="btn btn-neutral float-right" title="6.2. Lesson: Vector Analysis" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="lesson-reprojecting-and-transforming-data">
+<h1><span class="section-number">6.1. </span>Lesson: Reprojecting and Transforming Data<a class="headerlink" href="#lesson-reprojecting-and-transforming-data" title="Link to this heading"></a></h1>
+<p>Let us talk about Coordinate Reference Systems (CRSs) again.
+We have touched on this briefly before, but haven’t discussed what it
+means practically.</p>
+<p><strong>The goal for this lesson:</strong> To reproject and transform vector datasets.</p>
+<section id="follow-along-projections">
+<h2><span class="section-number">6.1.1. </span><abbr title="Basic level">★☆☆</abbr> Follow Along: Projections<a class="headerlink" href="#follow-along-projections" title="Link to this heading"></a></h2>
+<p>The CRS that all the data, as well as the map itself are in right now
+is called <em>WGS84</em>.
+This is a very common Geographic Coordinate System (GCS) for
+representing data.
+But there’s a problem, as we will see.</p>
+<ol class="arabic simple">
+<li><p>Save your current map</p></li>
+<li><p>Then open the map of the world which you will find under
+<code class="file docutils literal notranslate"><span class="pre">exercise_data/world/world.qgs</span></code></p></li>
+<li><p>Zoom in to South Africa by using the <span class="guilabel">Zoom In</span> tool</p></li>
+<li><p>Try setting a scale in the <span class="guilabel">Scale</span> field, which is in the
+<em>Statusbar</em> along the bottom of the screen.
+While over South Africa, set this value to <code class="docutils literal notranslate"><span class="pre">1:5</span> <span class="pre">000</span> <span class="pre">000</span></code>
+(one to five million).</p></li>
+<li><p>Pan around the map while keeping an eye on the <span class="guilabel">Scale</span>
+field</p></li>
+</ol>
+<p>Notice the scale changing? That’s because you are moving away from the
+one point that you zoomed into at <code class="docutils literal notranslate"><span class="pre">1:5</span> <span class="pre">000</span> <span class="pre">000</span></code>, which was at the
+center of your screen.
+All around that point, the scale is different.</p>
+<p>To understand why, think about a globe of the Earth.
+It has lines running along it from North to South.
+These longitude lines are far apart at the equator, but they meet at
+the poles.</p>
+<p>In a GCS, you are working on this sphere, but your screen is flat.
+When you try to represent the sphere on a flat surface, distortion
+occurs, similar to what would happen if you cut open a tennis ball and
+tried to flatten it out.
+What this means on a map is that the longitude lines stay equally far
+apart from each other, even at the poles (where they are supposed to
+meet).
+This means that, as you travel away from the equator on your map, the
+scale of the objects that you see gets larger and larger.
+What this means for us, practically, is that there is no constant
+scale on our map!</p>
+<p>To solve this, let’s use a Projected Coordinate System (PCS) instead.
+A PCS “projects” or converts the data in a way that makes allowance
+for the scale change and corrects it.
+Therefore, to keep the scale constant, we should reproject our data to
+use a PCS.</p>
+</section>
+<section id="follow-along-on-the-fly-reprojection">
+<h2><span class="section-number">6.1.2. </span><abbr title="Basic level">★☆☆</abbr> Follow Along: “On the Fly” Reprojection<a class="headerlink" href="#follow-along-on-the-fly-reprojection" title="Link to this heading"></a></h2>
+<p>By default, QGIS reprojects data “on the fly”. What this means is that even if
+the data itself is in another CRS, QGIS can project it as if it were in a CRS of
+your choice.</p>
+<p>You can change the CRS of the project by clicking on the
+<a class="reference internal" href="../../../_images/mIconProjectionEnabled.png"><img alt="projectionEnabled" src="../../../_images/mIconProjectionEnabled.png" style="width: 1.5em;" /></a> <sup>Current projection</sup> button in the bottom
+right corner of QGIS.</p>
+<ol class="arabic">
+<li><p>In the dialog that appears, type the word <code class="docutils literal notranslate"><span class="pre">global</span></code> into the
+<span class="guilabel">Filter</span> field.
+A few CRSs should appear in the
+<span class="guilabel">Predefined Reference Systems</span> field below.</p></li>
+<li><p>Select <span class="guilabel">WGS 84 / NSIDC EASE-Grid 2.0 Global | EPSG:6933</span>
+entry by clicking on it, and then click <span class="guilabel">OK</span>.</p>
+<p>Notice how the shape of South Africa changes.
+All projections work by changing the apparent shapes of objects on
+Earth.</p>
+</li>
+<li><p>Zoom to a scale of <code class="docutils literal notranslate"><span class="pre">1:5</span> <span class="pre">000</span> <span class="pre">000</span></code> again, as before.</p></li>
+<li><p>Pan around the map.</p>
+<p>Notice how the scale stays the same!</p>
+</li>
+</ol>
+<p>“On the fly” reprojection is also used for combining datasets that are
+in different CRSs.</p>
+<ol class="arabic">
+<li><p>Add another vector layer to your map which has the data for South
+Africa only.
+You will find it as <code class="file docutils literal notranslate"><span class="pre">exercise_data/world/RSA.shp</span></code>.</p></li>
+<li><p>Load it.
+A quick way to see its CRS is by hovering the mouse over the layer
+in the legend. It is <code class="docutils literal notranslate"><span class="pre">EPSG:3410</span></code>.</p>
+<p>What do you notice?</p>
+<p>The layer is visible even if it has a different CRS from the
+<span class="guilabel">continents</span> one.</p>
+</li>
+</ol>
+</section>
+<section id="follow-along-saving-a-dataset-to-another-crs">
+<h2><span class="section-number">6.1.3. </span><abbr title="Moderate level">★★☆</abbr> Follow Along: Saving a Dataset to Another CRS<a class="headerlink" href="#follow-along-saving-a-dataset-to-another-crs" title="Link to this heading"></a></h2>
+<p>Sometimes you need to export an existing dataset with another CRS.
+As we will see in the next lesson, if you need to make distance
+calculations on layer, it is always better to have the layer in a
+projected coordinate system.</p>
+<p>Be aware that the ‘on the fly’ reprojection is related to the
+<strong>project</strong> and not to single layers.
+This means that a layer can have a different CRS from the project even
+if you see it in the <em>correct</em> position.</p>
+<p>You can easily export the layer with another CRS.</p>
+<ol class="arabic">
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">buildings</span></code> dataset from <code class="file docutils literal notranslate"><span class="pre">training_data.gpkg</span></code></p></li>
+<li><p>Right-click on the <code class="docutils literal notranslate"><span class="pre">buildings</span></code> layer in the <span class="guilabel">Layers</span>
+panel</p></li>
+<li><p>Select <span class="menuselection">Export ► Save Features As…</span> in the menu
+that appears.
+You will be shown the <span class="guilabel">Save Vector Layer as…</span> dialog.</p></li>
+<li><p>Click on the <span class="guilabel">Browse</span> button next to the
+<span class="guilabel">File name</span> field</p></li>
+<li><p>Navigate to <code class="file docutils literal notranslate"><span class="pre">exercise_data/</span></code> and specify the name of the new
+layer as <code class="file docutils literal notranslate"><span class="pre">buildings_reprojected.shp</span></code>.</p></li>
+<li><p>Change the value of the <span class="guilabel">CRS</span>.
+Only the recent CRSs used will be shown in the drop-down menu.
+Click on the <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> <sup>Select projection</sup> button next
+to the drop-down menu.</p></li>
+<li><p>The <span class="guilabel">Coordinate Reference System Selector</span> dialog will
+appear.
+In its <span class="guilabel">Filter</span> field, search for <code class="docutils literal notranslate"><span class="pre">34S</span></code>.</p></li>
+<li><p>Select <span class="guilabel">WGS 84 / UTM zone 34S | EPSG:32734</span> from the list</p>
+<figure class="align-center">
+<img alt="../../../_images/CRSselector.png" src="../../../_images/CRSselector.png" />
+</figure>
+</li>
+<li><p>Leave the other options unchanged.
+The <span class="guilabel">Save Vector Layer as…</span> dialog now looks like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/save_vector_dialog.png" src="../../../_images/save_vector_dialog.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span></p></li>
+</ol>
+<p>You can now compare the old and new projections of the layer and see that they
+are in two different CRS but they are still overlapping.</p>
+</section>
+<section id="follow-along-creating-your-own-projection">
+<h2><span class="section-number">6.1.4. </span><abbr title="Advanced level">★★★</abbr> Follow Along: Creating Your Own Projection<a class="headerlink" href="#follow-along-creating-your-own-projection" title="Link to this heading"></a></h2>
+<p>There are many more projections than just those included in QGIS by default.
+You can also create your own projections.</p>
+<ol class="arabic">
+<li><p>Start a new map</p></li>
+<li><p>Load the <code class="file docutils literal notranslate"><span class="pre">world/oceans.shp</span></code> dataset</p></li>
+<li><p>Go to <span class="menuselection">Settings ► Custom Projections…</span> and you
+will see this dialog.</p>
+<figure class="align-center">
+<img alt="../../../_images/custom_crs.png" src="../../../_images/custom_crs.png" />
+</figure>
+</li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add new CRS</sup> button to create a new
+projection</p></li>
+<li><p>An interesting projection to use is called <code class="docutils literal notranslate"><span class="pre">Van</span> <span class="pre">der</span> <span class="pre">Grinten</span> <span class="pre">I</span></code>.
+Enter its name in the <span class="guilabel">Name</span> field.</p>
+<p>This projection represents the Earth on a circular field instead of
+a rectangular one, as most other projections do.</p>
+</li>
+<li><p>In <span class="guilabel">Format</span>, select <span class="guilabel">WKT (Recommended)</span></p></li>
+<li><p>Add the following string in the <span class="guilabel">Parameters</span> field:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROJCRS</span><span class="p">[</span><span class="s2">&quot;unknown&quot;</span><span class="p">,</span>
+    <span class="n">BASEGEOGCRS</span><span class="p">[</span><span class="s2">&quot;unknown&quot;</span><span class="p">,</span>
+        <span class="n">DATUM</span><span class="p">[</span><span class="s2">&quot;unknown&quot;</span><span class="p">,</span>
+            <span class="n">ELLIPSOID</span><span class="p">[</span><span class="s2">&quot;unknown&quot;</span><span class="p">,</span><span class="mi">6371000</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+                <span class="n">LENGTHUNIT</span><span class="p">[</span><span class="s2">&quot;metre&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">9001</span><span class="p">]]]],</span>
+        <span class="n">PRIMEM</span><span class="p">[</span><span class="s2">&quot;Greenwich&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">ANGLEUNIT</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span><span class="mf">0.0174532925199433</span><span class="p">],</span>
+            <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">8901</span><span class="p">]]],</span>
+    <span class="n">CONVERSION</span><span class="p">[</span><span class="s2">&quot;unknown&quot;</span><span class="p">,</span>
+        <span class="n">METHOD</span><span class="p">[</span><span class="s2">&quot;Van Der Grinten&quot;</span><span class="p">],</span>
+        <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;Longitude of natural origin&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">ANGLEUNIT</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span><span class="mf">0.0174532925199433</span><span class="p">],</span>
+            <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">8802</span><span class="p">]],</span>
+        <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;False easting&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">LENGTHUNIT</span><span class="p">[</span><span class="s2">&quot;metre&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">8806</span><span class="p">]],</span>
+        <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;False northing&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">LENGTHUNIT</span><span class="p">[</span><span class="s2">&quot;metre&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">8807</span><span class="p">]]],</span>
+    <span class="n">CS</span><span class="p">[</span><span class="n">Cartesian</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+        <span class="n">AXIS</span><span class="p">[</span><span class="s2">&quot;(E)&quot;</span><span class="p">,</span><span class="n">east</span><span class="p">,</span>
+            <span class="n">ORDER</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">LENGTHUNIT</span><span class="p">[</span><span class="s2">&quot;metre&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">9001</span><span class="p">]]],</span>
+        <span class="n">AXIS</span><span class="p">[</span><span class="s2">&quot;(N)&quot;</span><span class="p">,</span><span class="n">north</span><span class="p">,</span>
+            <span class="n">ORDER</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="n">LENGTHUNIT</span><span class="p">[</span><span class="s2">&quot;metre&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">9001</span><span class="p">]]]]</span>
+</pre></div>
+</div>
+<figure class="align-center">
+<img alt="../../../_images/new_crs_parameters.png" src="../../../_images/new_crs_parameters.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span></p></li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/mIconProjectionEnabled.png"><img alt="projectionEnabled" src="../../../_images/mIconProjectionEnabled.png" style="width: 1.5em;" /></a> <sup>Current CRS</sup> button at the
+right of the status bar to change the project CRS</p></li>
+<li><p>Choose your newly defined projection (search for its name in the
+<span class="guilabel">Filter</span> field)</p></li>
+<li><p>On applying this projection, the map will be reprojected thus:</p>
+<figure class="align-center">
+<img alt="../../../_images/van_grinten_projection.png" src="../../../_images/van_grinten_projection.png" />
+</figure>
+</li>
+</ol>
+</section>
+<section id="in-conclusion">
+<h2><span class="section-number">6.1.5. </span>In Conclusion<a class="headerlink" href="#in-conclusion" title="Link to this heading"></a></h2>
+<p>Different projections are useful for different purposes. By choosing the
+correct projection, you can ensure that the features on your map are being
+represented accurately.</p>
+</section>
+<section id="further-reading">
+<h2><span class="section-number">6.1.6. </span>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h2>
+<p>Materials for the <em>Advanced</em> section of this lesson were taken from <a class="reference external" href="https://anitagraser.com/2012/03/18/beautiful-global-projections-adding-custom-projections-to-qgis/">this
+article</a>.</p>
+<p>Read further information on <a class="reference internal" href="../../gentle_gis_introduction/coordinate_reference_systems.html#gis-coord-ref-system"><span class="std std-ref">Coordinate Reference Systems</span></a>.</p>
+</section>
+<section id="what-s-next">
+<h2><span class="section-number">6.1.7. </span>What’s Next?<a class="headerlink" href="#what-s-next" title="Link to this heading"></a></h2>
+<p>In the next lesson you will learn how to analyze vector data using
+QGIS’ various vector analysis tools.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="6. Module: Vector Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="basic_analysis.html" class="btn btn-neutral float-right" title="6.2. Lesson: Vector Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/training_manual/vector_analysis/reproject_transform.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/training_manual/vector_analysis/reproject_transform.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/training_manual/vector_analysis/reproject_transform.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/training_manual/vector_analysis/reproject_transform.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/training_manual/vector_analysis/reproject_transform.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/training_manual/vector_analysis/reproject_transform.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/training_manual/vector_analysis/reproject_transform.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/training_manual/vector_analysis/reproject_transform.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/training_manual/vector_analysis/reproject_transform.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/training_manual/vector_analysis/reproject_transform.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/training_manual/vector_analysis/reproject_transform.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/training_manual/vector_analysis/reproject_transform.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/training_manual/vector_analysis/reproject_transform.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/training_manual/vector_analysis/reproject_transform.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/training_manual/vector_analysis/reproject_transform.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/training_manual/vector_analysis/reproject_transform.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/vector_analysis/reproject_transform.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_analysis/reproject_transform.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/training_manual/vector_analysis/reproject_transform.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/training_manual/vector_analysis/reproject_transform.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/training_manual/vector_analysis/reproject_transform.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/vector_analysis/reproject_transform.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/vector_analysis/reproject_transform.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/vector_analysis/reproject_transform.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/vector_analysis/reproject_transform.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/vector_analysis/reproject_transform.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/57df86cafec5e79ac63fa177d9863605" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

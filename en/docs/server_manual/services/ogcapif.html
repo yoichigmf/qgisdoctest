@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.6. OGC API Features &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/server_manual/services/ogcapif.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="4. Catalog" href="../catalog.html" />
+    <link rel="prev" title="3.5. Web Map Tile Service (WMTS)" href="wmts.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 3.6. OGC API Features">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Server Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../services.html">3. Services</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basics.html">3.1. Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wms.html">3.2. Web Map Service (WMS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wfs.html">3.3. Web Feature Service (WFS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wcs.html">3.4. Web Coverage Service (WCS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmts.html">3.5. Web Map Tile Service (WMTS)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.6. OGC API Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#resource-representation">3.6.1. Resource representation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#endpoints">3.6.2. Endpoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pagination">3.6.3. Pagination</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#feature-filtering">3.6.4. Feature filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#feature-sorting">3.6.5. Feature sorting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attribute-selection">3.6.6. Attribute selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#customize-the-html-pages">3.6.7. Customize the HTML pages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../catalog.html">4. Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins.html">5. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config.html">6. Advanced configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development_server.html">7. Development Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containerized_deployment.html">8. Containerized deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html">9. Frequently Asked Question</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS Server Guide/Manual</a></li>
+          <li class="breadcrumb-item"><a href="../services.html"><span class="section-number">3. </span>Services</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.6. </span>OGC API Features</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/server_manual/services/ogcapif.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="wmts.html" class="btn btn-neutral float-left" title="3.5. Web Map Tile Service (WMTS)" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../catalog.html" class="btn btn-neutral float-right" title="4. Catalog" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="ogc-api-features">
+<span id="id1"></span><h1><span class="section-number">3.6. </span>OGC API Features<a class="headerlink" href="#ogc-api-features" title="Link to this heading"></a></h1>
+<p>OGC API Features (OAPIF) is the first implementation of the new generation of OGC
+protocols.
+It is described by the <a class="reference external" href="http://docs.ogc.org/is/17-069r3/17-069r3.html">OGC API - Features - Part 1: Core</a> document.</p>
+<p>The API can be reached on typical installations via <cite>http://localhost/qgisserver/wfs3</cite></p>
+<p>Here is a quick informal summary of the most important differences
+between the well known WFS protocol and OAPIF:</p>
+<ul class="simple">
+<li><p>OAPIF is based on a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>
+API</p></li>
+<li><p>OAPIF must follow the
+<a class="reference external" href="https://en.wikipedia.org/wiki/OpenAPI_Specification">OPENAPI</a>
+specifications</p></li>
+<li><p>OAPIF supports multiple output formats but it does not dictate any
+(only GeoJSON and HTML are currently available in QGIS OAPIF) and it
+uses <a class="reference external" href="https://en.wikipedia.org/wiki/Content_negotiation">content negotiation</a> to determine
+which format is to be served to the client</p></li>
+<li><p>JSON and HTML are first class citizens in OAPIF</p></li>
+<li><p>OAPIF is self-documenting (through the <code class="docutils literal notranslate"><span class="pre">/api</span></code> endpoint)</p></li>
+<li><p>OAPIF is fully navigable (through links) and browsable</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>While the OGC API Features implementation in QGIS can make use of the <code class="docutils literal notranslate"><span class="pre">MAP</span></code>
+parameter to specify the project file, no extra query parameters
+are allowed by the OPENAPI specification.
+For this reason it is strongly recommended that <code class="docutils literal notranslate"><span class="pre">MAP</span></code> is not
+exposed in the URL and the project file is specified in the
+environment by other means (i.e. setting <code class="docutils literal notranslate"><span class="pre">QGIS_PROJECT_FILE</span></code>
+in the environment through a web server rewrite rule).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <strong>API</strong> endpoint provides comprehensive documentation of all
+supported parameters and output formats of your service.
+The following paragraphs will only describe the most important ones.</p>
+</div>
+<section id="resource-representation">
+<h2><span class="section-number">3.6.1. </span>Resource representation<a class="headerlink" href="#resource-representation" title="Link to this heading"></a></h2>
+<p>The implementation of OGC API Features in QGIS Server currently supports
+the following resource representation (output) formats:</p>
+<ul class="simple">
+<li><p>HTML</p></li>
+<li><p>JSON</p></li>
+</ul>
+<p>The format that is actually served will depend on content negotiation,
+but a specific format can be explicitly requested by appending a format
+specifier to the endpoints.</p>
+<p>Supported format specifier extensions are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.html</span></code></p></li>
+</ul>
+<p>Additional format specifier aliases may be defined by specific
+endpoints:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.openapi</span></code>: alias for <code class="docutils literal notranslate"><span class="pre">.json</span></code> supported by the <strong>API</strong> endpoint</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.geojson</span></code>: alias for <code class="docutils literal notranslate"><span class="pre">.json</span></code> supported by the <strong>Features</strong> and
+<strong>Feature</strong> endpoints</p></li>
+</ul>
+</section>
+<section id="endpoints">
+<span id="oapif-endpoints"></span><h2><span class="section-number">3.6.2. </span>Endpoints<a class="headerlink" href="#endpoints" title="Link to this heading"></a></h2>
+<p>The API provides a list of endpoints that the clients can retrieve.
+The system is designed in such a way that every response provides a set
+of links to navigate through all the provided resources.</p>
+<p>Endpoints points provided by the QGIS implementation are:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Path</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Landing Page</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p>General information about the service and
+provides links to all available endpoints</p></td>
+</tr>
+<tr class="row-odd"><td><p>Conformance</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/conformance</span></code></p></td>
+<td><p>Information about the
+conformance of the service to the standards</p></td>
+</tr>
+<tr class="row-even"><td><p>API</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/api</span></code></p></td>
+<td><p>Full description of the endpoints provided by
+the service and the returned documents structure</p></td>
+</tr>
+<tr class="row-odd"><td><p>Collections</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/collections</span></code></p></td>
+<td><p>List of all collections (i.e.
+‘vector layers’) provided by the service</p></td>
+</tr>
+<tr class="row-even"><td><p>Collection</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/collections/{collectionId}</span></code></p></td>
+<td><p>Information about a
+collection (name, metadata, extent etc.)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Features</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/collections/{collectionId}/items</span></code></p></td>
+<td><p>List of the
+features provided by the collection</p></td>
+</tr>
+<tr class="row-even"><td><p>Feature</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/collections/{collectionId}/items/{featureId}</span></code></p></td>
+<td><p>Information
+about a single feature</p></td>
+</tr>
+</tbody>
+</table>
+<p>Similar to WFS-T (transactional Web Feature Service), it is possible to add, update and delete features (CRUD). The respective requests are described on “<code class="docutils literal notranslate"><span class="pre">/api</span></code>”.</p>
+<section id="landing-page">
+<h3>Landing Page<a class="headerlink" href="#landing-page" title="Link to this heading"></a></h3>
+<p>The main endpoint is the <strong>Landing Page</strong>. From that page it is
+possible to navigate to all the available service endpoints.
+The <strong>Landing Page</strong> must provide links to</p>
+<ul class="simple">
+<li><p>the API definition (path <code class="docutils literal notranslate"><span class="pre">/api</span></code> link relations <code class="docutils literal notranslate"><span class="pre">service-desc</span></code>
+and <code class="docutils literal notranslate"><span class="pre">service-doc</span></code>),</p></li>
+<li><p>the Conformance declaration (path <code class="docutils literal notranslate"><span class="pre">/conformance</span></code>, link relation
+<code class="docutils literal notranslate"><span class="pre">conformance</span></code>), and</p></li>
+<li><p>the Collections (path <code class="docutils literal notranslate"><span class="pre">/collections</span></code>, link relation <code class="docutils literal notranslate"><span class="pre">data</span></code>).</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<span id="figure-server-oapif-landing-page"></span><img alt="../../../_images/server_wfs3_landing_page.png" src="../../../_images/server_wfs3_landing_page.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.24 </span><span class="caption-text">Server OAPIF landing page</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="api-definition">
+<span id="ogc-api-features-api-definition"></span><h3>API Definition<a class="headerlink" href="#api-definition" title="Link to this heading"></a></h3>
+<p>The <strong>API Definition</strong> is an OPENAPI-compliant description of the
+API provided by the service.
+In its HTML representation it is a browsable page where all the
+endpoints and their response formats are accurately listed and
+documented.
+The path of this endpoint is <code class="docutils literal notranslate"><span class="pre">/api</span></code>.</p>
+<p>The API definition provides a comprehensive and authoritative
+documentation of the service, including all supported parameters and
+returned formats.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This endpoint is analogue to WFS’s <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code></p>
+</div>
+</section>
+<section id="collections-list">
+<h3>Collections list<a class="headerlink" href="#collections-list" title="Link to this heading"></a></h3>
+<p>The collections endpoint provides a list of all the collections
+available in the service.
+Since the service “serves” a single QGIS project the collections are
+the vector layers from the current project (if they were published as
+WFS in the project properties).
+The path of this endpoint is <code class="docutils literal notranslate"><span class="pre">/collections/</span></code>.</p>
+<figure class="align-center" id="id3">
+<span id="figure-server-oapif-collections"></span><img alt="../../../_images/server_wfs3_collections.png" src="../../../_images/server_wfs3_collections.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.25 </span><span class="caption-text">Server OAPIF collections list page</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="collection-detail">
+<h3>Collection detail<a class="headerlink" href="#collection-detail" title="Link to this heading"></a></h3>
+<p>While the collections endpoint does not provide detailed information
+about each available collection, that information is available in the
+<code class="docutils literal notranslate"><span class="pre">/collections/{collectionId}</span></code> endpoints.
+Typical information includes the extent, a description, CRSs and other
+metadata.</p>
+<p>The HTML representation also provides a browsable map with the
+available features.</p>
+<figure class="align-center" id="id4">
+<span id="figure-server-oapif-collection"></span><img alt="../../../_images/server_wfs3_collection.png" src="../../../_images/server_wfs3_collection.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.26 </span><span class="caption-text">Server OAPIF collection detail page</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="features-list">
+<span id="ogc-api-features-features-list"></span><h3>Features list<a class="headerlink" href="#features-list" title="Link to this heading"></a></h3>
+<p>This endpoint provides a list of all features in a collection knowing
+the collection ID.
+The path of this endpoint is <code class="docutils literal notranslate"><span class="pre">/collections/{collectionId}/items</span></code>.</p>
+<p>The HTML representation also provides a browsable map with the
+available features.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This endpoint is analogue to <code class="docutils literal notranslate"><span class="pre">GetFeature</span></code> in  WFS 1 and WFS 2.</p>
+</div>
+<figure class="align-center" id="id5">
+<span id="figure-server-oapif-features"></span><img alt="../../../_images/server_wfs3_features.png" src="../../../_images/server_wfs3_features.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.27 </span><span class="caption-text">Server OAPIF features list page</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="feature-detail">
+<h3>Feature detail<a class="headerlink" href="#feature-detail" title="Link to this heading"></a></h3>
+<p>This endpoint provides all the available information about a
+single feature, including the feature attributes and its geometry.
+The path of this endpoint is
+<code class="docutils literal notranslate"><span class="pre">/collections/{collectionId}/items/{itemId}</span></code>.</p>
+<p>The HTML representation also provides a browsable map with the
+feature geometry.</p>
+<figure class="align-center" id="id6">
+<span id="figure-server-oapif-feature"></span><img alt="../../../_images/server_wfs3_feature.png" src="../../../_images/server_wfs3_feature.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.28 </span><span class="caption-text">Server OAPIF feature detail page</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="pagination">
+<h2><span class="section-number">3.6.3. </span>Pagination<a class="headerlink" href="#pagination" title="Link to this heading"></a></h2>
+<p>Pagination of a long list of features is implemented in the OGC API
+through <code class="docutils literal notranslate"><span class="pre">next</span></code> and <code class="docutils literal notranslate"><span class="pre">prev</span></code> links, QGIS server constructs these
+links by appending <code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">offset</span></code> as query string
+parameters.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver/wfs3/collection_one/items.json?offset<span class="o">=</span><span class="m">10</span><span class="p">&amp;</span><span class="nv">limit</span><span class="o">=</span><span class="m">10</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The maximum acceptable value for <code class="docutils literal notranslate"><span class="pre">limit</span></code> can be configured with
+the <code class="docutils literal notranslate"><span class="pre">QGIS_SERVER_API_WFS3_MAX_LIMIT</span></code> server configuration setting
+(see: <a class="reference internal" href="../config.html#qgis-server-envvar"><span class="std std-ref">Environment variables</span></a>).</p>
+</div>
+</section>
+<section id="feature-filtering">
+<h2><span class="section-number">3.6.4. </span>Feature filtering<a class="headerlink" href="#feature-filtering" title="Link to this heading"></a></h2>
+<p>The features available in a collection can be filtered/searched by
+specifying one or more filters.</p>
+<section id="date-and-time-filter">
+<h3>Date and time filter<a class="headerlink" href="#date-and-time-filter" title="Link to this heading"></a></h3>
+<p>Collections with date and/or datetime attributes can be filtered by
+specifying a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> argument in the query string.
+By default the first date/datetime field is used for filtering.
+This behavior can be configured by setting a “Date” or “Time”
+dimension in the <span class="menuselection">QGIS Server ► Dimension</span> section of
+the layer properties dialog.</p>
+<p>The date and time filtering syntax is fully described in the
+<a class="reference internal" href="#ogc-api-features-api-definition"><span class="std std-ref">API Definition</span></a> and also supports ranges (begin
+and end values are included) in addition to single values.</p>
+<p>URL examples:</p>
+<p>Returns only the features with date dimension matching <code class="docutils literal notranslate"><span class="pre">2019-01-01</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver/wfs3/collection_one/items.json?datetime<span class="o">=</span><span class="m">2019</span>-01-01
+</pre></div>
+</div>
+<p>Returns only the features with datetime dimension matching
+<code class="docutils literal notranslate"><span class="pre">2019-01-01T01:01:01</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver/wfs3/collection_one/items.json?datetime<span class="o">=</span><span class="m">2019</span>-01-01T01:01:01
+</pre></div>
+</div>
+<p>Returns only the features with datetime dimension in the range
+<code class="docutils literal notranslate"><span class="pre">2019-01-01T01:01:01</span></code> - <code class="docutils literal notranslate"><span class="pre">2019-01-01T12:00:00</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver/wfs3/collection_one/items.json?datetime<span class="o">=</span><span class="m">2019</span>-01-01T01:01:01/2019-01-01T12:00:00
+</pre></div>
+</div>
+</section>
+<section id="bounding-box-filter">
+<h3>Bounding box filter<a class="headerlink" href="#bounding-box-filter" title="Link to this heading"></a></h3>
+<p>A bounding box spatial filter can be specified with the <code class="docutils literal notranslate"><span class="pre">bbox</span></code> parameter:</p>
+<p>The order of the comma separated elements is:</p>
+<ul class="simple">
+<li><p>Lower left corner, WGS 84 longitude</p></li>
+<li><p>Lower left corner, WGS 84 latitude</p></li>
+<li><p>Upper right corner, WGS 84 longitude</p></li>
+<li><p>Upper right corner, WGS 84 latitude</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The OGC specifications also allow a 6 item bbox specifier where the
+third and sixth items are the Z components, this is not yet
+supported by QGIS server.</p>
+</div>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver/wfs3/collection_one/items.json?bbox<span class="o">=</span>-180,-90,180,90
+</pre></div>
+</div>
+<p>If the <em>CRS</em> of the bounding box is not
+<a class="reference external" href="https://www.opengis.net/def/crs/OGC/1.3/CRS84">WGS 84</a>, a different CRS can
+be specified by using the optional parameter <code class="docutils literal notranslate"><span class="pre">bbox-crs</span></code>.
+The CRS format identifier must be in the
+<a class="reference external" href="https://www.opengis.net/def/crs/">OGC URI</a> format:</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver/wfs3/collection_one/items.json?bbox<span class="o">=</span><span class="m">913191</span>,5606014,913234,5606029<span class="p">&amp;</span>bbox-crs<span class="o">=</span>http://www.opengis.net/def/crs/EPSG/9.6.2/3857
+</pre></div>
+</div>
+</section>
+<section id="attribute-filters">
+<h3>Attribute filters<a class="headerlink" href="#attribute-filters" title="Link to this heading"></a></h3>
+<p>Attribute filters can be combined with the bounding box filter and they
+are in the general form: <code class="docutils literal notranslate"><span class="pre">&lt;attribute</span> <span class="pre">name&gt;=&lt;attribute</span> <span class="pre">value&gt;</span></code>.
+Multiple filters can be combined using the <code class="docutils literal notranslate"><span class="pre">AND</span></code> operator.</p>
+<p>URL example:</p>
+<p>filters all features where attribute <code class="docutils literal notranslate"><span class="pre">name</span></code> equals “my value”</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver/wfs3/collection_one/items.json?attribute_one<span class="o">=</span>my%20value
+</pre></div>
+</div>
+<p>Partial matches are also supported by using a <code class="docutils literal notranslate"><span class="pre">*</span></code> (“star”) operator:</p>
+<p>URL example:</p>
+<p>filters all features where attribute <code class="docutils literal notranslate"><span class="pre">name</span></code> ends with “value”</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver/wfs3/collection_one/items.json?attribute_one<span class="o">=</span>*value
+</pre></div>
+</div>
+</section>
+</section>
+<section id="feature-sorting">
+<h2><span class="section-number">3.6.5. </span>Feature sorting<a class="headerlink" href="#feature-sorting" title="Link to this heading"></a></h2>
+<p>It is possible to order the result set by field value using the <code class="docutils literal notranslate"><span class="pre">sortby</span></code>
+query parameter.</p>
+<p>The results are sorted in ascending order by default.
+To sort the results in descending order, a boolean flag (<code class="docutils literal notranslate"><span class="pre">sortdesc</span></code>) can be set:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver/wfs3/collection_one/items.json?sortby<span class="o">=</span>name<span class="p">&amp;</span><span class="nv">sortdesc</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</section>
+<section id="attribute-selection">
+<h2><span class="section-number">3.6.6. </span>Attribute selection<a class="headerlink" href="#attribute-selection" title="Link to this heading"></a></h2>
+<p>The feature attributes returned by a <a class="reference internal" href="#ogc-api-features-features-list"><span class="std std-ref">Features list</span></a>
+call can be limited by adding a comma separated list of attribute names
+in the optional <code class="docutils literal notranslate"><span class="pre">properties</span></code> query string argument.</p>
+<p>URL example:</p>
+<p>returns only the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver/wfs3/collection_one/items.json?properties<span class="o">=</span>name
+</pre></div>
+</div>
+</section>
+<section id="customize-the-html-pages">
+<h2><span class="section-number">3.6.7. </span>Customize the HTML pages<a class="headerlink" href="#customize-the-html-pages" title="Link to this heading"></a></h2>
+<p>The HTML representation uses a set of HTML templates to generate the
+response.
+The template is parsed by a template engine called
+<a class="reference external" href="https://github.com/pantor/inja/">inja</a>.
+The templates can be customized by overriding them (see:
+<a class="reference internal" href="#server-oapif-template-override"><span class="std std-ref">Template overrides</span></a>).
+The template has access to the same data that are available to the
+<code class="docutils literal notranslate"><span class="pre">JSON</span></code> representation and a few additional functions are available to
+the template:</p>
+<section id="custom-template-functions">
+<h3>Custom template functions<a class="headerlink" href="#custom-template-functions" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">path_append(</span> <span class="pre">path</span> <span class="pre">)</span></code>: appends a directory path to the current url</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path_chomp(</span> <span class="pre">n</span> <span class="pre">)</span></code>: removes the specified number “n” of directory
+components from the current url path</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">json_dump(</span> <span class="pre">)</span></code>: prints the JSON data passed to the template</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">static(</span> <span class="pre">path</span> <span class="pre">)</span></code>: returns the full URL to the specified static path.
+For example: “static( “/style/black.css” )” with a root path
+“<a class="reference external" href="http://localhost/qgisserver/wfs3">http://localhost/qgisserver/wfs3</a>” will return
+“<a class="reference external" href="http://localhost/qgisserver/wfs3/static/style/black.css">http://localhost/qgisserver/wfs3/static/style/black.css</a>”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">links_filter(</span> <span class="pre">links,</span> <span class="pre">key,</span> <span class="pre">value</span> <span class="pre">)</span></code>: Returns filtered links from a
+link list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">content_type_name(</span> <span class="pre">content_type</span> <span class="pre">)</span></code>: Returns a short name from a
+content type, for example “text/html” will return “HTML”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nl2br(</span> <span class="pre">text</span> <span class="pre">)</span></code>: Returns the input text with all newlines replaced
+by “&lt;br&gt;” tags</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">starts_with(</span> <span class="pre">string,</span> <span class="pre">prefix</span> <span class="pre">)</span></code>: returns true if a string begins
+with the provided string prefix, false otherwise</p></li>
+</ul>
+</section>
+<section id="template-overrides">
+<span id="server-oapif-template-override"></span><h3>Template overrides<a class="headerlink" href="#template-overrides" title="Link to this heading"></a></h3>
+<p>Templates and static assets are stored in subdirectories of the QGIS
+server default API resource directory
+(<code class="file docutils literal notranslate"><span class="pre">/usr/share/qgis/resources/server/api/</span></code> on a Linux system), the
+base directory can be customized by changing the environment variable
+<code class="docutils literal notranslate"><span class="pre">QGIS_SERVER_API_RESOURCES_DIRECTORY</span></code>.</p>
+<p>A typical Linux installation will have the following directory tree:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/usr/share/qgis/resources/server/api/
+└──<span class="w"> </span>ogc
+<span class="w">    </span>├──<span class="w"> </span>schema.json
+<span class="w">    </span>├──<span class="w"> </span>static
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>jsonFormatter.min.css
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>jsonFormatter.min.js
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>style.css
+<span class="w">    </span>└──<span class="w"> </span>templates
+<span class="w">        </span>└──<span class="w"> </span>wfs3
+<span class="w">            </span>├──<span class="w"> </span>describeCollection.html
+<span class="w">            </span>├──<span class="w"> </span>describeCollections.html
+<span class="w">            </span>├──<span class="w"> </span>footer.html
+<span class="w">            </span>├──<span class="w"> </span>getApiDescription.html
+<span class="w">            </span>├──<span class="w"> </span>getFeature.html
+<span class="w">            </span>├──<span class="w"> </span>getFeatures.html
+<span class="w">            </span>├──<span class="w"> </span>getLandingPage.html
+<span class="w">            </span>├──<span class="w"> </span>getRequirementClasses.html
+<span class="w">            </span>├──<span class="w"> </span>header.html
+<span class="w">            </span>├──<span class="w"> </span>leaflet_map.html
+<span class="w">            </span>└──<span class="w"> </span>links.html
+</pre></div>
+</div>
+<p>To override the templates you can copy the whole tree to another location
+and point <code class="docutils literal notranslate"><span class="pre">QGIS_SERVER_API_RESOURCES_DIRECTORY</span></code> to the new location.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wmts.html" class="btn btn-neutral float-left" title="3.5. Web Map Tile Service (WMTS)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../catalog.html" class="btn btn-neutral float-right" title="4. Catalog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/services/ogcapif.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/server_manual/services/ogcapif.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/server_manual/services/ogcapif.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/server_manual/services/ogcapif.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/server_manual/services/ogcapif.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/server_manual/services/ogcapif.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/server_manual/services/ogcapif.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/server_manual/services/ogcapif.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/server_manual/services/ogcapif.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/server_manual/services/ogcapif.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/server_manual/services/ogcapif.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/server_manual/services/ogcapif.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/server_manual/services/ogcapif.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/server_manual/services/ogcapif.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/server_manual/services/ogcapif.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/server_manual/services/ogcapif.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/server_manual/services/ogcapif.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/server_manual/services/ogcapif.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/services/ogcapif.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/server_manual/services/ogcapif.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/server_manual/services/ogcapif.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/server_manual/services/ogcapif.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/server_manual/services/ogcapif.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/server_manual/services/ogcapif.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/server_manual/services/ogcapif.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/server_manual/services/ogcapif.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/3613dd3a23805dc76bd712780aa30374" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

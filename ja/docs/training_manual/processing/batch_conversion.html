@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>17.26. バッチ処理インターフェイス &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/processing/batch_conversion.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="17.27. バッチ プロセシング インタフェースのモデル" href="batch_modeler.html" />
+    <link rel="prev" title="17.25. アルゴリズムの反復実行（続）" href="iterative_model.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 17.26. バッチ処理インターフェイス">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">トレーニングマニュアル</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. コースの紹介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. モジュール: 基本的な地図を作成して探索する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. モジュール: ベクタデータを分類する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. モジュール: 地図をレイアウトする</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. モジュール: ベクタデータを作る</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. モジュール: ベクタ解析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. モジュール: ラスタ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. モジュール: 分析の完了</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. モジュール: プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. モジュール: オンラインリソース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. モジュール: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. モジュール: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. モジュール: 学習評価</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. モジュール: 林業への応用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. モジュール: PostgreSQLでのデータベース概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. モジュール: 空間データベースの概念とPostGIS</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">17. QGISプロセシングガイド</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">17.1. はじめに</a></li>
+<li class="toctree-l3"><a class="reference internal" href="warning.html">17.2. 始める前の重要な警告</a></li>
+<li class="toctree-l3"><a class="reference internal" href="set_up.html">17.3. プロセシングフレームワークの準備をする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="first_alg.html">17.4. 最初のアルゴリズムを実行する・ツールボックス</a></li>
+<li class="toctree-l3"><a class="reference internal" href="second_alg.html">17.5. さらなるアルゴリズムとデータタイプ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crs.html">17.6. CRS・再投影</a></li>
+<li class="toctree-l3"><a class="reference internal" href="selection.html">17.7. 選択</a></li>
+<li class="toctree-l3"><a class="reference internal" href="first_saga_alg.html">17.8. 外部のアルゴリズムを実行する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">17.9. プロセシングログ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="no_data.html">17.10. ラスタ計算機。データなし値</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vector_calculator.html">17.11. ベクター計算機</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extents.html">17.12. 範囲を定義する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="html.html">17.13. HTML出力</a></li>
+<li class="toctree-l3"><a class="reference internal" href="john_snow.html">17.14. 最初の分析例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cutting_merging.html">17.15. ラスタレイヤをクリップしてマージする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hydro.html">17.16. 水文解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_twi.html">17.17. モデルデザイナーから始める</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_hydro.html">17.18. より複雑なモデル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_hydro_calculator.html">17.19. モデラーでの数値計算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_hydro_twi.html">17.20. モデル内のモデル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_only.html">17.21. モデルを作成するためにモデラー専用ツールを使用する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interpolation.html">17.22. 内挿</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interpolation_cross.html">17.23. 補間（続）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterative.html">17.24. アルゴリズムの反復実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterative_model.html">17.25. アルゴリズムの反復実行（続）</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">17.26. バッチ処理インターフェイス</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch_modeler.html">17.27. バッチ プロセシング インタフェースのモデル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hooks.html">17.28. 実行前後のスクリプトのフック</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_backends.html">17.29. その他のプログラム</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interp_contour.html">17.30. 補間と等高線作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generalize.html">17.31. ベクターの単純化と平滑化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solar.html">17.32. 太陽光発電所を計画する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r_intro.html">17.33. プロセシングでRスクリプトを使用する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geomorpho.html">17.34. 地滑りを予測する</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. モジュール: QGISで空間データベースを使う</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. 付録：このマニュアルに貢献する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. 練習データを準備する</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGISトレーニングマニュアル</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">17. </span>QGISプロセシングガイド</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">17.26. </span>バッチ処理インターフェイス</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/processing/batch_conversion.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="iterative_model.html" class="btn btn-neutral float-left" title="17.25. アルゴリズムの反復実行（続）" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="batch_modeler.html" class="btn btn-neutral float-right" title="17.27. バッチ プロセシング インタフェースのモデル" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="the-batch-processing-interface">
+<h1><span class="section-number">17.26. </span>バッチ処理インターフェイス<a class="headerlink" href="#the-batch-processing-interface" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>このレッスンではバッチ処理インターフェイスを紹介します。１つのアルゴリズムをさまざまな入力値のセットで実行できます。</p>
+</div>
+<p>あるアルゴリズムを異なる入力で繰り返し実行しなければならないことがあります。例えば、入力ファイルの集合をあるフォーマットから別のフォーマットに変換しなければならない場合や、ある投影法の複数のレイヤを別の投影法に変換しなければならない場合などです。</p>
+<p>その場合には、ツールボックスに繰り返しアルゴリズムを呼び出すのは最良の選択肢ではありません。代わりに、バッチ処理インターフェイスを使用するべきです。そうすれば与えられたアルゴリズムの複数の実行が大幅に簡略化されます。バッチプロセスとしてアルゴリズムを実行するには、ツールボックスでそれを見つけて、ダブルクリックではなく右クリックして、 <em>バッチ処理として実行</em> を選択します。</p>
+<figure class="align-default">
+<img alt="../../../_images/batch_menu.png" src="../../../_images/batch_menu.png" />
+</figure>
+<p>この例では、 <em>再投影アルゴリズム</em> を使用するので、前述したようにそれを見つけて実行します。次のダイアログが表示されるでしょう。</p>
+<figure class="align-default">
+<img alt="../../../_images/batch_dialog.png" src="../../../_images/batch_dialog.png" />
+</figure>
+<p>このレッスンのためのデータを見てみると、3つのシェープファイルのセットは含むが、QGISプロジェクトファイルが含まれていないことがわかります。アルゴリズムは、バッチプロセスとして実行されると、レイヤの入力は、現在のQGISプロジェクトまたはファイルのいずれかから選択できるからです。それによって、例えば指定したフォルダ内のすべてのレイヤなど、大量のレイヤを簡単に処理できるようになります。</p>
+<p>バッチ処理ダイアログのテーブルの各行は、アルゴリズムの単一の実行を表します。行のセルはアルゴリズムによって必要とされるパラメーターに対応します。これは、通常の単一実行ダイアログの中でのように互いに上下にではなく、その行に水平に配置されます。</p>
+<p>実行するバッチ処理を定義するには、テーブルに対応する値を入力します。ダイアログ自体には、この作業を容易にするためのいくつかのツールが含まれています。</p>
+<p>フィールドの一つ一つを入力始めましょう。入力する最初の列は、<em>入力レイヤ</em> 列です。処理したいレイヤのそれぞれの名前を入力する代わりに、それらのすべてを選択してダイアログが各行にひとつを入れるようにさせることができます。左上のセル内のボタンをクリックし、ポップアップするファイル選択ダイアログで、再投影する3つのファイルを選択します。行ごとにそれらの１つだけが必要とされるので、残りは下の行を埋めるために使用されます。</p>
+<figure class="align-default">
+<img alt="../../../_images/first_column_filled.png" src="../../../_images/first_column_filled.png" />
+</figure>
+<p>デフォルトの行数は3で、これはちょうど変換する必要があるレイヤの数ですが、より多くのレイヤを選択した場合、新しい行が自動的に追加されます。手動でエントリを記入したい場合は、 <em>行を追加</em> ボタンを使用して複数の行を追加できます。</p>
+<p>これらのレイヤをすべてEPSG:23029 CRSに変換しようとしているので、2番目のフィールドでそのCRSを選択する必要があります。すべての行で同じにしたいが、各行ひとつひとつに対してそれを行う必要はありません。その代わりに、1行目（最上の1つ）にそのCRSを、対応するセル内のボタンを使用して設定し、列見出しをダブルクリックします。それにより、列のすべてのセルが最上セルの値を使用して埋められます。</p>
+<figure class="align-default">
+<img alt="../../../_images/second_column_filled.png" src="../../../_images/second_column_filled.png" />
+</figure>
+<p>最後に、対応する再投影レイヤが含まれています、各実行のための出力ファイルを選択する必要があります。もう一度、ちょうど最初の行のためにそれをやらせます。上部セル内のボタンをクリックし、出力ファイルを置きたいフォルダにファイル名を入力します（例えば、 <code class="docutils literal notranslate"><span class="pre">reprojected.shp</span></code> ）。</p>
+<p>さて、ファイル選択ダイアログ上で <em>OK</em> をクリックすると、ファイルは自動的にセルに書き込まれず、以下のような入力ボックスが代わりに表示されます。</p>
+<figure class="align-default">
+<img alt="../../../_images/autofill.png" src="../../../_images/autofill.png" />
+</figure>
+<p>最初のオプションを選択した場合のみ、現在のセルが入力されます。他のいずれかを選択した場合は、以下のすべての行は、与えられたパターンで埋められます。この場合は、 <em>パラメーター値で埋める</em> オプションを、そしてその後に下のドロップダウンメニューで <em>入力レイヤ</em> 値を選択しようとしています。追加したファイル名に追加する（つまり、レイヤ名です） <em>入力レイヤ</em> の値が発生して、各出力ファイル名が異なるようになります。バッチ処理テーブルはこのようになるはずです：</p>
+<figure class="align-default">
+<img alt="../../../_images/complete.png" src="../../../_images/complete.png" />
+</figure>
+<p>最後の列は、得られるレイヤを現在のQGISプロジェクトに追加するかどうかを設定します。このような場合には、結果を見ることができるよう、デフォルトの <em>はい</em> オプションのままにしておきます。</p>
+<p><em>OK</em> をクリックするとバッチ処理が実行されます。すべてがうまくいった場合は、すべてのレイヤが処理され、3つの新しいレイヤが作成されているでしょう。</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="iterative_model.html" class="btn btn-neutral float-left" title="17.25. アルゴリズムの反復実行（続）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="batch_modeler.html" class="btn btn-neutral float-right" title="17.27. バッチ プロセシング インタフェースのモデル" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/training_manual/processing/batch_conversion.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/training_manual/processing/batch_conversion.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/training_manual/processing/batch_conversion.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/training_manual/processing/batch_conversion.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/training_manual/processing/batch_conversion.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/training_manual/processing/batch_conversion.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/training_manual/processing/batch_conversion.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/training_manual/processing/batch_conversion.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/training_manual/processing/batch_conversion.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/training_manual/processing/batch_conversion.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/training_manual/processing/batch_conversion.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/training_manual/processing/batch_conversion.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/training_manual/processing/batch_conversion.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/training_manual/processing/batch_conversion.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/training_manual/processing/batch_conversion.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/training_manual/processing/batch_conversion.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/training_manual/processing/batch_conversion.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/training_manual/processing/batch_conversion.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/training_manual/processing/batch_conversion.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/training_manual/processing/batch_conversion.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/training_manual/processing/batch_conversion.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/training_manual/processing/batch_conversion.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/training_manual/processing/batch_conversion.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/training_manual/processing/batch_conversion.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/training_manual/processing/batch_conversion.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/processing/batch_conversion.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/8e4548a9af629c3ce86d9037e82a2c97" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

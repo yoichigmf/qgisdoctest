@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>17.14. 最初の分析例 &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/processing/john_snow.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="17.15. ラスタレイヤをクリップしてマージする" href="cutting_merging.html" />
+    <link rel="prev" title="17.13. HTML出力" href="html.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 17.14. 最初の分析例">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">トレーニングマニュアル</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. コースの紹介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. モジュール: 基本的な地図を作成して探索する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. モジュール: ベクタデータを分類する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. モジュール: 地図をレイアウトする</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. モジュール: ベクタデータを作る</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. モジュール: ベクタ解析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. モジュール: ラスタ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. モジュール: 分析の完了</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. モジュール: プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. モジュール: オンラインリソース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. モジュール: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. モジュール: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. モジュール: 学習評価</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. モジュール: 林業への応用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. モジュール: PostgreSQLでのデータベース概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. モジュール: 空間データベースの概念とPostGIS</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">17. QGISプロセシングガイド</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">17.1. はじめに</a></li>
+<li class="toctree-l3"><a class="reference internal" href="warning.html">17.2. 始める前の重要な警告</a></li>
+<li class="toctree-l3"><a class="reference internal" href="set_up.html">17.3. プロセシングフレームワークの準備をする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="first_alg.html">17.4. 最初のアルゴリズムを実行する・ツールボックス</a></li>
+<li class="toctree-l3"><a class="reference internal" href="second_alg.html">17.5. さらなるアルゴリズムとデータタイプ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crs.html">17.6. CRS・再投影</a></li>
+<li class="toctree-l3"><a class="reference internal" href="selection.html">17.7. 選択</a></li>
+<li class="toctree-l3"><a class="reference internal" href="first_saga_alg.html">17.8. 外部のアルゴリズムを実行する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">17.9. プロセシングログ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="no_data.html">17.10. ラスタ計算機。データなし値</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vector_calculator.html">17.11. ベクター計算機</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extents.html">17.12. 範囲を定義する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="html.html">17.13. HTML出力</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">17.14. 最初の分析例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cutting_merging.html">17.15. ラスタレイヤをクリップしてマージする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hydro.html">17.16. 水文解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_twi.html">17.17. モデルデザイナーから始める</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_hydro.html">17.18. より複雑なモデル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_hydro_calculator.html">17.19. モデラーでの数値計算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_hydro_twi.html">17.20. モデル内のモデル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_only.html">17.21. モデルを作成するためにモデラー専用ツールを使用する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interpolation.html">17.22. 内挿</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interpolation_cross.html">17.23. 補間（続）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterative.html">17.24. アルゴリズムの反復実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterative_model.html">17.25. アルゴリズムの反復実行（続）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch_conversion.html">17.26. バッチ処理インターフェイス</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch_modeler.html">17.27. バッチ プロセシング インタフェースのモデル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hooks.html">17.28. 実行前後のスクリプトのフック</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_backends.html">17.29. その他のプログラム</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interp_contour.html">17.30. 補間と等高線作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generalize.html">17.31. ベクターの単純化と平滑化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solar.html">17.32. 太陽光発電所を計画する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r_intro.html">17.33. プロセシングでRスクリプトを使用する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geomorpho.html">17.34. 地滑りを予測する</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. モジュール: QGISで空間データベースを使う</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. 付録：このマニュアルに貢献する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. 練習データを準備する</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGISトレーニングマニュアル</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">17. </span>QGISプロセシングガイド</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">17.14. </span>最初の分析例</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/processing/john_snow.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="html.html" class="btn btn-neutral float-left" title="17.13. HTML出力" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cutting_merging.html" class="btn btn-neutral float-right" title="17.15. ラスタレイヤをクリップしてマージする" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="first-analysis-example">
+<h1><span class="section-number">17.14. </span>最初の分析例<a class="headerlink" href="#first-analysis-example" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>このレッスンでは、プロセッシング・フレームワークの要素により精通できるよう、ツールボックスだけを使用していくつかの実際の分析を実行します。</p>
+</div>
+<p>今やすべて設定されていて外部アルゴリズムを使用できますので、空間分析を実行するための非常に強力なツールを持っています。何か実世界のデータでより大規模な練習に取り掛かる時です。</p>
+<p>我々は、John Snowが1854年に彼の画期的な仕事(<a class="reference external" href="https://en.wikipedia.org/wiki/John_Snow_%28physician%29">https://en.wikipedia.org/wiki/John_Snow_%28physician%29</a>)で使用した有名なデータセットを使用し、いくつかの興味深い結果を得ることになります。このデータセットの分析は非常に明白であり、良い結果と結論に至るために高度なGIS技術を必要としませんが、このような空間的問題が、異なる処理ツールを使うことによってどのように分析され解決されるかを示す良い方法であるといえるでしょう。</p>
+<p>データセットには、コレラによる死者の位置と井戸の位置のシェープファイル、およびTIFFフォーマットでのOSMレンダリングされた地図が含まれています。このレッスンのための対応QGISプロジェクトを開きます。</p>
+<figure class="align-default">
+<img alt="../../../_images/project2.png" src="../../../_images/project2.png" />
+</figure>
+<p>まず、ポンプレイヤのボロノイ図（別名：ティーセン多角形）を計算し、各ポンプの影響範囲を得ます。 <em>ボロノイ図</em> アルゴリズムは、そのために使用することができます。</p>
+<figure class="align-default">
+<img alt="../../../_images/voronoi.png" src="../../../_images/voronoi.png" />
+</figure>
+<p>かなり簡単ですが、それですでに興味深い情報が得られます。</p>
+<figure class="align-default">
+<img alt="../../../_images/voronoi2.png" src="../../../_images/voronoi2.png" />
+</figure>
+<p>明らかに、ほとんどの症例がポリゴンの1つの範囲内にあります</p>
+<p>より定量的な結果を得るためには、各ポリゴンにおける死亡者数をカウントできます。各ポイントは、死亡が発生した建物を表しており、死亡者数は、属性に格納されているので、ポイントをカウントすることはできません。私たちは、重み付けされた回数を必要とするので、 <em>ポリゴンカウントポイント（加重）</em> ツールを使用します。</p>
+<figure class="align-default">
+<img alt="../../../_images/pointsinpoly.png" src="../../../_images/pointsinpoly.png" />
+</figure>
+<p>新しいフィールドは <em>死亡</em> と呼ばれ、そして <em>COUNT</em> フィールドを重みフィールドとして使用します。結果のテーブルは、明らかに第一の井戸に対応するポリゴンにおける死亡者数が他のものよりもはるかに大きいことを反映しています。</p>
+<figure class="align-default">
+<img alt="../../../_images/pointsinpolytable.png" src="../../../_images/pointsinpolytable.png" />
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">Pumps　井戸</span></code> レイヤにおけるポイントと <code class="docutils literal notranslate"><span class="pre">Cholera_deaths　コレラ死者</span></code> レイヤの各点の依存性を視覚化するもう一つの良い方法は、最も近いものへ線を描くことです。これは、<em>最寄のハブへの距離</em> ツールで行われ、次のような構成を使用できます。</p>
+<figure class="align-default">
+<img alt="../../../_images/nearest.png" src="../../../_images/nearest.png" />
+</figure>
+<p>これの結果は次の通りです:</p>
+<figure class="align-default">
+<img alt="../../../_images/nearestresult.png" src="../../../_images/nearestresult.png" />
+</figure>
+<p>線の数は中央の井戸の場合の方が大きいが、これは死亡数ではなくコレラの症例が発見された場所の数を表していることを忘れないでください。それは代表的なパラメーターですが、ある場所では他の場所よりも多くの例があるかもしれないことが考慮されていません。</p>
+<p>密度レイヤはまた、何が起こっているかの非常にクリアな視界を提供します。それは <em>カーネル密度</em> アルゴリズムで作成できます。 <em>Cholera_deaths　コレラ死者</em> レイヤ、100の半径と、重みフィールドとしての <em>COUNT　数</em> フィールド、街のラスタレイヤの範囲とセルサイズを使用すると、このような何かを得ます。</p>
+<figure class="align-default">
+<img alt="../../../_images/density.png" src="../../../_images/density.png" />
+</figure>
+<p>出力範囲を取得するには、入力する必要はありません。右側のボタンをクリックし、 <em>レイヤ/キャンバス範囲を使用</em> を選択します。</p>
+<figure class="align-default">
+<img alt="../../../_images/layerextent.png" src="../../../_images/layerextent.png" />
+</figure>
+<p>街のラスタレイヤを選択すると、その範囲が自動的にテキストフィールドに追加されます。セルサイズでも同じことを行い、そのレイヤのセルサイズを選択する必要があります。</p>
+<p>井戸レイヤと組み合わせることで、一つの井戸が明らかに死亡例最高濃度が検出されたホットスポット中にあるとわかります。</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="html.html" class="btn btn-neutral float-left" title="17.13. HTML出力" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cutting_merging.html" class="btn btn-neutral float-right" title="17.15. ラスタレイヤをクリップしてマージする" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/training_manual/processing/john_snow.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/training_manual/processing/john_snow.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/training_manual/processing/john_snow.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/training_manual/processing/john_snow.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/training_manual/processing/john_snow.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/training_manual/processing/john_snow.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/training_manual/processing/john_snow.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/training_manual/processing/john_snow.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/training_manual/processing/john_snow.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/training_manual/processing/john_snow.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/training_manual/processing/john_snow.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/training_manual/processing/john_snow.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/training_manual/processing/john_snow.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/training_manual/processing/john_snow.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/training_manual/processing/john_snow.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/training_manual/processing/john_snow.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/training_manual/processing/john_snow.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/training_manual/processing/john_snow.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/training_manual/processing/john_snow.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/training_manual/processing/john_snow.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/training_manual/processing/john_snow.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/training_manual/processing/john_snow.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/training_manual/processing/john_snow.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/training_manual/processing/john_snow.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/training_manual/processing/john_snow.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/processing/john_snow.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/73b87a4d21660e37fdc4bf1cc66b0811" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

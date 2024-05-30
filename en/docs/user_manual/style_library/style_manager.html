@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14.1. The Style Manager &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/style_library/style_manager.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="14.2. The Symbol Selector" href="symbol_selector.html" />
+    <link rel="prev" title="14. The Style Library" href="index.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 14.1. The Style Manager">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. Visualizing Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">14. The Style Library</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">14.1. The Style Manager</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-style-manager-dialog">14.1.1. The Style Manager dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-a-color-ramp">14.1.2. Setting a Color Ramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-legend-patch-shape">14.1.3. Creating a Legend Patch Shape</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="symbol_selector.html">14.2. The Symbol Selector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="label_settings.html">14.3. Setting a label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3d_symbols.html">14.4. Creating 3D Symbols</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS User Guide</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">14. </span>The Style Library</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">14.1. </span>The Style Manager</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/style_library/style_manager.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="14. The Style Library" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="symbol_selector.html" class="btn btn-neutral float-right" title="14.2. The Symbol Selector" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="the-style-manager">
+<span id="vector-style-manager"></span><span id="index-0"></span><h1><span class="section-number">14.1. </span>The Style Manager<a class="headerlink" href="#the-style-manager" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#the-style-manager-dialog" id="id10">The Style Manager dialog</a></p>
+<ul>
+<li><p><a class="reference internal" href="#organizing-style-items" id="id11">Organizing style items</a></p></li>
+<li><p><a class="reference internal" href="#adding-editing-or-removing-an-item" id="id12">Adding, editing or removing an item</a></p></li>
+<li><p><a class="reference internal" href="#sharing-style-items" id="id13">Sharing style items</a></p>
+<ul>
+<li><p><a class="reference internal" href="#exporting-items" id="id14">Exporting items</a></p></li>
+<li><p><a class="reference internal" href="#importing-items" id="id15">Importing items</a></p></li>
+<li><p><a class="reference internal" href="#using-the-browser-panel" id="id16">Using the Browser panel</a></p></li>
+<li><p><a class="reference internal" href="#using-the-online-repository" id="id17">Using the online repository</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#setting-a-color-ramp" id="id18">Setting a Color Ramp</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-legend-patch-shape" id="id19">Creating a Legend Patch Shape</a></p></li>
+</ul>
+</nav>
+<section id="the-style-manager-dialog">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">14.1.1. </span>The Style Manager dialog</a><a class="headerlink" href="#the-style-manager-dialog" title="Link to this heading"></a></h2>
+<p>The <span class="guilabel">Style Manager</span> is the place where you can manage and create
+generic style items. These are symbols, color ramps, text formats or label
+settings that can be used to symbolize features, layers or print layouts.
+They are stored in the <code class="file docutils literal notranslate"><span class="pre">symbology-style.db</span></code> database under the active
+<a class="reference internal" href="../introduction/qgis_configuration.html#user-profiles"><span class="std std-ref">user profile</span></a> and shared with all the project files
+opened with that profile.
+Style items can also be shared with others thanks to the export/import
+capabilities of the <span class="guilabel">Style Manager</span> dialog.</p>
+<p>You can open that modeless dialog either:</p>
+<ul class="simple">
+<li><p>from the <span class="menuselection">Settings ►</span> <a class="reference internal" href="../../../_images/mActionStyleManager.png"><img alt="styleManager" src="../../../_images/mActionStyleManager.png" style="width: 1.5em;" /></a> <span class="menuselection">Style
+Manager…</span> menu</p></li>
+<li><p>with the <a class="reference internal" href="../../../_images/mActionStyleManager.png"><img alt="styleManager" src="../../../_images/mActionStyleManager.png" style="width: 1.5em;" /></a> <sup>Style Manager</sup> button from the Project toolbar</p></li>
+<li><p>or with the <a class="reference internal" href="../../../_images/mActionStyleManager.png"><img alt="styleManager" src="../../../_images/mActionStyleManager.png" style="width: 1.5em;" /></a> <sup>Style Manager</sup> button from a vector
+<span class="menuselection">Layer Properties ►</span> menu (while <a class="reference internal" href="symbol_selector.html#symbol-selector"><span class="std std-ref">configuring
+a symbol</span></a> or <a class="reference internal" href="label_settings.html#showlabels"><span class="std std-ref">formatting a text</span></a>).</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<span id="figure-style-manager"></span><img alt="../../../_images/stylemanager.png" src="../../../_images/stylemanager.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.1 </span><span class="caption-text">The Style Manager</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="organizing-style-items">
+<span id="group-symbols"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">14.1.1.1. </span>Organizing style items</a><a class="headerlink" href="#organizing-style-items" title="Link to this heading"></a></h3>
+<p>In the upper left corner of the <span class="guilabel">Style Manager</span> dialog, within
+the drop-down menu, you can choose the style database you want to connect to.
+If you choose <span class="guilabel">Default</span> you will be connected to the default style database
+where you can find all available default style items and the ones that you saved in this database.
+Choosing <span class="guilabel">Project Styles</span> will connect you to the Project Style database
+where you can find only symbols that you saved in this database.
+If you created more style databases, they will be listed in the drop-down menu.
+There are also options to <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add existing style database to project</sup>
+and <a class="reference internal" href="../../../_images/mActionNewPage.png"><img alt="newPage" src="../../../_images/mActionNewPage.png" style="width: 1.5em;" /></a> <sup>Create new style database</sup> (see more <a class="reference internal" href="../introduction/qgis_configuration.html#style-database"><span class="std std-ref">Style database</span></a>).</p>
+<p>For each style database, you can organize the elements into different categories,
+listed in the panel on the left:</p>
+<ul class="simple">
+<li><p><strong>Favorites</strong>: displayed by default when configuring an item, it shows an
+extensible set of items;</p></li>
+<li><p><strong>All</strong>: lists all the available items for the active type;</p></li>
+<li><p><strong>Tags</strong>: shows a list of labels you can use to identify the items.
+An item can be tagged more than once. Select a tag in the list and the tabs
+are updated to show only their items that belong to it.
+To create a new tag you could later attach to a set of items, use the
+<span class="guilabel">Add Tag…</span> button or select the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Tag…</span>
+from any tag contextual menu;</p></li>
+<li><p><strong>Smart Group</strong>: a smart group dynamically fetches its symbols according to
+conditions set (see eg, <a class="reference internal" href="#figure-smart-group"><span class="std std-numref">Fig. 14.2</span></a>). Click the <span class="guilabel">Add Smart Group…</span>
+button to create smart groups. The dialog box allows you to enter an expression
+to filter the items to select (has a particular tag, have a string in its name,
+etc.). Any symbol, color ramp, text format or label setting that satisfies
+the entered condition(s) is automatically added to the smart group.</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<span id="figure-smart-group"></span><img alt="../../../_images/create_smartgroup.png" src="../../../_images/create_smartgroup.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.2 </span><span class="caption-text">Creating a Smart Group</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Tags and smart groups are not mutually exclusive: they are simply two different
+ways to organize your style elements.
+Unlike the smart groups that automatically fetch their belonged items based on
+the input constraints, tags are filled by the user. To edit any of those
+categories, you can either:</p>
+<ul class="simple">
+<li><p>select the items, right-click and choose <span class="menuselection">Add to Tag ►</span>
+and then select the tag name or create a new tag;</p></li>
+<li><p>select the tag and press <span class="menuselection">Modify group… ► Attach Selected Tag
+to Symbols</span>. A checkbox appears next to each item to help you select
+or deselect it. When selection is finished, press <span class="menuselection">Modify
+group… ► Finish Tagging</span>.</p></li>
+<li><p>select the smart group, press <span class="menuselection">Modify group… ► Edit smart
+group…</span> and configure a new set of constraints in the <span class="guilabel">Smart Group
+Editor</span> dialog.
+This option is also available in the contextual menu of the smart group.</p></li>
+</ul>
+<p>To remove a tag or a smart group, right-click on it and select the <a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="symbologyRemove" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a>
+<span class="guilabel">Remove</span> button. Note that this does not delete the items grouped in the
+category.</p>
+<p>The <span class="guilabel">Style Manager</span> dialog displays in its center a frame with
+previewed items organized into tabs:</p>
+<ul class="simple">
+<li><p><span class="guilabel">All</span> for a complete collection of point, linear and surface symbols
+and label settings as well as predefined color ramps and text formats;</p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconPointLayer.png"><img alt="pointLayer" src="../../../_images/mIconPointLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">Marker</span> for point symbols only;</p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconLineLayer.png"><img alt="lineLayer" src="../../../_images/mIconLineLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">Line</span> for linear symbols only;</p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconPolygonLayer.png"><img alt="polygonLayer" src="../../../_images/mIconPolygonLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">Fill</span> for surface symbols only;</p></li>
+<li><p><img alt="color" src="../../../_images/color.png" /> <span class="guilabel">Color ramp</span>;</p></li>
+<li><p><a class="reference internal" href="../../../_images/text.png"><img alt="text" src="../../../_images/text.png" style="width: 1.5em;" /></a> <span class="guilabel">Text format</span> to manage <a class="reference internal" href="label_settings.html#text-format"><span class="std std-ref">text formats</span></a>,
+which store the font, color, buffers, shadows, and backgrounds of texts
+(i.e. all the formatting parts of the label settings, which for instance can
+be used in layouts);</p></li>
+<li><p><a class="reference internal" href="../../../_images/labelingSingle.png"><img alt="labelingSingle" src="../../../_images/labelingSingle.png" style="width: 1.5em;" /></a> <span class="guilabel">Label settings</span> to manage <a class="reference internal" href="label_settings.html#showlabels"><span class="std std-ref">label settings</span></a>, which include the text formats and some layer-type specific
+settings such as label placement, priority, callouts, rendering…</p></li>
+<li><p><a class="reference internal" href="../../../_images/legend.png"><img alt="legend" src="../../../_images/legend.png" style="width: 1.2em;" /></a> <span class="guilabel">Legend Patch Shapes</span> to manage custom legend patch
+shapes, which include <span class="guilabel">Marker</span>, <span class="guilabel">Line</span> and
+<span class="guilabel">Fill</span> geometries.</p></li>
+<li><p><a class="reference internal" href="../../../_images/3d.png"><img alt="3d" src="../../../_images/3d.png" style="width: 1.5em;" /></a> <span class="guilabel">3D Symbols</span> to configure symbols with <a class="reference internal" href="3d_symbols.html#dsymbols"><span class="std std-ref">3D properties</span></a> (extrusion, shading, altitude, …) for the features to render
+in a <a class="reference internal" href="../map_views/3d_map_view.html#label-3dmapview"><span class="std std-ref">3D Map view</span></a></p></li>
+</ul>
+<p>You can arrange the Styles in <a class="reference internal" href="../../../_images/mActionIconView.png"><img alt="iconView" src="../../../_images/mActionIconView.png" style="width: 1.5em;" /></a> <span class="guilabel">Icon View</span> or in
+<a class="reference internal" href="../../../_images/mActionOpenTable.png"><img alt="openTable" src="../../../_images/mActionOpenTable.png" style="width: 1.5em;" /></a> <span class="guilabel">List View</span> on the bottom right side. In both views
+the tooltip shows a larger instance of the style.
+The thumbnail size slider at the left of the icons helps you adjust the actual
+thumbnail sizes in the dialog, for a better preview of the symbols!</p>
+</section>
+<section id="adding-editing-or-removing-an-item">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">14.1.1.2. </span>Adding, editing or removing an item</a><a class="headerlink" href="#adding-editing-or-removing-an-item" title="Link to this heading"></a></h3>
+<p>As seen earlier, style elements are listed under different tabs whose
+contents depend on the active category (tag, smart group, favorites…).
+When a tab is enabled, you can:</p>
+<ul class="simple">
+<li><p>Add new items: press the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add item</sup> button and configure the
+item following <a class="reference internal" href="symbol_selector.html#symbol-selector"><span class="std std-ref">symbols</span></a>, <a class="reference internal" href="#color-ramp"><span class="std std-ref">color ramps</span></a> or <a class="reference internal" href="label_settings.html#showlabels"><span class="std std-ref">text format and label</span></a> builder description.</p></li>
+<li><p>Modify an existing item: select an item and press <a class="reference internal" href="../../../_images/symbologyEdit.png"><img alt="symbologyEdit" src="../../../_images/symbologyEdit.png" style="width: 1.5em;" /></a> <sup>Edit
+item</sup> button and configure as mentioned above.</p></li>
+<li><p>Delete existing items: to delete an element you no longer need, select it and
+click <a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="symbologyRemove" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> <sup>Remove item</sup> (also available through right-click).
+The item will be deleted from the local database.</p></li>
+</ul>
+<p>Note that the <span class="guilabel">All</span> tab provides access to these options for every type
+of item.</p>
+<p>Right-clicking over a selection of items also allows you to:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Add to Favorites</span>;</p></li>
+<li><p><span class="guilabel">Remove from Favorites</span>;</p></li>
+<li><p><span class="menuselection">Add to Tag ►</span> and select the appropriate tag or create a new
+one to use; the currently assigned tags are checked;</p></li>
+<li><p><span class="guilabel">Clear Tags</span>: detaching the symbols from any tag;</p></li>
+<li><p><span class="guilabel">Remove Item(s)</span>;</p></li>
+<li><p><span class="guilabel">Edit Item</span>: applies to the item you right-click over;</p></li>
+<li><p><span class="guilabel">Copy Item</span>;</p></li>
+<li><p><span class="guilabel">Paste Item …</span>: pasting to one of the categories of the style manager
+or elsewhere in QGIS (symbol or color buttons)</p></li>
+<li><p><span class="guilabel">Export Selected Symbol(s) as PNG…</span> (only available with symbols);</p></li>
+<li><p><span class="guilabel">Export Selected Symbol(s) as SVG…</span> (only available with symbols);</p></li>
+</ul>
+</section>
+<section id="sharing-style-items">
+<span id="share-symbols"></span><h3><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">14.1.1.3. </span>Sharing style items</a><a class="headerlink" href="#sharing-style-items" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="../../../_images/mActionSharing.png"><img alt="sharing" src="../../../_images/mActionSharing.png" style="width: 1.5em;" /></a> <span class="guilabel">Import/Export</span> tool, at the left bottom of the Style
+Manager dialog, offers options to easily share symbols, color ramps, text
+formats and label settings with
+others. These options are also available through right-click over the items.</p>
+<section id="exporting-items">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Exporting items</a><a class="headerlink" href="#exporting-items" title="Link to this heading"></a></h4>
+<p>You can export a set of items to an <code class="file docutils literal notranslate"><span class="pre">.XML</span></code> file:</p>
+<ol class="arabic simple">
+<li><p>Expand the <a class="reference internal" href="../../../_images/mActionSharing.png"><img alt="sharing" src="../../../_images/mActionSharing.png" style="width: 1.5em;" /></a> <span class="guilabel">Import/Export</span> drop-down menu and select
+<a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <span class="guilabel">Export Item(s)…</span></p></li>
+<li><p>Choose the items you’d like to integrate. Selection
+can be done with the mouse or using a tag or a group previously set.</p></li>
+<li><p>Press <span class="guilabel">Export</span> when ready. You’ll be prompted to indicate the
+destination of the saved file. The XML format generates a single file
+containing all the selected items. This file can then be imported in
+another user’s style library.</p></li>
+</ol>
+<figure class="align-center" id="id3">
+<span id="figure-symbol-export"></span><img alt="../../../_images/export_styles.png" src="../../../_images/export_styles.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.3 </span><span class="caption-text">Exporting style items</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>When symbols are selected, you can also export them to <code class="file docutils literal notranslate"><span class="pre">.PNG</span></code> or
+<code class="file docutils literal notranslate"><span class="pre">.SVG</span></code>. Exporting to <code class="file docutils literal notranslate"><span class="pre">.PNG</span></code> or <code class="file docutils literal notranslate"><span class="pre">.SVG</span></code> (both not available for
+other style item types)
+creates a file for each selected symbol in a given folder. The SVG folder can be
+added to the <span class="guilabel">SVG paths</span> in <span class="menuselection">Settings ► Options ►
+System</span> menu of another user, allowing him direct access to all these symbols.</p>
+</section>
+<section id="importing-items">
+<span id="import-style-items"></span><h4><a class="toc-backref" href="#id15" role="doc-backlink">Importing items</a><a class="headerlink" href="#importing-items" title="Link to this heading"></a></h4>
+<p>You can extend your style library by importing new items:</p>
+<ol class="arabic simple">
+<li><p>Expand the <a class="reference internal" href="../../../_images/mActionSharing.png"><img alt="sharing" src="../../../_images/mActionSharing.png" style="width: 1.5em;" /></a> <span class="guilabel">Import/Export</span> drop-down menu and select
+<a class="reference internal" href="../../../_images/mActionFileOpen.png"><img alt="fileOpen" src="../../../_images/mActionFileOpen.png" style="width: 1.5em;" /></a> <span class="guilabel">Import Item(s)</span> at the left bottom of the dialog.</p></li>
+<li><p>In the new dialog, indicate the source of the style items (it can be an
+<code class="file docutils literal notranslate"><span class="pre">.xml</span></code> file on the disk or a url).</p></li>
+<li><p>Set whether to <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Add to favorites</span> the items to import.</p></li>
+<li><p>Check <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Do not import embedded tags</span> to avoid the import
+of tags associated to the items being imported.</p></li>
+<li><p>Give the name of any <span class="guilabel">Additional tag(s)</span> to apply to the new items.</p></li>
+<li><p>Select from the preview the symbols you want to add to your library.</p></li>
+<li><p>And press <span class="guilabel">Import</span>.</p></li>
+</ol>
+<figure class="align-center" id="id4">
+<span id="figure-symbol-import"></span><img alt="../../../_images/import_styles.png" src="../../../_images/import_styles.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.4 </span><span class="caption-text">Importing style items</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="using-the-browser-panel">
+<span id="index-2"></span><h4><a class="toc-backref" href="#id16" role="doc-backlink">Using the Browser panel</a><a class="headerlink" href="#using-the-browser-panel" title="Link to this heading"></a></h4>
+<p>It’s also possible to import style items into the active user profile style
+database directly from the <span class="guilabel">Browser</span> panel:</p>
+<ol class="arabic simple">
+<li><p>Select the style <code class="file docutils literal notranslate"><span class="pre">.xml</span></code> file in the browser</p></li>
+<li><p>Drag-and-drop it over the map canvas or right-click and select
+<span class="guilabel">Import Style…</span></p></li>
+<li><p>Fill the <span class="guilabel">Import Items</span> dialog following <a class="reference internal" href="#import-style-items"><span class="std std-ref">Importing items</span></a></p></li>
+<li><p>Press <span class="guilabel">Import</span> and the selected style items are added to the
+style database</p></li>
+</ol>
+<p>Double-clicking the style file in the browser opens the <span class="guilabel">Style
+Manager</span> dialog showing the items in the file. You can select them and press
+<span class="guilabel">Copy to Default Style…</span> to import them into the active style
+database. Tags can be assigned to items. Also available through right-click,
+<span class="guilabel">Open Style…</span> command.</p>
+<figure class="align-center" id="id5">
+<span id="figure-symbol-open"></span><img alt="../../../_images/open_style_file.png" src="../../../_images/open_style_file.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.5 </span><span class="caption-text">Opening a style items file</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The dialog also allows to export single symbols as <code class="file docutils literal notranslate"><span class="pre">.PNG</span></code> or <code class="file docutils literal notranslate"><span class="pre">.SVG</span></code>
+files.</p>
+</section>
+<section id="using-the-online-repository">
+<h4><a class="toc-backref" href="#id17" role="doc-backlink">Using the online repository</a><a class="headerlink" href="#using-the-online-repository" title="Link to this heading"></a></h4>
+<p>The QGIS project maintains a repository with a collection of styles shared by
+QGIS users. This is available at <a class="reference external" href="https://plugins.qgis.org/styles">https://plugins.qgis.org/styles</a> and can be
+accessed from the <span class="guilabel">Style Manager</span> dialog, pressing the <a class="reference internal" href="../../../_images/search.png"><img alt="search" src="../../../_images/search.png" style="width: 1.5em;" /></a>
+<span class="guilabel">Browse Online Styles</span> button at the bottom.</p>
+<p>From that repository, you can:</p>
+<ol class="arabic simple">
+<li><p>Browse and search for any style items, based on their type or name</p></li>
+<li><p>Download the style file and unzip it</p></li>
+<li><p>Load the <code class="file docutils literal notranslate"><span class="pre">.xml</span></code> based file into your style database in QGIS,
+using any of the aforementioned import methods.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="setting-a-color-ramp">
+<span id="color-ramp"></span><h2><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">14.1.2. </span>Setting a Color Ramp</a><a class="headerlink" href="#setting-a-color-ramp" title="Link to this heading"></a></h2>
+<p id="index-3">The Color ramp tab in the <span class="guilabel">Style Manager</span> dialog helps you preview
+different color ramps based on the category selected in the left panel.</p>
+<p>To create a custom color ramp, activate the Color ramp tab and click the
+<a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add item</sup> button. The button reveals a drop-down list to
+choose the ramp type:</p>
+<ul>
+<li><p><span class="guilabel">Gradient</span>: given a start and end colors, generates a color ramp
+which can be <strong>continuous</strong> or <strong>discrete</strong>.
+With double-clicking the ramp preview, you can add as many intermediate color stops as you want.
+Click on the color stop indicator and under <span class="guilabel">Gradient stop</span> you can:</p>
+<ul class="simple">
+<li><p>adjust its <span class="guilabel">Relative position</span> from the color ramp start.
+Also possible dragging the indicator with the mouse, or pressing the arrow keys
+(combine with <kbd class="kbd docutils literal notranslate">Shift</kbd> key for a larger move)</p></li>
+<li><p>specify the color model to use when interpolating between colors:
+it can be <span class="guilabel">RGB</span>, <span class="guilabel">HSL</span> or <span class="guilabel">HSV</span>.
+In some circumstances, this option can help avoid desaturated mid tones,
+resulting in more visually pleasing gradients.</p></li>
+<li><p>set the direction which the interpolation should follow for the <strong>Hue</strong> component
+of a <span class="guilabel">HSL</span> or <span class="guilabel">HSV</span> color specification.
+It can be <span class="guilabel">Clockwise</span> or <span class="guilabel">Counterclockwise</span>.</p></li>
+<li><p>set the <a class="reference internal" href="../introduction/general_tools.html#color-selector"><span class="std std-ref">color properties</span></a></p></li>
+<li><p>remove the color stop pressing <span class="guilabel">Delete stop</span> or <kbd class="kbd docutils literal notranslate">DEL</kbd></p></li>
+</ul>
+<p>The <span class="guilabel">Plots</span> group provides another graphical way to design the color ramp,
+changing the position or the opacity and HSL components of the color stops.</p>
+<figure class="align-center" id="id6">
+<span id="figure-color-custom-ramp"></span><img alt="../../../_images/customColorRampGradient.png" src="../../../_images/customColorRampGradient.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.6 </span><span class="caption-text">Example of custom gradient color ramp with multiple stops</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Drag-and-drop a color from a color spot onto the gradient ramp preview
+adds a new color stop.</p>
+</div>
+</li>
+<li><p><span class="guilabel">Color presets</span>: allows to create a color ramp consisting of a list of
+colors selected by the user;</p></li>
+<li><p><span class="guilabel">Random</span>: creates a random set of colors based on range of values for
+<span class="guilabel">Hue</span>, <span class="guilabel">Saturation</span>, <span class="guilabel">Value</span> and <span class="guilabel">Opacity</span>
+and a number of colors (<span class="guilabel">Classes</span>);</p></li>
+<li><p><span class="guilabel">Catalog: ColorBrewer</span>: a set of predefined discrete color gradients
+you can customize the number of colors in the ramp;</p></li>
+<li><p>or <span class="guilabel">Catalog: cpt-city</span>: an access to a whole catalog of color gradients to
+locally <span class="guilabel">save as standard gradient</span>. The cpt-city option opens a new
+dialog with hundreds of themes included ‘out of the box’.</p></li>
+</ul>
+<figure class="align-center" id="id7">
+<span id="figure-color-cpt-city"></span><img alt="../../../_images/cpt-cityColorRamps.png" src="../../../_images/cpt-cityColorRamps.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.7 </span><span class="caption-text">cpt-city dialog with hundreds of color ramps</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="creating-a-legend-patch-shape">
+<span id="legend-patch"></span><h2><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">14.1.3. </span>Creating a Legend Patch Shape</a><a class="headerlink" href="#creating-a-legend-patch-shape" title="Link to this heading"></a></h2>
+<p>To create a new Legend Patch Shape, activate the <span class="guilabel">Legend Patch Shapes</span> tab and
+click the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add item</sup> button. The button reveals a drop-down
+list to choose the geometry type:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Marker Legend Patch Shape…</span>: to use with point geometries.</p></li>
+<li><p><span class="guilabel">Line Legend Patch Shape…</span>: to use with line geometries.</p></li>
+<li><p><span class="guilabel">Fill Legend Patch Shape…</span>: to use with polygon geometries.</p></li>
+</ul>
+<p>All three options will show the same dialog.</p>
+<figure class="align-center" id="id8">
+<span id="figure-legend-patch"></span><img alt="../../../_images/createLegendPatchShape.png" src="../../../_images/createLegendPatchShape.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.8 </span><span class="caption-text">Create a new Legend Patch Shape</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Only the shape type and displayed legend patch shapes will differ regarding
+to the chosen geometry type. The following options will be available:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Shape</span>: define the shape of the legend patch shape as a
+WKT string. Single and multipart geometries may be used, but no
+GeometryCollection.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Preserve aspect ratio</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionIconView.png"><img alt="iconView" src="../../../_images/mActionIconView.png" style="width: 1.5em;" /></a> <span class="guilabel">Icon View</span> or <a class="reference internal" href="../../../_images/mActionOpenTable.png"><img alt="openTable" src="../../../_images/mActionOpenTable.png" style="width: 1.5em;" /></a> <span class="guilabel">List View</span> of
+available legend patch shapes, filtered by tags.</p></li>
+</ul>
+<p>When the new Shape is defined you can <span class="guilabel">Save Legend Patch Shape…</span>
+or press <span class="guilabel">OK</span>, which will both lead to the same dialog.</p>
+<figure class="align-center" id="id9">
+<span id="figure-safe-legend-patch"></span><img alt="../../../_images/safeLegendPatchShape.png" src="../../../_images/safeLegendPatchShape.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14.9 </span><span class="caption-text">Save a new Legend Patch Shape</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Here you have to choose a name, tags to describe the shape and if it should
+be added to favorites.</p>
+<p>If you press <span class="guilabel">Save…</span>, the shape is added to the list and you are directed
+back to the <span class="guilabel">New Legend Patch Shape</span> dialog to keep creating new shapes.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="14. The Style Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="symbol_selector.html" class="btn btn-neutral float-right" title="14.2. The Symbol Selector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/style_library/style_manager.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/style_library/style_manager.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/style_library/style_manager.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/style_library/style_manager.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/style_library/style_manager.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/style_library/style_manager.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/style_library/style_manager.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/style_library/style_manager.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/style_library/style_manager.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/style_library/style_manager.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/style_library/style_manager.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/style_library/style_manager.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/style_library/style_manager.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/style_library/style_manager.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/style_library/style_manager.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/style_library/style_manager.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/style_library/style_manager.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/style_library/style_manager.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/style_library/style_manager.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/style_library/style_manager.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/style_library/style_manager.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/style_library/style_manager.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/style_library/style_manager.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/style_library/style_manager.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/style_library/style_manager.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/style_library/style_manager.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/6a2b6c464cbd5bbbdc32acccbafd739b" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

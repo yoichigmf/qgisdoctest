@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14.3. ラベルの設定 &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/style_library/label_settings.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="14.4. 3Dシンボルの作成" href="3d_symbols.html" />
+    <link rel="prev" title="14.2. シンボルセレクタ" href="symbol_selector.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 14.3. ラベルの設定">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. 序文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. 記述ルール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. 機能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. 最初のステップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. プロジェクトファイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGISのユーザインタフェース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. ブラウザパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGISの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. 投影法の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. 地図の可視化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. 一般ツール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. 式でレベルアップ</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">14. スタイルライブラリ</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="style_manager.html">14.1. スタイルマネージャ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbol_selector.html">14.2. シンボルセレクタ</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">14.3. ラベルの設定</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#formatting-the-label-text">14.3.1. ラベルテキストの書式設定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-interaction-with-labels">14.3.2. ラベルとの相互作用の設定</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="3d_symbols.html">14.4. 3Dシンボルの作成</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. データソースの管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. ベクタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. ラスタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. メッシュデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. ベクタタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. 点群の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. 3Dタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. 地図のレイアウト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. OGC / ISOプロトコルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. GPSデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. 認証システム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS の統合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS プロセシングフレームワーク</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. プロセシングプロバイダとアルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. ヘルプとサポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. 協力者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. 付録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. 文献とWeb参照</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGISユーザガイド</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">14. </span>スタイルライブラリ</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">14.3. </span>ラベルの設定</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/style_library/label_settings.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="symbol_selector.html" class="btn btn-neutral float-left" title="14.2. シンボルセレクタ" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3d_symbols.html" class="btn btn-neutral float-right" title="14.4. 3Dシンボルの作成" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="setting-a-label">
+<span id="showlabels"></span><h1><span class="section-number">14.3. </span>ラベルの設定<a class="headerlink" href="#setting-a-label" title="Link to this heading"></a></h1>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#formatting-the-label-text" id="id14">ラベルテキストの書式設定</a></p>
+<ul>
+<li><p><a class="reference internal" href="#text-tab" id="id15">テキスト</a></p></li>
+<li><p><a class="reference internal" href="#formatting-tab" id="id16">フォーマット</a></p></li>
+<li><p><a class="reference internal" href="#buffer-tab" id="id17">バッファ</a></p></li>
+<li><p><a class="reference internal" href="#background-tab" id="id18">背景</a></p></li>
+<li><p><a class="reference internal" href="#shadow-tab" id="id19">影</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#configuring-interaction-with-labels" id="id20">ラベルとの相互作用の設定</a></p>
+<ul>
+<li><p><a class="reference internal" href="#mask-tab" id="id21">マスクグリッド（Mask）</a></p></li>
+<li><p><a class="reference internal" href="#callouts-tab" id="id22">引出し線付きラベル</a></p></li>
+<li><p><a class="reference internal" href="#placement-tab" id="id23">配置</a></p>
+<ul>
+<li><p><a class="reference internal" href="#placement-for-point-layers" id="id24">ポイントレイヤのラベルの配置</a></p></li>
+<li><p><a class="reference internal" href="#placement-for-line-layers" id="id25">ラインレイヤのラベルの配置</a></p></li>
+<li><p><a class="reference internal" href="#placement-for-polygon-layers" id="id26">ポリゴンレイヤのラベルの配置</a></p></li>
+<li><p><a class="reference internal" href="#common-placement-settings" id="id27">共通の配置設定</a></p>
+<ul>
+<li><p><a class="reference internal" href="#geometry-generator" id="id28">ジオメトリジェネレータ</a></p></li>
+<li><p><a class="reference internal" href="#data-defined" id="id29">データによる定義</a></p></li>
+<li><p><a class="reference internal" href="#priority" id="id30">優先度</a></p></li>
+<li><p><a class="reference internal" href="#obstacles" id="id31">衝突回避</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#rendering-tab" id="id32">レンダリング</a></p>
+<ul>
+<li><p><a class="reference internal" href="#label-options" id="id33">ラベルオプション</a></p></li>
+<li><p><a class="reference internal" href="#feature-options" id="id34">地物オプション</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>ラベルは、ベクタ地物や地図に表示できるテキスト情報です。 ラベルは、シンボルのみでは表すことができない詳細情報を追加します。QGISでは、テキストに関連した2種類のアイテムが利用可能です。</p>
+<ul>
+<li><p><span class="guilabel">テキスト形式</span> ： <a class="reference internal" href="#labels-text"><span class="std std-ref">フォント、大きさ、色</span></a> 、 <a class="reference internal" href="#labels-shadow"><span class="std std-ref">影</span></a> 、 <a class="reference internal" href="#labels-background"><span class="std std-ref">背景</span></a> 、 <a class="reference internal" href="#labels-buffer"><span class="std std-ref">バッファ</span></a> などのテキストの見た目を定義します。</p>
+<p>これらはマップ上のテキスト（レイアウト/マップタイトル、地図整飾、スケールバー、...）をレンダリングするのに使用され、通常は <a class="reference internal" href="../introduction/general_tools.html#font-selector"><span class="std std-ref">フォント</span></a> ウィジェットを通して設定できます。</p>
+<p><span class="guilabel">テキスト形式</span> アイテムを作成するには、</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="../../../_images/mActionStyleManager.png"><img alt="styleManager" src="../../../_images/mActionStyleManager.png" style="width: 1.5em;" /></a> <span class="guilabel">スタイルマネージャ</span> ダイアログを開きます。</p></li>
+<li><p><span class="guilabel">テキスト形式</span> タブをアクティブにします。</p>
+<figure class="align-center" id="id2">
+<span id="figure-textformats"></span><img alt="../../../_images/stylemanager_textformat.png" src="../../../_images/stylemanager_textformat.png" />
+<figcaption>
+<p><span class="caption-number">図 14.23 </span><span class="caption-text">スタイルマネージャダイアログのテキスト形式</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>アイテム追加</sup> ボタンを押します。 <span class="guilabel">テキスト設定</span> ダイアログが開き、 <a class="reference internal" href="#text-format"><span class="std std-ref">設定</span></a> ができます。通常、これらのプロパティは <a class="reference internal" href="../introduction/general_tools.html#data-defined"><span class="std std-ref">データ定義による上書きが可能</span></a> です。</p></li>
+</ol>
+</li>
+<li><p><span class="guilabel">ラベルの設定</span> ：テキストの位置や、他のテキストや地物との相互関係に関連したプロパティでテキスト形式の設定を拡張します（ <a class="reference internal" href="#labels-callouts"><span class="std std-ref">引出し線付きラベル</span></a> 、 <a class="reference internal" href="#labels-placement"><span class="std std-ref">配置</span></a> 、 <a class="reference internal" href="#labels-rendering"><span class="std std-ref">重なり、縮尺に応じた表示</span></a> 、マスクグリッド ...）</p>
+<p>これらはベクタレイヤのスマートラベリングの設定に使用され、 ベクタレイヤの <span class="guilabel">レイヤプロパティ</span> ダイアログの <a class="reference internal" href="../../../_images/labelingSingle.png"><img alt="labelingSingle" src="../../../_images/labelingSingle.png" style="width: 1.5em;" /></a> <span class="guilabel">ラベル</span> タブまたは <span class="guilabel">レイヤスタイル</span> パネル、もしくは <a class="reference internal" href="../working_with_vector/vector_properties.html#label-toolbar"><span class="std std-ref">ラベルツールバー</span></a> の <a class="reference internal" href="../../../_images/labelingSingle.png"><img alt="labelingSingle" src="../../../_images/labelingSingle.png" style="width: 1.5em;" /></a> <sup>レイヤラベリングオプション</sup> ボタンを使用して設定できます。</p>
+<p><span class="guilabel">ラベルの設定</span> アイテムを作成するには、</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="../../../_images/mActionStyleManager.png"><img alt="styleManager" src="../../../_images/mActionStyleManager.png" style="width: 1.5em;" /></a> <span class="guilabel">スタイルマネージャ</span> ダイアログを開きます。</p></li>
+<li><p><span class="guilabel">ラベルの設定</span> タブをアクティブにします。</p>
+<figure class="align-center" id="id3">
+<span id="figure-label-settings"></span><img alt="../../../_images/stylemanager_labelsettings.png" src="../../../_images/stylemanager_labelsettings.png" />
+<figcaption>
+<p><span class="caption-number">図 14.24 </span><span class="caption-text">スタイルマネージャダイアログのラベルの設定</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>アイテム追加</sup> メニューを押し、ラベル付けしたい地物のジオメトリタイプに応じたエントリを選択します。</p></li>
+</ol>
+<p><span class="guilabel">ラベルの設定</span> ダイアログが開き、次のプロパティが表示されます。通常、これらのプロパティは <a class="reference internal" href="../introduction/general_tools.html#data-defined"><span class="std std-ref">データ定義による上書きが可能</span></a> です。</p>
+</li>
+</ul>
+<section id="formatting-the-label-text">
+<span id="text-format"></span><h2><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">14.3.1. </span>ラベルテキストの書式設定</a><a class="headerlink" href="#formatting-the-label-text" title="Link to this heading"></a></h2>
+<p><span class="guilabel">テキスト形式</span> の設定と <span class="guilabel">ラベルの設定</span> のいずれを設定する場合でも、以下のオプションがあります：</p>
+<table class="longtable docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>プロパティタブ</p></th>
+<th class="head"><p>テキスト形式</p></th>
+<th class="head"><p>ラベルの設定</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">テキスト</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">フォーマット</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">バッファ</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">マスクグリッド</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">背景</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">影</span></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">引出し線付きラベル</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">配置</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">レンダリング</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+<section id="text-tab">
+<span id="labels-text"></span><h3><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">14.3.1.1. </span>テキスト</a><a class="headerlink" href="#text-tab" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id4">
+<span id="figure-label-text"></span><img alt="../../../_images/label_text.png" src="../../../_images/label_text.png" />
+<figcaption>
+<p><span class="caption-number">図 14.25 </span><span class="caption-text">ラベルの設定 - テキストタブ</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../_images/text.png"><img alt="text" src="../../../_images/text.png" style="width: 1.5em;" /></a> <span class="guilabel">テキスト</span> タブでは、次の設定を行うことができます：</p>
+<ul>
+<li><p><span class="guilabel">フォント</span> ：マシンで使用可能なフォントに設定できます</p></li>
+<li><p><span class="guilabel">スタイル</span>:フォントの一般的なスタイルおよび、テキストの下線または取り消し線の設定ができます</p></li>
+<li><p><span class="guilabel">サイズ</span> は <a class="reference internal" href="../introduction/general_tools.html#unit-selector"><span class="std std-ref">サポートされている単位</span></a> のいずれかで設定します</p></li>
+<li><p><span class="guilabel">色</span></p></li>
+<li><p><span class="guilabel">不透明度</span></p></li>
+<li><p>そして <span class="guilabel">HTMLフォーマットを使う</span> ： HTML フォーマットオプションはラベルをカスタマイズするためにいくつかの HTML タグを適切にレンダリングすることを可能にします。サポートされているHTMLタグは以下の通りです：</p>
+<ul>
+<li><p>テキスト、下線、取り消し線、上線に適用される色</p></li>
+<li><p>フォントのプロパティ（フォントファミリ、フォントサイズ、太字、斜体）</p></li>
+<li><p>テキスト内の上付き文字と下付き文字のコンポーネントは、テキストが縦方向に <sup>上付き</sup> または <sub>下付き</sub> に揃えられ、自動的に親フォントサイズの2/3のサイズになります。また、cssルールを含めることで、上付き文字/下付き文字のフォントサイズを固定にすることもできます:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">sup</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-size:33pt&quot;</span><span class="p">&gt;</span>my superscript text<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>CSSフォーマットルール <code class="docutils literal notranslate"><span class="pre">vertical-align:</span> <span class="pre">super</span></code> または <code class="docutils literal notranslate"><span class="pre">vertical-align:</span> <span class="pre">sub</span></code> は、他のHTML要素（注釈、レイアウトラベル、HTMLアイテムなど）でも使用できます。</p>
+</li>
+</ul>
+<p>HTMLフォーマットを使用するには、 <span class="guilabel">値（value）</span> フィールドにHTMLコードを入力する必要があります。式はパースされ、サポートされている任意のHTMLタグはラベルプロパティの対応する設定を上書きします。また、HTMLタグは背景、影、バッファ等のその他のラベルプロパティと組み合わせて利用できます。</p>
+<p>以下は、HTMLベースの式とレンダリングの例です（同じラベルに異なる色と下線を適用しています）。</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>format(
+  &#39;<span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color:blue&quot;</span><span class="p">&gt;</span>%1<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> ( <span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color:red&quot;</span><span class="p">&gt;&lt;</span><span class="nt">u</span><span class="p">&gt;</span>%2 ft<span class="p">&lt;/</span><span class="nt">u</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> )&#39;,
+  title( lower( &quot;Name&quot; ) ),
+  round($length)
+)
+</pre></div>
+</div>
+<figure class="align-center" id="id5">
+<span id="figure-label-html-formatting"></span><img alt="../../../_images/label_HTML_formatting.png" src="../../../_images/label_HTML_formatting.png" />
+<figcaption>
+<p><span class="caption-number">図 14.26 </span><span class="caption-text">HTMLフォーマットを有効にしたラベル</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+<p>タブの下部にあるウィジェットには <a class="reference internal" href="style_manager.html#vector-style-manager"><span class="std std-ref">スタイルマネージャデータベース</span></a> 内に保存されているアイテムのリストが表示され、このリストはフィルタリング可能です。 これにより、既存のものをベースに現在のテキスト形式やラベルの設定を簡単に設定したり、新しいアイテムをスタイルデータベースに保存したりできます。保存には、 <span class="guilabel">形式を保存...</span> または <span class="guilabel">設定を保存...</span> ボタンを押して、名前とタグを指定します。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p><span class="guilabel">ラベルの設定</span> アイテムを設定する場合、このウィジェットではテキスト形式アイテムも設定可能です。これを選択すると、現在のラベルの <a class="reference internal" href="#text-format"><span class="std std-ref">テキストのプロパティ</span></a> を素早く上書きすることができます。同様に、そこからテキスト形式を作成/上書きすることもできます。</p>
+</div>
+</section>
+<section id="formatting-tab">
+<span id="labels-formatting"></span><h3><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">14.3.1.2. </span>フォーマット</a><a class="headerlink" href="#formatting-tab" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id6">
+<span id="figure-label-formatting"></span><img alt="../../../_images/label_formatting.png" src="../../../_images/label_formatting.png" />
+<figcaption>
+<p><span class="caption-number">図 14.27 </span><span class="caption-text">ラベルの設定 - フォーマットタブ</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../_images/labelformatting.png"><img alt="labelformatting" src="../../../_images/labelformatting.png" style="width: 1.5em;" /></a> <span class="guilabel">フォーマット</span> タブでは、次の設定を行うことができます:</p>
+<ul>
+<li><p><span class="guilabel">タイプケース</span> オプションは、テキストの大文字スタイルを変更します。テキストのレンダリング方法は以下のとおりです：</p>
+<ul class="simple">
+<li><p><span class="guilabel">変更なし</span></p></li>
+<li><p><span class="guilabel">すべて大文字</span></p></li>
+<li><p><span class="guilabel">すべて小文字</span></p></li>
+<li><p><span class="guilabel">タイトルのスタイル</span> ：各単語の最初の文字を大文字に修正し、元のテキストが単一のタイプケースを使用している場合には、他の文字を小文字にします。テキストに大文字と小文字が混在している場合には、他の文字はそのままにします。</p></li>
+<li><p><span class="guilabel">最初の文字を大文字</span> ：各単語の最初の文字を大文字に修正し、テキスト内の他の文字はそのままにします。</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">間隔</span> は、単語間および個々の文字間のスペースを変更します。</p></li>
+<li><p><span class="guilabel">Stretch</span> 率: テキストの水平方向の伸縮率を指定します。ラベルに余分なテキストを入れるためにフォントの幅を調整するのに便利です。</p></li>
+<li><p>テキストフォントの <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">カーニングを有効にする</span></p></li>
+<li><p><span class="guilabel">テキストの向き</span> は <span class="guilabel">水平</span> または <span class="guilabel">垂直</span> を設定できます。ラベルの設定時には、 <span class="guilabel">回転（Rotation-based）</span> を設定することもできます（例： <a class="reference internal" href="#labels-line-placement"><span class="std std-ref">線に平行</span></a> に配置するモードでライン地物に適切にラベル付けできます）。</p></li>
+<li><p><span class="guilabel">混合モード</span> オプションを使用して、ラベルとその下にある地物の混合方法を決定します（詳細は <a class="reference internal" href="../introduction/general_tools.html#blend-modes"><span class="std std-ref">混合モード</span></a> を参照してください）。</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">置換リストを適用</span> オプションを使用すると、地物ラベルのテキストの代わりになるテキスト（例：ストリートタイプの省略名）のリストを指定することができます。置換テキストは、マップ上にラベルを表示する際に使用されます。ユーザーは置換テキストリストのエクスポートおよびインポートにより、簡単に再利用や共有ができます。</p></li>
+<li><p><span class="guilabel">複数行</span> の設定には以下のものがあります：</p>
+<ul>
+<li><p><span class="guilabel">この文字でラップ処理</span> オプションを使用して、テキスト内で強制的に改行する文字を設定します</p></li>
+<li><p><span class="guilabel">ラップ処理基準</span> オプションを使用して、理想的な自動改行サイズを指定します。このサイズは <span class="guilabel">最長行に合わせる</span> または <span class="guilabel">最短行に合わせる</span> とすることができます。</p></li>
+<li><p><span class="guilabel">行の高さ</span>: <span class="guilabel">ミリメートル</span>、 <span class="guilabel">ポイント</span>、 <span class="guilabel">ピクセル</span>、 <span class="guilabel">パーセント</span>、 <span class="guilabel">インチ</span> の値を設定することができます。行の高さがパーセントに設定されている場合、そのフォントファミリのデフォルトのテキスト行間隔のパーセントになります。通常、テキストサイズの1.2倍から1.5倍です。</p></li>
+<li><p><span class="guilabel">整列</span> の書式設定： 利用可能な一般的な値は <span class="guilabel">左</span> 、 <span class="guilabel">右</span> 、 <span class="guilabel">正当化する</span> 、 <span class="guilabel">中央</span> です。</p>
+<p>ポイントのラベルのプロパティを設定する場合は、テキストの整列を <span class="guilabel">ラベルの配置に従う</span> とすることもできます。この場合、テキストの整列はポイントに対するラベルの最終的な配置に依存します。例えば、ラベルがポイントの左側に配置されている場合はラベルが右揃えになり、ポイントの右側に配置されている場合には左揃えになります。</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p><span class="guilabel">複数行</span> のフォーマットは、線に沿って湾曲する <a class="reference internal" href="#labels-placement"><span class="std std-ref">ラベル配置</span></a> にはまだ対応していません。この配置の場合には、このオプションは無効となります。</p>
+</div>
+</li>
+<li><p>ラインに対するラベルの場合は、ラインの方向を決定するのに役立つ <span class="guilabel">行方向シンボル</span> を含めることができます。このシンボルは、 <span class="guilabel">左寄せ</span> や <span class="guilabel">右寄せ</span> を示すために使用します。特に、 <span class="guilabel">配置</span> タブで <em>線に沿って湾曲</em> や <em>線に平行に配置</em> の配置オプションを使用する場合にはうまく機能します。シンボルの配置を設定するオプションや、 <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">逆方向</span> にするオプションもあります。</p></li>
+<li><p>数値型テキストのフォーマットを設定するには、 <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">整形された数値</span> オプションを使用します。 <span class="guilabel">小数点以下桁数</span> の数値を設定できます。デフォルトでは、小数点以下 <code class="docutils literal notranslate"><span class="pre">3</span></code> 桁です。正の数にプラス記号を表示したい場合には、 <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">正の符号を表示</span> にチェックを入れます。</p></li>
+</ul>
+</section>
+<section id="buffer-tab">
+<span id="labels-buffer"></span><h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">14.3.1.3. </span>バッファ</a><a class="headerlink" href="#buffer-tab" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id7">
+<span id="figure-label-buffer"></span><img alt="../../../_images/label_buffer.png" src="../../../_images/label_buffer.png" />
+<figcaption>
+<p><span class="caption-number">図 14.28 </span><span class="caption-text">ラベルの設定 - バッファタブ</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>ラベルの周りにバッファを作成するには、 <a class="reference internal" href="../../../_images/labelbuffer.png"><img alt="labelbuffer" src="../../../_images/labelbuffer.png" style="width: 1.5em;" /></a> <span class="guilabel">バッファ</span> タブの <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">テキストバッファを描画</span> のチェックボックスをオンにします。その後、次の設定ができます。</p>
+<ul class="simple">
+<li><p>バッファの <span class="guilabel">サイズ</span> は任意の <a class="reference internal" href="../introduction/general_tools.html#unit-selector"><span class="std std-ref">サポートされている単位</span></a> で設定します。</p></li>
+<li><p>バッファの <span class="guilabel">色</span> を選択します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">カラーバッファの塗りつぶし</span> ：バッファはラベルのアウトラインから広がるため、このオプションを有効にするとラベルの内部が塗りつぶされます。このオプションは、部分的に透明なラベルを使用する場合や、ラベルのテキストの後ろが見えるような「通常」以外の混合モードを使用している場合に関連性があります。 このオプションをオフにすると、（完全に透明なラベルを使用しているときに）輪郭のあるテキストラベルを作成することができます。</p></li>
+<li><p>バッファの <span class="guilabel">不透明度</span> を定義する</p></li>
+<li><p><span class="guilabel">継ぎ目スタイル</span> ： <span class="guilabel">Round</span> 、 <span class="guilabel">Miter</span> または <span class="guilabel">Bevel</span> から適用できます</p></li>
+<li><p><span class="guilabel">混合モード</span> オプションを使用して、ラベルのバッファがマップコンポーネントとどのように混合するかを決定します（詳細については <a class="reference internal" href="../introduction/general_tools.html#blend-modes"><span class="std std-ref">混合モード</span></a> を参照）。</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">描画エフェクト</span> にチェックを入れると、テキストの読みやすさを向上させるための高度な <a class="reference internal" href="../../../_images/mIconPaintEffects.png"><img alt="paintEffects" src="../../../_images/mIconPaintEffects.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../working_with_vector/vector_properties.html#draw-effects"><span class="std std-ref">描画エフェクト</span></a> を追加します。例：アウターグローとぼかし</p></li>
+</ul>
+</section>
+<section id="background-tab">
+<span id="labels-background"></span><h3><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">14.3.1.4. </span>背景</a><a class="headerlink" href="#background-tab" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/labelbackground.png"><img alt="labelbackground" src="../../../_images/labelbackground.png" style="width: 1.5em;" /></a> <span class="guilabel">背景</span> タブでは、各ラベルの下に表示される図形を設定することができます。背景を追加するには、 <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">背景を描画</span> のチェックボックスをオンにし、 <span class="guilabel">図形</span> タイプを選択します。次の設定ができます：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="symbol_selector.html#vector-fill-symbols"><span class="std std-ref">塗りつぶしシンボル</span></a> の完全なプロパティを使用した、 <span class="guilabel">四角形</span> 、 <span class="guilabel">Square</span> 、 <span class="guilabel">円</span> 、 <span class="guilabel">楕円</span> といった規則的な図形</p></li>
+<li><p>ファイル、URL、またはプロジェクトやスタイルデータベースに埋め込み（ <a class="reference internal" href="../introduction/general_tools.html#embedded-file-selector"><span class="std std-ref">詳細はこちら</span></a> ）の <span class="guilabel">SVG</span> シンボル</p></li>
+<li><p>あるいは、 <a class="reference internal" href="symbol_selector.html#vector-marker-symbols"><span class="std std-ref">シンボルライブラリ</span></a> から作成または選択することができる <span class="guilabel">マーカーシンボル</span> 。</p></li>
+</ul>
+<figure class="align-center" id="id8">
+<span id="figure-label-background"></span><img alt="../../../_images/label_background.png" src="../../../_images/label_background.png" />
+<figcaption>
+<p><span class="caption-number">図 14.29 </span><span class="caption-text">ラベルの設定 - 背景タブ</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>選択した図形に応じて、以下のプロパティのいくつかを設定する必要があります：</p>
+<ul class="simple">
+<li><p>フレームの <span class="guilabel">サイズタイプ</span> には以下の選択肢があります：</p>
+<ul>
+<li><p><span class="guilabel">一定</span> ： テキストのサイズとは無関係に、全てのラベルについて同じサイズを使用します</p></li>
+<li><p><span class="guilabel">バッファ</span> ：テキストのバウンディングボックス上のバッファ</p></li>
+</ul>
+</li>
+<li><p>任意の <a class="reference internal" href="../introduction/general_tools.html#unit-selector"><span class="std std-ref">サポートされている単位</span></a> で表したフレームのX・Y方向の <span class="guilabel">サイズ</span></p></li>
+<li><p>背景の <span class="guilabel">回転</span> ： <span class="guilabel">ラベルと同期</span> 、 <span class="guilabel">ラベルのオフセット</span> 、 <span class="guilabel">一定</span> のどれかです。後の2つは度単位の角度の設定が必要です。</p></li>
+<li><p><span class="guilabel">オフセット量（X, Y）</span> ：背景アイテムをX方向やY方向に移動させます</p></li>
+<li><p><span class="guilabel">半径X, Y</span> ：背景図形の角を丸めるための値です（四角形または正方形の図形にのみ適用されます）</p></li>
+<li><p>背景の <span class="guilabel">不透明度</span></p></li>
+<li><p><span class="guilabel">混合モード</span> ：レンダリング時の背景と他のアイテムの混合方法の設定です（ <a class="reference internal" href="../introduction/general_tools.html#blend-modes"><span class="std std-ref">混合モード</span></a> を参照してください）。</p></li>
+<li><p>SVGシンボルでは、シンボルのデフォルトプロパティを使用する（ <span class="guilabel">シンボルパラメータをロードする</span> ）か、カスタムの <span class="guilabel">塗りつぶし色</span> 、 <span class="guilabel">ストローク色</span> および <span class="guilabel">ストローク幅</span> を設定できます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">描画エフェクト</span> ：テキストの読みやすさを向上させるための高度な <a class="reference internal" href="../../../_images/mIconPaintEffects.png"><img alt="paintEffects" src="../../../_images/mIconPaintEffects.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../working_with_vector/vector_properties.html#draw-effects"><span class="std std-ref">描画エフェクト</span></a> を追加します。例：アウターグローとぼかし</p></li>
+</ul>
+</section>
+<section id="shadow-tab">
+<span id="labels-shadow"></span><h3><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">14.3.1.5. </span>影</a><a class="headerlink" href="#shadow-tab" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id9">
+<span id="figure-label-shadow"></span><img alt="../../../_images/label_shadow.png" src="../../../_images/label_shadow.png" />
+<figcaption>
+<p><span class="caption-number">図 14.30 </span><span class="caption-text">ラベルの設定 - 影タブ</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>テキストに影を追加するには、 <a class="reference internal" href="../../../_images/labelshadow.png"><img alt="labelshadow" src="../../../_images/labelshadow.png" style="width: 1.5em;" /></a> <span class="guilabel">影</span> タブを有効にして <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">影を描画</span> のチェックボックスをオンにします。その後、次の設定ができます。</p>
+<ul>
+<li><p><span class="guilabel">影の対象</span> で、影を生成するために使用するアイテムを指定します。これには、 <span class="guilabel">最下位ラベルコンポーネント</span> 、あるいは <span class="guilabel">テキスト</span> 自体、 <span class="guilabel">バッファ</span> 、 <span class="guilabel">背景</span> 等の特定のコンポーネントを指定できます。</p></li>
+<li><p>影の対象となるアイテムからの <span class="guilabel">オフセット</span> を設定します。これには以下の項目があります：</p>
+<ul class="simple">
+<li><p>角度： 時計回りの角度を指定します。角度は元のアイテムの方向に依存します。</p></li>
+<li><p>影の対象となるアイテムからのオフセット距離</p></li>
+<li><p>オフセットの単位</p></li>
+</ul>
+<p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">グローバルシャドウを使用する</span> のチェックボックスにチェックを入れると、角度のゼロ点は常に北向きとなり、ラベルアイテムの向きに依存しなくなります。</p>
+</li>
+<li><p><span class="guilabel">ぼかし半径</span> で影の見た目に影響を与えます。数値が大きいほど、影は柔らかくなります。数値の単位は選択することができます。</p></li>
+</ul>
+<ul class="simple">
+<li><p>影の <span class="guilabel">不透明度</span> を設定します</p></li>
+<li><p><span class="guilabel">縮尺</span> 係数を使用して、影のサイズを再スケーリングします</p></li>
+<li><p>影の <span class="guilabel">色</span> を選択します</p></li>
+<li><p><span class="guilabel">混合モード</span> オプションを使用して、ラベルの影がマップコンポーネントとどのように混合するかを決定します（詳細については <a class="reference internal" href="../introduction/general_tools.html#blend-modes"><span class="std std-ref">混合モード</span></a> を参照）。</p></li>
+</ul>
+</section>
+</section>
+<section id="configuring-interaction-with-labels">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">14.3.2. </span>ラベルとの相互作用の設定</a><a class="headerlink" href="#configuring-interaction-with-labels" title="Link to this heading"></a></h2>
+<p>上述のテキスト書式設定以外にも、ラベルや地物との相互作用を設定することができます。</p>
+<section id="mask-tab">
+<span id="labels-mask"></span><h3><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">14.3.2.1. </span>マスクグリッド（Mask）</a><a class="headerlink" href="#mask-tab" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/labelmask.png"><img alt="labelmask" src="../../../_images/labelmask.png" style="width: 1.5em;" /></a> <span class="guilabel">マスクグリッド</span> タブでは、ラベルの周りにマスク領域を定義することができます。この機能は、似たような色のシンボルとラベルが重なっていて、ラベルを見えるようにしたい場合に非常に便利です。ラベルマスクは、マスクに設定された境界内に指定された地物が描画されるのを防ぎます。例えば、指定したレイヤはラベルの2mm以内に描画しないが、別のレイヤの地物は表示できるようにラベルマスクを設定することができます。ラベルマスクは、他の地物を覆うラベルの可読性を制御できる点で、ラベルバッファと似ています。ラベルバッファは下にある地物の上に描画しますが、ラベルマスクは他のレイヤの描画を選択的に止めます。</p>
+<figure class="align-center" id="id10">
+<span id="figure-label-mask"></span><img alt="../../../_images/label_mask.png" src="../../../_images/label_mask.png" />
+<figcaption>
+<p><span class="caption-number">図 14.31 </span><span class="caption-text">ラベルの設定 - マスクグリッドタブ (テキストサンプルでは、別のレイヤが除外されていることを表す緑色の背景が表示されています)</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>ラベルにマスク効果を作成するには、</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../../_images/labelmask.png"><img alt="labelmask" src="../../../_images/labelmask.png" style="width: 1.5em;" /></a> タブにある <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">マスクを有効化</span> チェックボックスを有効にします。</p></li>
+<li><p>そして、以下の設定を行います</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../introduction/general_tools.html#unit-selector"><span class="std std-ref">サポートされている単位</span></a> でマスクの <span class="guilabel">大きさ</span>  の設定</p></li>
+<li><p>ラベル周囲のマスク領域の <span class="guilabel">不透明度</span></p></li>
+<li><p><span class="guilabel">継ぎ目スタイル</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">描画エフェクト</span> チェックボックスで設定する <a class="reference internal" href="../working_with_vector/vector_properties.html#draw-effects"><span class="std std-ref">描画効果</span></a></p></li>
+</ul>
+</li>
+<li><p>重なってしまうレイヤのプロパティの <a class="reference internal" href="../../../_images/labelmask.png"><img alt="labelmask" src="../../../_images/labelmask.png" style="width: 1.5em;" /></a> <span class="guilabel">マスク</span> タブ（<a class="reference internal" href="../working_with_vector/vector_properties.html#vector-mask-menu"><span class="std std-ref">マスクプロパティ</span></a> 参照）で、このマスク形状をマスクソースとして選択します。</p></li>
+</ol>
+</section>
+<section id="callouts-tab">
+<span id="labels-callouts"></span><h3><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">14.3.2.2. </span>引出し線付きラベル</a><a class="headerlink" href="#callouts-tab" title="Link to this heading"></a></h3>
+<p>ごちゃごちゃしたマップにラベルを配置する際の一般的な方法は、 <strong>引出し線</strong> を使用することです。関係する地物の外側に配置された（または遠くに移動した）ラベルは、ラベルと地物を結ぶ動的に変化する線によって識別されます。2つの終端（ラベルまたは地物）のいずれかが移動すると、コネクタの形状は再計算されます。</p>
+<figure class="align-center" id="id11">
+<span id="figure-label-callouts"></span><img alt="../../../_images/label_callouts.png" src="../../../_images/label_callouts.png" />
+<figcaption>
+<p><span class="caption-number">図 14.32 </span><span class="caption-text">さまざまな引出し線設定によるラベル</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>ラベルに引出し線を追加するには、 <a class="reference internal" href="../../../_images/labelcallout.png"><img alt="labelcallout" src="../../../_images/labelcallout.png" style="width: 1.5em;" /></a> <span class="guilabel">引出し線付きラベル</span> タブを有効にして <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">引出し線付きラベルを描画</span> のチェックボックスをオンにします。その後、次の設定ができます。</p>
+<ol class="arabic simple">
+<li><p>コネクタの <span class="guilabel">スタイル</span> を以下の中から選びます：</p>
+<ul class="simple">
+<li><p><span class="guilabel">直線</span> ：最短経路の直線</p></li>
+<li><p><span class="guilabel">マンハッタン線</span> ：90° 曲がった折れ線</p></li>
+<li><p><span class="guilabel">曲線</span> ：曲がった線</p></li>
+<li><p><span class="guilabel">バルーン</span> ：ラベルを囲み、地物を指し示す吹出し。角を丸めることもできます。</p></li>
+</ul>
+</li>
+<li><p>線ベースの引出し線の場合には：</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">線のスタイル</span> を選択します。描画エフェクトやデータ定義の上書き設定をも含む、 <a class="reference internal" href="symbol_selector.html#vector-line-symbols"><span class="std std-ref">ラインシンボル</span></a> の全機能を使用できます。</p></li>
+<li><p>曲線の場合には、以下の定義もできます：</p>
+<ul class="simple">
+<li><p>つなぐ線の <span class="guilabel">曲率</span> のパーセンテージ</p></li>
+<li><p>および <span class="guilabel">方向</span> ：ラベルから地物への方向に対して、 <span class="guilabel">時計回り</span> 、 <span class="guilabel">反時計回り</span> または <span class="guilabel">自動</span> （各ラベルについて適切な方向を決定する）とすることができます</p></li>
+</ul>
+</li>
+<li><p>引出し線の <span class="guilabel">最短長</span> を設定します</p></li>
+<li><p>地物のラベルから地物の <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">全パートに線を描画する</span> かどうかを指定します</p></li>
+<li><p><span class="guilabel">ラベルのアンカー位置</span> ：コネクタ線がラベルテキストと結合する点を制御します。選択肢は以下のとおりです。</p>
+<ul class="simple">
+<li><p><span class="guilabel">最近傍点（Closest Point）</span></p></li>
+<li><p><span class="guilabel">重心点</span></p></li>
+<li><p>固定された端の位置（ <span class="guilabel">左上</span> 、 <span class="guilabel">中上</span> 、 <span class="guilabel">右上</span> 、 <span class="guilabel">中央左</span> 、 <span class="guilabel">中央右</span> 、 <span class="guilabel">左下</span> 、 <span class="guilabel">中下</span> 、 <span class="guilabel">右下</span> ）。</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">ラベルからのオフセット</span> オプションを設定します：これは、ラベルのアンカーポイント（引出し線の開始位置）からの距離を制御します。これにより、テキストの真上に線を引かないようにできます。</p></li>
+</ol>
+</li>
+<li><p>バルーンの場合には、以下を設定する必要があります：</p>
+<ul class="simple">
+<li><p><span class="guilabel">塗りつぶしスタイル</span> 。描画エフェクトやデータ定義の設定も含め、 <a class="reference internal" href="symbol_selector.html#vector-fill-symbols"><span class="std std-ref">塗りつぶしシンボル</span></a> の全機能が使えます。</p></li>
+<li><p>吹出しの <span class="guilabel">コーナー半径</span></p></li>
+<li><p><span class="guilabel">ウェッジ幅</span> ：地物のポインタと吹出しをつなぐ部分の大きさがどれくらいか</p></li>
+<li><p>ラベルのテキスト周囲の <span class="guilabel">マージン</span></p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">地物からのオフセット</span> オプションを設定します：これは、引出し線の終端位置となる、地物（ポリゴンの場合はそのアンカーポイント）からの距離を制御します。例を挙げると、これにより地物の端の真上に線を引かないようにできます。</p></li>
+<li><p>（ポリゴン）地物の <span class="guilabel">地物アンカーポイント</span> （コネクタ線の終点）。選択肢は以下のとおりです。</p>
+<ul class="simple">
+<li><p><span class="guilabel">到達不能極（境界から最も遠い点）</span></p></li>
+<li><p><span class="guilabel">外殻リング上（Point on Exterior）</span></p></li>
+<li><p><span class="guilabel">内部保証点（point on surface）</span></p></li>
+<li><p><span class="guilabel">重心点</span></p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">混合モード</span> を設定します：引出し線の <a class="reference internal" href="../introduction/general_tools.html#blend-modes"><span class="std std-ref">混色</span></a> を制御します。</p></li>
+</ol>
+<p><span class="guilabel">データで定義された配置</span> グループでは、引出し線の <span class="guilabel">原点</span> （ラベル側の位置）や <span class="guilabel">変換先</span> （地物側の位置）の点座標を制御することができます。また、引出し線は <a class="reference internal" href="../working_with_vector/vector_properties.html#label-toolbar"><span class="std std-ref">ラベルツールバー</span></a> の <a class="reference internal" href="../../../_images/mActionMoveLabel.png"><img alt="moveLabel" src="../../../_images/mActionMoveLabel.png" style="width: 1.5em;" /></a> <sup>ラベル、ダイアグラム、引出し線を移動</sup> ツールを使用して手動で制御することもできます。各引出し線の始点と終点は、この方法で移動させることができます。マウスポインタが引出し線の始点・終点付近にある場合、強調表示されます。必要に応じて、 <kbd class="kbd docutils literal notranslate">Shift</kbd> キーを押しながら移動させることもできます。これにより、引出し線の2つの点の間の角度を15度単位でスナップさせられます。</p>
+</section>
+<section id="placement-tab">
+<span id="labels-placement"></span><h3><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">14.3.2.3. </span>配置</a><a class="headerlink" href="#placement-tab" title="Link to this heading"></a></h3>
+<p>ラベルの配置やラベル付けの優先度を設定するには、 <a class="reference internal" href="../../../_images/labelplacement.png"><img alt="labelplacement" src="../../../_images/labelplacement.png" style="width: 1.5em;" /></a> <span class="guilabel">配置</span> タブを選択します。配置オプションはベクタレイヤの種類、すなわちポイント、ライン、ポリゴンによって異なり、グローバルな <a class="reference internal" href="../working_with_vector/vector_properties.html#automated-placement"><span class="std std-ref">自動配置設定</span></a> の影響を受けることに注意してください。</p>
+<section id="placement-for-point-layers">
+<span id="labels-point-placement"></span><h4><a class="toc-backref" href="#id24" role="doc-backlink">ポイントレイヤのラベルの配置</a><a class="headerlink" href="#placement-for-point-layers" title="Link to this heading"></a></h4>
+<p>ポイントラベルの配置モードには、以下のものがあります</p>
+<ul id="cartographic">
+<li><p><span class="guilabel">カルトグラフィックに配置</span> ：ポイントラベルは以下の理想的なカルトグラフィック配置ルールに従い、ポイント地物とより良い視覚的関係性で生成されます。ラベルは、</p>
+<ul>
+<li><p><a class="reference internal" href="../introduction/general_tools.html#unit-selector"><span class="std std-ref">サポートされている単位</span></a> で設定された <span class="guilabel">距離</span> に配置することができます。距離の基準は、ポイント地物自体から、もしくは地物を表すシンボルからの距離です（ <span class="guilabel">オフセット距離の基準</span> で設定）。後者のオプションはシンボルサイズが固定されていない場合、例えばサイズがデータによって定義されている場合や、 <a class="reference internal" href="../working_with_vector/vector_properties.html#categorized-renderer"><span class="std std-ref">カテゴリ値による定義</span></a> レンダラで様々なシンボルを使用している場合に特に有用です。</p></li>
+<li><p><span class="guilabel">配置の優先度</span> に従って配置することができます。優先度は、データ定義の優先位置リストを使用して、個別の地物に対してカスタマイズまたは設定することができます。これにより、特定の配置だけを使用することもできますので、例えば、海岸線の地物はラベルが陸側に配置されないようにできます。</p>
+<p>デフォルトでは、カルトグラフィックモードの配置は以下の順序で優先されます（ <a class="reference external" href="https://www.researchgate.net/publication/44463780_Making_maps_a_visual_guide_to_map_design_for_GIS_John_Krygier_Denis_Wood">Krygier and Wood (2011)によるガイドライン</a> や他の地図製作学のテキストを尊重しています）：</p>
+<ol class="arabic simple">
+<li><p>右上</p></li>
+<li><p>左上</p></li>
+<li><p>右下</p></li>
+<li><p>左下</p></li>
+<li><p>右</p></li>
+<li><p>左</p></li>
+<li><p>わずかに右寄りの上</p></li>
+<li><p>わずかに左寄りの下</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><span class="guilabel">ポイントの周り</span> ：ラベルは、地物を中心とした等しい半径（ <span class="guilabel">距離</span> で設定）の円に配置します。配置の優先順位は「右上」から時計回りです。ラベルの位置はデータ定義の <span class="guilabel">配置する象限</span> オプションを使用して制限することもできます。</p></li>
+<li><p><span class="guilabel">点からのオフセット</span> ：ラベルはポイント地物から <span class="guilabel">オフセット量（X, Y）</span> 離れた位置に配置されます。オフセット量はさまざまな単位で設定でき、望むならば地物の上に重ねることもできます。データで定義された <span class="guilabel">配置する象限</span> を使用して配置を制限することができ、ラベルの <span class="guilabel">回転</span> を設定することもできます。</p></li>
+</ul>
+</section>
+<section id="placement-for-line-layers">
+<span id="labels-line-placement"></span><h4><a class="toc-backref" href="#id25" role="doc-backlink">ラインレイヤのラベルの配置</a><a class="headerlink" href="#placement-for-line-layers" title="Link to this heading"></a></h4>
+<p>ラインレイヤのラベルモードには、以下のものがあります：</p>
+<ul class="simple">
+<li><p><span class="guilabel">線に平行に配置</span> ：地物を表現する一般化されたラインに平行にラベルを描画します。ラベルの位置はラインで直線的な部分が優先されます。以下の設定を定義できます。</p>
+<ul>
+<li><p><span class="guilabel">許容される位置</span> ： <span class="guilabel">線の上（Above line）</span> 、 <span class="guilabel">線上</span> 、 <span class="guilabel">線の下（Below line）</span> そして <span class="guilabel">線の方向に応じた位置</span> （ラベルをラインの左または右に配置します）が設定できます。複数のオプションを同時に設定することも可能です。この場合には、QGISは最適なラベル位置を探します。</p></li>
+<li><p>ラベルとラインの間の <span class="guilabel">距離</span></p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">線に沿って湾曲</span> ライン地物の曲がりに沿ってラベルを描画します。 <span class="guilabel">線に平行に配置</span> モードで利用可能なパラメータに加えて、内側や外側の <span class="guilabel">湾曲表示の場合の文字間最大角度</span> を設定することができます。</p></li>
+<li><p><span class="guilabel">水平</span> ：ラベルを水平に描画します。</p></li>
+</ul>
+<figure class="align-center" id="id12">
+<span id="figure-labels-placement-line"></span><img alt="../../../_images/line_label_placement.png" src="../../../_images/line_label_placement.png" />
+<figcaption>
+<p><span class="caption-number">図 14.33 </span><span class="caption-text">ラインレイヤのラベル配置例</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>配置モードの設定のほかに、以下の設定ができます：</p>
+<ul class="simple">
+<li><p><span class="guilabel">反復</span> 地物の長さに沿って複数回ラベルを表示するときの <span class="guilabel">距離</span> 。この間隔の単位は <code class="docutils literal notranslate"><span class="pre">ミリメートル</span></code> 、 <code class="docutils literal notranslate"><span class="pre">ポイント</span></code> 、 <code class="docutils literal notranslate"><span class="pre">ピクセル</span></code> 、 <code class="docutils literal notranslate"><span class="pre">縮尺済みメートル（Meters</span> <span class="pre">at</span> <span class="pre">Scale）</span></code> 、 <code class="docutils literal notranslate"><span class="pre">地図単位</span></code> 、 <code class="docutils literal notranslate"><span class="pre">インチ</span></code> で入力できます。</p></li>
+<li><p><span class="guilabel">はみ出し距離</span> <span class="guilabel">距離</span> （水平モードでは利用不可）：ラベルがライン地物の終端（または始端）をはみ出す距離の最大許容値を指定します。この値を大きくすると、短いラベル地物でもラベルを表示できるようになります。</p></li>
+<li><p><span class="guilabel">ラベルのアンカー</span> ：ラベルが参照するライン地物に沿ったラベルの配置を制御します。 <span class="guilabel">設定...</span> をクリックして、以下を選択します：</p>
+<ul>
+<li><p>ラベルを近くに配置する、ラインに沿った位置（の比率）。データで定義することもでき、可能な値は以下のとおりです：</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/mActionLabelAnchorCenter.png"><img alt="labelAnchorCenter" src="../../../_images/mActionLabelAnchorCenter.png" style="width: 1.5em;" /></a> <span class="guilabel">線の中央</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionLabelAnchorStart.png"><img alt="labelAnchorStart" src="../../../_images/mActionLabelAnchorStart.png" style="width: 1.5em;" /></a> <span class="guilabel">線の始点</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionLabelAnchorEnd.png"><img alt="labelAnchorEnd" src="../../../_images/mActionLabelAnchorEnd.png" style="width: 1.5em;" /></a> <span class="guilabel">線の終点</span></p></li>
+<li><p>または、 <a class="reference internal" href="../../../_images/mActionLabelAnchorCustom.png"><img alt="labelAnchorCustom" src="../../../_images/mActionLabelAnchorCustom.png" style="width: 1.5em;" /></a> <span class="guilabel">カスタム...</span></p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">切り抜き（Clipping）</span> ：ラインへのラベルの配置をどのように計算するかを決定します。デフォルトではラインの可視範囲のみを使用しますが、より一貫した結果を得るために、ライン全体を使用することもできます。</p></li>
+<li><p><span class="guilabel">アンカーポイント</span>: テキストのどの部分(開始、中央、終了)をアンカーポイントに合わせるかを制御します。<span class="guilabel">自動</span> アンカーを使用すると、以下のようになります：</p>
+<ul>
+<li><p>ラインの始点付近（0-25%）にアンカーしたラベルの場合、アンカー位置はラベルテキストの <strong>冒頭</strong> となります</p></li>
+<li><p>ラインの終点付近 (75-100%) にアンカーしたラベルの場合、アンカー位置はラベルテキストの <strong>末尾</strong> となります</p></li>
+<li><p>ラインの中央付近 (25-75%) にアンカーしたラベルの場合、アンカー位置はラベルテキストの <strong>中央</strong> になります</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">配置方針</span> ： <span class="guilabel">配置の際に優先するヒント</span> を使用すると、ラベルのアンカーは単にラベル配置のヒントとして扱われます。 <span class="guilabel">厳格</span> を選択すると、ラベルは厳密にラベルアンカーの位置に配置されます。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="placement-for-polygon-layers">
+<h4><a class="toc-backref" href="#id26" role="doc-backlink">ポリゴンレイヤのラベルの配置</a><a class="headerlink" href="#placement-for-polygon-layers" title="Link to this heading"></a></h4>
+<p>ポリゴンレイヤのラベル配置は、以下のモードの中から一つ選ぶことができます：</p>
+<figure class="align-center" id="id13">
+<span id="figure-labels-placement-polygon"></span><img alt="../../../_images/polygon_label_placement.png" src="../../../_images/polygon_label_placement.png" />
+<figcaption>
+<p><span class="caption-number">図 14.34 </span><span class="caption-text">ポリゴンレイヤのラベル配置例</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><span class="guilabel">重心からのオフセット</span> ：ラベルは地物の重心上、または重心から固定値で <span class="guilabel">オフセット量（X, Y）</span> だけ離れた距離（ <a class="reference internal" href="../introduction/general_tools.html#unit-selector"><span class="std std-ref">サポートされている単位</span></a> での値）に配置されます。参照する重心点は、マップキャンバスに描画されている部分に基づいた重心（ <span class="guilabel">ポリゴンの可視部分</span> ）か、または、見えているかどうかに関係なく <span class="guilabel">ポリゴンの全体</span> に基づいた重心により決定されます。また、以下の設定もあります：</p>
+<ul>
+<li><p>重心点をポリゴンの内側に強制移動する</p></li>
+<li><p>ラベルを特定の象限に配置する</p></li>
+<li><p>回転を指定する</p></li>
+<li><p><span class="guilabel">ポリゴンの外側にラベルを配置することを許可</span> にチェックを入れると、ラベルをポリゴン内部に配置できない場合には外側に配置します。データ定義のプロパティを使用すると、ラベルの外側配置の許可、不許可、強制を地物ごとに設定することが可能になります。</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">重心の周り（Around Centroid）</span> ：ラベルは重心の周りのあらかじめ設定された距離内に配置されます。配置位置は重心位置が優先されます。このモードでも、重心は <span class="guilabel">ポリゴンの可視部分</span> か <span class="guilabel">ポリゴンの全体</span> のどちらとするかを定義したり、重心点をポリゴンの内側に強制移動したりすることができます。</p></li>
+<li><p><span class="guilabel">水平</span> ：ポリゴン内部の最適な場所に水平なラベルを配置します。ポリゴンの端からより遠い場所が優先されます。 <span class="guilabel">ポリゴンの外側にラベルを配置することを許可</span> することもできます。</p></li>
+<li><p><span class="guilabel">自由（回転）</span> ：ポリゴン内部の最適な場所に回転させたラベルを配置します。ラベルの回転はポリゴンの向きに応じて決められ、ポリゴンの端からより遠い場所への配置が優先されます。 <span class="guilabel">ポリゴンの外側にラベルを配置することを許可</span> することもできます。</p></li>
+<li><p><span class="guilabel">周辺を利用（Using Perimeter）</span> ：ポリゴン境界を表現する一般化されたラインに平行にラベルを描画します。ラベルの位置は周辺のラインの中で直線的な部分が優先されます。以下の設定を定義できます。</p>
+<ul>
+<li><p><span class="guilabel">許容される位置</span> ： <span class="guilabel">線の上（Above line）</span> 、 <span class="guilabel">線上</span> 、 <span class="guilabel">線の下（Below line）</span> そして <span class="guilabel">線の方向に応じた位置</span> （ラベルをポリゴンの境界の左または右に配置します）が設定できます。複数のオプションを同時に設定することも可能です。この場合には、QGISは最適なラベル位置を探します。</p></li>
+<li><p>ラベルとポリゴンの境界の間の <span class="guilabel">距離</span></p></li>
+<li><p><span class="guilabel">反復</span> ポリゴン周囲の長さに沿って複数回ラベルを表示するときの <span class="guilabel">距離</span> 。</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">周辺を利用する（湾曲）</span> ：ポリゴン境界の湾曲に沿ってラベルを描画します。 <span class="guilabel">周辺を利用</span> モードで利用可能なパラメータに加えて、内側や外側の <span class="guilabel">湾曲表示の場合の文字間最大角度</span> を設定することができます。</p></li>
+<li><p><span class="guilabel">ポリゴンの外側</span> ：常にポリゴンの外側の <span class="guilabel">距離</span> 分離れた位置にラベルを配置します</p></li>
+</ul>
+</section>
+<section id="common-placement-settings">
+<h4><a class="toc-backref" href="#id27" role="doc-backlink">共通の配置設定</a><a class="headerlink" href="#common-placement-settings" title="Link to this heading"></a></h4>
+<p>ラベル配置の設定の一部は、すべてのレイヤジオメトリタイプで利用できます:</p>
+<section id="geometry-generator">
+<h5><a class="toc-backref" href="#id28" role="doc-backlink">ジオメトリジェネレータ</a><a class="headerlink" href="#geometry-generator" title="Link to this heading"></a></h5>
+<p><span class="guilabel">ジオメトリジェネレータ</span> のセクションを使用すると、ユーザーはラベルのレンダリングに使用される基礎となるジオメトリを <a class="reference internal" href="../expressions/expression.html#vector-expressions"><span class="std std-ref">式</span></a> を使用して変更することができます。これは、ジオメトリを動的に変位させたり、別のジオメトリ（タイプ）に変換するのに便利です。</p>
+<p>ジオメトリジェネレータを使用するには：</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ジオメトリジェネレータ</span> のオプションをチェックします</p></li>
+<li><p>依拠するジオメトリを生成する式を入力します</p></li>
+<li><p>関連がある場合には、式のアウトプットのジオメトリタイプを選択します。ラベルの配置やレンダリングといった、ジオメトリに基づいたラベルの設定は、新しいジオメトリタイプの機能に合うように更新されます。</p></li>
+</ol>
+<p>以下のような使用例があります：</p>
+<ul>
+<li><p>&quot;label_position&quot; という別のフィールドに保存されたジオメトリを使用する</p></li>
+<li><p>シンボロジの設定で <a class="reference internal" href="symbol_selector.html#geometry-generator-symbol"><span class="std std-ref">生成されたジオメトリ</span></a> をラベル配置にも使用する</p></li>
+<li><p>&#64;map_scale 変数を使用して、距離やサイズの計算をズームレベルとは独立とする</p></li>
+<li><p>湾曲配置モードと組み合わせて、ポイント地物の周囲に丸くラベルを作成する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>exterior_ring(make_circle($geometry, 20))
+</pre></div>
+</div>
+</li>
+<li><p>ライン地物の始点と終点にラベルを追加する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>collect_geometries( start_point($geometry), end_point($geometry) )
+</pre></div>
+</div>
+</li>
+<li><p>河川をスムージングしたラインに依存させることで、ラベルの配置空間を増やす:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>smooth( $geometry, iterations:=30, offset:=0.25, min_length:=10 )
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="data-defined">
+<h5><a class="toc-backref" href="#id29" role="doc-backlink">データによる定義</a><a class="headerlink" href="#data-defined" title="Link to this heading"></a></h5>
+<p><span class="guilabel">データによる定義</span> グループでは、地物ごとにラベルの配置を直接に制御することができます。これは地物の属性や、設定する式に依存しています。</p>
+<ul>
+<li><p><span class="guilabel">X</span> 、 <span class="guilabel">Y</span> 座標</p></li>
+<li><p>設定したカスタム位置におけるテキストの整列方法</p>
+<ul class="simple">
+<li><p><span class="guilabel">水平方向</span> ： <strong>Left</strong> 、 <strong>Center</strong> 、 <strong>Right</strong> のいずれかの値をとります</p></li>
+<li><p><span class="guilabel">垂直方向</span> ： <strong>Bottom</strong> 、 <strong>Base</strong> 、 <strong>Half</strong> 、 <strong>Cap</strong> 、 <strong>Top</strong> のいずれかの値をとります</p></li>
+</ul>
+</li>
+<li><p>テキストの <span class="guilabel">回転</span> 。ラベルの回転はさまざまな単位（例えば <code class="docutils literal notranslate"><span class="pre">degrees</span></code> 、 <code class="docutils literal notranslate"><span class="pre">弧の分</span></code> 、 <code class="docutils literal notranslate"><span class="pre">turns</span></code> など）で定義できます。フィールドに関連付けられた回転の値を保持し、この回転量をラベルに適用したい場合には、ラベルの固定に無関係に <span class="guilabel">回転量をプロジェクトに保存</span> エントリにチェックを入れてください。チェックを入れない場合には、ラベルの固定を開放すると回転量はリセットされ、値は属性テーブルからクリアされます。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>ポリゴン地物に対するデータ定義の回転は現在のところ、 <span class="guilabel">重心の周り</span> 配置モードでのみサポートしています。</p>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>ラベルマップツール（例えば <span class="guilabel">ラベルを回転</span> や <span class="guilabel">ラベルを移動</span> ツール）と <a class="reference internal" href="../introduction/general_tools.html#data-defined"><span class="std std-ref">データ定義の</span></a> ラベル配置で同時に式を使用することはできません。ラベルマップツールウィジェットは関連する <a class="reference internal" href="../working_with_vector/vector_properties.html#vector-auxiliary-storage"><span class="std std-ref">補助フィールド</span></a> をリセットしてしまいます。</p>
+</div>
+</section>
+<section id="priority">
+<span id="labels-priority"></span><h5><a class="toc-backref" href="#id30" role="doc-backlink">優先度</a><a class="headerlink" href="#priority" title="Link to this heading"></a></h5>
+<p><span class="guilabel">優先度</span> セクションでは、各ラベルの配置優先度を定義することができます。すなわち、同じ場所に異なるダイアグラムやラベルの候補がある場合、優先度の高い項目が表示され、他の項目は省略されます。</p>
+<p>優先度ランクは、より大きな重みづけを持つ <a class="reference internal" href="#labels-obstacles"><span class="std std-ref">地物との衝突回避</span></a> によってラベルが省略されるかどうかを評価するためにも使用されます。</p>
+</section>
+<section id="obstacles">
+<span id="labels-obstacles"></span><h5><a class="toc-backref" href="#id31" role="doc-backlink">衝突回避</a><a class="headerlink" href="#obstacles" title="Link to this heading"></a></h5>
+<p>一部の状況（例：密なラベル、地物が重複する場合）では、無関係な地物の上にラベルが配置されてしまうことがあります。</p>
+<p>衝突回避は、他の地物のラベルやダイアグラムを配置してしまわないようにするためのQGISの機能です。これは、 <span class="guilabel">衝突回避</span> セクションでコントロールすることができます。</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">地物と衝突回避</span> オプションを有効にすると、レイヤの地物が任意のラベルやダイアグラムに対して（同じレイヤ内の他の地物のラベルやダイアグラムも含め）障害物として振る舞うようになります。</p>
+<p>このオプションの横にある <a class="reference internal" href="../../../_images/mIconDataDefine.png"><img alt="dataDefine" src="../../../_images/mIconDataDefine.png" style="width: 1.5em;" /></a> <sup>データによって定義された上書き</sup> コントロールを使用することで、レイヤ全体を対象とするのではなく、一部の地物を選択して障害物として使用することができます。</p>
+</li>
+<li><p><span class="guilabel">設定</span> ボタンを押すと、障害物の重みづけを調整できます。</p>
+<ul>
+<li><p>障害物となる可能性のある地物すべてに対する <span class="guilabel">衝突回避のウェイト</span> ：任意の <a class="reference internal" href="#labels-priority"><span class="std std-ref">ラベル</span></a> や <a class="reference internal" href="../working_with_vector/vector_properties.html#diagram-placement"><span class="std std-ref">ダイアグラム</span></a> のうち、配置優先度ランクがこのウェイトよりも大きいものは、上に配置することができます。ランクの低いラベルやダイアグラムは、他に可能な配置がない場合には省略されます。</p>
+<p>この重みづけもデータ定義することができ、同じレイヤ内でも、ある地物は他の地物に比べてより重複しやすくするといったことができます。</p>
+</li>
+<li><p>ポリゴンレイヤでは、地物の障害物の種類を選択できます。</p>
+<ul class="simple">
+<li><p><strong>地物の内側</strong> ：ポリゴンの内部にラベルを配置しないようにします（ポリゴンの完全に外側か、わずかに内側に入った位置に配置することを優先します）。</p></li>
+<li><p><strong>地物の輪郭</strong> ：ポリゴンの境界線上にラベルを配置することを避けます（ポリゴンの外側または完全に内側にラベルを配置することを優先します）。これは、地物が全域をカバーしているようなレイヤ（行政単位、カテゴリの範囲など...）の場合に便利です。この場合、これらの地物の内部にラベルを配置するのは不可避であり、地物間の境界にラベルを配置することを避ける方がはるかに見た目が良くなります。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="rendering-tab">
+<span id="labels-rendering"></span><h3><a class="toc-backref" href="#id32" role="doc-backlink"><span class="section-number">14.3.2.4. </span>レンダリング</a><a class="headerlink" href="#rendering-tab" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/render.png"><img alt="render" src="../../../_images/render.png" style="width: 1.5em;" /></a> <span class="guilabel">レンダリング</span> タブでは、ラベルがどの状態の時に表示されるかや、他のラベルや地物との相互作用について調整することができます。</p>
+<section id="label-options">
+<h4><a class="toc-backref" href="#id33" role="doc-backlink">ラベルオプション</a><a class="headerlink" href="#label-options" title="Link to this heading"></a></h4>
+<p><span class="guilabel">ラベルオプション</span> では、以下の設定ができます：</p>
+<ul>
+<li><p><a class="reference internal" href="../introduction/general_tools.html#label-scaledepend"><span class="std std-ref">縮尺に応じた表示設定</span></a> や、 <span class="guilabel">ピクセルに応じた表示設定（地図単位）</span> があります。</p></li>
+<li><p><span class="guilabel">ラベルのz-index</span> は、他のレイヤからのラベルと同様に、レイヤ内の他の地物ラベルとの関係性でラベルがレンダリングされる順番を（データ定義の上書き式を使用して）決定します。z-index が高いラベルは、（任意のレイヤの）z-index の低いラベルよりも上にレンダリングされます。</p>
+<p>さらに、2つのラベルが同じz-index の場合に対するロジックが以下のように調整されています：</p>
+<ul class="simple">
+<li><p>2つのラベルが同じレイヤのものである場合、小さいラベルが大きいラベルの上に描画されます</p></li>
+<li><p>2つのラベルが異なるレイヤのものである場合、ラベルはレイヤ自体の順序と同じように描画されます（つまり、マップ凡例の順序設定を尊重します）</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>この設定は、ラベルを他のレイヤの地物の下に描画するのではありません。すべてのレイヤの地物の上にラベルを描画する順序を制御するだけです。</p>
+</div>
+</li>
+<li><p><span class="guilabel">内部配置を許可</span>： デフォルトでは、QGISは設定に従って最適な配置でラベルをレンダリングしようとします。 このモードにチェックを入れると、他に選択肢がない場合に、機能がより悪い配置オプションにフォールバックすることを許します。例えば、線が短すぎてカーブしたラベルテキストが入らない場合、ラベルを地物の中心点のすぐ上に水平に配置することができます。</p></li>
+<li><p><span class="guilabel">表示</span> および <span class="guilabel">常に表示するか否かを示す式</span> にデータによる定義式を使用して、どのラベルをレンダリングするかを細かく調整することができます。</p></li>
+<li><p><span class="guilabel">逆さま表示</span> を許可するか：選択肢は <strong>禁止</strong> 、 <strong>回転を定義した場合のみ</strong> 、 <strong>常に</strong> です。</p></li>
+<li><p><span class="guilabel">重なったラベル</span> グループでは、レイヤにある地物のラベルに重なりを許すかどうか、またそれぞれのラベルをどのように扱うかを制御できます：</p>
+<ul class="simple">
+<li><p><span class="guilabel">重なりを禁止する</span>: いくつかのラベルが無くなっても、決してレイヤに重なったラベルを配置しません</p></li>
+<li><p><span class="guilabel">必要ならば重なりを許可する</span>: ラベルを配置できない場合、重なったラベルを描画します。このモードでは、可能であればラベルをあまり理想的でない配置に移動します。例えば、ラベルをラインやポリゴンの中心から遠くに移動させるなど、そうすることでラベルの重なりを避けることができる場合です。しかし、他に可能な位置がなければ、ラベルは重なって描画されます。</p></li>
+<li><p><span class="guilabel">重なりを許容する</span>: ラベルが他のラベルや障害物に重なっても全く構わずに行われ、重なりを完全に避ける別の配置が可能であっても、常に最良の配置（例えば最も中央の配置）が使われます。</p></li>
+</ul>
+<p>重なったラベルとフォールバック配置オプションの両方を許可することで、レイヤ内のすべての地物がラベル付けされることが保証されます... 必ずしも最高のレンダリングとは限りませんが！</p>
+</li>
+</ul>
+</section>
+<section id="feature-options">
+<h4><a class="toc-backref" href="#id34" role="doc-backlink">地物オプション</a><a class="headerlink" href="#feature-options" title="Link to this heading"></a></h4>
+<p><span class="guilabel">地物オプション</span> では、以下の設定ができます：</p>
+<ul class="simple">
+<li><p><span class="guilabel">マルチパートの各パートに表示</span> するかどうかや、 <span class="guilabel">ラベル付けする地物の数を制限</span> するかを選択できます。</p></li>
+<li><p>ラインレイヤとポリゴンレイヤには、 <span class="guilabel">これより地物が小さい場合は省略</span> を使用して、ラベル付けをする地物の最小サイズを設定するオプションがあります。</p></li>
+<li><p>ポリゴン地物については、ラベルが地物の中に完全に収まるか否かによって表示するラベルをフィルタリングすることもできます。</p></li>
+<li><p>ライン地物については、 <span class="guilabel">重複ラベルを除去するために接続する線を結合</span> を選択でき、 <a class="reference internal" href="#labels-line-placement"><span class="std std-ref">配置</span></a> タブの <span class="guilabel">距離</span> や <span class="guilabel">反復表示の間隔</span> オプションと組み合わせると、非常にすっきりしたマップをレンダリングできます。</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="symbol_selector.html" class="btn btn-neutral float-left" title="14.2. シンボルセレクタ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3d_symbols.html" class="btn btn-neutral float-right" title="14.4. 3Dシンボルの作成" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/style_library/label_settings.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/style_library/label_settings.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/style_library/label_settings.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/style_library/label_settings.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/style_library/label_settings.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/style_library/label_settings.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/style_library/label_settings.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/style_library/label_settings.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/style_library/label_settings.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/style_library/label_settings.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/style_library/label_settings.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/style_library/label_settings.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/style_library/label_settings.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/style_library/label_settings.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/style_library/label_settings.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/style_library/label_settings.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/user_manual/style_library/label_settings.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/user_manual/style_library/label_settings.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/style_library/label_settings.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/user_manual/style_library/label_settings.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/user_manual/style_library/label_settings.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/user_manual/style_library/label_settings.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/user_manual/style_library/label_settings.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/user_manual/style_library/label_settings.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/user_manual/style_library/label_settings.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/style_library/label_settings.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/c9f6f23ad6bb63fa01073593cefbddd2" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

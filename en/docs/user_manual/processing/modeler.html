@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>27.5. The model designer &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing/modeler.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="27.6. The batch processing interface" href="batch.html" />
+    <link rel="prev" title="27.4. The history manager" href="history.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 27.5. The model designer">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. Visualizing Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">27. QGIS processing framework</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">27.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">27.2. Configuring the Processing Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="toolbox.html">27.3. The Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="history.html">27.4. The history manager</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">27.5. The model designer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-model-designer-interface">27.5.1. The model designer interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-model">27.5.2. Creating a model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#saving-and-loading-models">27.5.3. Saving and loading models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-a-model">27.5.4. Editing a model</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="batch.html">27.6. The batch processing interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="console.html">27.7. Using processing algorithms from the console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standalone.html">27.8. Using processing from the command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scripts.html">27.9. Writing new Processing algorithms as Python scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html">27.10. Input and output types for Processing Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3rdParty.html">27.11. Configuring external applications</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS User Guide</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">27. </span>QGIS processing framework</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">27.5. </span>The model designer</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing/modeler.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="history.html" class="btn btn-neutral float-left" title="27.4. The history manager" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="batch.html" class="btn btn-neutral float-right" title="27.6. The batch processing interface" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="the-model-designer">
+<span id="processing-modeler"></span><h1><span class="section-number">27.5. </span>The model designer<a class="headerlink" href="#the-model-designer" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#the-model-designer-interface" id="id15">The model designer interface</a></p>
+<ul>
+<li><p><a class="reference internal" href="#model-menu" id="id16">Model menu</a></p></li>
+<li><p><a class="reference internal" href="#edit-menu" id="id17">Edit menu</a></p></li>
+<li><p><a class="reference internal" href="#view-menu" id="id18">View menu</a></p></li>
+<li><p><a class="reference internal" href="#panels" id="id19">Panels</a></p></li>
+<li><p><a class="reference internal" href="#about-available-algorithms" id="id20">About available algorithms</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-a-model" id="id21">Creating a model</a></p>
+<ul>
+<li><p><a class="reference internal" href="#definition-of-inputs" id="id22">Definition of inputs</a></p></li>
+<li><p><a class="reference internal" href="#definition-of-the-workflow" id="id23">Definition of the workflow</a></p></li>
+<li><p><a class="reference internal" href="#documenting-your-model" id="id24">Documenting your model</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#saving-and-loading-models" id="id25">Saving and loading models</a></p>
+<ul>
+<li><p><a class="reference internal" href="#saving-models" id="id26">Saving models</a></p></li>
+<li><p><a class="reference internal" href="#exporting-a-model-as-a-python-script" id="id27">Exporting a model as a Python script</a></p></li>
+<li><p><a class="reference internal" href="#exporting-a-model-as-an-image-pdf-or-svg" id="id28">Exporting a model as an image, PDF or SVG</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#editing-a-model" id="id29">Editing a model</a></p></li>
+</ul>
+</nav>
+<p>The <em>model designer</em> allows you to create complex models using
+a simple and easy-to-use interface.
+When working with a GIS, most analysis operations are not
+isolated, rather part of a chain of operations.
+Using the model designer, that chain of operations can be wrapped
+into a single process, making it convenient to execute later with a
+different set of inputs.
+No matter how many steps and different algorithms it involves, a
+model is executed as a single algorithm, saving time and effort.</p>
+<p>The model designer can be opened from the Processing menu
+(<span class="menuselection">Processing ► Model Designer</span>).</p>
+<section id="the-model-designer-interface">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">27.5.1. </span>The model designer interface</a><a class="headerlink" href="#the-model-designer-interface" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id1">
+<span id="figure-modeler"></span><img alt="../../../_images/modeler_canvas.png" src="../../../_images/modeler_canvas.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.18 </span><span class="caption-text">Model designer</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In its main part, the modeler has a working canvas where the structure
+of the model and the workflow it represents can be constructed.</p>
+<p>At the top of the dialog, different menus and the <span class="guilabel">Navigation</span>
+toolbar give access to a variety of tools.</p>
+<section id="model-menu">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">27.5.1.1. </span>Model menu</a><a class="headerlink" href="#model-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.3%" />
+<col style="width: 12.1%" />
+<col style="width: 12.1%" />
+<col style="width: 50.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Navigation Toolbar</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mIconSuccess.png"><img alt="success" src="../../../_images/mIconSuccess.png" style="width: 1em;" /></a> <span class="guilabel">Validate Model</span></p></td>
+<td></td>
+<td></td>
+<td><p>Checks whether the algorithms and inputs used in the model exist.
+Convenient before releasing a model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionPlay.png"><img alt="play" src="../../../_images/mActionPlay.png" style="width: 1.5em;" /></a> <span class="guilabel">Run Model…</span></p></td>
+<td><p><kbd class="kbd docutils literal notranslate">F5</kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>Executes the model</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Reorder Model Inputs…</span></p></td>
+<td></td>
+<td></td>
+<td><p>Sets the order in which inputs are presented to the user in the algorithm dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Reorder Output Layers…</span></p></td>
+<td></td>
+<td></td>
+<td><p>Sets a specific order which the outputs from the model must use when loading the
+results into a project.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionFileOpen.png"><img alt="fileOpen" src="../../../_images/mActionFileOpen.png" style="width: 1.5em;" /></a> <span class="guilabel">Open Model…</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">O</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>Opens a <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> file for edit or execution</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <span class="guilabel">Save Model</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">S</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>Saves the model to disk as a <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> file</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionFileSaveAs.png"><img alt="fileSaveAs" src="../../../_images/mActionFileSaveAs.png" style="width: 1.5em;" /></a> <span class="guilabel">Save Model as…</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">S</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>Saves the model to disk as a new <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <span class="guilabel">Save Model in project</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>Embeds the model file in the project file, making it available when sharing the project file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionHelpContents.png"><img alt="helpContents" src="../../../_images/mActionHelpContents.png" style="width: 1.5em;" /></a> <span class="guilabel">Edit Model Help…</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>An interface to document the model, the algorithms, the parameters and outputs,
+as well as the author and versioning</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="menuselection">Export ►</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSaveMapAsImage.png"><img alt="saveMapAsImage" src="../../../_images/mActionSaveMapAsImage.png" style="width: 1.5em;" /></a> <span class="menuselection">► Export as Image…</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>Saves the model’s graphical design to an image file format (for illustration purpose)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionSaveAsPDF.png"><img alt="saveAsPDF" src="../../../_images/mActionSaveAsPDF.png" style="width: 1.5em;" /></a><span class="menuselection">► Export as PDF…</span></p></td>
+<td></td>
+<td></td>
+<td><p>Saves the model’s graphical design to a <code class="file docutils literal notranslate"><span class="pre">PDF</span></code> file format (for illustration purpose)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSaveAsSVG.png"><img alt="saveAsSVG" src="../../../_images/mActionSaveAsSVG.png" style="width: 1.5em;" /></a><span class="menuselection">► Export as SVG…</span></p></td>
+<td></td>
+<td></td>
+<td><p>Saves the model’s graphical design to an <code class="file docutils literal notranslate"><span class="pre">SVG</span></code> file format (for illustration purpose)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a><span class="menuselection">► Export as Script Algorithm…</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>Generates a python script file including the model’s instructions</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="edit-menu">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">27.5.1.2. </span>Edit menu</a><a class="headerlink" href="#edit-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.3%" />
+<col style="width: 12.1%" />
+<col style="width: 12.1%" />
+<col style="width: 50.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Navigation Toolbar</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSelectAll.png"><img alt="selectAll" src="../../../_images/mActionSelectAll.png" style="width: 1.5em;" /></a> <span class="guilabel">Select All</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">A</kbd></kbd></p></td>
+<td></td>
+<td><p>Selects all the model components in the designer</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Snap selected components to Grid</span></p></td>
+<td></td>
+<td></td>
+<td><p>snaps and aligns the elements into a grid</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionRedo.png"><img alt="redo" src="../../../_images/mActionRedo.png" style="width: 1.5em;" /></a> <span class="guilabel">Redo</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Y</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>Rollback the latest canceled action. See also the <span class="guilabel">Undo/Redo</span> panel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionUndo.png"><img alt="undo" src="../../../_images/mActionUndo.png" style="width: 1.5em;" /></a> <span class="guilabel">Undo</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Z</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>Cancel the previous change. See also the <span class="guilabel">Undo/Redo</span> panel.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionEditCut.png"><img alt="editCut" src="../../../_images/mActionEditCut.png" style="width: 1.5em;" /></a> <span class="guilabel">Cut</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">X</kbd></kbd></p></td>
+<td></td>
+<td><p>Cuts a selection of components from the model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionEditCopy.png"><img alt="editCopy" src="../../../_images/mActionEditCopy.png" style="width: 1.5em;" /></a> <span class="guilabel">Copy</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">C</kbd></kbd></p></td>
+<td></td>
+<td><p>Copies a selection of components from the model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionEditPaste.png"><img alt="editPaste" src="../../../_images/mActionEditPaste.png" style="width: 1.5em;" /></a> <span class="guilabel">Paste</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">V</kbd></kbd></p></td>
+<td></td>
+<td><p>Pastes a cut or copied selection of components from a model to another
+or within the same model.
+The selected components keep their original properties and comments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionDeleteSelected.png"><img alt="deleteSelected" src="../../../_images/mActionDeleteSelected.png" style="width: 1.5em;" /></a> <span class="guilabel">Delete selected components</span></p></td>
+<td><p><kbd class="kbd docutils literal notranslate">Del</kbd></p></td>
+<td></td>
+<td><p>Removes a component from the model.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Add Group Box</span></p></td>
+<td></td>
+<td></td>
+<td><p>Adds a box at the background of related components in order to visually
+group them. Particularly useful in big models to keep the workflow clean.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="view-menu">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">27.5.1.3. </span>View menu</a><a class="headerlink" href="#view-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.3%" />
+<col style="width: 12.1%" />
+<col style="width: 12.1%" />
+<col style="width: 50.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Navigation Toolbar</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="menuselection">Zoom To ►</span></p></td>
+<td></td>
+<td></td>
+<td><p>Zooms to the selected group box extent</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomIn.png"><img alt="zoomIn" src="../../../_images/mActionZoomIn.png" style="width: 1.5em;" /></a> <span class="guilabel">Zoom In</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">+</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionZoomOut.png"><img alt="zoomOut" src="../../../_images/mActionZoomOut.png" style="width: 1.5em;" /></a> <span class="guilabel">Zoom Out</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">-</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomActual.png"><img alt="zoomActual" src="../../../_images/mActionZoomActual.png" style="width: 1.5em;" /></a> <span class="guilabel">Zoom to 100%</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">1</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionZoomFullExtent.png"><img alt="zoomFullExtent" src="../../../_images/mActionZoomFullExtent.png" style="width: 1.5em;" /></a> <span class="guilabel">Zoom Full</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>Displays all the components in the designer current canvas</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show Comments</span></p></td>
+<td></td>
+<td></td>
+<td><p>Displays comments associated to every algorithm or input in the model designer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable Snapping</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Toggle Panel Visibility</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Tab</kbd></kbd></p></td>
+<td></td>
+<td><p>Switches ON or OFF the <a class="reference internal" href="#modelerpanels"><span class="std std-ref">panels</span></a> in the designer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="panels">
+<span id="modelerpanels"></span><h3><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">27.5.1.4. </span>Panels</a><a class="headerlink" href="#panels" title="Link to this heading"></a></h3>
+<p>The left part of the window is a section with five panels that can be used
+to add new elements to the model:</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">Model Properties</span>: specify the name (required) of the model and
+the group in which it will be displayed in the <a class="reference internal" href="toolbox.html#processing-toolbox"><span class="std std-ref">Processing Toolbox</span></a></p></li>
+<li><p><span class="guilabel">Inputs</span>: all the <a class="reference internal" href="#processing-inputs"><span class="std std-ref">input parameters</span></a> that could shape
+your model</p></li>
+<li><p><span class="guilabel">Algorithms</span>: the available <a class="reference internal" href="../processing_algs/index.html#processing-algs"><span class="std std-ref">Processing algorithms</span></a></p></li>
+<li><p><span class="guilabel">Variables</span>: Models can contain dedicated <a class="reference internal" href="../introduction/general_tools.html#general-tools-variables"><span class="std std-ref">variables</span></a> that are unique and only available to them.
+These variables can be accessed by any expression used within the model.
+They are useful to control algorithms within a model and control multiple
+aspects of the model by changing a single variable.
+The variables can be viewed and modified in the <span class="guilabel">Variables</span> panel.</p></li>
+<li><p><span class="guilabel">Undo History</span>: this panel will register everything that happens in the
+modeler, making it easy to cancel things you did wrong.</p></li>
+</ol>
+</section>
+<section id="about-available-algorithms">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">27.5.1.5. </span>About available algorithms</a><a class="headerlink" href="#about-available-algorithms" title="Link to this heading"></a></h3>
+<p>Some algorithms that can be executed from the toolbox do not appear
+in the list of available algorithms when you are designing a model.
+To be included in a model, an algorithm must have the correct
+semantic.
+If an algorithm does not have such a well-defined semantic (for
+instance, if the number of output layers cannot be known in advance),
+then it is not possible to use it within a model, and it will not
+appear in the list of algorithms that you can find in the modeler
+dialog.
+On the other hand some algorithms are specific to the modeler.
+Those algorithms are located within the group ‘Modeler Tools’.</p>
+</section>
+</section>
+<section id="creating-a-model">
+<h2><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">27.5.2. </span>Creating a model</a><a class="headerlink" href="#creating-a-model" title="Link to this heading"></a></h2>
+<p>Creating a model involves two basic steps:</p>
+<ol class="arabic simple">
+<li><p><em>Definition of necessary inputs</em>.
+These inputs will be added to the parameters window, so the user
+can set their values when executing the model.
+The model itself is an algorithm, so the parameters window is
+generated automatically as for all algorithms
+available in the Processing framework.</p></li>
+<li><p><em>Definition of the workflow</em>.
+Using the input data of the model, the workflow is defined by
+adding algorithms and selecting how they use the defined inputs
+or the outputs generated by other algorithms in the model.</p></li>
+</ol>
+<section id="definition-of-inputs">
+<span id="processing-inputs"></span><h3><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">27.5.2.1. </span>Definition of inputs</a><a class="headerlink" href="#definition-of-inputs" title="Link to this heading"></a></h3>
+<p>The first step is to define the inputs for the model.
+They are found in the <span class="guilabel">Inputs</span> panel on the left side of the modeler window.
+Hovering with the mouse over the inputs will show a tooltip with additional information.
+For a full list of available parameters in modeler and their correspondance for scripting,
+please read <a class="reference internal" href="parameters.html#processing-algs-input-output"><span class="std std-ref">Input and output types for Processing Algorithms</span></a>.</p>
+<p>When double-clicking on an element, a dialog is shown that lets
+you define its characteristics.
+Depending on the parameter, the dialog will contain at least one
+element (the description, which is what the user will see when
+executing the model).
+For example, when adding a numerical value, as can be seen in the next figure,
+in addition to the description of the parameter, you have to set a
+default value and the range of valid values.</p>
+<figure class="align-center" id="id2">
+<span id="figure-model-parameter"></span><img alt="../../../_images/models_parameters.png" src="../../../_images/models_parameters.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.19 </span><span class="caption-text">Model Parameters Definition</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can define your input as mandatory for your model by checking the
+<a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <code class="docutils literal notranslate"><span class="pre">Mandatory</span></code> option and by checking the <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <code class="docutils literal notranslate"><span class="pre">Advanced</span></code>
+checkbox you can set the input to be within the <code class="docutils literal notranslate"><span class="pre">Advanced</span></code> section. This is
+particularly useful when the model has many parameters and some of them are not
+trivial, but you still want to choose them.</p>
+<p>For each added input, a new element is added to the modeler canvas.</p>
+<figure class="align-center" id="id3">
+<span id="figure-model-parameter-canvas"></span><img alt="../../../_images/models_parameters2.png" src="../../../_images/models_parameters2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.20 </span><span class="caption-text">Model Parameters</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can also add inputs by dragging the input type from the list and
+dropping it at the position where you want it in the modeler canvas. If you want
+to change a parameter of an existing input, just double click on it, and the
+same dialog will pop up.</p>
+<p>When using a model within another model, the inputs and outputs necessary will
+be displayed in the canvas.</p>
+</section>
+<section id="definition-of-the-workflow">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">27.5.2.2. </span>Definition of the workflow</a><a class="headerlink" href="#definition-of-the-workflow" title="Link to this heading"></a></h3>
+<p>In the following example we will add two inputs and two algorithms. The aim of
+the model is to copy the elevation values from a DEM raster layer to a line layer
+using the <code class="docutils literal notranslate"><span class="pre">Drape</span></code> algorithm,  and then calculate the total ascent of the line
+layer using the <code class="docutils literal notranslate"><span class="pre">Climb</span> <span class="pre">Along</span> <span class="pre">Line</span></code> algorithm.</p>
+<p>In the <span class="guilabel">Inputs</span> tab, choose the two inputs as <code class="docutils literal notranslate"><span class="pre">Vector</span> <span class="pre">Layer</span></code> for the line and
+<code class="docutils literal notranslate"><span class="pre">Raster</span> <span class="pre">Layer</span></code> for the DEM.
+We are now ready to add the algorithms to the workflow.</p>
+<p>Algorithms can be found in the <span class="guilabel">Algorithms</span> panel, grouped
+much in the same way as they are in the Processing toolbox.</p>
+<figure class="align-center" id="id4">
+<span id="figure-model-parameter-inputs"></span><img alt="../../../_images/models_parameters3.png" src="../../../_images/models_parameters3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.21 </span><span class="caption-text">Model Inputs</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>To add an algorithm to a model, double-click on its name or drag and drop it, just like for inputs.
+As for the inputs you can change the description of the algorithm and add a comment.
+When adding an algorithm, an execution dialog will appear, with a content similar
+to the one found in the execution panel that is shown when executing the algorithm from the toolbox.
+The following picture shows both the <code class="docutils literal notranslate"><span class="pre">Drape</span> <span class="pre">(set</span> <span class="pre">Z</span> <span class="pre">value</span> <span class="pre">from</span> <span class="pre">raster)</span></code>
+and the <code class="docutils literal notranslate"><span class="pre">Climb</span> <span class="pre">along</span> <span class="pre">line</span></code> algorithm dialogs.</p>
+<figure class="align-center" id="id5">
+<span id="figure-model-parameter-alg"></span><img alt="../../../_images/models_parameters4.png" src="../../../_images/models_parameters4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.22 </span><span class="caption-text">Model Algorithm parameters</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>As you can see, there are however some differences.
+Each parameter has a drop-down menu next to it allowing to control
+how it will be served during the workflow:</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/mIconFieldInteger.png"><img alt="fieldInteger" src="../../../_images/mIconFieldInteger.png" style="width: 1.5em;" /></a> <sup>Value</sup>: allows you to assign a static value to the parameter.
+Depending on the parameter type, the widget will let you enter a number (<code class="docutils literal notranslate"><span class="pre">5.0</span></code>),
+a string (<code class="docutils literal notranslate"><span class="pre">mytext</span></code>), select layer(s) loaded in the QGIS project or from a folder,
+pick items from a list, …</p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconExpression.png"><img alt="expression" src="../../../_images/mIconExpression.png" style="width: 1.5em;" /></a> <sup>Pre-calculated Value</sup>: opens the <a class="reference internal" href="../expressions/expression.html#vector-expressions"><span class="std std-ref">Expression Builder</span></a> dialog
+and lets you define an expression to fill the parameter.
+Model inputs together with some other layer statistics are available as <strong>variables</strong>
+and are listed at the top of the Search dialog of the Expression Builder.
+The expression is evaluated once before the child algorithm is executed
+and used during the execution of that algorithm.</p></li>
+<li><p><a class="reference internal" href="../../../_images/processingModel.png"><img alt="processingModel" src="../../../_images/processingModel.png" style="width: 1.5em;" /></a> <sup>Model Input</sup>: allows to use an input added to the model as a parameter.
+Once clicked, this option will list all the suitable inputs for the parameter.</p></li>
+<li><p><a class="reference internal" href="../../../_images/processingAlgorithm.png"><img alt="processingAlgorithm" src="../../../_images/processingAlgorithm.png" style="width: 1.5em;" /></a> <sup>Algorithm Output</sup>:
+allows to use the output of another algorithm as an input of the current algorithm.
+As of model inputs, this option will list all the suitable inputs for the parameter.</p></li>
+<li><p>The <strong>output parameter</strong> also has the above options in its drop-down menu:</p>
+<ul class="simple">
+<li><p>add static outputs for child algorithms,
+e.g. always saving a child algorithm’s output to a predefined geopackage or postgres layer</p></li>
+<li><p>use an expression based output values for child algorithms,
+e.g. generating an automatic file name based on today’s date and saving outputs to that file</p></li>
+<li><p>use a model input,
+e.g. the <em>File/Folder</em> model input to specify an output file or folder</p></li>
+<li><p>use another algorithm output,
+e.g. the output of the <em>Create directory</em> algorithm (from <em>Modeler tools</em>)</p></li>
+<li><p>an addditional <a class="reference internal" href="../../../_images/mIconModelOutput.png"><img alt="modelOutput" src="../../../_images/mIconModelOutput.png" style="width: 1.5em;" /></a> <sup>Model Output</sup> option makes the output of the algorithm available in the model.
+If a layer generated by the algorithm is only to be used as input to another algorithm,
+don’t edit that text box.</p></li>
+</ul>
+<p>In the following picture you can see the two input parameters defined as
+<code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">Input</span></code> and the temporary output layer:</p>
+<figure class="align-center" id="id6">
+<img alt="../../../_images/models_parameters5.png" src="../../../_images/models_parameters5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.23 </span><span class="caption-text">Algorithm Input and Output parameters</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+<p>You will also find an additional parameter named <span class="guilabel">Dependencies</span>
+that is not available when calling the algorithm from the toolbox.
+This parameter allows you to define the order in which algorithms are executed,
+by explicitly defining one algorithm as a <em>parent</em> of the current one.
+This will force the <em>parent</em> algorithm to be executed before the current one.</p>
+<p>When you use the output of a previous algorithm as the input of your
+algorithm, that implicitly sets the previous algorithm as parent of the
+current one (and places the corresponding arrow in the modeler canvas).
+However, in some cases an algorithm might depend on another one even if
+it does not use any output object from it (for instance, an algorithm
+that executes a SQL sentence on a PostGIS database and another one that
+imports a layer into that same database).
+In that case, just select the previous algorithm in the
+<em>Dependencies</em> parameter and they will be executed in the correct
+order.</p>
+<p>Once all the parameters have been assigned valid values, click on
+<span class="guilabel">OK</span> and the algorithm will be added to the canvas.
+It will be linked to the elements in the canvas (algorithms or inputs)
+that provide objects that are used as inputs for the algorithm.</p>
+<p>Elements can be dragged to a different position on the canvas using the
+<a class="reference internal" href="../../../_images/mActionSelect.png"><img alt="select" src="../../../_images/mActionSelect.png" style="width: 1.5em;" /></a> <sup>Select/Move Item</sup> tool.
+This is useful to make the structure of the model clearer and more intuitive.
+You can also resize the elements, grasping their border.
+This is particularly useful if the description of the input or algorithm is long.
+With <span class="menuselection">View ► Enable snapping</span> option checked, items resizing
+or displacement can be bound to a virtual grid, for a more visually structured
+algorithm design.</p>
+<p>Links between elements are updated automatically and you can see a <code class="docutils literal notranslate"><span class="pre">+</span></code> button
+at the top and at the bottom of each algorithm. Clicking the button will list
+all the inputs and outputs of the algorithm so you can have a quick overview.</p>
+<figure class="align-center" id="id7">
+<span id="figure-model-model"></span><img alt="../../../_images/models_model.png" src="../../../_images/models_model.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.24 </span><span class="caption-text">A complete model</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>With the <span class="menuselection">Edit ► Add Group Box</span> tool, you can add a draggable
+<em>box</em> to the canvas. This feature is very
+useful in big models to group related elements in the modeler canvas and to keep the
+workflow clean. For example we might group together all the inputs of the
+example:</p>
+<figure class="align-center" id="id8">
+<img alt="../../../_images/model_group_box.png" src="../../../_images/model_group_box.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.25 </span><span class="caption-text">Model Group Box</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can change the name and the color of the boxes.
+Group boxes are very useful when used together with <span class="menuselection">View ►
+Zoom To ►</span> tool, allowing you to zoom to a specific part of the model.
+You can also zoom in and out by using the mouse wheel.</p>
+<p>You might want to change the order of the inputs and how they are listed in the
+main model dialog. At the bottom of the <code class="docutils literal notranslate"><span class="pre">Input</span></code> panel you will find the
+<code class="docutils literal notranslate"><span class="pre">Reorder</span> <span class="pre">Model</span> <span class="pre">Inputs...</span></code> button and by clicking on it a new dialog pops up
+allowing you to change the order of the inputs:</p>
+<figure class="align-center" id="id9">
+<img alt="../../../_images/model_reorder_inputs.png" src="../../../_images/model_reorder_inputs.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.26 </span><span class="caption-text">Reorder Model Inputs</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>There is also the possibility to set a specific order which the outputs from
+the model must use when loading the results into a project. This gives the model
+creator a means of ensuring that layers are logically ordered on the canvas when
+running a model, such as placing a vector layer output over a raster layer output,
+or a point layer over a polygon layer.
+The model creator can also set an optional “Group name” for the outputs for
+automatically grouping outputs within the layer tree using a new group name or by
+adding them to an existing group.
+In the <code class="docutils literal notranslate"><span class="pre">Model</span></code> menu you will find the <code class="docutils literal notranslate"><span class="pre">Reorder</span> <span class="pre">Output</span> <span class="pre">Layers...</span></code> entry and by
+clicking on it a new dialog pops up allowing you to change the order of the output
+layers:</p>
+<figure class="align-center" id="id10">
+<img alt="../../../_images/model_reorder_output_layers.png" src="../../../_images/model_reorder_output_layers.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.27 </span><span class="caption-text">Reorder Output Layers</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Comments can also be added to inputs or algorithms present in the modeler.
+This can be done by going in the <span class="guilabel">Comment</span> tab of the item or with
+a right-click. In the same tab a color can be set manual for individual
+model comments. Comments are visible only in the modeler canvas and not
+in the final algorithm dialog; they can be hidden by deactivating
+<span class="menuselection">View ► Show Comments</span>.</p>
+<p>You can run your algorithm any time by clicking on the <a class="reference internal" href="../../../_images/mActionStart.png"><img alt="start" src="../../../_images/mActionStart.png" style="width: 1.5em;" /></a> <sup>Run model</sup> button.
+When using the editor to execute a model, any non-default values will be
+saved in the inputs. This means that executing the model at a later time from
+the editor will have the dialog prefilled with those values on any subsequent run.</p>
+<p>In order to use the algorithm from the toolbox, it has to be saved
+and the modeler dialog closed, to allow the toolbox to refresh its
+contents.</p>
+</section>
+<section id="documenting-your-model">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink"><span class="section-number">27.5.2.3. </span>Documenting your model</a><a class="headerlink" href="#documenting-your-model" title="Link to this heading"></a></h3>
+<p>You need to document your model, and this can be done from the modeler itself.
+Click on the <a class="reference internal" href="../../../_images/mActionEditHelpContent.png"><img alt="editHelpContent" src="../../../_images/mActionEditHelpContent.png" style="width: 1.5em;" /></a><sup>Edit model help</sup> button, and a
+dialog like the one shown next will appear.</p>
+<figure class="align-center" id="id11">
+<span id="figure-help-edition"></span><img alt="../../../_images/help_edition.png" src="../../../_images/help_edition.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.28 </span><span class="caption-text">Editing Help</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>On the right-hand side, you will see a simple HTML page, created using
+the description of the input parameters and outputs of the algorithm,
+along with some additional items like a general description of the
+model or its author. Also, there is an Example section where you can
+input your own custom examples to help explain the usage of the model.
+The first time you open the help editor, all these descriptions are
+empty, but you can edit them using the elements on the left-hand side
+of the dialog.
+Select an element on the upper part and then write its description in
+the text box below.</p>
+<p>Model help is saved as part of the model itself.</p>
+</section>
+</section>
+<section id="saving-and-loading-models">
+<h2><a class="toc-backref" href="#id25" role="doc-backlink"><span class="section-number">27.5.3. </span>Saving and loading models</a><a class="headerlink" href="#saving-and-loading-models" title="Link to this heading"></a></h2>
+<section id="saving-models">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">27.5.3.1. </span>Saving models</a><a class="headerlink" href="#saving-models" title="Link to this heading"></a></h3>
+<p>Use the <a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a><sup>Save model</sup> button to save the current model and the
+<a class="reference internal" href="../../../_images/mActionFileOpen.png"><img alt="fileOpen" src="../../../_images/mActionFileOpen.png" style="width: 1.5em;" /></a><sup>Open Model</sup> button to open a previously saved model.
+Models are saved with the <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> extension.
+If the model has already been saved from the modeler window,
+you will not be prompted for a filename.
+Since there is already a file associated with the model, that file
+will be used for subsequent saves.</p>
+<p>Before saving a model, you have to enter a name and a group for it
+in the text boxes in the upper part of the window.</p>
+<p>Models saved in the <code class="file docutils literal notranslate"><span class="pre">models</span></code> folder (the default folder when you
+are prompted for a filename to save the model) will appear in the
+toolbox in the corresponding branch.
+When the toolbox is invoked, it searches the <code class="file docutils literal notranslate"><span class="pre">models</span></code> folder for
+files with the <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> extension and loads the models they
+contain.
+Since a model is itself an algorithm, it can be added to the toolbox
+just like any other algorithm.</p>
+<p>Models can also be saved within the project file using the
+<a class="reference internal" href="../../../_images/mAddToProject.png"><img alt="addToProject" src="../../../_images/mAddToProject.png" style="width: 1.5em;" /></a><sup>Save model in project</sup> button.
+Models saved using this method won’t be written as <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> files
+on the disk but will be embedded in the project file.</p>
+<p>Project models are available in the
+<a class="reference internal" href="../../../_images/mIconQgsProjectFile.png"><img alt="qgsProjectFile" src="../../../_images/mIconQgsProjectFile.png" style="width: 1.5em;" /></a><span class="guilabel">Project models</span> menu of the toolbox and in
+the <span class="menuselection">Project ► Models</span> menu item.</p>
+<p>The models folder can be set from the Processing configuration dialog,
+under the <span class="guilabel">Modeler</span> group.</p>
+<p>Models loaded from the <code class="file docutils literal notranslate"><span class="pre">models</span></code> folder appear not only in the
+toolbox, but also in the algorithms tree in the <span class="guilabel">Algorithms</span>
+tab of the modeler window.
+That means that you can incorporate a model as a part of a bigger model,
+just like other algorithms.</p>
+<p>Models will show up in the <a class="reference internal" href="../managing_data_source/opening_data.html#browser-panel"><span class="std std-ref">Browser</span></a> panel and can be run
+from there.</p>
+</section>
+<section id="exporting-a-model-as-a-python-script">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">27.5.3.2. </span>Exporting a model as a Python script</a><a class="headerlink" href="#exporting-a-model-as-a-python-script" title="Link to this heading"></a></h3>
+<p>As we will see in a later chapter, Processing algorithms can be called
+from the QGIS Python console, and new Processing algorithms can be
+created using Python.
+A quick way to create such a Python script is to create a model and
+then export it as a Python file.</p>
+<p>To do so, click on the <a class="reference internal" href="../../../_images/mActionSaveAsPython.png"><img alt="saveAsPython" src="../../../_images/mActionSaveAsPython.png" style="width: 1.5em;" /></a><sup>Export as Script Algorithm…</sup>
+in the modeler canvas or right click on the name of the model in the Processing
+Toolbox and choose <a class="reference internal" href="../../../_images/mActionSaveAsPython.png"><img alt="saveAsPython" src="../../../_images/mActionSaveAsPython.png" style="width: 1.5em;" /></a><sup>Export Model as Python Algorithm…</sup>.</p>
+</section>
+<section id="exporting-a-model-as-an-image-pdf-or-svg">
+<h3><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">27.5.3.3. </span>Exporting a model as an image, PDF or SVG</a><a class="headerlink" href="#exporting-a-model-as-an-image-pdf-or-svg" title="Link to this heading"></a></h3>
+<p>A model can also be exported as an image, SVG or PDF (for illustration
+purposes) by clicking <a class="reference internal" href="../../../_images/mActionSaveMapAsImage.png"><img alt="saveMapAsImage" src="../../../_images/mActionSaveMapAsImage.png" style="width: 1.5em;" /></a><sup>Export as image</sup>,
+<a class="reference internal" href="../../../_images/mActionSaveAsPDF.png"><img alt="saveAsPDF" src="../../../_images/mActionSaveAsPDF.png" style="width: 1.5em;" /></a><sup>Export as PDF</sup> or <a class="reference internal" href="../../../_images/mActionSaveAsSVG.png"><img alt="saveAsSVG" src="../../../_images/mActionSaveAsSVG.png" style="width: 1.5em;" /></a><sup>Export as SVG</sup>.</p>
+</section>
+</section>
+<section id="editing-a-model">
+<h2><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">27.5.4. </span>Editing a model</a><a class="headerlink" href="#editing-a-model" title="Link to this heading"></a></h2>
+<p>You can edit the model you are currently creating, redefining the
+workflow and the relationships between the algorithms and inputs that
+define the model.</p>
+<p>If you right-click on an algorithm in the canvas, you will see a context
+menu like the one shown next:</p>
+<figure class="align-center" id="id12">
+<span id="figure-model-right-click"></span><img alt="../../../_images/modeler_right_click.png" src="../../../_images/modeler_right_click.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.29 </span><span class="caption-text">Modeler Right Click</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Selecting the <span class="guilabel">Remove</span> option will cause the selected
+algorithm to be removed.
+An algorithm can be removed only if there are no other algorithms
+depending on it.
+That is, if no output from the algorithm is used in a different one as
+input.
+If you try to remove an algorithm that has others depending on it, a
+warning message like the one you can see below will be shown:</p>
+<figure class="align-center" id="id13">
+<span id="figure-cannot-delete-alg"></span><img alt="../../../_images/cannot_delete_alg.png" src="../../../_images/cannot_delete_alg.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.30 </span><span class="caption-text">Cannot Delete Algorithm</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Selecting the <span class="guilabel">Edit…</span> option will show the parameter dialog
+of the algorithm, so you can change the inputs and parameter values.
+Not all input elements available in the model will appear as
+available inputs.
+Layers or values generated at a more advanced step in the workflow
+defined by the model will not be available if they cause circular
+dependencies.</p>
+<p>Select the new values and click on the <span class="guilabel">OK</span> button as usual.
+The connections between the model elements will change in the modeler
+canvas accordingly.</p>
+<p>The <span class="guilabel">Add comment…</span> allows you to add a comment to the algorithm to
+better describe the behavior.</p>
+<p>A model can be run partially by deactivating some of its algorithms.
+To do it, select the <span class="guilabel">Deactivate</span> option in the context menu
+that appears when right-clicking on an algorithm element.
+The selected algorithm, and all the ones in the model that depend on it
+will be displayed in grey and will not be executed as part of the model.</p>
+<figure class="align-center" id="id14">
+<span id="figure-cannot-model-deactivate"></span><img alt="../../../_images/deactivated.png" src="../../../_images/deactivated.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27.31 </span><span class="caption-text">Model With Deactivated Algorithms</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>When right-clicking on an algorithm that is not active, you will
+see a <span class="guilabel">Activate</span> menu option that you can use to reactivate
+it.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="history.html" class="btn btn-neutral float-left" title="27.4. The history manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="batch.html" class="btn btn-neutral float-right" title="27.6. The batch processing interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing/modeler.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/processing/modeler.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/processing/modeler.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/processing/modeler.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/processing/modeler.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/processing/modeler.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/processing/modeler.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/processing/modeler.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/processing/modeler.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/processing/modeler.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/processing/modeler.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/processing/modeler.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/processing/modeler.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/processing/modeler.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/processing/modeler.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/processing/modeler.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/modeler.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing/modeler.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing/modeler.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/processing/modeler.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/processing/modeler.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing/modeler.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing/modeler.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing/modeler.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing/modeler.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing/modeler.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/aa1c50d5cee65daceb0d8583c4da0ffc" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

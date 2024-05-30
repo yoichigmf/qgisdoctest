@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>24.1. Introducing GNSS/GPS Data &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_gps/plugins_gps.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="24.2. Live GPS tracking" href="live_GPS_tracking.html" />
+    <link rel="prev" title="24. Working with GPS Data" href="index.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 24.1. Introducing GNSS/GPS Data">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. Visualizing Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">24. Working with GPS Data</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">24.1. Introducing GNSS/GPS Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-gps">24.1.1. What is GPS?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transferring-or-loading-gps-data">24.1.2. Transferring or loading GPS data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="live_GPS_tracking.html">24.2. Live GPS tracking</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS User Guide</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">24. </span>Working with GPS Data</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">24.1. </span>Introducing GNSS/GPS Data</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/working_with_gps/plugins_gps.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="24. Working with GPS Data" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="live_GPS_tracking.html" class="btn btn-neutral float-right" title="24.2. Live GPS tracking" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="introducing-gnss-gps-data">
+<span id="gps-data"></span><h1><span class="section-number">24.1. </span>Introducing GNSS/GPS Data<a class="headerlink" href="#introducing-gnss-gps-data" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#what-is-gps" id="id3">What is GPS?</a></p></li>
+<li><p><a class="reference internal" href="#transferring-or-loading-gps-data" id="id4">Transferring or loading GPS data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#loading-a-gpx-file" id="id5">Loading a GPX file</a></p></li>
+<li><p><a class="reference internal" href="#loading-to-or-from-a-device" id="id6">Loading to or from a device</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="what-is-gps">
+<span id="whatsgps"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">24.1.1. </span>What is GPS?</a><a class="headerlink" href="#what-is-gps" title="Link to this heading"></a></h2>
+<p>GPS, the <strong>Global Positioning System</strong>, is a satellite-based system that allows
+anyone with a GPS receiver to find their exact position anywhere in the world.
+GPS is used as an aid in navigation, for example in airplanes, in boats and by hikers.
+The GPS receiver uses the signals from the satellites to calculate its latitude,
+longitude and (sometimes) elevation.
+Most receivers also have the capability to store:</p>
+<ul class="simple">
+<li><p>locations (known as <strong>waypoints</strong>)</p></li>
+<li><p>sequences of locations that make up a planned <strong>route</strong></p></li>
+<li><p>and a <strong>track</strong> log of the receiver’s movement over time.</p></li>
+</ul>
+<p>Waypoints, routes and tracks are the three basic feature types in GPS data.
+QGIS displays waypoints in point layers, while routes and tracks are displayed in linestring layers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>QGIS supports also GNSS receivers. But we keep using the term GPS in this documentation.</p>
+</div>
+</section>
+<section id="transferring-or-loading-gps-data">
+<span id="label-loadgps"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">24.1.2. </span>Transferring or loading GPS data</a><a class="headerlink" href="#transferring-or-loading-gps-data" title="Link to this heading"></a></h2>
+<section id="loading-a-gpx-file">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">24.1.2.1. </span>Loading a GPX file</a><a class="headerlink" href="#loading-a-gpx-file" title="Link to this heading"></a></h3>
+<p>There are dozens of different file formats for storing GPS data.
+The format that QGIS uses is called GPX (GPS eXchange format),
+which is a standard interchange format that can contain any number of waypoints,
+routes and tracks in the same file.</p>
+<p>To load a <code class="file docutils literal notranslate"><span class="pre">GPX</span></code> file:</p>
+<ol class="arabic simple">
+<li><p>Open the <span class="guilabel">GPS</span> tab in the <span class="guilabel">Data Source Manager</span> dialog, i.e.:</p>
+<ul class="simple">
+<li><p>Click the <a class="reference internal" href="../../../_images/mActionDataSourceManager.png"><img alt="dataSourceManager" src="../../../_images/mActionDataSourceManager.png" style="width: 1.5em;" /></a> <sup>Open Data Source Manager</sup> button on the toolbar
+(or press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">L</kbd></kbd>) and enable the target tab</p></li>
+<li><p>Or select <span class="menuselection">Layer ► Add Layer ►</span> <a class="reference internal" href="../../../_images/mActionAddGpsLayer.png"><img alt="addGpsLayer" src="../../../_images/mActionAddGpsLayer.png" style="width: 1.5em;" /></a>
+<span class="menuselection">Add GPX Layer…</span></p></li>
+</ul>
+</li>
+<li><p>Use the <span class="guilabel">…</span> <sup>Browse</sup> button next to the <span class="guilabel">GPX dataset</span> option
+to select the GPX file</p></li>
+<li><p>Use the check boxes to select the <span class="guilabel">Feature types</span> you want to load from the file.
+Each feature type (<span class="guilabel">Waypoints</span>, <span class="guilabel">Tracks</span> or <span class="guilabel">Routes</span>)
+will be loaded in a separate layer.</p></li>
+</ol>
+<figure class="align-center" id="id1">
+<img alt="../../../_images/gps_datasource.png" src="../../../_images/gps_datasource.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.1 </span><span class="caption-text">Loading GPS Data dialog</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="loading-to-or-from-a-device">
+<span id="load-from-device"></span><h3><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">24.1.2.2. </span>Loading to or from a device</a><a class="headerlink" href="#loading-to-or-from-a-device" title="Link to this heading"></a></h3>
+<p>There are lots of different types of GPS devices and formats.
+Since QGIS uses GPX files, you need a way to convert other GPS file formats to GPX.
+QGIS can do that using the free program <a class="reference external" href="https://www.gpsbabel.org">GPSBabel</a>.
+GPSBabel can help you convert waypoints, tracks, and routes between popular GPS receivers
+such as Garmin or Magellan and mapping programs like Google Earth or Basecamp.
+Literally hundreds of GPS receivers and programs are supported.
+It can also transfer GPS data between your computer and a GPS device.</p>
+<p>Under <span class="menuselection">Settings ►</span> <a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <span class="menuselection">Options ►</span>
+<a class="reference internal" href="../../../_images/mIconGps.png"><img alt="gps" src="../../../_images/mIconGps.png" style="width: 1.5em;" /></a> <span class="menuselection">GPS ►</span> <a class="reference internal" href="../../../_images/mIconGps.png"><img alt="gps" src="../../../_images/mIconGps.png" style="width: 1.5em;" /></a> <span class="menuselection">GPSBabel</span>,
+QGIS allows you to define your own device type and set parameters of conversion
+that could later be used by the <a class="reference internal" href="../processing_algs/qgis/gps.html#gps-algorithms"><span class="std std-ref">Processing GPS algorithms</span></a>.</p>
+<figure class="align-center" id="id2">
+<img alt="../../../_images/options_gpsbabel.png" src="../../../_images/options_gpsbabel.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.2 </span><span class="caption-text">GPS Babel settings</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic">
+<li><p>First you have to define the <span class="guilabel">Path to GPSBabel</span> binaries.</p></li>
+<li><p>Then you may want to add your device.
+You can update devices list using <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add new device</sup>
+or <a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="symbologyRemove" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> <sup>Remove device</sup> button.</p></li>
+<li><p>For each device:</p>
+<ul>
+<li><p>you provide a <span class="guilabel">Device name</span></p></li>
+<li><p>you configure different <span class="guilabel">Commands</span> QGIS will use while interacting with it,
+such as:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Waypoint download</span> from the device</p></li>
+<li><p><span class="guilabel">Waypoint upload</span> to the device</p></li>
+<li><p><span class="guilabel">Route download</span> from the device</p></li>
+<li><p><span class="guilabel">Route upload</span> to the device</p></li>
+<li><p><span class="guilabel">Track download</span> from the device</p></li>
+<li><p><span class="guilabel">Track upload</span> to the device</p></li>
+</ul>
+<p>While the commands are usually GPSBabel commands, you can also use any other command line program that can create a GPX file.
+QGIS will replace the keywords <code class="docutils literal notranslate"><span class="pre">%type</span></code>, <code class="docutils literal notranslate"><span class="pre">%in</span></code>, and <code class="docutils literal notranslate"><span class="pre">%out</span></code> when it runs the command.</p>
+<p>As an example, if you create a device type with the download command
+<code class="docutils literal notranslate"><span class="pre">gpsbabel</span> <span class="pre">%type</span> <span class="pre">-i</span> <span class="pre">garmin</span> <span class="pre">-o</span> <span class="pre">gpx</span> <span class="pre">%in</span> <span class="pre">%out</span></code>
+and then use it to download waypoints from port <code class="docutils literal notranslate"><span class="pre">/dev/ttyS0</span></code> to the file <code class="file docutils literal notranslate"><span class="pre">output.gpx</span></code>,
+QGIS will replace the keywords and run the command
+<code class="docutils literal notranslate"><span class="pre">gpsbabel</span> <span class="pre">-w</span> <span class="pre">-i</span> <span class="pre">garmin</span> <span class="pre">-o</span> <span class="pre">gpx</span> <span class="pre">/dev/ttyS0</span> <span class="pre">output.gpx</span></code>.</p>
+<p>Read the GPSBabel manual for the command line options that may be specific to your use case.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>Once you have created a new device type, it will appear in the device lists for
+the GPS download and upload algorithms.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GPS units allow you to store data in different coordinate systems.
+When downloading a GPX file (from your GPS unit or a web site) and then loading it in QGIS,
+be sure that the data stored in the GPX file uses WGS 84 (latitude/longitude).
+QGIS expects this, and it is the official GPX specification.
+See <a class="reference external" href="https://www.topografix.com/GPX/1/1/">GPX 1.1 Schema Documentation</a>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="24. Working with GPS Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="live_GPS_tracking.html" class="btn btn-neutral float-right" title="24.2. Live GPS tracking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/working_with_gps/plugins_gps.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/working_with_gps/plugins_gps.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/working_with_gps/plugins_gps.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/working_with_gps/plugins_gps.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/working_with_gps/plugins_gps.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/working_with_gps/plugins_gps.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/working_with_gps/plugins_gps.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/working_with_gps/plugins_gps.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/working_with_gps/plugins_gps.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/working_with_gps/plugins_gps.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/working_with_gps/plugins_gps.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/working_with_gps/plugins_gps.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/working_with_gps/plugins_gps.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/working_with_gps/plugins_gps.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/working_with_gps/plugins_gps.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/working_with_gps/plugins_gps.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/working_with_gps/plugins_gps.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_gps/plugins_gps.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/working_with_gps/plugins_gps.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/working_with_gps/plugins_gps.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/working_with_gps/plugins_gps.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/working_with_gps/plugins_gps.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/working_with_gps/plugins_gps.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/working_with_gps/plugins_gps.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/working_with_gps/plugins_gps.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/working_with_gps/plugins_gps.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/674c0c6aeb7f0f3dc6b0e256be379a25" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

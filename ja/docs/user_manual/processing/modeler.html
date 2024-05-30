@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>27.5. モデルデザイナー &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing/modeler.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="27.6. バッチ処理インターフェイス" href="batch.html" />
+    <link rel="prev" title="27.4. 履歴マネージャ" href="history.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 27.5. モデルデザイナー">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. 序文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. 記述ルール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. 機能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. 最初のステップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. プロジェクトファイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGISのユーザインタフェース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. ブラウザパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGISの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. 投影法の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. 地図の可視化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. 一般ツール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. 式でレベルアップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. スタイルライブラリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. データソースの管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. ベクタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. ラスタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. メッシュデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. ベクタタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. 点群の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. 3Dタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. 地図のレイアウト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. OGC / ISOプロトコルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. GPSデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. 認証システム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS の統合</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">27. QGIS プロセシングフレームワーク</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">27.1. はじめに</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">27.2. プロセシングフレームワークを設定する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="toolbox.html">27.3. ツールボックス</a></li>
+<li class="toctree-l3"><a class="reference internal" href="history.html">27.4. 履歴マネージャ</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">27.5. モデルデザイナー</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-model-designer-interface">27.5.1. モデルデザイナーのインタフェース</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-model">27.5.2. モデルを作成する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#saving-and-loading-models">27.5.3. モデルの保存と読み込み</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-a-model">27.5.4. モデルを編集する</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="batch.html">27.6. バッチ処理インターフェイス</a></li>
+<li class="toctree-l3"><a class="reference internal" href="console.html">27.7. プロセシングアルゴリズムをコンソールから使う</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standalone.html">27.8. プロセシングをコマンドラインから使用する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scripts.html">27.9. 新たなプロセシングアルゴリズムをPythonスクリプトで作成する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html">27.10. プロセシングアルゴリズムのための入力と出力の型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3rdParty.html">27.11. 外部アプリケーションの設定</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. プロセシングプロバイダとアルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. ヘルプとサポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. 協力者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. 付録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. 文献とWeb参照</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGISユーザガイド</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">27. </span>QGIS プロセシングフレームワーク</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">27.5. </span>モデルデザイナー</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing/modeler.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="history.html" class="btn btn-neutral float-left" title="27.4. 履歴マネージャ" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="batch.html" class="btn btn-neutral float-right" title="27.6. バッチ処理インターフェイス" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="the-model-designer">
+<span id="processing-modeler"></span><h1><span class="section-number">27.5. </span>モデルデザイナー<a class="headerlink" href="#the-model-designer" title="Link to this heading"></a></h1>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#the-model-designer-interface" id="id16">モデルデザイナーのインタフェース</a></p>
+<ul>
+<li><p><a class="reference internal" href="#model-menu" id="id17">モデルメニュー</a></p></li>
+<li><p><a class="reference internal" href="#edit-menu" id="id18">編集メニュー</a></p></li>
+<li><p><a class="reference internal" href="#view-menu" id="id19">ビューメニュー</a></p></li>
+<li><p><a class="reference internal" href="#panels" id="id20">パネル</a></p></li>
+<li><p><a class="reference internal" href="#about-available-algorithms" id="id21">利用可能なアルゴリズムについて</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-a-model" id="id22">モデルを作成する</a></p>
+<ul>
+<li><p><a class="reference internal" href="#definition-of-inputs" id="id23">入力の定義</a></p></li>
+<li><p><a class="reference internal" href="#definition-of-the-workflow" id="id24">ワークフローの定義</a></p></li>
+<li><p><a class="reference internal" href="#documenting-your-model" id="id25">モデルを文書化する</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#saving-and-loading-models" id="id26">モデルの保存と読み込み</a></p>
+<ul>
+<li><p><a class="reference internal" href="#saving-models" id="id27">モデルを保存する</a></p></li>
+<li><p><a class="reference internal" href="#exporting-a-model-as-a-python-script" id="id28">Pythonスクリプトとしてモデルを出力する</a></p></li>
+<li><p><a class="reference internal" href="#exporting-a-model-as-an-image-pdf-or-svg" id="id29">モデルを画像、PDF又はSVGとしてエクスポートする</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#editing-a-model" id="id30">モデルを編集する</a></p></li>
+</ul>
+</nav>
+<p><em>モデルデザイナー</em> ではシンプルで使いやすいインターフェースを利用して複雑なモデルを作ることができます. GISで作業をするときにほとんどの解析作業は単独で存在するのではなく一連の操作の一部として存在します. グラフィカルモデラーを使うと一連の操作を単一のプロセスにまとめることができ,後で異なるデータセットを入力として実行するときに便利です. 多くのステップや異なるアルゴリズムを含んでいてもモデルは単一のアルゴリズムとして実行されるので時間と労力を節約できます.</p>
+<p>モデルデザイナーはプロセシングメニュー（<span class="menuselection">プロセシング ► モデルデザイナー</span>）から開けます。</p>
+<section id="the-model-designer-interface">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">27.5.1. </span>モデルデザイナーのインタフェース</a><a class="headerlink" href="#the-model-designer-interface" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id2">
+<span id="figure-modeler"></span><img alt="../../../_images/modeler_canvas.png" src="../../../_images/modeler_canvas.png" />
+<figcaption>
+<p><span class="caption-number">図 27.18 </span><span class="caption-text">モデルデザイナー</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>モデラーはその主要部分にモデルの構造やワークフローを構築するための作業用キャンバスが用意されています。</p>
+<p>ダイアログの上部には、さまざまなメニューと <span class="guilabel">ナビゲーション</span> ツールバーがあり、さまざまなツールにアクセスすることができます。</p>
+<section id="model-menu">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">27.5.1.1. </span>モデルメニュー</a><a class="headerlink" href="#model-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.3%" />
+<col style="width: 12.1%" />
+<col style="width: 12.1%" />
+<col style="width: 50.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ラベル</p></th>
+<th class="head"><p>ショートカット</p></th>
+<th class="head"><p>ナビゲーションツールバー</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mIconSuccess.png"><img alt="success" src="../../../_images/mIconSuccess.png" style="width: 1em;" /></a> <span class="guilabel">モデルを有効化</span></p></td>
+<td></td>
+<td></td>
+<td><p>モデルで使用するアルゴリズムや入力が存在するかどうかをチェックします。モデルをリリースする前に便利です。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionPlay.png"><img alt="play" src="../../../_images/mActionPlay.png" style="width: 1.5em;" /></a> <span class="guilabel">モデルを実行...</span></p></td>
+<td><p><kbd class="kbd docutils literal notranslate">F5</kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>モデルを実行します</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">モデル入力の並べ替え...</span></p></td>
+<td></td>
+<td></td>
+<td><p>アルゴリズムダイアログでユーザーに提示される入力の順番を設定します。</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">出力レイヤの並べ替え...</span></p></td>
+<td></td>
+<td></td>
+<td><p>結果をプロジェクトに読み込む際に、モデルからの出力が使用しなければならない特定の順序を設定します。</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionFileOpen.png"><img alt="fileOpen" src="../../../_images/mActionFileOpen.png" style="width: 1.5em;" /></a> <span class="guilabel">モデルを開く...</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">O</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>編集または実行のために <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> ファイルを開く</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <span class="guilabel">モデルを保存</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">S</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>モデルをディスクに <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> ファイルとして保存する</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionFileSaveAs.png"><img alt="fileSaveAs" src="../../../_images/mActionFileSaveAs.png" style="width: 1.5em;" /></a> <span class="guilabel">モデルを別名で保存...</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">S</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>モデルを新しい <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> ファイルとしてディスクに保存する</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <span class="guilabel">モデルをプロジェクトに保存</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>モデルファイルをプロジェクトファイルに埋め込み、プロジェクトファイルを共有する際に利用できるようにします。</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionHelpContents.png"><img alt="helpContents" src="../../../_images/mActionHelpContents.png" style="width: 1.5em;" /></a> <span class="guilabel">モデルのヘルプを編集...</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>モデル、アルゴリズム、パラメータ、出力、さらに作者やバージョン管理などを文書化するインターフェース</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="menuselection">エクスポート ►</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSaveMapAsImage.png"><img alt="saveMapAsImage" src="../../../_images/mActionSaveMapAsImage.png" style="width: 1.5em;" /></a> <span class="menuselection">► 画像としてエクスポート...</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>モデルのグラフィカルデザインをイメージファイル形式で保存します（図解用）</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionSaveAsPDF.png"><img alt="saveAsPDF" src="../../../_images/mActionSaveAsPDF.png" style="width: 1.5em;" /></a><span class="menuselection">► PDFとして出力...</span></p></td>
+<td></td>
+<td></td>
+<td><p>モデルのグラフィカルデザインを <code class="file docutils literal notranslate"><span class="pre">PDF</span></code> ファイル形式で保存します（図解用）</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSaveAsSVG.png"><img alt="saveAsSVG" src="../../../_images/mActionSaveAsSVG.png" style="width: 1.5em;" /></a><span class="menuselection">► SVGとして出力...</span></p></td>
+<td></td>
+<td></td>
+<td><p>モデルのグラフィカルデザインを <code class="file docutils literal notranslate"><span class="pre">SVG</span></code> ファイル形式で保存します（図解用）</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a><span class="menuselection">► Pythonスクリプトとして出力...</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>モデルの説明書を含むpythonスクリプトファイルを生成します</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="edit-menu">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">27.5.1.2. </span>編集メニュー</a><a class="headerlink" href="#edit-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.3%" />
+<col style="width: 12.1%" />
+<col style="width: 12.1%" />
+<col style="width: 50.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ラベル</p></th>
+<th class="head"><p>ショートカット</p></th>
+<th class="head"><p>ナビゲーションツールバー</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSelectAll.png"><img alt="selectAll" src="../../../_images/mActionSelectAll.png" style="width: 1.5em;" /></a> <span class="guilabel">すべて選択</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">A</kbd></kbd></p></td>
+<td></td>
+<td><p>デザイナーのすべてのモデルコンポーネントを選択します</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">選択したコンポーネントをグリッドにスナップ</span></p></td>
+<td></td>
+<td></td>
+<td><p>要素をグリッドにスナップし揃えます</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionRedo.png"><img alt="redo" src="../../../_images/mActionRedo.png" style="width: 1.5em;" /></a> <span class="guilabel">やり直す</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Y</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>最後に取り消されたアクションをロールバックします。<span class="guilabel">元に戻す/やり直す</span> パネルも参照すること。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionUndo.png"><img alt="undo" src="../../../_images/mActionUndo.png" style="width: 1.5em;" /></a> <span class="guilabel">元に戻す</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Z</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>直前の変更を取り消す。<span class="guilabel">元に戻す/やり直す</span> パネルも参照すること。</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionEditCut.png"><img alt="editCut" src="../../../_images/mActionEditCut.png" style="width: 1.5em;" /></a> <span class="guilabel">切り取り</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">X</kbd></kbd></p></td>
+<td></td>
+<td><p>モデルから選択されたコンポーネントを切り取る。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionEditCopy.png"><img alt="editCopy" src="../../../_images/mActionEditCopy.png" style="width: 1.5em;" /></a> <span class="guilabel">コピー</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">C</kbd></kbd></p></td>
+<td></td>
+<td><p>モデルから選択したコンポーネントをコピーする。</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionEditPaste.png"><img alt="editPaste" src="../../../_images/mActionEditPaste.png" style="width: 1.5em;" /></a> <span class="guilabel">貼り付け</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">V</kbd></kbd></p></td>
+<td></td>
+<td><p>切り取りまたはコピーされたコンポーネントの選択部分を、モデルから別のモデル、または同じモデル内に貼り付けます。選択されたコンポーネントは、元のプロパティとコメントを保持します。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionDeleteSelected.png"><img alt="deleteSelected" src="../../../_images/mActionDeleteSelected.png" style="width: 1.5em;" /></a> <span class="guilabel">選択したコンポーネントを削除</span></p></td>
+<td><p><kbd class="kbd docutils literal notranslate">Del</kbd></p></td>
+<td></td>
+<td><p>モデルからコンポーネントを削除します。</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">グループボックスを追加</span></p></td>
+<td></td>
+<td></td>
+<td><p>関連するコンポーネントを視覚的にグループ化するために、関連するコンポーネントの背景にボックスを追加します。特に大きなモデルで、ワークフローをすっきりさせるのに便利です。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="view-menu">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">27.5.1.3. </span>ビューメニュー</a><a class="headerlink" href="#view-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.3%" />
+<col style="width: 12.1%" />
+<col style="width: 12.1%" />
+<col style="width: 50.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ラベル</p></th>
+<th class="head"><p>ショートカット</p></th>
+<th class="head"><p>ナビゲーションツールバー</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="menuselection">対象ズーム ►</span></p></td>
+<td></td>
+<td></td>
+<td><p>選択したグループボックスの範囲にズームする</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomIn.png"><img alt="zoomIn" src="../../../_images/mActionZoomIn.png" style="width: 1.5em;" /></a> <span class="guilabel">拡大</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">+</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionZoomOut.png"><img alt="zoomOut" src="../../../_images/mActionZoomOut.png" style="width: 1.5em;" /></a> <span class="guilabel">縮小</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">-</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomActual.png"><img alt="zoomActual" src="../../../_images/mActionZoomActual.png" style="width: 1.5em;" /></a> <span class="guilabel">100%にズーム</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">1</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionZoomFullExtent.png"><img alt="zoomFullExtent" src="../../../_images/mActionZoomFullExtent.png" style="width: 1.5em;" /></a> <span class="guilabel">全域表示</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p>デザイナーの現在のキャンバスにあるすべてのコンポーネントを表示します</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">コメントを表示</span></p></td>
+<td></td>
+<td></td>
+<td><p>モデルデザイナーの各アルゴリズムや入力に関連するコメントを表示します</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">スナップの有効化</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">パネル表示切り替え</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Tab</kbd></kbd></p></td>
+<td></td>
+<td><p>デザイナーの <a class="reference internal" href="#modelerpanels"><span class="std std-ref">パネル</span></a> をONやOFFにします</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="panels">
+<span id="modelerpanels"></span><h3><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">27.5.1.4. </span>パネル</a><a class="headerlink" href="#panels" title="Link to this heading"></a></h3>
+<p>ウィンドウの左側は、モデルに新しい要素を追加するために使用できる5つのパネルがあるセクションです:</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">モデルのプロパティ</span>: モデルの名前（必須）と、 <a class="reference internal" href="toolbox.html#processing-toolbox"><span class="std std-ref">プロセシングツールボックス</span></a> に表示するグループを指定します</p></li>
+<li><p><span class="guilabel">入力</span>: モデルを形作るすべての <a class="reference internal" href="#processing-inputs"><span class="std std-ref">入力パラメータ</span></a></p></li>
+<li><p><span class="guilabel">アルゴリズム</span>: 利用可能な <a class="reference internal" href="../processing_algs/index.html#processing-algs"><span class="std std-ref">プロセシングアルゴリズム</span></a></p></li>
+<li><p><span class="guilabel">変数</span>: モデルには、そのモデルだけが利用できる固有の <a class="reference internal" href="../introduction/general_tools.html#general-tools-variables"><span class="std std-ref">変数</span></a> を含めることができます。これらの変数は、モデル内で使用されるあらゆる式でアクセスすることができます。この変数は、モデル内でアルゴリズムを制御したり、1つの変数を変更することでモデルの複数の側面を制御するのに便利です。変数は <span class="guilabel">変数</span> パネルで確認・変更することができます。</p></li>
+<li><p><span class="guilabel">編集履歴</span>: このパネルは、モデラーで起こったすべてのことを登録し、間違ったことを簡単に取り消すことができるようにするものです。</p></li>
+</ol>
+</section>
+<section id="about-available-algorithms">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">27.5.1.5. </span>利用可能なアルゴリズムについて</a><a class="headerlink" href="#about-available-algorithms" title="Link to this heading"></a></h3>
+<p>ツールボックスから実行できるアルゴリズムの中には、モデルを設計する際に利用可能なアルゴリズムのリストに表示されないものがあります。モデルに含めるには、アルゴリズムが正しいセマンティクスを持っている必要があります。もしアルゴリズムがそのような明確なセマンティクスを持っていない場合（例えば、出力レイヤの数を事前に知ることができない場合）、モデル内で使用することはできず、モデラーダイアログにあるアルゴリズムのリストには表示されません。一方、いくつかのアルゴリズムはモデラーに固有のものです。これらのアルゴリズムは、<cite>モデラーツール</cite> グループにあります。</p>
+</section>
+</section>
+<section id="creating-a-model">
+<h2><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">27.5.2. </span>モデルを作成する</a><a class="headerlink" href="#creating-a-model" title="Link to this heading"></a></h2>
+<p>モデルの作成には、基本的に2つのステップがあります:</p>
+<ol class="arabic simple">
+<li><p><em>必要な入力の定義</em>。これらの入力はパラメータウィンドウに追加され、ユーザーはモデルを実行する際にその値を設定することができます。モデル自体はアルゴリズムなので、プロセシングフレームワークで利用可能なすべてのアルゴリズムと同様に、パラメータウィンドウは自動的に生成されます。</p></li>
+<li><p><em>ワークフロー</em> の定義。ワークフローは、モデルの入力データを用い、アルゴリズムを追加し、定義された入力やモデル内の他のアルゴリズムによって生成された出力をどのように使用するかを選択することによって、定義されます。</p></li>
+</ol>
+<section id="definition-of-inputs">
+<span id="processing-inputs"></span><h3><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">27.5.2.1. </span>入力の定義</a><a class="headerlink" href="#definition-of-inputs" title="Link to this heading"></a></h3>
+<p>最初のステップはモデルの入力を定義することです。それらはモデラーウィンドウの左側にある <span class="guilabel">入力</span> パネルにあります。入力の上にマウスカーソルを置くと、ツールチップに追加情報が表示されます。モデラーで利用可能なパラメータの完全なリストとスクリプトの対応については <a class="reference internal" href="parameters.html#processing-algs-input-output"><span class="std std-ref">プロセシングアルゴリズムのための入力と出力の型</span></a> を参照してください。</p>
+<p>要素をダブルクリックすると、その特性を定義するためのダイアログが表示されます。パラメータによって、ダイアログには少なくとも1つの要素（説明文、ユーザーがモデルを実行するときに表示されるもの）が含まれます。例えば、数値を追加する場合、次図のように、パラメータの説明に加えて、デフォルト値や有効な値の範囲を設定する必要があります。</p>
+<figure class="align-center" id="id3">
+<span id="figure-model-parameter"></span><img alt="../../../_images/models_parameters.png" src="../../../_images/models_parameters.png" />
+<figcaption>
+<p><span class="caption-number">図 27.19 </span><span class="caption-text">モデルパラメータ定義</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <code class="docutils literal notranslate"><span class="pre">必須</span></code> オプションをチェックすることで、モデルに必須の入力として定義でき、<a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <code class="docutils literal notranslate"><span class="pre">詳細設定</span></code> チェックボックスをチェックすることで、入力を <code class="docutils literal notranslate"><span class="pre">詳細設定</span></code> セクション内に設定することができます。これは、モデルに多くのパラメータがあり、そのうちのいくつかは些細なものではないが、それでも選択したい場合に特に有効です。</p>
+<p>入力が追加されるごとに、モデラーキャンバスに新しい要素が追加されます。</p>
+<figure class="align-center" id="id4">
+<span id="figure-model-parameter-canvas"></span><img alt="../../../_images/models_parameters2.png" src="../../../_images/models_parameters2.png" />
+<figcaption>
+<p><span class="caption-number">図 27.20 </span><span class="caption-text">モデルパラメータ</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>また、リストから入力タイプをドラッグして、モデラーキャンバスの必要な位置にドロップすることで、入力を追加することができます。既存の入力のパラメータを変更したい場合は、その入力をダブルクリックすれば、同じダイアログが表示されます。</p>
+<p>他のモデルの中でモデルを使用する場合、必要な入力と出力がキャンバスに表示されます。</p>
+</section>
+<section id="definition-of-the-workflow">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink"><span class="section-number">27.5.2.2. </span>ワークフローの定義</a><a class="headerlink" href="#definition-of-the-workflow" title="Link to this heading"></a></h3>
+<p>次の例では、2つの入力と2つのアルゴリズムを追加します。このモデルの目的は、<code class="docutils literal notranslate"><span class="pre">ドレープ</span></code> アルゴリズムを用いてDEMラスタレイヤからラインレイヤに標高値をコピーし、<code class="docutils literal notranslate"><span class="pre">線に沿った上昇下降量</span></code> アルゴリズムを用いてラインレイヤの合計上昇量を計算することです。</p>
+<p><span class="guilabel">入力</span> タブで、2つの入力として、ラインには <code class="docutils literal notranslate"><span class="pre">ベクタレイヤ</span></code>、DEMには <code class="docutils literal notranslate"><span class="pre">ラスタレイヤ</span></code> を選択します。これで、ワークフローにアルゴリズムを追加する準備ができました。</p>
+<p>アルゴリズムは <span class="guilabel">アルゴリズム</span> パネルにあり、プロセシングツールボックスにあるのと同じようにグループ化されています。</p>
+<figure class="align-center" id="id5">
+<span id="figure-model-parameter-inputs"></span><img alt="../../../_images/models_parameters3.png" src="../../../_images/models_parameters3.png" />
+<figcaption>
+<p><span class="caption-number">図 27.21 </span><span class="caption-text">モデル入力</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>アルゴリズムをモデルに追加するには、入力と同様に、その名前をダブルクリックするか、ドラッグ＆ドロップします。入力の場合と同様に、アルゴリズムの説明を変更したり、コメントを追加したりすることができます。アルゴリズムを追加すると、ツールボックスからアルゴリズムを実行するときに表示される実行パネルと同じような内容の実行ダイアログが表示されます。次の図は、<code class="docutils literal notranslate"><span class="pre">ドレープ（ラスタ値をZ値に代入）</span></code> と <code class="docutils literal notranslate"><span class="pre">線に沿った上昇下降量</span></code> の両方のアルゴリズムダイアログを示しています。</p>
+<figure class="align-center" id="id6">
+<span id="figure-model-parameter-alg"></span><img alt="../../../_images/models_parameters4.png" src="../../../_images/models_parameters4.png" />
+<figcaption>
+<p><span class="caption-number">図 27.22 </span><span class="caption-text">モデルアルゴリズムパラメータ</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>しかしご覧のように、いくつかの違いがあります。各パラメータの横にはドロップダウンメニューがあり、ワークフロー中にどのように処理されるかを制御することができます:</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/mIconFieldInteger.png"><img alt="fieldInteger" src="../../../_images/mIconFieldInteger.png" style="width: 1.5em;" /></a> <sup>値</sup>: パラメータに静的な値を割り当てることができます。パラメータタイプに応じて、ウィジェットは数値(<code class="docutils literal notranslate"><span class="pre">5.0</span></code>)、文字列(<code class="docutils literal notranslate"><span class="pre">mytext</span></code>)を入力したり、QGISプロジェクトまたはフォルダからレイヤーを選択したり、リストから項目を選択したりすることができます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconExpression.png"><img alt="expression" src="../../../_images/mIconExpression.png" style="width: 1.5em;" /></a> <sup>事前計算済値</sup>: <a class="reference internal" href="../expressions/expression.html#vector-expressions"><span class="std std-ref">式ビルダ</span></a> ダイアログを開き、パラメータを埋める式を定義します。モデル入力と他のレイヤの統計情報は <strong>変数</strong> として利用でき、式ビルダーの検索ダイアログの上部にリストされます。式は子アルゴリズムが実行される前に一度評価され、そのアルゴリズムの実行中に使用されます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/processingModel.png"><img alt="processingModel" src="../../../_images/processingModel.png" style="width: 1.5em;" /></a> <sup>モデル入力</sup>: はモデルに追加された入力をパラメータとして使用することができます。このオプションをクリックすると、パラメータに適した入力がすべてリストアップされます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/processingAlgorithm.png"><img alt="processingAlgorithm" src="../../../_images/processingAlgorithm.png" style="width: 1.5em;" /></a> <sup>アルゴリズム出力</sup>: は、別のアルゴリズムの出力を、現在のアルゴリズムの入力として使用することができます。モデル入力と同様に、このオプションはパラメータに適した入力をすべてリストアップします。</p></li>
+<li><p><strong>出力パラメータ</strong> にも、ドロップダウンメニューに上記のオプションがあります:</p>
+<ul class="simple">
+<li><p>子アルゴリズムに静的出力を追加する。例えば、子アルゴリズムの出力を定義済みのgeopackageやpostgresレイヤに常に保存する</p></li>
+<li><p>子アルゴリズムに式を基にした出力値を使う。例えば、今日の日付に基づいて自動ファイル名を生成し、そのファイルに出力を保存する</p></li>
+<li><p>モデル入力を使う。例えば、<em>ファイル/フォルダ</em> モデル入力を使って、出力ファイルまたはフォルダを指定する</p></li>
+<li><p>別のアルゴリズム出力を使う。例えば、（<em>モデラーツール</em> の） <em>ディレクトリを作成</em> アルゴリズムの出力</p></li>
+<li><p>追加の <a class="reference internal" href="../../../_images/mIconModelOutput.png"><img alt="modelOutput" src="../../../_images/mIconModelOutput.png" style="width: 1.5em;" /></a> <sup>モデル出力</sup> オプションは、アルゴリズムの出力をモデルで利用できるようにします。アルゴリズムによって生成されたレイヤが他のアルゴリズムの入力としてのみ使用される場合は、このテキストボックスを編集しないでください。</p></li>
+</ul>
+<p>次の図では、<code class="docutils literal notranslate"><span class="pre">モデル入力</span></code> として定義された2つの入力パラメータと、一時的な出力レイヤを見ることができます:</p>
+<figure class="align-center" id="id7">
+<img alt="../../../_images/models_parameters5.png" src="../../../_images/models_parameters5.png" />
+<figcaption>
+<p><span class="caption-number">図 27.23 </span><span class="caption-text">アルゴリズム入力と出力パラメータ</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+<p>また、ツールボックスからアルゴリズムを呼び出すときには利用できない <span class="guilabel">Dependencies</span> という追加のパラメータがあります。このパラメータにより、あるアルゴリズムを現在のアルゴリズムの <em>親</em> として明示的に定義することで、アルゴリズムの実行順序を定義することができます。これにより、現在のアルゴリズムの前に <em>親</em> アルゴリズムが実行されます。</p>
+<p>直前のアルゴリズムの出力を自分のアルゴリズムの入力として使用する場合、暗黙的に直前のアルゴリズムが現在のアルゴリズムの親として設定されます（そしてモデラーキャンバスに対応する矢印が配置されます）。しかし、あるアルゴリズムが、その出力オブジェクトを使用していなくても、別のアルゴリズムに依存している場合があります（例えば、PostGISデータベース上でSQL文を実行するアルゴリズムと、その同じデータベースにレイヤをインポートする別のアルゴリズム）。その場合、<em>Dependencies</em> パラメータで前のアルゴリズムを選択するだけで、正しい順序で実行されます。</p>
+<p>全てのパラメータに有効な値が代入されたら、 <span class="guilabel">OK</span> をクリックしてアルゴリズムをキャンバスに追加します。これは、アルゴリズムの入力として使用されるオブジェクトを提供するキャンバスの要素（アルゴリズムまたは入力）にリンクされます。</p>
+<p>要素は、<a class="reference internal" href="../../../_images/mActionSelect.png"><img alt="select" src="../../../_images/mActionSelect.png" style="width: 1.5em;" /></a> <sup>アイテムを選択/移動</sup> ツールを使ってキャンバス上の別の位置にドラッグすることができます。これはモデルの構造をより明確に、より直感的にするのに便利です。また、要素の境界をつかんでサイズを変更することもできます。これは入力やアルゴリズムの説明が長い場合に特に便利です。<span class="menuselection">ビュー ► スナップの有効化</span> オプションをチェックすると、アイテムのサイズ変更や移動が仮想的なグリッドに拘束され、より視覚的に構造化されたアルゴリズム設計が可能になります。</p>
+<p>要素間のリンクは自動的に更新され、各アルゴリズムの上部と下部に <code class="docutils literal notranslate"><span class="pre">+</span></code> ボタンが表示されます。ボタンをクリックすると、そのアルゴリズムのすべての入力と出力が一覧表示されるので、概要を素早く把握することができます。</p>
+<figure class="align-center" id="id8">
+<span id="figure-model-model"></span><img alt="../../../_images/models_model.png" src="../../../_images/models_model.png" />
+<figcaption>
+<p><span class="caption-number">図 27.24 </span><span class="caption-text">完成したモデル</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><span class="menuselection">編集 ► グループボックスを追加</span> ツールを使用すると、キャンバスにドラッグ可能な <em>ボックス</em> を追加することができます。この機能は、大きなモデルで関連する要素をモデラーキャンバス内でグループ化し、ワークフローをすっきりさせるのに非常に便利です。例えば、例のすべての入力をグループ化することができます:</p>
+<figure class="align-center" id="id9">
+<img alt="../../../_images/model_group_box.png" src="../../../_images/model_group_box.png" />
+<figcaption>
+<p><span class="caption-number">図 27.25 </span><span class="caption-text">モデルグループボックス</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>ボックスの名前と色は変更できます。グループボックスは <span class="menuselection">ビュー ► 対象ズーム ►</span> ツールと一緒に使うと非常に便利で、モデルの特定の部分にズームインすることができます。また、マウスホイールを使って拡大、縮小することもできます。</p>
+<p>入力の順番を変更したり、メインのモデルダイアログにどのように入力が表示されるかを変更したい場合があるかもしれません。<code class="docutils literal notranslate"><span class="pre">入力</span></code> パネルの一番下に <code class="docutils literal notranslate"><span class="pre">モデル入力の並べ替え...</span></code> というボタンがあり、これをクリックすると新しいダイアログがポップアップ表示され、入力の順番を変更することができます:</p>
+<figure class="align-center" id="id10">
+<img alt="../../../_images/model_reorder_inputs.png" src="../../../_images/model_reorder_inputs.png" />
+<figcaption>
+<p><span class="caption-number">図 27.26 </span><span class="caption-text">モデル入力の並べ替え</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>また、結果をプロジェクトに読み込む際に、モデルからの出力が使用しなければならない特定の順序を設定することもできます。これはモデル作成者に、モデルを実行する際にキャンバス上でレイヤが論理的に順序付けられることを保証する手段を与えます。例えば、ラスタレイヤ出力の上にベクタレイヤ出力を配置したり、ポリゴンレイヤの上にポイントレイヤを配置したりすることができます。モデル作成者は出力にオプションの「グループ名」を設定することもでき、新しいグループ名を使用して出力をレイヤツリー内で自動的にグループ化するか、既存のグループに追加することができます。<code class="docutils literal notranslate"><span class="pre">モデル</span></code> メニューの中に <code class="docutils literal notranslate"><span class="pre">出力レイヤを並べ替え...</span></code> という項目があり、これをクリックすると新しいダイアログがポップアップし、出力レイヤの順序を変更することができます:</p>
+<figure class="align-center" id="id11">
+<img alt="../../../_images/model_reorder_output_layers.png" src="../../../_images/model_reorder_output_layers.png" />
+<figcaption>
+<p><span class="caption-number">図 27.27 </span><span class="caption-text">出力レイヤを並べ替え</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>モデラー内の入力やアルゴリズムにコメントを追加することもできます。これはアイテムの <span class="guilabel">コメント</span> タブを開くか、右クリックすることで行えます。同じタブで、個々のモデルコメントに対して手動で色を設定することができます。コメントはモデラーキャンバスのみに表示され、最終アルゴリズムダイアログには表示されません。 <span class="menuselection">ビュー ► コメントを表示</span> を無効にすることで非表示にすることができます。</p>
+<p><a class="reference internal" href="../../../_images/mActionStart.png"><img alt="start" src="../../../_images/mActionStart.png" style="width: 1.5em;" /></a> <sup>モデルを実行</sup> ボタンをクリックすることで、いつでもアルゴリズムを実行することができます。モデルを実行するためにエディタを使用するとき、デフォルト以外の値は入力に保存されます。これは、後でエディタからモデルを実行すると、ダイアログにそれらの値が事前に入力されることを意味します。</p>
+<p>ツールボックスのアルゴリズムを使用するには、保存してモデラーダイアログを閉じ、ツールボックスの内容を更新する必要があります。</p>
+</section>
+<section id="documenting-your-model">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink"><span class="section-number">27.5.2.3. </span>モデルを文書化する</a><a class="headerlink" href="#documenting-your-model" title="Link to this heading"></a></h3>
+<p>モデルを文書化する必要がありますが、これはモデラー自身から行うことができます。<a class="reference internal" href="../../../_images/mActionEditHelpContent.png"><img alt="editHelpContent" src="../../../_images/mActionEditHelpContent.png" style="width: 1.5em;" /></a> <sup>モデルのヘルプを編集</sup> ボタンをクリックすると、次に示すようなダイアログが表示されます。</p>
+<figure class="align-center" id="id12">
+<span id="figure-help-edition"></span><img alt="../../../_images/help_edition.png" src="../../../_images/help_edition.png" />
+<figcaption>
+<p><span class="caption-number">図 27.28 </span><span class="caption-text">ヘルプを編集する</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>右側には、モデルの一般的な説明や作者のような追加項目とともに、アルゴリズムの入力パラメータと出力の説明を使って作られた単純なHTMLページが表示されます。また、モデルの使い方を説明するために、独自のカスタム例を入力できる例セクションもあります。ヘルプエディタを初めて開いたときは、これらの説明はすべて空ですが、ダイアログの左側の要素を使って編集することができます。上部の要素を選択し、下のテキストボックスにその説明を書き込みます。</p>
+<p>モデルヘルプはモデル自体の一部として保存されます。</p>
+</section>
+</section>
+<section id="saving-and-loading-models">
+<h2><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">27.5.3. </span>モデルの保存と読み込み</a><a class="headerlink" href="#saving-and-loading-models" title="Link to this heading"></a></h2>
+<section id="saving-models">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">27.5.3.1. </span>モデルを保存する</a><a class="headerlink" href="#saving-models" title="Link to this heading"></a></h3>
+<p>現在のモデルを保存するには <a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <sup>モデルを保存</sup> ボタンを、以前に保存したモデルを開くには <a class="reference internal" href="../../../_images/mActionFileOpen.png"><img alt="fileOpen" src="../../../_images/mActionFileOpen.png" style="width: 1.5em;" /></a> <sup>モデルを開く</sup> ボタンを使用します。モデルは <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> という拡張子で保存されます。モデルがすでにモデラーウィンドウから保存されている場合、ファイル名を入力するプロンプトは表示されません。モデルにはすでにファイルが関連付けられているため、以降の保存にはそのファイルが使用されます。</p>
+<p>モデルを保存する前に、ウィンドウ上部のテキストボックスに名前とグループを入力する必要があります。</p>
+<p><code class="file docutils literal notranslate"><span class="pre">models</span></code> フォルダ（モデルを保存するためのファイル名を入力するプロンプトが表示されたときのデフォルトのフォルダ）に保存されたモデルは、対応するブランチのツールボックスに表示されます。ツールボックスが起動されると、 <code class="file docutils literal notranslate"><span class="pre">models</span></code> フォルダから <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> という拡張子のファイルを探し、その中に含まれるモデルをロードします。モデルはそれ自体がアルゴリズムなので、他のアルゴリズムと同じようにツールボックスに追加することができます。</p>
+<p>また、<a class="reference internal" href="../../../_images/mAddToProject.png"><img alt="addToProject" src="../../../_images/mAddToProject.png" style="width: 1.5em;" /></a> <sup>モデルをプロジェクトに保存</sup> ボタンを使ってプロジェクトファイル内にモデルを保存することもできます。この方法で保存されたモデルはディスク上に <code class="file docutils literal notranslate"><span class="pre">.model3</span></code> ファイルとして書き出されるのではなく、プロジェクトファイルに埋め込まれます。</p>
+<p>プロジェクトモデルはツールボックスの <a class="reference internal" href="../../../_images/mIconQgsProjectFile.png"><img alt="qgsProjectFile" src="../../../_images/mIconQgsProjectFile.png" style="width: 1.5em;" /></a> <span class="guilabel">プロジェクトモデル</span> メニューと <span class="menuselection">プロジェクト ► モデル</span> メニュー項目で利用できます。</p>
+<p>モデルフォルダは、プロセシング設定ダイアログの <span class="guilabel">モデル</span> グループ下から設定できます。</p>
+<p><code class="file docutils literal notranslate"><span class="pre">models</span></code> フォルダからロードされたモデルはツールボックスだけでなく、モデラーウィンドウの <span class="guilabel">アルゴリズム</span> タブにあるアルゴリズムツリーにも表示されます。つまり、他のアルゴリズムと同じように、より大きなモデルの一部としてモデルを組み込むことができるのです。</p>
+<p>モデルは <a class="reference internal" href="../managing_data_source/opening_data.html#browser-panel"><span class="std std-ref">ブラウザ</span></a> パネルに表示され、そこから実行することができます。</p>
+</section>
+<section id="exporting-a-model-as-a-python-script">
+<h3><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">27.5.3.2. </span>Pythonスクリプトとしてモデルを出力する</a><a class="headerlink" href="#exporting-a-model-as-a-python-script" title="Link to this heading"></a></h3>
+<p>後の章で説明するように、プロセシングアルゴリズムはQGIS Pythonコンソールから呼び出すことができ、Pythonを使って新しいプロセシングアルゴリズムを作成することができます。このようなPythonスクリプトを作成する簡単な方法は、モデルを作成し、それをPythonファイルとしてエクスポートすることです。</p>
+<p>これを行うには、モデラーキャンバスで <a class="reference internal" href="../../../_images/mActionSaveAsPython.png"><img alt="saveAsPython" src="../../../_images/mActionSaveAsPython.png" style="width: 1.5em;" /></a> <sup>スクリプトアルゴリズムとして出力...</sup> をクリックするか、プロセシングツールボックスでモデルの名前を右クリックして <a class="reference internal" href="../../../_images/mActionSaveAsPython.png"><img alt="saveAsPython" src="../../../_images/mActionSaveAsPython.png" style="width: 1.5em;" /></a> <sup>Pythonアルゴリズムとしてモデルを出力...</sup> を選択します。</p>
+</section>
+<section id="exporting-a-model-as-an-image-pdf-or-svg">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">27.5.3.3. </span>モデルを画像、PDF又はSVGとしてエクスポートする</a><a class="headerlink" href="#exporting-a-model-as-an-image-pdf-or-svg" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/mActionSaveMapAsImage.png"><img alt="saveMapAsImage" src="../../../_images/mActionSaveMapAsImage.png" style="width: 1.5em;" /></a> <sup>画像として出力</sup>、 <a class="reference internal" href="../../../_images/mActionSaveAsPDF.png"><img alt="saveAsPDF" src="../../../_images/mActionSaveAsPDF.png" style="width: 1.5em;" /></a><sup>PDFとして出力</sup>、 <a class="reference internal" href="../../../_images/mActionSaveAsSVG.png"><img alt="saveAsSVG" src="../../../_images/mActionSaveAsSVG.png" style="width: 1.5em;" /></a><sup>SVGとして出力</sup> をクリックすると、モデルを画像、SVG、PDF（図解用）としてエクスポートすることもできます。</p>
+</section>
+</section>
+<section id="editing-a-model">
+<h2><a class="toc-backref" href="#id30" role="doc-backlink"><span class="section-number">27.5.4. </span>モデルを編集する</a><a class="headerlink" href="#editing-a-model" title="Link to this heading"></a></h2>
+<p>現在作成中のモデルを編集し、ワークフローや、モデルを定義するアルゴリズムと入力の関係を再定義することができます。</p>
+<p>キャンバス内のアルゴリズムを右クリックすると、次に示すようなコンテキストメニューが表示されます：</p>
+<figure class="align-center" id="id13">
+<span id="figure-model-right-click"></span><img alt="../../../_images/modeler_right_click.png" src="../../../_images/modeler_right_click.png" />
+<figcaption>
+<p><span class="caption-number">図 27.29 </span><span class="caption-text">モデラー右ボタンクリック</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><span class="guilabel">削除</span> オプションを選択すると選択されているアルゴリズムを削除できます。アルゴリズムは他のアルゴリズムからの依存がなければ削除できます。つまり、アルゴリズムからの出力が別のアルゴリズムの入力として使用されていない場合。他のアルゴリズムからの依存があるアルゴリズムを削除しようとすると、以下のような警告メッセージが表示されます:</p>
+<figure class="align-center" id="id14">
+<span id="figure-cannot-delete-alg"></span><img alt="../../../_images/cannot_delete_alg.png" src="../../../_images/cannot_delete_alg.png" />
+<figcaption>
+<p><span class="caption-number">図 27.30 </span><span class="caption-text">アルゴリズムを削除できない</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><span class="guilabel">編集...</span> オプションを選択すると、アルゴリズムのパラメータダイアログが表示され、入力やパラメータの値を変更することができます。モデルで利用可能なすべての入力要素が利用可能な入力として表示されるわけではありません。モデルで定義されたワークフローのより高度なステップで生成されたレイヤや値は、循環依存関係を引き起こす場合には利用できません。</p>
+<p>新しい値を選択し、通常通り <span class="guilabel">OK</span> ボタンをクリックします。モデル要素間の接続は、それに応じてモデラーキャンバスで変更されます。</p>
+<p><span class="guilabel">コメントを追加...</span> を使うと、アルゴリズムにコメントを追加して動作をより分かりやすく説明することができます。</p>
+<p>モデルを部分的に実行するには、いくつかのアルゴリズムを非アクティブにします。これを行うには、アルゴリズム要素を右クリックしたときに表示されるコンテキストメニューの <span class="guilabel">無効化</span> オプションを選択します。選択されたアルゴリズムと、それに依存するモデル内のすべてのアルゴリズムが灰色で表示され、モデルの一部として実行されなくなります。</p>
+<figure class="align-center" id="id15">
+<span id="figure-cannot-model-deactivate"></span><img alt="../../../_images/deactivated.png" src="../../../_images/deactivated.png" />
+<figcaption>
+<p><span class="caption-number">図 27.31 </span><span class="caption-text">無効化されたアルゴリズムを持つモデル</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>アクティブでないアルゴリズムを右クリックすると、 <span class="guilabel">有効化</span> メニューオプションが表示されます。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="history.html" class="btn btn-neutral float-left" title="27.4. 履歴マネージャ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="batch.html" class="btn btn-neutral float-right" title="27.6. バッチ処理インターフェイス" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing/modeler.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/processing/modeler.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/processing/modeler.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/processing/modeler.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/processing/modeler.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/processing/modeler.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/processing/modeler.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/processing/modeler.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/processing/modeler.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/processing/modeler.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/processing/modeler.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/processing/modeler.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/processing/modeler.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/processing/modeler.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/processing/modeler.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/processing/modeler.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/user_manual/processing/modeler.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/user_manual/processing/modeler.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/processing/modeler.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/user_manual/processing/modeler.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/user_manual/processing/modeler.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/user_manual/processing/modeler.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/user_manual/processing/modeler.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/user_manual/processing/modeler.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/user_manual/processing/modeler.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing/modeler.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/aa1c50d5cee65daceb0d8583c4da0ffc" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

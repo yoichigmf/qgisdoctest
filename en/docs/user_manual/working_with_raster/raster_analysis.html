@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>17.2. Raster Analysis &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_raster/raster_analysis.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="17.3. Georeferencer" href="georeferencer.html" />
+    <link rel="prev" title="17.1. Raster Properties Dialog" href="raster_properties.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 17.2. Raster Analysis">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. Visualizing Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">17. Working with Raster Data</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="raster_properties.html">17.1. Raster Properties Dialog</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">17.2. Raster Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#raster-calculator">17.2.1. Raster Calculator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="georeferencer.html">17.3. Georeferencer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS User Guide</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">17. </span>Working with Raster Data</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">17.2. </span>Raster Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/working_with_raster/raster_analysis.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="raster_properties.html" class="btn btn-neutral float-left" title="17.1. Raster Properties Dialog" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="georeferencer.html" class="btn btn-neutral float-right" title="17.3. Georeferencer" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="raster-analysis">
+<span id="sec-raster-analysis"></span><span id="index-0"></span><h1><span class="section-number">17.2. </span>Raster Analysis<a class="headerlink" href="#raster-analysis" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#raster-calculator" id="id3">Raster Calculator</a></p>
+<ul>
+<li><p><a class="reference internal" href="#raster-calculator-expression" id="id4">Raster calculator expression</a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-dialog" id="id5">The dialog</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id6">Examples</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="raster-calculator">
+<span id="label-raster-calc"></span><span id="index-1"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">17.2.1. </span>Raster Calculator</a><a class="headerlink" href="#raster-calculator" title="Link to this heading"></a></h2>
+<p>The <span class="menuselection">Raster Calculator</span> in the <span class="menuselection">Raster</span> menu
+allows you to perform calculations on the basis of existing
+raster pixel values (see <a class="reference internal" href="#figure-raster-calculator"><span class="std std-numref">Fig. 17.22</span></a>).
+The results are written to a new raster layer in a GDAL-supported format.</p>
+<figure class="align-center" id="id1">
+<span id="figure-raster-calculator"></span><img alt="../../../_images/raster_calculator1.png" src="../../../_images/raster_calculator1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17.22 </span><span class="caption-text">Raster Calculator</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The <span class="guilabel">Raster bands</span> list contains all loaded raster layers that can be used.
+To add a raster to the raster calculator expression field, double
+click its name in the Fields list. You can then use the operators to construct
+calculation expressions, or you can just type them into the box.</p>
+<p>In the <span class="guilabel">Result layer</span> section, you will need to define an output layer.
+You can:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Create on-the-fly raster instead of writing layer to disk</span>:</p>
+<ul>
+<li><p>If unchecked, the output is stored on the disk as a new plain file.
+An <span class="guilabel">Output layer</span> path and an <span class="guilabel">Output format</span> are required.</p></li>
+<li><p>If checked, a virtual raster layer, i.e. a raster layer defined by its URI and
+whose pixels are calculated on-the-fly, is created. It’s not a new file on disk;
+the virtual layer is still connected to the rasters used in the calculation
+meaning that deleting or moving these rasters would break it.
+A <span class="guilabel">Layer name</span> can be provided, otherwise the calculation expression
+is used as such. Removing the virtual layer from the project deletes it,
+and it can be made persistent in file using the layer
+<span class="menuselection">Export ► Save as…</span> contextual menu.</p></li>
+</ul>
+</li>
+<li><p>Define the <span class="guilabel">Spatial extent</span> of the calculation based on an input
+raster layer extent, or on custom X,Y coordinates</p></li>
+<li><p>Set the <span class="guilabel">Resolution</span> of the layer using columns and rows number.
+If the input layer has a different resolution, the values will be
+resampled with the nearest neighbor algorithm.</p></li>
+<li><p>With the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Add result to project</span> checkbox, the result layer
+will automatically be added to the legend area and can be visualized.
+Checked by default for virtual rasters.</p></li>
+</ul>
+<p>The <span class="guilabel">Operators</span> section contains all available operators. To add an operator
+to the raster calculator expression box, click the appropriate button. Mathematical
+calculations (<code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, … ) and trigonometric functions (<code class="docutils literal notranslate"><span class="pre">sin</span></code>,
+<code class="docutils literal notranslate"><span class="pre">cos</span></code>, <code class="docutils literal notranslate"><span class="pre">tan</span></code>, … ) are available. Conditional expressions (<code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, … ) return either 0 for false or 1 for true, and therefore can be
+used with other operators and functions.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../processing_algs/qgis/rasteranalysis.html#qgisrastercalc"><span class="std std-ref">Raster calculator</span></a> and <a class="reference internal" href="../processing_algs/qgis/rasteranalysis.html#qgisvirtualrastercalc"><span class="std std-ref">Raster calculator (virtual)</span></a> algorithms</p>
+</div>
+<section id="raster-calculator-expression">
+<span id="raster-expression"></span><h3><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">17.2.1.1. </span>Raster calculator expression</a><a class="headerlink" href="#raster-calculator-expression" title="Link to this heading"></a></h3>
+<section id="the-dialog">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">The dialog</a><a class="headerlink" href="#the-dialog" title="Link to this heading"></a></h4>
+<p>The <span class="guilabel">Raster calculator expression</span> dialog provides means to write expressions
+for pixels calculations between a set of raster layers.</p>
+<figure class="align-center" id="id2">
+<span id="figure-raster-expression-calculator"></span><img alt="../../../_images/raster_calculator_expression.png" src="../../../_images/raster_calculator_expression.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17.23 </span><span class="caption-text">Raster Expression Calculator</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p><span class="guilabel">Layers</span>: Shows the list of all raster layers loaded in the legend.
+These can be used to fill the expression box (double click to add).
+Raster layers are referred by their name and the number of the band: <code class="docutils literal notranslate"><span class="pre">layer_name&#64;band_number</span></code>.
+For instance, the first band from a layer named <code class="docutils literal notranslate"><span class="pre">DEM</span></code> will be referred as <code class="docutils literal notranslate"><span class="pre">DEM&#64;1</span></code>.</p></li>
+<li><p><span class="guilabel">Operators</span>: contains a number of calculation operators for pixels manipulation:</p>
+<ul class="simple">
+<li><p>Arithmetical: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>, <code class="docutils literal notranslate"><span class="pre">abs</span></code>, <code class="docutils literal notranslate"><span class="pre">ln</span></code>, …</p></li>
+<li><p>Trigonometric: <code class="docutils literal notranslate"><span class="pre">sin</span></code>, <code class="docutils literal notranslate"><span class="pre">cos</span></code>, <code class="docutils literal notranslate"><span class="pre">tan</span></code>, …</p></li>
+<li><p>Comparison: <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, …</p></li>
+<li><p>Logical: <code class="docutils literal notranslate"><span class="pre">IF</span></code>, <code class="docutils literal notranslate"><span class="pre">AND</span></code>, <code class="docutils literal notranslate"><span class="pre">OR</span></code>, <code class="docutils literal notranslate"><span class="pre">(</span></code>, <code class="docutils literal notranslate"><span class="pre">)</span></code></p></li>
+<li><p>Statistical: <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code></p></li>
+</ul>
+<p>To add an operator to the raster calculator expression box, click the appropriate button.</p>
+</li>
+<li><p><span class="guilabel">Raster calculator expression</span> is the area in which the expression is composed</p></li>
+</ul>
+</section>
+<section id="examples">
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h4>
+<p><strong>Convert elevation values from meters to feet</strong></p>
+<p>Creating an elevation raster in feet from a raster in meters, you need to use the
+conversion factor for meters to feet: 3.28. The expression is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;elevation@1&quot;</span> <span class="o">*</span> <span class="mf">3.28</span>
+</pre></div>
+</div>
+<p><strong>Using a mask</strong></p>
+<p>If you want to mask out parts of a raster – say, for instance, because you are
+only interested in elevations above 0 meters – you can use the following expression
+to create a mask and apply the result to a raster in one step.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s2">&quot;elevation@1&quot;</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot;elevation@1&quot;</span>
+</pre></div>
+</div>
+<p>In other words, for every cell greater than or equal to 0 the conditional expression
+evaluates to 1, which keeps the original value by multiplying it by 1.
+Otherwise the conditional expression evaluates to 0, which sets the raster value to 0.
+This creates the mask on the fly.</p>
+<p><strong>Classify a Raster</strong></p>
+<p>If you want to classify a raster – say, for instance into two elevation classes,
+you can use the following expression to create a raster with two values 1 and 2
+in one step.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s2">&quot;elevation@1&quot;</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;elevation@1&quot;</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>In other words, for every cell less than 50 set its value to 1.
+For every cell greater than or equal 50 set its value to 2.</p>
+<p>Or you can use the <code class="docutils literal notranslate"><span class="pre">IF</span></code> operator.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span> <span class="n">elevation</span><span class="o">@</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">2</span> <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="raster_properties.html" class="btn btn-neutral float-left" title="17.1. Raster Properties Dialog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="georeferencer.html" class="btn btn-neutral float-right" title="17.3. Georeferencer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/working_with_raster/raster_analysis.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/working_with_raster/raster_analysis.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/working_with_raster/raster_analysis.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/working_with_raster/raster_analysis.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/working_with_raster/raster_analysis.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/working_with_raster/raster_analysis.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/working_with_raster/raster_analysis.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/working_with_raster/raster_analysis.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/working_with_raster/raster_analysis.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/working_with_raster/raster_analysis.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/working_with_raster/raster_analysis.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/working_with_raster/raster_analysis.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/working_with_raster/raster_analysis.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/working_with_raster/raster_analysis.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/working_with_raster/raster_analysis.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/working_with_raster/raster_analysis.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/working_with_raster/raster_analysis.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_raster/raster_analysis.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/working_with_raster/raster_analysis.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/working_with_raster/raster_analysis.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/working_with_raster/raster_analysis.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/working_with_raster/raster_analysis.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/working_with_raster/raster_analysis.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/working_with_raster/raster_analysis.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/working_with_raster/raster_analysis.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/working_with_raster/raster_analysis.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/e5f5c4b9f7f8f8c7138395537d105940" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

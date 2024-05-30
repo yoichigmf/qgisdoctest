@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>18. メッシュデータの操作 &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_mesh/mesh.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="19. ベクタタイルの操作" href="../working_with_vector_tiles/vector_tiles.html" />
+    <link rel="prev" title="17.3. ジオリファレンサ" href="../working_with_raster/georeferencer.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 18. メッシュデータの操作">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. 序文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. 記述ルール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. 機能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. 最初のステップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. プロジェクトファイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGISのユーザインタフェース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. ブラウザパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGISの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. 投影法の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. 地図の可視化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. 一般ツール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. 式でレベルアップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. スタイルライブラリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. データソースの管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. ベクタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. ラスタデータの操作</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">18. メッシュデータの操作</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-a-mesh">18.1. メッシュとは？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-formats">18.2. サポートする形式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mesh-dataset-properties">18.3. メッシュデータセットのプロパティ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#information-properties">18.3.1. 情報プロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-properties">18.3.2. ソースプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#symbology-properties">18.3.3. シンボロジプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#d-view-properties">18.3.4. 3Dビュープロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rendering-properties">18.3.5. レンダリングプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#temporal-properties">18.3.6. 時系列プロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elevation-properties">18.3.7. 高さプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-properties">18.3.8. メタデータプロパティ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-a-mesh-layer">18.4. メッシュレイヤを編集する</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview-of-the-mesh-digitizing-tools">18.4.1. メッシュデジタイジングツールの概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exploring-the-z-value-assignment-logic">18.4.2. Z値割り当てロジックを探検する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selecting-mesh-elements">18.4.3. メッシュ要素を選択する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modifying-mesh-elements">18.4.4. メッシュ要素を変更する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reindexing-meshes">18.4.5. メッシュの再インデックス化</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mesh-calculator">18.5. メッシュ計算機</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. ベクタタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. 点群の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. 3Dタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. 地図のレイアウト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. OGC / ISOプロトコルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. GPSデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. 認証システム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS の統合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS プロセシングフレームワーク</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. プロセシングプロバイダとアルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. ヘルプとサポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. 協力者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. 付録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. 文献とWeb参照</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGISユーザガイド</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">18. </span>メッシュデータの操作</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/working_with_mesh/mesh.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../working_with_raster/georeferencer.html" class="btn btn-neutral float-left" title="17.3. ジオリファレンサ" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_vector_tiles/vector_tiles.html" class="btn btn-neutral float-right" title="19. ベクタタイルの操作" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 99.60% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="working-with-mesh-data">
+<span id="label-meshdata"></span><h1><span class="section-number">18. </span>メッシュデータの操作<a class="headerlink" href="#working-with-mesh-data" title="Link to this heading"></a></h1>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#what-s-a-mesh" id="id26">メッシュとは？</a></p></li>
+<li><p><a class="reference internal" href="#supported-formats" id="id27">サポートする形式</a></p></li>
+<li><p><a class="reference internal" href="#mesh-dataset-properties" id="id28">メッシュデータセットのプロパティ</a></p>
+<ul>
+<li><p><a class="reference internal" href="#information-properties" id="id29">情報プロパティ</a></p></li>
+<li><p><a class="reference internal" href="#source-properties" id="id30">ソースプロパティ</a></p></li>
+<li><p><a class="reference internal" href="#symbology-properties" id="id31">シンボロジプロパティ</a></p>
+<ul>
+<li><p><a class="reference internal" href="#datasets" id="id32">データセット</a></p></li>
+<li><p><a class="reference internal" href="#contours-symbology" id="id33">等高線シンボロジ</a></p></li>
+<li><p><a class="reference internal" href="#vectors-symbology" id="id34">ベクタシンボロジ</a></p></li>
+<li><p><a class="reference internal" href="#rendering" id="id35">レンダリング</a></p></li>
+<li><p><a class="reference internal" href="#stacked-mesh-averaging-method" id="id36">多層メッシュ平均化法</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#d-view-properties" id="id37">3Dビュープロパティ</a></p></li>
+<li><p><a class="reference internal" href="#rendering-properties" id="id38">レンダリングプロパティ</a></p></li>
+<li><p><a class="reference internal" href="#temporal-properties" id="id39">時系列プロパティ</a></p></li>
+<li><p><a class="reference internal" href="#elevation-properties" id="id40">高さプロパティ</a></p></li>
+<li><p><a class="reference internal" href="#metadata-properties" id="id41">メタデータプロパティ</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#editing-a-mesh-layer" id="id42">メッシュレイヤを編集する</a></p>
+<ul>
+<li><p><a class="reference internal" href="#overview-of-the-mesh-digitizing-tools" id="id43">メッシュデジタイジングツールの概要</a></p></li>
+<li><p><a class="reference internal" href="#exploring-the-z-value-assignment-logic" id="id44">Z値割り当てロジックを探検する</a></p>
+<ul>
+<li><p><a class="reference internal" href="#rules-of-assignment" id="id45">割り当て規則</a></p></li>
+<li><p><a class="reference internal" href="#modifying-z-value-of-existing-vertices" id="id46">既存の頂点のZ値を変更する</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#selecting-mesh-elements" id="id47">メッシュ要素を選択する</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-digitize-mesh-elements" id="id48"><span class="guilabel">メッシュ要素をデジタイズ</span> を使う</a></p></li>
+<li><p><a class="reference internal" href="#using-select-mesh-elements-by-polygon" id="id49"><span class="guilabel">ポリゴンによるメッシュ要素選択</span> を使う</a></p></li>
+<li><p><a class="reference internal" href="#using-select-mesh-elements-by-expression" id="id50"><span class="guilabel">式によるメッシュ要素選択</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#modifying-mesh-elements" id="id51">メッシュ要素を変更する</a></p>
+<ul>
+<li><p><a class="reference internal" href="#adding-vertices" id="id52">頂点を追加する</a></p></li>
+<li><p><a class="reference internal" href="#adding-faces" id="id53">面を追加する</a></p></li>
+<li><p><a class="reference internal" href="#removing-mesh-elements" id="id54">メッシュ要素を削除する</a></p></li>
+<li><p><a class="reference internal" href="#moving-mesh-elements" id="id55">メッシュ要素を移動する</a></p></li>
+<li><p><a class="reference internal" href="#transforming-mesh-vertices" id="id56">メッシュの頂点を変形する</a></p></li>
+<li><p><a class="reference internal" href="#reshaping-mesh-geometry" id="id57">メッシュジオメトリを整形する</a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-contextual-menu" id="id58">コンテキストメニュー</a></p></li>
+<li><p><a class="reference internal" href="#the-edge-markers" id="id59">辺マーカー</a></p></li>
+<li><p><a class="reference internal" href="#the-force-by-selected-geometries-tool" id="id60"><span class="guilabel">選択されたジオメトリで強制</span> ツール</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#reindexing-meshes" id="id61">メッシュの再インデックス化</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#mesh-calculator" id="id62">メッシュ計算機</a></p></li>
+</ul>
+</nav>
+<section id="what-s-a-mesh">
+<h2><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">18.1. </span>メッシュとは？</a><a class="headerlink" href="#what-s-a-mesh" title="Link to this heading"></a></h2>
+<p>A mesh is an unstructured grid usually with temporal and other components.
+The spatial component contains a collection of vertices, edges and/or faces,
+in 2D or 3D space:</p>
+<ul class="simple">
+<li><p><strong>頂点</strong> - （レイヤの座標参照系の）XY(Z) 成分を持つ点です。</p></li>
+<li><p><strong>辺</strong> - 頂点の組を接続します。</p></li>
+<li><p><strong>面</strong> - 面は閉じた形状を形成する辺の集合です。通常は三角形または四辺形（quad）で、頂点数が多い多角形はめったにありません。</p></li>
+</ul>
+<p>上記の要素に基づいて、メッシュレイヤはさまざまなタイプの構造を持つことができます：</p>
+<ul class="simple">
+<li><p>1Dメッシュ：頂点と辺で構成されます。辺は2つの頂点を接続し、その上にデータ（スカラまたはベクタ）を割り当てることができます。 1Dメッシュネットワークは、たとえば、都市の排水システムのモデリングに使用できます。</p></li>
+<li><p>2Dメッシュ：三角形の面や、構造格子または非構造格子の四角形の面で構成されます。</p></li>
+<li><p>3Dレイヤードメッシュ：複数の積み重ねられた2D非構造メッシュで構成され、それぞれが垂直座標によって垂直方向（レベル）に押し出されたものです。頂点と面は、各垂直レベルで同じトポロジを持っています。メッシュ定義（垂直レベルの押し出し）は、一般的には時間とともに変化する可能性があります。データは通常、ボリュームの中心か、またはパラメトリック関数によって定義されます。</p></li>
+</ul>
+<figure class="align-center" id="id3">
+<span id="figure-mesh-grid-types"></span><img alt="../../../_images/mesh_grid_types.png" src="../../../_images/mesh_grid_types.png" />
+<figcaption>
+<p><span class="caption-number">図 18.1 </span><span class="caption-text">さまざまなメッシュタイプ</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>メッシュは空間構造に関する情報を提供します。さらに、メッシュはすべての頂点に値を割り当てるデータセット（グループ）を持つことができます。たとえば、次の図に示すように頂点が番号付けされた三角メッシュがあるとします：</p>
+<figure class="align-center" id="id4">
+<span id="figure-triangual-grid-with-numered-vertices"></span><img alt="../../../_images/triangual_grid_with_numered_vertices.png" src="../../../_images/triangual_grid_with_numered_vertices.png" />
+<figcaption>
+<p><span class="caption-number">図 18.2 </span><span class="caption-text">頂点に番号が付けられた三角形グリッド</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>各頂点は異なるデータセット（通常は複数の量）を格納でき、それらのデータセットは時間的な次元を持つこともできます。したがって、1つのファイルに複数のデータセットを含めることができます。</p>
+<p>以下のテーブルは、メッシュデータセットに格納できる情報についての概念を示しています。テーブルの列はメッシュの頂点のインデックスを表し、各行は1つのデータセットを表します。データセットはさまざまなデータ型を持つことができます。この例の場合には、ある特定の時間（t1、t2、t3）における地上10mの風速がテーブルに格納されています。</p>
+<p>同様に、メッシュデータセットは各頂点のベクトル値も格納できます。たとえば、与えられたタイムスタンプでの風向ベクトルは、</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-number">表 18.1 </span><span class="caption-text">メッシュデータセットの例</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>地上10m風速</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>...</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>time=t1 における地上10m風速</p></td>
+<td><p>17251</p></td>
+<td><p>24918</p></td>
+<td><p>32858</p></td>
+<td><p>...</p></td>
+</tr>
+<tr class="row-odd"><td><p>time=t2 における地上10m風速</p></td>
+<td><p>19168</p></td>
+<td><p>23001</p></td>
+<td><p>36418</p></td>
+<td><p>...</p></td>
+</tr>
+<tr class="row-even"><td><p>time=t3 における地上10m風速</p></td>
+<td><p>21085</p></td>
+<td><p>30668</p></td>
+<td><p>17251</p></td>
+<td><p>...</p></td>
+</tr>
+<tr class="row-odd"><td><p>...</p></td>
+<td><p>...</p></td>
+<td><p>...</p></td>
+<td><p>...</p></td>
+<td><p>...</p></td>
+</tr>
+<tr class="row-even"><td><p>time=t1 における地上10m風向</p></td>
+<td><p>[20,2]</p></td>
+<td><p>[20,3]</p></td>
+<td><p>[20,4.5]</p></td>
+<td><p>...</p></td>
+</tr>
+<tr class="row-odd"><td><p>time=t2 における地上10m風向</p></td>
+<td><p>[21,3]</p></td>
+<td><p>[21,4]</p></td>
+<td><p>[21,5.5]</p></td>
+<td><p>...</p></td>
+</tr>
+<tr class="row-even"><td><p>time=t3 における地上10m風向</p></td>
+<td><p>[22,4]</p></td>
+<td><p>[22,5]</p></td>
+<td><p>[22,6.5]</p></td>
+<td><p>...</p></td>
+</tr>
+<tr class="row-odd"><td><p>...</p></td>
+<td><p>...</p></td>
+<td><p>...</p></td>
+<td><p>...</p></td>
+<td><p>...</p></td>
+</tr>
+</tbody>
+</table>
+<p>色を値に割り当てることでデータを可視化することができ（ <a class="reference internal" href="../working_with_raster/raster_properties.html#label-colormaptab"><span class="std std-ref">単バンド疑似カラー</span></a> のラスタレンダリングと同様です）、メッシュトポロジに従って頂点間のデータが補間されます。いくつかの量は単純なスカラー値ではなく、2Dベクトル（例えば風向）であるのはよくあることです。そのような量については、方向を示す矢印を表示することが望ましいでしょう。</p>
+<figure class="align-center" id="id6">
+<span id="figure-mesh-visualisation"></span><img alt="../../../_images/mesh_visualisation.png" src="../../../_images/mesh_visualisation.png" />
+<figcaption>
+<p><span class="caption-number">図 18.3 </span><span class="caption-text">メッシュデータの可視化事例</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="supported-formats">
+<span id="mesh-supported-formats"></span><h2><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">18.2. </span>サポートする形式</a><a class="headerlink" href="#supported-formats" title="Link to this heading"></a></h2>
+<p>QGISは <a class="reference external" href="https://github.com/lutraconsulting/MDAL">MDALドライバ</a> を使用してメッシュデータにアクセスし、 <a class="reference external" href="https://github.com/lutraconsulting/MDAL#supported-formats">さまざまなフォーマット</a> をネイティブにサポートしています。QGISでメッシュレイヤを編集できるかどうかは、フォーマットとメッシュ構造タイプによります。</p>
+<p>メッシュデータセットをQGISに読み込むには、 <span class="guilabel">データソースマネージャ</span> ダイアログで <a class="reference internal" href="../../../_images/mActionAddMeshLayer.png"><img alt="addMeshLayer" src="../../../_images/mActionAddMeshLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">メッシュ</span> タブを使用します。詳細は、 <a class="reference internal" href="../managing_data_source/opening_data.html#mesh-loading"><span class="std std-ref">メッシュレイヤを読み込む</span></a> を参照してください。</p>
+</section>
+<section id="mesh-dataset-properties">
+<span id="label-meshproperties"></span><h2><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">18.3. </span>メッシュデータセットのプロパティ</a><a class="headerlink" href="#mesh-dataset-properties" title="Link to this heading"></a></h2>
+<p>メッシュレイヤの <span class="guilabel">レイヤプロパティ</span> ダイアログは、レイヤのデータセットグループとそのレンダリング（アクティブなデータセットグループ、シンボロジ、2Dおよび3Dレンダリング）を管理するための一般的な設定を提供します。また、レイヤに関する情報も提供します。</p>
+<p><span class="guilabel">レイヤプロパティ</span> ダイアログにアクセスするには：</p>
+<ul class="simple">
+<li><p><span class="guilabel">レイヤ</span> パネル内において、レイヤをダブルクリックするか、レイヤを右クリックしてポップアップメニューから <span class="guilabel">プロパティ...</span> を選択する</p></li>
+<li><p>レイヤを選択した状態で、 <span class="menuselection">レイヤ ► レイヤのプロパティ...</span> メニューを選ぶ</p></li>
+</ul>
+<p>メッシュレイヤの <span class="guilabel">レイヤプロパティ</span> ダイアログには、以下のセクションがあります：</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-number">表 18.2 </span><span class="caption-text">メッシュレイヤプロパティのタブ</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/metadata.png"><img alt="metadata" src="../../../_images/metadata.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#meshinformation"><span class="std std-ref">情報</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/system.png"><img alt="system" src="../../../_images/system.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#meshsource"><span class="std std-ref">ソース</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <a class="reference internal" href="#meshsymbology"><span class="std std-ref">シンボロジ</span></a><sup>[1]</sup></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/3d.png"><img alt="3d" src="../../../_images/3d.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#mesh3dview"><span class="std std-ref">3Dビュー</span></a><sup>[1]</sup></p></td>
+<td><p><a class="reference internal" href="../../../_images/temporal.png"><img alt="temporal" src="../../../_images/temporal.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#meshtemporal"><span class="std std-ref">時系列</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/elevationscale.png"><img alt="elevationscale" src="../../../_images/elevationscale.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#meshelevation"><span class="std std-ref">標高</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/rendering.png"><img alt="rendering" src="../../../_images/rendering.png" style="width: 1.5em;" /></a> <a class="reference internal" href="#meshrendering"><span class="std std-ref">レンダリング</span></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/editmetadata.png"><img alt="editMetadata" src="../../../_images/editmetadata.png" style="width: 1.2em;" /></a> <a class="reference internal" href="#meshmetadata"><span class="std std-ref">メタデータ</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><sup>[1]</sup> <a class="reference internal" href="../introduction/general_tools.html#layer-styling-panel"><span class="std std-ref">レイヤスタイルパネル</span></a> からも利用可能です</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>メッシュレイヤのプロパティの大半は、ダイアログの下部にある <span class="guilabel">スタイル</span> メニューを使用して <code class="file docutils literal notranslate"><span class="pre">.qml</span></code> ファイルに保存したり、読み込んだりすることができます。詳細については、 <a class="reference internal" href="../introduction/general_tools.html#manage-custom-style"><span class="std std-ref">カスタムスタイルを管理する</span></a> を参照してください。</p>
+</div>
+<section id="information-properties">
+<span id="meshinformation"></span><h3><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">18.3.1. </span>情報プロパティ</a><a class="headerlink" href="#information-properties" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id8">
+<span id="figure-mesh-info-properties"></span><img alt="../../../_images/mesh_info_properties.png" src="../../../_images/mesh_info_properties.png" />
+<figcaption>
+<p><span class="caption-number">図 18.4 </span><span class="caption-text">メッシュレイヤの情報プロパティ</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../_images/metadata.png"><img alt="metadata" src="../../../_images/metadata.png" style="width: 1.5em;" /></a> <span class="guilabel">情報</span> タブは読み取り専用で、現在のレイヤの要約された情報やメタデータをさっと掴むことができる興味深い場所です。提供される情報には、以下のものがあります：</p>
+<ul class="simple">
+<li><p>一般情報：プロジェクト内での名前、ソースへのパス、付随的なファイルのリスト、最終更新時刻、ファイルの大きさ、使用しているプロバイダ</p></li>
+<li><p>プロバイダからの情報：領域、頂点の数、面の数、エッジ数、データセット数</p></li>
+<li><p>空間参照システム（CRS）：CRSの名前、単位、投影法、精度、参照（静的か動的か）</p></li>
+<li><p>入力された <a class="reference internal" href="#meshmetadata"><span class="std std-ref">メタデータ</span></a> からの情報：アクセス、領域、リンク、連絡先、履歴など</p></li>
+</ul>
+</section>
+<section id="source-properties">
+<span id="meshsource"></span><h3><a class="toc-backref" href="#id30" role="doc-backlink"><span class="section-number">18.3.2. </span>ソースプロパティ</a><a class="headerlink" href="#source-properties" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/system.png"><img alt="system" src="../../../_images/system.png" style="width: 1.5em;" /></a> <span class="guilabel">ソース</span> タブは、選択されたメッシュに関する以下のような基本的な情報を表示します：</p>
+<figure class="align-center" id="id9">
+<span id="figure-mesh-source"></span><img alt="../../../_images/mesh_source.png" src="../../../_images/mesh_source.png" />
+<figcaption>
+<p><span class="caption-number">図 18.5 </span><span class="caption-text">メッシュレイヤのソースプロパティ</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><span class="guilabel">レイヤ</span> パネルで表示されるレイヤ名</p></li>
+<li><p>座標参照系の設定：レイヤに <a class="reference internal" href="../working_with_projections/working_with_projections.html#layer-crs"><span class="std std-ref">設定されたCRS</span></a> を表示します。最近使用したCRSをドロップダウンリストから選ぶか、 <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> <span class="guilabel">CRSの選択</span> ボタン（ <a class="reference internal" href="../working_with_projections/working_with_projections.html#crs-selector"><span class="std std-ref">座標参照系セレクタ</span></a> 参照）をクリックすることで、レイヤのCRSを変更できます。レイヤのCRSが間違っている場合か、CRSが何も設定されていない場合にのみ、この操作を行ってください。</p></li>
+<li><p><span class="guilabel">利用可能なデータセット</span> のフレームには、メッシュレイヤ内のすべてのデータセットグループ（とサブグループ）が、その種類や説明とともにツリービュー形式でリストされています。通常のデータセット（すなわちファイル内に保存されたデータ）と、仮想データセット（ <a class="reference internal" href="#mesh-calculator"><span class="std std-ref">オンザフライで計算されたもの</span></a> ）の両方が表示されます。</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/mActionAdd.png"><img alt="add" src="../../../_images/mActionAdd.png" style="width: 1.5em;" /></a> <span class="guilabel">メッシュに追加データセットを割り当てる</span> ボタンを使用すると、現在のメッシュレイヤにさらにデータグループを追加します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionCollapseTree.png"><img alt="collapseTree" src="../../../_images/mActionCollapseTree.png" style="width: 1.5em;" /></a> <span class="guilabel">すべて折りたたむ</span> と <a class="reference internal" href="../../../_images/mActionExpandTree.png"><img alt="expandTree" src="../../../_images/mActionExpandTree.png" style="width: 1.5em;" /></a> <span class="guilabel">すべて展開する</span> は、グループが埋め込まれている場合にデータセットのツリーを折りたたみ・展開します</p></li>
+<li><p>一部のデータセットにしか興味がない場合、他のデータセットのチェックを外し、プロジェクト内で利用不可にできます。</p></li>
+<li><p>グループ名をダブルクリックすると、データセットの名前を変更できます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a> <span class="guilabel">デフォルトにリセット</span> ：グループのすべてにチェックを入れ、データ名をプロバイダの元の名前に戻します。</p></li>
+<li><p>仮想データセットグループ上で右クリックすると、以下の操作が可能です：</p>
+<ul>
+<li><p>プロジェクトから <span class="guilabel">データセットグループを削除</span></p></li>
+<li><p><span class="guilabel">データセットグループを別名で保存...</span> ：ディスク上のファイルにサポートする任意の形式で保存します。新しいファイルはプロジェクト内で現在のメッシュレイヤに割り当てられます。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Treat as static dataset</span> グループにチェックを入れると、メッシュレイヤのレンダリング時に <a class="reference internal" href="../map_views/map_view.html#maptimecontrol"><span class="std std-ref">マップの時系列ナビゲーション</span></a> プロパティを無視できます。アクティブなデータセットグループ（ <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <span class="menuselection">シンボロジ ►</span> <a class="reference internal" href="../../../_images/general.png"><img alt="general" src="../../../_images/general.png" style="width: 1.5em;" /></a> <span class="guilabel">データセット</span> タブで選択されたグループ）のそれぞれについて、次の設定ができます：</p>
+<ul>
+<li><p><span class="guilabel">none</span> に設定：データセットグループは完全に表示されません</p></li>
+<li><p><span class="guilabel">データセットを表示</span> ：例えば、時間とは無関係な「地盤高」データセットに使用します</p></li>
+<li><p>特定の日時を抽出：指定した時刻にマッチするデータセットをレンダリングし、マップの時系列ナビゲーション中はこれで固定します</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="symbology-properties">
+<span id="meshsymbology"></span><h3><a class="toc-backref" href="#id31" role="doc-backlink"><span class="section-number">18.3.3. </span>シンボロジプロパティ</a><a class="headerlink" href="#symbology-properties" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <span class="guilabel">シンボロジ</span> ボタンをクリックすると、ダイアログを有効化します。シンボロジのプロパティは、複数のタブに分かれています：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mesh-symbology-datasets"><span class="std std-ref">データセット</span></a></p></li>
+<li><p><a class="reference internal" href="#mesh-symbology-contours"><span class="std std-ref">等高線（Contours）</span></a></p></li>
+<li><p><a class="reference internal" href="#mesh-symbology-vectors"><span class="std std-ref">ベクタ</span></a></p></li>
+<li><p><a class="reference internal" href="#mesh-symbology-rendering"><span class="std std-ref">レンダリング</span></a></p></li>
+<li><p><a class="reference internal" href="#mesh-stacked-averaging"><span class="std std-ref">多層メッシュ平均化法（Stacked mesh averaging method）</span></a></p></li>
+</ul>
+<section id="datasets">
+<span id="mesh-symbology-datasets"></span><h4><a class="toc-backref" href="#id32" role="doc-backlink"><span class="section-number">18.3.3.1. </span>データセット</a><a class="headerlink" href="#datasets" title="Link to this heading"></a></h4>
+<p><a class="reference internal" href="../../../_images/general.png"><img alt="general" src="../../../_images/general.png" style="width: 1.5em;" /></a> <sup>データセット</sup> タブはレイヤにどのデータセットを使用するかの制御や設定を行う中心的な場所です。以下のアイテムがあります：</p>
+<ul>
+<li><p><span class="guilabel">グループ</span> ：メッシュデータセットで利用可能なグループと、以下のデータがあるかどうかを表示します：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/meshcontoursoff.png"><img alt="meshcontoursoff" src="../../../_images/meshcontoursoff.png" style="width: 1.5em;" /></a> スカラデータセット</p></li>
+<li><p><a class="reference internal" href="../../../_images/meshvectorsoff.png"><img alt="meshvectorsoff" src="../../../_images/meshvectorsoff.png" style="width: 1.5em;" /></a> ベクタデータセット：デフォルトでは、各ベクタデータセットは自動的に生成されたベクタの大きさを表すスカラデータセットを持ちます</p></li>
+</ul>
+<p>データセット名の横にあるアイコンをクリックすると、表示するデータのグループとタイプの選択ができます。</p>
+</li>
+<li><p><span class="guilabel">選択データセットグループのメタデータ</span> は、以下についての詳細を表示します：</p>
+<ul class="simple">
+<li><p>メッシュ型：辺または面</p></li>
+<li><p>データタイプ：頂点、辺、面またはボリューム</p></li>
+<li><p>ベクトル型かどうか</p></li>
+<li><p>メッシュレイヤのオリジナルの名前</p></li>
+<li><p>単位（あれば）</p></li>
+</ul>
+</li>
+<li><p>選択したデータセットに対する <a class="reference internal" href="../introduction/general_tools.html#blend-modes"><span class="std std-ref">混合モード</span></a> が利用可能です。</p></li>
+</ul>
+<figure class="align-center" id="id10">
+<span id="figure-mesh-symbology-datasets"></span><img alt="../../../_images/mesh_symbology_datasets.png" src="../../../_images/mesh_symbology_datasets.png" />
+<figcaption>
+<p><span class="caption-number">図 18.6 </span><span class="caption-text">メッシュレイヤのデータセット</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>選択したベクトルやスカラーのグループには、次のタブを使用してシンボロジを適用できます。</p>
+</section>
+<section id="contours-symbology">
+<span id="mesh-symbology-contours"></span><h4><a class="toc-backref" href="#id33" role="doc-backlink"><span class="section-number">18.3.3.2. </span>等高線シンボロジ</a><a class="headerlink" href="#contours-symbology" title="Link to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p><a class="reference internal" href="../../../_images/meshcontours.png"><img alt="meshcontours" src="../../../_images/meshcontours.png" style="width: 1.5em;" /></a> <sup>等高線（Contours）</sup> タブは、 <a class="reference internal" href="../../../_images/general.png"><img alt="general" src="../../../_images/general.png" style="width: 1.5em;" /></a> <span class="guilabel">データセット</span> タブでスカラーデータセットが選択されている場合にのみ、有効化することができます。</p>
+</div>
+<p><a class="reference internal" href="../../../_images/meshcontours.png"><img alt="meshcontours" src="../../../_images/meshcontours.png" style="width: 1.5em;" /></a> <sup>等高線（Contours）</sup> タブでは、以下の <a class="reference internal" href="#figure-mesh-symbology-contours"><span class="std std-numref">図 18.7</span></a> に示すように、選択したグループに対するコンター表示の現在の可視化オプションの確認と変更ができます。</p>
+<figure class="align-center" id="id11">
+<span id="figure-mesh-symbology-contours"></span><img alt="../../../_images/mesh_symbology_contours.png" src="../../../_images/mesh_symbology_contours.png" />
+<figcaption>
+<p><span class="caption-number">図 18.7 </span><span class="caption-text">メッシュレイヤのコンタースタイルの設定</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>1Dのメッシュに対しては、辺の <span class="guilabel">ストローク幅</span> の設定があります。ストローク幅はデータセット全体で一定のサイズとすることも、ジオメトリに沿って変化させる（詳細は <a class="reference internal" href="../style_library/symbol_selector.html#interpolated-line-symbol"><span class="std std-ref">補間された線のレンダラー</span></a> を参照）こともできます。</p></li>
+<li><p>2Dメッシュタイプの場合は、スライダーやスピンボックスを使用して現在のグループの <span class="guilabel">不透明度</span> が設定できます。</p></li>
+<li><p>現在のグループで表現したい値の範囲を入力します。 <a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a> <sup>読み込み</sup> ボタンを使用して現在のグループの最小値と最大値を取得できますが、範囲の一部を除外したい場合には自身で値を入力してください。</p></li>
+<li><p>2D / 3Dメッシュの場合、 <span class="guilabel">リサンプリング方法</span> で <span class="guilabel">隣接平均</span> を使用すると、周囲の頂点の値を面に（あるいは周囲の面から頂点に）補間できます。データセットが頂点で定義されているか（あるいは面で定義されているか）に応じて、QGISはこの設定を <span class="guilabel">なし</span> （面定義の場合は <span class="guilabel">隣接平均</span> ）にデフォルトで設定することで、頂点上の値を使用してデフォルトのレンダリングが滑らかになるようにします。</p></li>
+<li><p><a class="reference internal" href="../working_with_raster/raster_properties.html#color-ramp-shader"><span class="std std-ref">カラーランプシェーダ</span></a> のクラス分類を使用して、データセットをクラス分けできます。</p></li>
+</ul>
+</section>
+<section id="vectors-symbology">
+<span id="mesh-symbology-vectors"></span><h4><a class="toc-backref" href="#id34" role="doc-backlink"><span class="section-number">18.3.3.3. </span>ベクタシンボロジ</a><a class="headerlink" href="#vectors-symbology" title="Link to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p><a class="reference internal" href="../../../_images/meshvectors.png"><img alt="meshvectors" src="../../../_images/meshvectors.png" style="width: 1.5em;" /></a> <sup>ベクタ</sup> タブは、 <a class="reference internal" href="../../../_images/general.png"><img alt="general" src="../../../_images/general.png" style="width: 1.5em;" /></a> <span class="guilabel">データセット</span> タブでベクトルデータセットが選択されている場合にのみ、有効化することができます。</p>
+</div>
+<p><a class="reference internal" href="../../../_images/meshvectors.png"><img alt="meshvectors" src="../../../_images/meshvectors.png" style="width: 1.5em;" /></a> <sup>ベクタ</sup> タブでは、 <a class="reference internal" href="#figure-mesh-symbology-vectors"><span class="std std-numref">図 18.8</span></a> に示すように、選択したグループに対するベクトル表示の現在の可視化オプションの確認と変更ができます。</p>
+<figure class="align-center" id="id12">
+<span id="figure-mesh-symbology-vectors"></span><img alt="../../../_images/mesh_symbology_vectors.png" src="../../../_images/mesh_symbology_vectors.png" />
+<figcaption>
+<p><span class="caption-number">図 18.8 </span><span class="caption-text">矢印を使用したメッシュレイヤのベクトルスタイルの設定</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>メッシュのベクタデータセットは、さまざまな種類の <span class="guilabel">シンボロジ</span> を使用してスタイル設定ができます：</p>
+<ul class="simple">
+<li><p><strong>矢印</strong> ：ベクトルは、生のデータセットでの定義位置（つまり、ノード上または要素の中心）と同じ位置、またはユーザー定義のグリッド上（したがって、均等に分布します）に矢印で表現されます。矢印の長さは生データで定義されている矢印の大きさに比例しますが、さまざまな方法でスケーリングできます。</p></li>
+<li><p><strong>流線</strong> ：ベクトルは開始点から発生する流線で表現されます。流線の発生点はメッシュの頂点やユーザー定義のグリッド、あるいはランダムとすることができます。</p></li>
+<li><p><strong>トレース</strong> ：流線のより良いアニメーションです。これは、水中にランダムに砂（トレーサー）を投げ入れ、それがどのように流れるかを見るような効果が得られます。</p></li>
+</ul>
+<p>以下の表に示すように、利用可能なプロパティは選択したシンボロジによって異なります。</p>
+<table class="docutils align-default" id="id13">
+<caption><span class="caption-number">表 18.3 </span><span class="caption-text">ベクタシンボロジのプロパティの有無と意味</span><a class="headerlink" href="#id13" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>ラベル</p></th>
+<th class="head"><p>説明とプロパティ</p></th>
+<th class="head"><p>矢印</p></th>
+<th class="head"><p>流線</p></th>
+<th class="head"><p>トレース</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">線幅</span></p></td>
+<td><p>ベクトルを表現するシンボルの幅</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">色付け方法</span></p></td>
+<td><ul class="simple">
+<li><p><span class="guilabel">単一色</span> を全てのベクトルに適用する</p></li>
+<li><p><a class="reference internal" href="../working_with_raster/raster_properties.html#color-ramp-shader"><span class="std std-ref">カラーランプシェーダ</span></a> を使用して、ベクトルの大きさに基づいた可変色とする</p></li>
+</ul>
+</td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">大きさでフィルタリング</span></p></td>
+<td><p>選択したデータセットのうち、大きさが <span class="guilabel">最小値（Min）</span> から <span class="guilabel">最大値（Max）</span> の範囲内にあるベクトルのみを表示する</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">グリッド上に表示</span></p></td>
+<td><p><span class="guilabel">X方向の間隔</span> と <span class="guilabel">Y方向の間隔</span> によるユーザー定義のグリッド上にベクトルを配置する。ベクトルの大きさは近傍の値から内挿される</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">ヘッドオプション</span></p></td>
+<td><p>矢印のヘッドの <span class="guilabel">長さ</span> と <span class="guilabel">幅</span> を、矢印の軸の長さに対する百分率で指定する</p></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">矢印の長さ</span></p></td>
+<td><ul class="simple">
+<li><p><strong>最大・最小値で定義</strong> ：矢印の最小長さと最大長さを指定すると、QGISは矢印の大きさをベクトルの大きさに基づいて補間する</p></li>
+<li><p><strong>大きさにスケール</strong> ：矢印の長さはベクトルの大きさに比例する</p></li>
+<li><p><strong>一定</strong> ：全てのベクトルを同じ長さで表示する</p></li>
+</ul>
+</td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">流線シード法</span></p></td>
+<td><ul class="simple">
+<li><p><strong>メッシュ上</strong> ：メッシュまたはユーザー定義のグリッドによってベクトルを表示する</p></li>
+<li><p><strong>ランダム</strong> ：ベクトルは一定の密度でランダムに配置される</p></li>
+</ul>
+</td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">パーティクルの数</span></p></td>
+<td><p>可視化のために投入したい「砂（トレーサー）」の量</p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">最大テール長</span></p></td>
+<td><p>パーティクルが消えるまでの時間</p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rendering">
+<span id="mesh-symbology-rendering"></span><h4><a class="toc-backref" href="#id35" role="doc-backlink"><span class="section-number">18.3.3.4. </span>レンダリング</a><a class="headerlink" href="#rendering" title="Link to this heading"></a></h4>
+<p><a class="reference internal" href="../../../_images/meshframe.png"><img alt="meshframe" src="../../../_images/meshframe.png" style="width: 1.5em;" /></a> <sup>レンダリング</sup> タブには、QGISが提供するメッシュ構造の表示とカスタマイズの機能があります。表示のための <span class="guilabel">線幅</span> と <span class="guilabel">線の色</span> を設定できます：</p>
+<ul class="simple">
+<li><p>1Dメッシュの辺</p></li>
+<li><p>2Dメッシュの場合：</p>
+<ul>
+<li><p><span class="guilabel">ネイティブメッシュレンダリング</span> ：レイヤのオリジナルの面と辺を表示する</p></li>
+<li><p><span class="guilabel">三角メッシュレンダリング</span> ：辺を追加して、面を三角形として表示する</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id14">
+<span id="figure-mesh-symbology-grid"></span><img alt="../../../_images/mesh_symbology_grid.png" src="../../../_images/mesh_symbology_grid.png" />
+<figcaption>
+<p><span class="caption-number">図 18.9 </span><span class="caption-text">2Dメッシュのレンダリング</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="stacked-mesh-averaging-method">
+<span id="mesh-stacked-averaging"></span><h4><a class="toc-backref" href="#id36" role="doc-backlink"><span class="section-number">18.3.3.5. </span>多層メッシュ平均化法</a><a class="headerlink" href="#stacked-mesh-averaging-method" title="Link to this heading"></a></h4>
+<p>3Dレイヤードメッシュは、2D非構造メッシュを垂直座標によって垂直方向（ <code class="docutils literal notranslate"><span class="pre">レベル</span></code> ）に押し出したものが複数積み重なったもので構成されます。頂点と面は、各垂直レベルで同じトポロジーを持ちます。値は通常、ベースとなる2Dメッシュの上に規則的に積み重ねられたボリュームに保存されます。2Dキャンバス上でこれを可視化するためには、ボリューム（3D）の値をメッシュレイヤで表示可能な面（2D）上の値に変換する必要があります。 <a class="reference internal" href="../../../_images/meshaveraging.png"><img alt="meshaveraging" src="../../../_images/meshaveraging.png" style="width: 1.5em;" /></a> <sup>多層メッシュ平均化法（Stacked mesh averaging method）</sup> は、これを処理するためのさまざまな平均化 / 補間方法を提供します。</p>
+<p>2Dのデータセットを導出するための方法と、それに対応するパラメータ（レベルインデックス、深度、標高など）を選択できます。各方法について、ダイアログに適用例が示されていますが、詳細については <a class="reference external" href="https://fvwiki.tuflow.com/index.php?title=Depth_Averaging_Results">https://fvwiki.tuflow.com/index.php?title=Depth_Averaging_Results</a> にあります。</p>
+</section>
+</section>
+<section id="d-view-properties">
+<span id="mesh3dview"></span><span id="index-0"></span><h3><a class="toc-backref" href="#id37" role="doc-backlink"><span class="section-number">18.3.4. </span>3Dビュープロパティ</a><a class="headerlink" href="#d-view-properties" title="Link to this heading"></a></h3>
+<p>メッシュレイヤは頂点のZ値に基づいて <a class="reference internal" href="../map_views/3d_map_view.html#scene-configuration"><span class="std std-ref">3Dマップビューの地形</span></a> としても使用できます。 <a class="reference internal" href="../../../_images/3d.png"><img alt="3d" src="../../../_images/3d.png" style="width: 1.5em;" /></a> <span class="guilabel">3Dビュー</span> プロパティタブから、メッシュレイヤのデータセットを同じ3Dビューでレンダリングすることもできます。従って、頂点の鉛直成分はデータセット値（例えば水面の標高）と等しいように設定することができ、メッシュのテクスチャは他のデータセット値（例えば速度）をカラーランプシェーダでレンダリングするように設定できます。</p>
+<figure class="align-center" id="id15">
+<span id="figure-mesh-3d"></span><img alt="../../../_images/mesh_3d.png" src="../../../_images/mesh_3d.png" />
+<figcaption>
+<p><span class="caption-number">図 18.10 </span><span class="caption-text">メッシュデータセットの3Dプロパティ</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">3Dレンダラを有効にする</span> にチェックを入れると、以下のプロパティを編集できます：</p>
+<ul>
+<li><p><span class="guilabel">三角形設定</span> では、</p>
+<ul class="simple">
+<li><p><span class="guilabel">スムース三角形</span> ：3Dレンダリングを改善するため、隣接する三角形の間の角をスムージングする</p></li>
+<li><p><span class="guilabel">ワイヤフレームを表示</span> ： <span class="guilabel">線幅</span> と <span class="guilabel">色</span> を設定可能</p></li>
+</ul>
+<ul class="simple" id="levelofdetail">
+<li><p><span class="guilabel">詳細水準（Level of detail）</span> ：レンダリングするメッシュレイヤをどれだけ <a class="reference internal" href="#meshrendering"><span class="std std-ref">簡素化</span></a> するかを制御します。スライダーの右端は元のメッシュで、左に行くほどメッシュレイヤは簡略化され、ディテールがより少なくなります。このオプションは、 <span class="guilabel">レンダリング</span> タブで <span class="guilabel">メッシュの簡素化</span> オプションを有効にした場合のみ利用可能です。</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">垂直設定</span> は、レンダリングされた三角形の頂点の垂直成分のふるまいを制御します:</p>
+<ul class="simple">
+<li><p><span class="guilabel">垂直方向のデータセットグループ</span> ：メッシュの垂直成分に使用するデータセットグループ</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a><span class="guilabel">Z値に対する相対値</span> ：データセットの値を絶対Z座標とみなすか、または頂点のネイティブなZ値からの相対座標とみなすか</p></li>
+<li><p><span class="guilabel">鉛直スケール</span> ：データセットのZ値に適用するスケーリング係数</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">レンダリング色設定</span> ： <span class="guilabel">レンダリングスタイル</span> は、 <a class="reference internal" href="#mesh-symbology-contours"><span class="std std-ref">等高線シンボロジ</span></a> で設定したカラーランプシェーダ（ <span class="guilabel">2D等高線カラーランプシェーダ</span> ）に基づく色、または、 <span class="guilabel">メッシュの色</span> に関連付けられた <span class="guilabel">単一色</span></p></li>
+<li><p><span class="guilabel">矢印を表示</span> ： <a class="reference internal" href="#mesh-symbology-vectors"><span class="std std-ref">ベクトルの2Dレンダリング</span></a> で使用されるデータセットグループと同じデータセットに基づいて、メッシュレイヤデータセットの3Dエンティティ上に矢印を表示します。矢印は2Dの色設定を使って表示されます。また、 <span class="guilabel">矢印の間隔</span> の定義や、  <span class="guilabel">固定サイズ</span> とするか大きさでスケーリングするかを定義できます。矢印は重なり合うことができないため、この矢印の間隔設定は矢印の最大サイズも定義します。</p></li>
+</ul>
+</section>
+<section id="rendering-properties">
+<span id="meshrendering"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id38" role="doc-backlink"><span class="section-number">18.3.5. </span>レンダリングプロパティ</a><a class="headerlink" href="#rendering-properties" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id16">
+<span id="figure-mesh-rendering"></span><img alt="../../../_images/mesh_rendering.png" src="../../../_images/mesh_rendering.png" />
+<figcaption>
+<p><span class="caption-number">図 18.11 </span><span class="caption-text">メッシュレンダリングのプロパティ</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><span class="guilabel">縮尺に応じた表示設定</span> グループボックスでは、 <span class="guilabel">最大縮尺</span> と <span class="guilabel">最小縮尺</span> を設定し、メッシュ要素を見せる縮尺の範囲を定義することができます。この範囲の外では隠されます。<a class="reference internal" href="../../../_images/mActionMapIdentification.png"><img alt="mapIdentification" src="../../../_images/mActionMapIdentification.png" style="width: 1.5em;" /></a> <sup>現在のキャンバススケールを使う</sup> ボタンを使用すると、現在のマップキャンバススケールを可視範囲の境界として使用することができます。詳しくは <a class="reference internal" href="../introduction/general_tools.html#label-scaledepend"><span class="std std-ref">表示縮尺セレクタ</span></a> を参照してください。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>レイヤの縮尺に応じた表示は、<span class="guilabel">レイヤ</span> パネルからも有効にすることもできます:　レイヤを右クリックし、コンテキストメニューから <span class="guilabel">レイヤの縮尺表示を設定</span> を選択します。</p>
+</div>
+<p>メッシュレイヤは数百万の面を持つことがあるため、レンダリングには非常に時間がかかることがあります。これは特に、面が小さすぎて表示はできないものの、全ての面がビュー内にある場合に顕著です。レンダリングを高速化するためにメッシュレイヤを簡素化すると、さまざまな <a class="reference internal" href="#levelofdetail"><span class="std std-ref">詳細水準（level of detail）</span></a> を表す1つまたは複数のメッシュが生成され、QGISにどの詳細水準のメッシュレイヤをレンダリングさせるかを選択できます。簡素化されたメッシュは三角形の面のみとなることに留意してください。</p>
+<p><a class="reference internal" href="../../../_images/rendering.png"><img alt="rendering" src="../../../_images/rendering.png" style="width: 1.5em;" /></a> <span class="guilabel">レンダリング</span> タブで <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">メッシュの簡素化</span> にチェックを入れると、以下が設定できます：</p>
+<ul class="simple">
+<li><p><span class="guilabel">削減係数</span> ：簡素化されたメッシュの連続するレベルの生成を制御します。例えば、ベースメッシュに5百万個の面があり、削減係数が10の場合、最初の簡素化されたメッシュはおよそ500,000個の面、2番目は50,000個の面、3番目は5000個の面、といった具合になります。削減係数が大きいほどより単純なメッシュ（つまり、より大きなサイズの三角形）に早く到達し、詳細水準の数も少なくなります。</p></li>
+<li><p><span class="guilabel">最小三角形サイズ</span> ：表示が許可される三角形の平均サイズ（ピクセル単位）です。メッシュの平均サイズがこの値よりも小さい場合には、より低い詳細水準のメッシュのレンダリングに切り替わります。</p></li>
+</ul>
+</section>
+<section id="temporal-properties">
+<span id="meshtemporal"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id39" role="doc-backlink"><span class="section-number">18.3.6. </span>時系列プロパティ</a><a class="headerlink" href="#temporal-properties" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/temporal.png"><img alt="temporal" src="../../../_images/temporal.png" style="width: 1.5em;" /></a> <span class="guilabel">時系列</span> タブは、時間経過に伴うレイヤのレンダリングを制御するオプションを提供します。これは、有効化されたデータセットグループの時系列値を動的に表示できるようになります。このような動的なレンダリングには、マップキャンバスで <a class="reference internal" href="../map_views/map_view.html#maptimecontrol"><span class="std std-ref">時系列ナビ</span></a> を有効にする必要があります。</p>
+<figure class="align-center" id="id17">
+<span id="figure-mesh-temporal"></span><img alt="../../../_images/mesh_temporal.png" src="../../../_images/mesh_temporal.png" />
+<figcaption>
+<p><span class="caption-number">図 18.12 </span><span class="caption-text">メッシュの時系列プロパティ</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>レイヤ時間設定</strong></p>
+<ul>
+<li><p><span class="guilabel">参照時間</span> は、データセットグループの絶対的な日時としての基準です。デフォルトでは、QGISはソースレイヤを解析し、レイヤのデータセットグループ内の最初の有効な参照時間を返します。これが利用できない場合は、この値はプロジェクトの時間範囲によって設定されるか、現在の日付にフォールバックされます。考慮すべき <span class="guilabel">開始時刻</span> と <span class="guilabel">終了時刻</span> は、データセット内部のタイムスタンプのステップに基づいて計算されます。</p>
+<p>カスタム <span class="guilabel">参照時間</span> （そして時間範囲）を設定すること、<a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a> <sup>プロバイダから再読み込み</sup> ボタンを使って変更を元に戻すことができます。<a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">常にデータソースから参照時間を取得</span> をチェックすると、レイヤーが再読み込みされたりプロジェクトが再開されたりするたびに、時間プロパティがファイルから更新されます。</p>
+</li>
+<li><p><span class="guilabel">データセット検索方法</span> ：指定された時間に表示するデータセットを決定します。選択肢は、 <span class="guilabel">時間内に最も近いデータセットを見つける</span> と <span class="guilabel">時間内に最も近いデータセットを見つける（前後）</span> の2つです。</p></li>
+</ul>
+<p><strong>プロバイダ時間設定</strong></p>
+<ul class="simple">
+<li><p><span class="guilabel">時間単位</span> は、元データから抽出されるか、ユーザーが定義します。この値は、マップの時系列ナビゲーションの際に、メッシュレイヤの速度をプロジェクト内の他のレイヤと揃えるために使用されます。サポートしている単位は、 <span class="guilabel">秒</span> 、 <span class="guilabel">分</span> 、 <span class="guilabel">時</span> 、および <span class="guilabel">日</span> です。</p></li>
+</ul>
+</section>
+<section id="elevation-properties">
+<span id="meshelevation"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id40" role="doc-backlink"><span class="section-number">18.3.7. </span>高さプロパティ</a><a class="headerlink" href="#elevation-properties" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/elevationscale.png"><img alt="elevationscale" src="../../../_images/elevationscale.png" style="width: 1.5em;" /></a> <span class="guilabel">標高</span> タブには、 <a class="reference internal" href="../map_views/3d_map_view.html#label-3dmapview"><span class="std std-ref">3Dマップビュー</span></a> 内のレイヤの標高プロパティと、 <a class="reference internal" href="../map_views/elevation_profile.html#label-elevation-profile-view"><span class="std std-ref">profile tool charts</span></a> 内のレイヤの標高をコントロールするオプションがあります。具体的には次が設定できます:</p>
+<figure class="align-center" id="id18">
+<span id="figure-mesh-elevation"></span><img alt="../../../_images/mesh_elevation.png" src="../../../_images/mesh_elevation.png" />
+<figcaption>
+<p><span class="caption-number">図 18.13 </span><span class="caption-text">メッシュ標高プロパティ</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><span class="guilabel">標高サーフェス</span>: メッシュレイヤの頂点のZ値を地形の標高としてどのように解釈するかを指定します。<span class="guilabel">スケール</span> 係数と <span class="guilabel">オフセット</span> を適用することができます。</p></li>
+<li><p><span class="guilabel">断面図の外観</span>: 断面図にあるメッシュ要素の標高のレンダリングを制御します。断面図の <span class="guilabel">スタイル</span> は次のように設定できます:</p>
+<ul>
+<li><p>特定の <a class="reference internal" href="../style_library/symbol_selector.html#vector-line-symbols"><span class="std std-ref">線のスタイル</span></a> を持った <span class="guilabel">線</span></p></li>
+<li><p>塗りつぶしシンボルを使って、標高曲線の上（<span class="guilabel">Fill above</span>）または下（<span class="guilabel">Fill below</span>）にレンダリングされた標高面。表面のシンボロジは以下のように表されます:</p>
+<ul>
+<li><p><a class="reference internal" href="../style_library/symbol_selector.html#vector-fill-symbols"><span class="std std-ref">塗りつぶしスタイル</span></a></p></li>
+<li><p>そして <span class="guilabel">上限</span>: 塗りつぶしサーフェスがどの高さになるかの最大値（または最小値）</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="metadata-properties">
+<span id="meshmetadata"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id41" role="doc-backlink"><span class="section-number">18.3.8. </span>メタデータプロパティ</a><a class="headerlink" href="#metadata-properties" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/editmetadata.png"><img alt="editMetadata" src="../../../_images/editmetadata.png" style="width: 1.2em;" /></a> <span class="guilabel">メタデータ</span> タブには、レイヤに関するメタデータレポートの作成・編集オプションがあります。詳細は <a class="reference internal" href="../introduction/general_tools.html#metadatamenu"><span class="std std-ref">メタデータ</span></a> を参照してください。</p>
+</section>
+</section>
+<section id="editing-a-mesh-layer">
+<span id="editing-mesh"></span><h2><a class="toc-backref" href="#id42" role="doc-backlink"><span class="section-number">18.4. </span>メッシュレイヤを編集する</a><a class="headerlink" href="#editing-a-mesh-layer" title="Link to this heading"></a></h2>
+<p>QGISでは、ゼロからまたは既存のメッシュレイヤを元に <a class="reference internal" href="../managing_data_source/create_layers.html#vector-create-mesh"><span class="std std-ref">メッシュレイヤを作成する</span></a> ことができます。新しいレイヤのジオメトリを作成/変更することができ、後からデータセットを割り当てることができます。既存のメッシュレイヤを編集することもできます。編集にはフレームのみのレイヤが必要なため、初めに関連するデータセットを削除するか（必要であれば利用できることを確認してください）、（ジオメトリのみの）レイヤのコピーを作る必要があります。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>QGISではメッシュレイヤの辺をデジタイズすることはできません。作成できるメッシュ要素は頂点と面のみです。また、サポートされているすべてのメッシュフォーマットがQGISで編集できるわけではありません（<a class="reference external" href="https://github.com/lutraconsulting/MDAL#supported-formats">permissions</a> を参照してください)。</p>
+</div>
+<section id="overview-of-the-mesh-digitizing-tools">
+<h3><a class="toc-backref" href="#id43" role="doc-backlink"><span class="section-number">18.4.1. </span>メッシュデジタイジングツールの概要</a><a class="headerlink" href="#overview-of-the-mesh-digitizing-tools" title="Link to this heading"></a></h3>
+<p>ベースメッシュレイヤ要素を操作・編集するには、以下のツールが利用できます。</p>
+<table class="docutils align-default" id="id19">
+<caption><span class="caption-number">表 18.4 </span><span class="caption-text">メッシュデジタイジングのツール</span><a class="headerlink" href="#id19" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>ラベル</p></th>
+<th class="head"><p>目的</p></th>
+<th class="head"><p>場所</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAllEdits.png"><img alt="allEdits" src="../../../_images/mActionAllEdits.png" style="width: 1.5em;" /></a> <sup>現在の編集</sup></p></td>
+<td><p>全レイヤまたは選択レイヤを同時に保存・ロールバック・編集キャンセルするツールへのアクセス</p></td>
+<td><p><span class="guilabel">デジタイジング</span> ツールバー</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a> <sup>編集モード切り替え</sup></p></td>
+<td><p>レイヤの編集モードをオン／オフする</p></td>
+<td><p><span class="guilabel">デジタイジング</span> ツールバー</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSaveEdits.png"><img alt="saveEdits" src="../../../_images/mActionSaveEdits.png" style="width: 1.5em;" /></a> <sup>レイヤ編集内容を保存</sup></p></td>
+<td><p>レイヤに行なった変更を保存する</p></td>
+<td><p><span class="guilabel">デジタイジング</span> ツールバー</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionUndo.png"><img alt="undo" src="../../../_images/mActionUndo.png" style="width: 1.5em;" /></a> <sup>元に戻す</sup></p></td>
+<td><p>最後の変更を元に戻す - <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">z</kbd></kbd></p></td>
+<td><p><span class="guilabel">デジタイジング</span> ツールバー</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionRedo.png"><img alt="redo" src="../../../_images/mActionRedo.png" style="width: 1.5em;" /></a> <sup>やり直す</sup></p></td>
+<td><p>最後に取り消した操作をやり直す - <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Z</kbd></kbd></p></td>
+<td><p><span class="guilabel">デジタイジング</span> ツールバー</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/cad.png"><img alt="cad" src="../../../_images/cad.png" style="width: 1.5em;" /></a> <sup>高度なデジタイズツールの有効化</sup></p></td>
+<td><p><a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#advanced-digitizing-panel"><span class="std std-ref">高度なデジタイズパネル</span></a> をオン／オフする</p></td>
+<td><p><span class="guilabel">高度なデジタイズ</span> ツールバー</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionMeshReindex.png"><img alt="meshReindex" src="../../../_images/mActionMeshReindex.png" style="width: 1.5em;" /></a> <sup>面と点を再インデックス化</sup></p></td>
+<td><p>メッシュ要素のインデックスを再作成し、番号を付け直して最適化する</p></td>
+<td><p><span class="guilabel">メッシュ</span> メニュー</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>メッシュ要素をデジタイズ</sup></p></td>
+<td><p>頂点と面を選択／作成する</p></td>
+<td><p><span class="guilabel">メッシュデジタイジング</span> ツールバー</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionMeshSelectPolygon.png"><img alt="meshSelectPolygon" src="../../../_images/mActionMeshSelectPolygon.png" style="width: 1.5em;" /></a> <sup>ポリゴンによるメッシュ要素選択</sup></p></td>
+<td><p>描いたポリゴンに重なる頂点と面を選択する</p></td>
+<td><p><span class="guilabel">メッシュデジタイジング</span> ツールバー</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionMeshSelectExpression.png"><img alt="meshSelectExpression" src="../../../_images/mActionMeshSelectExpression.png" style="width: 1.5em;" /></a> <sup>式によるメッシュ要素選択</sup></p></td>
+<td><p>式を使って頂点と面を選択する</p></td>
+<td><p><span class="guilabel">メッシュデジタイジング</span> ツールバー</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionMeshTransformByExpression.png"><img alt="meshTransformByExpression" src="../../../_images/mActionMeshTransformByExpression.png" style="width: 1.5em;" /></a> <sup>Transform Vertices Coordinates</sup></p></td>
+<td><p>選択された頂点の座標を変更する</p></td>
+<td><p><span class="guilabel">メッシュデジタイジング</span> ツールバー</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionMeshEditForceByVectorLines.png"><img alt="meshEditForceByVectorLines" src="../../../_images/mActionMeshEditForceByVectorLines.png" style="width: 1.5em;" /></a> <sup>選択されたジオメトリで強制</sup></p></td>
+<td><p>線形ジオメトリを使用して面を分割し、Z値を制約する</p></td>
+<td><p><span class="guilabel">メッシュデジタイジング</span> ツールバー</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exploring-the-z-value-assignment-logic">
+<h3><a class="toc-backref" href="#id44" role="doc-backlink"><span class="section-number">18.4.2. </span>Z値割り当てロジックを探検する</a><a class="headerlink" href="#exploring-the-z-value-assignment-logic" title="Link to this heading"></a></h3>
+<p>メッシュレイヤを編集モードにすると、マップキャンバスの右上に <span class="guilabel">頂点のZ値</span> ウィジェットが開きます。デフォルトでは、その値は <span class="menuselection">設定 ► オプション ► デジタイズ</span> タブで設定された <span class="guilabel">デフォルトのZ値</span> に対応します。選択された頂点がある場合、ウィジェットは選択された頂点の平均Z値を表示します。</p>
+<p>編集中は、新しい頂点に <span class="guilabel">頂点のZ値</span> が割り当てられます。カスタム値を設定することもできます。ウィジェットを編集して <kbd class="kbd docutils literal notranslate">Enter</kbd> を押すと、デフォルト値が上書きされ、デジタイジング処理でこの新しい値が使用されます。ウィジェットの <a class="reference internal" href="../../../_images/mIconClearText.png"><img alt="clearText" src="../../../_images/mIconClearText.png" style="width: 1.5em;" /></a> アイコンをクリックすると、その値がオプションのデフォルト値にリセットされます。</p>
+<section id="rules-of-assignment">
+<h4><a class="toc-backref" href="#id45" role="doc-backlink"><span class="section-number">18.4.2.1. </span>割り当て規則</a><a class="headerlink" href="#rules-of-assignment" title="Link to this heading"></a></h4>
+<p>新しい頂点を <strong>作成</strong> するとき、そのZ値の定義はメッシュレイヤのアクティブな選択とその位置によって異なる場合があります。次の表は様々な組み合わせを表しています。</p>
+<table class="docutils align-default" id="id20">
+<caption><span class="caption-number">表 18.5 </span><span class="caption-text">新しい頂点へのZ値の割り当ての表</span><a class="headerlink" href="#id20" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>頂点の作成</p></th>
+<th class="head"><p>メッシュレイヤに選択された頂点はあるか？</p></th>
+<th class="head"><p>割り当てた値の元</p></th>
+<th class="head"><p>割り当てられたZ値</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="3"><p>&quot;Free&quot; vertex, not connected to any
+face or edge of a face</p></td>
+<td rowspan="2"><p>No</p></td>
+<td><p><span class="guilabel">頂点のZ値</span></p></td>
+<td><p>デフォルトまたはユーザー定義</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">高度なデジタイズパネル</span> （ <span class="guilabel">z</span> ウィジェットが <a class="reference internal" href="../../../_images/locked.png"><img alt="locked" src="../../../_images/locked.png" style="width: 1.5em;" /></a> <sup>Locked</sup> 状態の場合）</p></td>
+<td><p><a class="reference internal" href="../../../_images/locked.png"><img alt="locked" src="../../../_images/locked.png" style="width: 1.5em;" /></a> <sup>Locked</sup> 状態のときは <span class="guilabel">z</span> ウィジェット</p></td>
+</tr>
+<tr class="row-even"><td><p>Yes</p></td>
+<td><p><span class="guilabel">頂点のZ値</span></p></td>
+<td><p>選択された頂点の平均</p></td>
+</tr>
+<tr class="row-odd"><td><p>辺にある頂点</p></td>
+<td><p>---</p></td>
+<td><p>メッシュレイヤ</p></td>
+<td><p>辺の頂点からの内挿</p></td>
+</tr>
+<tr class="row-even"><td><p>面上の頂点</p></td>
+<td><p>---</p></td>
+<td><p>メッシュレイヤ</p></td>
+<td><p>面の頂点からの内挿</p></td>
+</tr>
+<tr class="row-odd"><td><p>2Dベクタ地物にスナップした頂点</p></td>
+<td><p>---</p></td>
+<td><p><span class="guilabel">頂点のZ値</span></p></td>
+<td><p>デフォルトまたはユーザー定義</p></td>
+</tr>
+<tr class="row-even"><td><p>3Dベクタ頂点にスナップした頂点</p></td>
+<td><p>---</p></td>
+<td><p>ベクタレイヤ</p></td>
+<td><p>頂点</p></td>
+</tr>
+<tr class="row-odd"><td><p>3Dベクタセグメントにスナップした頂点</p></td>
+<td><p>---</p></td>
+<td><p>ベクタレイヤ</p></td>
+<td><p>ベクタセグメントに沿った内挿</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p><a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#advanced-digitizing-panel"><span class="std std-ref">高度なデジタイズパネル</span></a> が有効で、メッシュ要素が選択されていない場合、 <span class="guilabel">頂点のZ値</span> ウィジェットは非アクティブになります。前者の <span class="guilabel">z</span> ウィジェットがZ値の割り当てを行います。</p>
+</div>
+</section>
+<section id="modifying-z-value-of-existing-vertices">
+<h4><a class="toc-backref" href="#id46" role="doc-backlink"><span class="section-number">18.4.2.2. </span>既存の頂点のZ値を変更する</a><a class="headerlink" href="#modifying-z-value-of-existing-vertices" title="Link to this heading"></a></h4>
+<p>頂点のZ値を変更するのに最も簡単な方法は:</p>
+<ol class="arabic simple">
+<li><p>1つまたは複数の頂点を選択します。<span class="guilabel">頂点のZ値</span> ウィジェットは選択範囲の平均の高さを表示します。</p></li>
+<li><p>ウィジェットの値を変更します。</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">Enter</kbd> を押します。入力した値が頂点に割り当てられ、次の頂点のデフォルト値になります。</p></li>
+</ol>
+<p>頂点のZ値を変更するもう一つの方法は、Z値の能力を持つベクタレイヤ地物の上に頂点を移動してスナップすることです。複数の頂点が選択されている場合は、この方法でZ値を変更することはできません。</p>
+<p><a class="reference internal" href="#transform-meshvertices"><span class="std std-ref">Transform mesh vertices</span></a> ダイアログでは、選択した頂点のZ値を（X座標またはY座標とともに）変更することもできます。</p>
+</section>
+</section>
+<section id="selecting-mesh-elements">
+<span id="select-mesh-elements"></span><h3><a class="toc-backref" href="#id47" role="doc-backlink"><span class="section-number">18.4.3. </span>メッシュ要素を選択する</a><a class="headerlink" href="#selecting-mesh-elements" title="Link to this heading"></a></h3>
+<section id="using-digitize-mesh-elements">
+<h4><a class="toc-backref" href="#id48" role="doc-backlink"><span class="section-number">18.4.3.1. </span><span class="guilabel">メッシュ要素をデジタイズ</span> を使う</a><a class="headerlink" href="#using-digitize-mesh-elements" title="Link to this heading"></a></h4>
+<p><a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a><sup>メッシュ要素をデジタイズ</sup> ツールをアクティブにします。要素にカーソルを合わせるとハイライトされ、選択できるようになります。</p>
+<ul class="simple">
+<li><p>頂点の上でクリックするとそれが選択されます。</p></li>
+<li><p>面や辺の中心にある小さな四角をクリックすると、それが選択されます。つながっている頂点も選択されます。逆に、辺や面のすべての頂点を選択すると、その要素も選択されます。</p></li>
+<li><p>重なっている要素を選択するには矩形をドラッグします（選択された面にはすべての頂点が含まれます）。完全に含まれる要素だけを選択したい場合は <kbd class="kbd docutils literal notranslate">Alt</kbd> キーを押します。</p></li>
+<li><p>選択範囲に要素を追加するには、要素を選択した状態で <kbd class="kbd docutils literal notranslate">Shift</kbd> を押します。</p></li>
+<li><p>要素を選択範囲から外すには <kbd class="kbd docutils literal notranslate">Ctrl</kbd> を押して再度選択します。選択が解除された面は、その頂点の選択も解除されます。</p></li>
+</ul>
+</section>
+<section id="using-select-mesh-elements-by-polygon">
+<h4><a class="toc-backref" href="#id49" role="doc-backlink"><span class="section-number">18.4.3.2. </span><span class="guilabel">ポリゴンによるメッシュ要素選択</span> を使う</a><a class="headerlink" href="#using-select-mesh-elements-by-polygon" title="Link to this heading"></a></h4>
+<p><a class="reference internal" href="../../../_images/mActionMeshSelectPolygon.png"><img alt="meshSelectPolygon" src="../../../_images/mActionMeshSelectPolygon.png" style="width: 1.5em;" /></a> <sup>ポリゴンによるメッシュ要素選択</sup> <a href="#id1"><span class="problematic" id="id2">`</span></a>ツールをアクティブにする:</p>
+<ul class="simple">
+<li><p>メッシュジオメトリの上にポリゴンを描きます（左クリックで頂点を追加、<kbd class="kbd docutils literal notranslate">Backspace</kbd> で最後の頂点を元に戻す、<kbd class="kbd docutils literal notranslate">Esc</kbd> でポリゴンを中止し、右クリックで有効にする）。部分的に重なっている頂点や面が選択されます。完全に含まれる要素のみを選択したい場合は、描画中に <kbd class="kbd docutils literal notranslate">Alt</kbd> キーを押してください。</p></li>
+<li><p>ベクタレイヤの地物のジオメトリ上で右クリックし、ポップアップするリストから選択すると、メッシュレイヤの頂点や面が部分的に重なっていても選択されます。完全に含まれる要素のみを選択するには、描画中に <kbd class="kbd docutils literal notranslate">Alt</kbd> を使用します。</p></li>
+<li><p>選択範囲に要素を追加するには、要素を選択した状態で <kbd class="kbd docutils literal notranslate">Shift</kbd> を押します。</p></li>
+<li><p>選択範囲から要素を削除するには、選択ポリゴンの上に描画しながら <kbd class="kbd docutils literal notranslate">Ctrl</kbd> を押します。</p></li>
+</ul>
+</section>
+<section id="using-select-mesh-elements-by-expression">
+<h4><a class="toc-backref" href="#id50" role="doc-backlink"><span class="section-number">18.4.3.3. </span><span class="guilabel">式によるメッシュ要素選択</span></a><a class="headerlink" href="#using-select-mesh-elements-by-expression" title="Link to this heading"></a></h4>
+<p>メッシュ要素を選択するもう一つのツールは <a class="reference internal" href="../../../_images/mActionMeshSelectExpression.png"><img alt="meshSelectExpression" src="../../../_images/mActionMeshSelectExpression.png" style="width: 1.5em;" /></a> <sup>式によるメッシュ要素選択</sup> です。これを押すと、ツールの <a class="reference internal" href="../expressions/expression.html#vector-expressions"><span class="std std-ref">式によるメッシュ要素選択ダイアログ</span></a> が開き、次のことができます:</p>
+<ol class="arabic simple">
+<li><p>選択する方法を選ぶ:</p>
+<ul class="simple">
+<li><p><span class="guilabel">頂点による選択</span>: 入力された式を頂点に適用し、合致したものとそれに関連する辺/面を返します</p></li>
+<li><p><span class="guilabel">面による選択</span>: 入力された式を面に適用し、合致したものとそれに関連する辺/頂点を返します</p></li>
+</ul>
+</li>
+<li><p>選択式を記述する。<a class="reference internal" href="../expressions/functions_list.html#expression-function-meshes"><span class="std std-ref">Meshesグループ</span></a> で利用可能な関数は、選択された方法に応じてフィルタリングされます。</p></li>
+<li><p>クエリを実行するには、以下の選択範囲の動作を設定し、押します:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mIconExpressionSelect.png"><img alt="expressionSelect" src="../../../_images/mIconExpressionSelect.png" style="width: 1.5em;" /></a> <span class="guilabel">選択</span>: レイヤ内の既存の選択範囲を置き換える</p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconSelectAdd.png"><img alt="selectAdd" src="../../../_images/mIconSelectAdd.png" style="width: 1.5em;" /></a> <span class="guilabel">現在の選択に追加する</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconSelectRemove.png"><img alt="selectRemove" src="../../../_images/mIconSelectRemove.png" style="width: 1.5em;" /></a> <span class="guilabel">現在の選択範囲から除去する</span></p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="modifying-mesh-elements">
+<h3><a class="toc-backref" href="#id51" role="doc-backlink"><span class="section-number">18.4.4. </span>メッシュ要素を変更する</a><a class="headerlink" href="#modifying-mesh-elements" title="Link to this heading"></a></h3>
+<section id="adding-vertices">
+<h4><a class="toc-backref" href="#id52" role="doc-backlink"><span class="section-number">18.4.4.1. </span>頂点を追加する</a><a class="headerlink" href="#adding-vertices" title="Link to this heading"></a></h4>
+<p>メッシュレイヤに頂点を追加するには:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>メッシュ要素をデジタイズ</sup> ボタンを押す</p></li>
+<li><p>マップキャンバスの右上に <span class="guilabel">頂点のZ値</span> ウィジェットが表示されます。この値を後続の頂点に割り当てたいZ座標に設定します</p></li>
+<li><p>ダブルクリックします:</p>
+<ul class="simple">
+<li><p>面の外：「フリー頂点」、つまりどの面にもリンクされていない頂点を追加します。この頂点はレイヤが編集モードの時、赤い点で表示されます。</p></li>
+<li><p>既存の面の辺: 辺に頂点を追加し、触れた面を新しい頂点に接続された三角形に分割します。</p></li>
+<li><p>面の内側：新しい頂点と周囲の頂点と結んだ三角形に面を分割します。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="adding-faces">
+<h4><a class="toc-backref" href="#id53" role="doc-backlink"><span class="section-number">18.4.4.2. </span>面を追加する</a><a class="headerlink" href="#adding-faces" title="Link to this heading"></a></h4>
+<p>メッシュレイヤに面を追加するには:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>メッシュ要素をデジタイズ</sup> ボタンを押す</p></li>
+<li><p>マップキャンバスの右上に <span class="guilabel">頂点のZ値</span> ウィジェットが現れます。この値を後続の頂点に割り当てたいZ座標に設定する。</p></li>
+<li><p>頂点にカーソルを合わせ、その横に表示される小さな三角形をクリックする。</p></li>
+<li><p>カーソルを次の頂点の位置に移動する; 既存の頂点にスナップするか、左クリックして新しい頂点を追加します。</p></li>
+<li><p>上記と同じように、面に対して好きなだけ頂点を追加する。<kbd class="kbd docutils literal notranslate">Backspace</kbd> ボタンを押すと最後の頂点を元に戻すことができる。</p></li>
+<li><p>マウスを動かしている間、面の形状を示すラバーバンドが表示されます。ラバーバンドが緑で表示されている場合、その面は有効であり、右クリックでメッシュに追加できます。赤で表示されている場合、その面は有効ではなく（例えば、自己交差している、既存の面や頂点と重なっている、穴を作っているなど）、追加できません。いくつかの頂点を元に戻し、ジオメトリを修正する必要があります。</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">Esc</kbd> を押すと面のデジタイジングを中止します。</p></li>
+<li><p>右クリックして面を検証する。</p></li>
+</ol>
+<figure class="align-center" id="id21">
+<span id="figure-invalid-mesh"></span><img alt="../../../_images/invalid_mesh.png" src="../../../_images/invalid_mesh.png" />
+<figcaption>
+<p><span class="caption-number">図 18.14 </span><span class="caption-text">無効なメッシュの例</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="removing-mesh-elements">
+<span id="remove-mesh-items"></span><h4><a class="toc-backref" href="#id54" role="doc-backlink"><span class="section-number">18.4.4.3. </span>メッシュ要素を削除する</a><a class="headerlink" href="#removing-mesh-elements" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#select-mesh-elements"><span class="std std-ref">対象の要素を選択する</span></a></p></li>
+<li><p><sup>メッシュ要素をデジタイズ</sup> ツールを有効にする</p></li>
+<li><p>右クリックして選択する:</p>
+<ul class="simple">
+<li><p><span class="guilabel">選択した頂点を削除し、穴を埋める</span> または <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Del</kbd></kbd> を押す: 頂点及びリンクされた面を削除し、隣接する頂点から三角形を作って穴を埋めます</p></li>
+<li><p><span class="guilabel">選択した頂点を削除し、穴を埋めない</span> または <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Del</kbd></kbd> を押す：頂点及びリンクされた面を削除し、穴を埋めない</p></li>
+<li><p><span class="guilabel">選択した面を削除する</span> 又は <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Del</kbd></kbd> を押す: 面を削除しますが頂点は残します</p></li>
+</ul>
+</li>
+</ol>
+<p>これらのオプションには、アイテムを選択しなくてもカーソルを合わせてコンテクストメニューからアクセスできます。</p>
+</section>
+<section id="moving-mesh-elements">
+<h4><a class="toc-backref" href="#id55" role="doc-backlink"><span class="section-number">18.4.4.4. </span>メッシュ要素を移動する</a><a class="headerlink" href="#moving-mesh-elements" title="Link to this heading"></a></h4>
+<p>メッシュレイヤの　頂点と面を移動するには:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#select-mesh-elements"><span class="std std-ref">対象の要素を選択する</span></a></p></li>
+<li><p><sup>メッシュ要素をデジタイズ</sup> ツールを有効にする</p></li>
+<li><p>要素の移動を開始するには、頂点または面/辺の重心をクリックします</p></li>
+<li><p>カーソルを目的の位置に移動します（ベクタ地物へのスナップがサポートされています）。</p></li>
+<li><p>新しい位置が <a class="reference internal" href="#figure-invalid-mesh"><span class="std std-ref">無効メッシュ</span></a> を生成しない場合、移動した要素は緑色で表示されます。この位置でもう一度クリックすると解除されます。頂点がすべて選択されている面は平行移動され、それに応じて隣接する面の形も変更されます。</p></li>
+</ol>
+</section>
+<section id="transforming-mesh-vertices">
+<span id="transform-meshvertices"></span><h4><a class="toc-backref" href="#id56" role="doc-backlink"><span class="section-number">18.4.4.5. </span>メッシュの頂点を変形する</a><a class="headerlink" href="#transforming-mesh-vertices" title="Link to this heading"></a></h4>
+<p><a class="reference internal" href="../../../_images/mActionMeshTransformByExpression.png"><img alt="meshTransformByExpression" src="../../../_images/mActionMeshTransformByExpression.png" style="width: 1.5em;" /></a> <sup>頂点座標の変換</sup> ツールは、式を使ってX、Y及び／又はZ座標を編集することで、頂点を移動させるより高度な方法を提供します。</p>
+<ol class="arabic simple">
+<li><p>座標を編集したい頂点を選択します</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionMeshTransformByExpression.png"><img alt="meshTransformByExpression" src="../../../_images/mActionMeshTransformByExpression.png" style="width: 1.5em;" /></a> <sup>頂点座標の変換</sup> を押します。ダイアログが開き、選択された頂点の数が表示されます。選択範囲から頂点を追加したり削除したりすることができます。</p></li>
+<li><p>変更したいプロパティに応じて、 <span class="guilabel">X座標</span>、 <span class="guilabel">Y座標</span>、 <span class="guilabel">Z値</span> のいずれかをチェックする必要があります。</p></li>
+<li><p>次に、数値または式（ <a class="reference internal" href="../../../_images/mIconExpression.png"><img alt="expression" src="../../../_images/mIconExpression.png" style="width: 1.5em;" /></a> <sup>式ダイアログ</sup> を使用）でターゲット位置をボックスに入力します</p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconVertexCoordinates.png"><img alt="vertexCoordinates" src="../../../_images/mIconVertexCoordinates.png" style="width: 1.5em;" /></a> <sup>選択された頂点の座標をインポート</sup> を押すと、1つの頂点が選択されるたびに、X、Y、Zのボックスが自動的にその座標で満たされます。頂点を個別に調整する便利で素早い方法です。</p></li>
+<li><p><span class="guilabel">Preview Transform</span> を押すと、頂点の新しい位置がシミュレートされ、変形したメッシュがプレビューされます。</p>
+<ul class="simple">
+<li><p>プレビューが緑色であれば、変形されたメッシュは有効であり、変形を適用することができます。</p></li>
+<li><p>プレビューが赤色の場合、変形されたメッシュは無効で、修正されるまで変形を適用できません。</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">変形を適用</span> を押して、選択した頂点の座標を変更します。</p></li>
+</ol>
+</section>
+<section id="reshaping-mesh-geometry">
+<h4><a class="toc-backref" href="#id57" role="doc-backlink"><span class="section-number">18.4.4.6. </span>メッシュジオメトリを整形する</a><a class="headerlink" href="#reshaping-mesh-geometry" title="Link to this heading"></a></h4>
+<section id="the-contextual-menu">
+<h5><a class="toc-backref" href="#id58" role="doc-backlink">コンテキストメニュー</a><a class="headerlink" href="#the-contextual-menu" title="Link to this heading"></a></h5>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>メッシュ要素をデジタイズ</sup> を有効にします</p></li>
+<li><p>メッシュアイテムを選ぶ、若しくは</p></li>
+<li><p>メッシュ要素にカーソルを合わせ、ハイライトさせます。</p></li>
+<li><p>右クリックすると、次が可能になります:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#remove-mesh-items"><span class="std std-ref">アイテムを削除する</span></a></p></li>
+<li><p><span class="guilabel">選択された面を分割</span> (<span class="guilabel">現在の面を分割</span>): カーソルを合わせている面、または選択されている四角形のメッシュ面を2つの三角形に分割します</p></li>
+<li><p><span class="guilabel">Delaunay Triangulation with Selected vertices</span>: 選択された自由頂点を用いて三角形の面を作ります。</p></li>
+<li><p><span class="guilabel">Refine Selected Face(s)</span> (<span class="guilabel">Refine Current Face</span>): 各辺の中央に追加された頂点に基づいて、面を4つの面に分割します（三角形は三角形に、四角形は四角形になります）。また、新しい頂点に接続された隣接する面を三角形分割します。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="the-edge-markers">
+<h5><a class="toc-backref" href="#id59" role="doc-backlink">辺マーカー</a><a class="headerlink" href="#the-edge-markers" title="Link to this heading"></a></h5>
+<p><a class="reference internal" href="../../../_images/mActionMeshDigitizing.png"><img alt="meshDigitizing" src="../../../_images/mActionMeshDigitizing.png" style="width: 1.5em;" /></a> <sup>メッシュ要素をデジタイズ</sup> がアクティブなときに辺の上にカーソルを置くと、辺がハイライトされ、その辺を操作することができます。コンテキストによって、以下のマーカーが使用できます:</p>
+<ul class="simple">
+<li><p>辺の中点にある <strong>正方形</strong>: クリックすると、両端の頂点が選択されます。</p></li>
+<li><p>両側の二つの面がマージできるときの <strong>十字</strong>: クリックするとエッジが削除され、それらの面がマージされます。</p></li>
+<li><p>辺が2つの三角形の間にある場合は、<strong>円</strong>: クリックすると辺が反転します。つまり、その辺を面の他の2つの「自由な」頂点に接続します。</p></li>
+</ul>
+</section>
+<section id="the-force-by-selected-geometries-tool">
+<h5><a class="toc-backref" href="#id60" role="doc-backlink"><span class="guilabel">選択されたジオメトリで強制</span> ツール</a><a class="headerlink" href="#the-force-by-selected-geometries-tool" title="Link to this heading"></a></h5>
+<p><a class="reference internal" href="../../../_images/mActionMeshEditForceByVectorLines.png"><img alt="meshEditForceByVectorLines" src="../../../_images/mActionMeshEditForceByVectorLines.png" style="width: 1.5em;" /></a> <sup>選択されたジオメトリで強制</sup> ツールは、ラインジオメトリを使用してブレークラインを適用する高度な方法を提供します。ブレークラインはメッシュにラインに沿った辺を強制的に持たせます。操作が完了すると、ブレークラインは永続的なものとは見なされないことに注意してください; 結果として生じる辺はもう制約として機能せず、他の辺のように変更することができます。これは、例えば、川の堤防や道路の盛土の境界のように、正確な線でメッシュレイヤーを局所的に修正するために使うことができます。</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../../_images/mActionMeshEditForceByVectorLines.png"><img alt="meshEditForceByVectorLines" src="../../../_images/mActionMeshEditForceByVectorLines.png" style="width: 1.5em;" /></a> <sup>選択されたジオメトリで強制</sup> ツールを有効にします</p></li>
+<li><p>次のいずれかで「強制する線」として使用するジオメトリを示します:</p>
+<ul class="simple">
+<li><p>マップキャンバスのライン又はポリゴン地物から選択: ベクタ地物上で右クリックし、コンテキストメニューのリストから選択します。</p></li>
+<li><p>メッシュ枠上に引かれた仮想の線: 左クリックで頂点を追加し、右クリックで検証します。頂点のZ値は <span class="guilabel">頂点のZ値</span> ウィジェット、または <span class="guilabel">高度なデジタイズパネル</span> がオンの場合は <span class="guilabel">z</span> ウィジェットで設定します。線がメッシュの頂点や3Dベクトル地物の頂点やセグメントにスナップされた場合、新しい頂点はスナップされた要素のZ値をとります。</p></li>
+</ul>
+</li>
+</ol>
+<p><a class="reference internal" href="../../../_images/mActionMeshEditForceByVectorLines.png"><img alt="meshEditForceByVectorLines" src="../../../_images/mActionMeshEditForceByVectorLines.png" style="width: 1.5em;" /></a> <sup>選択されたジオメトリで強制</sup> ツールのドロップダウンメニューから設定できるオプションに依存する方法で、ラインジオメトリまたはポリゴンの境界に重なるメッシュ面が影響を受けます:</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">辺の交点に座標点を追加</span>: このオプションを指定すると、強制する線が辺と交差するたびに新しい頂点が追加されます。このオプションは、各面が出会うたびに線に沿って分割することにつながります。</p>
+<p>このオプションがないと、遭遇した面は削除され、既存の頂点と強制する線の頂点だけを持つ三角形分割から得られる面で置き換えられます（強制する線と交差する境界辺にも新しい頂点が追加されます）。</p>
+<figure class="align-center" id="id22">
+<span id="figure-force-mesh-geometry"></span><img alt="../../../_images/force_mesh_geometry.png" src="../../../_images/force_mesh_geometry.png" />
+<figcaption>
+<p><span class="caption-number">図 18.15 </span><span class="caption-text">ラインジオメトリを使用したフォースメッシュ - エッジの交点に新しい頂点がない場合（中央）とある場合（右）の結果</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><span class="guilabel">Z値を内挿</span>: 新しい頂点のZ値をどのように計算するかを設定します。これは:</p>
+<ul class="simple">
+<li><p><span class="guilabel">メッシュ</span> 自身: 新しい頂点のZ値は、その頂点が含まれる面の頂点から内挿されます</p></li>
+<li><p>または <span class="guilabel">強制する線</span>: 線が3Dベクタ地物または描画された線で定義されている場合、新しい頂点のZ値はそのジオメトリから導かれます。2Dライン地物の場合、新しい頂点のZ値は <span class="guilabel">頂点のZ値</span> となります。</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">許容範囲</span>: 既存のメッシュ頂点が許容範囲よりも線に近い場合、線上に新しい頂点を作成せず、代わりに既存の頂点を使用します。この値は <span class="guilabel">縮尺済みメートル</span> または <span class="guilabel">地図単位</span> で設定することができます（詳細は <a class="reference internal" href="../introduction/general_tools.html#unit-selector"><span class="std std-ref">単位セレクタ</span></a> を参照）。</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="reindexing-meshes">
+<span id="reindex-mesh"></span><h3><a class="toc-backref" href="#id61" role="doc-backlink"><span class="section-number">18.4.5. </span>メッシュの再インデックス化</a><a class="headerlink" href="#reindexing-meshes" title="Link to this heading"></a></h3>
+<p>QGISは編集中、また元に戻す/やり直す操作を素早く行うために、削除された要素のために空の場所を保持します。これは、メモリ使用量の増加や非効率的なメッシュ構造を引き起こす可能性があります。<a href="#id24"><span class="problematic" id="id25">|menuselection:`メッシュ --&gt;` |meshReindex|</span></a> <span class="menuselection">面と点を再インデックス化</span> ツールは、このような穴を取り除き、面と頂点のインデックスをリナンバし、連続的である程度合理的な順序になるように設計されています。これにより、面と頂点の関係が最適化され、計算効率が向上します。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p><a class="reference internal" href="../../../_images/mActionMeshReindex.png"><img alt="meshReindex" src="../../../_images/mActionMeshReindex.png" style="width: 1.5em;" /></a> <span class="guilabel">面と点を再インデックス化</span> ツールはレイヤを保存し、元に戻す/やり直すのスタックをクリアし、ロールバックを無効にします。</p>
+</div>
+</section>
+</section>
+<section id="mesh-calculator">
+<span id="id2"></span><h2><a class="toc-backref" href="#id62" role="doc-backlink"><span class="section-number">18.5. </span>メッシュ計算機</a><a class="headerlink" href="#mesh-calculator" title="Link to this heading"></a></h2>
+<p><span class="menuselection">メッシュ</span> メニューの先頭にある <span class="guilabel">メッシュ計算機</span> ツールを使用すると、既存のデータセットグループに対して算術演算や論理演算を行い、新しいデータセットグループを生成できます（ <a class="reference internal" href="#figure-mesh-calculator"><span class="std std-numref">図 18.16</span></a> 参照）。</p>
+<figure class="align-center" id="id23">
+<span id="figure-mesh-calculator"></span><img alt="../../../_images/mesh_calculator.png" src="../../../_images/mesh_calculator.png" />
+<figcaption>
+<p><span class="caption-number">図 18.16 </span><span class="caption-text">メッシュ計算機</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><span class="guilabel">データセット</span> のリストには、アクティブなメッシュレイヤ内の全てのデータセットグループが含まれます。データセットグループを式で使用するには、リスト内でグループ名をダブルクリックします。すると、 <span class="guilabel">メッシュ計算機の式</span> フィールドにグループが追加されます。続いて演算子ボタンを使用したりボックスに演算子を直接入力して、計算式を構築してください。</p>
+<p><span class="guilabel">ラスタレイヤ</span> では、出力レイヤのプロパティを設定できます：</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ディスクに書き込まないオンザフライ・ラスタを作成</span></p>
+<ul class="simple">
+<li><p>これにチェックを入れない場合、出力結果は通常の新しいファイルとしてディスク上に保存されます。 <span class="guilabel">出力ファイル</span> のパスと、 <span class="guilabel">出力形式</span> を指定する必要があります。</p></li>
+<li><p>チェックを入れた場合、メッシュレイヤに新しいデータセットグループが追加されます。データセットグループの値はメモリには保存されておらず、各データセットはメッシュ計算機に入力された計算式で必要となった時に計算されます。この仮想のデータセットはプロジェクトに保存され、レイヤの <span class="guilabel">ソース</span> プロパティタブから必要に応じて削除したり、ファイルに永続化させたりすることができます。</p></li>
+</ul>
+<p>どちらの場合でも、出力データセットグループの <span class="guilabel">グループ名</span> を指定する必要があります。</p>
+</li>
+<li><p><span class="guilabel">空間範囲</span> は計算で考慮する範囲で、以下の設定があります：</p>
+<ul class="simple">
+<li><p><span class="guilabel">カスタム範囲</span> ：座標の <span class="guilabel">X最小値</span> 、 <span class="guilabel">X最大値</span> 、 <span class="guilabel">Y最小値</span> 、 <span class="guilabel">Y最大値</span> を手動で入力するか、既存のデータセットグループから抽出します（範囲に使用したいデータセットをリストで選択し、 <span class="guilabel">選択レイヤの領域を使用</span> ボタンを押すと上記の座標フィールドが入力されます）</p></li>
+<li><p>プロジェクトのポリゴンレイヤによる定義（ <span class="guilabel">マスクレイヤ</span> ）：ポリゴン地物のジオメトリを使用してメッシュレイヤのデータセットを切り抜きます</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">時系列範囲</span> ：データセットが考慮する時間範囲を <span class="guilabel">開始時刻</span> と <span class="guilabel">終了時刻</span> のオプションで設定します。これは、データセットグループの既存の時間ステップの中から選択します。また、 <span class="guilabel">全ての選択データセット時間を使用</span> ボタンを押して、時間の全範囲を設定することもできます。</p></li>
+</ul>
+<p><span class="guilabel">演算子</span> セクションには利用可能なすべての演算子があります。演算子をメッシュ計算機の式ボックスに追加するには、それに応じたボタンをクリックします。算術計算（ <code class="docutils literal notranslate"><span class="pre">+</span></code> 、 <code class="docutils literal notranslate"><span class="pre">-</span></code> 、 <code class="docutils literal notranslate"><span class="pre">*</span></code> など）や統計関数（ <code class="docutils literal notranslate"><span class="pre">min</span></code> 、 <code class="docutils literal notranslate"><span class="pre">max</span></code> 、 <code class="docutils literal notranslate"><span class="pre">sum</span> <span class="pre">(aggr)</span></code> 、 <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">(aggr)</span></code> など）が利用できます。条件式（ <code class="docutils literal notranslate"><span class="pre">=</span></code> 、 <code class="docutils literal notranslate"><span class="pre">!=</span></code> 、 <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> 、 <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> 、 <code class="docutils literal notranslate"><span class="pre">IF</span></code> 、 <code class="docutils literal notranslate"><span class="pre">AND</span></code> 、 <code class="docutils literal notranslate"><span class="pre">NOT</span></code> など）は、偽の場合は 0 、真の場合は 1 を返すので、他の演算子や関数と共に使うことができます。 <code class="docutils literal notranslate"><span class="pre">NODATA</span></code> 値も式中で使用できます。</p>
+<p><span class="guilabel">メッシュ計算機の式</span> ウィジェットには実行する式が表示され、式を編集することができます。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../working_with_raster/georeferencer.html" class="btn btn-neutral float-left" title="17.3. ジオリファレンサ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_vector_tiles/vector_tiles.html" class="btn btn-neutral float-right" title="19. ベクタタイルの操作" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/working_with_mesh/mesh.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/working_with_mesh/mesh.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/working_with_mesh/mesh.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/working_with_mesh/mesh.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/working_with_mesh/mesh.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/working_with_mesh/mesh.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/working_with_mesh/mesh.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/working_with_mesh/mesh.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/working_with_mesh/mesh.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/working_with_mesh/mesh.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/working_with_mesh/mesh.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/working_with_mesh/mesh.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/working_with_mesh/mesh.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/working_with_mesh/mesh.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/working_with_mesh/mesh.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/working_with_mesh/mesh.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/user_manual/working_with_mesh/mesh.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/user_manual/working_with_mesh/mesh.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/working_with_mesh/mesh.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/user_manual/working_with_mesh/mesh.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/user_manual/working_with_mesh/mesh.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/user_manual/working_with_mesh/mesh.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/user_manual/working_with_mesh/mesh.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/user_manual/working_with_mesh/mesh.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/user_manual/working_with_mesh/mesh.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/working_with_mesh/mesh.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/384811ce52be9f3282bb8a832d12dbf7" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

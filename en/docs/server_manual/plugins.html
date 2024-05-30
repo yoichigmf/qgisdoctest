@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Plugins &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/server_manual/plugins.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. Advanced configuration" href="config.html" />
+    <link rel="prev" title="4. Catalog" href="catalog.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 5. Plugins">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">QGIS Server Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services.html">3. Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="catalog.html">4. Catalog</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-plugins">5.1. List of plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#location-of-plugins">5.2. Location of plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">5.3. Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#manually-with-a-zip">5.3.1. Manually with a ZIP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#with-a-command-line-tool">5.3.2. With a command line tool</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#http-server-configuration">5.4. HTTP Server configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apache">5.4.1. Apache</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-use-a-plugin">5.5. How to use a plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">6. Advanced configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_server.html">7. Development Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="containerized_deployment.html">8. Containerized deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">9. Frequently Asked Question</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">QGIS Server Guide/Manual</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5. </span>Plugins</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/server_manual/plugins.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="catalog.html" class="btn btn-neutral float-left" title="4. Catalog" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="config.html" class="btn btn-neutral float-right" title="6. Advanced configuration" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="plugins">
+<h1><span class="section-number">5. </span>Plugins<a class="headerlink" href="#plugins" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#list-of-plugins" id="id1">List of plugins</a></p></li>
+<li><p><a class="reference internal" href="#location-of-plugins" id="id2">Location of plugins</a></p></li>
+<li><p><a class="reference internal" href="#installation" id="id3">Installation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#manually-with-a-zip" id="id4">Manually with a ZIP</a></p></li>
+<li><p><a class="reference internal" href="#with-a-command-line-tool" id="id5">With a command line tool</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#http-server-configuration" id="id6">HTTP Server configuration</a></p>
+<ul>
+<li><p><a class="reference internal" href="#apache" id="id7">Apache</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#how-to-use-a-plugin" id="id8">How to use a plugin</a></p></li>
+</ul>
+</nav>
+<section id="list-of-plugins">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink"><span class="section-number">5.1. </span>List of plugins</a><a class="headerlink" href="#list-of-plugins" title="Link to this heading"></a></h2>
+<p>Plugins can also be installed on QGIS Server.</p>
+<p>Some plugins designed for server can be found on the official
+<a class="reference external" href="https://plugins.qgis.org/plugins/server/">QGIS repository</a>.</p>
+<p>Install only plugins you need for your own purpose. On QGIS server, plugins are like hooks into QGIS server, they can
+alter inputs or outputs of QGIS server. They can produce unexpected result if you don’t know how the plugin works.
+Please refer to their respective documentation or the application that needs QGIS server plugins to know which plugin can
+be useful for you.</p>
+</section>
+<section id="location-of-plugins">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="section-number">5.2. </span>Location of plugins</a><a class="headerlink" href="#location-of-plugins" title="Link to this heading"></a></h2>
+<p>By default, on Debian based systems, QGIS Server will look for plugins located in
+<code class="file docutils literal notranslate"><span class="pre">/usr/lib/qgis/plugins</span></code>. The default value is displayed when QGIS Server is starting, in the logs.
+It’s possible to set a custom path by defining the environment variable <code class="docutils literal notranslate"><span class="pre">QGIS_PLUGINPATH</span></code>
+in the web server configuration.</p>
+</section>
+<section id="installation">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">5.3. </span>Installation</a><a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<section id="manually-with-a-zip">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">5.3.1. </span>Manually with a ZIP</a><a class="headerlink" href="#manually-with-a-zip" title="Link to this heading"></a></h3>
+<p>As an example, to install the <strong>HelloWorld</strong> plugin for testing the server, using a specific
+folder, you first have to create a directory to hold server plugins. This will be specified in
+the virtual host configuration and passed on to the server through an
+environment variable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/www/qgis-server/plugins
+<span class="nb">cd</span><span class="w"> </span>/var/www/qgis-server/plugins
+wget<span class="w"> </span>https://github.com/elpaso/qgis-helloserver/archive/master.zip
+unzip<span class="w"> </span>master.zip
+mv<span class="w"> </span>qgis-helloserver-master<span class="w"> </span>HelloServer
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>According to its <a class="reference external" href="https://plugins.qgis.org/plugins/HelloServer/">description</a>, HelloServer plugin is designed for
+development and demonstration purposes. Do not keep this plugin for production if you don’t need it.</p>
+</div>
+</section>
+<section id="with-a-command-line-tool">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">5.3.2. </span>With a command line tool</a><a class="headerlink" href="#with-a-command-line-tool" title="Link to this heading"></a></h3>
+<p>If you need to install and regularly upgrade plugins which are stored in the QGIS plugin repository,
+you may use the <a class="reference external" href="https://github.com/3liz/qgis-plugin-manager">QGIS-Plugin-Manager</a>.
+It’s a tool to help you manage plugins from the command line.</p>
+<p>The installation is using pip. Installing in a virtual environment is a good practice but not required:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3<span class="w"> </span>install<span class="w"> </span>qgis-plugin-manager
+</pre></div>
+</div>
+<p>To upgrade the tool:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>qgis-plugin-manager
+</pre></div>
+</div>
+<p>Then, you can use the <code class="docutils literal notranslate"><span class="pre">qgis-plugin-manager</span></code> executable from the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/var/www/qgis-server/plugins
+qgis-plugin-manager<span class="w"> </span>list
+
+QGIS<span class="w"> </span>server<span class="w"> </span>version<span class="w"> </span><span class="m">3</span>.19.0
+List<span class="w"> </span>all<span class="w"> </span>plugins<span class="w"> </span><span class="k">in</span><span class="w"> </span>/var/www/qgis-server/plugins
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+<span class="p">|</span><span class="w">  </span>Folder<span class="w">                    </span><span class="p">|</span><span class="w">  </span>Name<span class="w">              </span><span class="p">|</span><span class="w">  </span>Version<span class="w">  </span><span class="p">|</span><span class="w">  </span>Experimental<span class="w">  </span><span class="p">|</span><span class="w">  </span>QGIS<span class="w"> </span>min<span class="w">  </span><span class="p">|</span><span class="w">  </span>QGIS<span class="w"> </span>max<span class="w">  </span><span class="p">|</span><span class="w">  </span>Author<span class="w">                    </span><span class="p">|</span><span class="w">  </span>Action<span class="w"> </span>⚠<span class="w">          </span><span class="p">|</span>
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+<span class="p">|</span>wfsOutputExtension<span class="w">          </span><span class="p">|</span>wfsOutputExtension<span class="w">  </span><span class="p">|</span><span class="m">1</span>.6.2<span class="w">      </span><span class="p">|</span><span class="w">                </span><span class="p">|</span><span class="m">3</span>.0<span class="w">         </span><span class="p">|</span><span class="w">            </span><span class="p">|</span>3Liz<span class="w">                        </span><span class="p">|</span><span class="w">                    </span><span class="p">|</span>
+<span class="p">|</span>qgis_server_render_geojson<span class="w">  </span><span class="p">|</span>GeoJson<span class="w"> </span>Renderer<span class="w">    </span><span class="p">|</span>v0.4<span class="w">       </span><span class="p">|</span><span class="w">                </span><span class="p">|</span><span class="m">3</span>.4<span class="w">         </span><span class="p">|</span><span class="w">            </span><span class="p">|</span>Matthias<span class="w"> </span>Kuhn<span class="w"> </span><span class="o">(</span>OPENGIS.ch<span class="o">)</span><span class="w">  </span><span class="p">|</span><span class="w">                    </span><span class="p">|</span>
+<span class="p">|</span>DataPlotly<span class="w">                  </span><span class="p">|</span>Data<span class="w"> </span>Plotly<span class="w">         </span><span class="p">|</span><span class="m">3</span>.7.1<span class="w">      </span><span class="p">|</span><span class="w">                </span><span class="p">|</span><span class="m">3</span>.4<span class="w">         </span><span class="p">|</span><span class="m">3</span>.98<span class="w">        </span><span class="p">|</span>Matteo<span class="w"> </span>Ghetta<span class="w"> </span><span class="o">(</span>Faunalia<span class="o">)</span><span class="w">    </span><span class="p">|</span>Upgrade<span class="w"> </span>to<span class="w"> </span><span class="m">3</span>.8.1<span class="w">    </span><span class="p">|</span>
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<p>We suggest you to read the full documentation in the
+<a class="reference external" href="https://github.com/3liz/qgis-plugin-manager/blob/master/README.md">readme file</a> to know how to install or
+upgrade plugins with this tool.</p>
+</section>
+</section>
+<section id="http-server-configuration">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">5.4. </span>HTTP Server configuration</a><a class="headerlink" href="#http-server-configuration" title="Link to this heading"></a></h2>
+<section id="apache">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">5.4.1. </span>Apache</a><a class="headerlink" href="#apache" title="Link to this heading"></a></h3>
+<p>To be able to use server plugins, FastCGI needs to know where to look. So, we
+have to modify the Apache configuration file to indicate the
+<code class="docutils literal notranslate"><span class="pre">QGIS_PLUGINPATH</span></code> environment variable to FastCGI:</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nb">FcgidInitialEnv</span><span class="w"> </span>QGIS_PLUGINPATH<span class="w"> </span><span class="s2">&quot;/var/www/qgis-server/plugins&quot;</span>
+</pre></div>
+</div>
+<p>Moreover, a basic HTTP authorization is necessary to play with the HelloWorld
+plugin previously introduced. So we have to update the Apache configuration file
+a last time:</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="c"># Needed for QGIS HelloServer plugin HTTP BASIC auth</span>
+<span class="nt">&lt;IfModule</span><span class="w"> </span><span class="s">mod_fcgid.c</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">RewriteEngine</span><span class="w"> </span><span class="k">on</span>
+<span class="w">    </span><span class="nb">RewriteCond</span><span class="w"> </span>%{HTTP:Authorization}<span class="w"> </span>.
+<span class="w">    </span><span class="nb">RewriteRule</span><span class="w"> </span>.*<span class="w"> </span>-<span class="w"> </span>[E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div>
+</div>
+<p>Then, restart Apache:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2
+</pre></div>
+</div>
+</section>
+</section>
+<section id="how-to-use-a-plugin">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">5.5. </span>How to use a plugin</a><a class="headerlink" href="#how-to-use-a-plugin" title="Link to this heading"></a></h2>
+<p>Test the server with the HelloWorld plugin:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-q<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span><span class="s2">&quot;http://localhost/cgi-bin/qgis_mapserv.fcgi?SERVICE=HELLO&quot;</span>
+<span class="w"> </span>HelloServer!
+</pre></div>
+</div>
+<p>You can have a look at the default GetCapabilities of the QGIS server at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost/cgi-bin/qgis_mapserv.fcgi?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetCapabilities
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="catalog.html" class="btn btn-neutral float-left" title="4. Catalog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="config.html" class="btn btn-neutral float-right" title="6. Advanced configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/plugins.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/server_manual/plugins.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/server_manual/plugins.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/server_manual/plugins.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/server_manual/plugins.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/server_manual/plugins.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/server_manual/plugins.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/server_manual/plugins.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/server_manual/plugins.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/server_manual/plugins.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/server_manual/plugins.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/server_manual/plugins.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/server_manual/plugins.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/server_manual/plugins.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/server_manual/plugins.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/server_manual/plugins.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/server_manual/plugins.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/server_manual/plugins.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/plugins.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/server_manual/plugins.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/server_manual/plugins.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/server_manual/plugins.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/server_manual/plugins.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/server_manual/plugins.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/server_manual/plugins.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/server_manual/plugins.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/30ec5096a870fa5110e5556144fc9d77" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15.1. データを開く &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/managing_data_source/opening_data.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="15.2. レイヤを作成する" href="create_layers.html" />
+    <link rel="prev" title="15. データソースの管理" href="index.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 15.1. データを開く">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. 序文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. 記述ルール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. 機能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. 最初のステップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. プロジェクトファイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGISのユーザインタフェース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. ブラウザパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGISの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. 投影法の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. 地図の可視化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. 一般ツール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. 式でレベルアップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. スタイルライブラリ</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">15. データソースの管理</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">15.1. データを開く</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-browser-panel">15.1.1. ブラウザパネル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-db-manager">15.1.2. DBマネージャ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#provider-based-loading-tools">15.1.3. プロバイダベースの読み込みツール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-layer-metadata-search-panel">15.1.4. レイヤメタデータ検索パネル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qgis-custom-formats">15.1.5. QGISカスタム形式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qlr-qgis-layer-definition-file">15.1.6. QLR - QGISレイヤ定義ファイル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-to-web-services">15.1.7. ウェブサービスへ接続する</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="create_layers.html">15.2. レイヤを作成する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_data.html">15.3. データ形式とフィールドを探究する</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. ベクタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. ラスタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. メッシュデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. ベクタタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. 点群の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. 3Dタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. 地図のレイアウト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. OGC / ISOプロトコルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. GPSデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">25. 認証システム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS の統合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS プロセシングフレームワーク</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. プロセシングプロバイダとアルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. ヘルプとサポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. 協力者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. 付録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. 文献とWeb参照</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGISユーザガイド</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">15. </span>データソースの管理</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">15.1. </span>データを開く</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/managing_data_source/opening_data.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="15. データソースの管理" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="create_layers.html" class="btn btn-neutral float-right" title="15.2. レイヤを作成する" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 92.13% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="opening-data">
+<span id="index-2"></span><span id="index-1"></span><span id="index-0"></span><span id="id1"></span><h1><span class="section-number">15.1. </span>データを開く<a class="headerlink" href="#opening-data" title="Link to this heading"></a></h1>
+<nav class="contents local" id="id2">
+<ul class="simple">
+<li><p><a class="reference internal" href="#the-browser-panel" id="id24">ブラウザパネル</a></p>
+<ul>
+<li><p><a class="reference internal" href="#exploring-the-interface" id="id25">インターフェースについて</a></p></li>
+<li><p><a class="reference internal" href="#interacting-with-the-browser-items" id="id26">ブラウザ項目とのインタラクション</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#the-db-manager" id="id27">DBマネージャ</a></p></li>
+<li><p><a class="reference internal" href="#provider-based-loading-tools" id="id28">プロバイダベースの読み込みツール</a></p>
+<ul>
+<li><p><a class="reference internal" href="#loading-a-layer-from-a-file" id="id29">ファイルからレイヤを読み込む</a></p></li>
+<li><p><a class="reference internal" href="#loading-a-mesh-layer" id="id30">メッシュレイヤを読み込む</a></p></li>
+<li><p><a class="reference internal" href="#importing-a-delimited-text-file" id="id31">区切りテキストファイルをインポートする</a></p>
+<ul>
+<li><p><a class="reference internal" href="#file-format" id="id32">ファイル形式</a></p></li>
+<li><p><a class="reference internal" href="#records-and-fields" id="id33">レコードとフィールドのオプション</a></p></li>
+<li><p><a class="reference internal" href="#field-type-detection" id="id34">フィールド型を検出</a></p></li>
+<li><p><a class="reference internal" href="#geometry-definition" id="id35">ジオメトリ定義</a></p></li>
+<li><p><a class="reference internal" href="#layer-settings" id="id36">レイヤ設定</a></p></li>
+<li><p><a class="reference internal" href="#sample-data" id="id37">サンプルデータ</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#importing-a-dxf-or-dwg-file" id="id38">DXFファイルやDWGファイルをインポートする</a></p></li>
+<li><p><a class="reference internal" href="#importing-openstreetmap-vectors" id="id39">OpenStreetMapベクタのインポート</a></p></li>
+<li><p><a class="reference internal" href="#spatialite-layers" id="id40">SpatiaLiteレイヤ</a></p></li>
+<li><p><a class="reference internal" href="#gps" id="id41">GPS</a></p></li>
+<li><p><a class="reference internal" href="#grass" id="id42">GRASS</a></p></li>
+<li><p><a class="reference internal" href="#database-related-tools" id="id43">データベース関連ツール</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-a-stored-connection" id="id44">保存された接続の作成</a></p></li>
+<li><p><a class="reference internal" href="#particular-connection-requirements" id="id45">特定の接続要件</a></p>
+<ul>
+<li><p><a class="reference internal" href="#postgresql-service-connection-file" id="id46">PostgreSQLサービス接続ファイル</a></p></li>
+<li><p><a class="reference internal" href="#connecting-to-oracle-spatial" id="id47">Oracle Spatialのへの接続</a></p></li>
+<li><p><a class="reference internal" href="#connecting-to-ms-sql-server" id="id48">MS SQLサーバーへの接続</a></p></li>
+<li><p><a class="reference internal" href="#connecting-to-sap-hana" id="id49">SAP HANAへの接続</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#loading-a-database-layer" id="id50">データベースのレイヤを読み込む</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#the-layer-metadata-search-panel" id="id51">レイヤメタデータ検索パネル</a></p></li>
+<li><p><a class="reference internal" href="#qgis-custom-formats" id="id52">QGISカスタム形式</a></p></li>
+<li><p><a class="reference internal" href="#qlr-qgis-layer-definition-file" id="id53">QLR - QGISレイヤ定義ファイル</a></p></li>
+<li><p><a class="reference internal" href="#connecting-to-web-services" id="id54">ウェブサービスへ接続する</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-vector-tiles-services" id="id55">ベクタタイルサービスを利用する</a></p></li>
+<li><p><a class="reference internal" href="#using-xyz-tile-services" id="id56">XYZタイルサービスを利用する</a></p></li>
+<li><p><a class="reference internal" href="#using-arcgis-rest-servers" id="id57">ArcGIS REST Serversを利用する</a></p></li>
+<li><p><a class="reference internal" href="#using-3d-tiles-services" id="id58">Using 3D tiles services</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>オープンソース・ソフトウェアのエコシステムの一部として、QGISは様々なライブラリの上に構築されています。これらのライブラリは、QGIS独自のプロバイダと組み合わされることで、多くのフォーマットを読み込む機能と、そして多くの場合は書き出す機能も提供しています：</p>
+<ul class="simple">
+<li><p>ベクタデータ形式： GeoPackage、GML、GeoJSON、GPX、KML、コンマ区切りテキスト、ESRIフォーマット（シェープファイル、ジオデータベース等）、MapInfo、MicroStationファイル形式、AutoCAD DWG/DXF、GRASS、その他多くの形式が含まれます。完全なリストは、 <a class="reference external" href="https://gdal.org/drivers/vector/index.html">サポートしているベクタ形式</a> を参照してください。</p></li>
+<li><p>ラスタデータ形式： GeoTIFF、JPEG、ASCII Gridded XYZ、MBTiles、RやIDRISIラスタ、 GDAL Virtual、SRTM、Sentinel Data、ERDAS IMAGINE、ArcInfo Binary Grid、ArcInfo ASCII Grid、その他多くの形式が含まれます。完全なリストは <a class="reference external" href="https://gdal.org/drivers/raster/index.html">サポートしているラスタ形式</a> を参照してください。</p></li>
+<li><p>データベース形式：PostgreSQL/PostGIS, SQLite/SpatiaLite, Oracle, MS SQL Server, SAP HANA, MySQL等</p></li>
+<li><p>WebマップとWebデータサービス（WM(T)S、WFS、WCS、CSW、XYZ tiles、ArcGIS services等）もQGISのプロバイダで扱うことが可能です。これらの一部についてのより詳しい情報は <a class="reference internal" href="../working_with_ogc/ogc_client_support.html#working-with-ogc"><span class="std std-ref">OGC / ISOプロトコルの操作</span></a> を参照してください。</p></li>
+<li><p>アーカイブされたフォルダからサポートしているフォーマットのファイルを読み込んだり、QML ファイル （ <a class="reference internal" href="../appendices/qgis_file_formats.html#qgisstylefile"><span class="std std-ref">QML-QGISスタイルファイル形式</span></a> ）などのQGISネイティブ形式や仮想レイヤ、メモリレイヤを使用することができます。</p></li>
+</ul>
+<p>80以上のベクタ形式と140以上のラスタ形式が <a class="reference external" href="https://gdal.org/">GDAL</a> とQGISネイティブプロバイダによってサポートされています。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>さまざまな理由により、リストに挙げたすべてのフォーマットがQGISで動作するわけではありません。例えば、外部のプロプライエタリなライブラリを必要とする場合や、お使いのOSのGDAL/OGRのインストールが、使用したいフォーマットをサポートするようにビルドされていない場合もあります。利用可能なフォーマットのリストを確認するには、コマンドラインで <code class="docutils literal notranslate"><span class="pre">ogrinfo</span> <span class="pre">--formats</span></code> （ベクタ用）や <code class="docutils literal notranslate"><span class="pre">gdalinfo</span> <span class="pre">--formats</span></code> （ラスタ用）を実行するか、QGIS上で  <span class="menuselection">設定 ► オプション ► GDAL</span> のメニューを確認してください。</p>
+</div>
+<p id="datasourcemanager">QGISでは、データ形式に応じて、データセットを開くためのさまざまなツールがあります。それらは主に <span class="menuselection">レイヤ ► レイヤの追加 ►</span> メニューまたは <span class="guilabel">レイヤ管理</span> ツールバー（ <span class="menuselection">ビュー ► ツールバー</span> メニューで有効にできます）で使用できます。ただし、これらのツールはすべて <span class="guilabel">データソースマネージャ</span> ダイアログというただ一つのダイアログを指しています。このダイアログは <span class="guilabel">データソースマネージャツールバー</span> にある <a class="reference internal" href="../../../_images/mActionDataSourceManager.png"><img alt="dataSourceManager" src="../../../_images/mActionDataSourceManager.png" style="width: 1.5em;" /></a> <sup>データソースマネージャを開く</sup> ボタンを押すか、または <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">L</kbd></kbd> を押すと開くことができます。 <span class="guilabel">データソースマネージャ</span> ダイアログ（ <a class="reference internal" href="#figure-datasource-manager"><span class="std std-numref">図 15.1</span></a> ）は、ファイルベースのデータやデータベース、QGISがサポートするWebサービスを開くための統一されたインターフェイスを提供します。</p>
+<figure class="align-center" id="id3">
+<span id="figure-datasource-manager"></span><img alt="../../../_images/datasource_manager.png" src="../../../_images/datasource_manager.png" />
+<figcaption>
+<p><span class="caption-number">図 15.1 </span><span class="caption-text">QGISのデータソースマネージャダイアログ</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>このメインエントリポイントの他に、接続されたデータベースを分析したり操作したりする高度な機能を提供する <a class="reference internal" href="../../../_images/dbmanager.png"><img alt="dbManager" src="../../../_images/dbmanager.png" style="width: 1.5em;" /></a> <span class="guilabel">DBマネージャ</span> プラグインがあります。DBマネージャの機能についての詳細は、 <a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DBマネージャプラグイン</span></a> を参照してください。</p>
+<p>他にも多くのツールやネイティブのプラグイン、サードパーティ製のプラグインがあり、様々なデータ形式を開くのに役立ちます。</p>
+<p>この章では、QGISでデータをロードするためにデフォルトで提供されているツールのみを説明します。主に、 <span class="guilabel">データソースマネージャ</span> ダイアログに焦点を当てますが、 各タブの説明だけでなく、データプロバイダやフォーマットの仕様に基づいたツールについても説明します。</p>
+<section id="the-browser-panel">
+<span id="browser-panel"></span><span id="index-3"></span><h2><a class="toc-backref" href="#id24" role="doc-backlink"><span class="section-number">15.1.1. </span>ブラウザパネル</a><a class="headerlink" href="#the-browser-panel" title="Link to this heading"></a></h2>
+<p><span class="guilabel">ブラウザ</span> は、素早く簡単にデータをプロジェクトに追加する主な方法の一つです。これは、以下の方法で利用できます。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionDataSourceManager.png"><img alt="dataSourceManager" src="../../../_images/mActionDataSourceManager.png" style="width: 1.5em;" /></a> <sup>データソースマネージャを開く</sup> ボタン（ <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">L</kbd></kbd> ）を押して開いた <span class="guilabel">データソースマネージャ</span> のタブの一つにブラウザがあります。</p></li>
+<li><p><span class="menuselection">ビュー ► パネル</span> （ <a class="reference internal" href="../../../_images/kde.png"><img alt="kde" src="../../../_images/kde.png" style="width: 1.5em;" /></a> は <span class="menuselection">設定 ► パネル</span> ）メニューもしくは <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">2</kbd></kbd> を押すことで開くQGISのパネルとして利用できます。</p></li>
+</ul>
+<p>どちらの場合でも、 <span class="guilabel">ブラウザ</span> はレイヤの種類（ラスタ、ベクタ、テーブル）やデータソースの形式（プレーンまたは圧縮ファイル、データベース、webサービス）に関係なく、ファイルシステム内を検索しジオデータを管理するのに役立ちます。</p>
+<section id="exploring-the-interface">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink"><span class="section-number">15.1.1.1. </span>インターフェースについて</a><a class="headerlink" href="#exploring-the-interface" title="Link to this heading"></a></h3>
+<p>ブラウザパネルの上部には、以下の機能を持つボタンがあります：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionAddLayer.png"><img alt="addLayer" src="../../../_images/mActionAddLayer.png" style="width: 1.5em;" /></a> <sup>選択したレイヤの追加</sup> ：レイヤのコンテキストメニューから <strong>レイヤをプロジェクトに追加する</strong> を選択することでも、マップキャンバスにデータを追加することができます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a> <sup>再読み込み</sup> ：ブラウザツリーを更新します</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionFilterMap.png"><img alt="filterMap" src="../../../_images/mActionFilterMap.png" style="width: 1.5em;" /></a> <sup>ブラウザのフィルタ</sup> ：特定のデータを検索するためにブラウザをフィルタリングします。検索語やワイルドカードを入力すると、ブラウザはツリーをフィルタリングして、一致するDBテーブル、ファイル名、フォルダへのパスのみを表示します -- 他のデータやフォルダは表示されません。 <a class="reference internal" href="#figure-browser-panels"><span class="std std-numref">図 15.2</span></a> のブラウザ(2)パネルの例を参照してください。比較は大文字と小文字を区別するかどうかを指定できます。また、下記のオプションを設定することもできます：</p>
+<ul>
+<li><p><span class="guilabel">通常</span> ：検索テキストを含むアイテムを表示します</p></li>
+<li><p><span class="guilabel">ワイルドカード</span> ： <code class="docutils literal notranslate"><span class="pre">?</span></code> や <code class="docutils literal notranslate"><span class="pre">*</span></code> の文字を使用して、検索テキストの位置指定を調整した検索を実行できます。</p></li>
+<li><p><span class="guilabel">正規表現</span></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../../../_images/mActionCollapseTree.png"><img alt="collapseTree" src="../../../_images/mActionCollapseTree.png" style="width: 1.5em;" /></a> <sup>すべて折りたたむ</sup> ：ツリー全体を折りたたみます</p></li>
+<li><p><a class="reference internal" href="../../../_images/metadata.png"><img alt="metadata" src="../../../_images/metadata.png" style="width: 1.5em;" /></a> <sup>プロパティウィジェットの有効化/無効化</sup> ：オンに切り替わると、パネルの下部に新しいウィジェットが追加され、選択されたアイテムのメタデータが表示されます。</p></li>
+</ul>
+<p><span class="guilabel">ブラウザ</span> パネル内のエントリは階層的にまとめられており、いくつかのトップレベルエントリがあります：</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">お気に入り</span> ：よく使用する場所へのショートカットを置くことができる場所です</p></li>
+<li><p><span class="guilabel">空間ブックマーク</span> ：よく使用するマップ範囲を保存できる場所です（ <a class="reference internal" href="../map_views/map_view.html#sec-bookmarks"><span class="std std-ref">地図上の範囲のブックマーク</span></a> 参照）</p></li>
+<li><p><span class="guilabel">プロジェクトホーム</span> ：プロジェクトに関連したデータ（の大半）が保存されているフォルダへのクイックアクセスです。デフォルト値は、プロジェクトファイルがあるディレクトリです。</p></li>
+<li><p>ファイルシステムの <span class="guilabel">ホーム</span> ディレクトリと、ファイルシステムのルートディレクトリ</p></li>
+<li><p>接続されているローカルドライブやネットワークドライブ</p></li>
+<li><p>それから、プラットフォームや基礎となるライブラリにもよりますが、多数のコンテナ / データベース形式やサービスプロトコルのトップレベルエントリがあります：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mGeoPackage.png"><img alt="geoPackage" src="../../../_images/mGeoPackage.png" style="width: 1.5em;" /></a> <span class="guilabel">GeoPackage</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconSpatialite.png"><img alt="spatialite" src="../../../_images/mIconSpatialite.png" style="width: 1.5em;" /></a> <span class="guilabel">SpatiaLite</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconPostgis.png"><img alt="postgis" src="../../../_images/mIconPostgis.png" style="width: 1.5em;" /></a> <span class="guilabel">PostgreSQL</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconHana.png"><img alt="hana" src="../../../_images/mIconHana.png" style="width: 1.5em;" /></a> <span class="guilabel">SAP HANA</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconMssql.png"><img alt="mssql" src="../../../_images/mIconMssql.png" style="width: 1.5em;" /></a> <span class="guilabel">MS SQL Server</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconOracle.png"><img alt="oracle" src="../../../_images/mIconOracle.png" style="width: 1.5em;" /></a> <span class="guilabel">Oracle</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconWms.png"><img alt="wms" src="../../../_images/mIconWms.png" style="width: 1.5em;" /></a> <span class="guilabel">WMS/WMTS</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconVectorTileLayer.png"><img alt="vectorTileLayer" src="../../../_images/mIconVectorTileLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">Vector Tiles</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconXyz.png"><img alt="xyz" src="../../../_images/mIconXyz.png" style="width: 1.5em;" /></a> <span class="guilabel">XYZ Tiles</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconWcs.png"><img alt="wcs" src="../../../_images/mIconWcs.png" style="width: 1.5em;" /></a> <span class="guilabel">WCS</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconWfs.png"><img alt="wfs" src="../../../_images/mIconWfs.png" style="width: 1.5em;" /></a> <span class="guilabel">WFS/OGC API-Features</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconAfs.png"><img alt="afs" src="../../../_images/mIconAfs.png" style="width: 1.5em;" /></a> <span class="guilabel">ArcGIS REST Server</span></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="interacting-with-the-browser-items">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">15.1.1.2. </span>ブラウザ項目とのインタラクション</a><a class="headerlink" href="#interacting-with-the-browser-items" title="Link to this heading"></a></h3>
+<p>ブラウザは、ブラウザへのドラッグ＆ドロップや、ブラウザからキャンバスや <span class="guilabel">レイヤ</span> パネルへのドラッグ＆ドロップ、 <span class="guilabel">レイヤ</span> パネルからブラウザ内のレイヤコンテナ（例えばGeoPackage等）へのドラッグ＆ドロップをサポートしています。</p>
+<p>ブラウザ内のプロジェクトファイルのアイテムは展開することができ、プロジェクトに含まれる（グループを含む）完全なレイヤツリーを表示します。プロジェクトのアイテムはブラウザ内の他のアイテムと同様に扱われるため、（例えばGeoPackageファイルにレイヤアイテムをコピーするために）ブラウザ内でドラッグ＆ドロップしたり、ドラッグ＆ドロップやダブルクリックで現在のプロジェクトにアイテムを追加したりすることができます。</p>
+<p><span class="guilabel">ブラウザ</span> パネル内の要素を右クリックすると、コンテキストメニューが開きます。</p>
+<p>ファイルシステムのディレクトリエントリの場合、コンテキストメニューには次のようなものがあります：</p>
+<ul class="simple">
+<li><p><span class="menuselection">新規 ►</span> は、下記のエントリから選択して新規作成します</p>
+<ul>
+<li><p><span class="guilabel">ディレクトリ...</span></p></li>
+<li><p><span class="guilabel">GeoPackage...</span></p></li>
+<li><p><span class="guilabel">シェープファイル...</span></p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">お気に入りとして追加</span> ：お気に入りフォルダは好きな時に名前の変更（ <span class="guilabel">お気に入りの名前の変更...</span> ） や削除（ <span class="guilabel">お気に入りを削除</span> ）ができます。</p></li>
+<li><p><span class="guilabel">ブラウザから隠す</span> ：隠されたフォルダは <span class="menuselection">設定 ► オプション ► データソース ► ブラウザに表示しないパス</span> の設定で見えるように戻すことができます。</p></li>
+<li><p><span class="guilabel">このディレクトリの高速スキャン</span></p></li>
+<li><p><span class="guilabel">ディレクトリを開く...</span></p></li>
+<li><p><span class="guilabel">ターミナルで開く...</span></p></li>
+<li><p><span class="guilabel">プロパティ...</span></p></li>
+<li><p><span class="guilabel">ディレクトリプロパティ...</span></p></li>
+</ul>
+<p>プロジェクト内でレイヤとして扱うことのできるリーフエントリについては、コンテキストメニューにサポート項目があります。例えば、非データベース、非サービスベースのベクタ、ラスタ、メッシュデータソースには、以下の項目があります：</p>
+<ul class="simple">
+<li><p><span class="menuselection">レイヤエクスポート ► ファイルへ...</span></p></li>
+<li><p><span class="guilabel">レイヤをプロジェクトに追加する</span></p></li>
+<li><p><span class="guilabel">レイヤのプロパティ</span></p></li>
+<li><p><span class="menuselection">管理 ► &quot;&lt;name of file&gt;&quot; の名前を変更...</span> または <span class="guilabel">&quot;&lt;name of file&gt;&quot; を削除...</span></p></li>
+<li><p><span class="guilabel">ファイルに表示</span></p></li>
+<li><p><span class="guilabel">ファイルプロパティ...</span></p></li>
+</ul>
+<p><span class="guilabel">レイヤのプロパティ</span> エントリを選択すると、（レイヤがプロジェクトに追加された後に <a class="reference internal" href="../working_with_vector/vector_properties.html#vector-properties-dialog"><span class="std std-ref">ベクタ</span></a> レイヤや <a class="reference internal" href="../working_with_raster/raster_properties.html#raster-properties-dialog"><span class="std std-ref">ラスタ</span></a> レイヤのプロパティで表示されるものと同様な）以下の情報が表示されます：</p>
+<ul class="simple">
+<li><p>レイヤに関する <span class="guilabel">メタデータ</span> 。メタデータのグループは次のとおりです： <span class="guilabel">プロバイダからの情報</span> （可能ならば <span class="guilabel">パス</span> はソースへのハイパーリンクで表示されます）、 <span class="guilabel">識別</span> 、 <span class="guilabel">領域</span> 、 <span class="guilabel">アクセス</span> 、 <span class="guilabel">属性</span> （ベクタレイヤの場合）、 <span class="guilabel">バンド</span> （ラスタレイヤの場合）、 <span class="guilabel">連絡先</span> 、 <span class="guilabel">リンク</span> （ベクタレイヤの場合）、 <span class="guilabel">リファレンス</span> （ラスタレイヤの場合）、 <span class="guilabel">履歴</span></p></li>
+<li><p><span class="guilabel">プレビュー</span> パネル</p></li>
+<li><p>ベクタソースの場合は属性テーブル（ <span class="guilabel">属性</span> パネル内）</p></li>
+</ul>
+<p><span class="guilabel">ブラウザ</span> を使用してプロジェクトにレイヤを追加するには、次の手順で操作します：</p>
+<ol class="arabic">
+<li><p><span class="guilabel">ブラウザ</span> を上記の方法で有効にします。ファイルシステム、データベース、webサービスのブラウザツリーが表示されます。データベースやwebサービスが表示される前に、データベースやwebサービスへ接続する必要があるかもしれません（専用のセクションを参照してください）。</p></li>
+<li><p>リストの中からレイヤを見つけます。</p></li>
+<li><p>レイヤのコンテキストメニューを使用するか、レイヤ名をダブルクリックするか、レイヤを <a class="reference internal" href="../map_views/map_view.html#label-mapview"><span class="std std-ref">マップキャンバス</span></a> へとドラッグ＆ドロップします。これでレイヤは <a class="reference internal" href="../introduction/general_tools.html#label-legend"><span class="std std-ref">レイヤパネル</span></a> に追加され、マップキャンバス上で見ることができるようになります。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>ブラウザからQGISプロジェクトを直接開く</strong></p>
+<p>プロジェクト名をダブルクリックするか、マップキャンバス上へドラッグ＆ドロップすることで、ブラウザパネルからQGISのプロジェクトを直接開くこともできます。</p>
+</div>
+</li>
+</ol>
+<p>ファイルがロードされたら、マップナビゲーションツールを使用してレイヤをあちこちズームすることができます。レイヤのスタイルを変更するには、凡例内のレイヤ名をダブルクリックするか、レイヤ名を右クリックしてコンテキストメニューから <span class="menuselection">プロパティ</span> を選択し、 <span class="guilabel">レイヤプロパティ</span> ダイアログを開きます。ベクタレイヤのシンボロジ設定の詳細については、 <a class="reference internal" href="../working_with_vector/vector_properties.html#vector-style-menu"><span class="std std-ref">シンボロジプロパティ</span></a> を参照してください。</p>
+<p>ブラウザツリー内のアイテムを右クリックすると、以下の機能があります：</p>
+<ul class="simple">
+<li><p>ファイルやテーブルについては、メタデータを表示したり、プロジェクト内に開きます。テーブルは名前を変更したり、行を削除したり、全行削除することもできます。</p></li>
+<li><p>フォルダについては、お気に入りにブックマークしたり、ブラウザツリーから隠したりできます。非表示となったフォルダは、 <span class="menuselection">設定 ► オプション ► データソース</span> タブで管理することができます。</p></li>
+<li><p><a class="reference internal" href="../map_views/map_view.html#sec-bookmarks"><span class="std std-ref">空間ブックマーク</span></a> の管理：ブックマークを作成したり、ブックマークを <code class="docutils literal notranslate"><span class="pre">XML</span></code> ファイルとしてエクスポートしたり、<code class="docutils literal notranslate"><span class="pre">XML</span></code> ファイルからインポートしたりできます。</p></li>
+<li><p>データベースやwebサービスへの接続を作成します。</p></li>
+<li><p>再読み込みや、スキーマ名の変更、スキーマの削除ができます。</p></li>
+</ul>
+<p>また、ファイルをデータベースにインポートしたり、1つのスキーマ/データベースから別のスキーマ/データベースにテーブルをコピーしたりすることもドラッグ＆ドロップで簡単に行うことができます。2つ目のブラウザパネルを利用することで、ドラッグ中に長いスクロールを行わずに済みます。ファイルを選択して、一方のパネルから他方のパネルへとドラッグ＆ドロップするだけです。</p>
+<figure class="align-center" id="id4">
+<span id="figure-browser-panels"></span><img alt="../../../_images/browser_panels.png" src="../../../_images/browser_panels.png" />
+<figcaption>
+<p><span class="caption-number">図 15.2 </span><span class="caption-text">横並びのQGISブラウザパネル</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>OSのファイルブラウザからドラッグ＆ドロップでQGISにレイヤを追加する</strong></p>
+<p>オペレーティングシステムのファイルブラウザから <span class="guilabel">レイヤパネル</span> またはマップキャンバスにファイルをドラッグ＆ドロップしても、ファイルをプロジェクトに追加できます。</p>
+</div>
+</section>
+</section>
+<section id="the-db-manager">
+<span id="index-4"></span><h2><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">15.1.2. </span>DBマネージャ</a><a class="headerlink" href="#the-db-manager" title="Link to this heading"></a></h2>
+<p><span class="guilabel">DBマネージャ</span> プラグインは、QGISがサポートする空間データベース形式（PostGIS、SpatiaLite、GeoPackage、Oracle Spatial、MS SQL Server、仮想レイヤ）を統合して管理するためのもう一つのツールです。これは、 <span class="menuselection">プラグイン ► プラグインの管理とインストール...</span> メニューから有効化することができます。</p>
+<p><a class="reference internal" href="../../../_images/dbmanager.png"><img alt="dbManager" src="../../../_images/dbmanager.png" style="width: 1.5em;" /></a> <sup>DBマネージャ</sup> プラグインにはさまざまな機能があります。</p>
+<ul class="simple">
+<li><p>データベースに接続し、その構造や内容を表示する</p></li>
+<li><p>データベースのテーブルをプレビューする</p></li>
+<li><p>ダブルクリックまたはドラッグ＆ドロップで、マップキャンバスへレイヤを追加する</p></li>
+<li><p>QGISブラウザや他のデータベースから、データベースにレイヤを追加する</p></li>
+<li><p>SQLクエリを作成し、実行結果をマップキャンバスへ追加する</p></li>
+<li><p><a class="reference internal" href="create_layers.html#vector-virtual-layers"><span class="std std-ref">仮想レイヤ</span></a> を作成する</p></li>
+</ul>
+<p>DBマネージャの機能に関する更なる情報は、 <a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DBマネージャプラグイン</span></a> を参照してください。</p>
+<figure class="align-center" id="id5">
+<span id="figure-db-manager-bis"></span><img alt="../../../_images/db_manager.png" src="../../../_images/db_manager.png" />
+<figcaption>
+<p><span class="caption-number">図 15.3 </span><span class="caption-text">DBマネージャダイアログ</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="provider-based-loading-tools">
+<h2><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">15.1.3. </span>プロバイダベースの読み込みツール</a><a class="headerlink" href="#provider-based-loading-tools" title="Link to this heading"></a></h2>
+<p>ブラウザパネルとDBマネージャはレイヤを追加するためにQGISが提供する主なツールですが、この他に、データプロバイダに特化したツールもあります。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>いくつかの <a class="reference internal" href="../plugins/plugins.html#plugins"><span class="std std-ref">外部プラグイン</span></a> も、QGISで特定の形式のファイルを開くためのツールを提供しています。</p>
+</div>
+<section id="loading-a-layer-from-a-file">
+<span id="loading-file"></span><span id="index-6"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">15.1.3.1. </span>ファイルからレイヤを読み込む</a><a class="headerlink" href="#loading-a-layer-from-a-file" title="Link to this heading"></a></h3>
+<p>ファイルからレイヤを読み込むには、次の手順で操作します：</p>
+<ol class="arabic">
+<li><p><span class="guilabel">データソースマネージャ</span> ダイアログでレイヤタイプのタブを開きます。つまり、 <a class="reference internal" href="../../../_images/mActionDataSourceManager.png"><img alt="dataSourceManager" src="../../../_images/mActionDataSourceManager.png" style="width: 1.5em;" /></a> <sup>データソースマネージャを開く</sup> ボタン（または <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">L</kbd></kbd> ）を押し、目的のタブを有効にします。 もしくは、</p>
+<ul>
+<li><p>ベクタデータ（GML、ESRIシェープファイル、Mapinfo、DXFなど）については、 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">V</kbd></kbd> を押すか、 <span class="menuselection">レイヤ ► レイヤの追加 ►</span> <a class="reference internal" href="../../../_images/mActionAddOgrLayer.png"><img alt="addOgrLayer" src="../../../_images/mActionAddOgrLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">ベクタレイヤの追加</span> メニューオプションを選択するか、  <a class="reference internal" href="../../../_images/mActionAddOgrLayer.png"><img alt="addOgrLayer" src="../../../_images/mActionAddOgrLayer.png" style="width: 1.5em;" /></a> <sup>ベクタレイヤの追加</sup> ツールバーボタンをクリックします。</p>
+<figure class="align-center" id="id6">
+<span id="figure-vector-add"></span><img alt="../../../_images/addvectorlayerdialog.png" src="../../../_images/addvectorlayerdialog.png" />
+<figcaption>
+<p><span class="caption-number">図 15.4 </span><span class="caption-text">ベクタレイヤの追加ダイアログ</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>ラスタデータ（GeoTiff、MBTiles、GRIdded Binary、DWGなど）については、 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">R</kbd></kbd> を押すか、 <span class="menuselection">レイヤ ► レイヤの追加 ►</span> <a class="reference internal" href="../../../_images/mActionAddRasterLayer.png"><img alt="addRasterLayer" src="../../../_images/mActionAddRasterLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">ラスタレイヤの追加</span> メニューオプションを選択するか、 <a class="reference internal" href="../../../_images/mActionAddRasterLayer.png"><img alt="addRasterLayer" src="../../../_images/mActionAddRasterLayer.png" style="width: 1.5em;" /></a> <sup>ラスタレイヤの追加</sup> ツールバーボタンをクリックします。</p>
+<figure class="align-center" id="id7">
+<span id="figure-raster-add"></span><img alt="../../../_images/addrasterlayerdialog.png" src="../../../_images/addrasterlayerdialog.png" />
+<figcaption>
+<p><span class="caption-number">図 15.5 </span><span class="caption-text">ラスタレイヤの追加ダイアログ</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p>ソースタイプは <a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a> <span class="guilabel">ファイル</span> を選択します</p></li>
+<li><p><span class="guilabel">...</span> <sup>ブラウズ</sup> ボタンをクリックします</p></li>
+<li><p>ファイルシステムを検索し、サポートされているデータソースを読み込みます。ダイアログで <kbd class="kbd docutils literal notranslate">Ctrl</kbd> キーを押しながら複数のアイテムをクリックするか、 <kbd class="kbd docutils literal notranslate">Shift</kbd> キーを押しながら最初と最後のアイテムを選択することでアイテム範囲を選択することで、複数のレイヤを同時に読み込むことが可能です。ファイル形式のフィルタには、十分にテストされたファイル形式のみが表示されます。他のファイル形式は、  <code class="docutils literal notranslate"><span class="pre">全ファイル</span></code> （プルダウンメニューの一番上のアイテム）を選択することで読み込むことができます。</p></li>
+<li><p><span class="guilabel">開く</span> ボタンを押し、選択したファイルを <span class="guilabel">データソースマネージャ</span> ダイアログに読み込みます</p>
+<figure class="align-center" id="id8">
+<span id="figure-vector-layer-open-options"></span><img alt="../../../_images/openoptionsvectorlayer.png" src="../../../_images/openoptionsvectorlayer.png" />
+<figcaption>
+<p><span class="caption-number">図 15.6 </span><span class="caption-text">オプション付きでシェープファイルをロードする</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><span class="guilabel">追加</span> を押すとQGISにファイルが読み込まれ、マップビューに表示されます。複数のレイヤを含んでいるベクタデータセットを追加する場合、 <span class="guilabel">追加するアイテムを選択</span> ダイアログが表示されます。このダイアログでは、データセットから追加したい特定のレイヤを選択することができます。また、<span class="guilabel">オプション</span> では以下の選択ができます：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">グループにレイヤを追加する</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">システム内部テーブルを表示</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">空のベクタレイヤを表示</span>。</p></li>
+</ul>
+<p><a class="reference internal" href="#figure-vector-loaded"><span class="std std-numref">図 15.7</span></a> は、<code class="file docutils literal notranslate"><span class="pre">alaska.shp</span></code> ファイルを読み込んだ後のQGISの様子です。</p>
+<figure class="align-center" id="id9">
+<span id="figure-vector-loaded"></span><img alt="../../../_images/shapefileloaded.png" src="../../../_images/shapefileloaded.png" />
+<figcaption>
+<p><span class="caption-number">図 15.7 </span><span class="caption-text">アラスカのシェープファイルがロードされたQGIS</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>GDALドライバはベクタファイルとラスタファイルを読み込むときにオープン動作の定義ができます。これは、ファイルが選択されたときに表示されます。オプションの詳細は <a class="reference external" href="https://gdal.org/drivers/vector/">https://gdal.org/drivers/vector/</a> および <a class="reference external" href="https://gdal.org/drivers/raster">https://gdal.org/drivers/raster</a> で説明されており、QGISでファイルを選択すると、ハイパーリンク付きのテキストで選択したファイルタイプのドキュメントへ直接移動できます。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>MapInfo （例 <code class="file docutils literal notranslate"><span class="pre">.tab</span></code> ）やAutoCAD（ <code class="file docutils literal notranslate"><span class="pre">.dxf</span></code> ）などいくつかのファイル形式は一つのファイル内にさまざまなジオメトリタイプを混在させることが可能なため、このようなデータセットを開く時には、レイヤごとに1つのジオメトリとするために、使用するジオメトリを選択するダイアログが開きます。</p>
+</div>
+<p id="index-8"><span id="index-7"></span><a class="reference internal" href="../../../_images/mActionAddOgrLayer.png"><img alt="addOgrLayer" src="../../../_images/mActionAddOgrLayer.png" style="width: 1.5em;" /></a> <sup>ベクタ</sup> と <a class="reference internal" href="../../../_images/mActionAddRasterLayer.png"><img alt="addRasterLayer" src="../../../_images/mActionAddRasterLayer.png" style="width: 1.5em;" /></a> <sup>ラスタ</sup> タブでは、 <span class="guilabel">ファイル</span> 以外のソースタイプからレイヤを読み込むことができます：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ArcInfo</span> <span class="pre">Binary</span> <span class="pre">Coverage</span></code> 、 <code class="docutils literal notranslate"><span class="pre">UK.</span> <span class="pre">National</span> <span class="pre">Transfer</span> <span class="pre">Format</span></code> や <code class="docutils literal notranslate"><span class="pre">US</span> <span class="pre">Census</span> <span class="pre">Bureau</span></code> のraw TIGER形式、 <code class="docutils literal notranslate"><span class="pre">OpenfileGDB</span></code> といった特定のベクタフォーマットを読み込むことができます。これらを読み込むためには、 <span class="guilabel">ソースタイプ</span> で <a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a> <span class="guilabel">ディレクトリ</span> を選択します。この場合、 <span class="guilabel">...</span> <sup>ブラウズ</sup> ボタンを押すと、ダイアログではディレクトリの選択が可能になります。</p></li>
+<li><p><a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a> <span class="guilabel">データベース</span> ソースタイプでは、既存のデータベース接続を選択したり、選択したデータベースタイプの接続を作成したりすることができます。利用可能なデータベースタイプには、 <code class="docutils literal notranslate"><span class="pre">ODBC</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Esri</span> <span class="pre">Personal</span> <span class="pre">GeoDatabase</span></code> 、 <code class="docutils literal notranslate"><span class="pre">MS</span> <span class="pre">SQL</span> <span class="pre">Server</span></code> 、 <code class="docutils literal notranslate"><span class="pre">PostgreSQL</span></code> 、 <code class="docutils literal notranslate"><span class="pre">MySQL</span></code> などがあります。</p>
+<p><span class="guilabel">新規</span> ボタンを押すと、 <span class="guilabel">新しいOGRデータベース接続を作成する</span> ダイアログが開きます。指定できるパラメータは <a class="reference internal" href="#vector-create-stored-connection"><span class="std std-ref">保存された接続の作成</span></a> で説明しているものと同じです。 <span class="guilabel">Open</span> ボタンを押すと、利用可能なテーブルの中から、例えば PostGIS が有効になっているデータベースのテーブルなどを選択することができます。</p>
+</li>
+<li><p><a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a> <span class="guilabel">プロトコル</span> ソースタイプは、ローカル、あるいはネットワークに保存されたデータを開きます。このデータはパブリックアクセスが可能か、商用クラウドストレージサービスのプライベートバケットに保存されているかのいずれかです。サポートされているプロトコルタイプは以下のとおりです：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HTTP/HTTPS/FTP</span></code> ： <span class="guilabel">URI</span> と、必要に応じて <a class="reference internal" href="../auth_system/index.html#authentication-index"><span class="std std-ref">認証</span></a> を指定します</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AWS</span> <span class="pre">S3</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Cloud</span> <span class="pre">Storage</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">Azure</span> <span class="pre">Blob</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Alibaba</span> <span class="pre">OSS</span> <span class="pre">Cloud</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Stack</span> <span class="pre">Swift</span> <span class="pre">Storage</span></code> 等のクラウドストレージ。 <span class="guilabel">バケットまたはコンテナ</span> と <span class="guilabel">オブジェクトキー</span> を入力する必要があります。</p></li>
+<li><p>OGC <code class="docutils literal notranslate"><span class="pre">WFS</span> <span class="pre">3</span></code> をサポートするサービス（まだ実験段階です）。 <code class="docutils literal notranslate"><span class="pre">GeoJSON</span></code> または <code class="docutils literal notranslate"><span class="pre">GEOJSON</span> <span class="pre">-</span> <span class="pre">Newline</span> <span class="pre">Delimited</span></code> フォーマットを使用しているか、 <code class="docutils literal notranslate"><span class="pre">CouchDB</span></code> データベースに基づくものです。 <span class="guilabel">URI</span> が必須で、 <a class="reference internal" href="../auth_system/index.html#authentication-index"><span class="std std-ref">認証</span></a> はオプションです。</p></li>
+<li><p>ベクタソースタイプ全てについて、 <span class="guilabel">文字コード</span> の指定が可能です。 <span class="menuselection">自動 ►</span> 設定を使うこともできます。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="loading-a-mesh-layer">
+<span id="mesh-loading"></span><h3><a class="toc-backref" href="#id30" role="doc-backlink"><span class="section-number">15.1.3.2. </span>メッシュレイヤを読み込む</a><a class="headerlink" href="#loading-a-mesh-layer" title="Link to this heading"></a></h3>
+<p>メッシュは通常、時間やその他の成分を持った非構造格子です。空間成分には、2Dまたは3D空間の頂点、辺、面の集合が含まれます。メッシュレイヤに関する詳細な情報は <a class="reference internal" href="../working_with_mesh/mesh.html#label-meshdata"><span class="std std-ref">メッシュデータの操作</span></a> を参照してください。</p>
+<p>メッシュレイヤをQGISに追加するには、次の手順で操作します：</p>
+<ol class="arabic simple">
+<li><p><span class="menuselection">レイヤ ►</span> メニューから選択するか、 <a class="reference internal" href="../../../_images/mActionDataSourceManager.png"><img alt="dataSourceManager" src="../../../_images/mActionDataSourceManager.png" style="width: 1.5em;" /></a> <sup>データソースマネージャを開く</sup> ボタンをクリックして、 <span class="menuselection">データソースマネージャ</span> ダイアログを開きます。</p></li>
+<li><p>左のパネルの <a class="reference internal" href="../../../_images/mActionAddMeshLayer.png"><img alt="addMeshLayer" src="../../../_images/mActionAddMeshLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">メッシュ</span> タブを有効にします。</p></li>
+<li><p><span class="guilabel">...</span> <sup>ブラウズ</sup> ボタンを押し、ファイルを選択します。 <a class="reference internal" href="../working_with_mesh/mesh.html#mesh-supported-formats"><span class="std std-ref">さまざまなファイル形式</span></a> がサポートされています。</p></li>
+<li><p>ファイルを選択し、 <span class="guilabel">追加</span> ボタンを押します。ネイティブのメッシュレンダリングを使用してレイヤが追加されます。</p></li>
+<li><p>選択したファイルが多数のメッシュレイヤを含む場合には、ダイアログが表示され、読み込むサブレイヤ選択するよう促されます。読み込むレイヤを選択して <span class="guilabel">OK</span> ボタンを押すと、ネイティブのメッシュレンダリングでレイヤが読み込まれます。レイヤ群をグループにして読み込むこともできます。</p></li>
+</ol>
+<figure class="align-center" id="id10">
+<span id="figure-mesh-datasource-manager"></span><img alt="../../../_images/mesh_datasource_manager.png" src="../../../_images/mesh_datasource_manager.png" />
+<figcaption>
+<p><span class="caption-number">図 15.8 </span><span class="caption-text">データソースマネージャのメッシュタブ</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="importing-a-delimited-text-file">
+<span id="vector-loading-csv"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id31" role="doc-backlink"><span class="section-number">15.1.3.3. </span>区切りテキストファイルをインポートする</a><a class="headerlink" href="#importing-a-delimited-text-file" title="Link to this heading"></a></h3>
+<p>区切りのあるテキストファイル（例えば <code class="file docutils literal notranslate"><span class="pre">.txt</span></code> 、 <code class="file docutils literal notranslate"><span class="pre">.csv</span></code> 、 <code class="file docutils literal notranslate"><span class="pre">.dat</span></code> 、 <code class="file docutils literal notranslate"><span class="pre">.wkt</span></code> ）は上記のツールを使って読み込むことができますが、その方法ではファイルはシンプルなテーブルとして表示されます。時には、区切りのあるテキストファイルに可視化したい座標 / ジオメトリが含まれていることがあります。 <a class="reference internal" href="../../../_images/mActionAddDelimitedTextLayer.png"><img alt="addDelimitedTextLayer" src="../../../_images/mActionAddDelimitedTextLayer.png" style="width: 1.5em;" /></a><span class="guilabel">CSVテキストレイヤの追加</span>  で読み込むことで、これを可視化することができます。</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../../_images/mActionDataSourceManager.png"><img alt="dataSourceManager" src="../../../_images/mActionDataSourceManager.png" style="width: 1.5em;" /></a> <sup>データソースマネージャを開く</sup> アイコンをクリックし、 <span class="guilabel">データソースマネージャ</span> ダイアログを開きます</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionAddDelimitedTextLayer.png"><img alt="addDelimitedTextLayer" src="../../../_images/mActionAddDelimitedTextLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">CSVテキスト</span> タブを有効にします</p></li>
+<li><p><span class="guilabel">...</span> <sup>ブラウズ</sup> ボタンをクリックし、インポートしたい区切りのあるテキストファイル（例えば <code class="file docutils literal notranslate"><span class="pre">qgis_sample_data/csv/elevp.csv</span></code> ）を選択します。</p></li>
+<li><p>プロジェクト内でレイヤに使用したい名前を <span class="guilabel">レイヤ名</span> フィールドに入力します。 （例： <code class="file docutils literal notranslate"><span class="pre">Elevation</span></code> ）</p></li>
+<li><p>以下に説明するように、データセットや必要に合わせて設定を行います。</p></li>
+</ol>
+<figure class="align-center" id="id11">
+<span id="figure-delimited-text"></span><img alt="../../../_images/delimited_text_dialog.png" src="../../../_images/delimited_text_dialog.png" />
+<figcaption>
+<p><span class="caption-number">図 15.9 </span><span class="caption-text">CSVテキストダイアログ</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="file-format">
+<h4><a class="toc-backref" href="#id32" role="doc-backlink">ファイル形式</a><a class="headerlink" href="#file-format" title="Link to this heading"></a></h4>
+<p>ファイルが選択されると、QGISは最近使用された区切り文字を使用してファイルの解析を試み、フィールドと行を識別します。QGISがファイルを正しく解析できるようにするためには、正しい区切り文字を選択することが重要です。区切り文字には、次のいずれかを選択して指定することができます：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a><span class="guilabel">CSV（コンマで区切られた値）</span> は、コンマの文字を使います。</p></li>
+<li><p><a class="reference internal" href="../../../_images/radiobuttonoff.png"><img alt="radioButtonOff" src="../../../_images/radiobuttonoff.png" style="width: 1.5em;" /></a><span class="guilabel">正規表現区切り</span> を選んだ場合は <span class="guilabel">式</span> フィールドにテキストを入力します。例えば、区切り文字をタブに変更するには、 <code class="docutils literal notranslate"><span class="pre">\t</span></code> （これは正規表現ではタブ文字に使用されます）を使用します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/radiobuttonoff.png"><img alt="radioButtonOff" src="../../../_images/radiobuttonoff.png" style="width: 1.5em;" /></a><span class="guilabel">カスタム区切り</span> は、 <code class="docutils literal notranslate"><span class="pre">コンマ</span></code> 、 <code class="docutils literal notranslate"><span class="pre">空白</span></code> 、 <code class="docutils literal notranslate"><span class="pre">タブ</span></code> 、 <code class="docutils literal notranslate"><span class="pre">セミコロン</span></code> 等の定義済み区切り文字の中から選択します。</p></li>
+</ul>
+</section>
+<section id="records-and-fields">
+<h4><a class="toc-backref" href="#id33" role="doc-backlink">レコードとフィールドのオプション</a><a class="headerlink" href="#records-and-fields" title="Link to this heading"></a></h4>
+<p>他にもデータ認識に使用できる便利なオプションがいくつかあります：</p>
+<ul class="simple">
+<li><p><span class="guilabel">破棄するヘッダ行数</span> ：ファイルの始めの数行が空行あるいは別フォーマットであるときに、これをインポートしないようにする場合に便利です。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">最初の行はフィールド名</span> ：最初の行の値をフィールド名として使用します。チェックがない場合には、QGISはフィールド名に <code class="docutils literal notranslate"><span class="pre">field_1</span></code> 、 <code class="docutils literal notranslate"><span class="pre">field_2</span></code> 等を使用します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">フィールド型を検出する</span> ：フィールドの型を自動的に認識します。チェックがない場合には、全ての属性はテキストフィールドとして扱われます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">小数点記号にコンマを使う</span> ：小数点の区切り文字を強制的ににコンマとすることができます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">前後の空白を削除する</span> ：フィールドから前後の空白文字を取り除くことができます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">空フィールドを削除する</span></p></li>
+<li><p><span class="guilabel">カスタム論理値</span>: ブール値として検出される一組のカスタム文字列を追加することができます。</p></li>
+</ul>
+</section>
+<section id="field-type-detection">
+<h4><a class="toc-backref" href="#id34" role="doc-backlink">フィールド型を検出</a><a class="headerlink" href="#field-type-detection" title="Link to this heading"></a></h4>
+<p>QGISは、（<a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">フィールド型を検出</span> をチェックしている限り）フィールド型を自動的に検出しようとしますが、それは、オプションのサイドカーCSVTファイル（参照：<a class="reference external" href="https://giswiki.hsr.ch/GeoCSV#CSVT_file_format_specification">GeoCSV仕様</a>）の内容を調べ、ファイル全体をスキャンして、すべての値が実際にエラーなく変換できることを確認することによって行われます。フォールバックするときのフィールド型はテキストです。</p>
+<p>検出されたフィールド型は、サンプルデータのプレビューテーブルのフィールド名の下に表示され、必要な場合は手動で変更できます。</p>
+<p>次のフィールド型がサポートされています:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ブール値</span></code> ブール値として解釈される、大文字小文字を区別しないリテラルの組みで、<code class="docutils literal notranslate"><span class="pre">1</span></code>/<code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">true</span></code>/<code class="docutils literal notranslate"><span class="pre">false</span></code>, <code class="docutils literal notranslate"><span class="pre">t</span></code>/<code class="docutils literal notranslate"><span class="pre">f</span></code>, <code class="docutils literal notranslate"><span class="pre">yes</span></code>/<code class="docutils literal notranslate"><span class="pre">no</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">整数</span> <span class="pre">(integer)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">整数</span> <span class="pre">(integer</span> <span class="pre">-</span> <span class="pre">64</span> <span class="pre">bit)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">小数点付き数値</span></code>: 倍精度浮動小数点数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">日付</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">時刻</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">日付時刻</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">テキスト</span></code></p></li>
+</ul>
+</section>
+<section id="geometry-definition">
+<h4><a class="toc-backref" href="#id35" role="doc-backlink">ジオメトリ定義</a><a class="headerlink" href="#geometry-definition" title="Link to this heading"></a></h4>
+<p>ファイルが解析されたら、 <span class="guilabel">ジオメトリ定義</span> の設定を行います。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a><span class="guilabel">ポイント座標</span> レイヤがポイントジオメトリ型で、 <span class="guilabel">X属性</span> 、 <span class="guilabel">Y属性</span> 、 <span class="guilabel">Z属性</span>  （3次元データの場合）、 <span class="guilabel">M値の属性</span> （計測次元の場合）のフィールドを含む場合には、これを指定します。座標が度 / 分 / 秒で定義されている場合には、 <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">度分秒を使う</span> のチェックボックスにチェックを入れます。 <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> <sup>CRSの選択</sup> ウィジェットを使用して、適切な <span class="guilabel">ジオメトリのCRS</span> を指定します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a><span class="guilabel">Well-known text (WKT)</span> オプションは、空間情報がWKTにより表現されている場合に使用します：WKTジオメトリが含まれる <span class="guilabel">ジオメトリフィールド</span> を選択し、 適切な <span class="guilabel">ジオメトリタイプ</span> を選ぶか、QGISの自動検出に任せます。<a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> <sup>CRSの選択</sup> ウィジェットを使用して、 適切な <span class="guilabel">ジオメトリのCRS</span> を指定します。</p></li>
+<li><p>ファイルが非空間データの場合には、 <a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a> <span class="guilabel">ジオメトリなし（属性のみのテーブル）</span> を有効にすると、通常のテーブルとして読み込まれます。</p></li>
+</ul>
+</section>
+<section id="layer-settings">
+<h4><a class="toc-backref" href="#id36" role="doc-backlink">レイヤ設定</a><a class="headerlink" href="#layer-settings" title="Link to this heading"></a></h4>
+<p>また、以下を有効にできます：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">空間インデックスを使う</span> ：地物の表示や空間的な選択のパフォーマンスを改善します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">サブセットインデックスを使う</span> ：（レイヤプロパティで定義されている場合に） <a class="reference internal" href="../working_with_vector/vector_properties.html#vector-query-builder"><span class="std std-ref">サブセットフィルタ</span></a> のパフォーマンスを改善します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">ファイルを監視する</span> ：QGISの実行中に他のアプリケーションによってファイルが変更されたかを監視します。</p></li>
+</ul>
+<p>最後に <span class="guilabel">追加</span> をクリックし、マップにレイヤを追加します。この例では、 <code class="docutils literal notranslate"><span class="pre">Elevation</span></code> という名前のポイントレイヤがプロジェクトに追加され、QGISの他のマップレイヤと同様に動作します。このレイヤは <code class="file docutils literal notranslate"><span class="pre">.csv</span></code> ソースファイルに対するクエリの結果であり（従ってこれにリンクされているため）、ディスク上に空間レイヤを取得するには <a class="reference internal" href="create_layers.html#general-saveas"><span class="std std-ref">保存する</span></a> 必要があります。</p>
+</section>
+<section id="sample-data">
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">サンプルデータ</a><a class="headerlink" href="#sample-data" title="Link to this heading"></a></h4>
+<p>パーサーのプロパティを設定すると、サンプルデータのプレビューが適用された設定に合わせて更新されます。</p>
+<p>また、サンプルデータテーブルでは、自動的に決定されたカラムの型を上書きすることもできます。</p>
+</section>
+</section>
+<section id="importing-a-dxf-or-dwg-file">
+<span id="import-dxfdwg"></span><h3><a class="toc-backref" href="#id38" role="doc-backlink"><span class="section-number">15.1.3.4. </span>DXFファイルやDWGファイルをインポートする</a><a class="headerlink" href="#importing-a-dxf-or-dwg-file" title="Link to this heading"></a></h3>
+<p><code class="file docutils literal notranslate"><span class="pre">DXF</span></code> ファイルや <code class="file docutils literal notranslate"><span class="pre">DWG</span></code> ファイルはブラウザパネルからドラッグ＆ドロップするだけでQGISに追加できます。プロジェクトに追加したいサブレイヤを選択するプロンプトが表示されます。レイヤはランダムなスタイルのプロパティで追加されます。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>いくつかのジオメトリタイプ（ポイント、ライン、ポリゴン）を含むDXFファイルは、 <em>&lt;filename.dxf&gt; entities &lt;geometry type&gt;</em> のような名前でレイヤが生成されます。</p>
+</div>
+<p>dxf/dwgファイルの構成とシンボロジをQGISでも保つためには、 <span class="menuselection">プロジェクト ► インポートとエクスポート ► DWG/DXFからレイヤをインポート...</span> から専用のツールを使用するとよいでしょう。このツールにより、次の操作を行います：</p>
+<ol class="arabic simple">
+<li><p>図面ファイルからGeoPackageデータベースに要素をインポートする</p></li>
+<li><p>インポートした要素をプロジェクトに追加する</p></li>
+</ol>
+<p><span class="guilabel">DWG/DXFのインポート</span> ダイアログでは、図面ファイルの内容をインポートするために以下の情報を入力する必要があります：</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">ソースの図面</span> の場所、つまりインポートするDWG/DXF図面ファイルを入力します。</p></li>
+<li><p>図面ファイルのデータの座標参照系を指定します。</p></li>
+<li><p><span class="guilabel">ターゲットパッケージ</span> 、つまりデータが保存されるGeoPackageファイルの場所を入力します。既存のファイルを指定した場合には、ファイルは上書きされます。</p></li>
+<li><p>専用のコンボボックスで <code class="docutils literal notranslate"><span class="pre">ブロック</span></code> のインポート方法を選択します:</p>
+<ul class="simple">
+<li><p><span class="guilabel">ブロックジオメトリを展開</span>: 描画ファイル内のブロックを通常の要素としてインポートします。</p></li>
+<li><p><span class="guilabel">ブロックジオメトリを展開し挿入点を追加</span>: 図面ファイルのブロックを通常の要素として読み込み、挿入点をポイントレイヤとして追加します。</p></li>
+<li><p><span class="guilabel">挿入点だけを追加</span>: ブロックの挿入点をポイントレイヤとして追加します。</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">カーブを使用する</span> をチェックすると、インポートされたレイヤを <code class="docutils literal notranslate"><span class="pre">カーブ</span></code> ジオメトリタイプに変換します。</p></li>
+<li><p><span class="guilabel">インポート</span> ボタンを使用して、図面をGeoPackageファイルにインポートします。図面ファイルの内容がGeoPackageデータベースに自動的に追加されます。ファイルのサイズにもよりますが、これには時間がかかる場合があります。</p></li>
+</ol>
+<p><code class="file docutils literal notranslate"><span class="pre">.dwg</span></code> ファイルまたは <code class="file docutils literal notranslate"><span class="pre">.dxf</span></code> ファイルのデータがGeoPackageデータベースへとインポートされたら、ダイアログの下半分にあるフレームにインポートファイルからのレイヤのリストが表示されます。ここからQGISプロジェクトに追加したいレイヤを選択できます：</p>
+<ol class="arabic simple">
+<li><p>一番上に、プロジェクト内の図面ファイルをグループ化するための <span class="guilabel">グループ名</span> を設定します。デフォルトでは、これはソース図面ファイルのファイル名に設定されます。</p></li>
+<li><p>表示するレイヤにチェックを入れます。選択された各レイヤは、図面レイヤのポイント、ライン、ラベル、面地物に対するベクタレイヤを含むアドホックなグループに追加されます。レイヤのスタイルは、元々 *CADで持っていたスタイルと似た見た目になります。</p></li>
+<li><p>最初からレイヤが表示されているかどうかを選択します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">レイヤを結合する</span> オプションをチェックすると、全てのレイヤを単一のグループにまとめます。</p></li>
+<li><p><span class="guilabel">OK</span> ボタンを押すと、QGISでレイヤを開きます。</p></li>
+</ol>
+<figure class="align-center" id="id12">
+<span id="figure-dwg-dxf-import"></span><img alt="../../../_images/dwg_dxf_import_dialog.png" src="../../../_images/dwg_dxf_import_dialog.png" />
+<figcaption>
+<p><span class="caption-number">図 15.10 </span><span class="caption-text">DWG/DXFファイルのインポートダイアログ</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="importing-openstreetmap-vectors">
+<span id="openstreetmap"></span><span id="index-10"></span><h3><a class="toc-backref" href="#id39" role="doc-backlink"><span class="section-number">15.1.3.5. </span>OpenStreetMapベクタのインポート</a><a class="headerlink" href="#importing-openstreetmap-vectors" title="Link to this heading"></a></h3>
+<p>多くの国ではデジタル道路地図等のジオデータが無料で利用できないため、OpenStreetMapプロジェクトは人気があります。OSMプロジェクトの目的は、GPSデータや航空写真、ローカルな知識からフリーで編集可能な世界地図を作成することです。この目的を支援するため、QGISはOSMデータのサポートを提供しています。</p>
+<p><span class="guilabel">ブラウザパネル</span> を使用して <code class="file docutils literal notranslate"><span class="pre">.osm</span></code> ファイルをマップキャンバスに読み込むと、ジオメトリタイプに基づいてサブレイヤを選択するためのダイアログが現れます。読み込んだレイヤには <code class="file docutils literal notranslate"><span class="pre">.osm</span></code> ファイル内のそのジオメトリタイプの全てのデータが含まれており、 <code class="file docutils literal notranslate"><span class="pre">osm</span></code> ファイルのデータ構造が保持されています。</p>
+</section>
+<section id="spatialite-layers">
+<span id="label-spatialite"></span><span id="index-11"></span><h3><a class="toc-backref" href="#id40" role="doc-backlink"><span class="section-number">15.1.3.6. </span>SpatiaLiteレイヤ</a><a class="headerlink" href="#spatialite-layers" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../_images/mActionAddSpatiaLiteLayer.png"><img alt="addSpatiaLiteLayer" src="../../../_images/mActionAddSpatiaLiteLayer.png" style="width: 1.5em;" /></a> 初めてSpatiaLiteデータベースからデータをロードするときは、始めに以下の操作を行います：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionAddSpatiaLiteLayer.png"><img alt="addSpatiaLiteLayer" src="../../../_images/mActionAddSpatiaLiteLayer.png" style="width: 1.5em;" /></a> <sup>SpatiaLiteレイヤの追加</sup> ツールバーボタンをクリックする</p></li>
+<li><p><span class="menuselection">レイヤ ► レイヤの追加</span> メニューから <a class="reference internal" href="../../../_images/mActionAddSpatiaLiteLayer.png"><img alt="addSpatiaLiteLayer" src="../../../_images/mActionAddSpatiaLiteLayer.png" style="width: 1.5em;" /></a> <span class="menuselection">SpatiaLiteレイヤの追加...</span> オプションを選択する</p></li>
+<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">L</kbd></kbd> を押す</p></li>
+</ul>
+<p>これによりウィンドウが現れ、QGISが既に知っているSpatiaLiteデータベース（ドロップダウンメニューから選択）に接続するか、新しいデータベースへの新規接続を定義します。新規接続を定義するには、 <span class="guilabel">新規</span> をクリックし、ファイルブラウザを使用してSpatiaLiteデータベースを指定します。SpatiaLiteデータベースは <code class="file docutils literal notranslate"><span class="pre">.sqlite</span></code> 拡張子を持つファイルです。</p>
+<p>また、QGISはSpatiaLiteで編集可能なビューもサポートしています。</p>
+</section>
+<section id="gps">
+<h3><a class="toc-backref" href="#id41" role="doc-backlink"><span class="section-number">15.1.3.7. </span>GPS</a><a class="headerlink" href="#gps" title="Link to this heading"></a></h3>
+<p>GPSデータを格納するための異なるファイル形式はいくつもあります。同じファイル内のウェイポイント、ルートとトラックの任意の数を含むことができ、標準の交換フォーマットであるQGISが使用するフォーマットGPX（GPS交換フォーマット）と呼ばれます。</p>
+<p><span class="guilabel">...</span> <sup>ブラウズ</sup> ボタンを使用してGPXファイルを選択し、GPXファイルから読み込みたい地物タイプをチェックボックスを使用して選択します。各地物タイプは別々のレイヤで読み込まれます。</p>
+<p>GPSデータの操作についての詳細は <a class="reference internal" href="../working_with_gps/index.html#working-gps"><span class="std std-ref">GPSデータの操作</span></a> を参照。</p>
+<figure class="align-center" id="id13">
+<span id="figure-gps-datasource-manager"></span><img alt="../../../_images/gps_datasource.png" src="../../../_images/gps_datasource.png" />
+<figcaption>
+<p><span class="caption-number">図 15.11 </span><span class="caption-text">GPSデータの読み込みダイアログ</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="grass">
+<h3><a class="toc-backref" href="#id42" role="doc-backlink"><span class="section-number">15.1.3.8. </span>GRASS</a><a class="headerlink" href="#grass" title="Link to this heading"></a></h3>
+<p>GRASSベクタデータでの作業は <a class="reference internal" href="../grass_integration/grass_integration.html#sec-grass"><span class="std std-ref">GRASS GIS の統合</span></a> セクションで説明しています。</p>
+</section>
+<section id="database-related-tools">
+<span id="db-tools"></span><span id="index-12"></span><h3><a class="toc-backref" href="#id43" role="doc-backlink"><span class="section-number">15.1.3.9. </span>データベース関連ツール</a><a class="headerlink" href="#database-related-tools" title="Link to this heading"></a></h3>
+<section id="creating-a-stored-connection">
+<span id="vector-create-stored-connection"></span><span id="index-13"></span><h4><a class="toc-backref" href="#id44" role="doc-backlink">保存された接続の作成</a><a class="headerlink" href="#creating-a-stored-connection" title="Link to this heading"></a></h4>
+<p>QGISがサポートするデータベース形式からテーブルを読み書きするためには、そのデータベースへの接続を作成する必要があります。 <a class="reference internal" href="#browser-panel"><span class="std std-ref">QGISブラウザパネル</span></a> はデータベースへ接続し使用するための最もシンプルで推奨される方法ですが、QGISには各データベースに接続しテーブルをロードするための別のツールも用意されています。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionAddPostgisLayer.png"><img alt="addPostgisLayer" src="../../../_images/mActionAddPostgisLayer.png" style="width: 1.5em;" /></a> <span class="menuselection">PostGISレイヤの追加...</span>  またはキーボードで <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">D</kbd></kbd></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionAddMssqlLayer.png"><img alt="addMssqlLayer" src="../../../_images/mActionAddMssqlLayer.png" style="width: 1.5em;" /></a> <span class="menuselection">MS SQLサーバーレイヤを追加</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionAddOracleLayer.png"><img alt="addOracleLayer" src="../../../_images/mActionAddOracleLayer.png" style="width: 1.5em;" /></a> <span class="menuselection">Oracle Spatialレイヤの追加...</span> またはキーボードで <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">O</kbd></kbd></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionAddHanaLayer.png"><img alt="addHanaLayer" src="../../../_images/mActionAddHanaLayer.png" style="width: 1.5em;" /></a> <span class="menuselection">SAP HANA空間レイヤを追加...</span> またはキーボードで <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">G</kbd></kbd></p></li>
+</ul>
+<p>これらのツールには <span class="guilabel">レイヤ管理ツールバー</span> や <span class="menuselection">レイヤ ► レイヤの追加 ►</span> メニューからアクセスすることができます。SpatiaLiteデータベースへの接続は <a class="reference internal" href="#label-spatialite"><span class="std std-ref">SpatiaLiteレイヤ</span></a> で説明しています。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>QGISブラウザパネルからデータベースへの接続を作成する</strong></p>
+<p>ブラウザツリー内で対応するデータベース形式を選択し、右クリックして接続を選択すると、データベース接続ダイアログが開きます。</p>
+</div>
+<p>ほとんどの接続ダイアログは、PostgreSQLデータベースへの接続ツールを例として以下で説明する共通の基本事項に従っています。他のプロバイダに特有の追加設定については、対応する説明を以下で行っています：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#create-ms-sql-server-connection"><span class="std std-ref">MS SQLサーバーへの接続</span></a>;</p></li>
+<li><p><a class="reference internal" href="#create-oracle-connection"><span class="std std-ref">Oracle Spatialのへの接続</span></a>;</p></li>
+<li><p><a class="reference internal" href="#create-hana-connection"><span class="std std-ref">SAP HANAへの接続</span></a>.</p></li>
+</ul>
+<p>PostGISデータソースを初めて使用する時には、データを含むデータベースへの接続を作成しなければなりません。まずは上記のように適切なボタンを押して、 <span class="guilabel">PostGISテーブルの追加</span> ダイアログ（ <a class="reference internal" href="#figure-add-postgis-tables"><span class="std std-numref">図 15.15</span></a> 参照）を開きます。接続マネージャにアクセスするには、  <span class="guilabel">新規</span> ボタンをクリックして <span class="guilabel">新規PostGIS接続を作成</span> ダイアログを表示します。</p>
+<figure class="align-center" id="id14">
+<span id="figure-new-postgis-connection"></span><img alt="../../../_images/newpostgisconnection.png" src="../../../_images/newpostgisconnection.png" />
+<figcaption>
+<p><span class="caption-number">図 15.12 </span><span class="caption-text">「新規PostGIS接続を作成」ダイアログ</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>PostGIS の接続に必要なパラメータを以下に説明します。他のタイプのデータベースについては <a class="reference internal" href="#db-requirements"><span class="std std-ref">特定の接続要件</span></a> を参照し、違いを確認してください。</p>
+<ul>
+<li><p><span class="guilabel">名前</span> ：接続の名前です。これは <span class="guilabel">データベース</span> の名前と同じです。</p></li>
+<li><p><span class="guilabel">サービス</span> ：ホスト名/ポート番号（場合によってはデータベース名）の代わりに使用されるサービスパラメータです。これは <code class="file docutils literal notranslate"><span class="pre">pg_service.conf</span></code> ファイルで定義されます。詳細については <a class="reference internal" href="#pg-service-file"><span class="std std-ref">PostgreSQLサービス接続ファイル</span></a> のセクションをチェックしてください。</p></li>
+<li><p><span class="guilabel">ホスト</span> ：データベースのホスト名です。これは、TCP/IP接続を開いたり、ホストをpingしたりするために使用されるような、解決可能なホスト名でなければなりません。データベースがQGISと同じコンピュータ上にある場合は、ここには単に <em>localhost</em> と入力します。</p></li>
+<li><p><span class="guilabel">ポート</span> ： PostgreSQLデータベースサーバーがリッスンするポート番号です。PostGISのデフォルトのポートは <code class="docutils literal notranslate"><span class="pre">5432</span></code> です。</p></li>
+<li><p><span class="guilabel">データベース</span> ：データベース名です。</p></li>
+<li><p><span class="guilabel">SSLモード</span> ：SSL暗号化の設定です。以下の選択肢があります：</p>
+<ul class="simple">
+<li><p><span class="guilabel">Prefer</span> （デフォルト）：セキュリティはどうでもよいが、サーバがそれをサポートするのであれば暗号化のオーバヘッドを払ってもよい</p></li>
+<li><p><span class="guilabel">Require</span> ：データを暗号化して欲しい。そしてオーバヘッドも受け入れる。サーバに接続する必要時に常にネットワークが確認してくれることを信用する</p></li>
+<li><p><span class="guilabel">Verify CA</span> ：データを暗号化して欲しい。そしてオーバヘッドも受け入れる。信頼するサーバに確実に接続したい</p></li>
+<li><p><span class="guilabel">Verify Full</span> ：データを暗号化して欲しい。そしてオーバヘッドも受け入れる。信頼するサーバに接続すること、そのサーバが指定したものであることを確実にしたい</p></li>
+<li><p><span class="guilabel">Allow</span> ：セキュリティはどうでもよいが、サーバがそれを強く要求するのであれば暗号化のオーバヘッドを払ってもよい</p></li>
+<li><p><span class="guilabel">Disable</span> ：セキュリティはどうでもよく、暗号化の負荷を払いたくない</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">認証</span> ベーシック</p>
+<ul class="simple">
+<li><p><span class="guilabel">ユーザー名</span> ：データベースのログインに使用されるユーザー名です。</p></li>
+<li><p><span class="guilabel">パスワード</span> ：データベースの接続に <em>ユーザー名</em> とともに使用するパスワードです。</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">ユーザー名</span></code> と <code class="docutils literal notranslate"><span class="pre">パスワード</span></code> のパラメータはどちらか一方もしくは両方を保存することができます。その場合はこのデータベースに接続するたびにデフォルトで使用されます。保存されていない場合は、次回のQGISセッションでデータベースに接続するための認証情報を入力するように促されます。入力した接続パラメータは一時的な内部キャッシュに保存され、現在のQGISセッションが終了するまで、同じデータベースのユーザ名/パスワードが要求されるたびに内部キャッシュから返されます。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p><strong>QGISユーザー設定とセキュリティ</strong></p>
+<p><span class="guilabel">認証</span> タブで <strong>ユーザー名</strong> と <strong>パスワード</strong> を保存すると、保護されていない認証情報が接続設定に保持されます。 例えば、プロジェクトファイルを他者と共有した場合には、これらの <strong>認証情報が見えてしまいます</strong> 。従って、代わりに <em>認証設定</em> の中に資格情報を保存する（ <span class="guilabel">設定</span> タブを使用します。詳細は <a class="reference internal" href="../auth_system/index.html#authentication-index"><span class="std std-ref">認証システム</span></a> を参照）か、サービス接続ファイル（例は <a class="reference internal" href="#pg-service-file"><span class="std std-ref">PostgreSQLサービス接続ファイル</span></a> 参照）内に資格情報を保存することをお勧めします。</p>
+</div>
+</li>
+<li><p><span class="guilabel">認証</span> 設定タブでは、認証設定を選択します。 <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> ボタンを押して、設定を追加できます。選択肢には以下のものがあります：</p>
+<ul class="simple">
+<li><p>ベーシック認証</p></li>
+<li><p>PKI PKCS#12 認証</p></li>
+<li><p>PKI パス認証</p></li>
+<li><p>PKI stored identity certificate</p></li>
+</ul>
+</li>
+</ul>
+<p>オプションで、データベースのタイプに応じて以下のチェックボックスをアクティブにできます:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">レイヤレジストリ内のレイヤのみ表示する</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">制限のないカラムの型を解決しない（GEOMETRY）</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">'public' スキーマのみ参照する</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ジオメトリを持たないテーブルもリストする</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">概算されたテーブルメタデータを利用する</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">QGISプロジェクトのデータベース保存・読み込みを許可する</span> - 詳細については <a class="reference internal" href="../introduction/project_files.html#saveprojecttodb"><span class="std std-ref">ここ</span></a> を参照</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">QGISプロジェクトのデータベース保存・読み込みを許可する</span> - 詳細は <a class="reference internal" href="../introduction/general_tools.html#savemetadatatodb"><span class="std std-ref">ここ</span></a></p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>概算されたテーブルメタデータを使用して作業をスピードアップする</strong></p>
+<p>レイヤを初期化する際に、データベーステーブルに格納されているジオメトリの特性をはっきりさせるために様々なクエリが必要になることがあります。 <span class="guilabel">概算されたテーブルメタデータを利用する</span> オプションがチェックされている場合、これらのクエリはテーブル全体ではなく行のサンプルのみを調べてテーブルの統計情報に使用します。これにより大規模なデータセットに対する操作を劇的に高速化することができますが、レイヤの特性が不正確（例えばフィルタされたレイヤの地物カウントが正確に決定できない）となり、さらには実際にはユニークであるはずの列がユニークにならないなどの奇妙な動作を引き起こす場合があります。</p>
+</div>
+<p>全てのパラメータとオプションを設定したら、 <span class="guilabel">接続テスト</span> ボタンをクリックして接続をテストするか、 <span class="guilabel">OK</span> ボタンをクリックして設定を適用します。それからは <span class="guilabel">PostGISテーブルの追加</span> から <span class="guilabel">接続</span> をクリックすると、選択したデータベースのテーブルが並んだダイアログが（ <a class="reference internal" href="#figure-add-postgis-tables"><span class="std std-numref">図 15.15</span></a> に示すように）表示されます。</p>
+</section>
+<section id="particular-connection-requirements">
+<span id="db-requirements"></span><h4><a class="toc-backref" href="#id45" role="doc-backlink">特定の接続要件</a><a class="headerlink" href="#particular-connection-requirements" title="Link to this heading"></a></h4>
+<p>データベースタイプの特殊性のため、提供されるオプションは同じではありません。データベース固有のオプションを以下で説明します。</p>
+<section id="postgresql-service-connection-file">
+<span id="pg-service-file"></span><h5><a class="toc-backref" href="#id46" role="doc-backlink">PostgreSQLサービス接続ファイル</a><a class="headerlink" href="#postgresql-service-connection-file" title="Link to this heading"></a></h5>
+<p>サービス接続ファイルは、PostgreSQLの接続パラメータを単一のサービス名と関連付けできます。そのサービス名をクライアントで指定すると、関連付けられた設定が使用されます。</p>
+<p>これは、*nixシステム（GNU/Linux、MacOSなど）では <code class="file docutils literal notranslate"><span class="pre">.pg_service.conf</span></code> 、Windowsでは <code class="file docutils literal notranslate"><span class="pre">pg_service.conf</span></code> と呼ばれています。</p>
+<p>サービスファイルは以下のようなものです:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">water_service</span><span class="p">]</span>
+<span class="n">host</span><span class="o">=</span><span class="mf">192.168.0.45</span>
+<span class="n">port</span><span class="o">=</span><span class="mi">5433</span>
+<span class="n">dbname</span><span class="o">=</span><span class="n">gisdb</span>
+<span class="n">user</span><span class="o">=</span><span class="n">paul</span>
+<span class="n">password</span><span class="o">=</span><span class="n">paulspass</span>
+
+<span class="p">[</span><span class="n">wastewater_service</span><span class="p">]</span>
+<span class="n">host</span><span class="o">=</span><span class="n">dbserver</span><span class="o">.</span><span class="n">com</span>
+<span class="n">dbname</span><span class="o">=</span><span class="n">water</span>
+<span class="n">user</span><span class="o">=</span><span class="n">waterpass</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>上の例には、 <code class="docutils literal notranslate"><span class="pre">water_service</span></code> と <code class="docutils literal notranslate"><span class="pre">wastewater_service</span></code> の2つのサービスがあります。 接続したいサービスの名前（囲みブラケットは除く）を指定するだけで、QGISやpgAdmin等からサービスに接続することができます。 <code class="docutils literal notranslate"><span class="pre">psql</span></code> でこのサービスを使用したい場合には、<code class="docutils literal notranslate"><span class="pre">psql</span> <span class="pre">service=water_service</span></code> とできます。</p>
+<p><a class="reference external" href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS">ここ</a> では、全てのPostgreSQLのパラメータを確認できます。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>サービスファイル内にパスワードを保存したくない場合には、 <a class="reference external" href="https://www.postgresql.org/docs/current/libpq-pgpass.html">.pg_pass</a> オプションを使用します。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p><strong>QGIS Server and service</strong></p>
+<p>When using a service file and QGIS Server, you must configure the service on the server side as well.
+You can follow the <a class="reference internal" href="../../server_manual/index.html#qgis-server-manual"><span class="std std-ref">QGIS Server</span></a> documentation.</p>
+</div>
+<p>*nixオペレーティングシステム（GNU/Linux、macOS等）では、 <code class="file docutils literal notranslate"><span class="pre">.pg_service.conf</span></code> ファイルはユーザーのホームディレクトリに保存することができ、PostgreSQLクライアントはこれを自動的に見つけます。例えば、ログインユーザーが <code class="docutils literal notranslate"><span class="pre">web</span></code> ならば、（他の環境変数を何も指定しなくとも）そのままでうまくいくためには、 <code class="file docutils literal notranslate"><span class="pre">.pg_service.conf</span></code> は <code class="file docutils literal notranslate"><span class="pre">/home/web/</span></code> ディレクトリに保存されている必要があります。</p>
+<p><code class="docutils literal notranslate"><span class="pre">PGSERVICEFILE</span></code> 環境変数を作成することで、サービスファイルの場所を指定することができます（例えば、*nix OSでは <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PGSERVICEFILE=/home/web/.pg_service.conf</span></code> コマンドを実行して、 <code class="docutils literal notranslate"><span class="pre">PGSERVICEFILE</span></code> 変数を一時的に設定します）。</p>
+<p>また、 <code class="file docutils literal notranslate"><span class="pre">.pg_service.conf</span></code> ファイルを <code class="docutils literal notranslate"><span class="pre">pg_config</span> <span class="pre">--sysconfdir</span></code> が指す場所に配置するか、 <code class="docutils literal notranslate"><span class="pre">PGSYSCONFDIR</span></code> 環境変数を追加してサービスファイルが含まれるディレクトリを指定することで、サービスファイルをシステム全体（全てのユーザー）で利用できるようにすることもできます。ユーザーファイルとシステムファイルで同じ名前のサービス定義が存在する場合は、ユーザーファイルが優先されます。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Windowsではいくつか注意点があります。</p>
+<ul class="simple">
+<li><p>サービスファイルは <code class="file docutils literal notranslate"><span class="pre">.pg_service.conf</span></code> ではなく、 <code class="file docutils literal notranslate"><span class="pre">pg_service.conf</span></code> という名前で保存する必要があります。</p></li>
+<li><p>サービスファイルが機能するためには、Unixのフォーマットで保存する必要があります。それを行うための方法の1つは、 <a class="reference external" href="https://notepad-plus-plus.org/">Notepad++</a> でサービスファイルを開き <span class="menuselection">編集 ► 改行コード変換 ► UNIX（LF） ► ファイル保存</span> とします。</p></li>
+<li><p>環境変数はさまざまな方法で追加することができます。確実にうまくいくと知られているテスト済みの方法は、 <span class="menuselection">コントロールパネル ► システムとセキュリティ ► システム ► システムの詳細設定 ► 環境変数</span> と操作して、 <code class="docutils literal notranslate"><span class="pre">PGSERVICEFILE</span></code> 変数にパス、例えば <code class="file docutils literal notranslate"><span class="pre">C:\Users\John\pg_service.conf</span></code> を設定して追加します。</p></li>
+<li><p>環境変数を追加した後は、コンピュータを再起動する必要もあるかもしれません。</p></li>
+</ul>
+</div>
+</section>
+<section id="connecting-to-oracle-spatial">
+<span id="create-oracle-connection"></span><h5><a class="toc-backref" href="#id47" role="doc-backlink">Oracle Spatialのへの接続</a><a class="headerlink" href="#connecting-to-oracle-spatial" title="Link to this heading"></a></h5>
+<p>Oracle Spatialの空間機能は、ユーザーが地理的データや位置情報データをOracle データベース内のネイティブ型で管理するのに役立ちます。 <a class="reference internal" href="#vector-create-stored-connection"><span class="std std-ref">保存された接続の作成</span></a> のいくつかのオプションに加えて、接続ダイアログでは下記の設定を行います。</p>
+<ul class="simple">
+<li><p><strong>データベース</strong> :OracleインスタンスのSID または SERVICE_NAME.</p></li>
+<li><p><strong>ポート</strong>: Oracle データベースサーバーがリッスンしているポート番号。デフォルトのポートは <code class="docutils literal notranslate"><span class="pre">1521</span></code> です。</p></li>
+<li><p><strong>オプション</strong> ：Oracle接続特有のオプション（例えば OCI_ATTR_PREFETCH_ROWS, OCI_ATTR_PREFETCH_MEMORY など）。オプション文字列はセミコロン区切りで、オプション名またはオプション=値 のペアの形式です。</p></li>
+<li><p><strong>ワークスペース</strong>：切り替え先のワークスペースを指定します。</p></li>
+<li><p><strong>スキーマ</strong> ：データが格納されているスキーマです。</p></li>
+</ul>
+<p>オプションで、以下のチェックボックスを有効にできます：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">メタデータテーブルのみを調べる</span> ：表示されるテーブルを <code class="docutils literal notranslate"><span class="pre">all_sdo_geom_metadata</span></code> ビュー内にあるものに制限します。これは、空間テーブルの初期表示を高速化することができます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ユーザのテーブルのみを参照する</span> ：空間テーブルを検索するときに、検索をユーザが所有するテーブルに制限します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ジオメトリを持たないテーブルもリストする</span> ：ジオメトリを持たないテーブルもデフォルトでリストするように指定します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">概算されたテーブルメタデータを利用する</span> ：レイヤが読み込まれると、Oracleテーブルのさまざまなメタデータが必要になります。これには、テーブルの行数、ジオメトリタイプ、ジオメトリ列のデータの空間的広がりなどの情報が含まれます。テーブルに多数の行が含まれていると、このメタデータの決定に時間がかかることがあります。このオプションを有効にすると、以下のような高速なテーブルメタデータ操作が行われます。行数カウントは <code class="docutils literal notranslate"><span class="pre">all_tables.num_rows</span></code> から決定されます。テーブルの空間範囲は、レイヤフィルタが適用されている場合でも、常に SDO_TUNE.EXTENTS_OF 関数で決定されます。テーブルのジオメトリは、テーブル内の最初の100行の非ヌルなジオメトリから決定されます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">存在するジオメトリタイプのみ</span> ：存在しているジオメトリタイプのみをリストし、他のジオメトリタイプは追加しません。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">追加のジオメトリ属性を含める</span> 。</p></li>
+</ul>
+<div class="admonition tip" id="tip-oracle-spatial-layers">
+<p class="admonition-title">Tip</p>
+<p><strong>Oracle Spatialレイヤ</strong></p>
+<p>通常、ORACLE Spatialレイヤは <strong>USER_SDO_METADATA</strong> テーブルのエントリで定義されます。</p>
+<p>選択ツールが正しく動作するようにするためには、テーブルに <strong>主キー</strong> があることをお勧めします。</p>
+</div>
+</section>
+<section id="connecting-to-ms-sql-server">
+<span id="create-ms-sql-server-connection"></span><h5><a class="toc-backref" href="#id48" role="doc-backlink">MS SQLサーバーへの接続</a><a class="headerlink" href="#connecting-to-ms-sql-server" title="Link to this heading"></a></h5>
+<p>As mentioned in <a class="reference internal" href="#vector-create-stored-connection"><span class="std std-ref">保存された接続の作成</span></a> QGIS allows you to
+create MS SQL Server connection through <span class="guilabel">Data Source Manager</span>.</p>
+<figure class="align-center" id="id15">
+<span id="figure-new-mssql-connection"></span><img alt="../../../_images/mssql_connection_dialog.png" src="../../../_images/mssql_connection_dialog.png" />
+<figcaption>
+<p><span class="caption-number">図 15.13 </span><span class="caption-text">MS SQL Server Connection</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>To create a new MS SQL Server connection, you need to provide some of the
+following information in the <span class="guilabel">Connection Details</span> dialog:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Connection name</span></p></li>
+<li><p><span class="guilabel">Provider/DNS</span></p></li>
+<li><p><span class="guilabel">Host</span></p></li>
+<li><p><span class="guilabel">Login</span> information. You can choose
+to <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Save</span> your credentials.</p></li>
+</ul>
+<p>Navigate to the <span class="guilabel">Database Details</span> section and click the
+<span class="guilabel">List Databases</span> button to view the available datasets.
+Select datasets that you want, then press <span class="guilabel">OK</span>.
+Optionally, you can also perform a <span class="guilabel">Test Connection</span>.
+Once you click <span class="guilabel">OK</span> the <span class="guilabel">Create a New MS SQL Server Connection</span> dialog
+will close and in the <span class="guilabel">Data Source Manager</span> press <span class="guilabel">Connect</span>,
+select a layer and then click <span class="guilabel">Add</span>.</p>
+<p>Optionally, you can activate the following options:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Only look in the geometry_columns metadata table</span>.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Use layer extent from geometry_columns table</span>,
+this checkbox is dependent on the first one; it remains disabled unless
+the first option is checked.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Use primary key from geometry_columns table</span></p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Also list table with no geometry</span>: tables without a
+geometry column attached will also be shown in the available table list.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Use estimated table parameters</span>: only estimated table
+metadata will be used. This avoids a slow table scan, but may result in
+incorrect layer properties such as layer extent.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Skip invalid geometry handling</span>: all handling of records
+with invalid geometry will be disabled. This speeds up the provider, however,
+if any invalid geometries are present in a table then the result is unpredictable
+and may include missing records. Only check this option if you are certain that
+all geometries present in the database are valid, and any newly added geometries
+or tables will also be valid.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Use only a Subset of Schemas</span> will allow you to filter
+schemas for MS SQL connection. If enabled, only checked schemas will be displayed.
+You can right-click to <span class="guilabel">Check</span> or <span class="guilabel">Uncheck</span> any schema
+in the list.</p></li>
+</ul>
+</section>
+<section id="connecting-to-sap-hana">
+<span id="create-hana-connection"></span><h5><a class="toc-backref" href="#id49" role="doc-backlink">SAP HANAへの接続</a><a class="headerlink" href="#connecting-to-sap-hana" title="Link to this heading"></a></h5>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>SAP HANAデータベースに接続するためには、SAP HANA Clientが必要となります。自分のプラットフォーム向けのSAP HANA Clientは、 <a class="reference external" href="https://tools.hana.ondemand.com/#hanatools">SAP Development Tools website</a> からダウンロードできます。</p>
+</div>
+<figure class="align-center" id="id16">
+<span id="figure-new-hana-connection"></span><img alt="../../../_images/newhanaconnection.png" src="../../../_images/newhanaconnection.png" />
+<figcaption>
+<p><span class="caption-number">図 15.14 </span><span class="caption-text">「新規SAP HANA接続を作成」ダイアログ</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>以下のパラメータを入力します：</p>
+<ul class="simple">
+<li><p><span class="guilabel">名前</span> ：コネクションの名前</p></li>
+<li><p><span class="guilabel">ドライバー</span> <a class="reference internal" href="../../../_images/win.png"><img alt="win" src="../../../_images/win.png" style="width: 1em;" /></a> ：HANA ODBCドライバーの名前。QGISの64ビット版を使用している場合は <code class="docutils literal notranslate"><span class="pre">HDBODBC</span></code> 、32ビット版を使用している場合は <code class="docutils literal notranslate"><span class="pre">HDBODBC32</span></code> です。適切なドライバー名は自動的に入力されます。</p></li>
+<li><p><span class="guilabel">ドライバー</span> <a class="reference internal" href="../../../_images/nix.png"><img alt="nix" src="../../../_images/nix.png" style="width: 1em;" /></a> <a class="reference internal" href="../../../_images/osx.png"><img alt="osx" src="../../../_images/osx.png" style="width: 1em;" /></a> ：SAP HANA ODBCドライバーが <code class="file docutils literal notranslate"><span class="pre">/etc/odbcinst.ini</span></code> 内に登録されている名前、またはSAP HANA ODBCドライバーへのフルパスのいずれかを入力します。SAP HANA Clientのインストーラは、デフォルトでODBCドライバーを <code class="file docutils literal notranslate"><span class="pre">/usr/sap/hdbclient/libodbcHDB.so</span></code> にインストールします。</p></li>
+<li><p><span class="guilabel">ホスト</span> ：データベースのホスト名</p></li>
+<li><p><span class="guilabel">識別子</span> ：ホスト上で接続するインスタンスを識別します。これは、 <span class="guilabel">インスタンス番号</span> または <span class="guilabel">ポート番号</span> のどちらかです。インスタンス番号は2桁の数字で、ポート番号は1から65,535の範囲です。</p></li>
+<li><p><span class="guilabel">モード</span> ：SAP HANAインスタンスの実行モードを指定します。この設定は、 <span class="guilabel">識別子</span> を <span class="guilabel">インスタンス番号</span> に設定した場合にのみ考慮されます。データベースがマルチプルコンテナをホストしている場合は、 <span class="guilabel">テナントデータベース</span> に指定した名前のテナントや、システムデータベースに接続できます。</p></li>
+<li><p><span class="guilabel">スキーマ</span> ：このパラメータはオプションです。スキーマ名を指定した場合、QGISはそのスキーマのデータのみを検索します。フィールドを空のままとした場合には、QGISはすべてのスキーマのデータを検索します。</p></li>
+<li><p><span class="menuselection">認証 ► ベーシック</span></p>
+<ul>
+<li><p><span class="guilabel">ユーザー名</span> ：データベースへの接続に使用するユーザー名</p></li>
+<li><p><span class="guilabel">パスワード</span> ：データベースへの接続に使用するパスワード</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">SSL設定</span></p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">TLS/SSL暗号化</span> ：TLS 1.1 - TLS1.2暗号化を有効にします。サーバーは利用可能な中で上位のものを選択します。</p></li>
+<li><p><span class="guilabel">プロバイダ</span> ：SSL通信に使用する暗号化ライブラリのプロバイダを指定します。 <span class="guilabel">sapcrypto</span> はすべてのプラットフォームで動作しますが、 <span class="guilabel">openssl</span> は <a class="reference internal" href="../../../_images/nix.png"><img alt="nix" src="../../../_images/nix.png" style="width: 1em;" /></a> <a class="reference internal" href="../../../_images/osx.png"><img alt="osx" src="../../../_images/osx.png" style="width: 1em;" /></a> で、 <span class="guilabel">mscrypto</span> は <a class="reference internal" href="../../../_images/win.png"><img alt="win" src="../../../_images/win.png" style="width: 1em;" /></a> で動作し、 <span class="guilabel">commoncrypto</span> はCommonCryptoLibがインストールされている必要があります。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">SSL証明を有効化</span> ：チェックした場合、 <span class="guilabel">公開鍵を含む鍵ファイルを信頼する</span> に指定したトラストストアを使用してSSL証明が有効化されます。</p></li>
+<li><p><span class="guilabel">証明書のホスト名を上書き</span> ：サーバーの身元確認に使用するホスト名を指定します。ここで指定するホスト名は、接続を確立したホスト名ではなく、サーバーの身元を確認するものです。ホスト名に <code class="docutils literal notranslate"><span class="pre">*</span></code> を指定した場合、サーバーのホスト名は検証されません。その他のワイルドカードは使えません。</p></li>
+<li><p><span class="guilabel">秘密鍵を含む鍵ファイル</span> ：現在は無視されます。このパラメータによって、将来的にはユーザ名とパスワードによる認証の代わりに、証明書による認証ができるようになるかもしれません。</p></li>
+<li><p><span class="guilabel">公開鍵を含む鍵ファイルを信頼する</span> ：OpenSSLを使用する場合に、サーバーの公開鍵証明を含むトラストストアファイルへのパスを指定します。通常は、トラストストアにはルート証明書またはサーバーの公開証明書に署名した認証局の証明書が含まれます。暗号化ライブラリにCommonCryptoLibやmsCryptoを使用する場合には、このプロパティは空のままにしておきます。</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ユーザーのテーブルのみ参照する</span> ：チェックを入れた場合、QGISはデータベースに接続したユーザーが所有するテーブルとビューのみを検索します。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ジオメトリを持たないテーブルもリストする</span> チェックを入れた場合、QGISは空間カラムを持たないテーブルやビューも検索します。</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>SAP HANA Cloudへの接続</strong></p>
+<p>SAP HANA Cloudインスタンスへ接続したい場合には、通常は <span class="guilabel">ポート番号</span> を <code class="docutils literal notranslate"><span class="pre">443</span></code> として、 <span class="guilabel">TLS/SSL暗号化</span> にチェックを入れる必要があります。</p>
+</div>
+</section>
+</section>
+<section id="loading-a-database-layer">
+<span id="vector-loading-database"></span><h4><a class="toc-backref" href="#id50" role="doc-backlink">データベースのレイヤを読み込む</a><a class="headerlink" href="#loading-a-database-layer" title="Link to this heading"></a></h4>
+<p>データベースに1つ以上の接続が定義できたら（ <a class="reference internal" href="#vector-create-stored-connection"><span class="std std-ref">保存された接続の作成</span></a> を参照）、そこからレイヤを読み込むことができます。もちろん、このためにはデータが利用可能なものである必要があります。PostGISデータベースへのデータのインポートについての議論は、 <a class="reference internal" href="supported_data.html#vector-import-data-in-postgis"><span class="std std-ref">PostgreSQLへデータをインポートする</span></a> のセクションを参照してください。</p>
+<p>データベースからレイヤを読み込むには、以下の手順に従います：</p>
+<ol class="arabic simple">
+<li><p>&quot; &lt;database&gt; テーブルの追加&quot; ダイアログを開きます（ <a class="reference internal" href="#vector-create-stored-connection"><span class="std std-ref">保存された接続の作成</span></a> 参照）。</p></li>
+<li><p>接続をドロップダウンリストから選択し、 <span class="guilabel">接続</span> ボタンをクリックします。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ジオメトリを持たないテーブルもリストする</span>　を選択または非選択にできます</p></li>
+<li><p>オプションとして、いくつかの <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">検索オプション</span> を使用して、検索にマッチしたもののみにテーブルのリストを削減できます。このオプションを <span class="guilabel">接続</span> ボタンを押す前に設定することもでき、データベースからのテーブル取得を高速化することができます。</p></li>
+<li><p>利用可能なレイヤのリスト内で、追加したいレイヤを探してください。</p></li>
+<li><p>追加したいレイヤをクリックして選択します。 <kbd class="kbd docutils literal notranslate">Shift</kbd> キーまたは <kbd class="kbd docutils literal notranslate">Ctrl</kbd> キーを押しながらクリックすることで、複数のレイヤを選択できます。</p></li>
+<li><p>利用可能ならば、 <span class="guilabel">フィルタの設定</span> ボタン（もしくはレイヤをダブルクリック）を使用して <span class="guilabel">クエリビルダ</span> ダイアログ（ <a class="reference internal" href="../working_with_vector/vector_properties.html#vector-query-builder"><span class="std std-ref">クエリビルダ</span></a> のセクション参照）を開始し、選択したレイヤからどの地物を読み込むかを定義します。フィルタ式はリストの <code class="docutils literal notranslate"><span class="pre">sql</span></code> 列に表示されます。この制約条件は、 <span class="menuselection">レイヤプロパティ ► ソース ► プロバイダ地物フィルタ</span> フレームで削除または編集ができます。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">idで選択</span></code> カラムのチェックボックスはデフォルトで有効になっていますが、これは属性なしの地物idを取得し、たいていの場合でデータの読み込みを高速化します。</p></li>
+<li><p><span class="guilabel">追加</span> ボタンをクリックし、マップにレイヤを追加します。</p></li>
+</ol>
+<figure class="align-center" id="id17">
+<span id="figure-add-postgis-tables"></span><img alt="../../../_images/addpostgistables.png" src="../../../_images/addpostgistables.png" />
+<figcaption>
+<p><span class="caption-number">図 15.15 </span><span class="caption-text">PostGISテーブルを追加ダイアログ</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>ブラウザパネルを使用してデータベースのテーブル読み込みを高速化する</strong></p>
+<p><span class="guilabel">データソースマネージャ</span> からデータベーステーブルを追加しようとすると、QGISが各テーブルについて統計量やプロパティ（例えば、ジオメトリタイプやフィールド、CRS、地物の数など）をあらかじめ取得するため、時間がかかることがあります。これを避けるには、 <a class="reference internal" href="#vector-create-stored-connection"><span class="std std-ref">接続の設定</span></a> ができたら、 <a class="reference internal" href="#browser-panel"><span class="std std-ref">ブラウザパネル</span></a> または <a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DBマネージャ</span></a> を使用して、データベーステーブルをマップキャンバスへドラッグ＆ドロップする方法が良いでしょう。</p>
+</div>
+</section>
+</section>
+</section>
+<section id="the-layer-metadata-search-panel">
+<span id="layer-metadata-search-panel"></span><h2><a class="toc-backref" href="#id51" role="doc-backlink"><span class="section-number">15.1.4. </span>レイヤメタデータ検索パネル</a><a class="headerlink" href="#the-layer-metadata-search-panel" title="Link to this heading"></a></h2>
+<p>By default, QGIS can retrieve layers metadata from the connections or data providers that allow metadata storage
+(more details on <a class="reference internal" href="../introduction/general_tools.html#savemetadatatodb"><span class="std std-ref">saving metadata to the database</span></a>).
+The <span class="guilabel">Metadata search</span> panel allows to browse the layers by their metadata
+and add them to the project (either with a double-click or the <span class="guilabel">Add</span> button).
+The list can be filtered:</p>
+<ul class="simple">
+<li><p>by text, watching a set of metadata properties (identifier, title, abstract)</p></li>
+<li><p>by spatial extent, using the current <a class="reference internal" href="../introduction/qgis_configuration.html#project-full-extent"><span class="std std-ref">project extent</span></a> or the map canvas extent</p></li>
+<li><p>by the layer (geometry) type</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>メタデータのソースは、プラグインによって拡張可能なレイヤメタデータプロバイダのシステムによって実装されています。</p>
+</div>
+<figure class="align-center" id="id18">
+<img alt="../../../_images/layer_metadata_search_panel.png" src="../../../_images/layer_metadata_search_panel.png" />
+<figcaption>
+<p><span class="caption-number">図 15.16 </span><span class="caption-text">レイヤメタデータ検索パネル</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="qgis-custom-formats">
+<h2><a class="toc-backref" href="#id52" role="doc-backlink"><span class="section-number">15.1.5. </span>QGISカスタム形式</a><a class="headerlink" href="#qgis-custom-formats" title="Link to this heading"></a></h2>
+<p>QGISには2つのカスタム形式があります：</p>
+<ul class="simple">
+<li><p>一時スクラッチレイヤ：プロジェクトに結び付いたメモリレイヤです（詳細は <a class="reference internal" href="create_layers.html#vector-new-scratch-layer"><span class="std std-ref">新しい一時スクラッチレイヤを作成する</span></a> を参照してください）</p></li>
+<li><p>仮想レイヤ：他のレイヤに対するクエリの結果として得られるレイヤです（詳細は <a class="reference internal" href="create_layers.html#vector-virtual-layers"><span class="std std-ref">仮想レイヤを作成する</span></a> を参照してください）</p></li>
+</ul>
+</section>
+<section id="qlr-qgis-layer-definition-file">
+<span id="index-14"></span><h2><a class="toc-backref" href="#id53" role="doc-backlink"><span class="section-number">15.1.6. </span>QLR - QGISレイヤ定義ファイル</a><a class="headerlink" href="#qlr-qgis-layer-definition-file" title="Link to this heading"></a></h2>
+<p>レイヤのコンテキストメニューで <span class="menuselection">エクスポート ► レイヤ定義ファイルとして保存...</span> を使用して、レイヤの定義を <a class="reference internal" href="../appendices/qgis_file_formats.html#qgislayerdefinitionfile"><span class="std std-ref">レイヤ定義ファイル</span></a> （QLR - <code class="file docutils literal notranslate"><span class="pre">.qlr</span></code> ）として保存することができます。</p>
+<p>QLR形式によって、 &quot;完全な&quot; QGISレイヤを他のQGISユーザーと共有することができます。 QLRファイルには、データソースへのリンクとレイヤのスタイル設定に必要な全てのQGISスタイル情報が含まれています。</p>
+<p>QLRファイルはブラウザパネル内に表示され、レイヤを（保存されたスタイルで）レイヤパネルに追加するために使用できます。QLRファイルをシステムのファイルマネージャからマップキャンバスへとドラッグ＆ドロップすることもできます。</p>
+</section>
+<section id="connecting-to-web-services">
+<h2><a class="toc-backref" href="#id54" role="doc-backlink"><span class="section-number">15.1.7. </span>ウェブサービスへ接続する</a><a class="headerlink" href="#connecting-to-web-services" title="Link to this heading"></a></h2>
+<p>QGISを使用すると、さまざまな種類のOGC ウェブサービス（WM(T)S、WFS(-T)、WCS、CSW、...）にアクセスすることができます。QGIS Serverのおかげで、このようなサービスを公開することもできます。 <a class="reference internal" href="../../server_manual/index.html#qgis-server-manual"><span class="std std-ref">QGIS Server ガイド / マニュアル</span></a> には、これらの機能についての説明があります。</p>
+<section id="using-vector-tiles-services">
+<span id="vector-tiles"></span><span id="index-15"></span><h3><a class="toc-backref" href="#id55" role="doc-backlink"><span class="section-number">15.1.7.1. </span>ベクタタイルサービスを利用する</a><a class="headerlink" href="#using-vector-tiles-services" title="Link to this heading"></a></h3>
+<p>ベクタタイルサービスは、 <span class="guilabel">データソースマネージャ</span> ダイアログの <a class="reference internal" href="../../../_images/mActionAddVectorTileLayer.png"><img alt="addVectorTileLayer" src="../../../_images/mActionAddVectorTileLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">ベクタタイル</span> タブまたは <span class="guilabel">ブラウザ</span> パネルの <span class="guilabel">Vector Tiles</span> エントリのコンテキストメニューから追加することができます。サービスは、 <span class="guilabel">新規一般接続...</span> か <span class="guilabel">新規ArcGIS Vector Tile Service接続...</span> のいずれかです。</p>
+<p>以下を入力することで、サービスを設定できます：</p>
+<ul>
+<li><p><span class="guilabel">名前</span></p></li>
+<li><p><span class="guilabel">URL</span> ：一般接続の場合は <code class="docutils literal notranslate"><span class="pre">http://example.com/{z}/{x}/{y}.pbf</span></code> のような形式、ArcGISベースのサービスの場合は <code class="docutils literal notranslate"><span class="pre">http://example.com/arcgis/rest/services/Layer/VectorTileServer</span></code> のような形式です。サービスはタイルを <code class="file docutils literal notranslate"><span class="pre">.pbf</span></code> 形式で提供している必要があります。</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">最小ズームレベル</span> および <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">最大ズームレベル</span> ：ベクタタイルはピラミッド構造を持っています。これらのオプションを使用すると、タイルピラミッドから個別にレイヤを生成することができます。これらのレイヤは、QGISでベクタタイルのレンダリングに使用されます。</p>
+<p>メルカトル図法（OpenStreetMap Vector Tilesで使用）の場合、ズームレベル0は世界全体を 1:500.000.000 の縮尺で表現します。ズームレベル14は、縮尺 1:35.000 での表現です。</p>
+</li>
+<li><p><span class="guilabel">Style URL</span> ：MapBox GL JSONスタイル設定へのURLです。これを設定すると、この接続からのレイヤがQGISに追加される場合に、常にそのスタイルが適用されます。ArcGISベクタタイルサービス接続の場合、このURLはサーバー側の設定で指定されるデフォルトのスタイル設定を上書きします。</p></li>
+<li><p><a class="reference internal" href="../auth_system/index.html#authentication-index"><span class="std std-ref">認証</span></a> ：必要に応じて設定</p></li>
+<li><p><span class="guilabel">リファラー</span></p></li>
+</ul>
+<p><a class="reference internal" href="#figure-vector-tiles-maptilerplanet"><span class="std std-numref">図 15.17</span></a> は、MapTiler planet Vector Tiles サービスの設定ダイアログを示しています。</p>
+<figure class="align-center" id="id19">
+<span id="figure-vector-tiles-maptilerplanet"></span><img alt="../../../_images/vector_tiles_maptilerplanet.png" src="../../../_images/vector_tiles_maptilerplanet.png" />
+<figcaption>
+<p><span class="caption-number">図 15.17 </span><span class="caption-text">ベクタタイル - Maptiler Planet の設定</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>接続設定は、 <span class="guilabel">データソースマネージャ</span> ダイアログ内の <span class="guilabel">ベクタタイル</span> エントリや、 <span class="guilabel">ブラウザ</span> パネルのVector Tilesのコンテキストメニューを通じて <code class="file docutils literal notranslate"><span class="pre">.XML</span></code> ファイルに保存（ <span class="guilabel">接続を保存</span> ）することができます。同様に、接続をファイルから追加する（ <span class="guilabel">接続を読み込む</span> ）こともできます。</p>
+<p>ベクタタイルサービスへの接続が設定できたら、以下の操作が可能です。</p>
+<ul class="simple">
+<li><p>ベクタタイルの接続設定の <span class="guilabel">編集</span></p></li>
+<li><p>接続の <span class="guilabel">削除</span></p></li>
+<li><p><span class="guilabel">ブラウザ</span> パネルでは、エントリを右クリックすることで、以下の操作もできます：</p>
+<ul>
+<li><p><span class="guilabel">レイヤをプロジェクトに追加する</span> ：ダブルクリックでもレイヤを追加できます</p></li>
+<li><p><span class="guilabel">レイヤのプロパティ...</span> を確認し、サービスによって提供されるメタデータやデータのプレビューにアクセスできます。レイヤがプロジェクトに読み込まれている場合には、より多くの設定が可能です。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="using-xyz-tile-services">
+<span id="xyz-tile"></span><span id="index-16"></span><h3><a class="toc-backref" href="#id56" role="doc-backlink"><span class="section-number">15.1.7.2. </span>XYZタイルサービスを利用する</a><a class="headerlink" href="#using-xyz-tile-services" title="Link to this heading"></a></h3>
+<p>XYZ Tile services can be added via the <a class="reference internal" href="../../../_images/mActionAddXyzLayer.png"><img alt="addXyzLayer" src="../../../_images/mActionAddXyzLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">XYZ</span> tab
+of the <span class="guilabel">Data Source Manager</span> dialog or the contextual menu of the
+<span class="guilabel">XYZ Tiles</span> entry in the <span class="guilabel">Browser</span> panel.
+By default, QGIS provides some default and ready-to-use XYZ Tiles services:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mIconXyz.png"><img alt="xyz" src="../../../_images/mIconXyz.png" style="width: 1.5em;" /></a><span class="guilabel">Mapzen Global Terrain</span> により、プロジェクトに使える世界的なDEMソースに即座にアクセスできます。詳細とリソースは、<a class="reference external" href="https://registry.opendata.aws/terrain-tiles/">https://registry.opendata.aws/terrain-tiles/</a></p></li>
+<li><p><a class="reference internal" href="../../../_images/mIconXyz.png"><img alt="xyz" src="../../../_images/mIconXyz.png" style="width: 1.5em;" /></a> <span class="guilabel">OpenStreetMap</span> で世界の2Dマップにアクセスできます。<a href="#id1"><span class="problematic" id="id2">|</span></a>numref:<cite>figure_xyz_tiles_openstreetmap</cite> はOpenStreetMap XYZ Tileサービスの設定ダイアログを表示します。</p></li>
+</ul>
+<p>To add a new service, press <span class="guilabel">New</span> (respectively <span class="guilabel">New Connection</span>
+from the Browser panel) and provide:</p>
+<blockquote>
+<div><figure class="align-center" id="id20">
+<span id="figure-xyz-tiles-openstreetmap"></span><img alt="../../../_images/xyz_tiles_dialog_osm.png" src="../../../_images/xyz_tiles_dialog_osm.png" />
+<figcaption>
+<p><span class="caption-number">図 15.18 </span><span class="caption-text">XYZ Tiles - OpenStreetMap の設定</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+<ul class="simple">
+<li><p><span class="guilabel">名前</span></p></li>
+<li><p>the <span class="guilabel">URL</span>, you can add <code class="docutils literal notranslate"><span class="pre">http://example.com/{z}/{x}/{y}.png</span></code> or
+<code class="docutils literal notranslate"><span class="pre">file:///local_path/{z}/{x}/{y}.png</span></code></p></li>
+<li><p><a class="reference internal" href="../auth_system/index.html#authentication-index"><span class="std std-ref">認証</span></a> ：必要に応じて設定</p></li>
+<li><p><span class="guilabel">最小ズームレベル</span> および <span class="guilabel">最大ズームレベル</span></p></li>
+<li><p><span class="guilabel">リファラー</span></p></li>
+<li><p><span class="guilabel">タイル解像度</span> ：可能な値は <span class="guilabel">不明（スケールされていない）</span> 、 <span class="guilabel">標準（256x256 / 96DPI）</span> および <span class="guilabel">高解像度（512x512 / 192DPI）</span> です</p></li>
+</ul>
+<ul class="simple" id="interpretation">
+<li><p><span class="guilabel">断面データの解釈</span>: WMTS/XYZ ラスタデータセットを、あらかじめ定義されたエンコーディングスキームに従って、シングルバンド float 型のラスタレイヤに変換します。サポートされているスキームは <span class="guilabel">デフォルト</span> (変換は行われません), <span class="guilabel">MapTiler Terrain RGB</span> および <span class="guilabel">Terrarium Terrain RGB</span> です。選択されたコンバータは、RGBソースの値を各ピクセルのfloat値に変換します。一度読み込まれると、レイヤはシングルバンドの浮動小数点ラスタレイヤとして表示され、QGISの通常の:ref:<cite>ラスタレンダラ &lt;raster_rendering&gt;</cite> を使ってスタイルを設定することができます。</p></li>
+</ul>
+<p>Press <span class="guilabel">OK</span> to establish the connection.
+It will then be possible to:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Add</span> the new layer to the project; it is loaded with the name given in the settings.</p></li>
+<li><p>XYZタイル接続設定の <span class="guilabel">編集</span></p></li>
+<li><p>接続の <span class="guilabel">削除</span></p></li>
+<li><p><span class="guilabel">ブラウザ</span> パネルでは、エントリを右クリックすることで、以下の操作もできます：</p>
+<ul>
+<li><p><span class="menuselection">レイヤエクスポート... ► ファイルへ</span> は、 <a class="reference internal" href="create_layers.html#general-saveas"><span class="std std-ref">タイルをラスタとして保存します</span></a></p></li>
+<li><p><span class="guilabel">レイヤをプロジェクトに追加する</span> ：ダブルクリックでもレイヤを追加できます</p></li>
+<li><p><span class="guilabel">レイヤのプロパティ...</span> を確認し、サービスによって提供されるメタデータやデータのプレビューにアクセスできます。レイヤがプロジェクトに読み込まれている場合には、より多くの設定が可能です。</p></li>
+</ul>
+</li>
+</ul>
+<p>Configurations can be saved to <code class="file docutils literal notranslate"><span class="pre">.XML</span></code> file (<span class="guilabel">Save Connections</span>)
+through the <span class="guilabel">XYZ</span> entry in <span class="guilabel">Data Source Manager</span> dialog
+or its contextual menu in the <span class="guilabel">Browser</span> panel.
+Likewise, they can be added from a file (<span class="guilabel">Load Connections</span>).</p>
+<p>OpenStreetMapのXMLファイルは以下のようになっています：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE connections&gt;</span>
+<span class="nt">&lt;qgsXYZTilesConnections</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xyztiles</span><span class="w"> </span><span class="na">url=</span><span class="s">&quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;</span>
+<span class="w">   </span><span class="na">zmin=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">zmax=</span><span class="s">&quot;19&quot;</span><span class="w"> </span><span class="na">tilePixelRatio=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">password=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;OpenStreetMap&quot;</span>
+<span class="w">   </span><span class="na">username=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">authcfg=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">referer=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/qgsXYZTilesConnections&gt;</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Loading XYZ tiles without creating a connection</strong></p>
+<p>It is also possible to add XYZ tiles to a project without necessarily storing
+its connection settings in you user profile (e.g. for a dataset you may need once).
+In the <span class="menuselection">Data Source Manager ► XYZ</span> tab, edit any properties
+in the <span class="guilabel">Connection Details</span> group.
+The <span class="guilabel">Name</span> field above should turn into <code class="docutils literal notranslate"><span class="pre">Custom</span></code>.
+Press <span class="guilabel">Add</span> to load the layer in the project.
+It will be named by default <code class="docutils literal notranslate"><span class="pre">XYZ</span> <span class="pre">Layer</span></code>.</p>
+</div>
+<p>XYZタイルサービスの例：</p>
+<ul class="simple">
+<li><p>OpenStreetMap Monochrome: <span class="guilabel">URL</span>: <code class="docutils literal notranslate"><span class="pre">http://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png</span></code>, <span class="guilabel">最小ズームレベル</span>: 0, <span class="guilabel">最大ズームレベル</span>: 19</p></li>
+<li><p>Googleマップ: <span class="guilabel">URL</span>: <code class="docutils literal notranslate"><span class="pre">https://mt1.google.com/vt/lyrs=m&amp;x={x}&amp;y={y}&amp;z={z}</span></code>, <span class="guilabel">最小ズームレベル</span>: 0, <span class="guilabel">最大ズームレベル</span>: 19</p></li>
+<li><p>Open Weather Map Temperature: <span class="guilabel">URL</span>: <code class="docutils literal notranslate"><span class="pre">http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={api_key}</span></code> <span class="guilabel">最小ズームレベル</span>: 0, <span class="guilabel">最大ズームレベル</span>: 19</p></li>
+</ul>
+</section>
+<section id="using-arcgis-rest-servers">
+<span id="arcgis-rest"></span><span id="index-17"></span><h3><a class="toc-backref" href="#id57" role="doc-backlink"><span class="section-number">15.1.7.3. </span>ArcGIS REST Serversを利用する</a><a class="headerlink" href="#using-arcgis-rest-servers" title="Link to this heading"></a></h3>
+<p>ArcGIS REST Serversは、 <span class="guilabel">データソースマネージャ</span> ダイアログの <a class="reference internal" href="../../../_images/mActionAddAfsLayer.png"><img alt="addAfsLayer" src="../../../_images/mActionAddAfsLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">ArcGIS REST Server</span> タブまたは <span class="guilabel">ブラウザ</span> パネルの <span class="guilabel">ArcGIS REST Servers</span> エントリのコンテキストメニューから追加することができます。 <span class="guilabel">新規</span> （あるいは <span class="guilabel">新規接続</span> ）を押し、以下の情報を入力します：</p>
+<ul class="simple">
+<li><p><span class="guilabel">名前</span></p></li>
+<li><p><span class="guilabel">URL</span></p></li>
+<li><p><span class="guilabel">Community endpoint URL</span></p></li>
+<li><p><span class="guilabel">Content endpoint URL</span></p></li>
+<li><p><a class="reference internal" href="../auth_system/index.html#authentication-index"><span class="std std-ref">認証</span></a> ：必要に応じて設定</p></li>
+<li><p><span class="guilabel">リファラー</span></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>ArcGIS Feature Service接続で、対応するPortal endpoint URL が設定されているものは、ブラウザパネル内でコンテンツグループごとに検索できます。</p>
+<p>接続にPortal endpointsが設定されている場合、ブラウザパネルで接続を展開すると、通常表示されるサービスの完全なリストの代わりに “Groups” フォルダと “Services” フォルダが表示されます。グループフォルダを展開すると、ユーザーがメンバーとなっているすべてのコンテンツグループの一覧が表示され、それぞれのグループを展開すると、そのグループに所属するサービス項目が表示されます。</p>
+</div>
+<p>接続設定は、 <span class="guilabel">データソースマネージャ</span> ダイアログ内の <span class="guilabel">ArcGIS REST Server</span> エントリを通じて <code class="file docutils literal notranslate"><span class="pre">.XML</span></code> ファイルに保存（ <span class="guilabel">接続を保存</span> ）することができます。同様に、接続をファイルから追加する（ <span class="guilabel">接続を読み込む</span> ）こともできます。</p>
+<p>ArcGIS REST Serverへの接続が設定できたら、以下の操作が可能です。</p>
+<ul class="simple">
+<li><p>ArcGIS REST Server接続設定の <span class="guilabel">編集</span></p></li>
+<li><p>接続の <span class="guilabel">削除</span></p></li>
+<li><p>接続の <span class="guilabel">再読み込み</span></p></li>
+<li><p>利用可能なレイヤへのフィルタ適用</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a><span class="guilabel">現在のビュー領域に重なる地物のみをリクエストする</span> オプションを用いて、利用可能なレイヤのリストから選択する</p></li>
+<li><p><span class="guilabel">ブラウザ</span> パネルでは、接続エントリを右クリックすることで、以下の操作ができます：</p>
+<ul>
+<li><p><span class="guilabel">再読み込み</span></p></li>
+<li><p><span class="guilabel">接続の編集...</span></p></li>
+<li><p><span class="guilabel">接続を削除...</span></p></li>
+<li><p><span class="guilabel">サービス情報を見る</span> ：デフォルトのウェブブラウザを開き、サービス情報を表示します</p></li>
+</ul>
+</li>
+<li><p>レイヤのエントリを右クリックすると、以下の操作ができます：</p>
+<ul>
+<li><p><span class="guilabel">サービス情報を見る</span> ：デフォルトのウェブブラウザを開き、サービス情報を表示します</p></li>
+<li><p><span class="menuselection">レイヤエクスポート ► ファイルへ…</span></p></li>
+<li><p><span class="guilabel">レイヤをプロジェクトに追加する</span> ：ダブルクリックでもレイヤを追加できます</p></li>
+<li><p><span class="guilabel">レイヤのプロパティ...</span> を確認し、サービスによって提供されるメタデータやデータのプレビューにアクセスできます。レイヤがプロジェクトに読み込まれている場合には、より多くの設定が可能です。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="using-3d-tiles-services">
+<span id="d-tiles"></span><span id="index-18"></span><h3><a class="toc-backref" href="#id58" role="doc-backlink"><span class="section-number">15.1.7.4. </span>Using 3D tiles services</a><a class="headerlink" href="#using-3d-tiles-services" title="Link to this heading"></a></h3>
+<p>To load a 3D tiles into QGIS, use the <a class="reference internal" href="../../../_images/mActionAddTiledSceneLayer.png"><img alt="addTiledSceneLayer" src="../../../_images/mActionAddTiledSceneLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">Scene</span> tab
+in the <span class="guilabel">Data Source Manager</span> dialog.</p>
+<figure class="align-center" id="id21">
+<span id="figure-scene"></span><img alt="../../../_images/scene.png" src="../../../_images/scene.png" />
+<figcaption>
+<p><span class="caption-number">図 15.19 </span><span class="caption-text">Data Source Manager - Scene</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Create a <span class="guilabel">New Cesium 3D Tiles Connection</span> by clicking on
+<span class="guilabel">New</span>. Add <span class="guilabel">Name</span> and <span class="guilabel">URL</span> or add
+local tileset file.</p>
+<p>Support for 3D tiles:</p>
+<ul class="simple">
+<li><p>Remote source - <code class="docutils literal notranslate"><span class="pre">http://example.com/tileset.json</span></code></p></li>
+<li><p>Local files - <code class="docutils literal notranslate"><span class="pre">file:///path/to/tiles/tileset.json</span></code></p></li>
+</ul>
+<figure class="align-center" id="id22">
+<span id="figure-tiled-scene-connection"></span><img alt="../../../_images/tiled_scene_connection.png" src="../../../_images/tiled_scene_connection.png" />
+<figcaption>
+<p><span class="caption-number">図 15.20 </span><span class="caption-text">Tiled Scene Connection</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can also add the service from <span class="guilabel">Browser Panel</span>.</p>
+<p>After creating new connection you are able to <span class="guilabel">Add</span> the new layer
+to your map.</p>
+<figure class="align-center" id="id23">
+<span id="figure-3d-tiles-layer"></span><img alt="../../../_images/3d_tiles_layer.png" src="../../../_images/3d_tiles_layer.png" />
+<figcaption>
+<p><span class="caption-number">図 15.21 </span><span class="caption-text">3D Tiles Layer - Textured</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="15. データソースの管理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="create_layers.html" class="btn btn-neutral float-right" title="15.2. レイヤを作成する" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/managing_data_source/opening_data.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/managing_data_source/opening_data.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/managing_data_source/opening_data.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/managing_data_source/opening_data.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/managing_data_source/opening_data.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/managing_data_source/opening_data.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/managing_data_source/opening_data.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/managing_data_source/opening_data.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/managing_data_source/opening_data.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/managing_data_source/opening_data.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/managing_data_source/opening_data.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/managing_data_source/opening_data.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/managing_data_source/opening_data.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/managing_data_source/opening_data.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/managing_data_source/opening_data.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/managing_data_source/opening_data.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/user_manual/managing_data_source/opening_data.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/user_manual/managing_data_source/opening_data.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/managing_data_source/opening_data.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/user_manual/managing_data_source/opening_data.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/user_manual/managing_data_source/opening_data.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/user_manual/managing_data_source/opening_data.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/user_manual/managing_data_source/opening_data.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/user_manual/managing_data_source/opening_data.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/user_manual/managing_data_source/opening_data.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/managing_data_source/opening_data.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/256c883f0602edb9255862a1d5c539a7" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

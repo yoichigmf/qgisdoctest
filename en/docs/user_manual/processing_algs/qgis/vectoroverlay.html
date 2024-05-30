@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>28.1.23. Vector overlay &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="28.1.24. Vector selection" href="vectorselection.html" />
+    <link rel="prev" title="28.1.22. Vector geometry" href="vectorgeometry.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 28.1.23. Vector overlay">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../map_views/index.html">11. Visualizing Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">14. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">27. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">28. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">28.1. QGIS algorithm provider</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="3dtiles.html">28.1.1. 3D Tiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cartography.html">28.1.2. Cartography</a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html">28.1.3. Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filetools.html">28.1.4. File tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gps.html">28.1.5. GPS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interpolation.html">28.1.6. Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="layertools.html">28.1.7. Layer tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mesh.html">28.1.8. Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modelertools.html">28.1.9. Modeler tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="networkanalysis.html">28.1.10. Network analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plots.html">28.1.11. Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pointcloudconversion.html">28.1.12. Point Cloud Conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pointclouddatamanagement.html">28.1.13. Point Cloud Data Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pointcloudextraction.html">28.1.14. Point Cloud Extraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasteranalysis.html">28.1.15. Raster analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastercreation.html">28.1.16. Raster Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterterrainanalysis.html">28.1.17. Raster terrain analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastertools.html">28.1.18. Raster tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoranalysis.html">28.1.19. Vector analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorcreation.html">28.1.20. Vector creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeneral.html">28.1.21. Vector general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeometry.html">28.1.22. Vector geometry</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">28.1.23. Vector overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorselection.html">28.1.24. Vector selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectortable.html">28.1.25. Vector table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectortiles.html">28.1.26. Vector Tiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">28.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">28.3. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">QGIS User Guide</a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><span class="section-number">28. </span>Processing providers and algorithms</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">28.1. </span>QGIS algorithm provider</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">28.1.23. </span>Vector overlay</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/qgis/vectoroverlay.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="vectorgeometry.html" class="btn btn-neutral float-left" title="28.1.22. Vector geometry" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vectorselection.html" class="btn btn-neutral float-right" title="28.1.24. Vector selection" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="vector-overlay">
+<h1><span class="section-number">28.1.23. </span>Vector overlay<a class="headerlink" href="#vector-overlay" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#clip" id="id57">Clip</a></p></li>
+<li><p><a class="reference internal" href="#difference" id="id58">Difference</a></p></li>
+<li><p><a class="reference internal" href="#difference-multiple" id="id59">Difference (multiple)</a></p></li>
+<li><p><a class="reference internal" href="#extract-clip-by-extent" id="id60">Extract/clip by extent</a></p></li>
+<li><p><a class="reference internal" href="#intersection" id="id61">Intersection</a></p></li>
+<li><p><a class="reference internal" href="#intersection-multiple" id="id62">Intersection (multiple)</a></p></li>
+<li><p><a class="reference internal" href="#line-intersections" id="id63">Line intersections</a></p></li>
+<li><p><a class="reference internal" href="#split-with-lines" id="id64">Split with lines</a></p></li>
+<li><p><a class="reference internal" href="#symmetrical-difference" id="id65">Symmetrical difference</a></p></li>
+<li><p><a class="reference internal" href="#union" id="id66">Union</a></p></li>
+<li><p><a class="reference internal" href="#union-multiple" id="id67">Union (multiple)</a></p></li>
+</ul>
+</nav>
+<section id="clip">
+<span id="qgisclip"></span><h2><a class="toc-backref" href="#id57" role="doc-backlink"><span class="section-number">28.1.23.1. </span>Clip</a><a class="headerlink" href="#clip" title="Link to this heading"></a></h2>
+<p>Clips a vector layer using the features of an additional polygon
+layer.</p>
+<p>Only the parts of the features in the input layer that fall within the
+polygons of the overlay layer will be added to the resulting layer.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Geometry modification only</strong></p>
+<p>This operation modifies only the features geometry.
+The attribute values of the features are <strong>not modified</strong>, although
+properties such as area or length of the features will be modified
+by the overlay operation.
+If such properties are stored as attributes, those attributes will
+have to be manually updated.</p>
+</div>
+<p>This algorithm uses spatial indexes on the providers, prepared
+geometries and apply a clipping operation if the geometry isn’t wholly
+contained by the mask geometry.</p>
+<figure class="align-center" id="id43">
+<img alt="../../../../_images/clip3.png" src="../../../../_images/clip3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.119 </span><span class="caption-text">Clipping operation between a two-feature input layer ‘a’ and a single
+feature overlay layer ‘b’ (left) - resulting in a new layer with the modified
+‘a’ features (right)</span><a class="headerlink" href="#id43" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a> Allows <a class="reference internal" href="../../working_with_vector/editing_geometry_attributes.html#processing-inplace-edit"><span class="std std-ref">features in-place modification</span></a>
+of point, line, and polygon features</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Geoprocessing Tools</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisintersection"><span class="std std-ref">Intersection</span></a>, <a class="reference internal" href="#qgisdifference"><span class="std std-ref">Difference</span></a></p>
+</div>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer containing the features to be clipped</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Overlay layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAY</span></code></p></td>
+<td><p>[vector: polygon]</p></td>
+<td><p>Layer containing the clipping features</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Clipped</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the layer to contain the features from the input layer
+that are inside the overlay (clipping) layer.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="outputs">
+<h3>Outputs<a class="headerlink" href="#outputs" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Clipped</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Layer containing features from the input layer split by the
+overlay layer.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-code">
+<h3>Python code<a class="headerlink" href="#python-code" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:clip</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="difference">
+<span id="qgisdifference"></span><h2><a class="toc-backref" href="#id58" role="doc-backlink"><span class="section-number">28.1.23.2. </span>Difference</a><a class="headerlink" href="#difference" title="Link to this heading"></a></h2>
+<p>Extracts features from the input layer that don’t fall within the
+boundaries of the overlay layer.</p>
+<p>Input layer features that partially overlap the overlay layer
+feature(s) are split along the boundary of those feature(s) and only
+the portions outside the overlay layer features are retained.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Geometry modification only</strong></p>
+<p>This operation modifies only the features geometry.
+The attribute values of the features are <strong>not modified</strong>, although
+properties such as area or length of the features will be modified
+by the overlay operation.
+If such properties are stored as attributes, those attributes will
+have to be manually updated.</p>
+</div>
+<figure class="align-center" id="id44">
+<img alt="../../../../_images/difference.png" src="../../../../_images/difference.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.120 </span><span class="caption-text">Difference operation between a two-features input layer ‘a’ and a single
+feature overlay layer ‘b’ (left) - resulting in a new layer with the modified
+‘a’ features (right)</span><a class="headerlink" href="#id44" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a> Allows <a class="reference internal" href="../../working_with_vector/editing_geometry_attributes.html#processing-inplace-edit"><span class="std std-ref">features in-place modification</span></a>
+of point, line, and polygon features</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Geoprocessing Tools</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgismultidifference"><span class="std std-ref">Difference (multiple)</span></a>, <a class="reference internal" href="#qgissymmetricaldifference"><span class="std std-ref">Symmetrical difference</span></a>, <a class="reference internal" href="#qgisclip"><span class="std std-ref">Clip</span></a></p>
+</div>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<section id="basic-parameters">
+<h4>Basic parameters<a class="headerlink" href="#basic-parameters" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer to extract (parts of) features from.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Overlay layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAY</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer containing the geometries that will be subtracted from
+the input layer geometries.
+It is expected to have at least as many dimensions (point: 0D,
+line: 1D, polygon: 2D, volume: 3D) as the input layer
+geometries.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Difference</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the layer to contain the (parts of) features from the
+input layer that are not inside the overlay layer.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="advanced-parameters">
+<h4>Advanced parameters<a class="headerlink" href="#advanced-parameters" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Grid size</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GRID_SIZE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: Not set</p>
+</td>
+<td><p>If provided, the input geometries are snapped to a grid of the given size,
+and the result vertices are computed on that same grid. Requires GEOS 3.9.0 or higher.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id2">
+<h3>Outputs<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Difference</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Layer containing (parts of) features from the input layer
+not overlapping the overlay layer.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3>Python code<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:difference</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="difference-multiple">
+<span id="qgismultidifference"></span><h2><a class="toc-backref" href="#id59" role="doc-backlink"><span class="section-number">28.1.23.3. </span>Difference (multiple)</a><a class="headerlink" href="#difference-multiple" title="Link to this heading"></a></h2>
+<p>Extracts features from the input layer that fall completely outside or
+only partially overlap the features from any of the overlay layer(s).</p>
+<p>For each overlay layer the difference is calculated between the result of
+all previous difference operations and this overlay layer.
+Input layer features that partially overlap feature(s) in the overlay layer
+are split along those features’ boundary and only the portions outside the
+overlay layer features are retained.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Geometry modification only</strong></p>
+<p>This operation modifies only the features geometry.
+The attribute values of the features are <strong>not modified</strong>, although
+properties such as area or length of the features will be modified
+by the overlay operation.
+If such properties are stored as attributes, those attributes will
+have to be manually updated.</p>
+</div>
+<figure class="align-center" id="id45">
+<img alt="../../../../_images/difference_multi.png" src="../../../../_images/difference_multi.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.121 </span><span class="caption-text">Difference operation between a two-feature input layer ‘a’ and single
+feature overlay layers ‘b’ and ‘c’ (left) - resulting in a new layer with the modified
+‘a’ features (right)</span><a class="headerlink" href="#id45" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisdifference"><span class="std std-ref">Difference</span></a>, <a class="reference internal" href="#qgissymmetricaldifference"><span class="std std-ref">Symmetrical difference</span></a>, <a class="reference internal" href="#qgisclip"><span class="std std-ref">Clip</span></a></p>
+</div>
+<section id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer to extract (parts of) features from.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Overlay layers</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAYS</span></code></p></td>
+<td><p>[vector: any] [list]</p></td>
+<td><p>List of layers containing the geometries that will be subtracted from
+the input layer geometries.
+They are expected to have at least as many dimensions (point: 0D,
+line: 1D, polygon: 2D, volume: 3D) as the input layer geometries.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Difference</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the layer to contain the (parts of) features from the
+input layer that do not overlap features of the overlay layers.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3>Outputs<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Difference</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Layer containing (parts of) features from the input layer
+not overlapping features from the overlay layers.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3>Python code<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:multidifference</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="extract-clip-by-extent">
+<span id="qgisextractbyextent"></span><h2><a class="toc-backref" href="#id60" role="doc-backlink"><span class="section-number">28.1.23.4. </span>Extract/clip by extent</a><a class="headerlink" href="#extract-clip-by-extent" title="Link to this heading"></a></h2>
+<p>Creates a new vector layer that only contains features which fall
+within a specified extent.</p>
+<p>Any features which intersect the extent will be included.</p>
+<figure class="align-center" id="id46">
+<img alt="../../../../_images/extractbyextent.png" src="../../../../_images/extractbyextent.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.122 </span><span class="caption-text">Extract operation between a three-feature input layer ‘a’ and a dashed extent (left) -
+resulting features with dashed extent for reference (right)</span><a class="headerlink" href="#id46" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisclip"><span class="std std-ref">Clip</span></a></p>
+</div>
+<section id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer to extract (parts of) features from.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Extent (xmin, xmax, ymin, ymax)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTENT</span></code></p></td>
+<td><p>[extent]</p></td>
+<td><p>Extent for clipping.</p>
+<p>Available methods are:</p>
+<ul class="simple">
+<li><p>Calculate from layer…: uses extent of a layer loaded in the current project</p></li>
+<li><p>Calculate from layout map…: uses extent of a <a class="reference internal" href="../../print_composer/composer_items/composer_map.html#layout-map-item"><span class="std std-ref">layout map item</span></a>
+in the active project</p></li>
+<li><p>Calculate from bookmark…: uses extent of a saved <a class="reference internal" href="../../map_views/map_view.html#sec-bookmarks"><span class="std std-ref">bookmark</span></a></p></li>
+<li><p>Use map canvas extent</p></li>
+<li><p>Draw on canvas: click and drag a rectangle delimiting the area to take into account</p></li>
+<li><p>Enter the coordinates as <code class="docutils literal notranslate"><span class="pre">xmin,</span> <span class="pre">xmax,</span> <span class="pre">ymin,</span> <span class="pre">ymax</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Clip features to extent</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CLIP</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>If checked, output geometries will be automatically converted
+to multi geometries to ensure uniform output types.
+Moreover the geometries will be clipped to the extent chosen
+instead of taking the whole geometry as output.</p>
+<figure class="align-center" id="id47">
+<img alt="../../../../_images/extractbyextent_clip.png" src="../../../../_images/extractbyextent_clip.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.123 </span><span class="caption-text">Extract operation between a three-feature input layer ‘a’ and a dashed extent (left) -
+resulting features with dashed extent for reference (right)</span><a class="headerlink" href="#id47" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Extracted</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the layer to contain the features from the input layer
+that are inside the clip extent.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3>Outputs<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Extracted</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Layer containing the clipped features.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h3>Python code<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:extractbyextent</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="intersection">
+<span id="qgisintersection"></span><h2><a class="toc-backref" href="#id61" role="doc-backlink"><span class="section-number">28.1.23.5. </span>Intersection</a><a class="headerlink" href="#intersection" title="Link to this heading"></a></h2>
+<p>Extracts the portions of features from the input layer that overlap
+features in the overlay layer.</p>
+<p>Features in the intersection layer are assigned the attributes of the
+overlapping features from both the input and overlay layers.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Geometry modification only</strong></p>
+<p>This operation modifies only the features geometry.
+The attribute values of the features are <strong>not modified</strong>, although
+properties such as area or length of the features will be modified
+by the overlay operation.
+If such properties are stored as attributes, those attributes will
+have to be manually updated.</p>
+</div>
+<figure class="align-center" id="id48">
+<img alt="../../../../_images/intersection.png" src="../../../../_images/intersection.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.124 </span><span class="caption-text">Intersection operation between a two-feature input layer ‘a’ and a single
+feature overlay layer ‘b’ (left) - overlapping areas become a new two-feature layer
+with both layers’ attributes (right)</span><a class="headerlink" href="#id48" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Geoprocessing Tools</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgismultiintersection"><span class="std std-ref">Intersection (multiple)</span></a>, <a class="reference internal" href="#qgisclip"><span class="std std-ref">Clip</span></a>, <a class="reference internal" href="#qgisdifference"><span class="std std-ref">Difference</span></a></p>
+</div>
+<section id="id10">
+<h3>Parameters<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id11">
+<h4>Basic parameters<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer to extract (parts of) features from.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Overlay layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAY</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer containing the features to check for overlap.
+Its features’ geometry is expected to have at least as many
+dimensions (point: 0D, line: 1D, polygon: 2D, volume: 3D)
+as the input layer’s.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Input fields to keep (leave empty to keep all fields)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_FIELDS</span></code></p></td>
+<td><p>[tablefield: any] [list]</p>
+<p>Default: None</p>
+</td>
+<td><p>Field(s) of the input layer to keep in the output.
+If no fields are chosen all fields are taken.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Overlay fields to keep (leave empty to keep all fields)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAY_FIELDS</span></code></p></td>
+<td><p>[tablefield: any] [list]</p>
+<p>Default: None</p>
+</td>
+<td><p>Field(s) of the overlay layer to keep in the output.
+If no fields are chosen all fields are taken.
+Duplicate field names will be appended a count suffix to avoid collision.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Intersection</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the layer to contain (the parts of) the features from
+the input layer that overlap one or more features from the
+overlay layer.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h4>Advanced parameters<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Overlay fields prefix</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAY_FIELDS_PREFIX</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Add a prefix to identify fields of the overlay layer.
+Duplicate field names will be appended a count suffix to avoid collision.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Grid size</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GRID_SIZE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: Not set</p>
+</td>
+<td><p>If provided, the input geometries are snapped to a grid of the given size,
+and the result vertices are computed on that same grid. Requires GEOS 3.9.0 or higher.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id13">
+<h3>Outputs<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Intersection</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Layer containing (parts of) features from the input
+layer that overlap the overlay layer.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h3>Python code<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:intersection</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="intersection-multiple">
+<span id="qgismultiintersection"></span><h2><a class="toc-backref" href="#id62" role="doc-backlink"><span class="section-number">28.1.23.6. </span>Intersection (multiple)</a><a class="headerlink" href="#intersection-multiple" title="Link to this heading"></a></h2>
+<p>Extracts the overlapping portions of features in the input and all overlay layers.</p>
+<p>Features in the output layer are assigned the attributes of the overlapping
+features from both the input and overlay layers.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Geometry modification only</strong></p>
+<p>This operation modifies only the features geometry.
+The attribute values of the features are <strong>not modified</strong>, although
+properties such as area or length of the features will be modified
+by the overlay operation.
+If such properties are stored as attributes, those attributes will
+have to be manually updated.</p>
+</div>
+<figure class="align-center" id="id49">
+<img alt="../../../../_images/intersection_multi.png" src="../../../../_images/intersection_multi.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.125 </span><span class="caption-text">Intersection operation between a two-feature input layer ‘a’ and single
+feature overlay layers ‘b’ and ‘c’ (left) - overlapping areas become a new two-feature layer
+with all layers’ attributes (right)</span><a class="headerlink" href="#id49" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisintersection"><span class="std std-ref">Intersection</span></a>, <a class="reference internal" href="#qgisclip"><span class="std std-ref">Clip</span></a>, <a class="reference internal" href="#qgisdifference"><span class="std std-ref">Difference</span></a></p>
+</div>
+<section id="id15">
+<h3>Parameters<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<section id="id16">
+<h4>Basic parameters<a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer to extract (parts of) features from.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Overlay layers</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAYS</span></code></p></td>
+<td><p>[vector: any] [list]</p></td>
+<td><p>Layers containing the features to check for overlap.
+The features’ geometry is expected to have at least as many
+dimensions (point: 0D, line: 1D, polygon: 2D, volume: 3D)
+as the input layer’s.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id17">
+<h4>Advanced parameters<a class="headerlink" href="#id17" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Overlay fields prefix</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAY_FIELDS_PREFIX</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Add a prefix to identify fields of the overlay layers.
+Duplicate field names will be appended a count suffix to avoid collision.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id18">
+<h3>Outputs<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Intersection</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Layer containing (parts of) features from the input
+layer that overlap all the overlay layers.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id19">
+<h3>Python code<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:multiintersection</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="line-intersections">
+<span id="qgislineintersections"></span><h2><a class="toc-backref" href="#id63" role="doc-backlink"><span class="section-number">28.1.23.7. </span>Line intersections</a><a class="headerlink" href="#line-intersections" title="Link to this heading"></a></h2>
+<p>Creates point features where the lines from the two layers intersect.</p>
+<figure class="align-center" id="id50">
+<img alt="../../../../_images/line_intersection.png" src="../../../../_images/line_intersection.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.126 </span><span class="caption-text">Points of intersection</span><a class="headerlink" href="#id50" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Analysis Tools</span></p>
+<section id="id20">
+<h3>Parameters<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<section id="id21">
+<h4>Basic parameters<a class="headerlink" href="#id21" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>Input line layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Intersect layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTERSECT</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>Layer to use to find line intersections.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Input fields to keep (leave empty to keep all fields)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_FIELDS</span></code></p></td>
+<td><p>[tablefield: any] [list]</p>
+<p>Default: None</p>
+</td>
+<td><p>Field(s) of the input layer to keep in the output.
+If no fields are chosen all fields are taken.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Intersect fields to keep (leave empty to keep all fields)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTERSECT_FIELDS</span></code></p></td>
+<td><p>[tablefield: any] [list]</p>
+<p>Default: None</p>
+</td>
+<td><p>Field(s) of the intersect layer to keep in the output.
+If no fields are chosen all fields are taken.
+Duplicate field names will be appended a count suffix to avoid collision.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Intersection</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the layer to contain the intersection points of the
+lines from the input and overlay layers.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id22">
+<h4>Advanced parameters<a class="headerlink" href="#id22" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Intersect fields prefix</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTERSECT_FIELDS_PREFIX</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Add a prefix to identify fields of the intersect layer.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id23">
+<h3>Outputs<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Intersections</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Point vector layer of the lines intersections,
+with both layers’ attributes.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id24">
+<h3>Python code<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:lineintersections</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="split-with-lines">
+<span id="qgissplitwithlines"></span><h2><a class="toc-backref" href="#id64" role="doc-backlink"><span class="section-number">28.1.23.8. </span>Split with lines</a><a class="headerlink" href="#split-with-lines" title="Link to this heading"></a></h2>
+<p>Splits the lines or polygons in one layer using the lines or polygon rings
+in another layer to define the breaking points.
+Intersection between geometries in both layers are considered as split
+points.</p>
+<p>Output will contain multi geometries for split features.</p>
+<figure class="align-center" id="id51">
+<img alt="../../../../_images/split_with_lines.png" src="../../../../_images/split_with_lines.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.127 </span><span class="caption-text">Split lines</span><a class="headerlink" href="#id51" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a> Allows <a class="reference internal" href="../../working_with_vector/editing_geometry_attributes.html#processing-inplace-edit"><span class="std std-ref">features in-place modification</span></a>
+of line and polygon features</p>
+<section id="id25">
+<h3>Parameters<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: line, polygon]</p></td>
+<td><p>Layer containing the lines or polygons to split.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Split layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LINES</span></code></p></td>
+<td><p>[vector: line, polygon]</p></td>
+<td><p>Layer whose lines or rings are used to define the breaking points.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Split</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the layer to contain the splitted (in case they are
+intersected by a line in the split layer) line/polygon features
+from the input layer.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id26">
+<h3>Outputs<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Split</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Output vector layer with split lines or polygons from input
+layer.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id27">
+<h3>Python code<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:splitwithlines</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="symmetrical-difference">
+<span id="qgissymmetricaldifference"></span><h2><a class="toc-backref" href="#id65" role="doc-backlink"><span class="section-number">28.1.23.9. </span>Symmetrical difference</a><a class="headerlink" href="#symmetrical-difference" title="Link to this heading"></a></h2>
+<p>Creates a layer containing features from both the input and overlay
+layers but with the overlapping areas between the two layers removed.</p>
+<p>The attribute table of the symmetrical difference layer contains
+attributes and fields from both the input and overlay layers.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Geometry modification only</strong></p>
+<p>This operation modifies only the features geometry.
+The attribute values of the features are <strong>not modified</strong>, although
+properties such as area or length of the features will be modified
+by the overlay operation.
+If such properties are stored as attributes, those attributes will
+have to be manually updated.</p>
+</div>
+<figure class="align-center" id="id52">
+<img alt="../../../../_images/symmetrical_difference.png" src="../../../../_images/symmetrical_difference.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.128 </span><span class="caption-text">Symmetrical difference operation between a two-features input layer
+‘a’ and a single feature overlay layer ‘b’ (left) -
+resulting three-feature layer with both layers’ attributes (right)</span><a class="headerlink" href="#id52" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Geoprocessing Tools</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisdifference"><span class="std std-ref">Difference</span></a>, <a class="reference internal" href="#qgisclip"><span class="std std-ref">Clip</span></a>,
+<a class="reference internal" href="#qgisintersection"><span class="std std-ref">Intersection</span></a></p>
+</div>
+<section id="id28">
+<h3>Parameters<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
+<section id="id29">
+<h4>Basic parameters<a class="headerlink" href="#id29" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>First layer to extract (parts of) features from.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Overlay layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAY</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Second layer to extract (parts of) features from.
+Ideally the geometry type should be the same as input layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Symmetrical difference</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the layer to contain (the parts of) the features from
+the input and overlay layers that do not overlap features from
+the other layer.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id30">
+<h4>Advanced parameters<a class="headerlink" href="#id30" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Overlay fields prefix</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAY_FIELDS_PREFIX</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Add a prefix to identify fields of the overlay layer.
+Duplicate field names will be appended a count suffix to avoid collision.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Grid size</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GRID_SIZE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: Not set</p>
+</td>
+<td><p>If provided, the input geometries are snapped to a grid of the given size,
+and the result vertices are computed on that same grid. Requires GEOS 3.9.0 or higher.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id31">
+<h3>Outputs<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Symmetrical difference</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Layer containing (parts of) features from each layer
+not overlapping the other layer, with both layers’ attributes.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id32">
+<h3>Python code<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:symmetricaldifference</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="union">
+<span id="qgisunion"></span><h2><a class="toc-backref" href="#id66" role="doc-backlink"><span class="section-number">28.1.23.10. </span>Union</a><a class="headerlink" href="#union" title="Link to this heading"></a></h2>
+<p>Checks overlaps between features within the input layer and creates
+separate features for overlapping and non-overlapping parts.
+The area of overlap will create as many identical overlapping features
+as there are features that participate in that overlap.</p>
+<figure class="align-center" id="id53">
+<img alt="../../../../_images/union.png" src="../../../../_images/union.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.129 </span><span class="caption-text">Union operation with a single input layer with two overlapping
+features (left) - resulting in four features (middle) - features moved for clarity (right)</span><a class="headerlink" href="#id53" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>An overlay layer can also be used, in which case features from each
+layer are split at their overlap with features from the other one,
+creating a layer containing all the portions from both input and
+overlay layers. Features on the same layer will not split each other.
+The attribute table of the union layer is filled with attribute values
+from the respective original layer for non-overlapping features, and
+attribute values from both layers for overlapping features.</p>
+<figure class="align-center" id="id54">
+<img alt="../../../../_images/union_with_overlay.png" src="../../../../_images/union_with_overlay.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.130 </span><span class="caption-text">Union operation between a two-feature input layer ‘a’ and a single
+feature overlay layer ‘b’ (left) - resulting five-feature layer
+with attributes from both layers (right)</span><a class="headerlink" href="#id54" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With an overlay layer, features on the same layer will not split each other.
+If you want to split overlaps on the same layer as well as other layers,
+first run the algorithm with multiple layers then run the algorithm
+again with only the previous output.</p>
+</div>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Geoprocessing Tools</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgismultiunion"><span class="std std-ref">Union (multiple)</span></a>, <a class="reference internal" href="#qgisclip"><span class="std std-ref">Clip</span></a>, <a class="reference internal" href="#qgisdifference"><span class="std std-ref">Difference</span></a>,
+<a class="reference internal" href="#qgisintersection"><span class="std std-ref">Intersection</span></a></p>
+</div>
+<section id="id33">
+<h3>Parameters<a class="headerlink" href="#id33" title="Link to this heading"></a></h3>
+<section id="id34">
+<h4>Basic parameters<a class="headerlink" href="#id34" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer to split at any intersections.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Overlay layer</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAY</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer that will be combined to the first one.
+Ideally the geometry type should be the same as input layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Union</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the layer to contain the (split and duplicated)
+features from the input layer and the overlay layer.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id35">
+<h4>Advanced parameters<a class="headerlink" href="#id35" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Overlay fields prefix</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAY_FIELDS_PREFIX</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Add a prefix to identify fields of the overlay layer.
+Duplicate field names will be appended a count suffix to avoid collision.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Grid size</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GRID_SIZE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: Not set</p>
+</td>
+<td><p>If provided, the input geometries are snapped to a grid of the given size,
+and the result vertices are computed on that same grid. Requires GEOS 3.9.0 or higher.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id36">
+<h3>Outputs<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Union</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Layer containing all the overlapping and
+non-overlapping parts from the processed layer(s).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id37">
+<h3>Python code<a class="headerlink" href="#id37" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:union</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="union-multiple">
+<span id="qgismultiunion"></span><h2><a class="toc-backref" href="#id67" role="doc-backlink"><span class="section-number">28.1.23.11. </span>Union (multiple)</a><a class="headerlink" href="#union-multiple" title="Link to this heading"></a></h2>
+<p>Checks overlaps between features within the input layer and creates
+separate features for overlapping and non-overlapping parts.
+The area of overlap will create as many identical overlapping features
+as there are features that participate in that overlap.</p>
+<figure class="align-center" id="id55">
+<img alt="../../../../_images/union.png" src="../../../../_images/union.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.131 </span><span class="caption-text">Union operation with a single input layer with two overlapping
+features (left) - resulting in four features (middle) - features moved for clarity (right)</span><a class="headerlink" href="#id55" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Multiple overlay layers can also be used, in which case features from each
+layer are split at their overlap with features from all other layers,
+creating a layer containing all the portions from both input and
+overlay layers. Features on the same layer will not split each other.
+The attribute table of the Union layer is filled with attribute values
+from the respective original layer for non-overlapping features, and
+attribute values from overlay layers for overlapping features.</p>
+<figure class="align-center" id="id56">
+<img alt="../../../../_images/union_multi.png" src="../../../../_images/union_multi.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.132 </span><span class="caption-text">Union operation between a two-feature input layer ‘a’ and single
+feature overlay layers ‘b’ and ‘c’ (left) - resulting eleven-feature layer
+with attributes from all layers (right)</span><a class="headerlink" href="#id56" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With an overlay layer, features on the same layer will not split each other.
+If you want to split overlaps on the same layer as well as other layers,
+first run the algorithm with multiple layers then run the algorithm
+again with only the previous output.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisunion"><span class="std std-ref">Union</span></a>, <a class="reference internal" href="#qgisclip"><span class="std std-ref">Clip</span></a>, <a class="reference internal" href="#qgisdifference"><span class="std std-ref">Difference</span></a>,
+<a class="reference internal" href="#qgisintersection"><span class="std std-ref">Intersection</span></a></p>
+</div>
+<section id="id38">
+<h3>Parameters<a class="headerlink" href="#id38" title="Link to this heading"></a></h3>
+<section id="id39">
+<h4>Basic parameters<a class="headerlink" href="#id39" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer to split at any intersections.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Overlay layers</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAYS</span></code></p></td>
+<td><p>[vector: any] [list]</p></td>
+<td><p>Layers that will be combined to the first one.
+Ideally the geometry type should be the same as input layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Union</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the layer to contain the (split and duplicated)
+features from the input layer and the overlay layers.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id40">
+<h4>Advanced parameters<a class="headerlink" href="#id40" title="Link to this heading"></a></h4>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Overlay fields prefix</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OVERLAY_FIELDS_PREFIX</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Add a prefix to identify fields of the overlay layers.
+Duplicate field names will be appended a count suffix to avoid collision.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id41">
+<h3>Outputs<a class="headerlink" href="#id41" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Union</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Layer containing all the overlapping and
+non-overlapping parts from the processed layer(s),
+with all layers’ attributes.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id42">
+<h3>Python code<a class="headerlink" href="#id42" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:multiunion</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vectorgeometry.html" class="btn btn-neutral float-left" title="28.1.22. Vector geometry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vectorselection.html" class="btn btn-neutral float-right" title="28.1.24. Vector selection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/processing_algs/qgis/vectoroverlay.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/processing_algs/qgis/vectoroverlay.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/processing_algs/qgis/vectoroverlay.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/processing_algs/qgis/vectoroverlay.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/processing_algs/qgis/vectoroverlay.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/processing_algs/qgis/vectoroverlay.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/processing_algs/qgis/vectoroverlay.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/processing_algs/qgis/vectoroverlay.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/processing_algs/qgis/vectoroverlay.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/processing_algs/qgis/vectoroverlay.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/processing_algs/qgis/vectoroverlay.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/processing_algs/qgis/vectoroverlay.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/processing_algs/qgis/vectoroverlay.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/processing_algs/qgis/vectoroverlay.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/qgis/vectoroverlay.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/12947785569ba2f6134c3bf23701bc47" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

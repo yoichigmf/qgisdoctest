@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25.1. 認証システムの概要 &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/auth_system/auth_overview.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="25.2. ユーザー認証ワークフロー" href="auth_workflows.html" />
+    <link rel="prev" title="25. 認証システム" href="index.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 25.1. 認証システムの概要">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. 序文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. 記述ルール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. 機能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. 最初のステップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. プロジェクトファイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGISのユーザインタフェース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. ブラウザパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGISの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. 投影法の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_views/index.html">11. 地図の可視化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">12. 一般ツール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">13. 式でレベルアップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">14. スタイルライブラリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">15. データソースの管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">16. ベクタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">17. ラスタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh.html">18. メッシュデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles.html">19. ベクタタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_point_clouds/point_clouds.html">20. 点群の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_3d_tiles/3d_tiles.html">21. 3Dタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">22. 地図のレイアウト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">23. OGC / ISOプロトコルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">24. GPSデータの操作</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">25. 認証システム</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">25.1. 認証システムの概要</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-database">25.1.1. 認証データベース</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#master-password">25.1.2. マスターパスワード</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-configurations">25.1.3. 認証設定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-methods">25.1.4. 認証方式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#master-password-and-auth-config-utilities">25.1.5. マスターパスワードと認証構成ユーティリティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-authentication-configurations">25.1.6. 認証設定を使用する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-bindings">25.1.7. Pythonバインディング</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="auth_workflows.html">25.2. ユーザー認証ワークフロー</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">26. GRASS GIS の統合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">27. QGIS プロセシングフレームワーク</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">28. プロセシングプロバイダとアルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">29. プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">30. ヘルプとサポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">31. 協力者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">32. 付録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">33. 文献とWeb参照</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGISユーザガイド</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">25. </span>認証システム</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">25.1. </span>認証システムの概要</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/auth_system/auth_overview.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="25. 認証システム" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="auth_workflows.html" class="btn btn-neutral float-right" title="25.2. ユーザー認証ワークフロー" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="authentication-system-overview">
+<span id="authentication-overview"></span><h1><span class="section-number">25.1. </span>認証システムの概要<a class="headerlink" href="#authentication-system-overview" title="Link to this heading"></a></h1>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#authentication-database" id="id21">認証データベース</a></p></li>
+<li><p><a class="reference internal" href="#master-password" id="id22">マスターパスワード</a></p>
+<ul>
+<li><p><a class="reference internal" href="#managing-the-master-password" id="id23">マスターパスワードの管理</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#authentication-configurations" id="id24">認証設定</a></p></li>
+<li><p><a class="reference internal" href="#authentication-methods" id="id25">認証方式</a></p></li>
+<li><p><a class="reference internal" href="#master-password-and-auth-config-utilities" id="id26">マスターパスワードと認証構成ユーティリティ</a></p></li>
+<li><p><a class="reference internal" href="#using-authentication-configurations" id="id27">認証設定を使用する</a></p></li>
+<li><p><a class="reference internal" href="#python-bindings" id="id28">Pythonバインディング</a></p></li>
+</ul>
+</nav>
+<figure class="align-center" id="id3">
+<span id="figure-authsystem"></span><img alt="../../../_images/auth-system-overview.png" src="../../../_images/auth-system-overview.png" />
+<figcaption>
+<p><span class="caption-number">図 25.1 </span><span class="caption-text">認証システムの構造</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="authentication-database">
+<h2><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">25.1.1. </span>認証データベース</a><a class="headerlink" href="#authentication-database" title="Link to this heading"></a></h2>
+<p>新しい認証システムは、デフォルトでは <code class="file docutils literal notranslate"><span class="pre">&lt;profile</span> <span class="pre">directory&gt;/qgis-auth.db</span></code> にあるSQLiteデータベースファイルに認証設定を保存します。</p>
+<p>この認証データベースは、それは通常のQGIS設定から完全に分離されているので、他の現在のQGISユーザーの好みに影響を与えることなく、QGISのインストール間で移動できます。最初にデータベースに設定を格納する際に、構成ID（ランダム7文字の英数字文字列）が生成されます。これは設定を表し、これによりIDがその関連する資格情報の開示することなく、プレーンテキストアプリケーションコンポーネント（例えば、プロジェクト、プラグイン、または設定ファイルなど）に格納することを可能にします。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p><cite>qgis-auth.db</cite> の親ディレクトリは、以下の環境変数、 <code class="docutils literal notranslate"><span class="pre">QGIS_AUTH_DB_DIR_PATH</span></code> を使用して設定、または <code class="docutils literal notranslate"><span class="pre">--authdbdirectory</span></code> オプションでの起動時にコマンドラインで設定できます。</p>
+</div>
+</section>
+<section id="master-password">
+<h2><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">25.1.2. </span>マスターパスワード</a><a class="headerlink" href="#master-password" title="Link to this heading"></a></h2>
+<p>データベース内に機密情報を保存したりアクセスしたりするには、ユーザは <cite>マスターパスワード</cite> を定義しなければなりません。暗号化されたデータをデータベースに初めて保存する際には、新しいマスターパスワードが要求され、確認されます。機密情報がアクセスされるとき、ユーザーはマスターパスワードの入力を求められます。その後、ユーザがキャッシュされた値をクリアするアクションを手動で選択しない限り、パスワードはセッションの終わりまで（アプリケーションが終了するまで）キャッシュされます。既存の認証設定を選択するときや、サーバー構成に設定を適用するとき（WMS レイヤを追加するときなど）など、認証システムを使用するインスタンスによっては、マスターパスワードの入力を必要としません。</p>
+<p>パスワードをあなたのコンピュータの <code class="docutils literal notranslate"><span class="pre">Wallet/Keyring</span></code> に保存することもできます。</p>
+<figure class="align-center" id="id4">
+<span id="figure-masterpass"></span><img alt="../../../_images/auth-password-new_enter.png" src="../../../_images/auth-password-new_enter.png" />
+<figcaption>
+<p><span class="caption-number">図 25.2 </span><span class="caption-text">新しいマスターパスワードの入力</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>マスターパスワードを含むファイルへのパスは、以下の環境変数、 <code class="docutils literal notranslate"><span class="pre">QGIS_AUTH_PASSWORD_FILE</span></code> を使用して設定できます。</p>
+</div>
+<section id="managing-the-master-password">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">25.1.2.1. </span>マスターパスワードの管理</a><a class="headerlink" href="#managing-the-master-password" title="Link to this heading"></a></h3>
+<p>一度設定すると、マスターパスワードはリセットできます。現在のマスターパスワードはリセットする前に必要になるでしょう。このプロセスの間には、現在のデータベースの完全なバックアップを作成するオプションがあります。</p>
+<figure class="align-center" id="id5">
+<span id="figure-masterpass-reset"></span><img alt="../../../_images/auth-password-reset.png" src="../../../_images/auth-password-reset.png" />
+<figcaption>
+<p><span class="caption-number">図 25.3 </span><span class="caption-text">マスターパスワードのリセット</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>ユーザーがマスターパスワードを忘れた場合は、それを取得したり、上書きする方法はありません。マスターパスワードを知らずに暗号化された情報を検索する手立てもありません。</p>
+<p>ユーザーが既存のパスワードを誤って3回入力すると、ダイアログがデータベースを消去しようとします。</p>
+<figure class="align-center" id="id6">
+<span id="figure-masterpass-pwd"></span><img alt="../../../_images/auth-password-invalid-3times.png" src="../../../_images/auth-password-invalid-3times.png" />
+<figcaption>
+<p><span class="caption-number">図 25.4 </span><span class="caption-text">3つの無効な試みの後にパスワードのプロンプト</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="authentication-configurations">
+<h2><a class="toc-backref" href="#id24" role="doc-backlink"><span class="section-number">25.1.3. </span>認証設定</a><a class="headerlink" href="#authentication-configurations" title="Link to this heading"></a></h2>
+<p>認証設定はQGISオプションダイアログ （ <span class="menuselection">設定 ► オプション</span> ）の <span class="guilabel">認証</span> タブ中の <span class="guilabel">設定</span> から管理できます。</p>
+<figure class="align-center" id="id7">
+<span id="figure-authconfigeditor"></span><img alt="../../../_images/auth-editor-configs2.png" src="../../../_images/auth-editor-configs2.png" />
+<figcaption>
+<p><span class="caption-number">図 25.5 </span><span class="caption-text">設定エディタ</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>新しい設定を追加する <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> ボタン、設定を削除する <a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="symbologyRemove" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> ボタン、および既存のものを変更する <a class="reference internal" href="../../../_images/symbologyEdit.png"><img alt="symbologyEdit" src="../../../_images/symbologyEdit.png" style="width: 1.5em;" /></a> ボタンを使用できます。</p>
+<figure class="align-center" id="id8">
+<span id="figure-authconfigeditor-add"></span><img alt="../../../_images/auth-config-create_authcfg-id.png" src="../../../_images/auth-config-create_authcfg-id.png" />
+<figcaption>
+<p><span class="caption-number">図 25.6 </span><span class="caption-text">設定エディタから設定を追加</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>認証設定管理のための同じタイプの操作（追加、編集、削除）は、OWSサービス接続を設定するように、所与のサービス接続を設定するときに行うことができます。そのため、認証データベース内で見つかった設定を完全に管理するためのアクションボタンが構成セレクタ内にあります。この場合、より包括的な構成管理を行う必要がない限り、QGISオプションの <span class="guilabel">認証</span> タブ中の <span class="guilabel">設定</span> に行く必要はありません。</p>
+<figure class="align-center" id="id9">
+<span id="figure-authconfigeditor-wms"></span><img alt="../../../_images/auth-selector-wms-connection.png" src="../../../_images/auth-selector-wms-connection.png" />
+<figcaption>
+<p><span class="caption-number">図 25.7 </span><span class="caption-text"><span class="guilabel">新規追加</span>、<span class="guilabel">編集</span>、<span class="guilabel">削除</span> 認証設定ボタンを示す WMS 接続ダイアログ</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>認証設定を作成または編集するときに、必要な情報には、名前、認証方法および認証方法が必要であること、他の情報（利用可能な認証の種類についての詳細は <a class="reference internal" href="#authentication-methods"><span class="std std-ref">認証方式</span></a> を参照）。</p>
+</section>
+<section id="authentication-methods">
+<span id="id2"></span><h2><a class="toc-backref" href="#id25" role="doc-backlink"><span class="section-number">25.1.4. </span>認証方式</a><a class="headerlink" href="#authentication-methods" title="Link to this heading"></a></h2>
+<p>利用可能な認証は、データプロバイダプラグインが QGIS でサポートされているのと同じように、C++ プラグインによって提供されます。選択できる認証方法は、リソース/プロバイダに必要なアクセス（HTTP(S)やデータベースなど）、およびQGISコードとプラグインの両方にサポートがあるかどうかに関係します。そのため、認証方法プラグインによっては、認証設定セレクタが表示されていても適用できない場合があります。利用可能な認証方法プラグインとその対応リソース/プロバイダの一覧は <span class="menuselection">設定 ► オプション</span> にアクセスし、 <span class="guilabel">認証</span> タブの <a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <span class="guilabel">インストール済みプラグイン</span> ボタンをクリックすると表示されます。</p>
+<figure class="align-center" id="id10">
+<span id="figure-authmethod"></span><img alt="../../../_images/auth-method-listing.png" src="../../../_images/auth-method-listing.png" />
+<figcaption>
+<p><span class="caption-number">図 25.8 </span><span class="caption-text">利用可能なメソッドプラグイン一覧</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>プラグインは、QGIS の再コンパイルを必要とせずに新しい認証方法用に作成できます。現在、プラグインのサポートはC++のみであるため、ドロップインした新しいプラグインをユーザーが使用できるようにするには、QGISを再起動する必要があります。プラグインを既存のターゲットインストールに追加する場合は、プラグインがQGISの同じターゲットバージョンに対してコンパイルされていることを確認してください。</p>
+<figure class="align-center" id="id11">
+<span id="figure-authmethod-http"></span><img alt="../../../_images/auth-config-create_basic-auth.png" src="../../../_images/auth-config-create_basic-auth.png" />
+<figcaption>
+<p><span class="caption-number">図 25.9 </span><span class="caption-text">基本HTTP認証構成</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id12">
+<span id="figure-authmethod-esritoken"></span><img alt="../../../_images/auth-config-create_esritoken.png" src="../../../_images/auth-config-create_esritoken.png" />
+<figcaption>
+<p><span class="caption-number">図 25.10 </span><span class="caption-text">ESRIトークン認証構成</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id13">
+<span id="figure-authmethod-oauth2"></span><img alt="../../../_images/auth-config-create_oauth2.png" src="../../../_images/auth-config-create_oauth2.png" />
+<figcaption>
+<p><span class="caption-number">図 25.11 </span><span class="caption-text">OAuth2認証構成</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id14">
+<span id="figure-authmethod-pki"></span><img alt="../../../_images/auth-config-create_pem-der-paths.png" src="../../../_images/auth-config-create_pem-der-paths.png" />
+<figcaption>
+<p><span class="caption-number">図 25.12 </span><span class="caption-text">PKIパス認証構成</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id15">
+<span id="figure-authmethod-pkcs"></span><img alt="../../../_images/auth-config-create_pkcs12-paths.png" src="../../../_images/auth-config-create_pkcs12-paths.png" />
+<figcaption>
+<p><span class="caption-number">図 25.13 </span><span class="caption-text">PKI PKCS＃12ファイルのパス認証構成</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id16">
+<span id="figure-authmethod-stored"></span><img alt="../../../_images/auth-config-create_stored-identity2.png" src="../../../_images/auth-config-create_stored-identity2.png" />
+<figcaption>
+<p><span class="caption-number">図 25.14 </span><span class="caption-text">保存されたアイデンティティ認証構成</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>リソースのURLは現在 <em>未実装</em> の機能で、最終的には指定されたURLにあるリソースへの接続時に特定の構成が自動選択できるようになります。</p>
+</div>
+</section>
+<section id="master-password-and-auth-config-utilities">
+<h2><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">25.1.5. </span>マスターパスワードと認証構成ユーティリティ</a><a class="headerlink" href="#master-password-and-auth-config-utilities" title="Link to this heading"></a></h2>
+<p>（ <span class="menuselection">設定 ► オプション</span> ）オプションメニューの下にある <span class="guilabel">認証</span> タブ、認証データベースと構成を管理するには、いくつかのユーティリティアクションがあります。</p>
+<figure class="align-center" id="id17">
+<span id="figure-authconfiutils"></span><img alt="../../../_images/auth-editor-configs_utilities-menu.png" src="../../../_images/auth-editor-configs_utilities-menu.png" />
+<figcaption>
+<p><span class="caption-number">図 25.15 </span><span class="caption-text">ユーティリティメニュー</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p><strong>マスターパスワードを入力する</strong>: 認証データベースコマンドの実行とは無関係に、マスターパスワードの入力ダイアログを開きます</p></li>
+<li><p><strong>キャッシュされたマスターパスワードを消去する</strong>: マスターパスワードがセットされているときにそれを外します</p></li>
+<li><p><strong>マスターパスワードをリセットする</strong>: マスターパスワードを変更するダイアログを開き（現在のパスワードが判っている必要があります）、オプションで現在のデータベースをバックアップします</p></li>
+<li><p><strong>ネットワーク認証アクセスキャッシュをクリアする</strong>: すべての接続の認証キャッシュをクリアします</p></li>
+<li><p><strong>SSLエラーでネットワーク認証アクセスキャッシュを自動的にクリアする</strong>：接続キャッシュは、接続に失敗した場合にも、接続のすべての認証データを保存します。認証設定や認証局を変更した場合は、認証キャッシュをクリアするか、QGISを再起動する必要があります。このオプションをオンにすると、SSLエラーが発生し、接続を中止することを選択するたびに、認証キャッシュが自動的にクリアされます。</p></li>
+<li><p><strong>あなたのWallet/Keyringとマスターパスワードを統合する</strong>: マスターパスワードを個人のWallet/Keyringに追加します</p></li>
+<li><p><strong>Wallet/Keyringのマスターパスワードを保存更新</strong>: 変更したマスターパスワードをWallet/Keyringに保存します</p></li>
+<li><p><strong>あなたのWallet/Keyringからマスターパスワードをクリアする</strong>：Wallet/Keyringからマスターパスワードを削除します</p></li>
+<li><p><strong>パスワードヘルパーデバッグログを有効にする</strong>: 認証方法のすべてのログ情報を格納するデバッグツールを有効にします</p></li>
+<li><p><strong>キャッシュされた認証構成をクリアする</strong>: ネットワーク接続を高速化するために使用される設定の内部キャッシュをクリアします。これはQGISのコアネットワークアクセスマネージャのキャッシュをクリアしません。それにはQGISの再起動が必要です。</p></li>
+<li><p><strong>すべての認証設定を削除する</strong>: すべての設定レコードのデータベースをクリアします。その他のレコードは削除されません。</p></li>
+<li><p><strong>認証データベースを消去する</strong>: 現在のデータベースのバックアップと、データベーステーブル構造の完全な再構築をスケジュールします。このアクションは、プロジェクトの読み込みのような、他の操作が一時的にデータベースが見つからないために中断やエラーが起きないよう、後の時間にスケジュールされます。</p>
+<figure class="align-center" id="id18">
+<span id="figure-authconfiutilsdb"></span><img alt="../../../_images/auth-db-erase.png" src="../../../_images/auth-db-erase.png" />
+<figcaption>
+<p><span class="caption-number">図 25.16 </span><span class="caption-text">DB消去検証メニュー</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</section>
+<section id="using-authentication-configurations">
+<h2><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">25.1.6. </span>認証設定を使用する</a><a class="headerlink" href="#using-authentication-configurations" title="Link to this heading"></a></h2>
+<p>典型的には、認証構成は、（例えば、WMSのような）ネットワークサービスのための設定ダイアログで選択されています。しかし、セレクタウィジェットは、サードパーティのPyQGISまたはC ++プラグインのように、認証が必要などこにでも、または非コア機能中に、埋め込むことができます。</p>
+<p>セレクタを使用しているとき、何も選択されていない場合、選択する構成がない場合、または以前に割り当てられた構成がもはやデータベースに見つからない場合は <span class="guilabel">認証なし</span> がポップアップメニューコントロールに表示されます。 <span class="guilabel">type</span> と <span class="guilabel">Id</span> フィールドは読み取り専用とそれぞれの認証方法の説明と構成のIDを提供しています。</p>
+<figure class="align-center" id="id19">
+<span id="figure-authconfigselector"></span><img alt="../../../_images/auth-selector-no-authentication.png" src="../../../_images/auth-selector-no-authentication.png" />
+<figcaption>
+<p><span class="caption-number">図 25.17 </span><span class="caption-text">認証なしの認証設定セレクタ</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id20">
+<span id="figure-authconfigselector-pkcs"></span><img alt="../../../_images/auth-selector-pkcs12-authentication.png" src="../../../_images/auth-selector-pkcs12-authentication.png" />
+<figcaption>
+<p><span class="caption-number">図 25.18 </span><span class="caption-text">構成が選択された認証設定セレクタ</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="python-bindings">
+<h2><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">25.1.7. </span>Pythonバインディング</a><a class="headerlink" href="#python-bindings" title="Link to this heading"></a></h2>
+<p>マスターパスワードのハッシュ化と認証データベースの暗号化の管理は、Pythonを経由してではなく、メインのアプリによって処理されるべきなので、<code class="docutils literal notranslate"><span class="pre">QgsAuthCrypto</span></code> を除く全てのクラスとパブリック関数はsipバインディングを持っています。</p>
+<p>マスターパスワードが入力されると、Firefoxの仕組みと同じように、認証データベースの認証設定にアクセスするためのAPIが開かれる。ただし、PyQGISアクセスに対する壁は定義されていません。このため、認証情報にアクセスする悪意のあるPyQGISプラグインやスタンドアロンアプリをユーザーがダウンロード/インストールした場合に問題が発生する可能性があります。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="25. 認証システム" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="auth_workflows.html" class="btn btn-neutral float-right" title="25.2. ユーザー認証ワークフロー" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/auth_system/auth_overview.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/auth_system/auth_overview.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/auth_system/auth_overview.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/auth_system/auth_overview.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/auth_system/auth_overview.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/auth_system/auth_overview.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/auth_system/auth_overview.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/auth_system/auth_overview.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/auth_system/auth_overview.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/auth_system/auth_overview.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/auth_system/auth_overview.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/auth_system/auth_overview.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/auth_system/auth_overview.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/auth_system/auth_overview.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/auth_system/auth_overview.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/auth_system/auth_overview.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/user_manual/auth_system/auth_overview.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/user_manual/auth_system/auth_overview.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/auth_system/auth_overview.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/user_manual/auth_system/auth_overview.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/user_manual/auth_system/auth_overview.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/user_manual/auth_system/auth_overview.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/user_manual/auth_system/auth_overview.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/user_manual/auth_system/auth_overview.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/user_manual/auth_system/auth_overview.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/auth_system/auth_overview.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/b06b4887449d0d3eed419283721f7d63" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

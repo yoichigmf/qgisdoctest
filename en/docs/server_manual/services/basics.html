@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.1. Basics &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/server_manual/services/basics.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.2. Web Map Service (WMS)" href="wms.html" />
+    <link rel="prev" title="3. Services" href="../services.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 3.1. Basics">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Server Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../services.html">3. Services</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.1. Basics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#service">3.1.1. SERVICE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#request">3.1.2. REQUEST</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#map">3.1.3. MAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-name">3.1.4. FILE_NAME</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#short-name">3.1.5. Short name</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wms.html">3.2. Web Map Service (WMS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wfs.html">3.3. Web Feature Service (WFS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wcs.html">3.4. Web Coverage Service (WCS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmts.html">3.5. Web Map Tile Service (WMTS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ogcapif.html">3.6. OGC API Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../catalog.html">4. Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins.html">5. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config.html">6. Advanced configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development_server.html">7. Development Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containerized_deployment.html">8. Containerized deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html">9. Frequently Asked Question</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS Server Guide/Manual</a></li>
+          <li class="breadcrumb-item"><a href="../services.html"><span class="section-number">3. </span>Services</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.1. </span>Basics</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/server_manual/services/basics.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../services.html" class="btn btn-neutral float-left" title="3. Services" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wms.html" class="btn btn-neutral float-right" title="3.2. Web Map Service (WMS)" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="basics">
+<span id="services-basics"></span><h1><span class="section-number">3.1. </span>Basics<a class="headerlink" href="#basics" title="Link to this heading"></a></h1>
+<p>This section describes concepts and parameters mutually shared by services.
+Some of these are standard and defined in OGC specifications while others are
+very specific to QGIS Server.</p>
+<p>Standard concepts:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#services-basics-service"><span class="std std-ref">SERVICE</span></a></p></td>
+<td><p>Name of the service</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#services-basics-request"><span class="std std-ref">REQUEST</span></a></p></td>
+<td><p>Name of the request</p></td>
+</tr>
+</tbody>
+</table>
+<p>Vendor concepts:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#services-basics-map"><span class="std std-ref">MAP</span></a></p></td>
+<td><p>QGIS project file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#services-basics-file-name"><span class="std std-ref">FILE_NAME</span></a></p></td>
+<td><p>File name of the downloaded file</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#services-basics-short-name"><span class="std std-ref">Short name</span></a></p></td>
+<td><p>Short name definition</p></td>
+</tr>
+</tbody>
+</table>
+<section id="service">
+<span id="services-basics-service"></span><h2><span class="section-number">3.1.1. </span>SERVICE<a class="headerlink" href="#service" title="Link to this heading"></a></h2>
+<p>This standard parameter allows to specify the name of the service to use
+for a specific <a class="reference internal" href="#services-basics-request"><span class="std std-ref">request</span></a> and has to be formed like
+<code class="docutils literal notranslate"><span class="pre">SERVICE=NAME</span></code>.</p>
+<p>URL example for the <strong>WMS</strong> service:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not available for REST based services like <a class="reference internal" href="ogcapif.html#ogc-api-features"><span class="std std-ref">WFS3 (OGC API Features)</span></a>.</p>
+</div>
+</section>
+<section id="request">
+<span id="services-basics-request"></span><h2><span class="section-number">3.1.2. </span>REQUEST<a class="headerlink" href="#request" title="Link to this heading"></a></h2>
+<p>This standard parameter allows to specify the name of the request to execute
+for a specific <a class="reference internal" href="#services-basics-service"><span class="std std-ref">service</span></a> and has to be formed like
+<code class="docutils literal notranslate"><span class="pre">REQUEST=RequestName</span></code>.</p>
+<p>URL example for the <strong>GetCapabilities</strong> request:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">REQUEST</span><span class="o">=</span>GetCapabilities
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not available for REST based services like <a class="reference internal" href="ogcapif.html#ogc-api-features"><span class="std std-ref">WFS3 (OGC API Features)</span></a>.</p>
+</div>
+</section>
+<section id="map">
+<span id="services-basics-map"></span><h2><span class="section-number">3.1.3. </span>MAP<a class="headerlink" href="#map" title="Link to this heading"></a></h2>
+<p>This vendor parameter allows to define the QGIS project file to use. It may be
+an absolute path or a path relative to the location of the server executable
+<code class="file docutils literal notranslate"><span class="pre">qgis_mapserv.fcgi</span></code>. <code class="docutils literal notranslate"><span class="pre">MAP</span></code> is mandatory by default because a request
+needs a QGIS project to actually work. However, the <strong>QGIS_PROJECT_FILE</strong>
+environment variable may be used to define a default QGIS project. In this
+specific case, <code class="docutils literal notranslate"><span class="pre">MAP</span></code> is no longer a required parameter. For further
+information you may refer to the <a class="reference internal" href="../config.html#server-env-variables"><span class="std std-ref">Advanced configuration</span></a> chapter.</p>
+<p>URL example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">MAP</span><span class="o">=</span>/tmp/QGIS-Training-Data/exercise_data/qgis-server-tutorial-data/world.qgs
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+</section>
+<section id="file-name">
+<span id="services-basics-file-name"></span><h2><span class="section-number">3.1.4. </span>FILE_NAME<a class="headerlink" href="#file-name" title="Link to this heading"></a></h2>
+<p>If this vendor parameter is set, the server response will be sent to the client
+as a file attachment with the specified file name.</p>
+<p>URL example to save an XML <strong>GetCapabilities</strong> document:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetCapabilities
+<span class="p">&amp;</span><span class="nv">FILE_NAME</span><span class="o">=</span>wms_capabilities.xml
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not available for REST based services like <a class="reference internal" href="ogcapif.html#ogc-api-features"><span class="std std-ref">WFS3 (OGC API Features)</span></a>.</p>
+</div>
+</section>
+<section id="short-name">
+<span id="services-basics-short-name"></span><h2><span class="section-number">3.1.5. </span>Short name<a class="headerlink" href="#short-name" title="Link to this heading"></a></h2>
+<p>A number of elements have both a <strong>short name</strong> and a <strong>title</strong>. The short name
+is a text string used for machine-to-machine communication while the title is
+for the benefit of humans. For example, a dataset might have the descriptive
+title <em>“Maximum Atmospheric Temperature”</em> and be requested using the
+abbreviated short name <em>“ATMAX”</em>. You can set title, short name and abstract
+for:</p>
+<ul class="simple">
+<li><p><strong>Layers</strong>: right-click on a layer and choose
+<span class="menuselection">Properties… ► QGIS Server ► Description</span>.</p></li>
+<li><p><strong>Groups</strong>: right-click on a group and select <span class="guilabel">Set Group WMS data</span></p></li>
+<li><p><strong>Project</strong>: go to <span class="menuselection">Project ► Properties… ► QGIS Server ►
+Service Capabilities</span>.</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<span id="figure-group-wms-data"></span><a class="reference internal image-reference" href="../../../_images/set_group_wms_data.png"><img alt="../../../_images/set_group_wms_data.png" src="../../../_images/set_group_wms_data.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Set group WMS data dialog</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Thus, the short name may be used to identify these items when interacting with
+QGIS Server. For example with the standard <code class="docutils literal notranslate"><span class="pre">LAYERS</span></code> parameter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost/qgisserver?
+<span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>shortname1,shortname2
+<span class="p">&amp;</span>...
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../services.html" class="btn btn-neutral float-left" title="3. Services" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wms.html" class="btn btn-neutral float-right" title="3.2. Web Map Service (WMS)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/services/basics.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/server_manual/services/basics.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/server_manual/services/basics.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/server_manual/services/basics.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/server_manual/services/basics.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/server_manual/services/basics.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/server_manual/services/basics.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/server_manual/services/basics.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/server_manual/services/basics.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/server_manual/services/basics.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/server_manual/services/basics.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/server_manual/services/basics.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/server_manual/services/basics.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/server_manual/services/basics.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/server_manual/services/basics.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/server_manual/services/basics.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/server_manual/services/basics.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/server_manual/services/basics.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/services/basics.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/server_manual/services/basics.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/server_manual/services/basics.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/server_manual/services/basics.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/server_manual/services/basics.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/server_manual/services/basics.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/server_manual/services/basics.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/server_manual/services/basics.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/833c678df20837ac86c5448e482608d6" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

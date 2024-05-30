@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Advanced configuration &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/server_manual/config.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7. Development Server" href="development_server.html" />
+    <link rel="prev" title="5. Plugins" href="plugins.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 6. Advanced configuration">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">QGIS Server Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services.html">3. Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="catalog.html">4. Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html">5. Plugins</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6. Advanced configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logging">6.1. Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variables">6.2. Environment variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings-summary">6.3. Settings summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connection-to-service-file">6.4. Connection to service file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-fonts-to-your-linux-server">6.5. Add fonts to your linux server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="development_server.html">7. Development Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="containerized_deployment.html">8. Containerized deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">9. Frequently Asked Question</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">QGIS Server Guide/Manual</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>Advanced configuration</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/server_manual/config.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="plugins.html" class="btn btn-neutral float-left" title="5. Plugins" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="development_server.html" class="btn btn-neutral float-right" title="7. Development Server" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="advanced-configuration">
+<span id="server-env-variables"></span><span id="index-0"></span><h1><span class="section-number">6. </span>Advanced configuration<a class="headerlink" href="#advanced-configuration" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#logging" id="id1">Logging</a></p></li>
+<li><p><a class="reference internal" href="#environment-variables" id="id2">Environment variables</a></p></li>
+<li><p><a class="reference internal" href="#settings-summary" id="id3">Settings summary</a></p></li>
+<li><p><a class="reference internal" href="#connection-to-service-file" id="id4">Connection to service file</a></p></li>
+<li><p><a class="reference internal" href="#add-fonts-to-your-linux-server" id="id5">Add fonts to your linux server</a></p></li>
+</ul>
+</nav>
+<section id="logging">
+<span id="qgis-server-logging"></span><span id="index-1"></span><h2><a class="toc-backref" href="#id1" role="doc-backlink"><span class="section-number">6.1. </span>Logging</a><a class="headerlink" href="#logging" title="Link to this heading"></a></h2>
+<p>To log requests sent to the server, you have to set the following environment
+variable:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#qgis-server-log-stderr"><span class="std std-ref">QGIS_SERVER_LOG_STDERR</span></a></p></li>
+</ul>
+<p>With the following variables the logging can be further customized:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#qgis-server-log-level"><span class="std std-ref">QGIS_SERVER_LOG_LEVEL</span></a></p></li>
+<li><p><a class="reference internal" href="#qgis-server-log-profile"><span class="std std-ref">QGIS_SERVER_LOG_PROFILE</span></a></p></li>
+</ul>
+</section>
+<section id="environment-variables">
+<span id="qgis-server-envvar"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="section-number">6.2. </span>Environment variables</a><a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h2>
+<p>You can configure some aspects of QGIS Server by setting <strong>environment
+variables</strong>.</p>
+<p>According to the HTTP server and how you run QGIS Server, there are
+several ways to define these variables. This is fully described in
+<a class="reference internal" href="getting_started.html#httpserver"><span class="std std-ref">Apache HTTP Server</span></a>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 40.0%" />
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Services</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>QGIS_OPTIONS_PATH</p></td>
+<td><p>Specifies the path to the directory with settings. It works the same way as
+QGIS application <code class="docutils literal notranslate"><span class="pre">--optionspath</span></code> option. It is looking for settings file in
+<code class="docutils literal notranslate"><span class="pre">&lt;QGIS_OPTIONS_PATH&gt;/QGIS/QGIS3.ini</span></code>.</p></td>
+<td><p>‘’</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_PLUGINPATH</p></td>
+<td><p>Useful if you are using Python plugins for the server, this sets the folder
+that is searched for Python plugins.</p></td>
+<td><p>‘’</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_PROJECT_FILE</p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">.qgs</span></code> or <code class="docutils literal notranslate"><span class="pre">.qgz</span></code> project file, normally passed as a parameter in the
+query string (with <em>MAP</em>), you can also set it as an environment variable (for
+example by using <code class="docutils literal notranslate"><span class="pre">mod_rewrite</span></code> Apache module).</p>
+<p>Note that you may also indicate a project stored in PostgreSQL, e.g.
+<code class="docutils literal notranslate"><span class="pre">postgresql://localhost:5432?sslmode=disable&amp;dbname=mydb&amp;schema=myschema&amp;project=myproject</span></code> or inside a geopackage file, e.g. <code class="docutils literal notranslate"><span class="pre">geopackage:/path/to/geopackage/file.gpkg?projectName=myProjectName</span></code>.</p>
+</td>
+<td><p>‘’</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_SERVER_ALLOWED_EXTRA_SQL_TOKENS</p></td>
+<td><p>Comma separated list of strings that represent the allowed extra SQL tokens accepted as components of a feature filter.</p></td>
+<td><p>‘’</p></td>
+<td><p>WMS</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_API_RESOURCES_DIRECTORY</p></td>
+<td><p>Base directory for all OGC API (such as OAPIF/WFS3) static resources (HTML
+templates, CSS, JS, …)</p></td>
+<td><p>depends on packaging</p></td>
+<td><p>OAPIF/WFS3</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_SERVER_APPLICATION_NAME</p></td>
+<td><p>Name of the application to be used, for instance when connecting to a database to identify
+the QGIS server instance connected</p></td>
+<td><p>QGIS3 server</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_API_WFS3_MAX_LIMIT</p></td>
+<td><p>Maximum value for <code class="docutils literal notranslate"><span class="pre">limit</span></code> in a OAPIF/WFS3 features request.</p></td>
+<td><p>10000</p></td>
+<td><p>OAPIF/WFS3</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_SERVER_CACHE_DIRECTORY</p></td>
+<td><p>Specifies the network cache directory on the filesystem.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cache</span></code> in profile directory</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_CACHE_SIZE</p></td>
+<td><p>Sets the network cache size in MB.</p></td>
+<td><p>50 MB</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_SERVER_CAPABILITIES_CACHE_SIZE</p></td>
+<td><p>The maximum number of project capabilities to cache.</p></td>
+<td><p>40</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_DISABLE_GETPRINT</p></td>
+<td><p>This is an option at the project level to improve project read time by disabling
+loading of layouts.</p>
+<p>Activating this option disables the QGIS WMS GetPrint request.
+Set this QGIS project flag to not load layouts.</p>
+</td>
+<td><p>false</p></td>
+<td><p>WMS</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_SERVER_FORCE_READONLY_LAYERS</p></td>
+<td><p>Force QGIS Server to open all layers in a read only mode</p></td>
+<td><p>false</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_IGNORE_BAD_LAYERS</p></td>
+<td><p>“Bad” layers are layers that cannot be loaded. The default behavior of QGIS Server
+is to consider the project as not available if it contains a bad layer.</p>
+<p>The default behavior can be overridden by setting this variable to <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">true</span></code>.
+In this case, “bad” layers will just be ignored, and the project will be considered
+valid and available.</p>
+</td>
+<td><p>false</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_SERVER_LANDING_PAGE_PREFIX</p></td>
+<td><p>Prefix of the path component of the landing page base URL</p></td>
+<td><p>“”</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p id="qgis-server-landing-page-projects-directories">QGIS_SERVER_LANDING_PAGE_PROJECTS_DIRECTORIES</p>
+</td>
+<td><p>Directories used by the landing page service to find .qgs and .qgz projects</p></td>
+<td><p>“”</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p id="qgis-server-landing-page-projects-pg-connections">QGIS_SERVER_LANDING_PAGE_PROJECTS_PG_CONNECTIONS</p>
+</td>
+<td><p>PostgreSQL connection strings used by the landing page service to find projects</p></td>
+<td><p>“”</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p id="qgis-server-log-file">QGIS_SERVER_LOG_FILE</p>
+</td>
+<td><p>Specify path and filename. Make sure that server has proper permissions for
+writing to file. File should be created automatically, just send some requests
+to server. If it’s not there, check permissions.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>QGIS_SERVER_LOG_FILE is deprecated since QGIS 3.4, use QGIS_SERVER_LOG_STDERR instead.
+File logging support will be removed in QGIS 4.0.</p>
+</div>
+</td>
+<td><p>‘’</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p id="qgis-server-log-level">QGIS_SERVER_LOG_LEVEL</p>
+</td>
+<td><p>Specify desired log level. Available values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">INFO</span></code> (log all requests)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">WARNING</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> or <code class="docutils literal notranslate"><span class="pre">CRITICAL</span></code> (log just critical errors, suitable for production purposes)</p></li>
+</ul>
+</td>
+<td><p>0</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p id="qgis-server-log-profile">QGIS_SERVER_LOG_PROFILE</p>
+</td>
+<td><p>Add detailed profile information to the logs, only effective when QGIS_SERVER_LOG_LEVEL=0</p></td>
+<td><p>false</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p id="qgis-server-log-stderr">QGIS_SERVER_LOG_STDERR</p>
+</td>
+<td><p>Activate logging to stderr. This variable  has no effect when <code class="docutils literal notranslate"><span class="pre">QGIS_SERVER_LOG_FILE</span></code>
+is set.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> (case insensitive)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">true</span></code> (case insensitive)</p></li>
+</ul>
+</td>
+<td><p>false</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_MAX_THREADS</p></td>
+<td><p>Number of threads to use when parallel rendering is activated. If value is <code class="docutils literal notranslate"><span class="pre">-1</span></code> it
+uses the number of processor cores.</p></td>
+<td><p>-1</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_SERVER_OVERRIDE_SYSTEM_LOCALE</p></td>
+<td><p>Sets LOCALE to be used by QGIS server. The default value is empty (no override).</p>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">de_CH.utf8</span></code></p>
+</td>
+<td><p>‘’</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_PARALLEL_RENDERING</p></td>
+<td><p>Activates parallel rendering for WMS GetMap requests. It’s disabled (<code class="docutils literal notranslate"><span class="pre">false</span></code>)
+by default. Available values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> (case insensitive)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">true</span></code> (case insensitive)</p></li>
+</ul>
+</td>
+<td><p>false</p></td>
+<td><p>WMS</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_SERVER_PROJECT_CACHE_CHECK_INTERVAL</p></td>
+<td><p>Controls the periodic strategy interval for cache invalidation, in milliseconds.
+Defaults to 0 which selects the legacy File system watcher.</p></td>
+<td></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_PROJECT_CACHE_STRATEGY</p></td>
+<td><p>Defines method for invalidating the project cache. Available strategies are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filesystem</span></code>: uses the file system watcher strategy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">periodic</span></code>: uses the last modified value of a project for checking changes
+on project configuration. Convenient on atypical file systems, such as NFS,
+or when the project file is stored in a database system like PostgreSQL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">off</span></code>: disables internal cache invalidation completely</p></li>
+</ul>
+</td>
+<td><p>filesystem</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p id="qgis-server-service-url">QGIS_SERVER_SERVICE_URL</p>
+</td>
+<td><p>This is an option to set the service URL if it is not present in the project.</p>
+<p>The service URL is defined from (in order of precedence):</p>
+<ul class="simple">
+<li><p>Value defined in the project per service</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">QGIS_SERVER_&lt;service&gt;_SERVICE_URL</span></code> environment variable</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">QGIS_SERVER_SERVICE_URL</span></code> environment variable</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">X-Qgis-&lt;service&gt;-Service-Url</span></code> header</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">X-Qgis-Service-Url</span></code> header</p></li>
+<li><p>Build from the <code class="docutils literal notranslate"><span class="pre">Forwarded</span></code> header</p></li>
+<li><p>Build from the <code class="docutils literal notranslate"><span class="pre">X-Forwarded-Host</span></code> and <code class="docutils literal notranslate"><span class="pre">X-Forwarded-Proto</span></code> headers</p></li>
+<li><p>Build from the <code class="docutils literal notranslate"><span class="pre">Host</span></code> header and the server protocol</p></li>
+<li><p>Build from the server name and the server protocol.</p></li>
+</ul>
+<p>In the last four cases, the resulting Service URL is based on the <code class="docutils literal notranslate"><span class="pre">MAP</span></code> parameter
+provided in the query string and on the incoming path request.</p>
+</td>
+<td><p>‘’</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_SHOW_GROUP_SEPARATOR</p></td>
+<td><p>Defines whether a group separator (e.g. thousand separator) should be used for
+numeric values (e.g. in GetFeatureInfo responses). The default value is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> (case insensitive)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">true</span></code> (case insensitive)</p></li>
+</ul>
+</td>
+<td><p>false</p></td>
+<td><p>WMS</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_SERVER_TRUST_LAYER_METADATA</p></td>
+<td><p>This is an option at the project level to improve project read time by using the vector
+layer extents defined in the project metadata and disabling the check for
+PostgreSQL/PostGIS layer primary key uniqueness.</p>
+<p>Trusting layer metadata can be forced by setting this variable to <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">true</span></code>.
+The vector layer’s extent will then be the one defined in the project, and the
+PostgreSQL/PostGIS layer’s primary key defined in the data source is
+considered as unique without a check.</p>
+<p>Do not use it if layers’ extent is not fixed during the project’s use.</p>
+</td>
+<td><p>false</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_WCS_SERVICE_URL</p></td>
+<td><p>This is an option to set the service URL if it is not present in the project.
+See <a class="reference internal" href="#qgis-server-service-url"><span class="std std-ref">QGIS_SERVER_SERVICE_URL</span></a> for more information.</p></td>
+<td><p>‘’</p></td>
+<td><p>WCS</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_SERVER_WFS_SERVICE_URL</p></td>
+<td><p>This is an option to set the service URL if it is not present in the project.
+See <a class="reference internal" href="#qgis-server-service-url"><span class="std std-ref">QGIS_SERVER_SERVICE_URL</span></a> for more information.</p></td>
+<td><p>‘’</p></td>
+<td><p>WFS</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_WMS_MAX_HEIGHT / QGIS_SERVER_WMS_MAX_WIDTH</p></td>
+<td><p>Maximum height/width for a WMS request. The most conservative between this and the project one is used.
+If the value is <code class="docutils literal notranslate"><span class="pre">-1</span></code>, it means that there is no maximum set.</p></td>
+<td><p>-1</p></td>
+<td><p>WMS</p></td>
+</tr>
+<tr class="row-odd"><td><p>QGIS_SERVER_WMS_SERVICE_URL</p></td>
+<td><p>This is an option to set the service URL if it is not present in the project.
+See <a class="reference internal" href="#qgis-server-service-url"><span class="std std-ref">QGIS_SERVER_SERVICE_URL</span></a> for more information.</p></td>
+<td><p>‘’</p></td>
+<td><p>WMS</p></td>
+</tr>
+<tr class="row-even"><td><p>QGIS_SERVER_WMTS_SERVICE_URL</p></td>
+<td><p>This is an option to set the service URL if it is not present in the project.
+See <a class="reference internal" href="#qgis-server-service-url"><span class="std std-ref">QGIS_SERVER_SERVICE_URL</span></a> for more information.</p></td>
+<td><p>‘’</p></td>
+<td><p>WMTS</p></td>
+</tr>
+<tr class="row-odd"><td><p>QUERY_STRING</p></td>
+<td><p>The query string, normally passed by the web server. This variable can be
+useful while testing QGIS server binary from the command line.</p>
+<p>For example for testing a GetCapabilities request on the command line
+to a project that also requires a PostgreSQL connection defined in a
+pg_service.conf file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PGSERVICEFILE</span><span class="o">=</span>/etc/pg_service.conf<span class="w"> </span><span class="se">\</span>
+<span class="nv">QUERY_STRING</span><span class="o">=</span><span class="s2">&quot;MAP=/home/projects/world.qgs&amp;SERVICE=WMS&amp;REQUEST=GetCapabilities&quot;</span><span class="w"> </span><span class="se">\</span>
+/usr/lib/cgi-bin/qgis_mapserv.fcgi
+</pre></div>
+</div>
+<p>The result should be either the content of the GetCapabilities response or,
+if something is wrong, an error message.</p>
+</td>
+<td><p>‘’</p></td>
+<td><p>All</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="settings-summary">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">6.3. </span>Settings summary</a><a class="headerlink" href="#settings-summary" title="Link to this heading"></a></h2>
+<p>When QGIS Server is starting, you have a summary of all configurable parameters
+thanks to environment variables. Moreover, the value currently used and
+the origin is also displayed.</p>
+<p>For example with spawn-fcgi:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">QGIS_OPTIONS_PATH</span><span class="o">=</span>/home/user/.local/share/QGIS/QGIS3/profiles/default/
+<span class="nb">export</span><span class="w"> </span><span class="nv">QGIS_SERVER_LOG_STDERR</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QGIS_SERVER_LOG_LEVEL</span><span class="o">=</span><span class="m">2</span>
+spawn-fcgi<span class="w"> </span>-f<span class="w"> </span>/usr/lib/cgi-bin/qgis_mapserv.fcgi<span class="w"> </span>-s<span class="w"> </span>/tmp/qgisserver.sock<span class="w"> </span>-U<span class="w"> </span>www-data<span class="w"> </span>-G<span class="w"> </span>www-data<span class="w"> </span>-n
+
+<span class="w"> </span>QGIS<span class="w"> </span>Server<span class="w"> </span>Settings:
+
+<span class="w">   </span>-<span class="w"> </span>QGIS_OPTIONS_PATH<span class="w"> </span>/<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="o">(</span>Override<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>path<span class="w"> </span><span class="k">for</span><span class="w"> </span>user<span class="w"> </span>configuration<span class="o">)</span>:<span class="w"> </span><span class="s1">&#39;/home/user/.local/share/QGIS/QGIS3/profiles/default/&#39;</span><span class="w"> </span><span class="o">(</span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>ENVIRONMENT_VARIABLE<span class="o">)</span>
+
+<span class="w">   </span>-<span class="w"> </span>QGIS_SERVER_PARALLEL_RENDERING<span class="w"> </span>/<span class="w"> </span><span class="s1">&#39;/qgis/parallel_rendering&#39;</span><span class="w"> </span><span class="o">(</span>Activate/Deactivate<span class="w"> </span>parallel<span class="w"> </span>rendering<span class="w"> </span><span class="k">for</span><span class="w"> </span>WMS<span class="w"> </span>getMap<span class="w"> </span>request<span class="o">)</span>:<span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="w"> </span><span class="o">(</span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>INI_FILE<span class="o">)</span>
+
+<span class="w">   </span>-<span class="w"> </span>QGIS_SERVER_MAX_THREADS<span class="w"> </span>/<span class="w"> </span><span class="s1">&#39;/qgis/max_threads&#39;</span><span class="w"> </span><span class="o">(</span>Number<span class="w"> </span>of<span class="w"> </span>threads<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>parallel<span class="w"> </span>rendering<span class="w"> </span>is<span class="w"> </span>activated<span class="o">)</span>:<span class="w"> </span><span class="s1">&#39;4&#39;</span><span class="w"> </span><span class="o">(</span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>INI_FILE<span class="o">)</span>
+
+<span class="w">   </span>-<span class="w"> </span>QGIS_SERVER_LOG_LEVEL<span class="w"> </span>/<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="o">(</span>Log<span class="w"> </span>level<span class="o">)</span>:<span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="w"> </span><span class="o">(</span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>ENVIRONMENT_VARIABLE<span class="o">)</span>
+
+<span class="w">   </span>-<span class="w"> </span>QGIS_SERVER_LOG_STDERR<span class="w"> </span>/<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="o">(</span>Activate/Deactivate<span class="w"> </span>logging<span class="w"> </span>to<span class="w"> </span>stderr<span class="o">)</span>:<span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="o">(</span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>ENVIRONMENT_VARIABLE<span class="o">)</span>
+
+<span class="w">   </span>-<span class="w"> </span>QGIS_PROJECT_FILE<span class="w"> </span>/<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="o">(</span>QGIS<span class="w"> </span>project<span class="w"> </span>file<span class="o">)</span>:<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="o">(</span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>DEFAULT_VALUE<span class="o">)</span>
+
+<span class="w">   </span>-<span class="w"> </span>MAX_CACHE_LAYERS<span class="w"> </span>/<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="o">(</span>Specify<span class="w"> </span>the<span class="w"> </span>maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>cached<span class="w"> </span>layers<span class="o">)</span>:<span class="w"> </span><span class="s1">&#39;100&#39;</span><span class="w"> </span><span class="o">(</span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>DEFAULT_VALUE<span class="o">)</span>
+
+<span class="w">   </span>-<span class="w"> </span>QGIS_SERVER_CACHE_DIRECTORY<span class="w"> </span>/<span class="w"> </span><span class="s1">&#39;/cache/directory&#39;</span><span class="w"> </span><span class="o">(</span>Specify<span class="w"> </span>the<span class="w"> </span>cache<span class="w"> </span>directory<span class="o">)</span>:<span class="w"> </span><span class="s1">&#39;/root/.local/share/QGIS/QGIS3/profiles/default/cache&#39;</span><span class="w"> </span><span class="o">(</span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>DEFAULT_VALUE<span class="o">)</span>
+
+<span class="w">   </span>-<span class="w"> </span>QGIS_SERVER_CACHE_SIZE<span class="w"> </span>/<span class="w"> </span><span class="s1">&#39;/cache/size&#39;</span><span class="w"> </span><span class="o">(</span>Specify<span class="w"> </span>the<span class="w"> </span>cache<span class="w"> </span>size<span class="o">)</span>:<span class="w"> </span><span class="s1">&#39;52428800&#39;</span><span class="w"> </span><span class="o">(</span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>INI_FILE<span class="o">)</span>
+
+<span class="w"> </span>Ini<span class="w"> </span>file<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span>initialize<span class="w"> </span>settings:<span class="w"> </span>/home/user/.local/share/QGIS/QGIS3/profiles/default/QGIS/QGIS3.ini
+</pre></div>
+</div>
+<p>In this particular case, we know that <strong>QGIS_SERVER_MAX_THREADS</strong> and
+<strong>QGIS_SERVER_PARALLEL_RENDERING</strong> values are read from the ini file found in
+<strong>QGIS_OPTIONS_PATH</strong> directory (which is defined through an environment variable).
+The corresponding entries in the ini file are <strong>/qgis/max_threads</strong> and
+<strong>/qgis/parallel_rendering</strong> and their values are <strong>true</strong> and <strong>4</strong> threads.</p>
+</section>
+<section id="connection-to-service-file">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">6.4. </span>Connection to service file</a><a class="headerlink" href="#connection-to-service-file" title="Link to this heading"></a></h2>
+<p>In order to make apache aware of the PostgreSQL service file (see the
+<a class="reference internal" href="../user_manual/managing_data_source/opening_data.html#pg-service-file"><span class="std std-ref">PostgreSQL Service connection file</span></a> section) you need to make
+your <code class="file docutils literal notranslate"><span class="pre">*.conf</span></code> file look like:</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nb">SetEnv</span><span class="w"> </span>PGSERVICEFILE<span class="w"> </span><span class="sx">/home/web/.pg_service.conf</span>
+
+<span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/home/web/apps2/bin/&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">None</span>
+.....
+</pre></div>
+</div>
+</section>
+<section id="add-fonts-to-your-linux-server">
+<span id="add-fonts"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">6.5. </span>Add fonts to your linux server</a><a class="headerlink" href="#add-fonts-to-your-linux-server" title="Link to this heading"></a></h2>
+<p>Keep in mind that you may use QGIS projects that point to fonts that
+may not exist by default on other machines. This means that if you share the project,
+it may look different on other machines (if the fonts don’t exist on the target machine).</p>
+<p>In order to ensure this does not happen you just need to install the missing fonts on the target machine.
+Doing this on desktop systems is usually trivial (double clicking the fonts).</p>
+<p>For linux, if you don’t have a desktop environment installed (or you prefer the command line) you need to:</p>
+<ul>
+<li><p>On Debian based systems:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>su
+mkdir<span class="w"> </span>-p<span class="w"> </span>/usr/local/share/fonts/truetype/myfonts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/usr/local/share/fonts/truetype/myfonts
+
+<span class="c1"># copy the fonts from their location</span>
+cp<span class="w"> </span>/fonts_location/*<span class="w"> </span>.
+
+chown<span class="w"> </span>root<span class="w"> </span>*
+<span class="nb">cd</span><span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>fc-cache<span class="w"> </span>-f<span class="w"> </span>-v
+</pre></div>
+</div>
+</li>
+<li><p>On Fedora based systems:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>su
+mkdir<span class="w"> </span>/usr/share/fonts/myfonts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/usr/share/fonts/myfonts
+
+<span class="c1"># copy the fonts from their location</span>
+cp<span class="w"> </span>/fonts_location/*<span class="w"> </span>.
+
+chown<span class="w"> </span>root<span class="w"> </span>*
+<span class="nb">cd</span><span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>fc-cache<span class="w"> </span>-f<span class="w"> </span>-v
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plugins.html" class="btn btn-neutral float-left" title="5. Plugins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="development_server.html" class="btn btn-neutral float-right" title="7. Development Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/config.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/server_manual/config.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/server_manual/config.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/server_manual/config.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/server_manual/config.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/server_manual/config.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/server_manual/config.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/server_manual/config.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/server_manual/config.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/server_manual/config.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/server_manual/config.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/server_manual/config.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/server_manual/config.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/server_manual/config.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/server_manual/config.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/server_manual/config.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/server_manual/config.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/server_manual/config.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/server_manual/config.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/server_manual/config.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/server_manual/config.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/server_manual/config.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/server_manual/config.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/server_manual/config.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/server_manual/config.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/server_manual/config.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/e89aaf965bb59994d7b790b75995a30c" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

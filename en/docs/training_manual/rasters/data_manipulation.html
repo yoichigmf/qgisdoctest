@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7.1. Lesson: Working with Raster Data &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/rasters/data_manipulation.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="7.2. Lesson: Changing Raster Symbology" href="changing_symbology.html" />
+    <link rel="prev" title="7. Module: Rasters" href="index.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 7.1. Lesson: Working with Raster Data">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">7. Module: Rasters</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">7.1. Lesson: Working with Raster Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#follow-along-loading-raster-data">7.1.1. <abbr title="Basic level">★☆☆</abbr> Follow Along: Loading Raster Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#follow-along-create-a-virtual-raster">7.1.2. <abbr title="Basic level">★☆☆</abbr> Follow Along: Create a Virtual Raster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transforming-raster-data">7.1.3. <abbr title="Advanced level">★★★</abbr> Transforming Raster Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#in-conclusion">7.1.4. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-s-next">7.1.5. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="changing_symbology.html">7.2. Lesson: Changing Raster Symbology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="terrain_analysis.html">7.3. Lesson: Terrain Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QGIS Training Manual</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">7. </span>Module: Rasters</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7.1. </span>Lesson: Working with Raster Data</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/rasters/data_manipulation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="7. Module: Rasters" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changing_symbology.html" class="btn btn-neutral float-right" title="7.2. Lesson: Changing Raster Symbology" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="lesson-working-with-raster-data">
+<h1><span class="section-number">7.1. </span>Lesson: Working with Raster Data<a class="headerlink" href="#lesson-working-with-raster-data" title="Link to this heading"></a></h1>
+<p>Raster data is quite different from vector data.
+Vector data has discrete features with geometries constructed out of
+vertices, and perhaps connected with lines and/or areas.
+Raster data, however, is like any image.
+Although it may portray various properties of objects in the real
+world, these objects don’t exist as separate objects.
+Rather, they are represented using pixels with different values.</p>
+<p>During this module you are going to use raster data to supplement your
+existing GIS analysis.</p>
+<p><strong>The goal for this lesson:</strong> To learn how to work with raster data in
+QGIS.</p>
+<section id="follow-along-loading-raster-data">
+<h2><span class="section-number">7.1.1. </span><abbr title="Basic level">★☆☆</abbr> Follow Along: Loading Raster Data<a class="headerlink" href="#follow-along-loading-raster-data" title="Link to this heading"></a></h2>
+<p>Raster data can be loaded with the same methods we used for vector
+data.
+However we suggest to use the <span class="guilabel">Browser</span> Panel.</p>
+<ol class="arabic simple">
+<li><p>Open the <span class="guilabel">Browser</span> Panel and expand the
+<code class="file docutils literal notranslate"><span class="pre">exercise_data/raster</span></code> folder.</p></li>
+<li><p>Load all the data in this folder:</p>
+<ul class="simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">3320C_2010_314_RGB_LATLNG.tif</span></code></p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">3320D_2010_315_RGB_LATLNG.tif</span></code></p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">3420B_2010_328_RGB_LATLNG.tif</span></code></p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">3420C_2010_327_RGB_LATLNG.tif</span></code></p></li>
+</ul>
+</li>
+</ol>
+<p>You should see the following map:</p>
+<figure class="align-center">
+<img alt="../../../_images/raster_step_one.png" src="../../../_images/raster_step_one.png" />
+</figure>
+<p>There we have it - four aerial images covering our study area.</p>
+</section>
+<section id="follow-along-create-a-virtual-raster">
+<span id="tm-virtual-raster"></span><h2><span class="section-number">7.1.2. </span><abbr title="Basic level">★☆☆</abbr> Follow Along: Create a Virtual Raster<a class="headerlink" href="#follow-along-create-a-virtual-raster" title="Link to this heading"></a></h2>
+<p>Now as you can see from this, your solution layer lies across all four
+images.
+What this means is that you are going to have to work with four
+rasters all the time.
+That’s not ideal. It would be better to have one file to work with.</p>
+<p>Luckily, QGIS allows you to do exactly this, and without needing to
+actually create a new raster file.
+You can create a <strong>Virtual Raster</strong>.
+This is also often called a <em>Catalog</em>, which explains its function.
+It’s not really a new raster.
+Rather, it is a way to organize your existing rasters into one
+catalog: one file for easy access.</p>
+<p>To make a catalog we will use the
+<span class="menuselection">Processing ► Toolbox</span>.</p>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Build virtual raster</span> algorithm from the
+<span class="menuselection">GDAL ► Raster miscellaneous</span>;</p></li>
+<li><p>In the dialog that appears, click on the <span class="guilabel">…</span> button
+next to the <span class="guilabel">Input layers</span> parameter and check all the
+layers or use the <span class="guilabel">Select All</span> button;</p></li>
+<li><p>Uncheck <span class="guilabel">Place each input file into a separate band</span>.
+Notice the code that is generated at the bottom of the dialog under
+<span class="guilabel">GDAL/OGR console call</span>. This is the command that will be executed
+when you click <span class="guilabel">Run</span>. The text updates as you change different
+options in the dialog.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keep in mind that you can copy and paste the text in the
+<code class="docutils literal notranslate"><span class="pre">OSGeo</span> <span class="pre">Shell</span></code> (Windows user) or <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> (Linux and OSX
+users) to run the command.
+You can also create a script for each GDAL command.
+This is very handy when the procedure is taking a long time or
+when you want to schedule specific tasks.
+Use the <span class="guilabel">Help</span> button to get more help on the syntax
+of the command.</p>
+</div>
+</li>
+<li><p>Finally click on <span class="guilabel">Run</span>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As you know from the previous modules,
+<span class="guilabel">Processing</span> creates temporary layers by default.
+To save the file, click on the <span class="guilabel">…</span> button under
+<span class="guilabel">Virtual</span>.</p>
+</div>
+<figure class="align-center">
+<img alt="../../../_images/build_virtual_raster.png" src="../../../_images/build_virtual_raster.png" />
+</figure>
+<p>You can now remove the original four rasters from the
+<span class="guilabel">Layers</span> Panel and leave only the output virtual catalog
+raster.</p>
+</section>
+<section id="transforming-raster-data">
+<h2><span class="section-number">7.1.3. </span><abbr title="Advanced level">★★★</abbr> Transforming Raster Data<a class="headerlink" href="#transforming-raster-data" title="Link to this heading"></a></h2>
+<p>The above methods allow you to virtually merge datasets using a
+catalog, and to reproject them “on the fly”.
+However, if you are setting up data that you’ll be using for quite a
+while, it may be more efficient to create new rasters that are already
+merged and reprojected.
+This improves performance while using the rasters in a map, but it may
+take some time to set up initially.</p>
+<section id="reprojecting-rasters">
+<h3>Reprojecting rasters<a class="headerlink" href="#reprojecting-rasters" title="Link to this heading"></a></h3>
+<p>Open <span class="guilabel">Warp (reproject)</span> from
+<span class="menuselection">GDAL ► Raster projections</span>.</p>
+<p>You can also reproject virtual rasters (catalogs), enable
+multithreaded processing, and more.</p>
+<figure class="align-center">
+<img alt="../../../_images/warp_rasters.png" src="../../../_images/warp_rasters.png" />
+</figure>
+</section>
+<section id="merging-rasters">
+<h3>Merging rasters<a class="headerlink" href="#merging-rasters" title="Link to this heading"></a></h3>
+<p>If you need to create a new raster layer and save it to disk you can
+use the merge algorithm.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on how many raster files you are merging and their
+resolution, the new raster file created can be really big.
+Consider instead to create a raster catalog as described in the
+<a class="reference internal" href="#tm-virtual-raster"><span class="std std-ref">Create a Virtual Raster</span></a> section.</p>
+</div>
+<ol class="arabic">
+<li><p>Click on the <span class="guilabel">Merge</span> algorithm from the
+<span class="menuselection">GDAL ► Raster miscellaneous</span> menu.</p></li>
+<li><p>As we did for the
+<a class="reference internal" href="#tm-virtual-raster"><span class="std std-ref">Create a Virtual raster</span></a>, use the
+<span class="guilabel">…</span> button to choose which layers you want to merge.</p>
+<p>You can also specify a Virtual raster as input, and then all of the
+rasters that it consists of will be processed.</p>
+</li>
+<li><p>If you know the GDAL library, you can also add your own options by
+opening the <span class="guilabel">Advanced parameters</span> menu.</p></li>
+</ol>
+<figure class="align-center">
+<img alt="../../../_images/merge_rasters.png" src="../../../_images/merge_rasters.png" />
+</figure>
+</section>
+</section>
+<section id="in-conclusion">
+<h2><span class="section-number">7.1.4. </span>In Conclusion<a class="headerlink" href="#in-conclusion" title="Link to this heading"></a></h2>
+<p>QGIS makes it easy to include raster data into your existing projects.</p>
+</section>
+<section id="what-s-next">
+<h2><span class="section-number">7.1.5. </span>What’s Next?<a class="headerlink" href="#what-s-next" title="Link to this heading"></a></h2>
+<p>Next, we’ll use raster data that isn’t aerial imagery, and see how
+symbolization is useful in the case of rasters as well.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="7. Module: Rasters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changing_symbology.html" class="btn btn-neutral float-right" title="7.2. Lesson: Changing Raster Symbology" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/training_manual/rasters/data_manipulation.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/training_manual/rasters/data_manipulation.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/training_manual/rasters/data_manipulation.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/training_manual/rasters/data_manipulation.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/training_manual/rasters/data_manipulation.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/training_manual/rasters/data_manipulation.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/training_manual/rasters/data_manipulation.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/training_manual/rasters/data_manipulation.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/training_manual/rasters/data_manipulation.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/training_manual/rasters/data_manipulation.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/training_manual/rasters/data_manipulation.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/training_manual/rasters/data_manipulation.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/training_manual/rasters/data_manipulation.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/training_manual/rasters/data_manipulation.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/training_manual/rasters/data_manipulation.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/training_manual/rasters/data_manipulation.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/rasters/data_manipulation.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/rasters/data_manipulation.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/training_manual/rasters/data_manipulation.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/training_manual/rasters/data_manipulation.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/training_manual/rasters/data_manipulation.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/rasters/data_manipulation.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/rasters/data_manipulation.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/rasters/data_manipulation.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/rasters/data_manipulation.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/rasters/data_manipulation.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/11bb78f7ca44c3404061e57afa2ac8cf" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

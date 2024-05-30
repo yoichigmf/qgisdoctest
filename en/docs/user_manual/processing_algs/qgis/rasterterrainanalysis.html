@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>28.1.17. Raster terrain analysis &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="28.1.18. Raster tools" href="rastertools.html" />
+    <link rel="prev" title="28.1.16. Raster Creation" href="rastercreation.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 28.1.17. Raster terrain analysis">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../map_views/index.html">11. Visualizing Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">12. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">13. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">14. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">15. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">16. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">17. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh.html">18. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles.html">19. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_point_clouds/point_clouds.html">20. Working with Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_3d_tiles/3d_tiles.html">21. Working with 3D Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">22. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">23. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">24. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">25. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">26. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">27. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">28. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">28.1. QGIS algorithm provider</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="3dtiles.html">28.1.1. 3D Tiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cartography.html">28.1.2. Cartography</a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html">28.1.3. Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filetools.html">28.1.4. File tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gps.html">28.1.5. GPS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interpolation.html">28.1.6. Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="layertools.html">28.1.7. Layer tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mesh.html">28.1.8. Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modelertools.html">28.1.9. Modeler tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="networkanalysis.html">28.1.10. Network analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plots.html">28.1.11. Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pointcloudconversion.html">28.1.12. Point Cloud Conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pointclouddatamanagement.html">28.1.13. Point Cloud Data Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pointcloudextraction.html">28.1.14. Point Cloud Extraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasteranalysis.html">28.1.15. Raster analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastercreation.html">28.1.16. Raster Creation</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">28.1.17. Raster terrain analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastertools.html">28.1.18. Raster tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoranalysis.html">28.1.19. Vector analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorcreation.html">28.1.20. Vector creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeneral.html">28.1.21. Vector general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeometry.html">28.1.22. Vector geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoroverlay.html">28.1.23. Vector overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorselection.html">28.1.24. Vector selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectortable.html">28.1.25. Vector table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectortiles.html">28.1.26. Vector Tiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">28.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">28.3. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">29. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">30. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">31. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">32. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">33. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">QGIS User Guide</a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><span class="section-number">28. </span>Processing providers and algorithms</a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">28.1. </span>QGIS algorithm provider</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">28.1.17. </span>Raster terrain analysis</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="rastercreation.html" class="btn btn-neutral float-left" title="28.1.16. Raster Creation" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rastertools.html" class="btn btn-neutral float-right" title="28.1.18. Raster tools" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div></div></blockquote>
+<section id="raster-terrain-analysis">
+<h1><span class="section-number">28.1.17. </span>Raster terrain analysis<a class="headerlink" href="#raster-terrain-analysis" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#aspect" id="id29">Aspect</a></p></li>
+<li><p><a class="reference internal" href="#dtm-filter-slope-based" id="id30">DTM filter (slope-based)</a></p></li>
+<li><p><a class="reference internal" href="#hillshade" id="id31">Hillshade</a></p></li>
+<li><p><a class="reference internal" href="#hypsometric-curves" id="id32">Hypsometric curves</a></p></li>
+<li><p><a class="reference internal" href="#relief" id="id33">Relief</a></p></li>
+<li><p><a class="reference internal" href="#ruggedness-index" id="id34">Ruggedness index</a></p></li>
+<li><p><a class="reference internal" href="#slope" id="id35">Slope</a></p></li>
+</ul>
+</nav>
+<section id="aspect">
+<span id="qgisaspect"></span><h2><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">28.1.17.1. </span>Aspect</a><a class="headerlink" href="#aspect" title="Link to this heading"></a></h2>
+<p>Calculates the aspect of the Digital Terrain Model in input.
+The final aspect raster layer contains values from 0 to 360 that
+express the slope direction, starting from north (0°) and continuing
+clockwise.</p>
+<figure class="align-center" id="id20">
+<a class="reference internal image-reference" href="../../../../_images/aspect.png"><img alt="../../../../_images/aspect.png" src="../../../../_images/aspect.png" style="width: 269.0px; height: 244.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 28.30 </span><span class="caption-text">Aspect values</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The following picture shows the aspect layer reclassified with a color
+ramp:</p>
+<figure class="align-center" id="id21">
+<img alt="../../../../_images/aspect_2.png" src="../../../../_images/aspect_2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.31 </span><span class="caption-text">Aspect layer reclassified</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Elevation layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Digital Terrain Model raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Z factor</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FACTOR</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>Vertical exaggeration.
+This parameter is useful when the Z units differ from
+the X and Y units, for example feet and meters.
+You can use this parameter to adjust for this.
+The default is 1 (no exaggeration).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Aspect</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output aspect raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="outputs">
+<h3>Outputs<a class="headerlink" href="#outputs" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Aspect</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The output aspect raster layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-code">
+<h3>Python code<a class="headerlink" href="#python-code" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:aspect</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="dtm-filter-slope-based">
+<span id="qgisdtmslopebasedfilter"></span><h2><a class="toc-backref" href="#id30" role="doc-backlink"><span class="section-number">28.1.17.2. </span>DTM filter (slope-based)</a><a class="headerlink" href="#dtm-filter-slope-based" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">NEW</span> <span class="pre">in</span> <span class="pre">3.34</span></code></p>
+<p>Can be used to filter a digital elevation model in order to classify its cells into ground and object (non-ground) cells.</p>
+<p>The tool uses concepts as described by Vosselman (2000)
+and is based on the assumption that a large height difference between two nearby cells is unlikely to be caused by a steep slope in the terrain.
+The probability that the higher cell might be non-ground increases when the distance between the two cells decreases.
+Therefore the filter defines a maximum height difference (<code class="docutils literal notranslate"><span class="pre">dz_max</span></code>) between two cells as a function of the distance (<code class="docutils literal notranslate"><span class="pre">d</span></code>) between the cells (<code class="docutils literal notranslate"><span class="pre">dz_max(</span> <span class="pre">d</span> <span class="pre">)</span> <span class="pre">=</span> <span class="pre">d</span></code>).
+A cell is classified as terrain if there is no cell within the kernel radius
+to which the height difference is larger than the allowed maximum height difference at the distance between these two cells.</p>
+<p>The approximate terrain slope (<code class="docutils literal notranslate"><span class="pre">s</span></code>) parameter is used to modify the filter function
+to match the overall slope in the study area (<code class="docutils literal notranslate"><span class="pre">dz_max(</span> <span class="pre">d</span> <span class="pre">)</span> <span class="pre">=</span> <span class="pre">d</span> <span class="pre">*</span> <span class="pre">s</span></code>).
+A 5 % confidence interval (<code class="docutils literal notranslate"><span class="pre">ci</span> <span class="pre">=</span> <span class="pre">1.65</span> <span class="pre">*</span> <span class="pre">sqrt(</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">stddev</span> <span class="pre">)</span></code>) may be used to modify the filter function even further
+by either relaxing (<code class="docutils literal notranslate"><span class="pre">dz_max(</span> <span class="pre">d</span> <span class="pre">)</span> <span class="pre">=</span> <span class="pre">d</span> <span class="pre">*</span> <span class="pre">s</span> <span class="pre">+</span> <span class="pre">ci</span></code>) or amplifying (<code class="docutils literal notranslate"><span class="pre">dz_max(</span> <span class="pre">d</span> <span class="pre">)</span> <span class="pre">=</span> <span class="pre">d</span> <span class="pre">*</span> <span class="pre">s</span> <span class="pre">-</span> <span class="pre">ci</span></code>) the filter criterium.</p>
+<p><em>References: Vosselman, G. (2000): Slope based filtering of laser altimetry data. IAPRS, Vol. XXXIII, Part B3, Amsterdam, The Netherlands, 935-942</em></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>This tool is a port of the SAGA <a class="reference external" href="https://saga-gis.sourceforge.io/saga_tool_doc/9.1.1/grid_filter_7.html">DTM Filter (slope-based)</a></p>
+</div>
+<section id="id2">
+<h3>Parameters<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Digital Terrain Model raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Band number</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code></p></td>
+<td><p>[number] [list]</p></td>
+<td><p>The band of the DEM to consider</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Kernel radius (pixels)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 5</p>
+</td>
+<td><p>The radius of the filter kernel (in pixels).
+Must be large enough to reach ground cells next to non-ground objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Terrain slope (%, pixel size/vertical units)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TERRAIN_SLOPE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 30</p>
+</td>
+<td><p>The approximate terrain slope in <code class="docutils literal notranslate"><span class="pre">%</span></code>.
+The terrain slope must be adjusted to account for the ratio of height units vs raster pixel dimensions.
+Used to relax the filter criterium in steeper terrain.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Filter modification</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILTER_MODIFICATION</span></code></p></td>
+<td><p>[list]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Choose whether to apply the filter kernel without modification
+or to use a confidence interval to relax or amplify the height criterium.</p>
+<ul class="simple">
+<li><p>0 - None</p></li>
+<li><p>1 - Relax filter</p></li>
+<li><p>2 - Amplify</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Standard deviation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STANDARD_DEVIATION</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.1</p>
+</td>
+<td><p>The standard deviation used to calculate a 5% confidence interval applied to the height threshold.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output layer (ground)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_GROUND</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the filtered DEM containing only cells classified as ground.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output layer (non-ground objects)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_NONGROUND</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specify the non-ground objects removed by the filter.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3>Outputs<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output layer (ground)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_GROUND</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The filtered DEM containing only cells classified as ground.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output layer (non-ground objects)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_NONGROUND</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The non-ground objects removed by the filter.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h3>Python code<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:dtmslopebasedfilter</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="hillshade">
+<span id="qgishillshade"></span><h2><a class="toc-backref" href="#id31" role="doc-backlink"><span class="section-number">28.1.17.3. </span>Hillshade</a><a class="headerlink" href="#hillshade" title="Link to this heading"></a></h2>
+<p>Calculates the hillshade raster layer given an input Digital Terrain
+Model.</p>
+<p>The shading of the layer is calculated according to the sun position:
+you have the options to change both the horizontal angle (azimuth) and
+the vertical angle (sun elevation) of the sun.</p>
+<figure class="align-center" id="id22">
+<a class="reference internal image-reference" href="../../../../_images/azimuth.png"><img alt="../../../../_images/azimuth.png" src="../../../../_images/azimuth.png" style="width: 300.0px; height: 257.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 28.32 </span><span class="caption-text">Azimuth and vertical angle</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The hillshade layer contains values from 0 (complete shadow) to 255
+(complete sun).
+Hillshade is used usually to better understand the relief of the area.</p>
+<figure class="align-center" id="id23">
+<img alt="../../../../_images/hillshade1.png" src="../../../../_images/hillshade1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.33 </span><span class="caption-text">Hillshade layer with azimuth 300 and vertical angle 45</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Particularly interesting is to give the hillshade layer a transparency
+value and overlap it with the elevation raster:</p>
+<figure class="align-center" id="id24">
+<img alt="../../../../_images/hillshade_2.png" src="../../../../_images/hillshade_2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.34 </span><span class="caption-text">Overlapping the hillshade with the elevation layer</span><a class="headerlink" href="#id24" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Elevation layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Digital Terrain Model raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Z factor</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FACTOR</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>Vertical exaggeration.
+This parameter is useful when the Z units differ from
+the X and Y units, for example feet and meters.
+You can use this parameter to adjust for this.
+Increasing the value of this parameter will
+exaggerate the final result (making it look more “hilly”).
+The default is 1 (no exaggeration).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Azimuth (horizontal angle)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AZIMUTH</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 300.0</p>
+</td>
+<td><p>Set the horizontal angle (in degrees) of the sun (clockwise
+direction). Range: 0 to 360. 0 is north.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Vertical angle</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V_ANGLE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 40.0</p>
+</td>
+<td><p>Set the vertical angle (in degrees) of the sun, that is the
+height of the sun.
+Values can go from 0 (minimum elevation) to 90 (maximum
+elevation).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hillshade</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file</span></code></p>
+</td>
+<td><p>Specify the output hillshade raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3>Outputs<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hillshade</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The output hillshade raster layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id7">
+<h3>Python code<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:hillshade</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="hypsometric-curves">
+<span id="qgishypsometriccurves"></span><h2><a class="toc-backref" href="#id32" role="doc-backlink"><span class="section-number">28.1.17.4. </span>Hypsometric curves</a><a class="headerlink" href="#hypsometric-curves" title="Link to this heading"></a></h2>
+<p>Calculates hypsometric curves for an input Digital Elevation Model.
+Curves are produced as CSV files in an output folder specified by the
+user.</p>
+<p>A hypsometric curve is a cumulative histogram of elevation values in
+a geographical area.</p>
+<p>You can use hypsometric curves to detect differences in the landscape
+due to the geomorphology of the territory.</p>
+<section id="id8">
+<h3>Parameters<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>DEM to analyze</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_DEM</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Digital Terrain Model raster layer to use for
+calculating altitudes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Boundary layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOUNDARY_LAYER</span></code></p></td>
+<td><p>[vector: polygon]</p></td>
+<td><p>Polygon vector layer with boundaries of areas used
+to calculate hypsometric curves</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Step</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STEP</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 100.0</p>
+</td>
+<td><p>Vertical distance between curves</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use % of area instead of absolute value</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">USE_PERCENTAGE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Write area percentage to “Area” field of the CSV file
+instead of the absolute area</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hypsometric curves</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_DIRECTORY</span></code></p></td>
+<td><p>[folder]</p></td>
+<td><p>Specify the output folder for the hypsometric curves.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary Directory</p></li>
+<li><p>Save to Directory</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h3>Outputs<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hypsometric curves</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_DIRECTORY</span></code></p></td>
+<td><p>[folder]</p></td>
+<td><p>Directory containing the files with the hypsometric
+curves.
+For each feature from the input vector layer, a CSV file
+with area and altitude values will be created.</p>
+<p>The file names start with <code class="docutils literal notranslate"><span class="pre">histogram_</span></code>, followed by
+layer name and feature ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../../_images/hypsometric.png"><img alt="../../../../_images/hypsometric.png" src="../../../../_images/hypsometric.png" style="width: 189.5px; height: 300.0px;" /></a>
+</figure>
+</section>
+<section id="id10">
+<h3>Python code<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:hypsometriccurves</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="relief">
+<span id="qgisrelief"></span><h2><a class="toc-backref" href="#id33" role="doc-backlink"><span class="section-number">28.1.17.5. </span>Relief</a><a class="headerlink" href="#relief" title="Link to this heading"></a></h2>
+<p>Creates a shaded relief layer from digital elevation data.
+You can specify the relief color manually, or you can let the
+algorithm choose automatically all the relief classes.</p>
+<figure class="align-center" id="id25">
+<img alt="../../../../_images/relief.png" src="../../../../_images/relief.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.35 </span><span class="caption-text">Relief layer</span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id11">
+<h3>Parameters<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Elevation layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Digital Terrain Model raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Z factor</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FACTOR</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>Vertical exaggeration.
+This parameter is useful when the Z units differ from
+the X and Y units, for example feet and meters.
+You can use this parameter to adjust for this.
+Increasing the value of this parameter will
+exaggerate the final result (making it look more “hilly”).
+The default is 1 (no exaggeration).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Generate relief classes automatically</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AUTO_COLORS</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>If you check this option the algorithm will create all
+the relief color classes automatically</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Relief colors</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COLORS</span></code></p></td>
+<td><p>[table widget]</p></td>
+<td><p>Use the table widget if you want to choose the relief
+colors manually.
+You can add as many color classes as you want: for each
+class you can choose the lower and upper bound and
+finally by clicking on the color row you can choose the
+color thanks to the color widget.</p>
+<figure class="align-center" id="id26">
+<img alt="../../../../_images/relief_table.png" src="../../../../_images/relief_table.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.36 </span><span class="caption-text">Manually setting of relief color classes</span><a class="headerlink" href="#id26" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The buttons in the right side panel give you the
+chance to: add or remove color classes, change the
+order of the color classes already defined, open an
+existing file with color classes and save the current
+classes as file.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Relief</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output relief raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Frequency distribution</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FREQUENCY_DISTRIBUTION</span></code></p></td>
+<td><p>[table]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specify the CSV table for the output frequency distribution.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h3>Outputs<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Relief</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The output relief raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Frequency distribution</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[table]</p></td>
+<td><p>The output frequency distribution</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id13">
+<h3>Python code<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:relief</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="ruggedness-index">
+<span id="qgisruggednessindex"></span><h2><a class="toc-backref" href="#id34" role="doc-backlink"><span class="section-number">28.1.17.6. </span>Ruggedness index</a><a class="headerlink" href="#ruggedness-index" title="Link to this heading"></a></h2>
+<p>Calculates the quantitative measurement of terrain heterogeneity
+described by Riley et al. (1999).
+It is calculated for every location, by summarizing the change in
+elevation within the 3x3 pixel grid.</p>
+<p>Each pixel contains the difference in elevation from a center cell and
+the 8 cells surrounding it.</p>
+<figure class="align-center" id="id27">
+<img alt="../../../../_images/ruggedness.png" src="../../../../_images/ruggedness.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.37 </span><span class="caption-text">Ruggedness layer from low (red) to high values (green)</span><a class="headerlink" href="#id27" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id14">
+<h3>Parameters<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Elevation layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Digital Terrain Model raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Z factor</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FACTOR</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>Vertical exaggeration.
+This parameter is useful when the Z units differ from
+the X and Y units, for example feet and meters.
+You can use this parameter to adjust for this.
+Increasing the value of this parameter will
+exaggerate the final result (making it look more rugged).
+The default is 1 (no exaggeration).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Ruggedness</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output ruggedness raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id15">
+<h3>Outputs<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Ruggedness</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The output ruggedness raster layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id16">
+<h3>Python code<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:ruggednessindex</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="slope">
+<span id="qgisslope"></span><h2><a class="toc-backref" href="#id35" role="doc-backlink"><span class="section-number">28.1.17.7. </span>Slope</a><a class="headerlink" href="#slope" title="Link to this heading"></a></h2>
+<p>Calculates the slope from an input raster layer. The slope is the
+angle of inclination of the terrain and is expressed in <strong>degrees</strong>.</p>
+<figure class="align-center" id="id28">
+<img alt="../../../../_images/slope3.png" src="../../../../_images/slope3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28.38 </span><span class="caption-text">Flat areas in red, steep areas in blue</span><a class="headerlink" href="#id28" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id17">
+<h3>Parameters<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Elevation layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Digital Terrain Model raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Z factor</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_FACTOR</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>Vertical exaggeration.
+This parameter is useful when the Z units differ from
+the X and Y units, for example feet and meters.
+You can use this parameter to adjust for this.
+Increasing the value of this parameter will
+exaggerate the final result (making it steeper).
+The default is 1 (no exaggeration).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slope</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output slope raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id18">
+<h3>Outputs<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Slope</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The output slope raster layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id19">
+<h3>Python code<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:slope</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rastercreation.html" class="btn btn-neutral float-left" title="28.1.16. Raster Creation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rastertools.html" class="btn btn-neutral float-right" title="28.1.18. Raster tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on 2024 May 30, 01:27 +0900.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#en/1aa50851a6ffa8ce7379394973456794" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

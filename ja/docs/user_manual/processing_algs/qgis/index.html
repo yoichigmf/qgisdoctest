@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>28.1. QGISアルゴリズムプロバイダー &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/qgis_docs.css?v=5415a924" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/index.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../_static/translations.js?v=4dbe4bdc"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../../search.html" />
+    <link rel="next" title="28.1.1. 3D Tiles" href="3dtiles.html" />
+    <link rel="prev" title="28. プロセシングプロバイダとアルゴリズム" href="../index.html" />
+  <meta name="description" content="QGIS 3.34 documentation: 28.1. QGISアルゴリズムプロバイダー">
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.34
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktopユーザーガイド／マニュアル (QGIS 3.34)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. 序文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. 記述ルール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. 機能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. 最初のステップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. プロジェクトファイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGISのユーザインタフェース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. ブラウザパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGISの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. 投影法の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../map_views/index.html">11. 地図の可視化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">12. 一般ツール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">13. 式でレベルアップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">14. スタイルライブラリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">15. データソースの管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">16. ベクタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">17. ラスタデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh.html">18. メッシュデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles.html">19. ベクタタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_point_clouds/point_clouds.html">20. 点群の操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_3d_tiles/3d_tiles.html">21. 3Dタイルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">22. 地図のレイアウト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">23. OGC / ISOプロトコルの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">24. GPSデータの操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">25. 認証システム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">26. GRASS GIS の統合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">27. QGIS プロセシングフレームワーク</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">28. プロセシングプロバイダとアルゴリズム</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">28.1. QGISアルゴリズムプロバイダー</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="3dtiles.html">28.1.1. 3D Tiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cartography.html">28.1.2. 地図製作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html">28.1.3. データベース</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filetools.html">28.1.4. ファイルツール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gps.html">28.1.5. GPS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interpolation.html">28.1.6. 内挿</a></li>
+<li class="toctree-l4"><a class="reference internal" href="layertools.html">28.1.7. レイヤツール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mesh.html">28.1.8. メッシュ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modelertools.html">28.1.9. モデラーツール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="networkanalysis.html">28.1.10. ネットワーク解析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plots.html">28.1.11. プロット</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pointcloudconversion.html">28.1.12. Point Cloud Conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pointclouddatamanagement.html">28.1.13. 点群データ管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pointcloudextraction.html">28.1.14. Point Cloud Extraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasteranalysis.html">28.1.15. ラスタ解析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastercreation.html">28.1.16. ラスタ作成</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterterrainanalysis.html">28.1.17. ラスタ地形解析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastertools.html">28.1.18. ラスタツール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoranalysis.html">28.1.19. ベクタ解析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorcreation.html">28.1.20. ベクタ作成</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeneral.html">28.1.21. ベクタ一般</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeometry.html">28.1.22. ベクタジオメトリ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoroverlay.html">28.1.23. ベクタオーバーレイ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorselection.html">28.1.24. ベクタ選択</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectortable.html">28.1.25. ベクタテーブル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectortiles.html">28.1.26. ベクタタイル</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">28.2. GDAL アルゴリズムプロバイダ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">28.3. OTBアプリケーションプロバイダ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">29. プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">30. ヘルプとサポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">31. 協力者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">32. 付録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">33. 文献とWeb参照</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Serverガイド／マニュアル (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGISクックブック (QGIS 3.34)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">開発者ガイド</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">QGISユーザガイド</a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><span class="section-number">28. </span>プロセシングプロバイダとアルゴリズム</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">28.1. </span>QGISアルゴリズムプロバイダー</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/qgis/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../index.html" class="btn btn-neutral float-left" title="28. プロセシングプロバイダとアルゴリズム" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3dtiles.html" class="btn btn-neutral float-right" title="28.1.1. 3D Tiles" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
+</div>
+</div></blockquote>
+<section id="qgis-algorithm-provider">
+<span id="qgis-algorithms"></span><h1><span class="section-number">28.1. </span>QGISアルゴリズムプロバイダー<a class="headerlink" href="#qgis-algorithm-provider" title="Link to this heading"></a></h1>
+<p>QGISのアルゴリズムプロバイダーは、ほとんどQGISのAPIだけを使用して、さまざまな解析とジオプロセシング操作を実装しています。このため、このプロバイダーのほとんどすべてのアルゴリズムは、追加設定なしですぐに使えるようになっています。</p>
+<p>このプロバイダーには、プラグインからいくつかのアルゴリズムが取り入れられており、さらに独自のアルゴリズムも追加されています。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="3dtiles.html">28.1.1. 3D Tiles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="3dtiles.html#convert-b3dm-to-gltf">28.1.1.1. Convert B3DM to GLTF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3dtiles.html#convert-gltf-to-vector-features">28.1.1.2. Convert GLTF to vector features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cartography.html">28.1.2. 地図製作</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#align-points-to-features">28.1.2.1. 点を地物に揃える</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#combine-style-databases">28.1.2.2. スタイルデータベースを統合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#create-categorized-renderer-from-styles">28.1.2.3. スタイルからカテゴリ値レンダラーを作成する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#create-style-database-from-project">28.1.2.4. スタイルデータベースを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#export-atlas-layout-as-image">28.1.2.5. 地図帳レイアウトを画像として出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#export-atlas-layout-as-pdf-multiple-files">28.1.2.6. 地図帳レイアウトを複数のPDFとして出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#export-atlas-layout-as-pdf-single-file">28.1.2.7. 地図帳レイアウトをPDFとして出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#export-print-layout-as-image">28.1.2.8. レイアウトを画像として出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#export-print-layout-as-pdf">28.1.2.9. レイアウトをPDFとして出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#extract-labels">28.1.2.10. ラベルを抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#print-layout-map-extent-to-layer">28.1.2.11. 印刷レイアウト領域を作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#set-layer-style">28.1.2.12. レイヤスタイルの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#topological-coloring">28.1.2.13. トポロジーによる塗り分け</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#transfer-annotations-from-main-layer">28.1.2.14. メインレイヤの注記を転送</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">28.1.3. データベース</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="database.html#export-to-postgresql">28.1.3.1. PostgreSQLへエクスポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#export-to-spatialite">28.1.3.2. SpatiaLiteへ出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#package-layers">28.1.3.3. レイヤをGeoPackage化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#postgresql-execute-and-load-sql">28.1.3.4. PostGISを実行し読み込む</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#postgresql-execute-sql">28.1.3.5. PostgreSQLでSQLを実行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#spatialite-execute-sql">28.1.3.6. SpatiaLiteを実行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#spatialite-execute-sql-registered-db">28.1.3.7. SpatiaLiteで実行（登録済みDB）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filetools.html">28.1.4. ファイルツール</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="filetools.html#download-file">28.1.4.1. ファイルのダウンロード</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gps.html">28.1.5. GPS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gps.html#convert-gps-data">28.1.5.1. GPSデータを変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gps.html#convert-gpx-feature-type">28.1.5.2. GPX地物型を変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gps.html#download-gps-data-from-device">28.1.5.3. GPSデータをデバイスからダウンロード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gps.html#upload-gps-data-to-device">28.1.5.4. GPSデータをデバイスにアップロード</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interpolation.html">28.1.6. 内挿</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html#heatmap-kernel-density-estimation">28.1.6.1. ヒートマップ（カーネル密度推定）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html#qgisidwinterpolation">28.1.6.2. IDW内挿（逆距離加重法）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html#line-density">28.1.6.3. 線の密度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html#tin-interpolation">28.1.6.4. TIN内挿（不規則三角網）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="layertools.html">28.1.7. レイヤツール</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="layertools.html#export-layer-s-information">28.1.7.1. レイヤ情報を出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layertools.html#export-to-spreadsheet">28.1.7.2. スプレッドシートへ出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layertools.html#extract-layer-extent">28.1.7.3. レイヤ範囲を抽出</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">28.1.8. メッシュ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#export-contours">28.1.8.1. 等高線を出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#export-cross-section-dataset-values-on-lines-from-mesh">28.1.8.2. 線上のメッシュデータを出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#export-mesh-edges">28.1.8.3. メッシュの辺を出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#export-mesh-faces">28.1.8.4. メッシュの面を出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#export-mesh-on-grid">28.1.8.5. グリッドメッシュを出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#export-mesh-vertices">28.1.8.6. メッシュの頂点を出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#export-time-series-values-from-points-of-a-mesh-dataset">28.1.8.7. メッシュの時系列データ値を出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#rasterize-mesh-dataset">28.1.8.8. メッシュデータをラスタライズ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#tin-mesh-creation">28.1.8.9. TINメッシュを作成</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modelertools.html">28.1.9. モデラーツール</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#calculate-expression">28.1.9.1. Calculate expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#conditional-branch">28.1.9.2. 条件分け</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#create-directory">28.1.9.3. ディレクトリの作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#feature-filter">28.1.9.4. 地物フィルタ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#filter-layers-by-type">28.1.9.5. 型によるフィルタ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#load-layer-into-project">28.1.9.6. レイヤをプロジェクトに読み込む</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#raise-exception">28.1.9.7. 例外発生</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#raise-message">28.1.9.8. メッセージを表示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#raise-warning">28.1.9.9. 警告メッセージ出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#rename-layer">28.1.9.10. レイヤ名の変更</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#save-log-to-file">28.1.9.11. ログをファイルに保存する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#set-project-variable">28.1.9.12. プロジェクト変数を設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#string-concatenation">28.1.9.13. 文字列連結</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#variable-distance-buffer">28.1.9.14. 可変距離バッファ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="networkanalysis.html">28.1.10. ネットワーク解析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="networkanalysis.html#service-area-from-layer">28.1.10.1. サービスエリア（始点レイヤ）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networkanalysis.html#service-area-from-point">28.1.10.2. サービスエリア（始点を指定）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networkanalysis.html#shortest-path-layer-to-point">28.1.10.3. 最短経路（始点レイヤから指定終点）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networkanalysis.html#shortest-path-point-to-layer">28.1.10.4. 最短経路（指定始点から終点レイヤ）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networkanalysis.html#shortest-path-point-to-point">28.1.10.5. 最短経路（指定始点から指定終点）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">28.1.11. プロット</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#bar-plot">28.1.11.1. ベクタレイヤの棒グラフ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#box-plot">28.1.11.2. ベクタレイヤのボックスプロット</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#mean-and-standard-deviation-plot">28.1.11.3. テーブルの平均・標準偏差のプロット</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#polar-plot">28.1.11.4. ベクタレイヤのポーラープロット</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#raster-layer-histogram">28.1.11.5. ラスタレイヤのヒストグラム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#vector-layer-histogram">28.1.11.6. ベクタレイヤのヒストグラム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#vector-layer-scatterplot">28.1.11.7. ベクタレイヤの散布図</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#vector-layer-scatterplot-3d">28.1.11.8. ベクタレイヤの3D散布図</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pointcloudconversion.html">28.1.12. Point Cloud Conversion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pointcloudconversion.html#convert-format">28.1.12.1. フォーマット変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointcloudconversion.html#export-to-raster">28.1.12.2. Export to raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointcloudconversion.html#export-raster-using-triangulation">28.1.12.3. Export raster (using triangulation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointcloudconversion.html#export-to-vector">28.1.12.4. Export to vector</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pointclouddatamanagement.html">28.1.13. 点群データ管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pointclouddatamanagement.html#assign-projection">28.1.13.1. 投影法を設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointclouddatamanagement.html#build-virtual-point-cloud-vpc">28.1.13.2. 仮想点群(VPC)を作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointclouddatamanagement.html#clip">28.1.13.3. 切り抜く</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointclouddatamanagement.html#create-copc">28.1.13.4. COPCの作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointclouddatamanagement.html#information">28.1.13.5. Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointclouddatamanagement.html#merge">28.1.13.6. 結合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointclouddatamanagement.html#reproject">28.1.13.7. Reproject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointclouddatamanagement.html#thin-by-sampling-radius">28.1.13.8. Thin (by sampling radius)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointclouddatamanagement.html#thin-by-skipping-points">28.1.13.9. Thin (by skipping points)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointclouddatamanagement.html#tile">28.1.13.10. Tile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pointcloudextraction.html">28.1.14. Point Cloud Extraction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pointcloudextraction.html#boundary">28.1.14.1. トポロジカル境界</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointcloudextraction.html#density">28.1.14.2. Density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointcloudextraction.html#filter">28.1.14.3. filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rasteranalysis.html">28.1.15. ラスタ解析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#cell-stack-percent-rank-from-value">28.1.15.1. ラスタ値のパーセントランク</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#cell-stack-percentile">28.1.15.2. セルスタックの百分位数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#cell-stack-percentrank-from-raster-layer">28.1.15.3. セルスタック：ラスタ値のパーセントランク</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#cell-statistics">28.1.15.4. セル統計量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#equal-to-frequency">28.1.15.5. ラスタスタックの値の一致頻度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-gaussian-membership">28.1.15.6. ラスタのファジー化（gaussian membership）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-large-membership">28.1.15.7. ラスタのファジー化（large membership）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-linear-membership">28.1.15.8. ラスタのファジー化（linear membership）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-near-membership">28.1.15.9. ラスタのファジー化（near membership）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-power-membership">28.1.15.10. ラスタのファジー化（power membership）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-small-membership">28.1.15.11. ラスタのファジー化（small membership）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#greater-than-frequency">28.1.15.12. ラスタスタックの値の超過頻度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#highest-position-in-raster-stack">28.1.15.13. ラスタスタックの最大値の位置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#less-than-frequency">28.1.15.14. ラスタスタックの値の未満頻度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#lowest-position-in-raster-stack">28.1.15.15. ラスタスタックの最小値の位置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-boolean-and">28.1.15.16. 複数ラスタのAND論理値</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-boolean-or">28.1.15.17. 複数ラスタのOR論理値</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-calculator">28.1.15.18. ラスタ計算機</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-calculator-virtual">28.1.15.19. Raster calculator (virtual)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-layer-properties">28.1.15.20. ラスタレイヤのプロパティ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-layer-statistics">28.1.15.21. ラスタレイヤの統計量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-layer-unique-values-report">28.1.15.22. ラスタレイヤのユニーク値</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-layer-zonal-statistics">28.1.15.23. ゾーン統計量（ラスタ）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-surface-volume">28.1.15.24. ラスタのサーフェス体積</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#reclassify-by-layer">28.1.15.25. 属性テーブルによる再分類</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#reclassify-by-table">28.1.15.26. 区分表（テーブル）で再分類</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#rescale-raster">28.1.15.27. ラスタの範囲変更</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#round-raster">28.1.15.28. ラスタ値を四捨五入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#sample-raster-values">28.1.15.29. ベクタレイヤにラスタ値を付加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#zonal-histogram">28.1.15.30. ゾーンヒストグラム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#zonal-statistics">28.1.15.31. ゾーン統計量（ベクタ）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rastercreation.html">28.1.16. ラスタ作成</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-constant-raster-layer">28.1.16.1. 定数ラスタを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-binomial-distribution">28.1.16.2. 乱数ラスタの作成（二項分布）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-exponential-distribution">28.1.16.3. 乱数ラスタの作成（指数分布）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-gamma-distribution">28.1.16.4. 乱数ラスタの作成（ガンマ分布）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-geometric-distribution">28.1.16.5. 乱数ラスタの作成（幾何分布）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-negative-binomial-distribution">28.1.16.6. 乱数ラスタの作成（負の二項分布）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-normal-distribution">28.1.16.7. 乱数ラスタの作成（正規分布）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-poisson-distribution">28.1.16.8. 乱数ラスタの作成（ポワソン分布）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-uniform-distribution">28.1.16.9. 乱数ラスタの作成（一様分布）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rasterterrainanalysis.html">28.1.17. ラスタ地形解析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#aspect">28.1.17.1. 傾斜方位（aspect）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#dtm-filter-slope-based">28.1.17.2. DTM filter (slope-based)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#hillshade">28.1.17.3. 陰影図（hillshade）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#hypsometric-curves">28.1.17.4. 高度面積曲線（hypsometric）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#relief">28.1.17.5. 段彩図（relief）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#ruggedness-index">28.1.17.6. 地形起伏指数（TRI）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#slope">28.1.17.7. 傾斜（slope）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rastertools.html">28.1.18. ラスタツール</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rastertools.html#align-raster">28.1.18.1. Align raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastertools.html#align-rasters">28.1.18.2. Align rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastertools.html#convert-map-to-raster">28.1.18.3. 地図のラスタ化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastertools.html#fill-nodata-cells">28.1.18.4. nodataセルを値で埋める</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastertools.html#generate-xyz-tiles-directory">28.1.18.5. XYZタイルの生成（ディレクトリ形式）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastertools.html#generate-xyz-tiles-mbtiles">28.1.18.6. XYZタイルの生成（MBTiles形式）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectoranalysis.html">28.1.19. ベクタ解析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#basic-statistics-for-fields">28.1.19.1. 属性の基本統計量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#climb-along-line">28.1.19.2. 線に沿った上昇下降量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#count-points-in-polygon">28.1.19.3. ポリゴン内の点の数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#dbscan-clustering">28.1.19.4. DBSCANクラスタリング</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#distance-matrix">28.1.19.5. 距離行列（distance matrix）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#distance-to-nearest-hub-line-to-hub">28.1.19.6. 最寄りのハブの距離（ハブへの線）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#distance-to-nearest-hub-points">28.1.19.7. 最寄りのハブの距離</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#join-by-lines-hub-lines">28.1.19.8. ハブ＆スポーク図</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#k-means-clustering">28.1.19.9. K平均クラスタリング</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#list-unique-values">28.1.19.10. ユニーク値のリスト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#mean-coordinate-s">28.1.19.11. 加重平均座標（重心の平均）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#nearest-neighbour-analysis">28.1.19.12. 最近傍解析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#overlap-analysis">28.1.19.13. 重なり分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#shortest-line-between-features">28.1.19.14. 地物間の最短線</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#st-dbscan-clustering">28.1.19.15. ST-DBSCANクラスタリング</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#statistics-by-categories">28.1.19.16. 出力レイヤ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#sum-line-lengths">28.1.19.17. 線長の合計</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectorcreation.html">28.1.20. ベクタ作成</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#array-of-offset-parallel-lines">28.1.20.1. オフセット線の配列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#array-of-translated-features">28.1.20.2. 平行移動した地物の配列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#create-grid">28.1.20.3. グリッドを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#create-points-layer-from-table">28.1.20.4. テーブルから点レイヤを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#generate-points-pixel-centroids-along-line">28.1.20.5. 線に沿った点群の生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#generate-points-pixel-centroids-inside-polygon">28.1.20.6. ポリゴン内の点を作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#import-geotagged-photos">28.1.20.7. ジオタグ（位置情報）付きの写真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#points-to-path">28.1.20.8. 点を線に変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-along-line">28.1.20.9. 線に沿ったランダム点群</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-in-extent">28.1.20.10. ランダム点群</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-in-layer-bounds">28.1.20.11. 入力レイヤの領域にランダム点群</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-in-polygons">28.1.20.12. ポリゴン内部にランダム点群</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-inside-polygons">28.1.20.13. ポリゴン内部にランダム点群</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-on-lines">28.1.20.14. 線に沿ったランダム点群</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#raster-pixels-to-points">28.1.20.15. ラスタのベクタ化（pixels to points）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#raster-pixels-to-polygons">28.1.20.16. ラスタのベクタ化（pixels to polygons）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#regular-points">28.1.20.17. 規則的な点群</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectorgeneral.html">28.1.21. ベクタ一般</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#assign-projection">28.1.21.1. 投影法の割り当て</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#batch-nominatim-geocoder">28.1.21.2. Nominatimジオコーディング</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#convert-layer-to-spatial-bookmarks">28.1.21.3. レイヤをブックマークに変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#convert-spatial-bookmarks-to-layer">28.1.21.4. ブックマークをレイヤに変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#create-attribute-index">28.1.21.5. 属性インデックスを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#create-spatial-index">28.1.21.6. 空間インデックスを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#define-shapefile-projection">28.1.21.7. シェープファイルの投影法の定義</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#delete-duplicate-geometries">28.1.21.8. 重複ジオメトリの削除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#delete-duplicates-by-attribute">28.1.21.9. 属性値重複を削除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#detect-dataset-changes">28.1.21.10. ベクタレイヤを比較</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#drop-geometries">28.1.21.11. ジオメトリの削除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#execute-sql">28.1.21.12. SQLの実行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#export-layers-to-dxf">28.1.21.13. レイヤをDXFにエクスポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#extract-selected-features">28.1.21.14. 選択した地物で別レイヤ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#extract-shapefile-encoding">28.1.21.15. シェープファイルの文字コードを抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#find-projection">28.1.21.16. 投影法を調べる</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#flatten-relationship">28.1.21.17. リレーションのフラット化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#join-attributes-by-field-value">28.1.21.18. 属性テーブルで結合（table join）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#join-attributes-by-location">28.1.21.19. 属性の空間結合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#join-attributes-by-location-summary">28.1.21.20. 空間結合（集計つき）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#join-attributes-by-nearest">28.1.21.21. 属性の最近傍結合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#merge-vector-layers">28.1.21.22. ベクタレイヤのマージ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#order-by-expression">28.1.21.23. 式による並べ替え</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#repair-shapefile">28.1.21.24. シェープファイルを修復</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#reproject-layer">28.1.21.25. レイヤの再投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#save-vector-features-to-file">28.1.21.26. ベクタ地物をファイルに保存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#set-layer-encoding">28.1.21.27. レイヤの文字コードを設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#split-features-by-character">28.1.21.28. 文字で地物を分割</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#split-vector-layer">28.1.21.29. 属性でレイヤを分割</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#truncate-table">28.1.21.30. テーブルを空にする</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectorgeometry.html">28.1.22. ベクタジオメトリ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#add-geometry-attributes">28.1.22.1. ジオメトリ属性を追加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#affine-transform">28.1.22.2. アフィン変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#aggregate">28.1.22.3. 集計</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#boundary">28.1.22.4. トポロジカル境界</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#bounding-boxes">28.1.22.5. BBoxの出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#buffer">28.1.22.6. バッファ（buffer）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#centroids">28.1.22.7. 重心</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#check-validity">28.1.22.8. 有効性チェック</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#collect-geometries">28.1.22.9. シングルパートをマルチパートに集約</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#concave-hull">28.1.22.10. Concave hull</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#convert-geometry-type">28.1.22.11. ジオメトリタイプの変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#convert-to-curved-geometries">28.1.22.12. 曲線ジオメトリに変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#convex-hull">28.1.22.13. 凸包（convex hull）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#create-layer-from-extent">28.1.22.14. 範囲の矩形レイヤ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#create-layer-from-point">28.1.22.15. 点からレイヤを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#create-wedge-buffers">28.1.22.16. ウェッジバッファを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#delaunay-triangulation">28.1.22.17. ドロネー三角分割</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#delete-holes">28.1.22.18. 孔（hole）の削除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#densify-by-count">28.1.22.19. 頂点の高密度化（個数ベース）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#densify-by-interval">28.1.22.20. 間隔による高密度化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#dissolve">28.1.22.21. 融合（dissolve）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#drape-set-z-value-from-raster">28.1.22.22. ドレープ（ラスタ値をZ値に代入）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#drop-m-z-values">28.1.22.23. M値Z値の削除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#eliminate-selected-polygons">28.1.22.24. 選択物の隣接ポリゴンの融合（eliminate）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#explode-lines">28.1.22.25. 線をセグメントに分解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#extend-lines">28.1.22.26. 線の延長</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#extract-m-values">28.1.22.27. M値を抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#extract-specific-vertices">28.1.22.28. 特定の点を抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#extract-vertices">28.1.22.29. 頂点を抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#extract-z-values">28.1.22.30. Z値を抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#filter-vertices-by-m-value">28.1.22.31. M値で頂点をフィルタ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#filter-vertices-by-z-value">28.1.22.32. Z値で頂点をフィルタ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#fix-geometries">28.1.22.33. ジオメトリを修復</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#force-right-hand-rule">28.1.22.34. 右手ルールを強制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#geodesic-line-split-at-antimeridian">28.1.22.35. 日付変更線で測地線を分割</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#geometry-by-expression">28.1.22.36. 式によるジオメトリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#interpolate-point-on-line">28.1.22.37. 線上の等間隔点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#keep-n-biggest-parts">28.1.22.38. マルチパートの上位N個</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#line-substring">28.1.22.39. ラインの一部の切り出し</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#lines-to-polygons">28.1.22.40. 線をポリゴンに変換（lines to polygons）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#merge-lines">28.1.22.41. 線の結合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#minimum-bounding-geometry">28.1.22.42. 最小境界ジオメトリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#minimum-enclosing-circles">28.1.22.43. 最小包含円</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#multi-ring-buffer-constant-distance">28.1.22.44. 多重リングバッファ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#multipart-to-singleparts">28.1.22.45. マルチパートをシングルパートに変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#offset-lines">28.1.22.46. オフセット線</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#oriented-minimum-bounding-box">28.1.22.47. 最小の回転長方形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#orthogonalize">28.1.22.48. ジオメトリの直交化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#point-on-surface">28.1.22.49. 内部保証点（point on surface）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#points-along-geometry">28.1.22.50. ジオメトリに沿った点群</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#points-displacement">28.1.22.51. 近隣点を散らす</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#pole-of-inaccessibility">28.1.22.52. 到達不能極（PIA）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#polygonize">28.1.22.53. ポリゴン化（Polygonize）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#polygons-to-lines">28.1.22.54. ポリゴンを線に変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#project-points-cartesian">28.1.22.55. 投影点（デカルト座標）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#promote-to-multipart">28.1.22.56. マルチパートに強制変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#rectangles-ovals-diamonds">28.1.22.57. 長方形・楕円・ダイヤモンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#remove-duplicate-vertices">28.1.22.58. 重複する頂点の削除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#remove-null-geometries">28.1.22.59. NULLジオメトリの削除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#reverse-line-direction">28.1.22.60. 線の向きの反転</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#rotate">28.1.22.61. ジオメトリの回転</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#roundness">28.1.22.62. 丸み係数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#segmentize-by-maximum-angle">28.1.22.63. 曲線のセグメント化（角度）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#segmentize-by-maximum-distance">28.1.22.64. 曲線のセグメント化（距離）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#set-m-value">28.1.22.65. M値の設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#set-m-value-from-raster">28.1.22.66. ドレープ（ラスタ値をM値に代入）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#set-z-value">28.1.22.67. Z値の設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#simplify">28.1.22.68. ジオメトリの簡素化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#single-sided-buffer">28.1.22.69. 片側バッファ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#smooth">28.1.22.70. スムージング</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#snap-geometries-to-layer">28.1.22.71. ジオメトリをレイヤにスナップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#snap-points-to-grid">28.1.22.72. 点をグリッドにスナップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#split-lines-by-maximum-length">28.1.22.73. 最大長で線を切断</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#subdivide">28.1.22.74. ジオメトリの空間分割</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#swap-x-and-y-coordinates">28.1.22.75. 座標のXY入れ替え</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#tapered-buffers">28.1.22.76. テイパードバッファ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#tessellate">28.1.22.77. テッセレーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#transect">28.1.22.78. トランセクト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#translate">28.1.22.79. 平行移動（translate）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#variable-width-buffer-by-m-value">28.1.22.80. 可変幅バッファ（M値使用）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#voronoi-polygons">28.1.22.81. ボロノイ多角形</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectoroverlay.html">28.1.23. ベクタオーバーレイ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#clip">28.1.23.1. 切り抜く</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#difference">28.1.23.2. 差分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#difference-multiple">28.1.23.3. 差分（複数レイヤ）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#extract-clip-by-extent">28.1.23.4. 矩形範囲で抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#intersection">28.1.23.5. 交差</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#intersection-multiple">28.1.23.6. 交差（複数レイヤ）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#line-intersections">28.1.23.7. 線の交差</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#split-with-lines">28.1.23.8. 線で分割</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#symmetrical-difference">28.1.23.9. 対称差</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#union">28.1.23.10. 和集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#union-multiple">28.1.23.11. 和集合（複数レイヤ）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectorselection.html">28.1.24. ベクタ選択</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#extract-by-attribute">28.1.24.1. 属性による抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#extract-by-expression">28.1.24.2. QGIS式による抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#extract-by-location">28.1.24.3. 場所による抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#extract-within-distance">28.1.24.4. 一定距離以内の地物を抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#filter-by-geometry-type">28.1.24.5. ジオメトリ型でフィルタ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#random-extract">28.1.24.6. ランダム抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#random-extract-within-subsets">28.1.24.7. 地物のグループ別ランダム抽出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#random-selection">28.1.24.8. ランダム選択</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#random-selection-within-subsets">28.1.24.9. 地物のグループ別ランダム選択</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#select-by-attribute">28.1.24.10. 属性による選択</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#select-by-expression">28.1.24.11. QGIS式による選択</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#select-by-location">28.1.24.12. 場所による選択</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#select-within-distance">28.1.24.13. 一定距離以内の地物を選択</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectortable.html">28.1.25. ベクタテーブル</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#add-autoincremental-field">28.1.25.1. 自動インクリメント属性を追加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#add-field-to-attributes-table">28.1.25.2. 属性テーブルに属性を追加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#add-unique-value-index-field">28.1.25.3. 分類用ユニーク属性を追加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#add-x-y-fields-to-layer">28.1.25.4. X/Yフィールドを追加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#advanced-python-field-calculator">28.1.25.5. Pythonフィールド計算機</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#drop-field-s">28.1.25.6. 属性を削除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#explode-hstore-field">28.1.25.7. HStoreフィールドを展開</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#extract-binary-field">28.1.25.8. バイナリ属性を解凍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#field-calculator">28.1.25.9. フィールド計算機</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#refactor-fields">28.1.25.10. 属性をリファクタリング</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#rename-field">28.1.25.11. 属性名を変更</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#retain-fields">28.1.25.12. 属性を選択保持</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#text-to-float">28.1.25.13. 文字列を浮動小数点に変換</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectortiles.html">28.1.26. ベクタタイル</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectortiles.html#download-vector-tiles">28.1.26.1. Download vector tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortiles.html#write-vector-tiles-mbtiles">28.1.26.2. ベクタタイルを書き出し (WMBTiles)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortiles.html#write-vector-tiles-xyz">28.1.26.3. ベクタタイルを書き出し (XYZ)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="28. プロセシングプロバイダとアルゴリズム" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3dtiles.html" class="btn btn-neutral float-right" title="28.1.1. 3D Tiles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.34
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing_algs/qgis/index.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/cs/docs/user_manual/processing_algs/qgis/index.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/de/docs/user_manual/processing_algs/qgis/index.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/es/docs/user_manual/processing_algs/qgis/index.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/fr/docs/user_manual/processing_algs/qgis/index.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/hu/docs/user_manual/processing_algs/qgis/index.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/it/docs/user_manual/processing_algs/qgis/index.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/processing_algs/qgis/index.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ko/docs/user_manual/processing_algs/qgis/index.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/lt/docs/user_manual/processing_algs/qgis/index.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/nl/docs/user_manual/processing_algs/qgis/index.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_BR/docs/user_manual/processing_algs/qgis/index.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pt_PT/docs/user_manual/processing_algs/qgis/index.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ro/docs/user_manual/processing_algs/qgis/index.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ru/docs/user_manual/processing_algs/qgis/index.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zh-Hans/docs/user_manual/processing_algs/qgis/index.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/docs/user_manual/processing_algs/qgis/index.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/docs/user_manual/processing_algs/qgis/index.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/docs/user_manual/processing_algs/qgis/index.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/docs/user_manual/processing_algs/qgis/index.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/docs/user_manual/processing_algs/qgis/index.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/docs/user_manual/processing_algs/qgis/index.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/docs/user_manual/processing_algs/qgis/index.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/docs/user_manual/processing_algs/qgis/index.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/docs/user_manual/processing_algs/qgis/index.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.34/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/qgis/index.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/0568446184312ca3dbe718ba6cab80e8" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/ja" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.34" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.34" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_34" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
