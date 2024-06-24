@@ -186,7 +186,7 @@
   <blockquote>
 <div><div class="admonition important">
 <p class="admonition-title">重要</p>
-<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 95.32% 翻訳されています。</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 97.27% 翻訳されています。</p>
 </div>
 </div></blockquote>
 <section id="the-vector-properties-dialog">
@@ -279,7 +279,7 @@
 <li><p><a class="reference internal" href="#general-options" id="id139">一般情報</a></p></li>
 <li><p><a class="reference internal" href="#constraints" id="id140">制約</a></p></li>
 <li><p><a class="reference internal" href="#default-values" id="id141">デフォルト値</a></p></li>
-<li><p><a class="reference internal" href="#policies" id="id142">Policies</a></p></li>
+<li><p><a class="reference internal" href="#policies" id="id142">ポリシー</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#edit-widgets" id="id143">編集ウィジェット</a></p></li>
@@ -1539,7 +1539,7 @@ CASE WHEN &quot;population&quot; &lt;= 50000 THEN &#39;town&#39; ELSE &#39;city&
 <ul class="simple">
 <li><p><span class="guilabel">ラベル</span>: コンテナに使用されるタイトル</p></li>
 <li><p><span class="guilabel">コンテナ型</span>: <span class="guilabel">タブ</span>、:guilabel:<a href="#id1"><span class="problematic" id="id2">`</span></a>グループボックス`（タブや他のグループの中にある折りたたみ可能なグループボックス）、 :guilabel:<a href="#id3"><span class="problematic" id="id4">`</span></a>行`（ウィジェットを横一列に並べることができるコンテナ型で、ウィジェットの数に応じて列の数が自動的に決定される）のいずれか、</p></li>
-<li><p>guilabel:<cite>Within</cite>: このオプション機能により、新しいコンテナ（<span class="guilabel">グループボックス</span> または <span class="guilabel">行</span>）を埋め込む既存のコンテナを選択することができます。</p></li>
+<li><p><span class="guilabel">Within</span>: このオプション機能により、新しいコンテナ（<span class="guilabel">グループボックス</span> または <span class="guilabel">行</span>）を埋め込む既存のコンテナを選択することができます。</p></li>
 <li><p>埋め込みフィールドを並べる <span class="guilabel">列の数</span></p></li>
 </ul>
 <figure class="align-center" id="id62">
@@ -1578,7 +1578,7 @@ CASE WHEN &quot;population&quot; &lt;= 50000 THEN &#39;town&#39; ELSE &#39;city&
 </ol>
 <section id="other-widgets">
 <span id="id12"></span><h5><a class="toc-backref" href="#id133" role="doc-backlink">他のウィジェット</a><a class="headerlink" href="#other-widgets" title="Link to this heading"></a></h5>
-<p>ドラッグ＆ドロップデザイナーには、特定のフィールドに接続されていないウィジェットが多数用意されています。これらはフォームの外観を向上させたり、動的に計算された値を表示するために使用できます。</p>
+<p>ドラッグ＆ドロップデザイナーには、特定のフィールドに接続されないウィジェットが多数用意されています。これらはフォームの外観を向上させたり、動的に計算された値を表示するために使用できます。</p>
 <ul>
 <li><p><span class="guilabel">HTMLウィジェット</span>: HTMLページを埋め込みます。そのHTMLソースは、動的に計算された式の結果を含めることができます。</p>
 <p>HTMLウィジェットは、例えばフィールド（ここでは <code class="docutils literal notranslate"><span class="pre">photo</span></code> と呼ぶ）にBLOBとして保存されている画像を表示するのに使うことができます:</p>
@@ -1593,27 +1593,22 @@ CASE WHEN &quot;population&quot; &lt;= 50000 THEN &#39;town&#39; ELSE &#39;city&
 <p><em>photo</em> を自分のBLOBフィールド名に置き換えていることを確認します。上記の式は、BLOBファイルがエンコードされたHTML画像タグを持つ文字列を作成します。</p>
 </li>
 <li><p>ダイアログを適用し、<a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="symbologyAdd" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> ボタンを押します。</p></li>
-<li><p>QGIS automatically applies HTML formatting and functions to evaluate your expression,
-resulting in following code:</p>
+<li><p>QGISは自動的にHTMLフォーマットと関数を適用して式を評価し、次のようなコードになります:</p>
 <div class="highlight-HTML notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">expression</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(</span><span class="s2">&quot;&#39;&lt;img src=\&quot;data:image/png;base64,&#39; || to_base64(\&quot;photo\&quot;) || &#39;\&quot;&gt;&#39;&quot;</span><span class="p">));&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>A preview of your image is displayed on the right.</p>
+<p>右側に画像のプレビューが表示されます。</p>
 </li>
 </ol>
 </li>
 <li><p><span class="guilabel">QMLウィジェット</span>: QMLページを埋め込みます。そのQMLソースは動的に計算された式の結果を含めることができます。</p></li>
-<li><p><span class="guilabel">Text Widget</span>: displays a text widget which supports basic HTML markup
-and may contain the result of dynamically calculated expressions.</p></li>
-<li><p><span class="guilabel">Spacer Widget</span>: inserts an empty transparent rectangle, increasing the vertical distance between two widgets.</p></li>
+<li><p><span class="guilabel">テキストウィジェット</span>: 基本的なHTMLマークアップをサポートし、動的に計算された式の結果を含むことができるテキストウィジェットを表示します。</p></li>
+<li><p><span class="guilabel">スペーサーウィジェット</span>: 空の透明な矩形を挿入し、2つのウィジェット間の縦方向の距離を広げます。</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p><strong>Display Dynamic Content</strong></p>
-<p>The widgets mentioned above (except the <span class="guilabel">Spacer Widget</span>) support expressions that can be used to display
-content that dynamically changes whenever another field in the form changes.
-This can be achieved using the <code class="docutils literal notranslate"><span class="pre">current_value('field_name')</span></code> function in the expression to examine
-the value of another field.</p>
+<p><strong>動的コンテンツを表示する</strong></p>
+<p>上記のウィジェット（ <span class="guilabel">スペーサーウィジェット</span> を除く）は式をサポートしており、フォームの他のフィールドが変更されるたびに動的に変更されるコンテンツを表示するために使用できます。これは、式に <code class="docutils literal notranslate"><span class="pre">current_value('field_name')</span></code> 関数を使い、別のフィールドの値を調べることで実現できます。</p>
 </div>
 </section>
 </section>
@@ -1661,11 +1656,10 @@ the value of another field.</p>
 <li><p><span class="guilabel">表示</span>: フィールド名をフォームに表示するかどうかを指定します</p></li>
 <li><p><span class="guilabel">ラベルの色を上書き</span>: フィールドのラベルに特定の色を適用します</p></li>
 <li><p><span class="guilabel">ラベルのフォントを上書き</span>: フィールドのラベルに特定のフォントプロパティ（太字、斜体、下線、取り消し線、フォントファミリー）を適用します</p></li>
-<li><p><span class="guilabel">Size</span>: allows to control how widgets will relatively resize when resizing an
-attribute form.</p>
+<li><p><span class="guilabel">サイズ</span>: 属性フォームのサイズを変更するときに、ウィジェットがどのようにサイズを相対的に変更するかを制御します。</p>
 <ul>
-<li><p><span class="guilabel">Horizontal stretch</span>: sets a higher horizontal value for widgets that need more horizontal space.</p></li>
-<li><p><span class="guilabel">Vertical stretch</span>: determines how widgets resize vertically when the form is resized.</p></li>
+<li><p><span class="guilabel">水平方向の引き伸ばし</span>: より大きな水平スペースを必要とするウィジェットのために、より大きな水平値を設定します。</p></li>
+<li><p><span class="guilabel">垂直方向の引き伸ばし</span>: フォームのサイズが変更された時に、ウィジェットがどのように垂直方向にサイズ変更するかを決定します。</p></li>
 </ul>
 </li>
 </ul>
@@ -1675,11 +1669,7 @@ attribute form.</p>
 <ul class="simple">
 <li><p><span class="guilabel">別名（Alias）</span> ：フィールドに使用する、人間が読みやすい名前です。この別名は、地物フォームや属性テーブル、 <span class="guilabel">地物情報</span> パネルに表示されます。また、これは <a class="reference internal" href="../expressions/expression.html#vector-expressions"><span class="std std-ref">式文字列ビルダ</span></a> 内でのフィールド名の代わりとしても使用することができ、式の理解やレビューを用意にします。別名はプロジェクトファイル内に保存されます。</p></li>
 <li><p><span class="guilabel">コメント</span> ： <span class="guilabel">フィールド</span> タブに表示されているフィールドのコメントを読み取り専用で表示します。この情報は地物フォームでフィールドのラベルにマウスカーソルを乗せた際のツールチップとして表示されます。</p></li>
-<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Editable</span>: uncheck this option to set the field read-only
-(not manually modifiable) even when the layer is in edit mode. Note that
-checking this setting doesn't override any edit limitation from the provider.
-This option can be controlled by a data-defined property thanks to the
-<a class="reference internal" href="../../../_images/mIconDataDefine.png"><img alt="dataDefine" src="../../../_images/mIconDataDefine.png" style="width: 1.5em;" /></a> <sup>Data-defined override</sup> button.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">編集可能</span>: このオプションのチェックを外すと、レイヤが編集モードであっても、フィールドは読み取り専用（手動で変更できない）に設定されます。この設定にチェックを入れても、プロバイダ側の編集制限は上書きされないことに注意してください。このオプションは <a class="reference internal" href="../../../_images/mIconDataDefine.png"><img alt="dataDefine" src="../../../_images/mIconDataDefine.png" style="width: 1.5em;" /></a> <sup>データ定義の上書き</sup> ボタンによって、データ定義のプロパティによって制御することができます。</p></li>
 <li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">最後に入力した値を利用する</span> ：このフィールドに最後に入力された値を記憶しておき、レイヤ内で次の地物を編集するときのデフォルト値として入力します。</p></li>
 <li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ラベルを上に置く</span> ：地物フォームでフィールド名をウィジェットの上に置くか、横に置くかを設定します。</p></li>
 </ul>
@@ -1723,8 +1713,8 @@ This option can be controlled by a data-defined property thanks to the
 </ul>
 </section>
 <section id="policies">
-<span id="id15"></span><h5><a class="toc-backref" href="#id142" role="doc-backlink">Policies</a><a class="headerlink" href="#policies" title="Link to this heading"></a></h5>
-<p><span class="guilabel">Policies</span> allows you to determine how values are assigned to the field when <span class="guilabel">Splitting features</span>:</p>
+<span id="id15"></span><h5><a class="toc-backref" href="#id142" role="doc-backlink">ポリシー</a><a class="headerlink" href="#policies" title="Link to this heading"></a></h5>
+<p><span class="guilabel">ポリシー</span> は <span class="guilabel">地物を分割した時</span> にフィールドにどのように値を割り当てるかを決めることができます:</p>
 <ul class="simple">
 <li><p><span class="guilabel">Duplicate Values</span>: Keeps the existing value of the field for the resulting split features.</p></li>
 <li><p><span class="guilabel">Use Default Value</span>: Resets the field by recalculating its <a class="reference internal" href="#default-values"><span class="std std-ref">default value</span></a>.
@@ -1787,11 +1777,7 @@ if combined in a drag-and-drop form with e.g. a <a class="reference internal" hr
 </section>
 <section id="joins-properties">
 <span id="vector-joins"></span><span id="index-29"></span><h2><a class="toc-backref" href="#id144" role="doc-backlink"><span class="section-number">16.1.10. </span>テーブル結合プロパティ</a><a class="headerlink" href="#joins-properties" title="Link to this heading"></a></h2>
-<p>The <a class="reference internal" href="../../../_images/join.png"><img alt="join" src="../../../_images/join.png" style="width: 2em;" /></a> <span class="guilabel">Joins</span> tab allows you to associate features
-of the current layer to features from another loaded vector layer (or table).
-The join is based on an attribute that is shared by the layers,
-in a one-to-one relationship.
-For more details on joins, please read <a class="reference internal" href="joins_relations.html#sec-joins"><span class="std std-ref">Joining features between two layers</span></a>.</p>
+<p><a class="reference internal" href="../../../_images/join.png"><img alt="join" src="../../../_images/join.png" style="width: 2em;" /></a> <span class="guilabel">結合</span> タブでは、現在のレイヤの地物を、読み込まれた別のベクタレイヤ（またはテーブル）の地物に関連付けることができます。結合はレイヤ間で共有される属性に基づいて1対1の関係で行われます。結合の詳細については <a class="reference internal" href="joins_relations.html#sec-joins"><span class="std std-ref">二つのレイヤの地物を結合する</span></a> を参照してください。</p>
 </section>
 <section id="auxiliary-storage-properties">
 <span id="vector-auxiliary-storage"></span><h2><a class="toc-backref" href="#id145" role="doc-backlink"><span class="section-number">16.1.11. </span>補助テーブルプロパティ</a><a class="headerlink" href="#auxiliary-storage-properties" title="Link to this heading"></a></h2>
@@ -1903,18 +1889,14 @@ For more details on joins, please read <a class="reference internal" href="joins
 </section>
 <section id="actions-properties">
 <span id="actions-menu"></span><span id="index-30"></span><h2><a class="toc-backref" href="#id151" role="doc-backlink"><span class="section-number">16.1.12. </span>アクションプロパティ</a><a class="headerlink" href="#actions-properties" title="Link to this heading"></a></h2>
-<p>The <a class="reference internal" href="../../../_images/action.png"><img alt="action" src="../../../_images/action.png" style="width: 2em;" /></a> <span class="guilabel">Actions</span> tab provides the ability to perform an action
-based on the attributes of a feature.
-This can be used to perform any number of actions, for example,
-running a program with arguments built from the attributes of a feature
-or passing parameters to a web reporting tool.</p>
+<p><a class="reference internal" href="../../../_images/action.png"><img alt="action" src="../../../_images/action.png" style="width: 2em;" /></a> <span class="guilabel">アクション</span> タブは、地物の属性に基づいてアクションを実行する機能を提供します。この機能を使って、例えば、地物の属性から作成した引数でプログラムを実行したり、Webレポートツールにパラメータを渡したりなど、いくつでもアクションを実行することができます。</p>
 <figure class="align-center" id="id74">
 <span id="figure-actions"></span><img alt="../../../_images/action_dialog.png" src="../../../_images/action_dialog.png" />
 <figcaption>
 <p><span class="caption-number">図 16.56 </span><span class="caption-text">いくつかのサンプルアクションを含むアクションダイアログの概要</span><a class="headerlink" href="#id74" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<p>アクションが便利なのは、頻繁に外部のアプリケーションを実行したり、ベクタレイヤの1つ以上の値に基づいてWebページを表示したりする場合です。それらには様々な種類があり、次のように使うことができます:</p>
+<p>アクションが便利なのは、頻繁に外部のアプリケーションを実行したり、ベクタレイヤの1つ以上の値に基づいてウェブページを表示したりする場合です。それらには様々な種類があり、次のように使うことができます:</p>
 <ul>
 <li><p><span class="guilabel">一般</span>、 <span class="guilabel">macOS</span>、 <span class="guilabel">Windows</span>、 <span class="guilabel">Unix</span> アクションは外部プロセスを開始します。</p></li>
 <li><p><span class="guilabel">Python</span> アクションはPythonコードを実行します。</p></li>
@@ -2083,14 +2065,11 @@ In UNIX-like operating systems multiple commands can be executed via <code class
 </figure>
 <p>地図のTipsを表示するには:</p>
 <ol class="arabic simple">
-<li><p>Select the menu option <span class="menuselection">View ► Show Map Tips</span>
-or click on the <a class="reference internal" href="../../../_images/mActionMapTips.png"><img alt="mapTips" src="../../../_images/mActionMapTips.png" style="width: 1.5em;" /></a> <sup>Show Map Tips</sup> icon of the <span class="guilabel">Attributes Toolbar</span>.</p></li>
-<li><p>Make sure that the layer you target is active
-and has the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable Map Tips</span> property checked.</p></li>
-<li><p>Move over a feature, and the corresponding information will be displayed over.</p></li>
+<li><p>メニューオプション <span class="menuselection">ビュー ► 地図のTipsを表示</span> を選択するか、 <span class="guilabel">属性ツールバー</span> の <a class="reference internal" href="../../../_images/mActionMapTips.png"><img alt="mapTips" src="../../../_images/mActionMapTips.png" style="width: 1.5em;" /></a> <sup>地図のTipsを表示</sup> アイコンをクリックします。</p></li>
+<li><p>対象としているレイヤがアクティブで、<a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Tipsを有効化</span> プロパティがチェックされていることを確かめます。</p></li>
+<li><p>地物の上に移動すると、対応する情報が上に表示されます。</p></li>
 </ol>
-<p>Map tip is a cross-layer feature meaning that once activated,
-it stays on and applies to any map tip enabled layer in the project until it's toggled off.</p>
+<p>地図のTipsはクロスレイヤ機能で、一度有効にすると、オフに切り替えるまで、プロジェクト内のマップチップが有効なレイヤ全てに適用されます。</p>
 <figure class="align-center" id="id78">
 <span id="figure-display-mapped"></span><img alt="../../../_images/map_tip.png" src="../../../_images/map_tip.png" />
 <figcaption>
@@ -2106,16 +2085,9 @@ it stays on and applies to any map tip enabled layer in the project until it's t
 <p><span class="caption-number">図 16.61 </span><span class="caption-text">レイヤのレンダリングプロパティダイアログ</span><a class="headerlink" href="#id79" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<p>The <a class="reference internal" href="../../../_images/rendering.png"><img alt="rendering" src="../../../_images/rendering.png" style="width: 1.5em;" /></a> <span class="guilabel">Rendering</span> tab offers following properties:</p>
+<p><a class="reference internal" href="../../../_images/rendering.png"><img alt="rendering" src="../../../_images/rendering.png" style="width: 1.5em;" /></a> <span class="guilabel">レンダリング</span> タブには次のプロパティがあります:</p>
 <ul>
-<li><p>Under <a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Scale dependent visibility</span>,
-you can set the <span class="guilabel">Maximum (inclusive)</span>
-and <span class="guilabel">Minimum (exclusive)</span> scales,
-defining a range of scales in which features will be visible.
-Out of this range, they are hidden.
-The <a class="reference internal" href="../../../_images/mActionMapIdentification.png"><img alt="mapIdentification" src="../../../_images/mActionMapIdentification.png" style="width: 1.5em;" /></a> <sup>Set to current canvas scale</sup> button helps you
-use the current map canvas scale as boundary of the range visibility.
-See <a class="reference internal" href="../introduction/general_tools.html#label-scaledepend"><span class="std std-ref">表示縮尺セレクタ</span></a> for more information.</p>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> :縮尺に応じた表示設定` では、 <span class="guilabel">最大縮尺（含まない）</span> と <span class="guilabel">最小縮尺（含む）</span> を設定することができ、地物が表示される縮尺の範囲を定義します。それらはこの範囲外で非表示になります。<a class="reference internal" href="../../../_images/mActionMapIdentification.png"><img alt="mapIdentification" src="../../../_images/mActionMapIdentification.png" style="width: 1.5em;" /></a> <sup>現在のキャンバススケールを使う</sup> ボタンを使用すると、現在のマップキャンバスの縮尺を可視範囲の境界として使用することができます。詳しくは <a class="reference internal" href="../introduction/general_tools.html#label-scaledepend"><span class="std std-ref">表示縮尺セレクタ</span></a> を参照してください。</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
 <p>レイヤの縮尺に応じた表示は、<span class="guilabel">レイヤ</span> パネルからも有効にすることもできます:　レイヤを右クリックし、コンテキストメニューから <span class="guilabel">レイヤの縮尺表示を設定</span> を選択します。</p>
@@ -2405,7 +2377,7 @@ to ensure the quality of digitized geometries.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2002-now, QGIS project.
-      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      <span class="lastupdated">最終更新: 2024 6月 25, 05:29 +0900
       </span></p>
   </div>
 

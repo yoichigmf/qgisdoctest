@@ -102,7 +102,7 @@
 <li class="toctree-l3"><a class="reference internal" href="plugins_gps.html">24.1. GNSS/GPSデータの導入</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">24.2. ライブGPS追跡</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#gps-toolbar">24.2.1. GPSツールバー</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gps-information-panel">24.2.2. GPS Information Panel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gps-information-panel">24.2.2. GPS情報パネル</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#connect-to-a-bluetooth-gps-for-live-tracking">24.2.3. ライブトラッキングのBluetooth GPS への接続</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#examples-of-gps-devices-connection-in-qgis">24.2.4. Examples of GPS devices connection in QGIS</a></li>
 </ul>
@@ -166,7 +166,7 @@
   <blockquote>
 <div><div class="admonition important">
 <p class="admonition-title">重要</p>
-<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 51.59% 翻訳されています。</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 65.08% 翻訳されています。</p>
 </div>
 </div></blockquote>
 <section id="live-gps-tracking">
@@ -174,7 +174,7 @@
 <nav class="contents local" id="id1">
 <ul class="simple">
 <li><p><a class="reference internal" href="#gps-toolbar" id="id8">GPSツールバー</a></p></li>
-<li><p><a class="reference internal" href="#gps-information-panel" id="id9">GPS Information Panel</a></p>
+<li><p><a class="reference internal" href="#gps-information-panel" id="id9">GPS情報パネル</a></p>
 <ul>
 <li><p><a class="reference internal" href="#position-and-additional-attributes" id="id10">位置と追加属性</a></p></li>
 <li><p><a class="reference internal" href="#signal" id="id11">Signal</a></p></li>
@@ -212,25 +212,25 @@
 <p>The GPS destination layer is made automatically editable when a feature is being created,
 and the user is notified accordingly.</p>
 </li>
-<li><p>actions for feature creation:</p>
+<li><p>地物を作成するアクション:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../../_images/mActionAddTrackPoint.png"><img alt="addTrackPoint" src="../../../_images/mActionAddTrackPoint.png" style="width: 1.5em;" /></a> <sup>GPS位置のトラック点を追加</sup></p></li>
-<li><p><a class="reference internal" href="../../../_images/mActionCapturePoint.png"><img alt="capturePoint" src="../../../_images/mActionCapturePoint.png" style="width: 1.5em;" /></a> <sup>Create a new point feature at current GPS location</sup></p></li>
-<li><p><a class="reference internal" href="../../../_images/mActionCaptureLine.png"><img alt="captureLine" src="../../../_images/mActionCaptureLine.png" style="width: 1.5em;" /></a> <sup>Create a new line feature using the current GPS track</sup></p></li>
-<li><p><a class="reference internal" href="../../../_images/mActionCapturePolygon.png"><img alt="capturePolygon" src="../../../_images/mActionCapturePolygon.png" style="width: 1.5em;" /></a> <sup>Create a new polygon feature using the current GPS track</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionCapturePoint.png"><img alt="capturePoint" src="../../../_images/mActionCapturePoint.png" style="width: 1.5em;" /></a> <sup>現在のGPS位置に点地物を作成</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionCaptureLine.png"><img alt="captureLine" src="../../../_images/mActionCaptureLine.png" style="width: 1.5em;" /></a> <sup>現在のGPSトラックから線地物を作成</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionCapturePolygon.png"><img alt="capturePolygon" src="../../../_images/mActionCapturePolygon.png" style="width: 1.5em;" /></a> <sup>現在のGPSトラックからポリゴン地物を作成</sup></p></li>
 <li><p><a class="reference internal" href="../../../_images/mActionReset.png"><img alt="reset" src="../../../_images/mActionReset.png" style="width: 1.5em;" /></a> <sup>トラックをリセット</sup></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="../../../_images/metadata.png"><img alt="metadata" src="../../../_images/metadata.png" style="width: 1.5em;" /></a> <sup>GPS情報パネルを表示</sup>: <a class="reference internal" href="#gps-information-panel"><span class="std std-ref">GPS情報</span></a> パネルを開きます</p></li>
 <li><p>a display box for quick access to some GPS information components you may need:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>Show location</sup></p></li>
-<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>Show altitude (Geoid)</sup></p></li>
-<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>Show altitude (WGS 84 ellipsoid)</sup></p></li>
-<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>Show ground speed</sup></p></li>
-<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>Show bearing</sup></p></li>
-<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>Show total track length</sup></p></li>
-<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>Show distance from start of track</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>位置を表示</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>ジオイド高を表示</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>標高（WGS84楕円体高）を表示</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>地上速度を表示</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>方位を表示</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>合計トラック長を表示</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <sup>始点からの距離を表示</sup></p></li>
 </ul>
 </li>
 </ul>
@@ -260,8 +260,7 @@ the user will be prompted to select an existing GeoPackage/SpatiaLite file
 or enter a new file name.
 A <code class="docutils literal notranslate"><span class="pre">gps_points</span></code> and <code class="docutils literal notranslate"><span class="pre">gps_tracks</span></code> table will be created in the file
 with a predefined structure.</p>
-<p>All incoming GPS messages will be logged to the <code class="docutils literal notranslate"><span class="pre">gps_points</span></code> layer,
-along with speed, bearing, altitude and accuracy information from the GPS.</p>
+<p>受信したすべてのGPSメッセージは、GPSからの速度、方位、高度、正確度情報とともに <code class="docutils literal notranslate"><span class="pre">gps_points</span></code> レイヤーに記録される。</p>
 <p>When the GPS is disconnected (or QGIS closed), the entire recorded GPS track
 will be added to the <code class="docutils literal notranslate"><span class="pre">gps_tracks</span></code> table
 (along with some calculated information like track length, start and end times).</p>
@@ -282,7 +281,7 @@ On a touch screen device, use a tap-and-hold event to trigger the live status ba
 </div>
 </section>
 <section id="gps-information-panel">
-<span id="id3"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">24.2.2. </span>GPS Information Panel</a><a class="headerlink" href="#gps-information-panel" title="Link to this heading"></a></h2>
+<span id="id3"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">24.2.2. </span>GPS情報パネル</a><a class="headerlink" href="#gps-information-panel" title="Link to this heading"></a></h2>
 <p>For full monitoring of a live GPS tracking in QGIS, you may need to enable
 the <span class="guilabel">GPS Information Panel</span>
 (<span class="menuselection">View ► Panels ►</span> or press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">0</kbd></kbd>).</p>
@@ -316,12 +315,12 @@ the WGS-84 Earth ellipsoid</p></li>
 <li><p><span class="guilabel">Geoidal separation</span>: Difference between the WGS-84 Earth ellipsoid
 and mean sea level (geoid), <code class="docutils literal notranslate"><span class="pre">-</span></code> means mean sea level is below ellipsoid</p></li>
 <li><p><span class="guilabel">Time of fix</span></p></li>
-<li><p><span class="guilabel">Speed</span>: Ground speed</p></li>
+<li><p><span class="guilabel">Speed</span>: 対地速度</p></li>
 <li><p><span class="guilabel">Direction</span>: Bearing measured in degrees clockwise from true north
 to the direction of travel</p></li>
-<li><p><span class="guilabel">HDOP</span>: Horizontal dilution of precision</p></li>
-<li><p><span class="guilabel">VDOP</span>: Vertical dilution of precision</p></li>
-<li><p><span class="guilabel">PDOP</span>: Dilution of precision</p></li>
+<li><p><span class="guilabel">HDOP</span>: 水平精度低下率</p></li>
+<li><p><span class="guilabel">VDOP</span>: 垂直精度低下率</p></li>
+<li><p><span class="guilabel">PDOP</span>: 位置精度低下率</p></li>
 <li><p><span class="guilabel">H accuracy</span>: Horizontal accuracy in meters</p></li>
 <li><p><span class="guilabel">V accuracy</span>: Vertical accuracy in meters</p></li>
 <li><p><span class="guilabel">3D accuracy</span>: 3D Root Mean Square (RMS) in meters</p></li>
@@ -440,7 +439,7 @@ the tool to the right port.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2002-now, QGIS project.
-      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      <span class="lastupdated">最終更新: 2024 6月 25, 05:29 +0900
       </span></p>
   </div>
 

@@ -97,7 +97,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#introducing-the-attribute-table-interface">16.2.2. 属性テーブルのインタフェースの紹介</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#interacting-with-features-in-an-attribute-table">16.2.3. 属性テーブルの地物とのやりとり</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#editing-attribute-values">16.2.4. 属性値の編集</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#exploring-features-attributes-through-the-identify-tool">16.2.5. Exploring features attributes through the Identify Tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exploring-features-attributes-through-the-identify-tool">16.2.5. 地物情報表示ツールを使って地物属性を詳しくみる</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#storing-and-fetching-an-external-resource">16.2.6. 外部リソースの保存と取得</a></li>
 </ul>
 </li>
@@ -170,7 +170,7 @@
   <blockquote>
 <div><div class="admonition important">
 <p class="admonition-title">重要</p>
-<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 86.46% 翻訳されています。</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 98.85% 翻訳されています。</p>
 </div>
 </div></blockquote>
 <section id="working-with-the-attribute-table">
@@ -186,7 +186,7 @@
 <ul>
 <li><p><a class="reference internal" href="#resizing-columns-widths" id="id17">列の幅の修正</a></p></li>
 <li><p><a class="reference internal" href="#hiding-and-organizing-columns-and-enabling-actions" id="id18">列の非表示・整理とアクションの有効化</a></p></li>
-<li><p><a class="reference internal" href="#sorting-rows" id="id19">Sorting rows</a></p></li>
+<li><p><a class="reference internal" href="#sorting-rows" id="id19">行を並び替える</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#formatting-of-table-cells-using-conditions" id="id20">条件式を使ったテーブルセルの書式設定</a></p></li>
@@ -198,7 +198,7 @@
 <li><p><a class="reference internal" href="#filtering-features" id="id23">地物のフィルタリング</a></p></li>
 <li><p><a class="reference internal" href="#storing-filter-expressions" id="id24">フィルタ式の保存</a></p></li>
 <li><p><a class="reference internal" href="#filtering-and-selecting-features-using-forms" id="id25">フォームによるフィルタと地物選択</a></p></li>
-<li><p><a class="reference internal" href="#more-actions-on-features" id="id26">More actions on features</a></p></li>
+<li><p><a class="reference internal" href="#more-actions-on-features" id="id26">地物に関するその他のアクション</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#editing-attribute-values" id="id27">属性値の編集</a></p>
@@ -209,7 +209,7 @@
 <li><p><a class="reference internal" href="#editing-multiple-fields" id="id31">複数のフィールドの編集</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#exploring-features-attributes-through-the-identify-tool" id="id32">Exploring features attributes through the Identify Tool</a></p></li>
+<li><p><a class="reference internal" href="#exploring-features-attributes-through-the-identify-tool" id="id32">地物情報表示ツールを使って地物属性を詳しくみる</a></p></li>
 <li><p><a class="reference internal" href="#storing-and-fetching-an-external-resource" id="id33">外部リソースの保存と取得</a></p>
 <ul>
 <li><p><a class="reference internal" href="#configuring-an-external-storage" id="id34">外部ストレージの設定</a></p></li>
@@ -425,25 +425,14 @@
 </ul>
 </section>
 <section id="sorting-rows">
-<span id="sort-columns"></span><h4><a class="toc-backref" href="#id19" role="doc-backlink">Sorting rows</a><a class="headerlink" href="#sorting-rows" title="Link to this heading"></a></h4>
-<p>The rows can be sorted by any column, by clicking on the column header. A
-small arrow indicates the sort order (downward pointing means descending
-values from the top row down, upward pointing means ascending values from
-the top row down).
-You can also choose to sort the rows with the <span class="guilabel">Sort...</span> option of the
-column header context menu and write an expression. E.g. to sort the rows
-using multiple columns you can write <code class="docutils literal notranslate"><span class="pre">concat(col0,</span> <span class="pre">col1)</span></code>.</p>
+<span id="sort-columns"></span><h4><a class="toc-backref" href="#id19" role="doc-backlink">行を並び替える</a><a class="headerlink" href="#sorting-rows" title="Link to this heading"></a></h4>
+<p>行は列のヘッダをクリックすることで任意の列でソートできます。小さな矢印はソート順を示しています（下向きは先頭行から値を降順で、上向きは先頭行から値を昇順で並べることを意味します）。列のヘッダのコンテキストメニューの <span class="guilabel">並べ替え...</span> オプションを選択し、式を書くことでも行をソートすることができます。例えば、複数の列を使用して行を並べ替えるには <code class="docutils literal notranslate"><span class="pre">concat(col0,</span> <span class="pre">col1)</span></code> と書きます。</p>
 <p>フォーム表示では、地物識別子は <a class="reference internal" href="../../../_images/sort.png"><img alt="sort" src="../../../_images/sort.png" style="width: 1.5em;" /></a>  <span class="guilabel">プレビュー式で並べ替え</span> オプションを使用してソートできます。</p>
-<p>Note that sorting the rows only affects the table rendering and does not alter
-the features order in the layer datasource.</p>
+<p>行の並べ替えはテーブルのレンダリングにのみ影響し、レイヤのデータソースの地物の順序を変更しないことに注意してください。</p>
 <div class="admonition tip" id="tip-sortcolumns">
 <p class="admonition-title">Tip</p>
 <p><strong>異なる型の列に基づいた並べ替え</strong></p>
-<p>Trying to sort an attribute table based on columns of string and numeric types
-may lead to unexpected result because of the <code class="docutils literal notranslate"><span class="pre">concat(&quot;USE&quot;,</span> <span class="pre">&quot;ID&quot;)</span></code> expression
-returning string values (ie, <code class="docutils literal notranslate"><span class="pre">'Borough105'</span> <span class="pre">&lt;</span> <span class="pre">'Borough6'</span></code>).
-You can workaround this by using eg <code class="docutils literal notranslate"><span class="pre">concat(&quot;USE&quot;,</span> <span class="pre">lpad(&quot;ID&quot;,</span> <span class="pre">3,</span> <span class="pre">0))</span></code> which
-returns <code class="docutils literal notranslate"><span class="pre">'Borough105'</span> <span class="pre">&gt;</span> <span class="pre">'Borough006'</span></code>.</p>
+<p>文字列型の列と数値型の列に基づいて属性テーブルを並べ替えようとすると、予期しない結果となることがあります。これは、式 <code class="docutils literal notranslate"><span class="pre">concat(&quot;USE&quot;,</span> <span class="pre">&quot;ID&quot;)</span></code> が文字列値を返す（つまり <code class="docutils literal notranslate"><span class="pre">'Borough105'</span> <span class="pre">&lt;</span> <span class="pre">'Borough6'</span></code> である）ために起こります。これは、 <code class="docutils literal notranslate"><span class="pre">concat(&quot;USE&quot;,</span> <span class="pre">lpad(&quot;ID&quot;,</span> <span class="pre">3,</span> <span class="pre">0))</span></code> を使い、 <code class="docutils literal notranslate"><span class="pre">'Borough105'</span> <span class="pre">&gt;</span> <span class="pre">'Borough006'</span></code> を返すようにすることで回避できます。</p>
 </div>
 </section>
 </section>
@@ -452,12 +441,9 @@ returns <code class="docutils literal notranslate"><span class="pre">'Borough105
 <p>条件付き書式設定を使用して、属性テーブル内で特に注目したい地物を強調表示させることができます。カスタム条件式は、地物に関する以下の要素に基づきます：</p>
 <ul class="simple">
 <li><p>ジオメトリ（例：マルチパート地物、面積が小さい地物、定義された地図範囲内にある地物などを識別する）</p></li>
-<li><p>or field value (e.g., comparing values to a threshold, identifying empty cells,
-duplicates, ...).</p></li>
+<li><p>フィールド値（例：しきい値との比較、空のセルの区別、重複など）</p></li>
 </ul>
-<p>You can enable the conditional formatting panel clicking on
-<a class="reference internal" href="../../../_images/mActionConditionalFormatting.png"><img alt="conditionalFormatting" src="../../../_images/mActionConditionalFormatting.png" style="width: 1.5em;" /></a> <sup>Conditional formatting</sup> button at the top right
-of the attributes window in table view (not triggered in form view).</p>
+<p>テーブル表示の属性ウィンドウの右上にある <a class="reference internal" href="../../../_images/mActionConditionalFormatting.png"><img alt="conditionalFormatting" src="../../../_images/mActionConditionalFormatting.png" style="width: 1.5em;" /></a> <sup>条件付き書式</sup> ボタンをクリックして、条件付き書式パネルを有効にできます（フォーム表示では使用できません）。</p>
 <p>この新しいパネルでは、 <a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a><span class="guilabel">フィールド</span> または <a class="reference internal" href="../../../_images/radiobuttonoff.png"><img alt="radioButtonOff" src="../../../_images/radiobuttonoff.png" style="width: 1.5em;" /></a><span class="guilabel">行全体</span> の書式レンダリングに新ルールを追加することができます。新ルールを追加すると、以下のものを定義するためのフォームが開きます：</p>
 <ul class="simple">
 <li><p>ルールの名前</p></li>
@@ -487,10 +473,7 @@ of the attributes window in table view (not triggered in form view).</p>
 <p>行の左端にある行番号をクリックすることで、行を選択することができます。 <kbd class="kbd docutils literal notranslate">Ctrl</kbd> キーを押しながらクリックすると、 <strong>複数の行</strong> をマークすることができます。 <kbd class="kbd docutils literal notranslate">Shift</kbd> キーを押しながら行の左側にある複数の行ヘッダをクリックすると、 <strong>連続選択</strong> ができます。現在のカーソル位置とクリックした行の間のすべての行が選択されます。属性テーブルのセルをクリックしてカーソル位置を移動しても、行の選択は変わりません。また、メインキャンバス内で選択を変更しても、属性テーブルのカーソル位置は移動しません。</p>
 <p>属性テーブルのフォーム表示では、地物はデフォルトで左側パネル内において表示フィールド（ <a class="reference internal" href="vector_properties.html#maptips"><span class="std std-ref">表示名プロパティ</span></a> 参照）の値によって識別されています。この識別子はパネルの上部にあるドロップダウンリストを使用して、既存のフィールドを選択するか、カスタム式を使用して置き換えることができます。また、ドロップダウンメニューから地物フォームのリストをソートすることもできます。</p>
 <p>左側のパネルで値をクリックすると、右側のパネルにその地物の属性が表示されます。地物を選択するには、識別子の左にある四角いシンボルの中をクリックします。デフォルトでは、シンボルが黄色に変わります。テーブル表示と同様、これまでに紹介したキーボードの組み合わせで複数の地物を選択することができます。</p>
-<p>Beyond selecting features with the mouse, you can perform automatic selection
-based on feature's attribute using tools available in the attribute table
-toolbar, such as (see section <a class="reference internal" href="../introduction/general_tools.html#automatic-selection"><span class="std std-ref">自動選択</span></a> and subsequent for
-more information and use case):</p>
+<p>マウスで地物を選択するだけでなく、属性テーブルのツールバーにある以下のようなツールを使用して、地物の属性に基づいた自動選択を行うことができます（詳細や使用例については、 <a class="reference internal" href="../introduction/general_tools.html#automatic-selection"><span class="std std-ref">自動選択</span></a> とその続きのセクションを参照）：</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../../_images/mIconExpressionSelect.png"><img alt="expressionSelect" src="../../../_images/mIconExpressionSelect.png" style="width: 1.5em;" /></a> <span class="guilabel">式による地物選択...</span></p></li>
 <li><p><a class="reference internal" href="../../../_images/mIconFormSelect.png"><img alt="formSelect" src="../../../_images/mIconFormSelect.png" style="width: 1.5em;" /></a> <span class="guilabel">値による地物選択...</span></p></li>
@@ -498,7 +481,7 @@ more information and use case):</p>
 <li><p><a class="reference internal" href="../../../_images/mActionSelectAll.png"><img alt="selectAll" src="../../../_images/mActionSelectAll.png" style="width: 1.5em;" /></a> <span class="guilabel">すべて選択</span></p></li>
 <li><p><a class="reference internal" href="../../../_images/mActionInvertSelection.png"><img alt="invertSelection" src="../../../_images/mActionInvertSelection.png" style="width: 1.5em;" /></a> <span class="guilabel">選択部分を反転する</span></p></li>
 </ul>
-<p>It is also possible to <a class="reference internal" href="#filter-select-form"><span class="std std-ref">select features using forms</span></a>.</p>
+<p><a class="reference internal" href="#filter-select-form"><span class="std std-ref">フォームによる地物選択</span></a> もできます。</p>
 </section>
 <section id="filtering-features">
 <span id="filter-features"></span><h3><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">16.2.3.2. </span>地物のフィルタリング</a><a class="headerlink" href="#filtering-features" title="Link to this heading"></a></h3>
@@ -507,18 +490,11 @@ more information and use case):</p>
 <li><p><a class="reference internal" href="../../../_images/mActionOpenTable.png"><img alt="openTable" src="../../../_images/mActionOpenTable.png" style="width: 1.5em;" /></a> <span class="guilabel">全地物を表示</span></p></li>
 <li><p><a class="reference internal" href="../../../_images/mActionOpenTableSelected.png"><img alt="openTableSelected" src="../../../_images/mActionOpenTableSelected.png" style="width: 1.5em;" /></a> <span class="guilabel">選択した地物を表示</span> - これは、 <span class="guilabel">レイヤ</span> メニューや <span class="guilabel">属性ツールバー</span> から <span class="guilabel">属性テーブルを開く（選択地物）</span> を使用する場合や、キーボードで <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">F6</kbd></kbd> を押した場合と同じです</p></li>
 <li><p><a class="reference internal" href="../../../_images/mActionOpenTableVisible.png"><img alt="openTableVisible" src="../../../_images/mActionOpenTableVisible.png" style="width: 1.5em;" /></a> <span class="guilabel">地図上に表示されている地物を表示</span> - これは、 <span class="guilabel">レイヤ</span> メニューや the <span class="guilabel">属性ツールバー</span> から <span class="guilabel">属性テーブルを開く（可視地物）</span> を使用する場合や、キーボードで <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">F6</kbd></kbd> を押した場合と同じです</p></li>
-<li><p><a class="reference internal" href="../../../_images/mActionOpenTableInvalid.png"><img alt="openTableInvalid" src="../../../_images/mActionOpenTableInvalid.png" style="width: 1.5em;" /></a> <span class="guilabel">Show Features with Failing Constraints</span> -
-features will be filtered to only show the ones which have failing <a class="reference internal" href="vector_properties.html#constraints"><span class="std std-ref">constraints</span></a>.
-Depending on whether the unmet constraint is hard or soft,
-failing field values are displayed in respectively dark or light orange cells.</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionOpenTableInvalid.png"><img alt="openTableInvalid" src="../../../_images/mActionOpenTableInvalid.png" style="width: 1.5em;" /></a> <span class="guilabel">制約を満たさない地物を表示</span> - 地物は <a class="reference internal" href="vector_properties.html#constraints"><span class="std std-ref">制約</span></a> を満たさないものだけを表示するようにフィルタリングされます。適合しない制約がハードかソフトかに応じて、失敗したフィールド値はそれぞれ濃いオレンジか薄いオレンジのセルで表示されます。</p></li>
 <li><p><a class="reference internal" href="../../../_images/mActionOpenTableEdited.png"><img alt="openTableEdited" src="../../../_images/mActionOpenTableEdited.png" style="width: 1.5em;" /></a> <span class="guilabel">編集された地物と新規地物を表示</span> - これは、 <span class="guilabel">レイヤ</span> メニューや <span class="guilabel">属性ツールバー</span> から <span class="guilabel">属性テーブルを開く（編集済み地物）</span> を使用する場合と同じです</p></li>
 <li><p><span class="guilabel">属性フィルタ</span> - フィールドの値に基づいたフィルタリングができます：リストからカラムを選択し、値を入力するか選択して、 <kbd class="kbd docutils literal notranslate">Enter</kbd> キーを押すとフィルタリングが実行されます。すると、 <code class="docutils literal notranslate"><span class="pre">num_field</span> <span class="pre">=</span> <span class="pre">value</span></code> の式や <code class="docutils literal notranslate"><span class="pre">string_field</span> <span class="pre">ilike</span> <span class="pre">'%value%'</span></code> の式にマッチする地物のみが属性テーブルに表示されます。文字列に関しては <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Case sensitive</span> にチェックを入れることで、大文字小文字を区別するより厳しいマッチングにできます。</p></li>
-<li><p><a class="reference internal" href="../../../_images/mActionFilterMap.png"><img alt="filterMap" src="../../../_images/mActionFilterMap.png" style="width: 1.5em;" /></a> <span class="guilabel">Advanced filter (Expression)</span> - Opens the expression builder
-dialog. Within it, you can create <a class="reference internal" href="../expressions/expression.html#vector-expressions"><span class="std std-ref">complex expressions</span></a> to match table rows.
-For example, you can filter the table using more than one field.
-When applied, the filter expression will show up at the bottom of the form.</p></li>
-<li><p><a class="reference internal" href="../../../_images/mActionHandleStoreFilterExpressionChecked.png"><img alt="handleStoreFilterExpressionChecked" src="../../../_images/mActionHandleStoreFilterExpressionChecked.png" style="width: 1.5em;" /></a> <span class="menuselection">Stored filter expressions ►</span>: a shortcut to <a class="reference internal" href="#store-filter"><span class="std std-ref">saved
-expressions</span></a> frequently used for filtering your attribute table.</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionFilterMap.png"><img alt="filterMap" src="../../../_images/mActionFilterMap.png" style="width: 1.5em;" /></a> <span class="guilabel">詳細フィルタ（式）</span> - 式ビルダーダイアログを開きます。ここでは、テーブルの行にマッチさせるための <a class="reference internal" href="../expressions/expression.html#vector-expressions"><span class="std std-ref">複雑な式</span></a> を作成することができます。例えば、複数のフィールドを使用してテーブルをフィルタできます。OKボタンを押すと、そのフィルタ式がフォームの下部に表示されます。</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionHandleStoreFilterExpressionChecked.png"><img alt="handleStoreFilterExpressionChecked" src="../../../_images/mActionHandleStoreFilterExpressionChecked.png" style="width: 1.5em;" /></a> <span class="menuselection">保存済みフィルタ式 ►</span> 属性テーブルのフィルタリングによく使用する <a class="reference internal" href="#store-filter"><span class="std std-ref">保存済み式</span></a> へのショートカットです。</p></li>
 </ul>
 <p>これらは <a class="reference internal" href="#filter-select-form"><span class="std std-ref">フォームによる地物フィルタ</span></a> でも利用可能です。</p>
 <div class="admonition note">
@@ -555,9 +531,8 @@ expressions</span></a> frequently used for filtering your attribute table.</p></
 <p>フィルタを削除するには、左下のプルダウンメニューから <span class="guilabel">全地物を表示</span> オプションを選択するか、または式をクリアして <span class="guilabel">適用</span> ボタンをクリックするか <kbd class="kbd docutils literal notranslate">Enter</kbd> キーを押します。</p>
 </section>
 <section id="more-actions-on-features">
-<h3><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">16.2.3.5. </span>More actions on features</a><a class="headerlink" href="#more-actions-on-features" title="Link to this heading"></a></h3>
-<p>Users have several possibilities to manipulate feature in an attribute table.
-Right-click in a cell and you can:</p>
+<h3><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">16.2.3.5. </span>地物に関するその他のアクション</a><a class="headerlink" href="#more-actions-on-features" title="Link to this heading"></a></h3>
+<p>属性テーブルの地物を操作するには、いくつかの方法があります。セルを右クリックすると、以下のことができます:</p>
 <ul class="simple">
 <li><p>地物を <span class="guilabel">すべて選択</span> （ <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">A</kbd></kbd> ）</p></li>
 <li><p><span class="guilabel">セルの内容をコピーする</span> で、セルの内容をクリップボードにコピーする</p></li>
@@ -574,46 +549,31 @@ in the <span class="menuselection">Layer properties ► Actions</span> tab.</p><
 <p><span class="caption-number">図 16.72 </span><span class="caption-text">「セルの内容をコピーする」ボタン</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<p id="geometry-format">If you want to use attribute data in external programs (such as Excel,
-LibreOffice, or a custom web application), select one or more row(s) and
-use the <a class="reference internal" href="../../../_images/mActionCopySelected.png"><img alt="copySelected" src="../../../_images/mActionCopySelected.png" style="width: 1.5em;" /></a> <sup>Copy selected rows to clipboard</sup> button
-or press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">C</kbd></kbd>.</p>
+<p id="geometry-format">属性データを外部プログラム（Excel、LibreOffice、カスタムWebアプリケーションなど）で使用したい場合には、1つまたは複数の行を選択して <a class="reference internal" href="../../../_images/mActionCopySelected.png"><img alt="copySelected" src="../../../_images/mActionCopySelected.png" style="width: 1.5em;" /></a> <sup>選択している行をクリップボードへコピーする</sup> ボタンを押すか、 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">C</kbd></kbd> を押します。</p>
 <p><span class="menuselection">設定 ► オプション ► データソース</span> メニューでは、 <span class="guilabel">地物のコピー</span> ドロップダウンリストで貼り付け形式を指定できます：</p>
 <ul class="simple">
-<li><p><span class="guilabel">Plain text, no geometry</span>: attributes are copied as text
-but the geometry is skipped</p></li>
-<li><p><span class="guilabel">Plain text, WKT geometry</span>: attributes are copied as text
-and the geometry is returned in WKT</p></li>
-<li><p><span class="guilabel">GeoJSON</span>: attributes and geometry are formatted as GeoJSON data</p></li>
+<li><p><span class="guilabel">プレーンテキスト（ジオメトリなし）</span>: 属性はテキストとしてコピーされますがジオメトリは省略します</p></li>
+<li><p><span class="guilabel">プレーンテキスト（WKTジオメトリ）</span>: 属性はテキストとしてコピーされ、ジオメトリはWKTで返されます</p></li>
+<li><p><span class="guilabel">GeoJSON</span>: 属性とジオメトリはGeoJSONデータとしてフォーマットされます</p></li>
 </ul>
 </section>
 </section>
 <section id="editing-attribute-values">
 <span id="calculate-fields-values"></span><span id="index-6"></span><h2><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">16.2.4. </span>属性値の編集</a><a class="headerlink" href="#editing-attribute-values" title="Link to this heading"></a></h2>
-<p>In order to modify data in an attribute table, you should first toggle the layer into edit.
-Press the <a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a> <sup>Toggle Editing</sup> button.
-Depending on the layer geometry type and the clipboard state,
-a few more tools are enabled in the attribute table top toolbar.</p>
-<p>Editing attribute values can then be done by:</p>
+<p>属性テーブルのデータを変更するには、まずレイヤを編集に切り替える必要があります。<a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a> <sup>編集モードを切り替え</sup> ボタンを押します。レイヤのジオメトリタイプとクリップボードの状態によって、属性テーブルのトップツールバーでさらにいくつかのツールが有効になります。</p>
+<p>属性値の編集は以下のように行うことができます:</p>
 <ul class="simple">
 <li><p>新しい値をセルに直接入力します。属性テーブルがテーブル表示でもフォーム表示でも可能です。従って、変更はセルごと、地物ごとに行われます。</p></li>
 <li><p><a class="reference internal" href="#vector-field-calculator"><span class="std std-ref">フィールド計算機</span></a> を使用して、あるフィールド列全体に対して連続して更新を行います。フィールドは既存のものでも、新しく作られたものでもよいですが、更新は複数の地物に対して行われます。これは仮想フィールドを作るためにも使用することができます。</p></li>
 <li><p>クイックフィールド <a class="reference internal" href="#quick-field-calculation-bar"><span class="std std-ref">計算バー</span></a> を使用します。上と同じですが既存のフィールドに対してのみ使用できます。</p></li>
 <li><p><a class="reference internal" href="#multi-edit-fields"><span class="std std-ref">マルチエディット</span></a> モードを使用します。複数の地物の複数のフィールドを連続して更新します。</p></li>
 </ul>
-<p>Putting the layer into edit mode will also allow you to
-<a class="reference internal" href="../../../_images/mActionEditPaste.png"><img alt="editPaste" src="../../../_images/mActionEditPaste.png" style="width: 1.5em;" /></a> <sup>Paste features from clipboard</sup> (<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">V</kbd></kbd>)
-<a class="reference internal" href="../../../_images/mActionEditCut.png"><img alt="editCut" src="../../../_images/mActionEditCut.png" style="width: 1.5em;" /></a> <sup>Cut selected rows to clipboard</sup> (<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">X</kbd></kbd>)
-or <a class="reference internal" href="../../../_images/mActionDeleteSelectedFeatures.png"><img alt="deleteSelectedFeatures" src="../../../_images/mActionDeleteSelectedFeatures.png" style="width: 1.5em;" /></a> <sup>Delete selected features</sup>.
-More details at <a class="reference internal" href="editing_geometry_attributes.html#editingvector"><span class="std std-ref">編集</span></a>.</p>
+<p>レイヤーを編集モードにすると、<a class="reference internal" href="../../../_images/mActionEditPaste.png"><img alt="editPaste" src="../../../_images/mActionEditPaste.png" style="width: 1.5em;" /></a> <sup>クリップボードから地物を貼り付ける</sup> (<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">V</kbd></kbd>) <a class="reference internal" href="../../../_images/mActionEditCut.png"><img alt="editCut" src="../../../_images/mActionEditCut.png" style="width: 1.5em;" /></a> <sup>選択した行を切り取ってクリップボードへ</sup> (<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">X</kbd></kbd>) または <a class="reference internal" href="../../../_images/mActionDeleteSelectedFeatures.png"><img alt="deleteSelectedFeatures" src="../../../_images/mActionDeleteSelectedFeatures.png" style="width: 1.5em;" /></a> <sup>選択地物を削除</sup> することもできます。詳細は <a class="reference internal" href="editing_geometry_attributes.html#editingvector"><span class="std std-ref">編集</span></a> を参照してください。</p>
 <section id="using-the-field-calculator">
 <span id="vector-field-calculator"></span><h3><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">16.2.4.1. </span>フィールド計算機を使用する</a><a class="headerlink" href="#using-the-field-calculator" title="Link to this heading"></a></h3>
 <p>属性テーブルの <a class="reference internal" href="../../../_images/mActionCalculateField.png"><img alt="calculateField" src="../../../_images/mActionCalculateField.png" style="width: 1.5em;" /></a> <sup>フィールド計算機</sup> ボタンを使うと、既存の属性値もしくは定義された関数に基づいて計算を行うことができます。例えば、ジオメトリ地物の長さや面積の計算ができます。計算結果は既存のフィールドの更新や、新しいフィールド（これは <a class="reference internal" href="#virtual-field"><span class="std std-ref">仮想</span></a> フィールドも可）への書き込みに使うことができます。</p>
 <p>フィールド計算機 は編集をサポートするすべてのレイヤで利用可能です。フィールド計算機のアイコンをクリックすると、ダイアログを開きます（ <a class="reference internal" href="#figure-field-calculator"><span class="std std-numref">図 16.73</span></a> 参照）。レイヤが編集モードでない場合には警告が表示され、フィールド計算機を使用すると、計算が行われる前にレイヤが編集モードに変わります。</p>
-<p>Based on the <a class="reference internal" href="../expressions/expression.html#expression-builder"><span class="std std-ref">Expression Builder</span></a> dialog,
-the field calculator dialog offers a complete interface to define an expression
-and apply it to an existing or a newly created field.
-To use the field calculator dialog, you must select whether you want to:</p>
+<p><a class="reference internal" href="../expressions/expression.html#expression-builder"><span class="std std-ref">式ビルダー</span></a> ダイアログをベースにしたフィールド計算機ダイアログは、式を定義し、それを既存のもしくは新しく作成したフィールドに適用するための完璧なインターフェイスを提供します。フィールド計算機ダイアログを使うには、次のどちらをしたいのか選ぶ必要があります：</p>
 <ol class="arabic simple">
 <li><p>レイヤの全体に計算を適用したいのか、それとも選択した地物のみに適用したいのか</p></li>
 <li><p>計算によって新しいフィールドを作りたいのか、それとも既存のフィールドを更新したいのか</p></li>
@@ -640,27 +600,14 @@ To use the field calculator dialog, you must select whether you want to:</p>
 </section>
 <section id="creating-a-virtual-field">
 <span id="virtual-field"></span><h3><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">16.2.4.2. </span>仮想フィールドの作成</a><a class="headerlink" href="#creating-a-virtual-field" title="Link to this heading"></a></h3>
-<p>A virtual field is a field based on an expression calculated on the fly, meaning
-that its value is automatically updated as soon as an underlying parameter changes.
-The expression applies to all the features in the layer and is set once;
-you no longer need to recalculate the field each time underlying values change.
-For example, you may want to use a virtual field if you need area to be evaluated
-as you digitize features or to automatically calculate a duration between dates
-that may change (e.g., using <code class="docutils literal notranslate"><span class="pre">now()</span></code> function).</p>
-<p>Creating a virtual field is done through the <a class="reference internal" href="../../../_images/mActionCalculateField.png"><img alt="calculateField" src="../../../_images/mActionCalculateField.png" style="width: 1.5em;" /></a> <span class="guilabel">Field calculator</span> dialog
-and follows the <a class="reference internal" href="#vector-field-calculator"><span class="std std-ref">same procedure</span></a> as for regular fields.
-Simply remember to check the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Create virtual field</span> option
-and use a field type compatible with the data your expression would generate.</p>
-<p>Editing a virtual field is done through the <a class="reference internal" href="../../../_images/mSourceFields.png"><img alt="sourceFields" src="../../../_images/mSourceFields.png" style="width: 1.5em;" /></a> <span class="guilabel">Fields</span> tab
-of the layer properties dialog (see <a class="reference internal" href="vector_properties.html#vector-fields-menu"><span class="std std-ref">フィールドプロパティ</span></a>).
-The expression defining the field is exposed in the <span class="guilabel">Comment</span> column,
-and pressing the <a class="reference internal" href="../../../_images/mIconExpression.png"><img alt="expression" src="../../../_images/mIconExpression.png" style="width: 1.5em;" /></a> button next to it opens an expression editor window
-for update.</p>
+<p>仮想フィールドとは、その場で計算される式に基づいたフィールドであり、式の基礎となるパラメータが変更されるとすぐに値が自動的に更新されます。この式はレイヤ内の全ての地物に適用されます。式の設定は一度だけでよく、基礎となる値が変更されるたびにフィールドを再計算する必要はありません。例えば、地物をデジタイジングするたびに面積を評価する場合や、変わることのある日付（例： <code class="docutils literal notranslate"><span class="pre">now()</span></code> 関数を使用する）の期間を自動的に計算する場合などで、仮想フィールドを使用するのが良いでしょう。</p>
+<p>仮想フィールドの作成は <a class="reference internal" href="../../../_images/mActionCalculateField.png"><img alt="calculateField" src="../../../_images/mActionCalculateField.png" style="width: 1.5em;" /></a> <span class="guilabel">フィールド計算機</span> ダイアログを使って行われ、通常のフィールドと :ref:` 同じ手順 &lt;vector_field_calculator&gt;` に従います。<a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">仮想フィールドを作成</span> オプションをチェックし、式が生成するデータと互換性のあるフィールド型を使用することだけ忘れないでください。</p>
+<p>仮想フィールドの編集は、レイヤプロパティダイアログの <a class="reference internal" href="../../../_images/mSourceFields.png"><img alt="sourceFields" src="../../../_images/mSourceFields.png" style="width: 1.5em;" /></a> <span class="guilabel">フィールド</span> タブから行います（ <a class="reference internal" href="vector_properties.html#vector-fields-menu"><span class="std std-ref">フィールドプロパティ</span></a> を参照）。フィールドを定義する式は <span class="guilabel">コメント</span> 列に表示され、その横にある <a class="reference internal" href="../../../_images/mIconExpression.png"><img alt="expression" src="../../../_images/mIconExpression.png" style="width: 1.5em;" /></a> ボタンを押すと式エディタウィンドウが開いて更新できます。</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
 <p><strong>仮想フィールドの使用</strong></p>
 <ul class="simple">
-<li><p>A field can be set virtual only at its creation.</p></li>
+<li><p>フィールドを仮想にするのはそれを作成するときだけです。</p></li>
 <li><p>仮想フィールドはレイヤの属性として永続的ではありません。つまり、仮想フィールドを作成したプロジェクトファイル内にのみ保存され、そこでのみ利用可能です。</p></li>
 </ul>
 </div>
@@ -720,39 +667,29 @@ for update.</p>
 </section>
 </section>
 <section id="exploring-features-attributes-through-the-identify-tool">
-<span id="identify-features-vector"></span><h2><a class="toc-backref" href="#id32" role="doc-backlink"><span class="section-number">16.2.5. </span>Exploring features attributes through the Identify Tool</a><a class="headerlink" href="#exploring-features-attributes-through-the-identify-tool" title="Link to this heading"></a></h2>
-<p>The <a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../introduction/general_tools.html#identify"><span class="std std-ref">Identify features</span></a> tool can be used to display all attributes
-of a feature in the map canvas. It is a quick way to view and verify all data without
-having to search for it in the attribute table.</p>
-<p>To use the <span class="guilabel">Identify features</span> tool for vector layers, follow these steps:</p>
+<span id="identify-features-vector"></span><h2><a class="toc-backref" href="#id32" role="doc-backlink"><span class="section-number">16.2.5. </span>地物情報表示ツールを使って地物属性を詳しくみる</a><a class="headerlink" href="#exploring-features-attributes-through-the-identify-tool" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../introduction/general_tools.html#identify"><span class="std std-ref">地物情報表示</span></a> ツールは、マップキャンバスにある地物の全属性を表示するために使用できます。これは、属性テーブルでデータを検索することなく、全てのデータを表示し確認する手早い方法です。</p>
+<p>ベクタレイヤに <span class="guilabel">地物情報表示</span> ツールを使うには、以下の手順で行います:</p>
 <ol class="arabic simple">
-<li><p>Select the vector layer in the Layers panel.</p></li>
-<li><p>Click on the <span class="guilabel">Identify features</span> tool in the toolbar or press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">I</kbd></kbd>.</p></li>
-<li><p>Click on a feature in the map view.</p></li>
+<li><p>レイヤパネルでベクタレイヤを選択します。</p></li>
+<li><p>ツールバーの <span class="guilabel">地物情報表示</span> ツールをクリックするか、 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">I</kbd></kbd> を押します。</p></li>
+<li><p>マップビューの地物の上でクリックします。</p></li>
 </ol>
-<p>The <span class="guilabel">Identify results</span> panel will display different features information
-depending on the layer type. There are two columns in the panel, on the left side
-you can see <span class="guilabel">Feature</span> and on the right side <span class="guilabel">Value</span>.
-Under the <span class="guilabel">Feature</span> column, panel will display following information:</p>
+<p><span class="guilabel">地物情報結果</span> パネルには、レイヤの種類によって異なる地物情報が表示されます。パネルには2つの列があり、左側に <span class="guilabel">地物</span>、右側に <span class="guilabel">値</span> が表示されます。<span class="guilabel">地物</span> 列の下には以下の情報が表示されます:</p>
 <ul>
-<li><p><strong>Derived</strong> section - those are the information calculated or derived from other
-information in the layer. For example, the area of a polygon or the length of a line.
-General information that can be found in this section:</p>
+<li><p><strong>（派生した属性）</strong> セクション - レイヤの他の情報から計算または派生した情報です。例えば、ポリゴンの面積や線の長さです。このセクションで見られる一般的な情報は:</p>
 <ul class="simple">
-<li><p>Depending on the geometry type, cartesian measurements of length, perimeter, or area
-in the layer's CRS units. For 3D line vectors, the cartesian line length is available.</p></li>
-<li><p>Depending on the geometry type and if an ellipsoid is set in the <span class="guilabel">Project Properties</span>
-dialog (<span class="menuselection">General ► Measurements</span>), ellipsoidal values
-of length, perimeter, or area using the specified units.</p></li>
-<li><p>The count of geometry parts in the feature and the number of the part clicked.</p></li>
-<li><p>The count of vertices in the feature.</p></li>
+<li><p>ジオメトリのタイプに応じて、レイヤのCRSの単位で表示した長さ、周長、面積のデカルト計測値。3Dラインベクタでは、デカルト線長が利用可能です。</p></li>
+<li><p>ジオメトリのタイプと、<span class="guilabel">プロジェクトのプロパティ</span> ダイアログ（<span class="menuselection">一般情報 ► 計測</span>）で楕円体が設定されているかどうかに応じて、指定された単位で表示した長さ、周長、面積の楕円体値。</p></li>
+<li><p>地物内のジオメトリパーツの数と、クリックされたパーツの番号</p></li>
+<li><p>地物内の頂点数</p></li>
 </ul>
-<p>Coordinate information that can be found in this section:</p>
+<p>このセクションにある座標の情報</p>
 <ul class="simple">
-<li><p>X and Y coordinate values of the clicked point.</p></li>
-<li><p>The number of the closest vertex to the clicked point.</p></li>
-<li><p>X and Y coordinate values of the closest vertex.</p></li>
-<li><p>If you click on a curved segment, the radius of that section is also displayed.</p></li>
+<li><p>クリックした点のXとY座標値</p></li>
+<li><p>クリックした点に最も近い頂点の番号</p></li>
+<li><p>最も近い頂点のXとY座標値</p></li>
+<li><p>曲線セグメントをクリックした場合には、その部分の曲率半径も表示されます。</p></li>
 </ul>
 </li>
 <li><p><strong>データ属性</strong> ：これは、クリックされた地物の属性フィールドと値のリストです。</p></li>
@@ -831,7 +768,7 @@ the selected file name will be appended to get the final URL.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2002-now, QGIS project.
-      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      <span class="lastupdated">最終更新: 2024 6月 25, 05:29 +0900
       </span></p>
   </div>
 

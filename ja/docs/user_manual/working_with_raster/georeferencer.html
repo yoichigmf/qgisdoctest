@@ -164,7 +164,7 @@
   <blockquote>
 <div><div class="admonition important">
 <p class="admonition-title">重要</p>
-<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 89.39% 翻訳されています。</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 96.97% 翻訳されています。</p>
 </div>
 </div></blockquote>
 <section id="georeferencer">
@@ -281,17 +281,7 @@
 <ul class="simple">
 <li><p>ラスタ画像内の点をクリックして、その点のCRSとともにX座標とY座標を手動で入力する。</p></li>
 <li><p>ラスタ画像内の点をクリックし、 <a class="reference internal" href="../../../_images/pencil.png"><img alt="pencil" src="../../../_images/pencil.png" style="width: 1.5em;" /></a> <sup>地図キャンバスから</sup> ボタンを押して、既にQGISのマップキャンバスに読み込まれたジオリファレンス済みの地図を使用して、X座標とY座標を追加する。CRSは自動的に設定されます。</p></li>
-<li><p>When entering GCPs from the main map canvas, you have the option to hide
-the georeferencer window while selecting points from the main canvas.
-If the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Automatically hide georeferencer window</span>
-checkbox is ticked, after clicking <a class="reference internal" href="../../../_images/pencil.png"><img alt="pencil" src="../../../_images/pencil.png" style="width: 1.5em;" /></a> <span class="guilabel">From Map Canvas</span>,
-the main georeferencer window will be hidden until a point is added on the
-map canvas.
-The <span class="guilabel">Enter Map Coordinates</span> dialog will remain open.
-If the box is unchecked, both windows will remain open while selecting a
-point on the map canvas.
-This option only takes effect when the georeferencer window is not docked
-in the main interface.</p></li>
+<li><p>メインマップキャンバスからGCPを入力するとき、メインキャンバスから点を選択している間、ジオリファレンスウインドウを隠すオプションがあります。<a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ジオリファレンサのウィンドウを自動で隠す</span> チェックボックスにチェックを入れると、 <a class="reference internal" href="../../../_images/pencil.png"><img alt="pencil" src="../../../_images/pencil.png" style="width: 1.5em;" /></a> <span class="guilabel">地図キャンバスから</span> をクリックした後、マップキャンバスに点が追加されるまで、メインのジオリファレンスウィンドウは隠されます。<span class="guilabel">地図座標の入力</span> ダイアログは開いたままになります。このボックスをオフにすると、マップキャンバス上で点を選択している間、両方のウィンドウが開いたままになります。このオプションはジオリファレンスウィンドウがメインインターフェイスにドッキングされていないときのみ効果があります。</p></li>
 </ul>
 </li>
 <li><p>点の入力を繰り返します。最低4点の指定が必要ですが、より多くの座標を入力すれば、より良い結果が得られます。また、関連するGCPポイントの組を適切な場所に置くために、作業領域をズームしたりパンしたりするツールもあります。</p></li>
@@ -345,16 +335,13 @@ in the main interface.</p></li>
 <p>ジオリファレンスされた出力ラスタの作成のために、さまざまなオプションを指定する必要があります。</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ワールドファイルの作成のみ（リニア変換）</span> のチェックボックスは、線形変換タイプを指定した場合にのみ利用可能です。これは、実際にはラスタ画像は変換されないことを意味しています。チェックを入れた場合、新しいワールドファイルが作成されるのみのため、 <span class="guilabel">出力ラスタ</span> フィールドは無効になります。</p></li>
-<li><p>これ以外の変換タイプに対しては、 <span class="guilabel">出力ラスタ</span> を指定する必要があります。デフォルトでは、新規ファイル（[ファイル名]_modified）をオリジナルのラスタ画像ファイルと同じフォルダに作成します。</p></li>
-<li><p>As a next step, you have to define the <span class="guilabel">Target CRS</span> (Coordinate Reference
-System) for the georeferenced raster (see <a class="reference internal" href="../working_with_projections/working_with_projections.html#label-projections"><span class="std std-ref">投影法の操作</span></a>).</p></li>
+<li><p>これ以外の変換タイプに対しては、 <span class="guilabel">出力ラスタ</span> を指定する必要があります。デフォルトでは、新規ファイル（[ファイル名]_modified）をオリジナルのラスタ画像ファイルと同じフォルダーに作成します。</p></li>
+<li><p>続いて、ジオリファレンスされたラスタの <span class="guilabel">変換先CRS</span> （座標参照系）を指定する必要があります（ <a class="reference internal" href="../working_with_projections/working_with_projections.html#label-projections"><span class="std std-ref">投影法の操作</span></a> 参照）。</p></li>
 <li><p>必要ならば <strong>PDFマップを作成</strong> や <strong>PDFレポートを作成</strong> できます。 このレポートには、使用した変換パラメータ、残差の画像、すべてのGCPとそのRMSエラーのリストといった情報が含まれています。</p></li>
 <li><p>さらに、 <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">解像度を設定</span> チェックボックスにチェックを入れると、出力ラスタのピクセル解像度を指定できます。デフォルトの水平解像度と垂直解像度は 1 です。</p></li>
 <li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">必要に応じて透明に0を使用</span> にチェックを入れると、値0のピクセルは透明で表示されるようになります。サウスダコタ地形図の例では、余白領域がすべて透明になります。</p></li>
-<li><p>The <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Save GCP Points</span> will store GCP Points in a file next
-to the output raster.</p></li>
-<li><p>Finally, <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Load in project when done</span> loads the output raster
-automatically into the QGIS map canvas when the transformation is done.</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">GCPポイントを保存</span> は、GCPポイントを出力ラスタの隣のファイルに保管します。</p></li>
+<li><p>最後に、 <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">完了後にプロジェクトに読み込む</span> にチェックを入れると、変換が完了したときに出力ラスタをQGISのマップキャンバスに自動的に読み込みます。</p></li>
 </ul>
 </section>
 </section>
@@ -364,19 +351,13 @@ automatically into the QGIS map canvas when the transformation is done.</p></li>
 </section>
 <section id="configure-the-georeferencer">
 <span id="configure-georeferencer"></span><h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">17.3.1.4. </span>ジオリファレンサの構成</a><a class="headerlink" href="#configure-the-georeferencer" title="Link to this heading"></a></h3>
-<p>You can customize the behavior of the georeferencer in <span class="menuselection">Settings
-► Configure Georeferencer</span> (or use keyboard shortcut <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd></kbd>).</p>
+<p><span class="menuselection">設定 ► ジオリファレンサの構成</span> （またはキーボードショートカット <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd></kbd> ）でジオリファレンサの動作をカスタマイズできます。</p>
 <ul class="simple">
-<li><p>Under <span class="guilabel">Point Tip</span> you can use the checkboxes to toggle displaying GCP
-IDs and X/Y coordinates in both the Georeferencer window and the main map canvas.</p></li>
-<li><p><span class="guilabel">Residual Units</span> controls whether residual units are given in pixels
-or map units</p></li>
-<li><p><span class="guilabel">PDF Report</span> allows you to set margin size in mm for the report export</p></li>
-<li><p><span class="guilabel">PDF Map</span> allows you to choose a paper size for the map export</p></li>
-<li><p>Finally, you can activate to <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show Georeferencer window
-docked</span>.
-This will dock the Georeferencer window in the main QGIS window rather than
-showing it as a separate window that can be minimized.</p></li>
+<li><p><span class="guilabel">点のTip</span> の下にあるチェックボックスを使って、ジオリファレンサウィンドウとメインマップキャンバスの両方にGCP IDとX/Y座標を表示するかどうかを切り替えることができます。</p></li>
+<li><p><span class="guilabel">残差単位</span> は、残差単位をピクセルで与えるか、マップの単位で与えるかを制御します</p></li>
+<li><p><span class="guilabel">PDFレポート</span> では、レポート出力のマージン幅をmm単位で設定できます</p></li>
+<li><p><span class="guilabel">PDF地図</span> では、マップ出力に使う用紙サイズを選ぶことができます</p></li>
+<li><p>最後に、<a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">ジオリファレンサウィンドウを結合して表示</span> を有効にすることができます。これはジオリファレンサウィンドウを、最小化できる別のウィンドウとして表示するのではなく、QGISのメインウィンドウにドッキングさせます。</p></li>
 </ul>
 </section>
 <section id="running-the-transformation">
@@ -398,7 +379,7 @@ showing it as a separate window that can be minimized.</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2002-now, QGIS project.
-      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      <span class="lastupdated">最終更新: 2024 6月 25, 05:29 +0900
       </span></p>
   </div>
 

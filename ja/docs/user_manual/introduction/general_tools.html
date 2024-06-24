@@ -201,7 +201,7 @@
   <blockquote>
 <div><div class="admonition important">
 <p class="admonition-title">重要</p>
-<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 96.03% 翻訳されています。</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 96.93% 翻訳されています。</p>
 </div>
 </div></blockquote>
 <section id="general-tools">
@@ -271,16 +271,15 @@
 <p id="index-3"><span class="guilabel">レイヤ</span> パネル（<code class="docutils literal notranslate"><span class="pre">地図凡例</span></code> とも呼ばれます）は、プロジェクト内のすべてのレイヤを一覧表示し、その可視性を管理したり、マップの形を整えるのに役立ちます。このパネルは <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">1</kbd></kbd> を押すことで表示・非表示を切り替えることができます。</p>
 <p>QGISにはプロジェクトにレイヤを追加する様々な方法があります:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../managing_data_source/opening_data.html#opening-data"><span class="std std-ref">データソースマネージャ</span></a> ダイアログにある専用のデータプロバイダタブから <span class="guilabel">追加</span> ボタンを使う</p></li>
-<li><p>QGISの <a class="reference internal" href="browser.html#label-browserpanel"><span class="std std-ref">ブラウザパネル</span></a> または <a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DBマネージャ</span></a>: ダブルクリック、ファイルやレイヤをQGISにドラッグ＆ドロップ、コンテキストメニューを使う</p></li>
+<li><p><a class="reference internal" href="../managing_data_source/opening_data.html#opening-data"><span class="std std-ref">データソースマネージャ</span></a> ダイアログにある専用のデータプロバイダタブから <span class="guilabel">追加</span> ボタンを使います</p></li>
+<li><p>QGISの <a class="reference internal" href="browser.html#label-browserpanel"><span class="std std-ref">ブラウザパネル</span></a> または <a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DBマネージャ</span></a>: ダブルクリック、ファイルやレイヤをQGISにドラッグ＆ドロップ、コンテキストメニューを使います</p></li>
 <li><p>ファイルをオペレーティングシステムのファイルエクスプローラからQGISにドラッグ&amp;ドロップする</p></li>
 </ul>
-<p>In all these scenarios, you can open one or many layers at a time.
-New layers are added to the <span class="guilabel">Layers</span> panel:</p>
+<p>これらすべてのシナリオでは、一度に1つまたは複数のレイヤーを開くことができます。新しいレイヤーは <span class="guilabel">レイヤー</span> パネルに追加されます。</p>
 <ol class="arabic simple">
-<li><p><span class="guilabel">レイヤー</span> パネルの上にドロップすると、ドロップされた場所に正確に配置される。</p></li>
-<li><p>他の場合には、新しいレイヤーを追加する設定で使用されるグローバルな動作を尊重する位置にて。</p></li>
-<li><p>複数のレイヤーがある場合;それらは次のロジック（top to bottom）を使用して、論理的な積み重ねがなされ、機能ができるだけ多く見えるような方法で並べられます</p>
+<li><p><span class="guilabel">レイヤー</span> パネルの上にドロップすると、それらのデータが正確な位置に展開される。</p></li>
+<li><p>他の場合では、新しいレイヤーを追加する際のグローバル設定 :ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>新しいレイヤーの追加時の動作 &lt;layer_tree_insertion_methods&gt;に従う場所に配置されます。</p></li>
+<li><p>複数のレイヤーがある場合、それらは次のロジック（top to bottom）を使用して、論理的な積み重ねがなされ、機能ができるだけ多く見えるような方法で並べます:</p>
 <ul class="simple">
 <li><p>vector point layers</p></li>
 <li><p>vector line layers</p></li>
@@ -1158,7 +1157,7 @@ New layers are added to the <span class="guilabel">Layers</span> panel:</p>
 <div><ul class="simple">
 <li><p><span class="guilabel">Startup</span> 時々発生する QGIS の起動時間が長くなるのを診断 (および修正) するのに役立ちます。</p></li>
 <li><p><span class="guilabel">Project Load</span> を使用すると、プロジェクトの読み込み時間が遅い原因を特定するために、プロジェクト読み込みのさまざまな段階の内訳を取得できます。</p></li>
-<li><p>:guilabel:<a href="#id1"><span class="problematic" id="id2">`</span></a>Map Render`ツールを使用すると、マップ レンダリングの問題点を特定し、どのレイヤーがマップの再描画に時間がかかるかを正確に追跡できます。</p></li>
+<li><p><span class="guilabel">Map Render</span> ツールを使用すると、マップ レンダリングの問題点を特定し、どのレイヤーがマップの再描画に時間がかかるかを正確に追跡できます。</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -1451,13 +1450,13 @@ see <a class="reference internal" href="../processing_algs/qgis/vectorselection.
 </section>
 <section id="identify">
 <span id="index-17"></span><span id="identifying-features"></span><h3><a class="toc-backref" href="#id60" role="doc-backlink"><span class="section-number">12.4.2. </span>地物の識別</a><a class="headerlink" href="#identify" title="Link to this heading"></a></h3>
-<p>The <a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <sup>Identify Features</sup> このツールを使用すると、マップキャンバス上でインタラクションを行い、フィーチャーやピクセルに関する情報をポップアップウィンドウで取得できる。QGISがサポートするほとんどのレイヤータイプ（ベクター、ラスタ、メッシュ、ポイントクラウド、WMS、WFSなど）をクエリするために使用できる。要素を識別するには、次のいずれかの方法を使用する；</p>
+<p>The <a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <sup>Identify Features</sup> このツールを使用すると、マップキャンバス上でインタラクションを行い、フィーチャーやピクセルに関する情報をポップアップウィンドウで取得できます。QGISがサポートするほとんどのレイヤータイプ（ベクター、ラスタ、メッシュ、ポイントクラウド、WMS、WFSなど）をクエリするために使用でき、要素を識別するには、次のいずれかの方法を使用します;</p>
 <ul class="simple">
 <li><p><span class="menuselection">ビュー ► 地物情報表示</span></p></li>
 <li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">I</kbd></kbd> （ <a class="reference internal" href="../../../_images/osx.png"><img alt="osx" src="../../../_images/osx.png" style="width: 1em;" /></a> の場合は <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Cmd</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">I</kbd></kbd> ）</p></li>
-<li><p><a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <sup>Identify Features</sup> button on the <span class="guilabel">Attributes</span> toolbar</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <sup>Identify Features`ボタンが :guilabel:`属性</sup> ツールバーにあります</p></li>
 </ul>
-<p>次に、アクティブなレイヤーのフィーチャーまたはピクセルをクリックする。識別された項目はマップキャンバスで強調表示され、その間に <span class="guilabel">Identify Results</span> 詳細情報を表示するダイアログが開く。このダイアログには、高度な設定のための一連のボタンも表示される。</p>
+<p>次に、アクティブなレイヤーの地物またはピクセルをクリックする。識別された項目はマップキャンバスで強調表示され、その間に <span class="guilabel">Identify Results</span> 詳細情報を表示するダイアログが開く。このダイアログには、高度な設定のための一連のボタンも表示される。</p>
 <section id="the-identify-results-dialog">
 <h4><span class="section-number">12.4.2.1. </span>地物情報ダイアログ<a class="headerlink" href="#the-identify-results-dialog" title="Link to this heading"></a></h4>
 <figure class="align-center" id="id28">
@@ -1475,45 +1474,39 @@ see <a class="reference internal" href="../processing_algs/qgis/vectorselection.
 <li><p>or <strong>Graph</strong>: ラスターベースのレイヤーのみで利用可能</p></li>
 </ul>
 </li>
-<li id="identify-mode"><p>'Mode' は、結果が返されるレイヤーを選択するのに役立つ.これらのレイヤーは可視化され、マップキャンバスにデータが表示され、Project properties ► Data Sources ► Layers capabilities で識別可能に設定されている必要がある.利用可能なモードは次の通り：</p>
+<li id="identify-mode"><p>'Mode' は、結果が返されるレイヤーを選択するのに役立ちます。これらのレイヤーは可視化され、マップキャンバスにデータが表示され、Project properties ► Data Sources ► Layers capabilities で識別可能と設定されている必要があります。利用可能なモードは次の通りです:</p>
 <ul>
-<li><p><strong>Current layer</strong>: ’Layers’ パネルで選択されたlayer(s)のみが結果を返す.グループが選択されている場合、結果はそのleaf layersから取得される.</p></li>
-<li><p><strong>Top down, stop at first</strong>: 結果は、マウス下の最上位の地物またはピクセルのレイヤーから取得される.</p></li>
-<li><p><strong>Top down</strong>: 結果は、マウス下の地物またはピクセルが存在するすべてのレイヤーから取得される.</p></li>
-<li><p>Layer selection: コンテキストメニューを開き、ユーザーがフィーチャーを識別するレイヤーを選択する。マウスの下に単一の地物しかない場合、結果は自動的に表示される。</p></li>
+<li><p><strong>Current layer</strong>: ’Layers’ パネルで選択されたlayer(s)のみが結果を返します。グループが選択されている場合、結果はそのleaf layersから取得されます。</p></li>
+<li><p><strong>Top down, stop at first</strong>: 結果は、マウス下の最上位の地物またはピクセルのレイヤーから取得されます。</p></li>
+<li><p><strong>Top down</strong>: 結果は、マウス下の地物またはピクセルが存在するすべてのレイヤーから取得されます。</p></li>
+<li><p>Layer selection: コンテキストメニューを開き、ユーザーがフィーチャーを識別するレイヤーを選択します。マウスの下に単一の地物しかない場合、結果は自動的に表示されます。</p></li>
 </ul>
 </li>
-<li><p><span class="guilabel">Identify Results</span> ダイアログの上部には、地物から返された :ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>情報 ` を表、グラフ、またはツリーとして表示するフレームがあります。表示形式は :ref:<a href="#id3"><span class="problematic" id="id4">`</span></a>選択されたビュー ` によって異なります。ツリービューの場合、結果の上にいくつかのツールがある:</p>
+<li><p><span class="guilabel">Identify Results</span> ダイアログの上部には、地物から返された :ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>情報 ` を表、グラフ、またはツリーとして表示するフレームがあります。表示形式は :ref:<a href="#id3"><span class="problematic" id="id4">`</span></a>選択されたビュー ` によって異なります。ツリービューの場合、結果の上にいくつかのツールがあります:</p>
 <ul>
 <li><p><a class="reference internal" href="../../../_images/mActionFormView.png"><img alt="formView" src="../../../_images/mActionFormView.png" style="width: 1.2em;" /></a> <sup>地物フォームを見る</sup> 現在の地物の属性フォームを開きます</p></li>
 <li><p><a class="reference internal" href="../../../_images/mActionExpandTree.png"><img alt="expandTree" src="../../../_images/mActionExpandTree.png" style="width: 1.5em;" /></a> <sup>ツリーを展開する</sup></p></li>
 <li><p><a class="reference internal" href="../../../_images/mActionCollapseTree.png"><img alt="collapseTree" src="../../../_images/mActionCollapseTree.png" style="width: 1.5em;" /></a> <sup>ツリーを折りたたむ</sup></p></li>
 <li><p><a class="reference internal" href="../../../_images/mActionExpandNewTree.png"><img alt="expandNewTree" src="../../../_images/mActionExpandNewTree.png" style="width: 1.5em;" /></a> <sup>結果をデフォルトで展開する</sup> 次に識別する地物情報のツリーを折りたたむか、展開するかを規定します</p></li>
 <li><p><a class="reference internal" href="../../../_images/mActionDeselectAll.png"><img alt="deselectAll" src="../../../_images/mActionDeselectAll.png" style="width: 1.5em;" /></a> <sup>結果のクリア</sup></p></li>
-<li><p>クリップボード`, スプレッドシートに貼り付けるのに適しています.</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionEditCopy.png"><img alt="editCopy" src="../../../_images/mActionEditCopy.png" style="width: 1.5em;" /></a> <sup>特定した地物をクリップボードにコピー</sup>、スプレッドシートに貼り付けるのに適しています。</p></li>
 <li><p>結果を印刷するため、または :PDF`ファイルとして保存するためのテキストベースのフォーマット</p></li>
-<li><p><span class="xref std std-ref">interactive identifying tools 1</span>: マップキャンバス上で識別するフィーチャーやピクセルを選択するためのツールが含まれたドロップダウンメニュー</p></li>
-<li><p>Under <a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <sup>Identify Settings</sup>, you can activate whether to:</p>
+<li><p><a class="reference internal" href="#identify-selection"><span class="std std-ref">interactive identifying tools</span></a>: マップキャンバス上で識別するフィーチャーやピクセルを選択するためのツールが含まれたドロップダウンメニュー</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <sup>Identify Settings</sup> の下で、以下の設定を有効にすることができます:</p>
 <ul>
-<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Auto open form for single feature results</span>:
-If checked, each time a single feature is identified, a form opens showing its attributes.
-This is a handy way to quickly edit a feature's attributes.</p></li>
-<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Hide derived attributes from results</span>
-to only show fields actually defined in the layer</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">単一地物の結果に対して自動的にフォームを開く</span>: チェックされている場合、単一の地物が識別されるたびに、その属性を表示するフォームが開きます。これは、地物の属性をすばやく編集するのに便利な方法です。</p></li>
+<li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Hide derived attributes from results</span> をオンにすると、レイヤーで実際に定義されているフィールドのみが表示されます。</p></li>
 <li><p><a class="reference internal" href="../../../_images/unchecked.png"><img alt="unchecked" src="../../../_images/unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Hide NULL values from results</span></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="../../../_images/mActionHelpContents.png"><img alt="helpContents" src="../../../_images/mActionHelpContents.png" style="width: 1.5em;" /></a><sup>Help</sup> to access the current documentation</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionHelpContents.png"><img alt="helpContents" src="../../../_images/mActionHelpContents.png" style="width: 1.5em;" /></a><sup>ヘルプ</sup> で現在のドキュメントにアクセスします。</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="using-the-identify-features-tool">
 <span id="identify-selection"></span><h4><span class="section-number">12.4.2.2. </span>地物情報表示ツールを使用する<a class="headerlink" href="#using-the-identify-features-tool" title="Link to this heading"></a></h4>
-<p>In its default display (<span class="guilabel">View: Tree</span>), the <span class="guilabel">Identify Results</span> panel
-offers several tools to interact with the layers to query.
-A smart combination of these tools with the <a class="reference internal" href="#identify-mode"><span class="std std-ref">target layers selector</span></a>
-may greatly improve identification operations:</p>
+<p>デフォルト表示 (<span class="guilabel">ツリー表示</span>) では、<span class="guilabel">Identify Results</span> パネルには、レイヤーに対してクエリを実行するためのいくつかのツールが提供されています。これらのツールと <a class="reference internal" href="#identify-mode"><span class="std std-ref">ターゲットレイヤーセレクタ</span></a> の賢い組み合わせにより、識別操作が大幅に向上する可能性があります。</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../../_images/mActionIdentifyByRectangle.png"><img alt="identifyByRectangle" src="../../../_images/mActionIdentifyByRectangle.png" style="width: 1.5em;" /></a> <sup>Identify Feature(s)</sup> by single click or click-and-drag</p>
 <ul>
@@ -1570,19 +1563,8 @@ This is a handy way to return features from only layers that are of interest to 
 </section>
 <section id="feature-information">
 <span id="identified-information"></span><h4><span class="section-number">12.4.2.3. </span>地物情報<a class="headerlink" href="#feature-information" title="Link to this heading"></a></h4>
-<p>When you identify a data in the map canvas, the <span class="guilabel">Identify Results</span> dialog will list
-information about the items clicked (or hovered over, depending on the tool in use).
-The default view is a tree view in which the first item is the name of the layer
-and its children are its identified feature(s).
-Each feature is described by the name of a field along with its value.
-This field is the one set in <span class="menuselection">Layer Properties ► Display</span>.
-All the other information about the feature follows.</p>
-<p>The feature information displayed by the identify tool will depend on the type
-of layer you have selected, whether it is a vector layer (including vector tiles
-or point cloud data) or raster layer. If your layer is raster, clicking on a location
-on the map canvas with identify tool will highlight the identified raster pixel.
-The Identify Results dialog can be customized to display custom fields, but by
-default it will display the following information:</p>
+<p>マップキャンバスでデータを識別すると、<span class="guilabel">Identify Results`ダイアログにクリックされたまたはマウスカーソルが置かれた項目の情報が一覧表示されます。デフォルトのビューはツリービューで、最初の項目がレイヤーの名前で、その子項目が識別された地物です。各地物は、属性名とその値で記述されます。この属性は :menuselection:`Layer Properties --&gt; Display</span> で設定されたものです。地物に関するその他の情報は次の通りです。</p>
+<p>識別ツールで表示されるフィーチャ情報は、選択したレイヤの種類（ベクターレイヤ（ベクタータイルや点群データを含む）かラスターレイヤか）によって異なります。レイヤーがラスターの場合、同定ツールでマップ キャンバス上の位置をクリックすると、同定されたラスター ピクセルが強調表示されます。識別結果ダイアログは、カスタムフィールドを表示するようにカスタマイズできますが、デフォルトでは以下の情報が表示されます：</p>
 <ul class="simple" id="index-18">
 <li><p>地物の <a class="reference internal" href="../working_with_vector/vector_properties.html#maptips"><span class="std std-ref">表示名</span></a></p></li>
 <li><p><strong>アクション</strong>：アクションを地物情報ウィンドウに追加できます。アクションは、アクションのラベルをクリックすることで実行されます。デフォルトでは、編集のため <code class="docutils literal notranslate"><span class="pre">地物フォームを見る</span></code> のアクション1つのみが追加されています。レイヤプロパティダイアログでより多くのアクションを定義することができます（ <a class="reference internal" href="../working_with_vector/vector_properties.html#actions-menu"><span class="std std-ref">アクションプロパティ</span></a> を参照）。</p></li>
@@ -2225,7 +2207,7 @@ using the <a class="reference internal" href="../working_with_vector/vector_prop
 
   <div role="contentinfo">
     <p>&#169; Copyright 2002-now, QGIS project.
-      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      <span class="lastupdated">最終更新: 2024 6月 25, 05:29 +0900
       </span></p>
   </div>
 

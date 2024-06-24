@@ -190,22 +190,22 @@
   <blockquote>
 <div><div class="admonition important">
 <p class="admonition-title">重要</p>
-<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 93.96% 翻訳されています。</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 100.00% 翻訳されています。</p>
 </div>
 </div></blockquote>
 <section id="vector-tiles">
 <h1><span class="section-number">28.1.26. </span>ベクタタイル<a class="headerlink" href="#vector-tiles" title="Link to this heading"></a></h1>
 <nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#download-vector-tiles" id="id8">Download vector tiles</a></p></li>
+<li><p><a class="reference internal" href="#download-vector-tiles" id="id8">ベクタタイルをダウンロード</a></p></li>
 <li><p><a class="reference internal" href="#write-vector-tiles-mbtiles" id="id9">ベクタタイルを書き出し (WMBTiles)</a></p></li>
 <li><p><a class="reference internal" href="#write-vector-tiles-xyz" id="id10">ベクタタイルを書き出し (XYZ)</a></p></li>
 </ul>
 </nav>
 <section id="download-vector-tiles">
-<span id="qgisdownloadvectortiles"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">28.1.26.1. </span>Download vector tiles</a><a class="headerlink" href="#download-vector-tiles" title="Link to this heading"></a></h2>
+<span id="qgisdownloadvectortiles"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">28.1.26.1. </span>ベクタタイルをダウンロード</a><a class="headerlink" href="#download-vector-tiles" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NEW</span> <span class="pre">in</span> <span class="pre">3.32</span></code></p>
-<p>Downloads vector tiles of an input vector tile layer and saves them in a local vector tile file.</p>
+<p>入力ベクタタイルレイヤのベクタタイルをダウンロードし、ローカルのベクタタイルファイルに保存します。</p>
 <section id="parameters">
 <h3>パラメータ<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
@@ -226,13 +226,12 @@
 <tr class="row-even"><td><p><strong>入力レイヤ</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
 <td><p>[ベクタタイル}</p></td>
-<td><p>A vector tile layer to extract some tiles from</p></td>
+<td><p>タイルを抽出するベクタタイルレイヤ</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>領域</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">EXTENT</span></code></p></td>
 <td><p>[範囲]</p></td>
-<td><p>Specify the spatial extent of the downloaded area.
-It will internally be extended to a multiple of the tile size.</p>
+<td><p>ダウンロードされる区域の空間的範囲を指定します。内部的にはタイルサイズの倍数に拡張されます。</p>
 <p>利用可能な方法:</p>
 <ul class="simple">
 <li><p>レイヤから計算...: 現在のプロジェクトに読み込まれたレイヤの範囲を使います</p></li>
@@ -244,26 +243,26 @@ It will internally be extended to a multiple of the tile size.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>Maximum zoom level to download</strong></p></td>
+<tr class="row-even"><td><p><strong>ダウンロードする最大ズームレベル</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">MAX_ZOOM</span></code></p></td>
 <td><p>[数値]</p>
 <p>デフォルト： 10</p>
 </td>
-<td><p>Defines how far to zoom in and fetch data from the tiles</p></td>
+<td><p>どこまで拡大してタイルからデータを取得するかを定義します</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Tile limit</strong></p></td>
+<tr class="row-odd"><td><p><strong>タイルの上限数</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TILE_LIMIT</span></code></p></td>
 <td><p>[数値]</p>
 <p>デフォルト： 100</p>
 </td>
-<td><p>Maximum number of tiles to download, considering the zoom levels and the extent.</p></td>
+<td><p>ズームレベルと範囲を考慮して、ダウンロードするタイルの最大数。</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>出力</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
 <td><p>[ベクタタイル}</p>
 <p>デフォルト： [一時ファイルに保存]</p>
 </td>
-<td><p>Specification of the output vector tile file. One of:</p>
+<td><p>出力ベクタタイルのファイルを指定します。次のいずれかです:</p>
 <ul class="simple">
 <li><p>一時ファイルに保存</p></li>
 <li><p>ファイルに保存...</p></li>
@@ -293,7 +292,7 @@ It will internally be extended to a multiple of the tile size.</p>
 <tr class="row-even"><td><p><strong>出力</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
 <td><p>[ベクタタイル}</p></td>
-<td><p>A local vector tile file storing the downloaded tiles.</p></td>
+<td><p>ダウンロードされたタイルを格納するローカルのベクタタイルファイル</p></td>
 </tr>
 </tbody>
 </table>
@@ -568,7 +567,7 @@ It will internally be extended to a multiple of the tile size.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2002-now, QGIS project.
-      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      <span class="lastupdated">最終更新: 2024 6月 25, 05:29 +0900
       </span></p>
   </div>
 

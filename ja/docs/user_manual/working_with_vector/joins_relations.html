@@ -95,7 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="attribute_table.html">16.2. 属性テーブルの操作</a></li>
 <li class="toctree-l3"><a class="reference internal" href="editing_geometry_attributes.html">16.3. 編集</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">16.4. Connecting and Editing Data Across Layers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#joining-features-between-two-layers">16.4.1. Joining features between two layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#joining-features-between-two-layers">16.4.1. 二つのレイヤの地物を結合する</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#setting-relations-between-multiple-layers">16.4.2. Setting relations between multiple layers</a></li>
 </ul>
 </li>
@@ -166,14 +166,14 @@
   <blockquote>
 <div><div class="admonition important">
 <p class="admonition-title">重要</p>
-<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 69.28% 翻訳されています。</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 73.86% 翻訳されています。</p>
 </div>
 </div></blockquote>
 <section id="connecting-and-editing-data-across-layers">
 <span id="sec-joins-relations"></span><span id="index-0"></span><h1><span class="section-number">16.4. </span>Connecting and Editing Data Across Layers<a class="headerlink" href="#connecting-and-editing-data-across-layers" title="Link to this heading"></a></h1>
 <nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#joining-features-between-two-layers" id="id15">Joining features between two layers</a></p></li>
+<li><p><a class="reference internal" href="#joining-features-between-two-layers" id="id15">二つのレイヤの地物を結合する</a></p></li>
 <li><p><a class="reference internal" href="#setting-relations-between-multiple-layers" id="id16">Setting relations between multiple layers</a></p>
 <ul>
 <li><p><a class="reference internal" href="#one-to-many-1-n-relations" id="id17">One to many (1-N) relations</a></p>
@@ -194,31 +194,17 @@
 </li>
 </ul>
 </nav>
-<p>Ability to connect data from different layers is one of the duties of a GIS software.
-Such a connection can be based on the spatial relationship between the features,
-or on their shared attributes.
-QGIS provides tools to handle any of these associations, such as:</p>
+<p>異なるレイヤのデータを接続する能力は、GISソフトウェアの仕事の一つです。このような接続は、地物間の空間的関係、またはそれらが共有している属性に基づくことができます。QGISは、これらの関連付けを処理する次のようなツールを提供しています：</p>
 <ul>
-<li><p>Processing algorithms that can create a new layer as a result of the connection,
-namely <a class="reference internal" href="../processing_algs/qgis/vectorgeneral.html#qgisjoinattributesbylocation"><span class="std std-ref">属性の空間結合</span></a>, <a class="reference internal" href="../processing_algs/qgis/vectorgeneral.html#qgisjoinbynearest"><span class="std std-ref">属性の最近傍結合</span></a>,
-<a class="reference internal" href="../processing_algs/qgis/vectorgeneral.html#qgisjoinattributestable"><span class="std std-ref">属性テーブルで結合（table join）</span></a>, ...</p></li>
-<li><p>SQL queries to create a new layer from the <a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DB Manager</span></a>
-or as a <a class="reference internal" href="../managing_data_source/create_layers.html#vector-virtual-layers"><span class="std std-ref">virtual layer</span></a></p></li>
-<li><p><a class="reference internal" href="#sec-joins"><span class="std std-ref">Joins properties</span></a> or <a class="reference internal" href="#vector-relations"><span class="std std-ref">relations settings</span></a>
-that temporarily extend attributes of features in a given layer,
-with those of features in another layer based on some matching attribute(s).</p>
-<p>Joins and relations are technical concepts borrowed from databases
-to get the most out of data stored in tables by combining their contents.
-The idea is that features (rows) of different layers (tables) can be associated to each other.
-The number of rows which are matching each other can be of any value (zero, one, many).</p>
+<li><p>プロセシングアルゴリズム、つまり <a class="reference internal" href="../processing_algs/qgis/vectorgeneral.html#qgisjoinattributesbylocation"><span class="std std-ref">属性の空間結合</span></a>, <a class="reference internal" href="../processing_algs/qgis/vectorgeneral.html#qgisjoinbynearest"><span class="std std-ref">属性の最近傍結合</span></a>, <a class="reference internal" href="../processing_algs/qgis/vectorgeneral.html#qgisjoinattributestable"><span class="std std-ref">属性テーブルで結合（table join）</span></a>, ...は、接続の結果として新しいレイヤを作成できます</p></li>
+<li><p>SQLクエリを使って、 <a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DBマネージャ</span></a> または <a class="reference internal" href="../managing_data_source/create_layers.html#vector-virtual-layers"><span class="std std-ref">仮想レイヤ</span></a> から新しいレイヤを作成します</p></li>
+<li><p><a class="reference internal" href="#sec-joins"><span class="std std-ref">プロパティを結合する</span></a> または <a class="reference internal" href="#vector-relations"><span class="std std-ref">リレーションの設定</span></a> は、属性のマッチングに基づいて、与えられたレイヤの地物の属性を、別のレイヤの属性を使って一時的に拡張します。</p>
+<p>結合とリレーションはデータベースから借用した技術的な概念で、テーブルに格納されたデータを、その内容を結合することによって、最大限に活用するものです。つまり、異なるレイヤ（テーブル）の地物（行）同士を関連づけることができます。お互いに一致する行の数は任意です（0、1、多数）。</p>
 </li>
 </ul>
 <section id="joining-features-between-two-layers">
-<span id="sec-joins"></span><span id="index-1"></span><h2><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">16.4.1. </span>Joining features between two layers</a><a class="headerlink" href="#joining-features-between-two-layers" title="Link to this heading"></a></h2>
-<p><strong>Joins</strong> in QGIS allow you to associate features of the current layer
-to features from another loaded vector layer.
-Whether they are spatially enabled and the type of geometry do not matter.
-The join is based on an attribute that is shared by the layers, in a one-to-one relationship.</p>
+<span id="sec-joins"></span><span id="index-1"></span><h2><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">16.4.1. </span>二つのレイヤの地物を結合する</a><a class="headerlink" href="#joining-features-between-two-layers" title="Link to this heading"></a></h2>
+<p>QGISの <strong>結合</strong> では、現在のレイヤの地物を、読み込まれた別のベクタレイヤの地物に関連付けることができます。空間的に有効であるかどうかや、ジオメトリのタイプは関係ありません。結合は、レイヤが共有する属性に基づき、1対1の関係で行われます。</p>
 <p>To create a join on a layer (identified below as <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">layer</span></code>):</p>
 <ol class="arabic simple">
 <li><p>Go to the layer <span class="menuselection">Properties ►</span> <a class="reference internal" href="../../../_images/join.png"><img alt="join" src="../../../_images/join.png" style="width: 2em;" /></a> <span class="guilabel">Joins</span> tab</p></li>
@@ -651,7 +637,7 @@ to add as many pairs as necessary.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2002-now, QGIS project.
-      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      <span class="lastupdated">最終更新: 2024 6月 25, 05:29 +0900
       </span></p>
   </div>
 

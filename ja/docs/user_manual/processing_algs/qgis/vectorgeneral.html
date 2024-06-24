@@ -190,7 +190,7 @@
   <blockquote>
 <div><div class="admonition important">
 <p class="admonition-title">重要</p>
-<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 99.11% 翻訳されています。</p>
+<p>翻訳は <a class="reference external" href="https://qgis.org/en/site/getinvolved/translate.html#becoming-a-translator">あなたが参加できる</a> コミュニティの取り組みです。このページは現在 99.81% 翻訳されています。</p>
 </div>
 </div></blockquote>
 <section id="vector-general">
@@ -1273,8 +1273,7 @@
 </section>
 <section id="execute-sql">
 <span id="qgisexecutesql"></span><h2><a class="toc-backref" href="#id109" role="doc-backlink"><span class="section-number">28.1.21.12. </span>SQLの実行</a><a class="headerlink" href="#execute-sql" title="Link to this heading"></a></h2>
-<p>Runs a simple or complex query based only on SELECT with <code class="docutils literal notranslate"><span class="pre">SQL</span></code> syntax
-on the source layer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">SQL</span></code> の構文を持つSELECTのみに基づいて、単純または複雑なクエリをソースレイヤ上で実行します。</p>
 <p>入力データソースは <code class="docutils literal notranslate"><span class="pre">input1</span></code>, <code class="docutils literal notranslate"><span class="pre">input2</span></code>... <code class="docutils literal notranslate"><span class="pre">inputN</span></code> として識別されます。単純なクエリは、 <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">input1</span></code> のような形式です。</p>
 <p>単純なクエリの他に、式や変数を <code class="docutils literal notranslate"><span class="pre">SQLクエリ</span></code> パラメータ自体の中に追加できます。これは、このアルゴリズムがプロセシングモデル内で実行される場合に、モデルの入力をクエリのパラメータとして使用したいときに特に便利です。クエリの例は、 <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">[%</span> <span class="pre">&#64;table</span> <span class="pre">%]</span></code> のような形になり、この <code class="docutils literal notranslate"><span class="pre">&#64;table</span></code> がモデル入力を識別する変数です。</p>
 <p>クエリによる結果は、新しいレイヤとして追加されます。</p>
@@ -2876,7 +2875,7 @@ on the source layer.</p>
 </td>
 <td><p>変換先の座標参照系</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Convert curved geometries to straight segments</strong></p>
+<tr class="row-even"><td><p><strong>曲線ジオメトリを直線セグメントに変換</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">NEW</span> <span class="pre">in</span> <span class="pre">3.32</span></code></p>
 <p>オプション</p>
 </td>
@@ -2884,8 +2883,7 @@ on the source layer.</p>
 <td><p>[ブール値]</p>
 <p>デフォルト： False</p>
 </td>
-<td><p>If checked, curved geometries will be converted to straight segments in the process,
-avoiding potential distortion issues.</p></td>
+<td><p>チェックした場合、曲線ジオメトリは直線セグメントに変換され、潜在的な歪みの問題を避けることができます。</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>再投影したラスタファイル</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
@@ -2974,7 +2972,7 @@ avoiding potential distortion issues.</p></td>
 <section id="save-vector-features-to-file">
 <span id="qgissavefeatures"></span><h2><a class="toc-backref" href="#id123" role="doc-backlink"><span class="section-number">28.1.21.26. </span>ベクタ地物をファイルに保存</a><a class="headerlink" href="#save-vector-features-to-file" title="Link to this heading"></a></h2>
 <p>ベクタ地物を指定したファイルデータセットに保存します。</p>
-<p>レイヤをサポートするデータセット形式では、オプションとしてレイヤ名パラメータにカスタム文字列を指定することができます。また、オプションとして、GDALで定義されているデータセット作成オプションやレイヤ作成オプションを指定することもできます。これに関する詳細については、その形式に関するオンラインの <a class="reference external" href="https://gdal.org/drivers/vector/index.html">GDAL documentation</a> を参照してください。</p>
+<p>レイヤをサポートするデータセット形式では、オプションとしてレイヤ名パラメータにカスタム文字列を指定することができます。また、オプションとして、GDALで定義されているデータセット作成オプションやレイヤ作成オプションを指定することもできます。これに関する詳細については、その形式に関するオンラインの <a class="reference external" href="https://gdal.org/drivers/vector/index.html">GDALドキュメント</a> を参照してください。</p>
 <section id="id75">
 <h3>パラメータ<a class="headerlink" href="#id75" title="Link to this heading"></a></h3>
 <section id="id76">
@@ -3487,7 +3485,7 @@ avoiding potential distortion issues.</p></td>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2002-now, QGIS project.
-      <span class="lastupdated">最終更新: 2024 5月 30, 01:33 +0900
+      <span class="lastupdated">最終更新: 2024 6月 25, 05:29 +0900
       </span></p>
   </div>
 
